@@ -3,11 +3,13 @@ djview
 docker
 gimp
 google-chrome
+insomnia
 karabiner-elements
 linearmouse
 miniforge
 notion
 obs
+postman
 rectangle
 slack
 spotify

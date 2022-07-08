@@ -10,6 +10,7 @@ miniforge
 notion
 obs
 postman
+pomatez
 rectangle
 slack
 spotify

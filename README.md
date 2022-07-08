@@ -1,5 +1,6 @@
 # minimal setup
-### TODO move native mac apps to casks
+### TODO move dump from brew, add `init.vim` and `.p10k.zsh` to dumpables
+### (maybe `custom` too)
 ### TODO put in a script, test through docker or smth
 
 0. run `mac_misc.sh`

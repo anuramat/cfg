@@ -7,6 +7,7 @@ duf
 dust
 exa
 fd
+fzf
 git-delta
 lazydocker
 lazygit

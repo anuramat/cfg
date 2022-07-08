@@ -1,2 +1,6 @@
-obs
 qbittorrent
+obs
+rectangle
+linearmouse
+spotify
+visual-studio-code

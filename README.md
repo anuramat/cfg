@@ -1,4 +1,7 @@
 # minimal setup
+### TODO move native mac apps to casks
+### TODO put in a script, test through docker or smth
+
 0. run `mac_misc.sh`
 
 1. install xcode cli tools

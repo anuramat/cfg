@@ -15,7 +15,9 @@ neovim
 netcat
 nmap
 nnn
+node
 peco
+php
 ranger
 ripgrep
 vim

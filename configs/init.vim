@@ -15,7 +15,7 @@ set ignorecase              " case insensitive
 set smartcase               " except when query contains uppercase
 set hlsearch                " highlight search 
 set incsearch               " incremental search
-
+  
 
 "                   tabs/spaces
 set tabstop=4               " number of columns occupied by a tab 
@@ -39,30 +39,56 @@ set background=dark
 colorscheme molokai         " gruvbox is a good alt
 let g:airline_theme='molokai'
 
-" misc
+"                   misc
 set mouse=a                 " enable mouse
 set clipboard=unnamedplus   " using system clipboard
 set scrolloff=5             " soft vertical centering of the cursor
-set updatetime=100          " period before swap is written (used by gitgutter)
-set history=10000
+set updatetime=100          " ms before swap is written (used by gitgutter)
+filetype plugin indent on   " all filetype features on
+set smartindent             " XXX might conflict with something?
+" backup and swap
+set nobackup
+set nowritebackup
+set swapfile
 
-" does this even change anything?
-set wildmenu
-" let mapleader=","
-set wildmode=longest,list   " get bash-like tab completions
-filetype plugin indent on   " allow auto-indenting depending on file type
-filetype plugin on          " mandatory stuff
-set ttyfast                 " Speed up scrolling in Vim
+"                   defaults XXX remove duplicates
+set wildmenu                " cmd autocmp menu, vim: off
+set wildoptions=pum,tagfile " vertical menu, show comp source symbol, vim: ""
+set smarttab                " vim: off
+set autoindent              " vim: off
+set wildmode=full           " required for vertical menu, vim: on
+set showcmd                 " vim: on, vi: off
+set ttyfast                 " def (deprecated), vim: auto
+set history=10000           " lines of history, vim: 50
+set nolinebreak
+" can be useful to change
+set textwidth=0             " auto-newline after n+ chars and a whitespace
+set wrapmargin=0            " moves cur word to newline when close to term edge
+" set formatoptions= " XXX
+set wrap
 
-"                   plugin settings
 
-" coc
-highlight CocFloating ctermbg=Black
-let g:coc_global_extensions = ['coc-pyright', 'coc-go']
-autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+"                   binds
+map <space> /
+let mapleader=","
+map <Leader><Leader> :NERDTreeToggle<CR>
+" moving between windows XXX conflicts with search on space
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l 
 
-" nerdtree bind
-map <C-b> :NERDTreeToggle<CR> " control+b to open nerdtree
+
+
+
+
+
+"                   plugin settings boilerplate
+
+" airline
+let g:airline_powerline_fonts = 1
+" if no powerline fonts: try unicode fallback in ":h airline_customization"
+
 
 " treesitter settings
 lua <<EOF
@@ -78,3 +104,9 @@ EOF
 " folding
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+
+
+" coc XXX replace?
+highlight CocFloating ctermbg=Black
+let g:coc_global_extensions = ['coc-pyright', 'coc-go']
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

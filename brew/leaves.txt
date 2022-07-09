@@ -11,6 +11,7 @@ fzf
 git-delta
 lazydocker
 lazygit
+ncdu
 neovim
 netcat
 nmap

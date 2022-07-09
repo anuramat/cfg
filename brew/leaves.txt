@@ -21,6 +21,7 @@ peco
 php
 ranger
 ripgrep
+tree-sitter
 vim
 wget
 wtfutil

@@ -17,13 +17,16 @@ xcode-select —-install
 
 3. install brew packages (don't forget to conda init)
 
-4. install dotfiles
+4. install vim-plug
+
+5. install dotfiles
 ```
 cat configs/custom.zsh >> $HOME/.zshrc
 cp configs/p10k.zsh $HOME/.p10k.zsh
+cp configs/init.vim $HOME/.config/nvim/init.vim
 ```
 
-5. turn off auto activation for conda
+6. turn off auto activation for conda
 ```
 conda config --set auto_activate_base false
 ```

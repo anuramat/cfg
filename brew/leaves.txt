@@ -5,6 +5,7 @@ ctop
 difftastic
 duf
 dust
+delve
 exa
 fd
 fzf

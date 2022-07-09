@@ -2,14 +2,15 @@ bat
 broot
 croc
 ctop
+delve
 difftastic
 duf
 dust
-delve
 exa
 fd
 fzf
 git-delta
+go
 lazydocker
 lazygit
 ncdu
@@ -22,7 +23,6 @@ peco
 php
 ranger
 ripgrep
-tree-sitter
 vim
 wget
 wtfutil

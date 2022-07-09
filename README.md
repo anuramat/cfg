@@ -28,11 +28,10 @@ cp configs/p10k.zsh $HOME/.p10k.zsh
 conda config --set auto_activate_base false
 ```
 
-# zsh ricing
+# shell ricing
 + install p10k
 ```
 brew install romkatv/powerlevel10k/powerlevel10k
 echo "source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme" >>~/.zshrc
 ```
-+ install meslo nerd front
-+ `p10k configure`
++ install font from nerdfonts.com

@@ -30,7 +30,7 @@ call plug#begin('~/.vim/plugged')
     " major junk
     Plug 'metakirby5/codi.vim'                      " repl buffer
     " dependencies
-    Plug 'nvim-lua/plenary.nvim' " required by telescope
+    Plug 'nvim-lua/plenary.nvim'                    " required by telescope
 call plug#end()
 
 
@@ -72,7 +72,10 @@ set matchtime=1             " blink length, 0.1s
 set scrolloff=5             " soft vertical centering of the cursor
 set showcmd                 " defensive; vim: on, vi: off
 set shortmess+=c            " TODO wtf
-set termguicolors           " TODO wtf
+set termguicolors           " truecolor
+set list                    " show some whitespace as defined by listchars:
+set listchars=tab:\|->,trail:-,nbsp:+,extends:>,precedes:<
+
 
 "           elements
 set cmdheight=1             " command line

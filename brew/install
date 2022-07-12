@@ -1,17 +1,27 @@
 #!/usr/bin/env zsh
 
+# requires curl
+
 if command -v brew &> /dev/null
 then
     echo "brew already installed"
     exit
 fi
 
-echo cfg: installing homebrew
+echo --------------------------------
+echo --------------------------------
+echo cfg: installing homebrew--------
+echo --------------------------------
+echo --------------------------------
+
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" | tee -a .cfg.brew_install.log
 
-echo cfg: installing leaves 
-xargs brew install < leaves.txt | tee -a .cfg.leaves_install.log
+echo --------------------------------
+echo --------------------------------
+echo cfg: installing packages--------
+echo --------------------------------
+echo --------------------------------
 
-echo cfg: installing casks
-xargs brew install < casks.txt | tee -a .cfg.casks_install.log
+xargs brew install < leaves.txt < casks.txt | tee -a .cfg.packages_install.log
+
 

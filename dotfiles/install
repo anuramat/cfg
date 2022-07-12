@@ -1,11 +1,62 @@
 #!/usr/bin/env zsh
 
-if grep -Fxq "$FILENAME" my_list.txt
-then
-    echo "~/.zshrc is already sourcing ~/cfg.zsh"
-else
-    echo "source $HOME/cfg.zsh" > $HOME/.zshrc
-fi
+function ensure_path {
+    if ! test -d "$1"
+    then
+        mkdir -p "$1"
+        echo "created path: $1"
+    fi
+}
+
+function ensure_file {
+    if ! test -f "$1"
+    then 
+        touch "$1"
+        echo "created file: $1"
+    fi
+}
+
+function make_symlink {
+    # $1 -- path for symlink
+    # $2 -- filename (same for symlink and source file in cwd)
+    if test -f "$1/$2"
+    then
+        echo "file already exists: $1/$2"
+        exit
+    else
+        ln -s "$2" "$1/$2"
+        echo "created symlink: $1/$2"
+    fi
+}
+
+function ensure_string {
+    # $1 -- file name
+    # $2 -- string
+    
+    # F: exact match, q: exit on first match
+    if grep -Fq "$2" "$1"
+    then
+        echo "$1 already contains \"$2\""
+    else
+        echo "\n\n\n$2" >> "$1"
+        echo "modified $1"
+    fi
+}
+
+function install_cfg {
+    # puts cfg.* in the target directory, adds specified string to the target
+    # creats both the directory and target if they don't already exist
+    # $1 -- target dir path
+    # $2 -- target name
+    # $3 -- cfg file name
+    echo "cfg: installing $3"
+    ensure_path "$1"
+    make_symlink "$1" "$3"
+    ensure_file "$1/$2"
+    ensure_string "$1/$2" "source $1/$3"
+}
 
 
+install_cfg "$HOME .zshrc cfg.zsh"
+install_cfg "$HOME/.config/nvim init.vim cfg.vim" 
 

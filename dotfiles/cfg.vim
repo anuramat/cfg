@@ -10,10 +10,9 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " subject to change:
-" no plugin manager? xd
-" dif file tree
-" dif fuzzy finder
 " coc -> native lsp ecosystem
+" no plugin manager? xd
+" no nerdtree
 call plug#begin('~/.vim/plugged')
     " major plugins
     Plug 'scrooloose/nerdtree' " because netrw sucks
@@ -104,8 +103,8 @@ set wildmode=longest:full   " longest matching, full req by wildmenu
 "           colors
 set tgc
 set background=dark
-colorscheme gruvbox
-let g:airline_theme='atomic'
+colorscheme molokai
+let g:airline_theme='molokai'
 
 "                   misc
 set clipboard=unnamedplus   " using system clipboard
@@ -178,4 +177,4 @@ set foldexpr=nvim_treesitter#foldexpr()
 "                   codi
 let g:codi#interpreters = {'python':
             \{'bin': 'python3', 'prompt':'^\(>>>\|\.\.\.\) '}
-\}
+            \}

@@ -233,3 +233,5 @@ tags
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,vim,linux,python
 
+# install script data
+.cfg* 

@@ -118,6 +118,7 @@ set nobackup                " XXX backups conflict with some language servers
 set nowritebackup           " XXX same
 set noswapfile              " XXX might be useful
 set noautowrite             " XXX same
+set noundofile
 "           backspace behaviour
 set backspace=eol,start,indent
 "           misc

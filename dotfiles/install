@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+if grep -Fxq "$FILENAME" my_list.txt
+then
+    echo "~/.zshrc is already sourcing ~/cfg.zsh"
+else
+    echo "source $HOME/cfg.zsh" > $HOME/.zshrc
+fi
+
+
+

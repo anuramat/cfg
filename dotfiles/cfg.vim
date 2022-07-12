@@ -53,7 +53,7 @@ set ignorecase              " case insensitive...
 set smartcase               " ... except when query contains uppercase
 set hlsearch                " highlight search 
 set incsearch               " incremental search
-set nowrapscan                " search wraps aroun
+set nowrapscan              " search wraps around
 
 "                   tabs/spaces
 " autoindentation for most stuff is governed by filetype
@@ -66,7 +66,7 @@ set softtabstop=4           " <Tab>/<BS> width; -1: sts=sw; 0: <Tab>=ts, <BS>=1
 set expandtab               " insert spaces instead of spaces+tabs
 set smarttab                " on: sw instead of (s)ts used in front of the line
 set autoindent              " keep ind level on nl (mostly for plaintext)
-set noshiftround            " TODO WTF  
+set shiftround              " round indents to multiples of shiftwidth
 set nosmartindent           " replaced by filetype
 set nocindent               " replaced by filetype
 "                   ui/visuals
@@ -82,9 +82,9 @@ set termguicolors           " truecolor
 set list                    " show some whitespace as defined by listchars:
 set splitbelow
 set splitright
-set startofline
-set report=0
-set display=lastline,uhex
+set nostartofline             " move to line start on big moves
+set report=0                " always report changed lines
+set display=lastline,uhex   " alwys shw wrpped lnes, shw unprntble chrs unicode
 if has('multi_byte') && &encoding ==# 'utf-8'
     set listchars=tab:│+,extends:❯,precedes:❮,nbsp:+,trail:·,lead:·
     set showbreak=\ ↪\ 
@@ -94,7 +94,7 @@ endif
 set ttyfast                 " faster redrawing
 set nolazyredraw            " turn on for frequent macros
 set redrawtime=2000         " increase if syntax hl is slow on large files
-set synmaxcol=0             " turn on for super long lines
+set synmaxcol=0             " line length limit for syntax hl
 "           elements
 set cmdheight=1             " command line
 set cursorline              " cursor line

@@ -1,3 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
+
+# backup packages
 brew leaves -rq > leaves.txt
 brew list --cask > casks.txt

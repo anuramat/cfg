@@ -57,6 +57,6 @@ function install_cfg {
 }
 
 
-install_cfg "$HOME .zshrc cfg.zsh"
-install_cfg "$HOME/.config/nvim init.vim cfg.vim" 
+install_cfg "$HOME" .zshrc cfg.zsh
+install_cfg "$HOME/.config/nvim" init.vim cfg.vim
 

@@ -53,6 +53,7 @@ set ignorecase              " case insensitive...
 set smartcase               " ... except when query contains uppercase
 set hlsearch                " highlight search 
 set incsearch               " incremental search
+set nowrapscan                " search wraps aroun
 
 "                   tabs/spaces
 " autoindentation for most stuff is governed by filetype
@@ -65,10 +66,9 @@ set softtabstop=4           " <Tab>/<BS> width; -1: sts=sw; 0: <Tab>=ts, <BS>=1
 set expandtab               " insert spaces instead of spaces+tabs
 set smarttab                " on: sw instead of (s)ts used in front of the line
 set autoindent              " keep ind level on nl (mostly for plaintext)
-set noshiftround            " TODO WTF 
+set noshiftround            " TODO WTF  
 set nosmartindent           " replaced by filetype
 set nocindent               " replaced by filetype
-
 "                   ui/visuals
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse
@@ -76,12 +76,25 @@ set showmatch               " matching bracket blinks when closed
 set matchtime=1             " blink length, 0.1s
 set scrolloff=5             " soft vertical centering of the cursor
 set showcmd                 " defensive; vim: on, vi: off
+set noshowmode              " don't show mode in cmdline (cuz airline)
 set shortmess+=c            " TODO wtf
 set termguicolors           " truecolor
 set list                    " show some whitespace as defined by listchars:
-set listchars=tab:\|->,trail:-,nbsp:+,extends:>,precedes:<
-
-
+set splitbelow
+set splitright
+set startofline
+set report=0
+set display=lastline,uhex
+if has('multi_byte') && &encoding ==# 'utf-8'
+    set listchars=tab:│+,extends:❯,precedes:❮,nbsp:+,trail:·,lead:·
+    set showbreak=\ ↪\ 
+else
+    set listchars=tab:\|->,extends:>,precedes:<,nbsp:+,trail:.,lead:.
+endif
+set ttyfast                 " faster redrawing
+set nolazyredraw            " turn on for frequent macros
+set redrawtime=2000         " increase if syntax hl is slow on large files
+set synmaxcol=0             " turn on for super long lines
 "           elements
 set cmdheight=1             " command line
 set cursorline              " cursor line
@@ -110,6 +123,7 @@ let g:airline_theme='molokai'
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin indent on   " all filetype features on
 set hidden                  " TODO wtf
+set backspace=eol,start,indent
 
 "           backup and swap
 set history=10000           " lines of history, vim: 50
@@ -119,8 +133,6 @@ set nowritebackup           " XXX same
 set noswapfile              " XXX might be useful
 set noautowrite             " XXX same
 set noundofile
-"           backspace behaviour
-set backspace=eol,start,indent
 "           misc
 set nolinebreak             " turns off breaking before end of screen
 set encoding=utf-8          " defensive; vim: depends

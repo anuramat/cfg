@@ -38,7 +38,7 @@ function ensure_string {
     then
         echo "$1 already contains \"$2\""
     else
-        echo "\n\n\n$2" >> "$1"
+        printf "\n\n\n$2" >> "$1"
         echo "modified $1"
     fi
 }

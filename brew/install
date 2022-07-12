@@ -22,6 +22,6 @@ echo cfg: installing packages--------
 echo --------------------------------
 echo --------------------------------
 
-xargs brew install < leaves.txt < casks.txt | tee -a .cfg.packages_install.log
+cat leaves.txt casks.txt | xargs brew install | tee -a .cfg.packages_install.log
 
 

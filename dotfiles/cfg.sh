@@ -1,6 +1,7 @@
 # requires exa, nvim, cht.sh, git, bat
 
-export EDITOR="nvim"
+export VISUAL="nvim"
+export EDITOR="$VISUAL"
 
 alias l="exa --group-directories-first --group --icons --header --git" 
 alias v="nvim"

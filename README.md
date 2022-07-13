@@ -3,11 +3,11 @@ todo: iterm2, karabiner, mac prefs + keybinds, vscode config to cloud;
 <details>
     <summary>test</summary>
     <ul>
-        <li>test</li>
-        <li>xd</li>
-        <li>xdd</li>
-        <li></li>
-        <li></li>
+        <li>iterm2 config</li>
+        <li>karabiner</li>
+        <li>mac preferences (especially keybinds)</li>
+        <li>move vscode config to cloud</li>
+        <li>...</li>
     </ul>
 </details>
 

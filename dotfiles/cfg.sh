@@ -1,13 +1,12 @@
-#!/usr/bin/env zsh
-
 # requires exa, nvim, cht.sh, git, bat
+
+export EDITOR="nvim"
 
 alias l="exa --group-directories-first --group --icons --header --git" 
 alias v="nvim"
-alias tree="exa --group-directories-first --group --icons --header --git --tree"
+alias t="exa --group-directories-first --group --icons --header --git --tree"
 alias githehe="git add . && git commit -m \"hehe\" && git push"
-
-export EDITOR="nvim"
+alias b="bat"
 
 function c ()
 {

@@ -2,8 +2,13 @@
 todo: iterm2, karabiner, mac prefs + keybinds, vscode config to cloud;
 <details>
     <summary>test</summary>
-    - some
-    - info
+    <ul>
+        <li>test</li>
+        <li>xd</li>
+        <li>xdd</li>
+        <li></li>
+        <li></li>
+    </ul>
 </details>
 
 1. install xcode cli tools

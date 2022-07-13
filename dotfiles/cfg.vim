@@ -53,7 +53,7 @@ set ignorecase              " case insensitive...
 set smartcase               " ... except when query contains uppercase
 set hlsearch                " highlight search 
 set incsearch               " incremental search
-set nowrapscan              " search wraps around
+set wrapscan              " search wraps around
 
 "                   tabs/spaces
 " autoindentation for most stuff is governed by filetype
@@ -120,6 +120,7 @@ colorscheme molokai
 let g:airline_theme='molokai'
 
 "                   misc
+set nrformats=hex,octal,bin " 0x1, 01, 0b - number formats for incrementing
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin indent on   " all filetype features on
 set hidden                  " TODO wtf

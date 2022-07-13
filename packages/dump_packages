@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
 # backup packages
-brew leaves -rq > leaves.txt
-brew list --cask > casks.txt
+brew leaves -rq >> leaves.txt
+sort -o leaves.txt -u leaves.txt
+
+brew list --cask >> casks.txt
+sort -o casks.txt -u casks.txt

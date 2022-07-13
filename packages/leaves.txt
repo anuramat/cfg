@@ -6,8 +6,10 @@ delve
 difftastic
 duf
 dust
+emacs
 exa
 fd
+fish
 fzf
 git-delta
 go
@@ -20,9 +22,12 @@ nmap
 nnn
 node
 peco
+perl
 php
 ranger
 ripgrep
+ruby
+tmux
 vim
 wget
 wtfutil

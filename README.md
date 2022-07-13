@@ -1,4 +1,10 @@
 # minimal setup
+todo: iterm2, karabiner, mac prefs + keybinds, vscode config to cloud;
+<details>
+    <summary>test</summary>
+    - some
+    - info
+</details>
 
 1. install xcode cli tools
 ```

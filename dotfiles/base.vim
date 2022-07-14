@@ -71,7 +71,7 @@ set background=dark
 try
     colorscheme molokai
 catch
-    colorscheme default
+    colorscheme slate
 endtry
 let g:airline_theme='molokai'
 

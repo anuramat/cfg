@@ -31,6 +31,7 @@ call plug#end()
 
 
 "                   binds
+let mapleader=","
 nnoremap <Leader>t :NERDTreeToggle<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>b :Telescope buffers<CR>

@@ -98,7 +98,3 @@ set textwidth=0             " auto-\n after n+ chars and a whitespace
 set wrapmargin=0            " moves cur word to newline when close to term edge
 set wrap                    " wrap long lines (without <CR>) 
 set formatoptions=jcroql    " TODO change for comments/plaintext
-
-
-
-let mapleader=","

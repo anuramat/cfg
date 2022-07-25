@@ -7,6 +7,7 @@ insomnia
 karabiner-elements
 linearmouse
 miniforge
+nordvpn
 notion
 obs
 onionshare

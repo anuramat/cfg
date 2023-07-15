@@ -30,5 +30,5 @@ gitprompt() {
 	fi
 }
 
-PS1='\n$PWD$(gitprompt)$overline\n➜ '
+PS1='\n$PWD$(gitprompt)\n➜ '
 PS2='│'

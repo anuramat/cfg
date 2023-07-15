@@ -64,7 +64,7 @@ specs.lspzero = {
     local lspconfig = require("lspconfig")
     lspconfig.gopls.setup(lsp_cfg.gopls)
     lspconfig.lua_ls.setup(lsp.nvim_lua_ls(lsp_cfg.lua_ls))
-
+    lspconfig.bashls.setup({})
     lsp.setup()
   end,
 }

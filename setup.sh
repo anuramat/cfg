@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-source src/utils.sh
+source lib/utils.sh
 
 # install configs #
 install_files nvim/lua nvim/init.lua "$HOME/.config/nvim"

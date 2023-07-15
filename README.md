@@ -14,6 +14,7 @@ xcode-select --install
 # clone this repo, create dev folder
 cd && git clone https://github.com/anuramat/cfg && cd cfg
 # install from Brewfile
+brew analytics off
 brew bundle install
 # install config files and shiet
 bash setup.sh

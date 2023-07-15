@@ -1,0 +1,41 @@
+#!/bin/bash
+# shellcheck disable=SC2139
+default_exa="exa --group-directories-first --group --icons --header --git"
+alias f="nvim"
+alias ls="$default_exa"
+alias ll="$default_exa --long"
+alias la="$default_exa --long --all"
+alias tree="$default_exa --tree"
+alias j="z"
+export PATH="$HOME/go/bin${PATH:+:$PATH}"
+export PATH="/opt/homebrew/bin${PATH:+:$PATH}"
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
+export _ZO_RESOLVE_SYMLINKS="1"
+eval "$(brew shellenv)"
+eval "$(zoxide init bash)"
+
+gitprompt() {
+	# Check if we're in a Git repository
+	if [ -d .git ] || git rev-parse --git-dir >/dev/null 2>&1; then
+		# Get the current repository name
+		repo_name=$(basename "$(git rev-parse --show-toplevel)")
+
+		# Get the current branch name
+		branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+		if [ -z "$branch" ]; then
+			# If we're in a detached head state, get the commit hash
+			branch=$(git rev-parse --short HEAD 2>/dev/null)
+		fi
+
+		# Prepend the repository name to the branch name
+		branch_with_repo="$repo_name/$branch"
+		echo "  ~  $branch_with_repo"
+	else
+		# Not in a Git repository
+		echo ""
+	fi
+}
+
+PS1='\n$PWD$(gitprompt)$overline\n➜ '
+PS2='│'

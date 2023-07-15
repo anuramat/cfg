@@ -1,0 +1,3 @@
+- fix hotkeys
+- harpoon?
+- telescope C-* hotkeys

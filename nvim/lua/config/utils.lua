@@ -86,22 +86,9 @@ function m.on_load(name, fn)
   end
 end
 
-function m.has(plugin)
-  return require("lazy.core.config").spec.plugins[plugin] ~= nil
-end
-
-function m.on_very_lazy(fn)
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-      fn()
-    end,
-  })
-end
 
 function m.fg(name)
-  ---@type {foreground?:number}?
-  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
+  local hl =   vim.api.nvim_get_hl(0, { name = name })
   local fg = hl and hl.fg or hl.foreground
   return fg and { fg = string.format("#%06x", fg) }
 end

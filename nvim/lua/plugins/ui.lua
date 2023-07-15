@@ -106,16 +106,6 @@ specs.lualine = {
   end,
 }
 
-specs.which = {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function() -- maybe remove TODO
-    vim.o.timeout = true
-    vim.o.timeoutlen = 1000
-  end,
-  opts = {},
-}
-
 specs.trouble = {
   "folke/trouble.nvim",
   event = "VeryLazy", -- lsp attach?
@@ -178,14 +168,6 @@ specs.notify = {
       return math.floor(vim.o.columns * 0.75)
     end,
   },
-  init = function()
-    -- when noice is not enabled, install notify on VeryLazy
-    if not utils.has("noice.nvim") then
-      utils.on_very_lazy(function()
-        vim.notify = require("notify")
-      end)
-    end
-  end,
 }
 
 specs.indentline = {

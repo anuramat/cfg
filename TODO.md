@@ -1,3 +1,4 @@
 - fix hotkeys
 - harpoon?
 - telescope C-* hotkeys
+- make utils more posix (lastarg, for loop)

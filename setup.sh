@@ -2,10 +2,10 @@
 source lib/utils.sh
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-install_multiple nvim/lua nvim/init.lua "$HOME/.config/nvim"
-install_single config/karabiner.json "$HOME/.config/karabiner"
-install_single config/bashrc.sh "$HOME/.bashrc"
-install_single config/config.fish "$HOME/"
+install2folder nvim/lua nvim/init.lua "$HOME/.config/nvim"
+install2folder config/karabiner.json "$HOME/.config/karabiner"
+install2file config/bashrc.sh "$HOME/.bashrc"
+install2file config/config.fish "$HOME/.config/fish"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
 ensure_string "hehe" "$HOME/.hushlogin"
@@ -20,10 +20,6 @@ ensure_path "$screenshot_dir"
 defaults write com.apple.screencapture location -string "$screenshot_dir"
 # allow key repeat press and hold #
 defaults write -g ApplePressAndHoldEnabled -bool false
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ conda ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-conda_output="$(conda init bash)"
-[ $? -eq 0 ] || echo "$conda_output"
-conda config --set auto_activate_base false
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ iTerm2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Set config path
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$(realpath config/iterm2)"

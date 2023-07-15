@@ -35,26 +35,28 @@ function ensure_string {
 
 function make_symlink {
   # $1 -- source file
-  # $2 -- target directory
+  # $2 -- target file/directory
   local -r original="$(realpath "$1")"
-  local -r target="$2/$(basename "$1")"
+  local target="$2"
+
+  if [ -d "$target" ]; then
+    target="$target/$(basename $original)"
+  fi
 
   # check if already exists
-  if test -e "$target"; then
-    echo "[cfg.fail] non-symlink file already exists @ \"$target\""
-    try_overwrite "$target"
-    return 1
+  if [ -e "$target" ]; then
+    try_overwrite "$target" || return 1
   fi
 
   # try linking
-  if ! ln -s "$original" "$target"; then
+  if ! ln -sf "$original" "$target"; then
     echo "[cfg.fail] make symlink @ \"$target\""
     return 1
   fi
   echo "[cfg.write] created symlink @ \"$target\""
 }
 
-function install_multiple {
+function install2folder {
   # $1..n-1 -- source files
   # $n -- target directory
   local original
@@ -64,18 +66,18 @@ function install_multiple {
     original="$(realpath "${!i}")"
 
     ensure_path "$target_dir" || return 1
-    install_single "$original" "$target_dir"
+    install2file "$original" "$target_dir"
   done
 }
 
-function install_single {
+function install2file {
   # $1 -- source file
   # $2 -- target file
   local -r original="$(realpath "$1")"
   local -r target=$2
   local -r target_dir="$(dirname "$2")"
 
-  if ! test -e "$original"; then
+  if ! [ -e "$original" ]; then
     echo "[cfg.fail] file \"$original\" not found!"
     return 1
   fi
@@ -119,6 +121,6 @@ function continue_prompt {
 function try_overwrite {
   # $1 -- target
   local -r target="$1"
-  continue_prompt "Overwrite $target (y/n): " || return
+  continue_prompt "Overwrite $target (y/n): " || return 1
   rm "$target"
 }

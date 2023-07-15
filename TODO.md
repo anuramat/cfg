@@ -1,4 +1,6 @@
 - fix hotkeys
 - harpoon?
+- conda config --set auto_activate_base false
+- condarc and conda init in bashscript
 - telescope C-* hotkeys
 - make utils more posix (lastarg, for loop)

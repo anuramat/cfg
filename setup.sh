@@ -2,10 +2,10 @@
 source src/utils.sh
 
 # install configs #
-install_files configs/nvim/lua configs/nvim/init.lua "$HOME/.config/nvim"
-install_files configs/karabiner.json "$HOME/.config/karabiner"
-install_files configs/cfg.sh "$HOME"
-install_files configs/cfg.fish "$HOME"
+install_files nvim/lua nvim/init.lua "$HOME/.config/nvim"
+install_files misc/karabiner.json "$HOME/.config/karabiner"
+install_files misc/cfg.sh "$HOME"
+install_files misc/fishcfg.fish "$HOME"
 
 # setup bash #
 ensure_string 'source "$HOME/cfg.sh"' "$HOME/.bash_profile"
@@ -33,7 +33,7 @@ conda config --set auto_activate_base false
 
 # iTerm2 #
 # Set config path
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$(realpath configs/iterm2)"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$(realpath misc/iterm2)"
 # Autoload
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 # Autosave

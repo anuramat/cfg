@@ -23,9 +23,9 @@ function custom.CreateCommentHeader()
     elseif commentString:sub(-2) ~= "%s" then
       header = commentString
     else
-      header = commentString .. commentString:reversed():sub(2)
+      header = commentString .. commentString:reverse():sub(3)
     end
-
+    print(header)
     local width_inner = width - #header + 2
     local header_inner
     if not utils.is_blank(text) then

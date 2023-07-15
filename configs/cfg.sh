@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # shellcheck disable=SC2139
 default_exa="exa --group-directories-first --group --icons --header --git"
 alias f="nvim"
@@ -18,19 +18,12 @@ eval "$(zoxide init bash)"
 gitprompt() {
 	# Check if we're in a Git repository
 	if [ -d .git ] || git rev-parse --git-dir >/dev/null 2>&1; then
-		# Get the current repository name
 		repo_name=$(basename "$(git rev-parse --show-toplevel)")
-
-		# Get the current branch name
 		branch=$(git symbolic-ref --short HEAD 2>/dev/null)
 		if [ -z "$branch" ]; then
-			# If we're in a detached head state, get the commit hash
 			branch=$(git rev-parse --short HEAD 2>/dev/null)
 		fi
-
-		# Prepend the repository name to the branch name
-		branch_with_repo="$repo_name/$branch"
-		echo "  ~  $branch_with_repo"
+		echo "  ~  $repo_name/$branch"
 	else
 		# Not in a Git repository
 		echo ""

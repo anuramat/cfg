@@ -1,5 +1,3 @@
-local u = require("config.utils")
-
 local specs = {}
 local cfgs = {}
 

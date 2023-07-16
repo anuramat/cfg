@@ -1,17 +1,19 @@
 local u = require("config.utils")
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local prefix = "anuramat"
 local group = vim.api.nvim_create_augroup(prefix .. "formatting", { clear = true })
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~ External formatters ~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
 local formatters = {
   -- filetype = "formatter_binary",
 }
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Go indentation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
+-- Go indentation
 vim.api.nvim_create_autocmd("Filetype", {
   group = group,
   pattern = { "go" },
   command = "setlocal noexpandtab",
 })
+
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --   group = group,

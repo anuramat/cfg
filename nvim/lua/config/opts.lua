@@ -10,6 +10,7 @@ o.textwidth = 79
 if not pcall(vim.cmd.colorscheme, "dracula") then
   vim.cmd.colorscheme("habamax")
 end
+o.cmdheight = 1 -- TODO change after fixing annoying message
 o.colorcolumn = "80"
 o.display = "lastline,uhex"
 o.laststatus = 3
@@ -17,6 +18,7 @@ o.list = true
 o.listchars = "tab:│-,extends:❯,precedes:❮,nbsp:+,trail:·,lead:·"
 o.matchtime = 1
 o.number = true
+o.relativenumber = true
 o.scrolloff = 10
 o.shortmess = "asIcCF"
 o.showbreak = "↪   "
@@ -24,8 +26,6 @@ o.showmatch = true
 o.showmode = false
 o.signcolumn = "number"
 o.termguicolors = true
-o.cursorline = true
-o.cmdheight = 0
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = "unnamedplus"
 o.ignorecase = true

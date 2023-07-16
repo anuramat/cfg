@@ -1,8 +1,6 @@
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configuration ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+local u = require("config.utils")
 local m = { headerChar = "~" }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-local u = require("config.utils")
-
 function m.CreateCommentHeader()
   vim.ui.input({ prompt = "Header text:" }, function(text)
     if text == nil then

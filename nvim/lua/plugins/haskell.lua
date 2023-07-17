@@ -42,16 +42,5 @@ specs.haskell = {
   end
 }
 
-specs.mdpreview = {
-  "iamcco/markdown-preview.nvim",
-  cmd = {
-    "MarkdownPreview",
-    "MarkdownPreviewStop",
-    "MarkdownPreviewToggle",
-  },
-  config = function()
-    vim.fn["mkdp#util#install"]()
-  end,
-}
 
 return u.respec(specs)

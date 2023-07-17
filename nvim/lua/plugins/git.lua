@@ -1,5 +1,6 @@
-local u = require('utils')
 local specs = {}
+
+local u = require('utils')
 
 specs.fugitive = {
   "tpope/vim-fugitive",

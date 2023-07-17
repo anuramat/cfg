@@ -1,6 +1,8 @@
 local keys = {}
 local specs = {}
 
+local u = require("utils")
+
 specs.haskell = {
   "mrcjkb/haskell-tools.nvim",
   dependencies = {
@@ -22,8 +24,4 @@ specs.mdpreview = {
   end,
 }
 
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

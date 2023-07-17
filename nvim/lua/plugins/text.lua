@@ -1,7 +1,7 @@
 local specs = {}
 local keys = {}
 
-u = require("utils")
+local u = require("utils")
 
 keys.flash = {
   { "s", mode = { "n", },     function() require("flash").jump() end,       desc = "Flash" },

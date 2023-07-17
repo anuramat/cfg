@@ -1,6 +1,8 @@
 local specs = {}
 local cfgs = {}
 
+local u = require("utils")
+
 cfgs.gopls = {
   settings = {
     gopls = {
@@ -65,13 +67,13 @@ specs.lspzero = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-     { "hrsh7th/nvim-cmp", version = false }, -- override default verions
+    { "hrsh7th/nvim-cmp", version = false }, -- override default verions
     "saadparwaiz1/cmp_luasnip",
   },
   branch = "v2.x",
   opts = {},
   config = function()
-    local lsp = require("lsp-zero").preset(zero_preset) 
+    local lsp = require("lsp-zero").preset(zero_preset)
     lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
     end)
@@ -130,8 +132,4 @@ specs.comment = {
   },
 }
 
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

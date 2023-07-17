@@ -1,4 +1,7 @@
-specs = {}
+local specs = {}
+
+local u = require("utils")
+
 local languages = {
   "go",
   "python",
@@ -60,8 +63,4 @@ specs.treesitter = {
   end,
 }
 
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

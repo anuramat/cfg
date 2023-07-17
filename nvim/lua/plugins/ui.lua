@@ -1,4 +1,5 @@
 local specs = {}
+
 local u = require("utils")
 
 specs.dracula_cs = {

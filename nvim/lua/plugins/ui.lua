@@ -1,6 +1,5 @@
 local specs = {}
 local u = require("utils")
-local icons = require("config.icons")
 
 specs.dracula_cs = {
   "dracula/vim",

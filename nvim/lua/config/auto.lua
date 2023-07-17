@@ -13,8 +13,6 @@ vim.api.nvim_create_autocmd("Filetype", {
   command = "setlocal noexpandtab",
 })
 
-
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = group,
   callback = function(args)

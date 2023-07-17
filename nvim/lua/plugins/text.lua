@@ -1,24 +1,6 @@
 local specs = {}
-local keys = {}
 
 local u = require("utils")
-
-keys.flash = {
-  { "s", mode = { "n", },     function() require("flash").jump() end,       desc = "Flash" },
-  { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-  { "r", mode = { "o" },      function() require("flash").remote() end,     desc = "Remote Flash" },
-}
-
-keys.treesj = {
-  {
-    "<leader>m",
-    mode = { "n" },
-    function()
-      require("treesj").toggle()
-    end
-  },
-  desc = "TreeSJ: Toggle"
-}
 
 specs.surround = {
   "kylechui/nvim-surround",
@@ -29,19 +11,52 @@ specs.surround = {
   end
 }
 
-specs.flash =
-{
-  "folke/flash.nvim",
-  opts = { modes = { search = { enabled = false } } },
-  keys = keys.flash,
-}
-
 specs.treesj = {
   'Wansmer/treesj',
   event = { "BufReadPost", "BufNewFile" },
   version = false,
   opts = { use_default_keymaps = false },
-  keys = keys.treesj
+  keys = { {
+    "<leader>m",
+    mode = { "n" },
+    function()
+      require("treesj").toggle()
+    end,
+    desc = "TreeSJ: Toggle"
+  } }
+}
+
+specs.comment = {
+  "echasnovski/mini.comment",
+  dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+  event = "VeryLazy",
+  opts = {
+    options = {
+      custom_commentstring = function()
+        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+      end,
+    },
+  },
+}
+
+specs.ai = {
+  "echasnovski/mini.ai",
+  event = "VeryLazy",
+  dependencies = { "nvim-treesitter-textobjects" },
+  opts = function()
+    local ai = require("mini.ai")
+    return {
+      n_lines = 500,
+      custom_textobjects = {
+        o = ai.gen_spec.treesitter({
+          a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+          i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+        }, {}),
+        f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+        c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+      },
+    }
+  end,
 }
 
 return u.respec(specs)

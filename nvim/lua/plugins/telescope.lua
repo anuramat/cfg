@@ -1,14 +1,13 @@
-local keys = {}
 local specs = {}
 
 local u = require("utils")
 
+local keys = {}
+
 keys.zoxide = {
   {
     "<Leader>j",
-    function()
-      require("telescope").extensions.zoxide.list()
-    end,
+    function() require("telescope").extensions.zoxide.list() end,
     desc = "Zoxide: Jump"
   }
 }
@@ -32,10 +31,7 @@ specs.telescope = {
     local telescope = require("telescope")
     telescope.setup({
       pickers = {
-        find_files = {
-          hidden = true,
-          file_ignore_patterns = { "%.[^/]+/" },
-        },
+        find_files = { hidden = true, file_ignore_patterns = { "%.[^/]+/" } },
       },
       extensions = {
         fzf = {
@@ -44,9 +40,7 @@ specs.telescope = {
           override_file_sorter = true,
           case_mode = "smart_case",
         },
-        zoxide = {
-          prompt_title = "Zoxide",
-        },
+        zoxide = { prompt_title = "Zoxide" },
       },
     })
     require("telescope").load_extension("fzf")

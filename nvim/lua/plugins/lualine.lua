@@ -9,7 +9,7 @@ specs.lualine = {
     return {
       options = {
         section_separators = { left = '', right = '' },
-        component_separators = { left = '', right = '' },
+        component_separators = { left = '\\', right = '/' },
         globalstatus = true,
         refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
       },
@@ -17,29 +17,8 @@ specs.lualine = {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
-        lualine_c = {
-          {
-            "filetype",
-            icon_only = true,
-            separator = "",
-            padding = {
-              left = 1,
-              right = 0,
-            },
-          },
-          { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-        },
-        lualine_x = {
-          {
-            "diagnostics",
-            symbols = {
-              error = " ",
-              warn = " ",
-              info = " ",
-              hint = " ",
-            },
-          },
-        },
+        lualine_c = { { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } }, },
+        lualine_x = { { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " ", }, }, },
         lualine_y = {
           {
             function()

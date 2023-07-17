@@ -3,35 +3,17 @@ local specs = {}
 local u = require("utils")
 
 local languages = {
-  "go",
-  "python",
-  "haskell",
-  "bash",
-  "c",
-  "json",
-  "lua",
-  "luadoc",
-  "luap",
-  "markdown",
-  "markdown_inline",
-  "python",
-  "query",
-  "regex",
-  "vim",
-  "vimdoc",
+  "go", "python", "haskell", "bash", "c", "json", "lua", "luadoc", "luap",
+  "markdown", "markdown_inline", "python", "query", "regex", "vim", "vimdoc",
   "yaml",
 }
 
 specs.treesitter = {
   "nvim-treesitter/nvim-treesitter",
-  version = false, -- last release is way too old and doesn't work on Windows
+  version = false, -- last release is way too old
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
-  dependencies = {
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-  },
+  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   cmd = { "TSUpdateSync" },
   opts = {
     highlight = { enable = true },
@@ -49,18 +31,12 @@ specs.treesitter = {
     textobjects = {
       swap = {
         enable = true,
-        swap_next = {
-          ["<c-j>"] = "@parameter.inner",
-        },
-        swap_previous = {
-          ["<c-k>"] = "@parameter.inner",
-        },
+        swap_next = { ["<c-j>"] = "@parameter.inner" },
+        swap_previous = { ["<c-k>"] = "@parameter.inner" },
       },
     },
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
+  config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
 }
 
 return u.respec(specs)

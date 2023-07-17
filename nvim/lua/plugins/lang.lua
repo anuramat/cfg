@@ -1,4 +1,3 @@
-local keys = {}
 local specs = {}
 
 local u = require("utils")

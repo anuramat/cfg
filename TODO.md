@@ -15,3 +15,4 @@ nvim:
 - fix treesitter on buffer delete or close
 - ignore <Plug> keymaps in telescope
 - locationlist vs quickfix list?
+- configure haskell (readme lsp-zero)

@@ -3,9 +3,9 @@ local specs = {}
 local u = require("utils")
 
 local langs = {
-  "go", "python", "haskell", "bash", "c", "json", "lua", "luadoc", "luap",
-  "markdown", "markdown_inline", "python", "query", "regex", "vim", "vimdoc",
-  "yaml",
+  "go", "gosum", "gomod", "gowork", "python", "haskell", "bash", "c", "json",
+  "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query",
+  "regex", "vim", "vimdoc", "yaml", "sql"
 }
 
 specs.treesitter = {

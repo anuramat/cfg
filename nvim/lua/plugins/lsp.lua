@@ -5,6 +5,24 @@ local u = require("utils")
 local cfgs = {}
 local servers = { "bashls" }
 
+local group = vim.api.nvim_create_augroup(u.username .. ".lsp", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = group,
+  callback = function(args)
+    local noformat = u.contains(args.buf, "noformat", 3)
+    if noformat then
+      return
+    end
+
+    local client = vim.lsp.get_active_clients()[1]
+    if client and client.server_capabilities.documentFormattingProvider then
+      vim.lsp.buf.format({ async = false })
+      return
+    else
+    end
+  end,
+})
+
 cfgs.gopls = {
   settings = {
     gopls = {
@@ -102,5 +120,6 @@ specs.luasnip = {
   -- if build fails, install jsregexp luarock
   build = "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp",
 }
+
 
 return u.respec(specs)

@@ -1,5 +1,7 @@
 local m = {}
 
+m.username = "anuramat"
+
 function m.is_blank(s)
   return s:match("^%s*$") ~= nil
 end

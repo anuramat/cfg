@@ -16,3 +16,5 @@ nvim:
 - ignore <Plug> keymaps in telescope
 - locationlist vs quickfix list?
 - configure haskell (readme lsp-zero)
+- lspsaga and friends https://dev.neovim.pro/lspsaga/
+- refactorings primeagen?

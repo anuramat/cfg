@@ -1,10 +1,24 @@
 local specs = {}
 local keys = {}
 
+u = require("utils")
+
 keys.flash = {
   { "s", mode = { "n", },     function() require("flash").jump() end,       desc = "Flash" },
   { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
   { "r", mode = { "o" },      function() require("flash").remote() end,     desc = "Remote Flash" },
+}
+
+keys.treesj = {
+  {
+    "<leader>m",
+    mode = { "n" },
+    function()
+      require("treesj").toggle()
+    end
+  },
+
+  desc = "TreeSJ: Toggle"
 }
 
 specs.surround = {
@@ -19,7 +33,7 @@ specs.surround = {
 specs.flash =
 {
   "folke/flash.nvim",
-  opts = {},
+  opts = { modes = { search = { enabled = false } } },
   keys = keys.flash,
 }
 
@@ -28,22 +42,7 @@ specs.treesj = {
   event = { "BufReadPost", "BufNewFile" },
   version = false,
   opts = { use_default_keymaps = false },
-  keys = {
-    {
-      "<leader>m",
-      mode = { "n" },
-      function()
-        require("treesj").toggle()
-      end
-    },
-
-    desc = "TreeSJ: Toggle"
-  }
+  keys = keys.treesj
 }
 
-
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

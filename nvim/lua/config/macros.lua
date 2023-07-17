@@ -1,4 +1,4 @@
-local u = require("config.utils")
+local u = require("utils")
 local m = { headerChar = "~" }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function m.CreateCommentHeader()

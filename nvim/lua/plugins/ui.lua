@@ -1,6 +1,5 @@
 local specs = {}
-
-local u = require("config.utils")
+local u = require("utils")
 local icons = require("config.icons")
 
 specs.dracula_cs = {
@@ -8,7 +7,10 @@ specs.dracula_cs = {
   lazy = false,
 }
 
-specs.fidget = { "j-hui/fidget.nvim", opts = {}, tag = "legacy" }
+specs.fidget = {
+  "j-hui/fidget.nvim",
+  tag = "legacy",
+}
 
 specs.lualine = {
   "nvim-lualine/lualine.nvim",
@@ -21,7 +23,6 @@ specs.lualine = {
         globalstatus = true,
         refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
       },
-
       extensions = { "fugitive", "lazy", "quickfix", "trouble", "symbols-outline", "man" },
       sections = {
         lualine_a = { "mode" },
@@ -42,10 +43,10 @@ specs.lualine = {
           {
             "diagnostics",
             symbols = {
-              error = icons.diagnostics.Error,
-              warn = icons.diagnostics.Warn,
-              info = icons.diagnostics.Info,
-              hint = icons.diagnostics.Hint,
+              error = " ",
+              warn = " ",
+              info = " ",
+              hint = " ",
             },
           },
         },
@@ -80,65 +81,11 @@ specs.trouble = {
   opts = {},
 }
 
-specs.outline = {
-  "simrat39/symbols-outline.nvim",
-  event = "VeryLazy",
-  opts = { use_default_keymaps = false },
-}
-
 specs.bqf = {
   "kevinhwang91/nvim-bqf",
   event = "VeryLazy",
   opts = {},
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-}
-
-specs.ufo = {
-  "kevinhwang91/nvim-ufo",
-  event = "VeryLazy",
-  dependencies = { "kevinhwang91/promise-async" },
-}
-
-specs.dressing = {
-  "stevearc/dressing.nvim",
-  init = function()
-    ---@diagnostic disable-next-line: duplicate-set-field
-    vim.ui.select = function(...)
-      require("lazy").load({ plugins = { "dressing.nvim" } })
-      return vim.ui.select(...)
-    end
-    ---@diagnostic disable-next-line: duplicate-set-field
-    vim.ui.input = function(...)
-      require("lazy").load({ plugins = { "dressing.nvim" } })
-      return vim.ui.input(...)
-    end
-  end,
-}
-
-specs.notify = {
-  "rcarriga/nvim-notify",
-  event = 'VeryLazy',
-  keys = {
-    {
-      "<leader>un",
-      function()
-        require("notify").dismiss({ silent = true, pending = true })
-      end,
-      desc = "Dismiss all Notifications",
-    },
-  },
-  config = function(a, b)
-    vim.notify = require("notify")
-    return {
-      timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
-      max_width = function()
-        return math.floor(vim.o.columns * 0.75)
-      end,
-    }
-  end,
 }
 
 specs.indentline = {
@@ -150,18 +97,14 @@ specs.indentline = {
       "help",
       "Trouble",
       "lazy",
-      "notify",
     },
     show_trailing_blankline_indent = false,
     show_current_context = false,
   },
 }
 
--- TODO when stable : https://github.com/folke/noice.nvim
--- https://github.com/rcarriga/nvim-notify
+-- ufo - folds
+-- noice
+-- notify/notifier
 
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

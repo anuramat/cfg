@@ -1,23 +1,26 @@
 local keys = {}
 local specs = {}
 
-local map = require("config.utils").lazy_map
-local tele = require("telescope")
-local builtin = require("telescope.builtin")
+local u = require("utils")
 
 keys.zoxide = {
-  map("<Leader>j", function()
-    tele.extensions.zoxide.list()
-  end, "Telescope pickers"),
+  {
+    "<Leader>j",
+    function()
+      require("telescope").extensions.zoxide.list()
+    end,
+    desc = "Zoxide: jump"
+  }
 }
 
+local builtin = require("telescope.builtin")
 keys.telescope = {
-  map("<Leader><Leader>", builtin.builtin, "Telescope Builtin"),
-  map("<Leader>o", builtin.find_files, "Find Files"),
-  map("<Leader>b", builtin.buffers, "Buffers"),
-  map("<Leader>g", builtin.live_grep, "Live Grep"),
-  map("<Leader>s", builtin.lsp_document_symbols, "LSP Document Symbols"),
-  map("<Leader>S", builtin.lsp_dynamic_workspace_symbols, "LSP Dynamic Workspace Symbols"),
+  { "<Leader><Leader>", builtin.builtin,                       desc = "Telescope Builtin" },
+  { "<Leader>o",        builtin.find_files,                    desc = "Find Files" },
+  { "<Leader>b",        builtin.buffers,                       desc = "Buffers" },
+  { "<Leader>f",        builtin.live_grep,                     desc = "Live Grep" },
+  { "<Leader>s",        builtin.lsp_document_symbols,          desc = "LSP Document Symbols" },
+  { "<Leader>S",        builtin.lsp_dynamic_workspace_symbols, desc = "LSP Dynamic Workspace Symbols" },
 }
 
 specs.telescope = {
@@ -26,8 +29,8 @@ specs.telescope = {
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = keys.telescope,
   config = function()
-    local z_utils = require("telescope._extensions.zoxide.utils")
-    tele.setup({
+    local telescope = require("telescope")
+    telescope.setup({
       pickers = {
         find_files = {
           hidden = true,
@@ -63,8 +66,4 @@ specs.zoxide = {
   dependencies = { "nvim-telescope/telescope.nvim" },
 }
 
-local result = {}
-for _, value in pairs(specs) do
-  table.insert(result, value)
-end
-return result
+return u.respec(specs)

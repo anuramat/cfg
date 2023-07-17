@@ -18,7 +18,7 @@ specs.trouble = {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
   keys = {
-  {"gR", "<cmd>TroubleToggle lsp_references<cr>", desc="Trouble: Toggle LSP References"}
+    { "gR", "<cmd>Trouble lsp_references<cr>", desc = "Trouble: LSP References" }
   }
 }
 

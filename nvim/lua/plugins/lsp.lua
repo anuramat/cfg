@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     if noformat then
       return
     end
-
     local client = vim.lsp.get_active_clients()[1]
     if client and client.server_capabilities.documentFormattingProvider then
       vim.lsp.buf.format({ async = false })
@@ -73,21 +72,19 @@ local zero_preset = {
   },
 }
 
-specs.neodev = { "folke/neodev.nvim", opts = {} }
 
 specs.lspzero = {
   "VonHeikemen/lsp-zero.nvim",
   event = "VeryLazy",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "folke/neodev.nvim",
+    { "folke/neodev.nvim", opts = {} },
     "j-hui/fidget.nvim",
-
     "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    { "hrsh7th/nvim-cmp", version = false }, -- override default verions
+    { "hrsh7th/nvim-cmp",  version = false }, -- override default verions
     "saadparwaiz1/cmp_luasnip",
   },
   branch = "v2.x",

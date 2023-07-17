@@ -8,8 +8,8 @@ specs.lualine = {
   opts = function()
     return {
       options = {
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
         globalstatus = true,
         refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
       },
@@ -50,9 +50,10 @@ specs.lualine = {
             end,
             color = u.fg("Debug"),
           },
+          { "filetype" },
         },
         lualine_z = {
-          { "progress", padding = { left = 1, right = 1 }, separator = "" },
+          { "progress", padding = { left = 1, right = 0 }, separator = "" },
           { "location", padding = { left = 1, right = 1 } },
         },
       },

@@ -3,6 +3,7 @@ local specs = {}
 local u = require("utils")
 
 local cfgs = {}
+local servers = { "bashls" }
 
 cfgs.gopls = {
   settings = {
@@ -81,7 +82,9 @@ specs.lspzero = {
     local lspconfig = require("lspconfig")
     lspconfig.gopls.setup(cfgs.gopls)
     lspconfig.lua_ls.setup(lsp.nvim_lua_ls(cfgs.lua_ls))
-    lspconfig.bashls.setup({})
+    lsp.setup_servers(servers)
+
+    lsp.skip_server_setup({ 'hls' })
     lsp.setup()
   end,
 }

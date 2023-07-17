@@ -2,7 +2,7 @@ local specs = {}
 
 local u = require("utils")
 
-local languages = {
+local langs = {
   "go", "python", "haskell", "bash", "c", "json", "lua", "luadoc", "luap",
   "markdown", "markdown_inline", "python", "query", "regex", "vim", "vimdoc",
   "yaml",
@@ -18,7 +18,7 @@ specs.treesitter = {
   opts = {
     highlight = { enable = true },
     indent = { enable = true },
-    ensure_installed = languages,
+    ensure_installed = langs,
     incremental_selection = {
       enable = true,
       keymaps = {

@@ -2,16 +2,15 @@ local specs = {}
 
 local u = require("utils")
 
-local pref = "Haskell Tools: "
 local function get_opts(b, d)
-  return { buffer = b, desc = pref .. d }
+  return { buffer = b, desc = "Haskell Tools: " .. d }
 end
 
 specs.haskell = {
   "mrcjkb/haskell-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
   branch = "1.x.x",
-  ft = "haskell",
+  ft = { "haskell", "lhaskell", "cabal" },
   config = function()
     local ht = require('haskell-tools')
     local hls_lsp = require('lsp-zero').build_options('hls', {})
@@ -28,7 +27,7 @@ specs.haskell = {
     local hls_augroup = vim.api.nvim_create_augroup('haskell-lsp', { clear = true })
     vim.api.nvim_create_autocmd('FileType', {
       group = hls_augroup,
-      pattern = { 'haskell' },
+      pattern = { "haskell", "lhaskell", "cabal" },
       callback = function()
         ht.start_or_attach(hls_config)
         local buf = vim.api.nvim_get_current_buf()

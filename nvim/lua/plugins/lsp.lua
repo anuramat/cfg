@@ -75,7 +75,7 @@ local zero_preset = {
 
 specs.lspzero = {
   "VonHeikemen/lsp-zero.nvim",
-  event = "VeryLazy",
+  event = { "VeryLazy", "BufReadPost", "BufNewFile" },
   dependencies = {
     "neovim/nvim-lspconfig",
     { "folke/neodev.nvim", opts = {} },

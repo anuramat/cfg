@@ -2,7 +2,7 @@ local u = require("utils")
 local m = { headerChar = "~" }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function m.CreateCommentHeader()
-  vim.ui.input({ prompt = "Header text:" }, function(text)
+  vim.ui.input({ prompt = "Header text: " }, function(text)
     if text == nil then
       return
     end

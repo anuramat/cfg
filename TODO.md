@@ -18,3 +18,4 @@ nvim:
 - configure haskell (readme lsp-zero)
 - lspsaga and friends https://dev.neovim.pro/lspsaga/
 - refactorings primeagen?
+- trouble vs bqf vs telescope? too much overlap

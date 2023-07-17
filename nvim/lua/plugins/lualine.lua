@@ -40,6 +40,13 @@ specs.lualine = {
         lualine_a = { { "buffers", show_filename_only = false, hide_filename_extension = true, mode = 4 } },
         lualine_z = { { "tabs" } },
       },
+      winbar = {
+        lualine_c = { 'filename' },
+      },
+
+      inactive_winbar = {
+        lualine_c = { 'filename' },
+      }
     }
   end,
 }

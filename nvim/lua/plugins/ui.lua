@@ -75,7 +75,7 @@ specs.lualine = {
 
 specs.trouble = {
   "folke/trouble.nvim",
-  event = "VeryLazy", -- lsp attach?
+  event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
 }
@@ -101,9 +101,5 @@ specs.indentline = {
     show_current_context = false,
   },
 }
-
--- ufo - folds
--- noice
--- notify/notifier
 
 return u.respec(specs)

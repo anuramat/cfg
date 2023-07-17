@@ -1,5 +1,5 @@
 local u = require("utils")
-local prefix = "anuramat"
+local prefix = "anuramat."
 local group = vim.api.nvim_create_augroup(prefix .. "formatting", { clear = true })
 
 local formatters = {

@@ -17,13 +17,12 @@ keys.treesj = {
       require("treesj").toggle()
     end
   },
-
   desc = "TreeSJ: Toggle"
 }
 
 specs.surround = {
   "kylechui/nvim-surround",
-  version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  version = "*", -- use last release instead of main
   event = "VeryLazy",
   config = function()
     require("nvim-surround").setup({})

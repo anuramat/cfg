@@ -53,31 +53,28 @@ local zero_preset = {
 
 specs.neodev = { "folke/neodev.nvim", opts = {} }
 
-specs.lspconfig = {
-  "neovim/nvim-lspconfig",
-  dependencies = {
-    "folke/neodev.nvim",
-    "j-hui/fidget.nvim",
-  },
-}
-
 specs.lspzero = {
   "VonHeikemen/lsp-zero.nvim",
   event = "VeryLazy",
   dependencies = {
     "neovim/nvim-lspconfig",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
+    "folke/neodev.nvim",
+    "j-hui/fidget.nvim",
+
     "L3MON4D3/LuaSnip",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-path",
+     { "hrsh7th/nvim-cmp", version = false }, -- override default verions
+    "saadparwaiz1/cmp_luasnip",
   },
   branch = "v2.x",
   opts = {},
   config = function()
-    local lsp = require("lsp-zero").preset(zero_preset) -- todo customize
+    local lsp = require("lsp-zero").preset(zero_preset) 
     lsp.on_attach(function(client, bufnr)
       lsp.default_keymaps({ buffer = bufnr })
     end)
-
     local lspconfig = require("lspconfig")
     lspconfig.gopls.setup(cfgs.gopls)
     lspconfig.lua_ls.setup(lsp.nvim_lua_ls(cfgs.lua_ls))
@@ -98,18 +95,6 @@ specs.luasnip = {
   dependencies = "rafamadriz/friendly-snippets",
   -- if build fails, install jsregexp luarock
   build = "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp",
-}
-
-specs.cmp = {
-  "hrsh7th/nvim-cmp",
-  version = false, -- last release is way too old
-  event = "InsertEnter",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "saadparwaiz1/cmp_luasnip",
-  },
 }
 
 specs.ai = {
@@ -143,27 +128,6 @@ specs.comment = {
       end,
     },
   },
-}
-
-specs.null_ls = {
-  "jose-elias-alvarez/null-ls.nvim",
-  event = {
-    "BufReadPre",
-    "BufNewFile",
-  },
-  config = function()
-    local nls = require("null-ls")
-    return {
-      root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-      sources = {
-        nls.builtins.formatting.fish_indent,
-        nls.builtins.diagnostics.fish,
-        nls.builtins.formatting.stylua,
-        nls.builtins.formatting.shfmt,
-        -- nls.builtins.diagnostics.flake8,
-      },
-    }
-  end,
 }
 
 local result = {}

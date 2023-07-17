@@ -9,18 +9,18 @@ keys.zoxide = {
     function()
       require("telescope").extensions.zoxide.list()
     end,
-    desc = "Zoxide: jump"
+    desc = "Zoxide: Jump"
   }
 }
 
 local builtin = require("telescope.builtin")
 keys.telescope = {
-  { "<Leader><Leader>", builtin.builtin,                       desc = "Telescope Builtin" },
-  { "<Leader>o",        builtin.find_files,                    desc = "Find Files" },
-  { "<Leader>b",        builtin.buffers,                       desc = "Buffers" },
-  { "<Leader>f",        builtin.live_grep,                     desc = "Live Grep" },
-  { "<Leader>s",        builtin.lsp_document_symbols,          desc = "LSP Document Symbols" },
-  { "<Leader>S",        builtin.lsp_dynamic_workspace_symbols, desc = "LSP Dynamic Workspace Symbols" },
+  { "<Leader><Leader>", builtin.builtin,                       desc = "Telescope: Builtin" },
+  { "<Leader>o",        builtin.find_files,                    desc = "Telescope: Find Files" },
+  { "<Leader>b",        builtin.buffers,                       desc = "Telescope: Buffers" },
+  { "<Leader>f",        builtin.live_grep,                     desc = "Telescope: Live Grep" },
+  { "<Leader>s",        builtin.lsp_document_symbols,          desc = "Telescope: LSP Document Symbols" },
+  { "<Leader>S",        builtin.lsp_dynamic_workspace_symbols, desc = "Telescope: LSP Dynamic Workspace Symbols" },
 }
 
 specs.telescope = {

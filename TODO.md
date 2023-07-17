@@ -1,4 +1,4 @@
-- fix hotkeys
+- add fish locale to setup
 - condarc and conda init in bashscript
 - make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)

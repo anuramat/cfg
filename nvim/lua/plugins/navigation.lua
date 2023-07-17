@@ -6,9 +6,9 @@ specs.flash = {
   "folke/flash.nvim",
   opts = { modes = { search = { enabled = false } } },
   keys = {
-    { "s", mode = { "n", },     function() require("flash").jump() end,       desc = "Flash" },
-    { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-    { "r", mode = { "o" },      function() require("flash").remote() end,     desc = "Remote Flash" },
+    { "s", mode = { "n", },     function() require("flash").jump() end,       desc = "Flash: Jump" },
+    { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = "Flash: Treesitter" },
+    { "r", mode = { "o" },      function() require("flash").remote() end,     desc = "Flash: Remote" },
   }
 }
 

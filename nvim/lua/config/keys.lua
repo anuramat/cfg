@@ -12,4 +12,4 @@ u.map("<Leader>c", ":ccl<CR>", "Keys: Close Quickfix")
 u.map("<C-u>", "<C-u>zz", "Keys: Scroll up")
 u.map("<C-d>", "<C-d>zz", "Keys: Scroll down")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Homegrown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-u.map("<leader>h", m.CreateCommentHeader, "Keys: Create comment header")
+u.map("<leader>#", m.CreateCommentHeader, "Keys: Create comment header")

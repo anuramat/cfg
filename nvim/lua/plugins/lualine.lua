@@ -5,21 +5,23 @@ local u = require("utils")
 specs.lualine = {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  dependencies = { "arkav/lualine-lsp-progress" },
   opts = function()
     return {
       options = {
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '\\', right = '/' },
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "\\", right = "/" },
         globalstatus = true,
         refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
       },
-      extensions = { "fugitive", "lazy", "quickfix", "trouble", "symbols-outline", "man" },
+      extensions = { "fugitive", "lazy", "quickfix", "trouble", "man", "nvim-dap-ui" },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
         lualine_c = { { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } }, },
         lualine_x = { { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " ", }, }, },
         lualine_y = {
+          { "lsp_progress" },
           {
             function()
               return "  " .. require("dap").status()
@@ -29,7 +31,6 @@ specs.lualine = {
             end,
             color = u.fg("Debug"),
           },
-          { "filetype" },
         },
         lualine_z = {
           { "progress", padding = { left = 1, right = 0 }, separator = "" },
@@ -41,11 +42,10 @@ specs.lualine = {
         lualine_z = { { "tabs" } },
       },
       winbar = {
-        lualine_c = { 'filename' },
       },
 
       inactive_winbar = {
-        lualine_c = { 'filename' },
+        lualine_c = { "filename" },
       }
     }
   end,

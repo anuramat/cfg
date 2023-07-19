@@ -12,10 +12,10 @@
 nvim:
 - harpoon?
 - ufo for folds
+- dap
 - fix treesitter on buffer delete or close
-- ignore <Plug> keymaps in telescope
-- locationlist vs quickfix list?
-- configure haskell (readme lsp-zero)
+- ignore <Plug> keymaps in telescope?
+- loclist, quickfix usage
 - lspsaga and friends https://dev.neovim.pro/lspsaga/
 - refactorings primeagen?
 - trouble vs bqf vs telescope? too much overlap

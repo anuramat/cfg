@@ -7,21 +7,20 @@ specs.dracula_cs = {
   lazy = false,
 }
 
-specs.fidget = {
-  "j-hui/fidget.nvim",
-  tag = "legacy",
-}
-
-
 specs.indentline = {
   "lukas-reineke/indent-blankline.nvim",
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     char = "│",
     filetype_exclude = {
-      "help",
+      "TelescopePrompt",
       "Trouble",
+      "checkhealth",
+      "help",
       "lazy",
+      "lspinfo",
+      "man",
+      "quickfix",
     },
     show_trailing_blankline_indent = false,
     show_current_context = false,

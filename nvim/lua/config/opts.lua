@@ -53,7 +53,8 @@ o.ignorecase = true
 o.report = 0
 o.smartcase = true
 o.timeout = false
-o.undofile = true             -- writebackup and swap already on
-o.updatetime = 333            -- has influence on some plugins
+o.undofile = true  -- writebackup and swap already on
+o.updatetime = 333 -- has influence on some plugins
+o.virtualedit = "block"
 o.wildoptions = "fuzzy,pum"
 vim.opt.backupdir:remove(".") -- don't shit in your cwd

@@ -9,6 +9,7 @@ specs.lualine = {
   opts = function()
     return {
       options = {
+        theme = "dracula-nvim",
         section_separators = { left = "", right = "" },
         component_separators = { left = "\\", right = "/" },
         globalstatus = true,

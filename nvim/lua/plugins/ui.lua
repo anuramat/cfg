@@ -3,7 +3,7 @@ local specs = {}
 local u = require("utils")
 
 specs.dracula_cs = {
-  "dracula/vim",
+  "Mofiqul/dracula.nvim",
   lazy = false,
 }
 

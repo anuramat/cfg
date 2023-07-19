@@ -6,12 +6,27 @@ o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 4
 o.textwidth = 79
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 if not pcall(vim.cmd.colorscheme, "dracula") then
   vim.cmd.colorscheme("habamax")
 end
-o.cmdheight = 1 -- TODO change after fixing annoying message
+local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
+clhl.underline = true
+vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Colorcolumn ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.colorcolumn = "80"
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    local ro = vim.api.nvim_buf_get_option(0, "readonly")
+    if ro then
+      vim.api.nvim_win_set_option(0, "colorcolumn", "")
+    else
+      vim.api.nvim_win_set_option(0, "colorcolumn", "80")
+    end
+  end
+})
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+o.cmdheight = 1 -- TODO change after fixing annoying message
 o.display = "lastline,uhex"
 o.laststatus = 3
 o.list = true

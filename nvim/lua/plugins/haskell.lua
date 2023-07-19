@@ -12,6 +12,7 @@ specs.haskell = {
   branch = "1.x.x",
   ft = { "haskell", "lhaskell", "cabal" },
   config = function()
+    require('telescope').load_extension('ht')
     local ht = require('haskell-tools')
     local hls_lsp = require('lsp-zero').build_options('hls', {})
     local hls_config = {

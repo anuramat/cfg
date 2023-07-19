@@ -60,8 +60,8 @@ specs.lspzero = {
   "VonHeikemen/lsp-zero.nvim",
   event = { "VeryLazy", "BufReadPost", "BufNewFile" },
   dependencies = {
-    "neovim/nvim-lspconfig",
     { "folke/neodev.nvim", opts = {} },
+    "neovim/nvim-lspconfig",
     "L3MON4D3/LuaSnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",

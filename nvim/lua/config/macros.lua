@@ -2,8 +2,8 @@ local u = require("utils")
 local m = { headerChar = "~" }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function m.CreateCommentHeader()
-  vim.ui.input({ prompt = "Header text: " }, function(text)
-    if text == nil then
+  vim.ui.input({ prompt = "Header text: " }, function(input)
+    if input == nil then
       return
     end
 
@@ -26,11 +26,11 @@ function m.CreateCommentHeader()
     print(header)
     local width_inner = width - #header + 2
     local header_inner
-    if not u.is_blank(text) then
-      local half_len = math.floor((width_inner - #text - 2) / 2)
+    if not u.is_blank(input) then
+      local half_len = math.floor((width_inner - #input - 2) / 2)
       local l_fill = char:rep(half_len)
-      local r_fill = char:rep(width_inner - half_len - #text - 2)
-      header_inner = l_fill .. " " .. text .. " " .. r_fill
+      local r_fill = char:rep(width_inner - half_len - #input - 2)
+      header_inner = l_fill .. " " .. input .. " " .. r_fill
     else
       header_inner = string.rep(char, width_inner)
     end

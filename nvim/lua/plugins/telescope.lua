@@ -4,14 +4,6 @@ local u = require("utils")
 
 local keys = {}
 
-keys.zoxide = {
-  {
-    "<Leader>j",
-    function() require("telescope").extensions.zoxide.list() end,
-    desc = "Zoxide: Jump"
-  }
-}
-
 local builtin = require("telescope.builtin")
 keys.telescope = {
   { "<Leader><Leader>", builtin.builtin,                       desc = "Telescope: Builtin" },
@@ -44,21 +36,26 @@ specs.telescope = {
       },
     })
     require("telescope").load_extension("fzf")
-    require("telescope").load_extension("zoxide")
-    require('telescope').load_extension('ht')
   end,
 }
 
 specs.fzf = {
   "nvim-telescope/telescope-fzf-native.nvim",
   build = "make",
-  dependencies = { "nvim-telescope/telescope.nvim" },
 }
 
 specs.zoxide = {
   "jvgrootveld/telescope-zoxide",
-  keys = keys.zoxide,
-  dependencies = { "nvim-telescope/telescope.nvim" },
+  keys = {
+    {
+      "<Leader>j",
+      function() require("telescope").extensions.zoxide.list() end,
+      desc = "Zoxide: Jump"
+    }
+  },
+  config = function()
+    require("telescope").load_extension("zoxide")
+  end
 }
 
 return u.respec(specs)

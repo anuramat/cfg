@@ -30,7 +30,6 @@ specs.lualine = {
             cond = function()
               return package.loaded["dap"] and require("dap").status() ~= ""
             end,
-            color = u.fg("Debug"),
           },
         },
         lualine_z = {

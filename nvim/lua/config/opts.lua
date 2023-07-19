@@ -6,6 +6,10 @@ o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 4
 o.textwidth = 79
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = { "go" },
+  command = "setlocal noexpandtab",
+})
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 if not pcall(vim.cmd.colorscheme, "dracula") then
   vim.cmd.colorscheme("habamax")

@@ -18,9 +18,10 @@ specs.haskell = {
       hls = {
         capabilities = hls_lsp.capabilities,
         on_attach = function(_, buf)
-          vim.keymap.set('n', '<leader>hc', vim.lsp.codelens.run, get_opts(buf, "Run CodeLens"))
-          vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature, get_opts(buf, "Show Hoogle Signature"))
-          vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, get_opts(buf, "Evaluate All"))
+          vim.keymap.set('n', '<leader>hc', vim.lsp.codelens.run, get_opts(buf, "LSP: Run CodeLens"))
+          vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature,
+            get_opts(buf, "Haskell Tools: Show Hoogle Signature"))
+          vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, get_opts(buf, "Haskell Tools: Evaluate All"))
         end
       }
     }
@@ -31,10 +32,10 @@ specs.haskell = {
       callback = function()
         ht.start_or_attach(hls_config)
         local buf = vim.api.nvim_get_current_buf()
-        vim.keymap.set('n', '<leader>rp', ht.repl.toggle, get_opts(buf, "Toggle Package REPL"))
+        vim.keymap.set('n', '<leader>rp', ht.repl.toggle, get_opts(buf, "Haskell Tools: Toggle Package REPL"))
         vim.keymap.set('n', '<leader>rb',
-          function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, get_opts(buf, "Toggle Buffer REPL"))
-        vim.keymap.set('n', '<leader>rq', ht.repl.quit, get_opts(buf, "Quit REPL"))
+          function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, get_opts(buf, "Haskell Tools: Toggle Buffer REPL"))
+        vim.keymap.set('n', '<leader>rq', ht.repl.quit, get_opts(buf, "Haskell Tools: Quit REPL"))
         -- Detect nvim-dap launch configurations
         -- (requires nvim-dap and haskell-debug-adapter)
         -- ht.dap.discover_configurations(bufnr) -- requires dap

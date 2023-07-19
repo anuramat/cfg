@@ -28,12 +28,13 @@ o.signcolumn = "number"
 o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = "unnamedplus"
+o.foldenable = false
+o.foldmethod = "indent"
 o.ignorecase = true
 o.report = 0
 o.smartcase = true
+o.timeout = false
 o.undofile = true             -- writebackup and swap already on
 o.updatetime = 333            -- has influence on some plugins
 o.wildoptions = "fuzzy,pum"
 vim.opt.backupdir:remove(".") -- don't shit in your cwd
-o.foldenable = false
-o.foldmethod = "indent"

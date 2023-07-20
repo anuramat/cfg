@@ -26,10 +26,6 @@ function m.contains(buffer, keyword, n)
   return false
 end
 
-function m.map(lhs, rhs, desc)
-  vim.keymap.set("n", lhs, rhs, { desc = desc })
-end
-
 -- returns lazy mapping
 function m.lazy_map(lhs, rhs, desc)
   return {

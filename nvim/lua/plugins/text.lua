@@ -38,13 +38,30 @@ specs.treesj = {
   } }
 }
 
+
+
 specs.comment = {
   "numToStr/Comment.nvim",
-  dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-  event = "VeryLazy",
-  opts = {
-    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-  },
+  dependencies = { "nvim-treesitter/nvim-treesitter", "JoosepAlviste/nvim-ts-context-commentstring" },
+  event        = "VeryLazy",
+  config       = function()
+    require("Comment").setup({
+      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      toggler = {
+        line = '<Leader>cc',
+        block = '<Leader>cbb',
+      },
+      opleader = {
+        line = '<Leader>c',
+        block = '<Leader>cb',
+      },
+      extra = {
+        above = '<Leader>cO',
+        below = '<Leader>co',
+        eol = '<Leader>cA',
+      },
+    })
+  end,
 }
 
 specs.ai = {

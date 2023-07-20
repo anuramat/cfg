@@ -19,7 +19,6 @@ specs.haskell = {
       hls = {
         capabilities = hls_lsp.capabilities,
         on_attach = function(_, buf)
-          vim.keymap.set('n', '<leader>hc', vim.lsp.codelens.run, get_opts(buf, "LSP: Run CodeLens"))
           vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature,
             get_opts(buf, "Haskell Tools: Show Hoogle Signature"))
           vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, get_opts(buf, "Haskell Tools: Evaluate All"))

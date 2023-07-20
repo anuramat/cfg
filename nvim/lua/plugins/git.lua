@@ -36,7 +36,7 @@ specs.signs = {
       map("n", "<Leader>gb", function() gs.blame_line({ full = true }) end, "Gitsigns: Blame Line")
       map("n", "<Leader>gd", gs.diffthis, "Gitsigns: Diff This")
       map("n", "<Leader>gD", function() gs.diffthis("~") end, "Gitsigns: Diff This ~")
-      map({ "o", "x" }, "hs", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns: Select Hunk")
+      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns: Select Hunk")
     end,
   },
 }

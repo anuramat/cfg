@@ -25,8 +25,8 @@ specs.treesitter = {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<C-space>",
-        node_incremental = "<C-space>",
+        init_selection = "<c-space>",
+        node_incremental = "<c-space>",
         scope_incremental = false,
         node_decremental = "<bs>",
       },
@@ -34,8 +34,8 @@ specs.treesitter = {
     textobjects = {
       swap = {
         enable = true,
-        swap_next = { ["<c-j>"] = "@parameter.inner" },
-        swap_previous = { ["<c-k>"] = "@parameter.inner" },
+        swap_next = { ["<a-j>"] = "@parameter.inner" },
+        swap_previous = { ["<a-k>"] = "@parameter.inner" },
       },
     },
     context_commentstring = {

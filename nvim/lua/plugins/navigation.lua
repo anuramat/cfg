@@ -25,12 +25,12 @@ specs.trouble = {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
   keys = {
-    { "<Leader>tt", "<cmd>TroubleToggle<CR>",                       desc = "Trouble: Toggle" },
-    { "<Leader>tD", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Trouble: Workspace Diagnostics" },
-    { "<Leader>td", "<cmd>TroubleToggle document_diagnostics<CR>",  desc = "Trouble: Document Diagnostics" },
-    { "<Leader>tl", "<cmd>TroubleToggle loclist <CR>",              desc = "Trouble: Location List" },
-    { "<Leader>tq", "<cmd>TroubleToggle quickfix<CR>",              desc = "Trouble: QuickFix" },
-    { "<Leader>tr", "<cmd>TroubleToggle lsp_references<CR>",        desc = "Trouble: LSP References" },
+    { "<leader>tt", "<cmd>TroubleToggle<cr>",                       desc = "Trouble: Toggle" },
+    { "<leader>tD", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Workspace Diagnostics" },
+    { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Trouble: Document Diagnostics" },
+    { "<leader>tl", "<cmd>TroubleToggle loclist <cr>",              desc = "Trouble: Location List" },
+    { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>",              desc = "Trouble: QuickFix" },
+    { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>",        desc = "Trouble: LSP References" },
   }
 }
 

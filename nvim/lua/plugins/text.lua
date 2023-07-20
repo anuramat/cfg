@@ -8,14 +8,14 @@ specs.surround = {
   event = "VeryLazy",
   opts = {
     keymaps = {
-      -- insert = "<C-g>s",
-      -- insert_line = "<C-g>S",
-      normal = "<Leader>s",
-      normal_cur = "<Leader>ss",
-      normal_line = "<Leader>S",
-      normal_cur_line = "<Leader>SS",
-      visual = "<Leader>s",
-      visual_line = "<Leader>S",
+      -- insert = "<c-g>s",
+      -- insert_line = "<c-g>S",
+      normal = "<leader>s",
+      normal_cur = "<leader>ss",
+      normal_line = "<leader>S",
+      normal_cur_line = "<leader>SS",
+      visual = "<leader>s",
+      visual_line = "<leader>S",
       -- delete = "ds",
       -- change = "cs",
       -- change_line = "cS",
@@ -48,17 +48,17 @@ specs.comment = {
     require("Comment").setup({
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       toggler = {
-        line = '<Leader>cc',
-        block = '<Leader>cbb',
+        line = '<leader>cc',
+        block = '<leader>cbb',
       },
       opleader = {
-        line = '<Leader>c',
-        block = '<Leader>cb',
+        line = '<leader>c',
+        block = '<leader>cb',
       },
       extra = {
-        above = '<Leader>cO',
-        below = '<Leader>co',
-        eol = '<Leader>cA',
+        above = '<leader>cO',
+        below = '<leader>co',
+        eol = '<leader>cA',
       },
     })
   end,

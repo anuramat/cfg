@@ -59,17 +59,24 @@ specs.lspzero = {
     "L3MON4D3/LuaSnip",
 
     "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-cmdline",
     {
       "hrsh7th/nvim-cmp",
       version = false,
-      dependencies = { "hrsh7th/cmp-cmdline" },
+      dependencies = { "hrsh7th/cmp-cmdline", "hrsh7th/cmp-path",
+      },
       config = function()
         local cmp = require("cmp")
+        cmp.setup({
+          sources = {
+            { name = 'nvim_lsp' }
+          }
+        })
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+
         cmp.setup.cmdline(':', {
           mapping = cmp.mapping.preset.cmdline(),
           sources = cmp.config.sources({
@@ -84,7 +91,7 @@ specs.lspzero = {
           })
         })
       end,
-    }, -- override default verions
+    },
   },
   branch = "v2.x",
   opts = {},

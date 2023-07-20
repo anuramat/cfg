@@ -23,33 +23,33 @@ end
 specs.dap = {
   "mfussenegger/nvim-dap",
   keys = {
-    { "<Leader>dc",  function() require("dap").continue() end,          desc = "DAP: Continue", },
-    { "<Leader>dn",  function() require("dap").step_over() end,         desc = "DAP: Step Over", },
-    { "<Leader>di",  function() require("dap").step_into() end,         desc = "DAP: Step Into", },
-    { "<Leader>do",  function() require("dap").step_out() end,          desc = "DAP: Step Out", },
-    { "<Leader>dt",  function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint", },
-    { "<Leader>tf",  bp_cond,                                           desc = "DAP: Breakpoint with condition" },
-    { "<Leader>db",  function() require("dap").set_breakpoint() end,    desc = "DAP: Set Breakpoint" },
-    { "<Leader>dlp", bp_log,                                            desc = "DAP: Log point" },
-    { "<Leader>dr",  function() require("dap").repl.open() end,         desc = "DAP: REPL" },
-    { "<Leader>dl",  function() require("dap").run_last() end,          desc = "DAP: Run Last" },
+    { "<leader>dc",  function() require("dap").continue() end,          desc = "DAP: Continue", },
+    { "<leader>dn",  function() require("dap").step_over() end,         desc = "DAP: Step Over", },
+    { "<leader>di",  function() require("dap").step_into() end,         desc = "DAP: Step Into", },
+    { "<leader>do",  function() require("dap").step_out() end,          desc = "DAP: Step Out", },
+    { "<leader>dt",  function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint", },
+    { "<leader>tf",  bp_cond,                                           desc = "DAP: Breakpoint with condition" },
+    { "<leader>db",  function() require("dap").set_breakpoint() end,    desc = "DAP: Set Breakpoint" },
+    { "<leader>dlp", bp_log,                                            desc = "DAP: Log point" },
+    { "<leader>dr",  function() require("dap").repl.open() end,         desc = "DAP: REPL" },
+    { "<leader>dl",  function() require("dap").run_last() end,          desc = "DAP: Run Last" },
 
 
     {
-      "<Leader>dh",
+      "<leader>dh",
       function() require("dap.ui.widgets").hover() end,
       mode = { "n", "v" },
       desc = "DAP: Hover",
     },
     {
-      "<Leader>dp",
+      "<leader>dp",
       function() require("dap.ui.widgets").preview() end,
       mode = { "n", "v" },
       desc = "DAP: Preview",
     },
     {
       mode = "n",
-      "<Leader>df",
+      "<leader>df",
       function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)
@@ -57,7 +57,7 @@ specs.dap = {
       desc = "DAP: Frames"
     },
     {
-      "<Leader>ds",
+      "<leader>ds",
       function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.scopes)

@@ -27,15 +27,15 @@ specs.treesitter = {
       keymaps = {
         init_selection = "<c-space>",
         node_incremental = "<c-space>",
-        scope_incremental = false,
+        scope_incremental = "<c-s>",
         node_decremental = "<bs>",
       },
     },
     textobjects = {
       swap = {
         enable = true,
-        swap_next = { ["<a-j>"] = "@parameter.inner" },
-        swap_previous = { ["<a-k>"] = "@parameter.inner" },
+        swap_next = { ["<a-h>"] = "@parameter.inner" },
+        swap_previous = { ["<a-l>"] = "@parameter.inner" },
       },
     },
     context_commentstring = {

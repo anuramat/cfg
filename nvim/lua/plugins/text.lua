@@ -49,11 +49,11 @@ specs.comment = {
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       toggler = {
         line = '<leader>cc',
-        block = '<leader>cbb',
+        block = '<leader>CC',
       },
       opleader = {
         line = '<leader>c',
-        block = '<leader>cb',
+        block = '<leader>C',
       },
       extra = {
         above = '<leader>cO',
@@ -79,7 +79,7 @@ specs.ai = {
         }, {}),
         f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
         c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
-      },
+      }, -- TODO more textobjects
     }
   end,
 }

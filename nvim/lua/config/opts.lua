@@ -11,12 +11,23 @@ vim.api.nvim_create_autocmd("Filetype", {
   command = "setlocal noexpandtab",
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- Colorscheme
 if not pcall(vim.cmd.colorscheme, "dracula") then
   vim.cmd.colorscheme("habamax")
 end
+-- CodeLens style
 local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
 clhl.underline = true
 vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.cmdheight = 1 -- TODO change after fixing annoying message
 o.display = "lastline,uhex"
@@ -31,7 +42,7 @@ o.shortmess = "asWIcCF"
 o.showbreak = "↪  ↪"
 o.showmatch = true
 o.showmode = false
-o.signcolumn = "number"
+o.signcolumn = "yes" 
 o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = "unnamedplus"
@@ -39,6 +50,7 @@ o.foldenable = false
 o.foldmethod = "indent"
 o.ignorecase = true
 o.report = 0
+o.completeopt = 'menuone,noselect'
 o.smartcase = true
 o.timeout = false
 o.undofile = true  -- writebackup and swap already on

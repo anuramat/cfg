@@ -9,7 +9,7 @@ keys.telescope = {
   { "<Leader>fp", builtin.builtin,                       desc = "Telescope: Builtin" },
   { "<Leader>fo", builtin.find_files,                    desc = "Telescope: Find Files" },
   { "<Leader>fb", builtin.buffers,                       desc = "Telescope: Buffers" },
-  { "<Leader>ff", builtin.live_grep,                     desc = "Telescope: Live Grep" },
+  { "<Leader>fg", builtin.live_grep,                     desc = "Telescope: Live Grep" },
   { "<Leader>fs", builtin.lsp_document_symbols,          desc = "Telescope: LSP Document Symbols" },
   { "<Leader>fS", builtin.lsp_dynamic_workspace_symbols, desc = "Telescope: LSP Dynamic Workspace Symbols" },
 }

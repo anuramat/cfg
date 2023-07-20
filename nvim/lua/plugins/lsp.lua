@@ -45,14 +45,7 @@ local zero_preset = {
     preserve_mappings = false,
     omit = {},
   },
-  manage_nvim_cmp = {
-    set_sources = "recommended",
-    set_basic_mappings = true,
-    set_extra_mappings = true,
-    use_luasnip = true,
-    set_format = true,
-    documentation_window = true,
-  },
+  manage_nvim_cmp = true
 }
 
 
@@ -62,12 +55,36 @@ specs.lspzero = {
   dependencies = {
     { "folke/neodev.nvim", opts = {} },
     "neovim/nvim-lspconfig",
+
     "L3MON4D3/LuaSnip",
+
     "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
-    { "hrsh7th/nvim-cmp",  version = false }, -- override default verions
     "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-cmdline",
+    {
+      "hrsh7th/nvim-cmp",
+      version = false,
+      dependencies = { "hrsh7th/cmp-cmdline" },
+      config = function()
+        local cmp = require("cmp")
+        cmp.setup.cmdline(':', {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = cmp.config.sources({
+            { name = 'path' }
+          }, {
+            {
+              name = 'cmdline',
+              option = {
+                ignore_cmds = { 'Man', '!' }
+              }
+            }
+          })
+        })
+      end,
+    }, -- override default verions
   },
   branch = "v2.x",
   opts = {},
@@ -87,19 +104,16 @@ specs.lspzero = {
   end,
 }
 
-specs.frsnips = {
-  "rafamadriz/friendly-snippets",
-  config = function()
-    require("luasnip.loaders.from_vscode").lazy_load()
-  end,
-}
-
 specs.luasnip = {
   "L3MON4D3/LuaSnip",
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    config = function()
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
   -- if build fails, install jsregexp luarock
   build = "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp",
 }
-
 
 return u.respec(specs)

@@ -6,12 +6,12 @@ local keys = {}
 
 local builtin = require("telescope.builtin")
 keys.telescope = {
-  { "<Leader><Leader>", builtin.builtin,                       desc = "Telescope: Builtin" },
-  { "<Leader>o",        builtin.find_files,                    desc = "Telescope: Find Files" },
-  { "<Leader>b",        builtin.buffers,                       desc = "Telescope: Buffers" },
-  { "<Leader>f",        builtin.live_grep,                     desc = "Telescope: Live Grep" },
-  { "<Leader>s",        builtin.lsp_document_symbols,          desc = "Telescope: LSP Document Symbols" },
-  { "<Leader>S",        builtin.lsp_dynamic_workspace_symbols, desc = "Telescope: LSP Dynamic Workspace Symbols" },
+  { "<Leader>fp", builtin.builtin,                       desc = "Telescope: Builtin" },
+  { "<Leader>fo", builtin.find_files,                    desc = "Telescope: Find Files" },
+  { "<Leader>fb", builtin.buffers,                       desc = "Telescope: Buffers" },
+  { "<Leader>ff", builtin.live_grep,                     desc = "Telescope: Live Grep" },
+  { "<Leader>fs", builtin.lsp_document_symbols,          desc = "Telescope: LSP Document Symbols" },
+  { "<Leader>fS", builtin.lsp_dynamic_workspace_symbols, desc = "Telescope: LSP Dynamic Workspace Symbols" },
 }
 
 specs.telescope = {
@@ -48,7 +48,7 @@ specs.zoxide = {
   "jvgrootveld/telescope-zoxide",
   keys = {
     {
-      "<Leader>j",
+      "<Leader>fj",
       function() require("telescope").extensions.zoxide.list() end,
       desc = "Zoxide: Jump"
     }

@@ -6,15 +6,27 @@ specs.surround = {
   "kylechui/nvim-surround",
   version = "*", -- use last release instead of main
   event = "VeryLazy",
-  config = function()
-    require("nvim-surround").setup({})
-  end
+  opts = {
+    keymaps = {
+      -- insert = "<C-g>s",
+      -- insert_line = "<C-g>S",
+      normal = "<Leader>s",
+      normal_cur = "<Leader>ss",
+      normal_line = "<Leader>S",
+      normal_cur_line = "<Leader>SS",
+      visual = "<Leader>S",
+      -- visual_line = "gS",
+      -- delete = "ds",
+      -- change = "cs",
+      -- change_line = "cS",
+    }
+  },
 }
 
 specs.treesj = {
   'Wansmer/treesj',
   event = { "BufReadPost", "BufNewFile" },
-  version = false,
+  versio = false,
   opts = { use_default_keymaps = false },
   keys = { {
     "<leader>m",
@@ -27,15 +39,11 @@ specs.treesj = {
 }
 
 specs.comment = {
-  "echasnovski/mini.comment",
+  "numToStr/Comment.nvim",
   dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
   event = "VeryLazy",
   opts = {
-    options = {
-      custom_commentstring = function()
-        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
-      end,
-    },
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
   },
 }
 

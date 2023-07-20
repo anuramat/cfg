@@ -13,7 +13,10 @@ specs.treesitter = {
   version = false, -- last release is way too old
   build = ":TSUpdate",
   event = { "BufReadPost", "BufNewFile" },
-  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
   cmd = { "TSUpdateSync" },
   opts = {
     highlight = { enable = true },
@@ -34,6 +37,10 @@ specs.treesitter = {
         swap_next = { ["<c-j>"] = "@parameter.inner" },
         swap_previous = { ["<c-k>"] = "@parameter.inner" },
       },
+    },
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
     },
   },
   config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,

@@ -16,7 +16,11 @@ specs.todo = {
   "folke/todo-comments.nvim",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {},
+  opts = {
+    highlight = {
+      pattern = [[.*<(KEYWORDS)\s*]]
+    }
+  },
 }
 
 specs.trouble = {

@@ -1,4 +1,5 @@
-- add fish locale to setup
+- add fish locale to setup/config?
+- verify mac defaults command for locale
 - condarc and conda init in bashscript
 - make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)
@@ -19,3 +20,7 @@ nvim:
 - lspsaga and friends https://dev.neovim.pro/lspsaga/
 - refactorings primeagen?
 - trouble vs bqf vs telescope? too much overlap
+
+nvim base:
+- lspsaga
+- cmp hotkeys and behaviour

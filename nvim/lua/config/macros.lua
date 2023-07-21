@@ -9,7 +9,7 @@ function m.CreateCommentHeader()
 
     local tw = vim.api.nvim_buf_get_option(0, "textwidth")
     local width = tw - u.get_indent()
-
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ test ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     local header = "%s"
     local char = m.headerChar
 

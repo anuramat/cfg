@@ -2,6 +2,41 @@ local specs = {}
 
 local u = require('utils')
 
+local function next()
+  local cmp = require('cmp')
+  if cmp.visible() then
+    cmp.select_next_item()
+  else
+    cmp.complete()
+  end
+end
+
+local function prev()
+  local cmp = require('cmp')
+  if cmp.visible() then
+    cmp.select_prev_item()
+  else
+    cmp.complete()
+  end
+end
+
+local function enter()
+  require('cmp').confirm({ select = true })
+end
+
+local function confirm()
+  require('cmp').confirm({ select = false })
+end
+
+local function abort()
+  require('cmp').abort()
+end
+
+local function d(text)
+  return 'CMP: ' .. text
+end
+
+
 specs.cmp = {
   "hrsh7th/nvim-cmp",
   version = false,
@@ -14,25 +49,30 @@ specs.cmp = {
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
   },
+  keys = {
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    { '<c-n>',   next,    mode = 'i',          desc = d('Next Entry') },
+    { '<c-p>',   prev,    mode = 'i',          desc = d('Previous Entry') },
+    { '<cr>',    enter,   mode = 'i',          desc = d('Select Current Entry') },
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    { '<tab>',   next,    mode = { 'i', 'c' }, desc = d('Next Entry') },
+    { '<s-tab>', prev,    mode = { 'i', 'c' }, desc = d('Previous Entry') },
+    { '<c-y>',   confirm, mode = { 'i', 'c' }, desc = d('Select Current Entry') },
+    { '<c-e>',   abort,   mode = { 'i', 'c' }, desc = d('Abort Completion') },
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    { '<c-z>',   next,    mode = 'c',          desc = d('Next Entry') },
+  },
   config = function()
     local cmp = require("cmp")
 
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup({
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
         end,
       },
-      window = {
-        -- completion = cmp.config.window.bordered(),
-        -- documentation = cmp.config.window.bordered(),
-      },
-      mapping = cmp.mapping.preset.insert({
-        -- ['<C-d>'] = cmp.mapping.scroll_docs(-4), -- TODO
-        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-Space>'] = cmp.mapping.complete(),
-        -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      }),
+      performance = { max_view_entries = 20 },
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
@@ -42,21 +82,16 @@ specs.cmp = {
       })
     })
 
-
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(), -- TODO
-      sources = cmp.config.sources({
-          { name = 'path', option = { trailing_slash = true } }
-        },
-        {
-          { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } }
-        })
+      sources = cmp.config.sources(
+        { { name = 'path', option = { trailing_slash = true } } },
+        { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } })
     })
-    cmp.setup.cmdline({'/', '?'}, {
-      mapping = cmp.mapping.preset.cmdline(), -- TODO
-      sources = {
-        { name = 'buffer' }
-      }
+
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    cmp.setup.cmdline({ '/', '?' }, {
+      sources = { { name = 'buffer' } }
     })
   end,
 }

@@ -14,6 +14,7 @@
 
 ## problems:
 - ignore <Plug> keymaps in telescope?
+- load markdownpreview on command
 
 ## editor stuff:
 - harpoon?

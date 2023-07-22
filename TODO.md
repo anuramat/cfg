@@ -10,17 +10,20 @@
   conda config --set auto_activate_base false`
 ```
 
-nvim:
-- harpoon?
-- ufo for folds
-- dap
-- fix treesitter on buffer delete or close
-- ignore <Plug> keymaps in telescope?
-- loclist, quickfix usage
-- lspsaga and friends https://dev.neovim.pro/lspsaga/
-- refactorings primeagen?
-- trouble vs bqf vs telescope? too much overlap
+# nvim 
 
-nvim base:
-- lspsaga
+## problems:
+- ignore <Plug> keymaps in telescope?
+
+## editor stuff:
+- harpoon?
+- loclist, quickfix
+- ufo for folds
+- trouble vs bqf vs telescope vs lspsaga? too much overlap
+
+## ide stuff:
 - cmp hotkeys and behaviour
+- dap
+- neotest
+- go specific
+- refactorings primeagen?

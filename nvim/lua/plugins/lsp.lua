@@ -77,7 +77,7 @@ specs.lspconfig = {
       nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
       nmap('<leader>lf', vim.lsp.buf.format, 'Format Buffer')
       nmap('<leader>la', vim.lsp.buf.code_action, 'Code Action')
-      nmap('<leader>lc', vim.lsp.codelens.run, 'CodeLens')
+      nmap('<leader>ll', vim.lsp.codelens.run, 'CodeLens')
 
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
       nmap('gd', vim.lsp.buf.definition, 'Definition')
@@ -112,13 +112,18 @@ specs.lspconfig = {
 specs.saga = {
   'nvimdev/lspsaga.nvim',
   event = 'LspAttach',
-  config = function()
-    require('lspsaga').setup({})
-  end,
+  opts = {
+    lightbulb = { enable = false }
+  },
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
-  }
+  },
+  keys = {
+    { "<leader>li", ":Lspsaga incoming_calls<cr>", desc = "LSPSaga: Incoming Calls",  silent = true },
+    { "<leader>lo", ":Lspsaga outgoing_calls<cr>", desc = "LSPSaga: Outgoing Calls",  silent = true },
+    { "<leader>ls", ":Lspsaga outline<cr>",        desc = "LSPSaga: Symbols Outline", silent = true },
+  },
 }
 
 return u.respec(specs)

@@ -15,9 +15,6 @@ vim.g.mapleader = " "
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set("t", "<esc>", "<c-\\><c-n>", { desc = "Exit from terminal insert mode" })
 
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 nmap("<leader>bn", ":bn<cr>", "Keys: Next Buffer")
 nmap("<leader>bp", ":bp<cr>", "Keys: Buffer")
 nmap("<leader>bd", ":bd<cr>", "Keys: Buffer")

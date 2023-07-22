@@ -22,6 +22,7 @@ keys.telescope = {
   { '<leader>fg', builtin.live_grep,                     desc = d('Live Grep') },
   { '<leader>f/', tfuz,                                  desc = d('Fuzzy Buffer Search') },
   { '<leader>fh', builtin.help_tags,                     desc = d('Help') },
+  { '<leader>fk', builtin.keymaps,                       desc = d('Keymaps') },
   { '<leader>fs', builtin.lsp_document_symbols,          desc = d('LSP Document Symbols') },
   { '<leader>fS', builtin.lsp_dynamic_workspace_symbols, desc = d('LSP Dynamic Workspace Symbols') },
   { '<leader>fr', builtin.lsp_references,                desc = d('LSP References') },

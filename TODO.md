@@ -18,12 +18,11 @@
 
 ## editor stuff:
 - harpoon?
-- loclist, quickfix
 - ufo for folds
+- loclist, quickfix
 - trouble vs bqf vs telescope vs lspsaga? too much overlap
 
 ## ide stuff:
-- cmp hotkeys and behaviour
 - dap
 - neotest
 - go specific

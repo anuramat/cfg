@@ -21,7 +21,13 @@ local function prev()
 end
 
 local function enter()
-  require('cmp').confirm({ select = true })
+  local cmp = require('cmp')
+  if cmp.visible() then
+    cmp.confirm({ select = true })
+  else
+    local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+    vim.api.nvim_feedkeys(key, 'n', false)
+  end
 end
 
 local function confirm()

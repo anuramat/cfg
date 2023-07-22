@@ -78,7 +78,6 @@ specs.cmp = {
           require('luasnip').lsp_expand(args.body)
         end,
       },
-      performance = { max_view_entries = 20 },
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.

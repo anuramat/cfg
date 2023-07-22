@@ -25,7 +25,7 @@ local function enter()
   if cmp.visible() then
     cmp.confirm({ select = true })
   else
-    local key = vim.api.nvim_replace_termcodes("<CR>", true, false, true)
+    local key = vim.api.nvim_replace_termcodes("<CR>", true, true, true)
     vim.api.nvim_feedkeys(key, 'n', false)
   end
 end

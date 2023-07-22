@@ -5,6 +5,7 @@ local u = require("utils")
 specs.dracula_cs = {
   "Mofiqul/dracula.nvim",
   lazy = false,
+  priority = 1337
 }
 
 specs.indentline = {

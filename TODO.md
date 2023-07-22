@@ -26,3 +26,7 @@
 - neotest
 - go specific
 - refactorings primeagen?
+
+## res:
+                    :%bdelete      " delete all buffers
+

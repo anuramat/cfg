@@ -14,10 +14,10 @@ specs.haskell = {
   config = function()
     require('telescope').load_extension('ht')
     local ht = require('haskell-tools')
-    local hls_lsp = require('lsp-zero').build_options('hls', {})
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
     local hls_config = {
       hls = {
-        capabilities = hls_lsp.capabilities,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
         on_attach = function(_, buf)
           vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature,
             get_opts(buf, "Haskell Tools: Show Hoogle Signature"))

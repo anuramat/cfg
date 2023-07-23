@@ -50,8 +50,8 @@ specs.lspconfig = {
   config = function()
     local lspconfig = require("lspconfig")
 
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     local on_attach = function(_, bufnr)
+      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
       local group = vim.api.nvim_create_augroup("LSP Formatting", { clear = true })
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = group,
@@ -65,11 +65,12 @@ specs.lspconfig = {
         end,
       })
 
-      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
       local nmap = function(keys, func, desc)
         desc = 'LSP: ' .. desc
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
       end
+
       local function list_workspace_folders()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end
@@ -95,7 +96,7 @@ specs.lspconfig = {
       nmap('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
     end
 
-    -- ~~~~~~~~~~~~~~~~~~~~~ configure lsps and completion ~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~ configure lsps and cmp ~~~~~~~~~~~~~~~~~~~~~~~ --
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 

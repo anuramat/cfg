@@ -6,9 +6,24 @@ o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 4
 o.textwidth = 79
+local group = vim.api.nvim_create_augroup("Formatting", { clear = true })
+-- Use tabs in Go files
 vim.api.nvim_create_autocmd("Filetype", {
+  group = group,
   pattern = { "go" },
   command = "setlocal noexpandtab",
+})
+-- Autoformat on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = group,
+  callback = function()
+    local client = vim.lsp.get_active_clients()[1]
+    if client and client.server_capabilities.documentFormattingProvider then
+      vim.lsp.buf.format({ async = false })
+      return
+    else
+    end
+  end,
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- Colorscheme
@@ -46,11 +61,11 @@ o.signcolumn = "yes"
 o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = "unnamedplus"
+o.completeopt = 'menuone,noselect'
 o.foldenable = false
 o.foldmethod = "indent"
 o.ignorecase = true
 o.report = 0
-o.completeopt = 'menuone,noselect'
 o.smartcase = true
 o.timeout = false
 o.undofile = true  -- writebackup and swap already on

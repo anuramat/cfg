@@ -1,6 +1,7 @@
 local specs = {}
 
 local u = require("utils")
+local k = require("config.keys")
 
 local cfgs = {}
 
@@ -50,52 +51,9 @@ specs.lspconfig = {
   config = function()
     local lspconfig = require("lspconfig")
 
-    local on_attach = function(_, bufnr)
-      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-      local group = vim.api.nvim_create_augroup("LSP Formatting", { clear = true })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = group,
-        callback = function()
-          local client = vim.lsp.get_active_clients()[1]
-          if client and client.server_capabilities.documentFormattingProvider then
-            vim.lsp.buf.format({ async = false })
-            return
-          else
-          end
-        end,
-      })
-
-      -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-      local nmap = function(keys, func, desc)
-        desc = 'LSP: ' .. desc
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-      end
-
-      local function list_workspace_folders()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end
-
-      nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
-      nmap('<leader>lf', vim.lsp.buf.format, 'Format Buffer')
-      nmap('<leader>la', vim.lsp.buf.code_action, 'Code Action')
-      nmap('<leader>ll', vim.lsp.codelens.run, 'CodeLens')
-
-      nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-      nmap('gd', vim.lsp.buf.definition, 'Definition')
-      nmap('gD', vim.lsp.buf.declaration, 'Declaration')
-      nmap('gi', vim.lsp.buf.implementation, 'Implementation')
-      nmap('go', vim.lsp.buf.type_definition, 'Type Definition')
-      nmap('gr', vim.lsp.buf.references, 'References')
-      nmap('gs', vim.lsp.buf.signature_help, 'Signature Help')
-      nmap('gl', vim.diagnostic.open_float, 'Show Diagnostic')
-      nmap('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
-      nmap(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
-
-      nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
-      nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
-      nmap('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
+    local on_attach = function(_, buffer)
+      k.lsp_set_mappings(buffer)
     end
-
     -- ~~~~~~~~~~~~~~~~~~~~~~ configure lsps and cmp ~~~~~~~~~~~~~~~~~~~~~~~ --
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)

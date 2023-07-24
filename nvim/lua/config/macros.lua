@@ -9,7 +9,6 @@ function m.CreateCommentHeader()
 
     local tw = vim.api.nvim_buf_get_option(0, "textwidth")
     local width = tw - u.get_indent()
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ test ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     local header = "%s"
     local char = m.headerChar
 
@@ -23,7 +22,7 @@ function m.CreateCommentHeader()
     else
       header = commentString .. commentString:reverse():sub(3)
     end
-    print(header)
+
     local width_inner = width - #header + 2
     local header_inner
     if not u.is_blank(input) then
@@ -34,6 +33,7 @@ function m.CreateCommentHeader()
     else
       header_inner = string.rep(char, width_inner)
     end
+
     header = string.format(header, header_inner)
     vim.api.nvim_set_current_line(header)
   end)

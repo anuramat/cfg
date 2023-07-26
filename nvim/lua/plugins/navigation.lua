@@ -23,18 +23,23 @@ specs.todo = {
   },
 }
 
+local function d(x)
+  return "Trouble: " .. x
+end
 specs.trouble = {
   "folke/trouble.nvim",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
   keys = {
-    { "<leader>tt", "<cmd>TroubleToggle<cr>",                       desc = "Trouble: Toggle" },
-    { "<leader>tD", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble: Workspace Diagnostics" },
-    { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "Trouble: Document Diagnostics" },
-    { "<leader>tl", "<cmd>TroubleToggle loclist <cr>",              desc = "Trouble: Location List" },
-    { "<leader>tq", "<cmd>TroubleToggle quickfix<cr>",              desc = "Trouble: QuickFix" },
-    { "<leader>tr", "<cmd>TroubleToggle lsp_references<cr>",        desc = "Trouble: LSP References" },
+    { "<leader>tt", "<cmd>TroubleToggle<cr>",                 desc = d("Toggle") },
+    { "<leader>tD", "<cmd>Trouble workspace_diagnostics<cr>", desc = d("Workspace Diagnostics") },
+    { "<leader>td", "<cmd>Trouble document_diagnostics<cr>",  desc = d("Document Diagnostics") },
+    { "<leader>tl", "<cmd>Trouble loclist <cr>",              desc = d("Location List") },
+    { "<leader>tq", "<cmd>Trouble quickfix<cr>",              desc = d("QuickFix") },
+    { "<leader>tr", "<cmd>Trouble lsp_references<cr>",        desc = d("LSP References") },
+    { "<leader>tR", "<cmd>TroubleRefresh<cr>",                desc = d("Refresh") },
+    { "<leader>tc", "<cmd>TroubleClose<cr>",                  desc = d("Close") },
   }
 }
 

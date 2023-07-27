@@ -12,9 +12,6 @@
 
 # nvim 
 
-## config:
-add aliases for "delmarks! | delmarks A-Z0-9" and "wshada!"
-
 ## problems:
 - load markdownpreview on command
 

@@ -20,7 +20,7 @@ specs.treesitter = {
   cmd = { "TSUpdateSync" },
   opts = {
     highlight = { enable = true },
-    indent = { enable = true },
+    indent = { enable = true, disable = { "python" } },
     ensure_installed = langs,
     incremental_selection = {
       enable = true,

@@ -12,22 +12,21 @@ specs.treesitter = {
   "nvim-treesitter/nvim-treesitter",
   version = false, -- last release is way too old
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "VeryLazy", "BufReadPost", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
-  cmd = { "TSUpdateSync" },
   opts = {
     highlight = { enable = true },
-    indent = { enable = true, disable = { "python" } },
+    indent = { enable = true, disable = { "python" } }, -- tab indent doesn't work on python
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
       keymaps = {
         init_selection = "<c-space>",
         node_incremental = "<c-space>",
-        scope_incremental = "<c-s>",
+        scope_incremental = false,
         node_decremental = "<bs>",
       },
     },
@@ -40,10 +39,12 @@ specs.treesitter = {
     },
     context_commentstring = {
       enable = true,
-      enable_autocmd = false,
+      enable_autocmd = false, -- Comment.nvim should use the hook to get comment string
     },
   },
-  config = function(_, opts) require("nvim-treesitter.configs").setup(opts) end,
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }
 
 return u.respec(specs)

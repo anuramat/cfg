@@ -26,6 +26,7 @@
 ## editor stuff:
 - harpoon? or maybe marks are enough?
 - ufo for folds!
+- undotree
 
 ## ide stuff:
 - dap

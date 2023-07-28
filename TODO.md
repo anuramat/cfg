@@ -1,3 +1,5 @@
+# CFG TODO
+
 - add fish locale to setup/config?
 - verify mac defaults command for locale
 - condarc and conda init in bashscript
@@ -10,29 +12,28 @@
   conda config --set auto_activate_base false`
 ```
 
-# nvim 
+# nvim rice
 
-## problems
+## configuration:
 - lazyload markdown preview 
-- cancel completion on c-f in cmdline
 - luasnip binds
-
-## configure better
 - treesitter move/swap/etc
-- loclist, quickfix bindings, learn how to use
-- trouble vs bqf vs telescope vs lspsaga? too much overlap
+- loclist, quickfix bindings
 
-## editor stuff:
+## must have:
 - ufo for folds!
 - undotree
 
-## ide stuff:
+## remove bloat:
+- trouble vs bqf vs telescope vs lspsaga? too much overlap
+
+## overkill:
 - dap
 - neotest
 - go specific
-- refactorings primeagen?
+- refactorings primeagen
 
-## notes:
+# nvim notes:
 ```vim
 " delete all buffers
 :%bdelete

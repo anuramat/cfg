@@ -62,7 +62,7 @@ specs.harpoon = {
     'nvim-lua/plenary.nvim',
   },
   opts = {
-    tabline = true
+    --   tabline = true
   }
 }
 

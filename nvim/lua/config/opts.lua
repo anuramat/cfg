@@ -44,6 +44,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 4
 o.cmdheight = 1 -- TODO change after fixing annoying message
 o.display = "lastline,uhex"
 o.laststatus = 3
@@ -57,7 +60,7 @@ o.shortmess = "asWIcCF"
 o.showbreak = "↪  ↪"
 o.showmatch = true
 o.showmode = false
-o.signcolumn = "yes" 
+o.signcolumn = "yes"
 o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = "unnamedplus"

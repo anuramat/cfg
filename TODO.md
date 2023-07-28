@@ -14,6 +14,9 @@
 
 ## problems
 - lazyload markdown preview 
+- cancel completion on c-f in cmdline
+- luasnip binds
+- harpoon go-to-nth
 
 ## configure better
 - treesitter move/swap/etc

@@ -12,14 +12,17 @@
 
 # nvim 
 
-## problems:
-- load markdownpreview on command
+## problems
+- lazyload markdown preview 
+
+## configure better
+- treesitter move/swap/etc
+- loclist, quickfix bindings, learn how to use
+- trouble vs bqf vs telescope vs lspsaga? too much overlap
 
 ## editor stuff:
-- harpoon?
-- ufo for folds
-- loclist, quickfix
-- trouble vs bqf vs telescope vs lspsaga? too much overlap
+- harpoon? or maybe marks are enough?
+- ufo for folds!
 
 ## ide stuff:
 - dap
@@ -27,6 +30,11 @@
 - go specific
 - refactorings primeagen?
 
-## res:
-                    :%bdelete      " delete all buffers
+## notes:
+```vim
+" delete all buffers
+:%bdelete
+" delete global marks
+:delmarks A-Z 
+```
 

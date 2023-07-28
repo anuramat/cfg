@@ -50,4 +50,20 @@ specs.bqf = {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
+specs.harpoon = {
+  'ThePrimeagen/harpoon',
+  keys = {
+    { "<leader>ha", function() require("harpoon.mark").add_file() end,        desc = "Harpoon: Add File" },
+    { "<leader>hl", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon: List Files" },
+    { "<leader>hp", function() require("harpoon.ui").nav_prev() end,          desc = "Harpoon: Prev File" },
+    { "<leader>hn", function() require("harpoon.ui").nav_next() end,          desc = "Harpoon: Next File" },
+  },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+  },
+  opts = {
+    tabline = true
+  }
+}
+
 return u.respec(specs)

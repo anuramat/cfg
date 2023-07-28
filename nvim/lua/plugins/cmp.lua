@@ -44,9 +44,12 @@ local function confirm(fb_key)
   end
 end
 
-local function abort()
+local function abort(ptkey)
   return function()
     require('cmp').abort()
+    if ptkey ~= nil then
+      press(ptkey)
+    end
   end
 end
 
@@ -69,18 +72,20 @@ specs.cmp = {
   },
   keys = {
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    { '<c-n>',   next(),          mode = 'i',          desc = d('Next Entry') },
-    { '<c-p>',   prev(),          mode = 'i',          desc = d('Previous Entry') },
-    { '<cr>',    confirm("<cr>"), mode = 'i',          desc = d('Select Current Entry') },
-    { '<tab>',   next("<tab>"),   mode = 'i',          desc = d('Next Entry') },
-    { '<s-tab>', prev("<s-tab>"), mode = 'i',          desc = d('Previous Entry') },
+    { '<c-n>',   next(),          mode = 'i',          desc = d('Next') },
+    { '<c-p>',   prev(),          mode = 'i',          desc = d('Prev') },
+    { '<cr>',    confirm("<cr>"), mode = 'i',          desc = d('Select') },
+    { '<tab>',   next("<tab>"),   mode = 'i',          desc = d('Next') },
+    { '<s-tab>', prev("<s-tab>"), mode = 'i',          desc = d('Prev') },
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ common ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    { '<c-y>',   confirm(),       mode = { 'i', 'c' }, desc = d('Select Current Entry') },
-    { '<c-e>',   abort(),         mode = { 'i', 'c' }, desc = d('Abort Completion') },
+    { '<c-y>',   confirm(),       mode = { 'i', 'c' }, desc = d('Select') },
+    { '<c-e>',   abort(),         mode = 'i',          desc = d('Abort') },
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    { '<c-z>',   next(),          mode = 'c',          desc = d('Next Entry') },
-    { '<tab>',   next(),          mode = 'c',          desc = d('Next Entry') },
-    { '<s-tab>', prev(),          mode = 'c',          desc = d('Previous Entry') },
+    { '<c-e>',   abort(),         mode = 'c',          desc = d('Abort') },
+    { '<c-f>',   abort("<c-f>"),  mode = 'c',          desc = d('Abort and Passthrough') },
+    { '<c-z>',   next(),          mode = 'c',          desc = d('Next') },
+    { '<tab>',   next(),          mode = 'c',          desc = d('Next') },
+    { '<s-tab>', prev(),          mode = 'c',          desc = d('Prev') },
   },
   config = function()
     local cmp = require("cmp")

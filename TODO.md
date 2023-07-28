@@ -16,7 +16,6 @@
 - lazyload markdown preview 
 - cancel completion on c-f in cmdline
 - luasnip binds
-- harpoon go-to-nth
 
 ## configure better
 - treesitter move/swap/etc
@@ -24,7 +23,6 @@
 - trouble vs bqf vs telescope vs lspsaga? too much overlap
 
 ## editor stuff:
-- harpoon? or maybe marks are enough?
 - ufo for folds!
 - undotree
 

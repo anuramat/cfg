@@ -25,7 +25,7 @@ end
 --- @param s string
 --- @return string
 function m.trim(s)
-  return s:gsub("^%s+", ""):gsub("%s+$", "")
+  return ((s:gsub("^%s+", "")):gsub("%s+$", ""))
 end
 
 --- Gets a list of values from a table.

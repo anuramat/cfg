@@ -50,4 +50,4 @@ specs.bqf = {
   dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
-return u.respec(specs)
+return u.values(specs)

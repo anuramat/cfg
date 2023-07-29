@@ -119,4 +119,4 @@ specs.luasnip = {
   build = "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp",
 }
 
-return u.respec(specs)
+return u.values(specs)

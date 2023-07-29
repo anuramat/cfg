@@ -47,4 +47,4 @@ specs.treesitter = {
   end,
 }
 
-return u.respec(specs)
+return u.values(specs)

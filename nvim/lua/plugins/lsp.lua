@@ -85,4 +85,4 @@ specs.saga = {
   },
 }
 
-return u.respec(specs)
+return u.values(specs)

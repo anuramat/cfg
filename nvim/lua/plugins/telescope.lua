@@ -75,4 +75,4 @@ specs.zoxide = {
   end
 }
 
-return u.respec(specs)
+return u.values(specs)

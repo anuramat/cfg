@@ -28,5 +28,4 @@ specs.indentline = {
   },
 }
 
-
-return u.respec(specs)
+return u.values(specs)

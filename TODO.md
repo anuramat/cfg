@@ -19,6 +19,7 @@
 - luasnip binds
 - treesitter move/swap/etc
 - loclist, quickfix bindings
+- check todo comments pattern
 
 ## must have:
 - ufo for folds!

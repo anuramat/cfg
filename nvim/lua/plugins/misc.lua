@@ -1,6 +1,7 @@
 local specs = {}
 
 local u = require("utils")
+local k = require("config.keys")
 
 specs.surround = {
   "kylechui/nvim-surround",
@@ -28,17 +29,8 @@ specs.treesj = {
   event = { "BufReadPost", "BufNewFile" },
   versio = false,
   opts = { use_default_keymaps = false },
-  keys = { {
-    "<leader>m",
-    mode = { "n" },
-    function()
-      require("treesj").toggle()
-    end,
-    desc = "TreeSJ: Toggle"
-  } }
+  keys = k.treesj_get_mappings(),
 }
-
-
 
 specs.comment = {
   "numToStr/Comment.nvim",
@@ -82,6 +74,38 @@ specs.ai = {
       }, -- TODO more textobjects
     }
   end,
+}
+
+specs.flash = {
+  "folke/flash.nvim",
+  opts = { modes = { search = { enabled = false } } },
+  keys = k.flash_get_mappings(),
+}
+
+specs.todo = {
+  "folke/todo-comments.nvim",
+  event = { "BufReadPost", "BufNewFile" },
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    highlight = {
+      pattern = [[.*<(KEYWORDS)\s*]]
+    }
+  },
+}
+
+specs.trouble = {
+  "folke/trouble.nvim",
+  event = "VeryLazy",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+  opts = {},
+  keys = k.trouble_get_mappings()
+}
+
+specs.bqf = {
+  "kevinhwang91/nvim-bqf",
+  event = "VeryLazy",
+  opts = {},
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
 }
 
 specs.sleuth = {

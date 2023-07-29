@@ -38,8 +38,7 @@ nmap("<leader>#", require("config.macros").CreateCommentHeader, "Create comment 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp_set_mappings = function(buffer)
   local nmap = function(keys, func, desc)
-    desc = 'LSP: ' .. desc
-    vim.keymap.set('n', keys, func, { buffer = buffer, desc = desc })
+    vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
 
   local function list_workspace_folders()
@@ -66,5 +65,42 @@ M.lsp_set_mappings = function(buffer)
   nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   nmap('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
-
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.trouble_get_mappings = function()
+  local function d(x)
+    return "Trouble: " .. x
+  end
+  return {
+    { "<leader>tt", "<cmd>TroubleToggle<cr>",                 desc = d("Toggle") },
+    { "<leader>tD", "<cmd>Trouble workspace_diagnostics<cr>", desc = d("Workspace Diagnostics") },
+    { "<leader>td", "<cmd>Trouble document_diagnostics<cr>",  desc = d("Document Diagnostics") },
+    { "<leader>tl", "<cmd>Trouble loclist <cr>",              desc = d("Location List") },
+    { "<leader>tq", "<cmd>Trouble quickfix<cr>",              desc = d("QuickFix") },
+    { "<leader>tr", "<cmd>Trouble lsp_references<cr>",        desc = d("LSP References") },
+    { "<leader>tR", "<cmd>TroubleRefresh<cr>",                desc = d("Refresh") },
+    { "<leader>tc", "<cmd>TroubleClose<cr>",                  desc = d("Close") },
+  }
+end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.flash_get_mappings = function()
+  local function d(x)
+    return "Flash: " .. x
+  end
+  return {
+    { "s", mode = { "n", },     function() require("flash").jump() end,       desc = d("Jump") },
+    { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = d("Treesitter") },
+    { "r", mode = { "o" },      function() require("flash").remote() end,     desc = d("Remote") },
+  }
+end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.treesj_get_mappings = function()
+  return { {
+    "<leader>m",
+    mode = { "n" },
+    function()
+      require("treesj").toggle()
+    end,
+    desc = "TreeSJ: Toggle"
+  } }
+end
 return M

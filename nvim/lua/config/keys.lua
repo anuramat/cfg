@@ -123,7 +123,21 @@ M.cmp_custom = {
       ['<C-p>'] = cmp.config.disable,
     }
   end,
-  i = function() return {} end
+  i = function()
+    local cmp = require('cmp')
+    return {
+      ['<Tab>'] = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end,
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    }
+  end
 }
 
 return M

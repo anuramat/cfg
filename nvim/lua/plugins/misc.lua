@@ -29,7 +29,7 @@ specs.treesj = {
   event = { "BufReadPost", "BufNewFile" },
   versio = false,
   opts = { use_default_keymaps = false },
-  keys = k.treesj_get_mappings(),
+  keys = k.treesj_lazy(),
 }
 
 specs.comment = {
@@ -79,7 +79,7 @@ specs.ai = {
 specs.flash = {
   "folke/flash.nvim",
   opts = { modes = { search = { enabled = false } } },
-  keys = k.flash_get_mappings(),
+  keys = k.flash_lazy(),
 }
 
 specs.todo = {
@@ -98,7 +98,7 @@ specs.trouble = {
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
-  keys = k.trouble_get_mappings()
+  keys = k.trouble_lazy()
 }
 
 specs.bqf = {

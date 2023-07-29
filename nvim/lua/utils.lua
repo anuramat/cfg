@@ -55,4 +55,11 @@ function m.debug_events(events)
   end
 end
 
+--- Simulates key press
+--- @param rawkey string Key, e.g. "<c-n>", "<cr>" or "K"
+local function press(rawkey)
+  local key = vim.api.nvim_replace_termcodes(rawkey, true, true, true)
+  vim.api.nvim_feedkeys(key, 'n', false)
+end
+
 return m

@@ -1,5 +1,7 @@
 local M = {}
 
+local u = require('utils')
+
 local function nmap(lhs, rhs, desc)
   vim.keymap.set("n", lhs, rhs, { desc = "Keys: " .. desc, silent = true })
 end
@@ -36,7 +38,7 @@ vmap("<a-k>", ":m '<-2<cr>gv=gv", "Move line up")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Homegrown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 nmap("<leader>#", require("config.macros").CreateCommentHeader, "Create comment header")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.lsp_set_mappings = function(buffer)
+M.lsp_set = function(buffer)
   local nmap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
@@ -66,7 +68,7 @@ M.lsp_set_mappings = function(buffer)
   nmap('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.trouble_get_mappings = function()
+M.trouble_lazy = function()
   local function d(x)
     return "Trouble: " .. x
   end
@@ -82,7 +84,7 @@ M.trouble_get_mappings = function()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.flash_get_mappings = function()
+M.flash_lazy = function()
   local function d(x)
     return "Flash: " .. x
   end
@@ -93,7 +95,7 @@ M.flash_get_mappings = function()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.treesj_get_mappings = function()
+M.treesj_lazy = function()
   return { {
     "<leader>m",
     mode = { "n" },
@@ -103,4 +105,25 @@ M.treesj_get_mappings = function()
     desc = "TreeSJ: Toggle"
   } }
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.cmp_custom = {
+  c = function()
+    local cmp = require('cmp')
+    return {
+      -- So that completion doesn't block the cmdline window
+      ['C-f'] =
+          function()
+            if cmp.visible() then
+              cmp.abort()
+            end
+            u.press('C-f')
+          end
+      ,
+      ['<C-n>'] = cmp.config.disable,
+      ['<C-p>'] = cmp.config.disable,
+    }
+  end,
+  i = function() return {} end
+}
+
 return M

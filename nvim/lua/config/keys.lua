@@ -31,8 +31,10 @@ nmap('<leader>qb', ':col<cr>', 'Next Quickfix List')
 nmap('<leader>qh', ':chi<cr>', 'Quickfix History')
 
 -- Scroll with centered cursor
-nmap('<c-u>', '<c-u>zz', 'Scroll Up')
-nmap('<c-d>', '<c-d>zz', 'Scroll Down')
+nmap('<c-u>', '<c-u>zz0', 'Scroll Up')
+nmap('<c-d>', '<c-d>zz0', 'Scroll Down')
+nmap('<c-b>', '<c-b>zz0', 'Page Up')
+nmap('<c-f>', '<c-f>zz0', 'Page Down')
 
 -- Move lines (I still don't get why it's -2)
 nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
@@ -131,14 +133,26 @@ M.cmp = {
   end,
   i = function()
     local cmp = require('cmp')
+    local luasnip = require('luasnip')
     return {
-      ['<Tab>'] = function(fallback)
+      ['<Tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
+        elseif luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
         else
           fallback()
         end
-      end,
+      end, { 'i', 's' }),
+      ['<S-Tab>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     }

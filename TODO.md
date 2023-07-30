@@ -19,10 +19,10 @@
 - C-o 
 - g.* commands
 - default textobjects, mini.ai, matchit, []
+- loclist usage
 
 ## configuration:
 - luasnip binds
-- loclist, quickfix bindings
 - check todo comments pattern
 
 ## remove bloat:

@@ -20,6 +20,7 @@
 - g.* commands
 - default textobjects, mini.ai, matchit, []
 - loclist usage
+- way to properly delete global marks
 
 ## configuration:
 - check todo comments pattern

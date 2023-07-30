@@ -12,31 +12,38 @@ local function vmap(l, r, d) vim.keymap.set('v', l, r, { silent = true, desc = d
 local function imap(l, r, d) vim.keymap.set('i', l, r, { silent = true, desc = d }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Built-in ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 vim.g.mapleader = ' '
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, desc = 'Leader Key' })
-vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = 'Exit from terminal insert mode' })
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { silent = true })
 
+-- Buffer
 nmap('<leader>bn', ':bn<cr>', 'Next Buffer')
 nmap('<leader>bp', ':bp<cr>', 'Previous Buffer')
 nmap('<leader>bd', ':bd<cr>', 'Delete Buffer')
 nmap('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
 
+-- Quickfix
 nmap('<leader>qc', ':ccl<cr>', 'Close Quickfix')
 nmap('<leader>qo', ':cope<cr>', 'Open Quickfix')
+nmap('<leader>qp', ':cn<cr>', 'Prev Quickfix')
+nmap('<leader>qn', ':cp<cr>', 'Next Quickfix')
+nmap('<leader>qf', ':cnew<cr>', 'Prev Quickfix List')
+nmap('<leader>qb', ':col<cr>', 'Next Quickfix List')
+nmap('<leader>qh', ':chi<cr>', 'Quickfix History')
 
 -- Scroll with centered cursor
-nmap('<c-u>', '<c-u>zz', 'Scroll up')
-nmap('<c-d>', '<c-d>zz', 'Scroll down')
+nmap('<c-u>', '<c-u>zz', 'Scroll Up')
+nmap('<c-d>', '<c-d>zz', 'Scroll Down')
 
 -- Move lines (I still don't get why it's -2)
-nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move line down')
-nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move line up')
-vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move line down')
-vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move line up')
-imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move line down')
-imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move line up')
+nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
+nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')
+vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move Line Down')
+vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move Line Up')
+imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
+imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
 
 local header = function() require('config.macros').create_comment_header('~', false) end
-nmap('<leader>#', header, 'Create comment header')
+nmap('<leader>#', header, 'Create Comment Header')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
   local n = function(keys, func, desc)
@@ -75,7 +82,7 @@ M.trouble = function()
     { '<leader>tD', '<cmd>Trouble workspace_diagnostics<cr>', desc = d('Workspace Diagnostics') },
     { '<leader>td', '<cmd>Trouble document_diagnostics<cr>',  desc = d('Document Diagnostics') },
     { '<leader>tl', '<cmd>Trouble loclist <cr>',              desc = d('Location List') },
-    { '<leader>tq', '<cmd>Trouble quickfix<cr>',              desc = d('QuickFix') },
+    { '<leader>tq', '<cmd>Trouble quickfix<cr>',              desc = d('Quickfix') },
     { '<leader>tr', '<cmd>Trouble lsp_references<cr>',        desc = d('LSP References') },
     { '<leader>tR', '<cmd>TroubleRefresh<cr>',                desc = d('Refresh') },
     { '<leader>tc', '<cmd>TroubleClose<cr>',                  desc = d('Close') },

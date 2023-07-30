@@ -2,8 +2,8 @@ local M = {}
 
 local u = require("utils")
 
-local headerChar = "~"
-function M.CreateCommentHeader()
+local header_char = "~"
+function M.create_comment_header()
   vim.ui.input({ prompt = "Header text: " }, function(input)
     if input == nil then
       return
@@ -12,17 +12,17 @@ function M.CreateCommentHeader()
     local tw = vim.api.nvim_buf_get_option(0, "textwidth")
     local width = tw - u.get_indent()
     local header = "%s"
-    local char = headerChar
+    local char = header_char
 
-    local commentString = vim.api.nvim_buf_get_option(0, "commentstring")
-    commentString = u.trim(commentString)
+    local commentstring = vim.api.nvim_buf_get_option(0, "commentstring")
+    commentstring = u.trim(commentstring)
 
-    if commentString == "" then
+    if commentstring == "" then
       header = "%s"
-    elseif commentString:sub(-2) ~= "%s" then
-      header = commentString
+    elseif commentstring:sub(-2) ~= "%s" then
+      header = commentstring
     else
-      header = commentString .. commentString:reverse():sub(3)
+      header = commentstring .. commentstring:reverse():sub(3)
     end
 
     local width_inner = width - #header + 2

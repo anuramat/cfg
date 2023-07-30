@@ -2,20 +2,18 @@ local M = {}
 
 local u = require('utils')
 
-local function nmap(lhs, rhs, desc)
-  vim.keymap.set('n', lhs, rhs, { silent = true, desc = 'Keys: ' .. desc })
-end
-local function vmap(lhs, rhs, desc)
-  vim.keymap.set('v', lhs, rhs, { silent = true, desc = 'Keys: ' .. desc })
-end
-local function imap(lhs, rhs, desc)
-  vim.keymap.set('i', lhs, rhs, { silent = true, desc = 'Keys: ' .. desc })
-end
-
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- For the most part mappings look like this:
+-- <Leader><Module Mnemonic><Function Mnemonic>
+-- Closely integrated mappings do not (have to) conform to this "rule".
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+local function nmap(l, r, d) vim.keymap.set('n', l, r, { silent = true, desc = d }) end
+local function vmap(l, r, d) vim.keymap.set('v', l, r, { silent = true, desc = d }) end
+local function imap(l, r, d) vim.keymap.set('i', l, r, { silent = true, desc = d }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Built-in ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 vim.g.mapleader = ' '
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, desc = 'Keys: Leader Key' })
-vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = 'Keys: Exit from terminal insert mode' })
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, desc = 'Leader Key' })
+vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = 'Exit from terminal insert mode' })
 
 nmap('<leader>bn', ':bn<cr>', 'Next Buffer')
 nmap('<leader>bp', ':bp<cr>', 'Previous Buffer')
@@ -29,15 +27,15 @@ nmap('<leader>qc', ':cope<cr>', 'Open Quickfix')
 nmap('<c-u>', '<c-u>zz', 'Scroll up')
 nmap('<c-d>', '<c-d>zz', 'Scroll down')
 
--- Move lines
+-- Move lines (I still don't get why it's -2)
 nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move line down')
 nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move line up')
-imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move line down')
-imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move line up')
 vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move line down')
 vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move line up')
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Homegrown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-nmap('<leader>#', require('config.macros').CreateCommentHeader, 'Create comment header')
+imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move line down')
+imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move line up')
+
+nmap('<leader>#', require('config.macros').create_comment_header, 'Create comment header')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
   local n = function(keys, func, desc)
@@ -105,6 +103,8 @@ M.treesj = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.cmp = {
+  -- for the most part using cmp defaults
+  -- trying to match default vim ins/cmdline-completion hotkeys
   c = function()
     local cmp = require('cmp')
     return {
@@ -160,8 +160,7 @@ M.telescope = {
       {
         '<leader>fS',
         require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        desc = d(
-          'LSP Dynamic Workspace Symbols')
+        desc = d('LSP Dynamic Workspace Symbols')
       },
       { '<leader>fr', require('telescope.builtin').lsp_references, desc = d('LSP References') },
       { '<leader>fd', require('telescope.builtin').diagnostics,    desc = d('LSP Diagnostics') },
@@ -201,17 +200,7 @@ M.harpoon = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Surround ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.surround = {
-  -- insert = '<c-g>s',
-  -- insert_line = '<c-g>S',
-  normal = '<leader>s',
-  normal_cur = '<leader>ss',
-  normal_line = '<leader>S',
-  normal_cur_line = '<leader>SS',
-  visual = '<leader>s',
-  visual_line = '<leader>S',
-  -- delete = 'ds',
-  -- change = 'cs',
-  -- change_line = 'cS',
+  -- using defaults
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.comment = {

@@ -6,6 +6,7 @@ local k = require("config.keys")
 local cfgs = {}
 
 cfgs.bashls = {}
+
 cfgs.pyright = {}
 
 cfgs.gopls = {

@@ -19,7 +19,7 @@ specs.lualine = {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { { "branch", icon = "󰊢" } },
-        lualine_c = { { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } }, },
+        lualine_c = { { "filename", path = 3, symbols = { modified = "  ", readonly = "", unnamed = "" } }, },
         lualine_x = { { "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = " ", }, }, },
         lualine_y = {
           { "lsp_progress" },

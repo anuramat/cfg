@@ -176,29 +176,32 @@ M.telescope = {
       {
         '<leader>fj',
         function() require('telescope').extensions.zoxide.list() end,
-        desc = 'Zoxide: Jump'
+        desc = 'Zoxide'
       }
     }
   end
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.harpoon_lazy = function()
+  local function d(x)
+    return "Harpoon: " .. x
+  end
   local function get_num_mappings()
     local res = {}
     for i = 1, 9 do
       res[i] = {
         "<leader>h" .. tostring(i),
         function() require("harpoon.ui").nav_file(i) end,
-        desc = "Harpoon: File #" .. tostring(i)
+        desc = d("File #" .. tostring(i))
       }
     end
     return res
   end
   return {
-    { "<leader>ha", function() require("harpoon.mark").add_file() end,        desc = "Harpoon: Add File" },
-    { "<leader>hl", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon: List Files" },
-    { "<leader>hp", function() require("harpoon.ui").nav_prev() end,          desc = "Harpoon: Prev File" },
-    { "<leader>hn", function() require("harpoon.ui").nav_next() end,          desc = "Harpoon: Next File" },
+    { "<leader>ha", function() require("harpoon.mark").add_file() end,        desc = d("Add File") },
+    { "<leader>hl", function() require("harpoon.ui").toggle_quick_menu() end, desc = d("List Files") },
+    { "<leader>hp", function() require("harpoon.ui").nav_prev() end,          desc = d("Prev File") },
+    { "<leader>hn", function() require("harpoon.ui").nav_next() end,          desc = d("Next File") },
     unpack(get_num_mappings()),
   }
 end

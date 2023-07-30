@@ -22,7 +22,6 @@
 - loclist usage
 
 ## configuration:
-- luasnip binds
 - check todo comments pattern
 
 ## remove bloat:

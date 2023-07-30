@@ -1,6 +1,5 @@
-if vim.g.vscode then
-  return
-end
 require("config.keys")
-require("config.lazy")
+if not vim.g.vscode then
+  require("config.lazy")
+end
 require("config.opts")

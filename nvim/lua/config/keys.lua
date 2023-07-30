@@ -273,5 +273,28 @@ M.treesitter = {
     swap_previous = { ["<a-h>"] = "@parameter.inner" },
   }
 }
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.gitsigns = function(buffer)
+  local gs = package.loaded.gitsigns
+  local function n(mode, l, r, desc)
+    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+  end
+  local function d(x)
+    return "GitSigns: " .. x
+  end
+
+  n("n", "]h", gs.next_hunk, d("Next Hunk"))
+  n("n", "[h", gs.prev_hunk, d("Prev Hunk"))
+  n({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<cr>", d("Stage Hunk"))
+  n({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<cr>", d("Reset Hunk"))
+  n("n", "<leader>gS", gs.stage_buffer, d("Stage Buffer"))
+  n("n", "<leader>gR", gs.reset_buffer, d("Reset Buffer"))
+  n("n", "<leader>gu", gs.undo_stage_hunk, d("Undo Stage Hunk"))
+  n("n", "<leader>gp", gs.preview_hunk, d("Preview Hunk"))
+  n("n", "<leader>gb", function() gs.blame_line({ full = true }) end, d("Blame Line"))
+  n("n", "<leader>gd", gs.diffthis, d("Diff This"))
+  n("n", "<leader>gD", function() gs.diffthis("~") end, d("Diff This ~"))
+  n({ "o", "x" }, "ih", ":<c-u>Gitsigns select_hunk<cr>", d("Select Hunk"))
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

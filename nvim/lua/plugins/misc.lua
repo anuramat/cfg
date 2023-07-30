@@ -101,18 +101,19 @@ specs.bqf = {
 }
 
 specs.sleuth = {
-  event = { "BufReadPre", "BufNewFile", "VeryLazy" },
   "tpope/vim-sleuth",
+  event = { "BufReadPre", "BufNewFile", "VeryLazy" },
 }
 
 specs.undotree = {
-  event = "VeryLazy",
   'mbbill/undotree',
+  event = "VeryLazy",
+  keys = k.undotree(),
 }
 
 specs.marks = {
-  event = "VeryLazy",
   'chentoast/marks.nvim',
+  event = "VeryLazy",
   opts = {},
 }
 

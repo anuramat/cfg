@@ -247,5 +247,18 @@ M.miniai = function()
     c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
   }
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.undotree = function()
+  local function d(x)
+    return "UndoTree: " .. x
+  end
+  return {
+    {
+      "<leader>u",
+      "<cmd>UndotreeToggle<cr>",
+      desc = d("Toggle"),
+    }
+  }
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

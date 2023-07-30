@@ -35,7 +35,8 @@ vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move line up')
 imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move line down')
 imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move line up')
 
-nmap('<leader>#', require('config.macros').create_comment_header, 'Create comment header')
+local header = function() require('config.macros').create_comment_header('~', false) end
+nmap('<leader>#', header, 'Create comment header')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
   local n = function(keys, func, desc)

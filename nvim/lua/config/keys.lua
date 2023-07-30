@@ -69,9 +69,7 @@ M.lsp = function(buffer)
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.trouble = function()
-  local function d(x)
-    return "Trouble: " .. x
-  end
+  local function d(x) return "Trouble: " .. x end
   return {
     { "<leader>tt", "<cmd>TroubleToggle<cr>",                 desc = d("Toggle") },
     { "<leader>tD", "<cmd>Trouble workspace_diagnostics<cr>", desc = d("Workspace Diagnostics") },
@@ -85,9 +83,7 @@ M.trouble = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.flash = function()
-  local function d(x)
-    return "Flash: " .. x
-  end
+  local function d(x) return "Flash: " .. x end
   return {
     { "s", mode = { "n", },     function() require("flash").jump() end,       desc = d("Jump") },
     { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = d("Treesitter") },
@@ -133,7 +129,6 @@ M.cmp = {
           fallback()
         end
       end,
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     }
@@ -141,10 +136,9 @@ M.cmp = {
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.telescope = {
+  d = function(x) return "Telescope: " .. x end,
   builtin = function()
-    local function d(x)
-      return 'Telescope: ' .. x
-    end
+    local d = M.telescope.d
     local function tfuz()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
         winblend = 10,
@@ -176,16 +170,14 @@ M.telescope = {
       {
         '<leader>fj',
         function() require('telescope').extensions.zoxide.list() end,
-        desc = 'Zoxide'
+        desc = M.telescope.d("Zoxide")
       }
     }
   end
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.harpoon = function()
-  local function d(x)
-    return "Harpoon: " .. x
-  end
+  local function d(x) return "Harpoon: " .. x end
   local function get_num_mappings()
     local res = {}
     for i = 1, 9 do
@@ -249,9 +241,7 @@ M.miniai = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.undotree = function()
-  local function d(x)
-    return "UndoTree: " .. x
-  end
+  local function d(x) return "UndoTree: " .. x end
   return {
     {
       "<leader>u",
@@ -279,9 +269,7 @@ M.gitsigns = function(buffer)
   local function n(mode, l, r, desc)
     vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
   end
-  local function d(x)
-    return "GitSigns: " .. x
-  end
+  local function d(x) return "GitSigns: " .. x end
 
   n("n", "]h", gs.next_hunk, d("Next Hunk"))
   n("n", "[h", gs.prev_hunk, d("Prev Hunk"))
@@ -296,5 +284,22 @@ M.gitsigns = function(buffer)
   n("n", "<leader>gD", function() gs.diffthis("~") end, d("Diff This ~"))
   n({ "o", "x" }, "ih", ":<c-u>Gitsigns select_hunk<cr>", d("Select Hunk"))
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ haskell-tools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.haskell_tools = {
+  d = function(x) return "Haskell Tools: " .. x end,
+  main = function(buf)
+    local ht = require('haskell-tools')
+    local d = M.haskell_tools.d
+    vim.keymap.set('n', '<leader>hrp', ht.repl.toggle, { buffer = buf, desc = d("Toggle Package REPL") })
+    vim.keymap.set('n', '<leader>hrb',
+      function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, { buffer = buf, d("Toggle Buffer REPL") })
+    vim.keymap.set('n', '<leader>hrq', ht.repl.quit, { buffer = buf, d("Quit REPL") })
+  end,
+  lsp = function(buf)
+    local d = M.haskell_tools.d
+    vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature, { buffer = buf, d("Show Hoogle Signature") })
+    vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, { buffer = buf, d("Evaluate All") })
+  end
+}
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

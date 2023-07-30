@@ -4,7 +4,7 @@ local u = require('utils')
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
--- <Leader><Module Mnemonic><Function Mnemonic>
+-- <Leader><ModuleMnemonic><FunctionMnemonic>
 -- Closely integrated mappings do not (have to) conform to this "rule".
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local function nmap(l, r, d) vim.keymap.set('n', l, r, { silent = true, desc = d }) end

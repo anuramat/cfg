@@ -21,7 +21,7 @@ nmap('<leader>bd', ':bd<cr>', 'Delete Buffer')
 nmap('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
 
 nmap('<leader>qc', ':ccl<cr>', 'Close Quickfix')
-nmap('<leader>qc', ':cope<cr>', 'Open Quickfix')
+nmap('<leader>qo', ':cope<cr>', 'Open Quickfix')
 
 -- Scroll with centered cursor
 nmap('<c-u>', '<c-u>zz', 'Scroll up')

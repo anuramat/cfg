@@ -52,23 +52,25 @@ specs.lspconfig = {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
+    -- borders
     vim.diagnostic.config { float = { border = 'rounded' } }
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
     require('lspconfig.ui.windows').default_options.border = 'rounded'
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    local on_attach = function(_, buffer)
-      k.lsp(buffer)
-    end
-    -- ~~~~~~~~~~~~~~~~~~~~~~ configure lsps and cmp ~~~~~~~~~~~~~~~~~~~~~~~ --
+
+    -- mappings
+    local on_attach = function(_, buffer) k.lsp(buffer) end
+
+    -- cmp and ufo
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true
-    } -- nvim-ufo
+    }
 
+    -- register servers
     for server, settings in pairs(cfgs) do
       lspconfig[server].setup({
         capabilities = capabilities,

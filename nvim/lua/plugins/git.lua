@@ -9,7 +9,7 @@ specs.fugitive = {
 
 specs.signs = {
   "lewis6991/gitsigns.nvim",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy",
   opts = {
     signs = {
       add = { text = "▎" },

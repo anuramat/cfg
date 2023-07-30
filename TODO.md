@@ -25,6 +25,8 @@
 
 ## configuration:
 - check todo comments pattern
+- marks plugin mappings
+- rename keymaps -> mappings
 
 ## remove bloat:
 - trouble vs bqf? too much overlap, also with telescope

@@ -4,7 +4,7 @@ local u = require('utils')
 
 specs.fugitive = {
   "tpope/vim-fugitive",
-  event = "VeryLazy",
+  event = "VeryLazy", -- TODO lazier
 }
 
 specs.signs = {

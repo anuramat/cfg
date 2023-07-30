@@ -31,8 +31,8 @@ specs.indentline = {
 
 specs.surround = {
   "kylechui/nvim-surround",
-  version = "*", -- use last release instead of main
-  event = "VeryLazy",
+  version = "*",      -- use last release instead of main
+  event = "VeryLazy", -- TODO lazier
   opts = {
     keymaps = k.surround
   },
@@ -40,10 +40,9 @@ specs.surround = {
 
 specs.treesj = {
   'Wansmer/treesj',
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   versio = false,
   opts = { use_default_keymaps = false },
-  keys = k.treesj(),
 }
 
 specs.comment = {
@@ -59,7 +58,7 @@ specs.comment = {
 
 specs.ai = {
   "echasnovski/mini.ai",
-  event = "VeryLazy",
+  event = "VeryLazy", -- TODO lazier
   dependencies = { "nvim-treesitter-textobjects" },
   opts = function()
     return {
@@ -107,7 +106,12 @@ specs.sleuth = {
 
 specs.undotree = {
   'mbbill/undotree',
-  event = "VeryLazy",
+  cmd = {
+    "UndotreeHide",
+    "UndotreeShow",
+    "UndotreeFocus",
+    "UndotreeToggle",
+  },
   keys = k.undotree(),
 }
 

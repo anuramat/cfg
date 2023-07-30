@@ -25,9 +25,6 @@
 - loclist, quickfix bindings
 - check todo comments pattern
 
-## must have:
-- ufo for folds!
-
 ## remove bloat:
 - trouble vs bqf? too much overlap, also with telescope
 

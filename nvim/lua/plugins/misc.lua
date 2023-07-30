@@ -41,7 +41,7 @@ specs.surround = {
 specs.treesj = {
   'Wansmer/treesj',
   -- event = "VeryLazy",
-  versio = false,
+  version = false,
   opts = { use_default_keymaps = false },
 }
 

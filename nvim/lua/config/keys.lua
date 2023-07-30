@@ -97,7 +97,7 @@ end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesj = function()
   return { {
-    "<leader>m",
+    "<leader>j",
     mode = { "n" },
     function()
       require("treesj").toggle()

@@ -1,27 +1,26 @@
 local specs = {}
 
-local u = require("utils")
+local u = require('utils')
 local k = require('config.keys')
 
 local langs = {
-  "go", "gosum", "gomod", "gowork", "python", "haskell", "bash", "c", "json",
-  "lua", "luadoc", "luap", "markdown", "markdown_inline", "python", "query",
-  "regex", "vim", "vimdoc", "yaml", "sql"
+  'go', 'gosum', 'gomod', 'gowork', 'python', 'haskell', 'bash', 'c', 'json',
+  'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'query',
+  'regex', 'vim', 'vimdoc', 'yaml', 'sql'
 }
 
 specs.treesitter = {
-  "nvim-treesitter/nvim-treesitter",
+  'nvim-treesitter/nvim-treesitter',
   version = false, -- last release is way too old
-  build = ":TSUpdate",
-  lazy = false,    -- folding doesn't work properly with lazy load
-  -- event = { "VeryLazy", "BufReadPost", "BufNewFile" },
+  build = ':TSUpdate',
+  event = { 'VeryLazy', 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    'nvim-treesitter/nvim-treesitter-textobjects',
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
     highlight = { enable = true },
-    indent = { enable = true, disable = { "python" } }, -- tab indent doesn't work on python
+    indent = { enable = true, disable = { 'python' } }, -- noexpandtab is broken with python
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
@@ -36,9 +35,9 @@ specs.treesitter = {
     },
   },
   config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-    vim.opt.foldmethod = "expr"
-    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    require('nvim-treesitter.configs').setup(opts)
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
   end,
 }
 return u.values(specs)

@@ -1,7 +1,7 @@
 local specs = {}
 
-local u = require("utils")
-local k = require("config.keys")
+local u = require('utils')
+local k = require('config.keys')
 
 local cfgs = {}
 
@@ -32,7 +32,7 @@ cfgs.lua_ls = {
     },
     workspace = {
       checkThirdParty = false,
-      library = vim.api.nvim_get_runtime_file("*", true),
+      library = vim.api.nvim_get_runtime_file('*', true),
     },
     telemetry = {
       enable = false,
@@ -40,19 +40,20 @@ cfgs.lua_ls = {
   },
 }
 
-specs.neodev = { "folke/neodev.nvim", opts = {} }
+specs.neodev = { 'folke/neodev.nvim', opts = {} }
 
 specs.lspconfig = {
-  "neovim/nvim-lspconfig",
-  event = { "VeryLazy", "BufReadPost", "BufNewFile" },
+  'neovim/nvim-lspconfig',
+  event = { 'VeryLazy', 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    "folke/neodev.nvim",
-    "hrsh7th/nvim-cmp",
+    'folke/neodev.nvim',
+    'hrsh7th/nvim-cmp',
+    'kevinhwang91/nvim-ufo',
   },
   config = function()
-    local lspconfig = require("lspconfig")
+    local lspconfig = require('lspconfig')
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui borders ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    vim.diagnostic.config { float = { border = "rounded" } }
+    vim.diagnostic.config { float = { border = 'rounded' } }
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
     require('lspconfig.ui.windows').default_options.border = 'rounded'
@@ -75,14 +76,7 @@ specs.lspconfig = {
         settings = settings,
       })
     end
-
-    require('ufo').setup()
   end,
-}
-
-specs.ufo = {
-  'kevinhwang91/nvim-ufo',
-  dependencies = 'kevinhwang91/promise-async',
 }
 
 return u.values(specs)

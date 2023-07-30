@@ -1,40 +1,13 @@
 local specs = {}
 
 local u = require('utils')
-
-local keys = {}
-
-local builtin = require('telescope.builtin')
-local function tfuz()
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-    winblend = 10,
-    previewer = false,
-  }))
-end
-local function d(i)
-  return 'Telescope: ' .. i
-end
-
-keys.telescope = {
-  { '<leader>fp', builtin.builtin,                       desc = d('Pickers') },
-  { '<leader>fo', builtin.find_files,                    desc = d('Find Files') },
-  { '<leader>fb', builtin.buffers,                       desc = d('Buffers') },
-  { '<leader>fg', builtin.live_grep,                     desc = d('Live Grep') },
-  { '<leader>f/', tfuz,                                  desc = d('Buffer Fuzzy Find') },
-  { '<leader>fm', builtin.marks,                         desc = d('Marks') },
-  { '<leader>fh', builtin.help_tags,                     desc = d('Help') },
-  { '<leader>fk', builtin.keymaps,                       desc = d('Keymaps') },
-  { '<leader>fs', builtin.lsp_document_symbols,          desc = d('LSP Document Symbols') },
-  { '<leader>fS', builtin.lsp_dynamic_workspace_symbols, desc = d('LSP Dynamic Workspace Symbols') },
-  { '<leader>fr', builtin.lsp_references,                desc = d('LSP References') },
-  { '<leader>fd', builtin.diagnostics,                   desc = d('LSP Diagnostics') },
-}
+local k = require('config.keys')
 
 specs.telescope = {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.2',
   dependencies = { 'nvim-lua/plenary.nvim' },
-  keys = keys.telescope,
+  keys = k.telescope_lazy(),
   config = function()
     local telescope = require('telescope')
     telescope.setup({

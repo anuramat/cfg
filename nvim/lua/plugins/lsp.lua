@@ -83,11 +83,7 @@ specs.saga = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
   },
-  keys = {
-    { "<leader>li", ":Lspsaga incoming_calls<cr>", desc = "LSPSaga: Incoming Calls",  silent = true },
-    { "<leader>lo", ":Lspsaga outgoing_calls<cr>", desc = "LSPSaga: Outgoing Calls",  silent = true },
-    { "<leader>ls", ":Lspsaga outline<cr>",        desc = "LSPSaga: Symbols Outline", silent = true },
-  },
+  keys = k.lspsaga_lazy(),
 }
 
 return u.values(specs)

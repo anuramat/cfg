@@ -36,13 +36,7 @@ specs.fzf = {
 
 specs.zoxide = {
   'jvgrootveld/telescope-zoxide',
-  keys = {
-    {
-      '<leader>fj',
-      function() require('telescope').extensions.zoxide.list() end,
-      desc = 'Zoxide: Jump'
-    }
-  },
+  keys = k.zoxide_lazy(),
   config = function()
     require('telescope').load_extension('zoxide')
   end

@@ -165,5 +165,41 @@ M.telescope_lazy = function()
     { '<leader>fd', require('telescope.builtin').diagnostics,                   desc = d('LSP Diagnostics') },
   }
 end
-
+M.zoxide_lazy = function()
+  return {
+    {
+      '<leader>fj',
+      function() require('telescope').extensions.zoxide.list() end,
+      desc = 'Zoxide: Jump'
+    }
+  }
+end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSPSaga ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.lspsaga_lazy = function()
+  return {
+    { "<leader>li", ":Lspsaga incoming_calls<cr>", desc = "LSPSaga: Incoming Calls",  silent = true },
+    { "<leader>lo", ":Lspsaga outgoing_calls<cr>", desc = "LSPSaga: Outgoing Calls",  silent = true },
+    { "<leader>ls", ":Lspsaga outline<cr>",        desc = "LSPSaga: Symbols Outline", silent = true },
+  }
+end
+M.harpoon_lazy = function()
+  local function get_num_mappings()
+    local res = {}
+    for i = 1, 9 do
+      res[i] = {
+        "<leader>h" .. tostring(i),
+        function() require("harpoon.ui").nav_file(i) end,
+        desc = "Harpoon: File #" .. tostring(i)
+      }
+    end
+    return res
+  end
+  return {
+    { "<leader>ha", function() require("harpoon.mark").add_file() end,        desc = "Harpoon: Add File" },
+    { "<leader>hl", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Harpoon: List Files" },
+    { "<leader>hp", function() require("harpoon.ui").nav_prev() end,          desc = "Harpoon: Prev File" },
+    { "<leader>hn", function() require("harpoon.ui").nav_next() end,          desc = "Harpoon: Next File" },
+    unpack(get_num_mappings()),
+  }
+end
 return M

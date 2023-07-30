@@ -140,48 +140,48 @@ M.cmp_custom = {
   end
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.telescope_lazy = function()
-  local function d(x)
-    return 'Telescope: ' .. x
-  end
-  local function tfuz()
-    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-      winblend = 10,
-      previewer = false,
-    }))
-  end
-  return {
-    { '<leader>fp', require('telescope.builtin').builtin,                       desc = d('Pickers') },
-    { '<leader>fo', require('telescope.builtin').find_files,                    desc = d('Find Files') },
-    { '<leader>fb', require('telescope.builtin').buffers,                       desc = d('Buffers') },
-    { '<leader>fg', require('telescope.builtin').live_grep,                     desc = d('Live Grep') },
-    { '<leader>f/', tfuz,                                                       desc = d('Buffer Fuzzy Find') },
-    { '<leader>fm', require('telescope.builtin').marks,                         desc = d('Marks') },
-    { '<leader>fh', require('telescope.builtin').help_tags,                     desc = d('Help') },
-    { '<leader>fk', require('telescope.builtin').keymaps,                       desc = d('Keymaps') },
-    { '<leader>fs', require('telescope.builtin').lsp_document_symbols,          desc = d('LSP Document Symbols') },
-    { '<leader>fS', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = d('LSP Dynamic Workspace Symbols') },
-    { '<leader>fr', require('telescope.builtin').lsp_references,                desc = d('LSP References') },
-    { '<leader>fd', require('telescope.builtin').diagnostics,                   desc = d('LSP Diagnostics') },
-  }
-end
-M.zoxide_lazy = function()
-  return {
-    {
-      '<leader>fj',
-      function() require('telescope').extensions.zoxide.list() end,
-      desc = 'Zoxide: Jump'
+M.telescope = {
+  builtin = function()
+    local function d(x)
+      return 'Telescope: ' .. x
+    end
+    local function tfuz()
+      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+        winblend = 10,
+        previewer = false,
+      }))
+    end
+    return {
+      { '<leader>fp', require('telescope.builtin').builtin,              desc = d('Pickers') },
+      { '<leader>fo', require('telescope.builtin').find_files,           desc = d('Find Files') },
+      { '<leader>fb', require('telescope.builtin').buffers,              desc = d('Buffers') },
+      { '<leader>fg', require('telescope.builtin').live_grep,            desc = d('Live Grep') },
+      { '<leader>f/', tfuz,                                              desc = d('Buffer Fuzzy Find') },
+      { '<leader>fm', require('telescope.builtin').marks,                desc = d('Marks') },
+      { '<leader>fh', require('telescope.builtin').help_tags,            desc = d('Help') },
+      { '<leader>fk', require('telescope.builtin').keymaps,              desc = d('Keymaps') },
+      { '<leader>fs', require('telescope.builtin').lsp_document_symbols, desc = d('LSP Document Symbols') },
+      {
+        '<leader>fS',
+        require('telescope.builtin').lsp_dynamic_workspace_symbols,
+        desc = d(
+          'LSP Dynamic Workspace Symbols')
+      },
+      { '<leader>fr', require('telescope.builtin').lsp_references, desc = d('LSP References') },
+      { '<leader>fd', require('telescope.builtin').diagnostics,    desc = d('LSP Diagnostics') },
     }
-  }
-end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSPSaga ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.lspsaga_lazy = function()
-  return {
-    { "<leader>li", ":Lspsaga incoming_calls<cr>", desc = "LSPSaga: Incoming Calls",  silent = true },
-    { "<leader>lo", ":Lspsaga outgoing_calls<cr>", desc = "LSPSaga: Outgoing Calls",  silent = true },
-    { "<leader>ls", ":Lspsaga outline<cr>",        desc = "LSPSaga: Symbols Outline", silent = true },
-  }
-end
+  end,
+  zoxide = function()
+    return {
+      {
+        '<leader>fj',
+        function() require('telescope').extensions.zoxide.list() end,
+        desc = 'Zoxide: Jump'
+      }
+    }
+  end
+}
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.harpoon_lazy = function()
   local function get_num_mappings()
     local res = {}
@@ -202,4 +202,5 @@ M.harpoon_lazy = function()
     unpack(get_num_mappings()),
   }
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

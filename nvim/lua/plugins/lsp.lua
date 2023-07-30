@@ -73,17 +73,4 @@ specs.lspconfig = {
   end,
 }
 
-specs.saga = {
-  'nvimdev/lspsaga.nvim',
-  event = 'LspAttach',
-  opts = {
-    lightbulb = { enable = false }
-  },
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-tree/nvim-web-devicons',
-  },
-  keys = k.lspsaga_lazy(),
-}
-
 return u.values(specs)

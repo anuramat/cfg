@@ -7,7 +7,7 @@ specs.telescope = {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.2',
   dependencies = { 'nvim-lua/plenary.nvim' },
-  keys = k.telescope_lazy(),
+  keys = k.telescope.builtin(),
   config = function()
     local telescope = require('telescope')
     telescope.setup({
@@ -36,7 +36,7 @@ specs.fzf = {
 
 specs.zoxide = {
   'jvgrootveld/telescope-zoxide',
-  keys = k.zoxide_lazy(),
+  keys = k.telescope.zoxide(),
   config = function()
     require('telescope').load_extension('zoxide')
   end

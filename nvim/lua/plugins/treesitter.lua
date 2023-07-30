@@ -39,7 +39,7 @@ specs.treesitter = {
     },
     context_commentstring = {
       enable = true,
-      enable_autocmd = false, -- Comment.nvim should use the hook to get comment string
+      enable_autocmd = false, -- Comment.nvim takes care of this
     },
   },
   config = function(_, opts)

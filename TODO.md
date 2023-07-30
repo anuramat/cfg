@@ -5,14 +5,20 @@
 - condarc and conda init in bashscript
 - make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)
-- master/slave file to not mess up brewfile
 ```bash
   cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w 50 | head -n 1
 
   conda config --set auto_activate_base false`
 ```
 
-# nvim rice
+# nvim todo
+- :norm
+- recording
+- double star, find vs edit
+- C-x
+- C-o 
+- g.* commands
+- default textobjects, mini.ai, matchit, []
 
 ## configuration:
 - luasnip binds
@@ -37,5 +43,7 @@
 :%bdelete
 " delete global marks
 :delmarks A-Z 
+" turn on spellcheck
+set spelling
 ```
 

@@ -6,23 +6,25 @@ o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 4
 o.textwidth = 79
-local group = vim.api.nvim_create_augroup("Formatting", { clear = true })
 -- Use tabs in Go files
+local go_group = vim.api.nvim_create_augroup("Go Indentation", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
-  group = group,
+  group = go_group,
   pattern = { "go" },
   command = "setlocal noexpandtab",
 })
 -- Autoformat on save
+local af_group = vim.api.nvim_create_augroup("LSP Autoformat", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = group,
+  group = af_group,
   callback = function()
     local client = vim.lsp.get_active_clients()[1]
-    if client and client.server_capabilities.documentFormattingProvider then
-      vim.lsp.buf.format({ async = false })
-      return
-    else
-    end
+    if not (client and client.server_capabilities.documentFormattingProvider) then return end
+    local ok, err = pcall(
+      function()
+        vim.lsp.buf.format({ async = false })
+      end)
+    if not ok then print(err) end
   end,
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

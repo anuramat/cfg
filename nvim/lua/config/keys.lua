@@ -88,6 +88,7 @@ M.flash = function()
     { "s", mode = { "n", },     function() require("flash").jump() end,       desc = d("Jump") },
     { "S", mode = { "n", "o" }, function() require("flash").treesitter() end, desc = d("Treesitter") },
     { "r", mode = { "o" },      function() require("flash").remote() end,     desc = d("Remote") },
+    "t", "T", 'f', 'F'
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

@@ -15,18 +15,15 @@
 # nvim rice
 
 ## configuration:
-- lazyload markdown preview 
 - luasnip binds
-- treesitter move/swap/etc
 - loclist, quickfix bindings
 - check todo comments pattern
 
 ## must have:
 - ufo for folds!
-- undotree
 
 ## remove bloat:
-- trouble vs bqf vs telescope vs lspsaga? too much overlap
+- trouble vs bqf? too much overlap, also with telescope
 
 ## overkill:
 - dap

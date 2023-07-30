@@ -33,8 +33,8 @@ specs.treesitter = {
     textobjects = {
       swap = {
         enable = true,
-        swap_next = { ["<a-h>"] = "@parameter.inner" },
-        swap_previous = { ["<a-l>"] = "@parameter.inner" },
+        swap_next = { ["<a-l>"] = "@parameter.inner" },
+        swap_previous = { ["<a-h>"] = "@parameter.inner" },
       },
     },
     context_commentstring = {

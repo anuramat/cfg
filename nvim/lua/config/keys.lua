@@ -3,19 +3,19 @@ local M = {}
 local u = require('utils')
 
 local function nmap(lhs, rhs, desc)
-  vim.keymap.set("n", lhs, rhs, { desc = "Keys: " .. desc, silent = true })
+  vim.keymap.set("n", lhs, rhs, { silent = true, desc = "Keys: " .. desc })
 end
 local function vmap(lhs, rhs, desc)
-  vim.keymap.set("v", lhs, rhs, { desc = "Keys: " .. desc, silent = true })
+  vim.keymap.set("v", lhs, rhs, { silent = true, desc = "Keys: " .. desc })
 end
 local function imap(lhs, rhs, desc)
-  vim.keymap.set("i", lhs, rhs, { desc = "Keys: " .. desc, silent = true })
+  vim.keymap.set("i", lhs, rhs, { silent = true, desc = "Keys: " .. desc })
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Built-in ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 vim.g.mapleader = " "
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true, desc = "Keys: Leader Key" })
-vim.keymap.set("t", "<esc>", "<c-\\><c-n>", { desc = "Keys: Exit from terminal insert mode" })
+vim.keymap.set("t", "<esc>", "<c-\\><c-n>", { silent = true, desc = "Keys: Exit from terminal insert mode" })
 
 nmap("<leader>bn", ":bn<cr>", "Next Buffer")
 nmap("<leader>bp", ":bp<cr>", "Buffer")
@@ -39,7 +39,7 @@ vmap("<a-k>", ":m '<-2<cr>gv=gv", "Move line up")
 nmap("<leader>#", require("config.macros").CreateCommentHeader, "Create comment header")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp_set = function(buffer)
-  local nmap = function(keys, func, desc)
+  local n = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
 
@@ -47,25 +47,25 @@ M.lsp_set = function(buffer)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end
 
-  nmap('<leader>lr', vim.lsp.buf.rename, 'Rename')
-  nmap('<leader>lf', vim.lsp.buf.format, 'Format Buffer')
-  nmap('<leader>la', vim.lsp.buf.code_action, 'Code Action')
-  nmap('<leader>ll', vim.lsp.codelens.run, 'CodeLens')
+  n('<leader>lr', vim.lsp.buf.rename, 'Rename')
+  n('<leader>lf', vim.lsp.buf.format, 'Format Buffer')
+  n('<leader>la', vim.lsp.buf.code_action, 'Code Action')
+  n('<leader>ll', vim.lsp.codelens.run, 'CodeLens')
 
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('gd', vim.lsp.buf.definition, 'Definition')
-  nmap('gD', vim.lsp.buf.declaration, 'Declaration')
-  nmap('gi', vim.lsp.buf.implementation, 'Implementation')
-  nmap('go', vim.lsp.buf.type_definition, 'Type Definition')
-  nmap('gr', vim.lsp.buf.references, 'References')
-  nmap('gs', vim.lsp.buf.signature_help, 'Signature Help')
-  nmap('gl', vim.diagnostic.open_float, 'Show Diagnostic')
-  nmap('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
-  nmap(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
+  n('K', vim.lsp.buf.hover, 'Hover Documentation')
+  n('gd', vim.lsp.buf.definition, 'Definition')
+  n('gD', vim.lsp.buf.declaration, 'Declaration')
+  n('gi', vim.lsp.buf.implementation, 'Implementation')
+  n('go', vim.lsp.buf.type_definition, 'Type Definition')
+  n('gr', vim.lsp.buf.references, 'References')
+  n('gs', vim.lsp.buf.signature_help, 'Signature Help')
+  n('gl', vim.diagnostic.open_float, 'Show Diagnostic')
+  n('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
+  n(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
 
-  nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
-  nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
-  nmap('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
+  n('<leader>lwa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
+  n('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
+  n('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.trouble_lazy = function()

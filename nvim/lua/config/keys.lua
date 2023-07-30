@@ -260,5 +260,18 @@ M.undotree = function()
     }
   }
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Treesitter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.treesitter = {
+  inc_selection = {
+    init_selection = "<c-space>",
+    node_incremental = "<c-space>",
+    scope_incremental = false,
+    node_decremental = "<bs>",
+  },
+  textobj_swap  = {
+    swap_next = { ["<a-l>"] = "@parameter.inner" },
+    swap_previous = { ["<a-h>"] = "@parameter.inner" },
+  }
+}
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

@@ -1,6 +1,7 @@
 local specs = {}
 
 local u = require("utils")
+local k = require('config.keys')
 
 local langs = {
   "go", "gosum", "gomod", "gowork", "python", "haskell", "bash", "c", "json",
@@ -23,19 +24,10 @@ specs.treesitter = {
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
-      keymaps = {
-        init_selection = "<c-space>",
-        node_incremental = "<c-space>",
-        scope_incremental = false,
-        node_decremental = "<bs>",
-      },
+      keymaps = k.treesitter.inc_selection,
     },
     textobjects = {
-      swap = {
-        enable = true,
-        swap_next = { ["<a-l>"] = "@parameter.inner" },
-        swap_previous = { ["<a-h>"] = "@parameter.inner" },
-      },
+      swap = u.merge({ enable = true }, k.treesitter.textobj_swap)
     },
     context_commentstring = {
       enable = true,
@@ -46,5 +38,4 @@ specs.treesitter = {
     require("nvim-treesitter.configs").setup(opts)
   end,
 }
-
 return u.values(specs)

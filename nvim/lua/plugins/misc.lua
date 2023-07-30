@@ -3,6 +3,32 @@ local specs = {}
 local u = require("utils")
 local k = require("config.keys")
 
+specs.dracula_cs = {
+  "Mofiqul/dracula.nvim",
+  lazy = false,
+  priority = 1337
+}
+
+specs.indentline = {
+  "lukas-reineke/indent-blankline.nvim",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    char = "│",
+    filetype_exclude = {
+      "TelescopePrompt",
+      "Trouble",
+      "checkhealth",
+      "help",
+      "lazy",
+      "lspinfo",
+      "man",
+      "quickfix",
+    },
+    show_trailing_blankline_indent = false,
+    show_current_context = false,
+  },
+}
+
 specs.surround = {
   "kylechui/nvim-surround",
   version = "*", -- use last release instead of main

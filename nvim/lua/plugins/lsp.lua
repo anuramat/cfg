@@ -63,6 +63,10 @@ specs.lspconfig = {
     -- ~~~~~~~~~~~~~~~~~~~~~~ configure lsps and cmp ~~~~~~~~~~~~~~~~~~~~~~~ --
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    } -- nvim-ufo
 
     for server, settings in pairs(cfgs) do
       lspconfig[server].setup({
@@ -71,7 +75,14 @@ specs.lspconfig = {
         settings = settings,
       })
     end
+
+    require('ufo').setup()
   end,
+}
+
+specs.ufo = {
+  'kevinhwang91/nvim-ufo',
+  dependencies = 'kevinhwang91/promise-async',
 }
 
 return u.values(specs)

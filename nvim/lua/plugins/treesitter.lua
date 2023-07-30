@@ -13,7 +13,8 @@ specs.treesitter = {
   "nvim-treesitter/nvim-treesitter",
   version = false, -- last release is way too old
   build = ":TSUpdate",
-  event = { "VeryLazy", "BufReadPost", "BufNewFile" },
+  lazy = false,    -- folding doesn't work properly with lazy load
+  -- event = { "VeryLazy", "BufReadPost", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     'JoosepAlviste/nvim-ts-context-commentstring',
@@ -36,6 +37,8 @@ specs.treesitter = {
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   end,
 }
 return u.values(specs)

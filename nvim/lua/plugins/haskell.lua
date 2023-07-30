@@ -23,7 +23,7 @@ specs.haskell = {
           vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature,
             get_opts(buf, "Haskell Tools: Show Hoogle Signature"))
           vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, get_opts(buf, "Haskell Tools: Evaluate All"))
-          k.lsp_set_mappings(buf)
+          k.lsp(buf)
         end
       }
     }

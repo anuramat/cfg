@@ -58,7 +58,7 @@ specs.lspconfig = {
     require('lspconfig.ui.windows').default_options.border = 'rounded'
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     local on_attach = function(_, buffer)
-      k.lsp_set(buffer)
+      k.lsp(buffer)
     end
     -- ~~~~~~~~~~~~~~~~~~~~~~ configure lsps and cmp ~~~~~~~~~~~~~~~~~~~~~~~ --
     local capabilities = vim.lsp.protocol.make_client_capabilities()

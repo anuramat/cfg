@@ -44,7 +44,7 @@ end
 function m.debug_events(events)
   local g = vim.api.nvim_create_augroup("event_debugger", { clear = true })
   local counter = 0
-  for _, e in ipairs(events) do
+  for _, e in pairs(events) do
     vim.api.nvim_create_autocmd(e, {
       group = g,
       callback = function(opts)
@@ -57,7 +57,7 @@ end
 
 --- Simulates key press
 --- @param rawkey string Key, e.g. "<c-n>", "<cr>" or "K"
-local function press(rawkey)
+function m.press(rawkey)
   local key = vim.api.nvim_replace_termcodes(rawkey, true, true, true)
   vim.api.nvim_feedkeys(key, 'n', false)
 end

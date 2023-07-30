@@ -38,7 +38,7 @@ vmap("<a-k>", ":m '<-2<cr>gv=gv", "Move line up")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Homegrown ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 nmap("<leader>#", require("config.macros").CreateCommentHeader, "Create comment header")
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.lsp_set = function(buffer)
+M.lsp = function(buffer)
   local n = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
@@ -68,7 +68,7 @@ M.lsp_set = function(buffer)
   n('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.trouble_lazy = function()
+M.trouble = function()
   local function d(x)
     return "Trouble: " .. x
   end
@@ -84,7 +84,7 @@ M.trouble_lazy = function()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.flash_lazy = function()
+M.flash = function()
   local function d(x)
     return "Flash: " .. x
   end
@@ -95,7 +95,7 @@ M.flash_lazy = function()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.treesj_lazy = function()
+M.treesj = function()
   return { {
     "<leader>m",
     mode = { "n" },
@@ -106,7 +106,7 @@ M.treesj_lazy = function()
   } }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.cmp_custom = {
+M.cmp = {
   c = function()
     local cmp = require('cmp')
     return {
@@ -182,7 +182,7 @@ M.telescope = {
   end
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.harpoon_lazy = function()
+M.harpoon = function()
   local function d(x)
     return "Harpoon: " .. x
   end
@@ -203,6 +203,48 @@ M.harpoon_lazy = function()
     { "<leader>hp", function() require("harpoon.ui").nav_prev() end,          desc = d("Prev File") },
     { "<leader>hn", function() require("harpoon.ui").nav_next() end,          desc = d("Next File") },
     unpack(get_num_mappings()),
+  }
+end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Surround ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.surround = {
+  -- insert = "<c-g>s",
+  -- insert_line = "<c-g>S",
+  normal = "<leader>s",
+  normal_cur = "<leader>ss",
+  normal_line = "<leader>S",
+  normal_cur_line = "<leader>SS",
+  visual = "<leader>s",
+  visual_line = "<leader>S",
+  -- delete = "ds",
+  -- change = "cs",
+  -- change_line = "cS",
+}
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.comment = {
+  toggler = {
+    line = '<leader>cc',
+    block = '<leader>CC',
+  },
+  opleader = {
+    line = '<leader>c',
+    block = '<leader>C',
+  },
+  extra = {
+    above = '<leader>cO',
+    below = '<leader>co',
+    eol = '<leader>cA',
+  },
+}
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mini.ai ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.miniai = function()
+  local ai = require('mini.ai')
+  return { -- TODO more textobjects
+    o = ai.gen_spec.treesitter({
+      a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+      i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+    }, {}),
+    f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+    c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

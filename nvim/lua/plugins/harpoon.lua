@@ -5,7 +5,7 @@ local k = require("config.keys")
 
 specs.harpoon = {
   'ThePrimeagen/harpoon',
-  keys = k.harpoon_lazy(),
+  keys = k.harpoon(),
   dependencies = {
     'nvim-lua/plenary.nvim', },
   opts = {

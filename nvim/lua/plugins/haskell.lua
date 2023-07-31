@@ -3,10 +3,6 @@ local specs = {}
 local u = require("utils")
 local k = require("config.keys")
 
-local function get_opts(b, d)
-  return { buffer = b, desc = "Haskell Tools: " .. d }
-end
-
 specs.haskell = {
   "mrcjkb/haskell-tools.nvim",
   dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },

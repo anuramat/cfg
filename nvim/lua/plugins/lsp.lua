@@ -1,7 +1,7 @@
 local specs = {}
 
-local u = require('utils')
-local k = require('config.keys')
+local u = require 'utils'
+local k = require 'config.keys'
 
 local cfgs = {}
 
@@ -51,20 +51,22 @@ specs.lspconfig = {
     'kevinhwang91/nvim-ufo',
   },
   config = function()
-    local lspconfig = require('lspconfig')
+    local lspconfig = require 'lspconfig'
 
     -- borders
     vim.diagnostic.config { float = { border = 'rounded' } }
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
-    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
-    require('lspconfig.ui.windows').default_options.border = 'rounded'
+    vim.lsp.handlers['textDocument/hover'] =
+        vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+    vim.lsp.handlers['textDocument/signatureHelp'] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+    require 'lspconfig.ui.windows'.default_options.border = 'rounded' -- <cmd>LspInfo
 
     -- mappings
     local on_attach = function(_, buffer) k.lsp(buffer) end
 
     -- cmp and ufo
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    capabilities = require 'cmp_nvim_lsp'.default_capabilities(capabilities)
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true
@@ -72,11 +74,11 @@ specs.lspconfig = {
 
     -- register servers
     for server, settings in pairs(cfgs) do
-      lspconfig[server].setup({
+      lspconfig[server].setup {
         capabilities = capabilities,
         on_attach = on_attach,
         settings = settings,
-      })
+      }
     end
   end,
 }

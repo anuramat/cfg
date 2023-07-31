@@ -100,7 +100,7 @@ specs.bqf = {
 
 specs.sleuth = {
   'tpope/vim-sleuth',
-  event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
+  -- event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
 }
 
 specs.undotree = {

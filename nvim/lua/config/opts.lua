@@ -4,27 +4,17 @@ o.expandtab = true
 o.formatoptions = "ro/qwjp"
 o.shiftround = true
 o.shiftwidth = 0
-o.tabstop = 4
+o.tabstop = 2
 o.textwidth = 79
--- Use tabs in Go files
-local go_group = vim.api.nvim_create_augroup("Go Indentation", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
-  group = go_group,
-  pattern = { "go" },
-  command = "setlocal noexpandtab",
-})
 -- Autoformat on save
-local af_group = vim.api.nvim_create_augroup("LSP Autoformat", { clear = true })
+local af_group = vim.api.nvim_create_augroup("LSPAutoformat", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = af_group,
   callback = function()
     local client = vim.lsp.get_active_clients()[1]
     if not (client and client.server_capabilities.documentFormattingProvider) then return end
-    local ok, err = pcall(
-      function()
-        vim.lsp.buf.format({ async = false })
-      end)
-    if not ok then print(err) end
+    -- TODO figure out why this errors out on markdown:
+    pcall(function() vim.lsp.buf.format({ async = false }) end)
   end,
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
@@ -37,12 +27,12 @@ local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
 clhl.underline = true
 vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+local hl_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
+  group = hl_group,
   pattern = '*',
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

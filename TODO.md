@@ -6,6 +6,8 @@
 - make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)
 - add some basic commands to rcs like "cfg push/pull"
+- check if install_file can ever create a folder with basename of path
+(== if install_file is always sane)
 
 ```bash
   cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w 50 | head -n 1

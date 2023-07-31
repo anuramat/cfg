@@ -1,6 +1,5 @@
 local M = {}
-
-local u = require 'utils'
+local u = require('utils')
 
 --- Creates comment header I guess.
 --- @param chr string Character that fills the header
@@ -20,14 +19,18 @@ function M.create_comment_header(chr, adjust_width)
 
     -- get the header format string
     local commentstring = vim.api.nvim_buf_get_option(0, 'commentstring')
+    print('' == vim.api.nvim_buf_get_option(0, 'commentstring'))
     commentstring = u.trim(commentstring)
-    local header = '%s'
-    if commentstring == '' then
-      header = '%s'
-    elseif commentstring:sub(-2) ~= '%s' then
-      header = commentstring
-    else
+    local header
+    if commentstring:sub(-2) == '%s' then
+      -- classic case, eg python "# comment"
       header = commentstring .. commentstring:reverse():sub(3)
+    elseif commentstring == '' then
+      -- plaintext
+      header = '%s'
+    else
+      -- weird stuff like html "<!-- comment -->"
+      header = commentstring
     end
 
     -- make the filling

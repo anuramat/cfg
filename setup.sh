@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 source lib/utils.sh
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-install2folder nvim/lua nvim/init.lua "$HOME/.config/nvim"
+install2folder nvim "$HOME/.config"
 install2folder config/karabiner.json "$HOME/.config/karabiner"
 install2file config/bashrc.sh "$HOME/.bashrc"
 install2file config/config.fish "$HOME/.config/fish"
+install2file config/shellcheckrc "$HOME/.config/shellcheckrc"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
 ensure_string "hehe" "$HOME/.hushlogin"

@@ -19,7 +19,7 @@ specs.treesitter = {
   },
   opts = {
     highlight = { enable = true },
-    indent = { enable = true, disable = { 'python' } }, -- noexpandtab is broken with python
+    indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = langs,
     incremental_selection = {
       enable = true,

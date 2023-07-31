@@ -10,8 +10,8 @@ specs.lualine = {
     return {
       options = {
         theme = "dracula-nvim",
-        section_separators = { left = "", right = "" },
-        component_separators = { left = "\\", right = "/" },
+        section_separators = { left = "", right = "" },
+        component_separators = { left = "", right = "" },
         globalstatus = true,
         refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
       },

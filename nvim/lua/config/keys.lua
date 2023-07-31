@@ -1,58 +1,56 @@
 local M = {}
-
-local u = require('utils')
-
+local utils = require('utils')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>
 -- Closely integrated mappings do not (have to) conform to this "rule".
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-local function nmap(l, r, d) vim.keymap.set('n', l, r, { silent = true, desc = d }) end
-local function vmap(l, r, d) vim.keymap.set('v', l, r, { silent = true, desc = d }) end
-local function imap(l, r, d) vim.keymap.set('i', l, r, { silent = true, desc = d }) end
+local s = vim.keymap.set
+local function nmap(l, r, d) s('n', l, r, { silent = true, desc = d }) end
+local function vmap(l, r, d) s('v', l, r, { silent = true, desc = d }) end
+local function imap(l, r, d) s('i', l, r, { silent = true, desc = d }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Built-in ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-vim.g.mapleader = ' '
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { silent = true })
+function M.main()
+  vim.g.mapleader = ' '
+  s({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+  s('t', '<esc>', '<c-\\><c-n>', { silent = true })
+  -- Buffer
+  nmap('<leader>bn', ':bn<cr>', 'Next Buffer')
+  nmap('<leader>bp', ':bp<cr>', 'Previous Buffer')
+  nmap('<leader>bd', ':bd<cr>', 'Delete Buffer')
+  nmap('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
+  -- Quickfix
+  nmap('<leader>qc', ':ccl<cr>', 'Close Quickfix')
+  nmap('<leader>qo', ':cope<cr>', 'Open Quickfix')
+  nmap('<leader>qp', ':cn<cr>', 'Prev Quickfix')
+  nmap('<leader>qn', ':cp<cr>', 'Next Quickfix')
+  nmap('<leader>qf', ':cnew<cr>', 'Prev Quickfix List')
+  nmap('<leader>qb', ':col<cr>', 'Next Quickfix List')
+  nmap('<leader>qh', ':chi<cr>', 'Quickfix History')
+  -- Scroll with centered cursor
+  nmap('<c-u>', '<c-u>zz0', 'Scroll Up')
+  nmap('<c-d>', '<c-d>zz0', 'Scroll Down')
+  nmap('<c-b>', '<c-b>zz0', 'Page Up')
+  nmap('<c-f>', '<c-f>zz0', 'Page Down')
+  -- Move lines (I still don't get why it's -2)
+  nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
+  nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')
+  vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move Line Down')
+  vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move Line Up')
+  imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
+  imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
+  -- Header
+  local header = function() require('config.macros').create_comment_header('~', false) end
+  nmap('<leader>#', header, 'Create Comment Header')
+end
 
--- Buffer
-nmap('<leader>bn', ':bn<cr>', 'Next Buffer')
-nmap('<leader>bp', ':bp<cr>', 'Previous Buffer')
-nmap('<leader>bd', ':bd<cr>', 'Delete Buffer')
-nmap('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
-
--- Quickfix
-nmap('<leader>qc', ':ccl<cr>', 'Close Quickfix')
-nmap('<leader>qo', ':cope<cr>', 'Open Quickfix')
-nmap('<leader>qp', ':cn<cr>', 'Prev Quickfix')
-nmap('<leader>qn', ':cp<cr>', 'Next Quickfix')
-nmap('<leader>qf', ':cnew<cr>', 'Prev Quickfix List')
-nmap('<leader>qb', ':col<cr>', 'Next Quickfix List')
-nmap('<leader>qh', ':chi<cr>', 'Quickfix History')
-
--- Scroll with centered cursor
-nmap('<c-u>', '<c-u>zz0', 'Scroll Up')
-nmap('<c-d>', '<c-d>zz0', 'Scroll Down')
-nmap('<c-b>', '<c-b>zz0', 'Page Up')
-nmap('<c-f>', '<c-f>zz0', 'Page Down')
-
--- Move lines (I still don't get why it's -2)
-nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
-nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')
-vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move Line Down')
-vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move Line Up')
-imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
-imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
-
-local header = function() require('config.macros').create_comment_header('~', false) end
-nmap('<leader>#', header, 'Create Comment Header')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
   local n = function(keys, func, desc)
-    vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
+    s('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
 
-  local function list_workspace_folders()
+  local list_workspace_folders = function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end
 
@@ -78,7 +76,7 @@ M.lsp = function(buffer)
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.trouble = function()
-  local function d(x) return 'Trouble: ' .. x end
+  local d = function(x) return 'Trouble: ' .. x end
   return {
     { '<leader>tt', '<cmd>TroubleToggle<cr>',                 desc = d('Toggle') },
     { '<leader>tD', '<cmd>Trouble workspace_diagnostics<cr>', desc = d('Workspace Diagnostics') },
@@ -92,7 +90,7 @@ M.trouble = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.flash = function()
-  local function d(x) return 'Flash: ' .. x end
+  local d = function(x) return 'Flash: ' .. x end
   return {
     { 's', mode = { 'n', },     function() require('flash').jump() end,       desc = d('Jump') },
     { 'S', mode = { 'n', 'o' }, function() require('flash').treesitter() end, desc = d('Treesitter') },
@@ -124,7 +122,7 @@ M.cmp = {
             if cmp.visible() then
               cmp.abort()
             end
-            u.press('C-f')
+            utils.press('C-f')
           end
       ,
       ['<C-n>'] = cmp.config.disable,
@@ -163,7 +161,7 @@ M.telescope = {
   d = function(x) return 'Telescope: ' .. x end,
   builtin = function()
     local d = M.telescope.d
-    local function tfuz()
+    local tfuz = function()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
         winblend = 10,
         previewer = false,
@@ -200,8 +198,8 @@ M.telescope = {
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.harpoon = function()
-  local function d(x) return 'Harpoon: ' .. x end
-  local function get_num_mappings()
+  local d = function(x) return 'Harpoon: ' .. x end
+  local get_num_mappings = function()
     local res = {}
     for i = 1, 9 do
       res[i] = {
@@ -279,41 +277,38 @@ M.treesitter = {
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.gitsigns = function(buffer)
   local gs = package.loaded.gitsigns
-  local function n(mode, l, r, desc)
-    vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+  local function ss(mode, l, r, desc)
+    s(mode, l, r, { buffer = buffer, desc = 'GitSigns: ' .. desc })
   end
-  local function d(x) return 'GitSigns: ' .. x end
-
-  n('n', ']h', gs.next_hunk, d('Next Hunk'))
-  n('n', '[h', gs.prev_hunk, d('Prev Hunk'))
-  n({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<cr>', d('Stage Hunk'))
-  n({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<cr>', d('Reset Hunk'))
-  n('n', '<leader>gS', gs.stage_buffer, d('Stage Buffer'))
-  n('n', '<leader>gR', gs.reset_buffer, d('Reset Buffer'))
-  n('n', '<leader>gu', gs.undo_stage_hunk, d('Undo Stage Hunk'))
-  n('n', '<leader>gp', gs.preview_hunk, d('Preview Hunk'))
-  n('n', '<leader>gb', function() gs.blame_line({ full = true }) end, d('Blame Line'))
-  n('n', '<leader>gd', gs.diffthis, d('Diff This'))
-  n('n', '<leader>gD', function() gs.diffthis('~') end, d('Diff This ~'))
-  n({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', d('Select Hunk'))
+  ss('n', ']h', gs.next_hunk, 'Next Hunk')
+  ss('n', '[h', gs.prev_hunk, 'Prev Hunk')
+  ss({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<cr>', 'Stage Hunk')
+  ss({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<cr>', 'Reset Hunk')
+  ss('n', '<leader>gS', gs.stage_buffer, 'Stage Buffer')
+  ss('n', '<leader>gR', gs.reset_buffer, 'Reset Buffer')
+  ss('n', '<leader>gu', gs.undo_stage_hunk, 'Undo Stage Hunk')
+  ss('n', '<leader>gp', gs.preview_hunk, 'Preview Hunk')
+  ss('n', '<leader>gb', function() gs.blame_line({ full = true }) end, 'Blame Line')
+  ss('n', '<leader>gd', gs.diffthis, 'Diff This')
+  ss('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff This ~')
+  ss({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select Hunk')
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ haskell-tools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.haskell_tools = {
-  d = function(x) return 'Haskell Tools: ' .. x end,
-  main = function(buf)
-    local ht = require('haskell-tools')
-    local d = M.haskell_tools.d
-    vim.keymap.set('n', '<leader>hrp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
-    vim.keymap.set('n', '<leader>hrb',
-      function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, { buffer = buf, d('Toggle Buffer REPL') })
-    vim.keymap.set('n', '<leader>hrq', ht.repl.quit, { buffer = buf, d('Quit REPL') })
-  end,
-  lsp = function(buf)
-    local ht = require('haskell-tools')
-    local d = M.haskell_tools.d
-    vim.keymap.set('n', '<leader>hh', ht.hoogle.hoogle_signature, { buffer = buf, d('Show Hoogle Signature') })
-    vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all, { buffer = buf, d('Evaluate All') })
-  end
-}
+M.haskell_tools = function()
+  local d = function(x) return 'Haskell Tools: ' .. x end
+  local ht = require('haskell-tools')
+  return {
+    main = function(buf)
+      s('n', '<leader>hrp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
+      s('n', '<leader>hrb',
+        function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, { buffer = buf, d('Toggle Buffer REPL') })
+      s('n', '<leader>hrq', ht.repl.quit, { buffer = buf, d('Quit REPL') })
+    end,
+    lsp = function(buf)
+      s('n', '<leader>hh', ht.hoogle.hoogle_signature, { buffer = buf, d('Show Hoogle Signature') })
+      s('n', '<leader>he', ht.lsp.buf_eval_all, { buffer = buf, d('Evaluate All') })
+    end
+  }
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

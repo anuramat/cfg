@@ -16,11 +16,12 @@ specs.haskell = {
     require('telescope').load_extension('ht')
     local ht = require('haskell-tools')
     local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local hk = k.haskell_tools()
     local hls_config = {
       hls = {
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
         on_attach = function(_, buf)
-          k.haskell_tools.lsp(buf)
+          hk.lsp(buf)
           k.lsp(buf)
         end
       }
@@ -32,7 +33,7 @@ specs.haskell = {
       callback = function()
         ht.start_or_attach(hls_config)
         local buf = vim.api.nvim_get_current_buf()
-        k.haskell_tools.main(buf)
+        hk.main(buf)
         -- Detect nvim-dap launch configurations
         -- (requires nvim-dap and haskell-debug-adapter)
         -- ht.dap.discover_configurations(bufnr)

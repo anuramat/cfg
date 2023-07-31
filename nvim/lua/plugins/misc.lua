@@ -98,10 +98,10 @@ specs.bqf = {
   opts = {},
 }
 
-specs.sleuth = {
-  'tpope/vim-sleuth',
-  -- event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
-}
+-- specs.sleuth = {
+--   'tpope/vim-sleuth',
+--   event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
+-- }
 
 specs.undotree = {
   'mbbill/undotree',
@@ -119,5 +119,13 @@ specs.marks = {
   event = 'VeryLazy',
   opts = {},
 }
+
+-- specs.readline = {
+--   'linty-org/readline.nvim',
+--   event = 'VeryLazy',
+--   config = function()
+--     k.readline()
+--   end,
+-- }
 
 return u.values(specs)

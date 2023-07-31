@@ -310,5 +310,22 @@ M.haskell_tools = function()
     end
   }
 end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.readline = function()
+  local rl = require('readline')
+  s('!', '<c-k>', rl.kill_line)
+  s('!', '<c-u>', rl.backward_kill_line)
+  s('!', '<a-d>', rl.kill_word)
+  s('!', '<a-bs>', rl.backward_kill_word)
+  s('!', '<c-w>', rl.unix_word_rubout)
+  s('!', '<c-d>', '<delete>') -- delete-char
+  s('!', '<c-h>', '<bs>')     -- backward-delete-char
+  s('!', '<c-a>', rl.beginning_of_line)
+  s('!', '<c-e>', rl.end_of_line)
+  s('!', '<a-f>', rl.forward_word)
+  s('!', '<a-b>', rl.backward_word)
+  s('!', '<c-f>', '<right>') -- forward-char
+  s('!', '<c-b>', '<left>')  -- backward-char
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

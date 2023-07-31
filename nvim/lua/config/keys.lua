@@ -1,47 +1,47 @@
 local M = {}
-local utils = require('utils')
+local u = require('utils')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>
 -- Closely integrated mappings do not (have to) conform to this "rule".
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local s = vim.keymap.set
-local function nmap(l, r, d) s('n', l, r, { silent = true, desc = d }) end
-local function vmap(l, r, d) s('v', l, r, { silent = true, desc = d }) end
-local function imap(l, r, d) s('i', l, r, { silent = true, desc = d }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Built-in ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.main()
   vim.g.mapleader = ' '
+  local n = function(l, r, d) s('n', l, r, { silent = true, desc = d }) end
+  local v = function(l, r, d) s('v', l, r, { silent = true, desc = d }) end
+  local i = function(l, r, d) s('i', l, r, { silent = true, desc = d }) end
   s({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
   s('t', '<esc>', '<c-\\><c-n>', { silent = true })
   -- Buffer
-  nmap('<leader>bn', ':bn<cr>', 'Next Buffer')
-  nmap('<leader>bp', ':bp<cr>', 'Previous Buffer')
-  nmap('<leader>bd', ':bd<cr>', 'Delete Buffer')
-  nmap('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
+  n('<leader>bn', ':bn<cr>', 'Next Buffer')
+  n('<leader>bp', ':bp<cr>', 'Previous Buffer')
+  n('<leader>bd', ':bd<cr>', 'Delete Buffer')
+  n('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
   -- Quickfix
-  nmap('<leader>qc', ':ccl<cr>', 'Close Quickfix')
-  nmap('<leader>qo', ':cope<cr>', 'Open Quickfix')
-  nmap('<leader>qp', ':cn<cr>', 'Prev Quickfix')
-  nmap('<leader>qn', ':cp<cr>', 'Next Quickfix')
-  nmap('<leader>qf', ':cnew<cr>', 'Prev Quickfix List')
-  nmap('<leader>qb', ':col<cr>', 'Next Quickfix List')
-  nmap('<leader>qh', ':chi<cr>', 'Quickfix History')
+  n('<leader>qc', ':ccl<cr>', 'Close Quickfix')
+  n('<leader>qo', ':cope<cr>', 'Open Quickfix')
+  n('<leader>qp', ':cn<cr>', 'Prev Quickfix')
+  n('<leader>qn', ':cp<cr>', 'Next Quickfix')
+  n('<leader>qf', ':cnew<cr>', 'Prev Quickfix List')
+  n('<leader>qb', ':col<cr>', 'Next Quickfix List')
+  n('<leader>qh', ':chi<cr>', 'Quickfix History')
   -- Scroll with centered cursor
-  nmap('<c-u>', '<c-u>zz0', 'Scroll Up')
-  nmap('<c-d>', '<c-d>zz0', 'Scroll Down')
-  nmap('<c-b>', '<c-b>zz0', 'Page Up')
-  nmap('<c-f>', '<c-f>zz0', 'Page Down')
+  n('<c-u>', '<c-u>zz0', 'Scroll Up')
+  n('<c-d>', '<c-d>zz0', 'Scroll Down')
+  n('<c-b>', '<c-b>zz0', 'Page Up')
+  n('<c-f>', '<c-f>zz0', 'Page Down')
   -- Move lines (I still don't get why it's -2)
-  nmap('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
-  nmap('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')
-  vmap('<a-j>', ":m '>+1<cr>gv=gv", 'Move Line Down')
-  vmap('<a-k>', ":m '<-2<cr>gv=gv", 'Move Line Up')
-  imap('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
-  imap('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
+  n('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
+  n('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')
+  v('<a-j>', ":m '>+1<cr>gv=gv", 'Move Line Down')
+  v('<a-k>', ":m '<-2<cr>gv=gv", 'Move Line Up')
+  i('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
+  i('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
   -- Header
   local header = function() require('config.macros').create_comment_header('~', false) end
-  nmap('<leader>#', header, 'Create Comment Header')
+  n('<leader>#', header, 'Create Comment Header')
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
@@ -122,7 +122,7 @@ M.cmp = {
             if cmp.visible() then
               cmp.abort()
             end
-            utils.press('C-f')
+            u.press('C-f')
           end
       ,
       ['<C-n>'] = cmp.config.disable,

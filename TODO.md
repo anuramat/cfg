@@ -8,6 +8,7 @@
 - add some basic commands to rcs like "cfg push/pull"
 - check if install_file can ever create a folder with basename of path
 (== if install_file is always sane)
+- keep a single file with stuff common for fish and bash
 
 ```bash
   cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9' | fold -w 50 | head -n 1

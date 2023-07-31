@@ -12,6 +12,13 @@ if status is-interactive
     alias hehe='fd ".*\\.go" . | rg -v "test|e2e|\\.pb.*\\.go" | xargs rg -M=200 -i "\".*[а-я].*\""' 
     alias hoho='fd ".*\\.go" . | rg -v "test|e2e|\\.pb.*\\.go" | xargs rg -M=200 -i "transl|i18n|l10n"' 
 
+    # Preview file content using bat 
+    export FZF_CTRL_T_OPTS="
+      --preview 'bat -n --color=always {}'
+      --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+    # Print tree structure in the preview window
+    export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
     export EDITOR="nvim"
     export VISUAL="$EDITOR"
     export _ZO_RESOLVE_SYMLINKS="1"

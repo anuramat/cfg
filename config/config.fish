@@ -9,7 +9,8 @@ if status is-interactive
     alias j="z"
 
     # temporary
-    alias hehe='fd ".*.go" . | rg -v "test|e2e|.pb.go" | xargs rg -i "\".*[а-я].*\""'
+    alias hehe='fd ".*\\.go" . | rg -v "test|e2e|\\.pb.*\\.go" | xargs rg -M=200 -i "\".*[а-я].*\""' 
+    alias hoho='fd ".*\\.go" . | rg -v "test|e2e|\\.pb.*\\.go" | xargs rg -M=200 -i "transl|i18n|l10n"' 
 
     export EDITOR="nvim"
     export VISUAL="$EDITOR"

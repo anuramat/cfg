@@ -1,5 +1,4 @@
 local specs = {}
-
 local u = require('utils')
 
 -- Sets fold indicator to show number of hidden lines

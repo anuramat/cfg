@@ -1,13 +1,12 @@
 local specs = {}
-
-local u = require("utils")
-local k = require("config.keys")
+local k = require('config.keys')
+local u = require('utils')
 
 specs.haskell = {
-  "mrcjkb/haskell-tools.nvim",
-  dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-  branch = "1.x.x",
-  ft = { "haskell", "lhaskell", "cabal" },
+  'mrcjkb/haskell-tools.nvim',
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+  branch = '1.x.x',
+  ft = { 'haskell', 'lhaskell', 'cabal' },
   config = function()
     require('telescope').load_extension('ht')
     local ht = require('haskell-tools')
@@ -25,7 +24,7 @@ specs.haskell = {
     local hls_augroup = vim.api.nvim_create_augroup('haskell-lsp', { clear = true })
     vim.api.nvim_create_autocmd('FileType', {
       group = hls_augroup,
-      pattern = { "haskell", "lhaskell", "cabal" },
+      pattern = { 'haskell', 'lhaskell', 'cabal' },
       callback = function()
         ht.start_or_attach(hls_config)
         local buf = vim.api.nvim_get_current_buf()

@@ -1,7 +1,6 @@
 local specs = {}
-
-local u = require("utils")
-local k = require("config.keys")
+local k = require('config.keys')
+local u = require('utils')
 
 specs.harpoon = {
   'ThePrimeagen/harpoon',

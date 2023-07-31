@@ -1,7 +1,6 @@
 local specs = {}
-
-local u = require('utils')
 local k = require('config.keys')
+local u = require('utils')
 
 local langs = {
   'go', 'gosum', 'gomod', 'gowork', 'python', 'haskell', 'bash', 'c', 'json',

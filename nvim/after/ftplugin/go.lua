@@ -1,2 +1,1 @@
-vim.cmd([[setlocal tabstop=1000]])
-
+vim.cmd('setlocal noexpandtab')

@@ -16,6 +16,7 @@ fish -c "set -Ux LANG 'en_US.UTF-8'"
 fish -c "set -Ux LC_ALL 'en_US.UTF-8'"
 fish -c "fish_add_path '$HOME/go/bin'"
 fish -c "fish_add_path /opt/homebrew/bin/"
+/opt/homebrew/opt/fzf/install
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ macOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 screenshot_dir="$HOME/Screenshots"
 ensure_path "$screenshot_dir"

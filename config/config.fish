@@ -8,6 +8,9 @@ if status is-interactive
     alias tree="$default_exa --tree"
     alias j="z"
 
+    # temporary
+    alias hehe='fd ".*.go" . | rg -v "test|e2e|.pb.go" | xargs rg -i "\".*[а-я].*\""'
+
     export EDITOR="nvim"
     export VISUAL="$EDITOR"
     export _ZO_RESOLVE_SYMLINKS="1"

@@ -92,23 +92,19 @@ end
 M.flash = function()
   local d = function(x) return 'Flash: ' .. x end
   return {
-    { 's', mode = { 'n', },     function() require('flash').jump() end,       desc = d('Jump') },
+    { 's', mode = 'n',          function() require('flash').jump() end,       desc = d('Jump') },
+    { 'r', mode = 'o',          function() require('flash').remote() end,     desc = d('Remote') },
     { 'S', mode = { 'n', 'o' }, function() require('flash').treesitter() end, desc = d('Treesitter') },
-    { 'r', mode = { 'o' },      function() require('flash').remote() end,     desc = d('Remote') },
-    't', 'T', 'f', 'F'
+    't', 'T',
+    'f', 'F',
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.treesj = function()
-  return { {
-    '<leader>j',
-    mode = { 'n' },
-    function()
-      require('treesj').toggle()
-    end,
-    desc = 'TreeSJ: Toggle'
-  } }
-end
+M.treesj = { {
+  '<leader>j',
+  function() require('treesj').toggle() end,
+  desc = 'TreeSJ: Toggle'
+} }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.cmp = {
   -- for the most part using cmp defaults
@@ -220,23 +216,11 @@ M.harpoon = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Surround ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.surround = {
-  -- using defaults
+  -- using defaults: ysiw( ds(
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.comment = {
-  toggler = {
-    line = '<leader>cc',
-    block = '<leader>CC',
-  },
-  opleader = {
-    line = '<leader>c',
-    block = '<leader>C',
-  },
-  extra = {
-    above = '<leader>cO',
-    below = '<leader>co',
-    eol = '<leader>cA',
-  },
+  -- using defaults: gcc
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mini.ai ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.miniai = function()

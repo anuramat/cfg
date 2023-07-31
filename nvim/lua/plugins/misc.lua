@@ -39,9 +39,12 @@ specs.surround = {
 
 specs.treesj = {
   'Wansmer/treesj',
-  -- event = 'VeryLazy',
   version = false,
-  opts = { use_default_keymaps = false },
+  opts = {
+    use_default_keymaps = false,
+    max_join_length = 500,
+  },
+  keys = k.treesj,
 }
 
 specs.comment = {
@@ -54,6 +57,7 @@ specs.comment = {
     require('Comment').setup(opts)
   end,
 }
+
 
 specs.ai = {
   'echasnovski/mini.ai',
@@ -69,7 +73,16 @@ specs.ai = {
 
 specs.flash = {
   'folke/flash.nvim',
-  opts = { modes = { search = { enabled = false } } },
+  opts = {
+    modes = {
+      search = {
+        enabled = false,
+      },
+      char = {
+        highlight = { backdrop = false },
+      },
+    },
+  },
   keys = k.flash(),
 }
 

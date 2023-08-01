@@ -18,16 +18,6 @@
 ```
 
 # nvim todo
-- :norm
-- recording
-- double star, find vs edit
-- C-x
-- C-o 
-- g.* commands
-- default textobjects, mini.ai, matchit, []
-- loclist usage
-- way to properly delete global marks
-- vimgrep
 
 ## configuration:
 - check todo comments pattern

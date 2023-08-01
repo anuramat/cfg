@@ -1,5 +1,5 @@
 # CFG TODO
-
+- add git aliases
 - add fish locale to setup/config?
 - verify mac defaults command for locale
 - condarc and conda init in bashscript
@@ -26,9 +26,6 @@
 - remove repeat search on f/t
 - fix format bug on markdown
 - [LSP] Format request failed, no matching language servers.
-
-## remove bloat:
-- trouble vs bqf? too much overlap, also with telescope
 
 ## overkill:
 - dap

@@ -101,7 +101,6 @@ specs.trouble = {
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   keys = k.trouble(),
-  opts = {},
 }
 
 -- specs.sleuth = {

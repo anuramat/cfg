@@ -6,6 +6,7 @@ install2folder config/karabiner.json "$HOME/.config/karabiner"
 install2file config/bashrc.sh "$HOME/.bashrc"
 install2file config/config.fish "$HOME/.config/fish"
 install2file config/shellcheckrc "$HOME/.config/shellcheckrc"
+install2file config/git.cfg "$HOME/.gitconfig"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
 ensure_string "hehe" "$HOME/.hushlogin"

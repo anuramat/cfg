@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function ensure_path {
+ensure_path() {
   # $1 -- target path
   local -r target="$1"
 
@@ -43,16 +43,11 @@ function make_symlink {
 }
 
 function install2folder {
-  # $1..n-1 -- source files
-  # $n -- target directory
-  local original
-  local -r target_dir="${@:$#}"
+  local -r original="$(realpath "$1")"
+  local -r target_dir="$2"
 
-  for ((i = 1; i < $#; i++)); do
-    original="$(realpath "${!i}")"
-    ensure_path "$target_dir" || return 1
-    install2file "$original" "$target_dir"
-  done
+  ensure_path "$target_dir" || return 1
+  install2file "$original" "$target_dir"
 }
 
 function install2file {

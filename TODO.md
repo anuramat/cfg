@@ -1,13 +1,9 @@
 # CFG TODO
 - add git aliases
-- add fish locale to setup/config?
-- verify mac defaults command for locale
 - condarc and conda init in bashscript
 - make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)
 - add some basic commands to rcs like "cfg push/pull"
-- check if install_file can ever create a folder with basename of path
-(== if install_file is always sane)
 - keep a single file with stuff common for fish and bash
 - configure fish prompt to resemble bash one
 

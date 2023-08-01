@@ -75,12 +75,8 @@ specs.flash = {
   'folke/flash.nvim',
   opts = {
     modes = {
-      search = {
-        enabled = false,
-      },
-      char = {
-        highlight = { backdrop = false },
-      },
+      search = { enabled = false },
+      char = { enabled = false }
     },
   },
   keys = k.flash(),

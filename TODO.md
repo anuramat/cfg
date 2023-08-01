@@ -17,10 +17,6 @@
 ## configuration:
 - check todo comments pattern
 - marks plugin mappings
-- rename keymaps -> mappings
-- remove repeat search on f/t
-- fix format bug on markdown
-- [LSP] Format request failed, no matching language servers.
 - move deps from lspconfig
 
 ## overkill:

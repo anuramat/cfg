@@ -75,7 +75,7 @@ function set_shell {
 
   [ "$SHELL" = "$shell" ] && return
   [ -f "$shell" ] || {
-    echo "[cfg.fail] \"$shell\" not found"
+    echo "[cfg.fail] shell \"$shell\" not found"
     return 1
   }
   sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"$shell\" /etc/shells"
@@ -85,7 +85,7 @@ function set_shell {
 function continue_prompt {
   local -r prompt="$1"
   while true; do
-    read -rp "$prompt" choice
+    read -rp "$prompt (y/n): " choice
     case "$choice" in
     y | Y)
       return 0
@@ -101,6 +101,6 @@ function try_overwrite {
   # $1 -- target
   local -r target="$1"
 
-  continue_prompt "Overwrite $target (y/n): " || return 1
+  continue_prompt "overwrite \"$target\"?" || return 1
   rm -rf "$target" || return 1
 }

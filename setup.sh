@@ -1,35 +1,39 @@
 #!/usr/bin/env bash
 source lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-install2folder nvim "$HOME/.config"
-install2folder config/karabiner.json "$HOME/.config/karabiner"
-install2file config/bashrc.sh "$HOME/.bashrc"
-install2file config/config.fish "$HOME/.config/fish"
-install2file config/shellcheckrc "$HOME/.config/shellcheckrc"
-install2file config/git.cfg "$HOME/.gitconfig"
+continue_prompt "Install configs?" && {
+  install2folder nvim "$HOME/.config"
+  install2folder config/karabiner.json "$HOME/.config/karabiner"
+  install2file config/bashrc.sh "$HOME/.bashrc"
+  install2file config/config.fish "$HOME/.config/fish"
+  install2file config/shellcheckrc "$HOME/.config/shellcheckrc"
+  install2file config/git.cfg "$HOME/.gitconfig"
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# bash
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
-ensure_string "hehe" "$HOME/.hushlogin"
-set_shell /opt/homebrew/bin/fish
+# fish
 fish -c "set -U fish_greeting"
 fish -c "set -Ux GOPATH '$HOME/go'"
-fish -c "set -Ux LANG 'en_US.UTF-8'"
-fish -c "set -Ux LC_ALL 'en_US.UTF-8'"
+fish -c "set -Ux LC_ALL 'en_US.UTF-8'" 
 fish -c "fish_add_path '$HOME/go/bin'"
-fish -c "fish_add_path /opt/homebrew/bin/"
-/opt/homebrew/opt/fzf/install
+fish -c "fish_add_path /opt/homebrew/bin/" 
+# common
+ensure_string "hehe" "$HOME/.hushlogin"
+continue_prompt "Install fzf integration?" && {
+  /opt/homebrew/opt/fzf/install
+}
+continue_prompt "Make fish the default shell?" && {
+  set_shell /opt/homebrew/bin/fish
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ macOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 screenshot_dir="$HOME/Screenshots"
 ensure_path "$screenshot_dir"
 defaults write com.apple.screencapture location -string "$screenshot_dir"
-# allow key repeat press and hold #
-defaults write -g ApplePressAndHoldEnabled -bool false
-# locale
-sudo defaults write .GlobalPreferences AppleLocale en_US
+defaults write -g ApplePressAndHoldEnabled -bool false # allow key repeat on hold
+defaults write NSGlobalDomain AppleLanguages -array "en" # system language
+# sudo languagesetup -langspec English # login language (i've heard it doesn't work)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ iTerm2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Set config path
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$(realpath config/iterm2)"
-# Autoload
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-# Autosave
-defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -int 2
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$(realpath config/iterm2)" # Set config path
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true # Autoload
+defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -int 2 # Autosave

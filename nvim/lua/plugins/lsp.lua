@@ -43,7 +43,7 @@ specs.neodev = { 'folke/neodev.nvim', opts = {} }
 
 specs.lspconfig = {
   'neovim/nvim-lspconfig',
-  event = { 'VeryLazy', 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'folke/neodev.nvim',
     'hrsh7th/nvim-cmp',
@@ -68,7 +68,7 @@ specs.lspconfig = {
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
-      lineFoldingOnly = true
+      lineFoldingOnly = true,
     }
 
     -- register servers
@@ -79,7 +79,21 @@ specs.lspconfig = {
         settings = settings,
       }
     end
-  end,
+  end
+}
+
+specs.null = {
+  'jose-elias-alvarez/null-ls.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = 'nvim-lua/plenary.nvim',
+  config = function()
+    local null_ls = require('null-ls')
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.shfmt
+      }
+    })
+  end
 }
 
 return u.values(specs)

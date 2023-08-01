@@ -1,4 +1,6 @@
 #!/usr/bin/env fish
+set -x LANG en_US.UTF-8
+
 if status is-interactive
     set default_exa "exa --group-directories-first --group --icons --header --git"
     alias f="nvim"

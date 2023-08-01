@@ -18,21 +18,21 @@ specs.cmp = {
     local cmp = require('cmp')
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup({
-      mapping = cmp.mapping.preset.insert(k.cmp.i()),
+      mapping = cmp.mapping.preset.insert(k.cmp.main()),
       snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end, },
       sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'luasnip' } }, { { name = 'buffer' } }),
       window = { documentation = cmp.config.window.bordered() },
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(k.cmp.c()),
+      mapping = cmp.mapping.preset.cmdline(k.cmp.cmdline()),
       sources = cmp.config.sources(
         { { name = 'path', option = { trailing_slash = true } } },
         { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }),
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline({ '/', '?' }, {
-      mapping = cmp.mapping.preset.cmdline(k.cmp.c()),
+      mapping = cmp.mapping.preset.cmdline(),
       sources = { { name = 'buffer' } },
     })
   end,

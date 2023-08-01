@@ -95,6 +95,7 @@ M.flash = function()
     { 's', mode = 'n',          function() require('flash').jump() end,       desc = d('Jump') },
     { 'r', mode = 'o',          function() require('flash').remote() end,     desc = d('Remote') },
     { 'S', mode = { 'n', 'o' }, function() require('flash').treesitter() end, desc = d('Treesitter') },
+    -- register default mappings for lazy loading
     't', 'T',
     'f', 'F',
   }
@@ -106,30 +107,15 @@ M.treesj = { {
   desc = 'TreeSJ: Toggle'
 } }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.cmp = {
-  -- for the most part using cmp defaults
-  -- trying to match default vim ins/cmdline-completion hotkeys
-  c = function()
-    local cmp = require('cmp')
-    return {
-      -- So that completion doesn't block the cmdline window
-      ['C-f'] =
-          function()
-            if cmp.visible() then
-              cmp.abort()
-            end
-            u.press('C-f')
-          end
-      ,
-      ['<C-n>'] = cmp.config.disable,
-      ['<C-p>'] = cmp.config.disable,
-    }
-  end,
-  i = function()
-    local cmp = require('cmp')
+-- for the most part using cmp defaults
+-- trying to match default vim ins/cmdline-completion hotkeys
+M.cmp =
+{
+  main = function()
     local luasnip = require('luasnip')
+    local cmp = require('cmp')
     return {
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      ['<tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_locally_jumpable() then
@@ -138,7 +124,7 @@ M.cmp = {
           fallback()
         end
       end, { 'i', 's' }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
+      ['<s-tab>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.locally_jumpable(-1) then
@@ -147,10 +133,31 @@ M.cmp = {
           fallback()
         end
       end, { 'i', 's' }),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<c-f>'] = cmp.mapping.scroll_docs(4),
+      ['<c-b>'] = cmp.mapping.scroll_docs(-4),
     }
-  end
+  end,
+  cmdline = function()
+    -- BUG: for some reason mappings need to be wrapped explicitly for cmdline:
+    -- [key] = cmp.mapping({ c = function })
+    local interrupters = { '<c-f>', '<c-d>' }
+    local cmp = require('cmp')
+    local result = {
+      ['<c-n>'] = cmp.mapping({ c = cmp.config.disable }),
+      ['<c-p>'] = cmp.mapping({ c = cmp.config.disable }),
+    }
+    for _, hotkey in pairs(interrupters) do
+      result[hotkey] = cmp.mapping({
+        c = function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          end
+          fallback()
+        end
+      })
+    end
+    return result
+  end,
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.telescope = {

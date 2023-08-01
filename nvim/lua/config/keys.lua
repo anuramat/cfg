@@ -32,6 +32,12 @@ function M.main()
   n('<c-d>', '<c-d>zz0', 'Scroll Down')
   n('<c-b>', '<c-b>zz0', 'Page Up')
   n('<c-f>', '<c-f>zz0', 'Page Down')
+  -- More reachable home/end
+  n('H', '^', 'Go to first non-blank character')
+  n('L', '$', 'Go to last character')
+  -- Move cursor by visual lines
+  n('k', 'gk', 'Go Up')
+  n('j', 'gj', 'Go Down')
   -- Move lines (I still don't get why it's -2)
   n('<a-j>', '<cmd>m .+1<cr>==', 'Move Line Down')
   n('<a-k>', '<cmd>m .-2<cr>==', 'Move Line Up')

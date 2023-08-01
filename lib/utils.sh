@@ -12,7 +12,7 @@ ensure_path() {
   echo "[cfg.write] created path \"$1\""
 }
 
-function ensure_string {
+ensure_string() {
   # $1 -- string
   # $2 -- target file
   local -r string="$1"
@@ -27,7 +27,7 @@ function ensure_string {
   echo "[cfg.write] appended \"$string\" to $target"
 }
 
-function make_symlink {
+make_symlink() {
   # $1 -- source file
   # $2 -- target file/directory
   local -r original="$(realpath "$1")"
@@ -42,7 +42,7 @@ function make_symlink {
   echo "[cfg.write] created symlink @ \"$target\""
 }
 
-function install2folder {
+install2folder() {
   local -r original="$(realpath "$1")"
   local -r target_dir="$2"
 
@@ -50,11 +50,11 @@ function install2folder {
   install2file "$original" "$target_dir"
 }
 
-function install2file {
+install2file() {
   # $1 -- source file
   # $2 -- target file
   local -r original="$(realpath "$1")"
-  local -r target=$2
+  local -r target="$2"
   local -r target_dir="$(dirname "$2")"
 
   [ -e "$original" ] || {
@@ -65,7 +65,7 @@ function install2file {
   make_symlink "$original" "$target" || return 1
 }
 
-function set_shell {
+set_shell() {
   shell="$1"
 
   [ "$SHELL" = "$shell" ] && return
@@ -77,7 +77,7 @@ function set_shell {
   chsh -s "$shell"
 }
 
-function continue_prompt {
+continue_prompt() {
   local -r prompt="$1"
   while true; do
     read -rp "$prompt (y/n): " choice
@@ -92,7 +92,7 @@ function continue_prompt {
   done
 }
 
-function try_overwrite {
+try_overwrite() {
   # $1 -- target
   local -r target="$1"
 

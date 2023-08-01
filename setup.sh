@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source lib/utils.sh
+. ./lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 continue_prompt "Install configs?" && {
   install2folder nvim "$HOME/.config"

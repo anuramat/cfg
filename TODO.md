@@ -1,7 +1,6 @@
 # CFG TODO
 - add git aliases
 - condarc and conda init in bashscript
-- make utils more posix (lastarg, for loop)
 - dump script for brewfile (merge?)
 - add some basic commands to rcs like "cfg push/pull"
 - keep a single file with stuff common for fish and bash

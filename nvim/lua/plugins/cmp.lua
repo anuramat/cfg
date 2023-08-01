@@ -24,17 +24,17 @@ specs.cmp = {
       window = { documentation = cmp.config.window.bordered() },
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(k.cmp.cmdline()),
-      sources = cmp.config.sources(
-        { { name = 'path', option = { trailing_slash = true } } },
-        { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }),
-    })
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    cmp.setup.cmdline({ '/', '?' }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = { { name = 'buffer' } },
-    })
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(k.cmp.cmdline()),
+    --   sources = cmp.config.sources(
+    --     { { name = 'path', option = { trailing_slash = true } } },
+    --     { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }),
+    -- })
+    -- -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- cmp.setup.cmdline({ '/', '?' }, {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = { { name = 'buffer' } },
+    -- })
   end,
 }
 

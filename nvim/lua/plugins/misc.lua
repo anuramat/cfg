@@ -104,13 +104,6 @@ specs.trouble = {
   opts = {},
 }
 
-specs.bqf = {
-  'kevinhwang91/nvim-bqf',
-  event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
-  dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  opts = {},
-}
-
 -- specs.sleuth = {
 --   'tpope/vim-sleuth',
 --   event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },

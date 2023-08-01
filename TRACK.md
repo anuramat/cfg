@@ -1,4 +1,6 @@
 # Possible changes
+- null-ls
+    - is currently getting abandoned
 - migrate: fzf -> skim
     - less popular
         - kubectx/kubens depend on fzf

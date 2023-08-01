@@ -17,18 +17,18 @@ eval "$(brew shellenv)"
 eval "$(zoxide init bash)"
 
 gitprompt() {
-	# Check if we're in a Git repository
-	if [ -d .git ] || git rev-parse --git-dir >/dev/null 2>&1; then
-		repo_name=$(basename "$(git rev-parse --show-toplevel)")
-		branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-		if [ -z "$branch" ]; then
-			branch=$(git rev-parse --short HEAD 2>/dev/null)
-		fi
-		echo "  ~  $repo_name/$branch"
-	else
-		# Not in a Git repository
-		echo ""
-	fi
+  # Check if we're in a Git repository
+  if [ -d .git ] || git rev-parse --git-dir >/dev/null 2>&1; then
+    repo_name=$(basename "$(git rev-parse --show-toplevel)")
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    if [ -z "$branch" ]; then
+      branch=$(git rev-parse --short HEAD 2>/dev/null)
+    fi
+    echo "  ~  $repo_name/$branch"
+  else
+    # Not in a Git repository
+    echo ""
+  fi
 }
 
 PS1='\n$PWD$(gitprompt)\n➜ '

@@ -102,5 +102,5 @@ function try_overwrite {
   local -r target="$1"
 
   continue_prompt "Overwrite $target (y/n): " || return 1
-  rm "$target" || return 1
+  rm -rf "$target" || return 1
 }

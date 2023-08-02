@@ -15,9 +15,9 @@
 # nvim todo
 
 ## configuration:
-- check todo comments pattern
-- marks plugin mappings
+- check todo comments pattern!
 - move deps from lspconfig
+- readline plugin
 
 ## overkill:
 - dap

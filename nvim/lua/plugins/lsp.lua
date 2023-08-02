@@ -47,7 +47,6 @@ specs.lspconfig = {
   dependencies = {
     'folke/neodev.nvim',
     'hrsh7th/nvim-cmp',
-    'kevinhwang91/nvim-ufo',
   },
   config = function()
     local lspconfig = require('lspconfig')

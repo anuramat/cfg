@@ -10,21 +10,18 @@ continue_prompt "Install configs?" && {
   install2file config/git.cfg "$HOME/.gitconfig"
   install2file config/editor.cfg "$HOME/.editorconfig"
   install2file config/condarc.yaml "$HOME/.condarc"
+  install2file config/prompt.fish "/Users/arsen/.config/fish/functions/fish_prompt.fish"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# bash
-ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
-# fish
-fish -c "set -U fish_greeting"
-fish -c "set -Ux GOPATH '$HOME/go'"
-fish -c "set -Ux LC_ALL 'en_US.UTF-8'"
-fish -c "fish_add_path '$HOME/go/bin'"
-fish -c "fish_add_path /opt/homebrew/bin/"
 # common
 ensure_string "hehe" "$HOME/.hushlogin"
 continue_prompt "Install fzf integration?" && {
   /opt/homebrew/opt/fzf/install
 }
+# bash
+ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
+# fish
+./lib/vars.fish
 continue_prompt "Make fish the default shell?" && {
   set_shell /opt/homebrew/bin/fish
 }

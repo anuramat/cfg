@@ -12,10 +12,11 @@ specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
   version = false, -- last release is way too old
   build = ':TSUpdate',
-  event = { 'VeryLazy', 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'JoosepAlviste/nvim-ts-context-commentstring',
+    'kevinhwang91/nvim-ufo',
   },
   opts = {
     highlight = { enable = true },

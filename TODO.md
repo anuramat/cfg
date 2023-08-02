@@ -17,6 +17,7 @@
 ## configuration:
 - check todo comments pattern!
 - readline plugin
+- fold column/statuscolumn
 
 ## overkill:
 - dap

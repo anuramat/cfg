@@ -1,7 +1,7 @@
 local o = vim.o
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.expandtab = true
-o.formatoptions = 'ro/qwjp'
+o.formatoptions = 'qwj' -- add 'ro/' to autoprepend comment leader
 o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 2
@@ -39,6 +39,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 o.display = 'lastline,uhex'
+o.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
 o.laststatus = 3
 o.list = true
 o.listchars = 'tab:│ ,extends:❯,precedes:❮,nbsp:␣,trail:·,lead:·'
@@ -52,17 +53,19 @@ o.showmatch = true
 o.showmode = false
 o.signcolumn = 'yes'
 o.termguicolors = true
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-o.clipboard = 'unnamedplus'
-o.completeopt = 'menuone,noselect'
-o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:' -- nicer foldcolumn (numbers are still stupid)
-o.foldcolumn = '0'                                            -- TODO change when it looks less ugly
--- ufo magic TODO wtf
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Folding ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- TODO turn on after hiding numbers and fixing alignment:
+o.foldcolumn = '0'
+o.foldenable = false
+o.foldmethod = 'indent'
+-- ufo magic start --
 o.foldenable = true
 o.foldlevel = 99
 o.foldlevelstart = 99
--- ufo magic end
-o.foldmethod = 'indent'
+-- ufo magic end --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+o.clipboard = 'unnamedplus'
+o.completeopt = 'menuone,noselect'
 o.ignorecase = true
 o.report = 0
 o.smartcase = true

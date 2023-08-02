@@ -31,7 +31,7 @@ gitprompt() {
   fi
 }
 
-PS1='\n$PWD$(gitprompt)\n➜ '
+PS1='\n$PWD$(gitprompt)\n'
 PS2='│'
 
 [ -f ~/.fzf.bash ] && source "$HOME/.fzf.bash"

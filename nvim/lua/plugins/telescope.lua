@@ -1,5 +1,5 @@
 local specs = {}
-local k = require('config.keys')
+local k = require('plug_keys')
 local u = require('utils')
 
 specs.telescope = {
@@ -13,6 +13,7 @@ specs.telescope = {
       pickers = {
         find_files = { hidden = true, file_ignore_patterns = { '%.[^/]+/' } },
         keymaps = { show_plug = false },
+        colorscheme = { enable_preview = true },
       },
       extensions = {
         fzf = {

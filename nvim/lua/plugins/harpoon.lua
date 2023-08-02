@@ -1,5 +1,5 @@
 local specs = {}
-local k = require('config.keys')
+local k = require('plug_keys')
 local u = require('utils')
 
 specs.harpoon = {

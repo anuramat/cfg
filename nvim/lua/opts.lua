@@ -1,3 +1,4 @@
+local u = require('utils')
 local o = vim.o
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Formatting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.expandtab = true
@@ -17,16 +18,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
     pcall(function() vim.lsp.buf.format({ async = false }) end)
   end,
 })
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Theme ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
--- Colorscheme
-if not pcall(vim.cmd.colorscheme, 'dracula') then
-  vim.cmd.colorscheme('habamax')
-end
--- CodeLens style
-local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
-clhl.underline = true
-vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
--- Highlight on yank
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Highlight on yank ~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local hl_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -36,8 +28,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+vim.cmd.colorscheme('habamax')
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+u.style_codelens()
 o.display = 'lastline,uhex'
 o.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
 o.laststatus = 3

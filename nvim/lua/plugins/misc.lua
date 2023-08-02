@@ -1,32 +1,6 @@
 local specs = {}
-local k = require('config.keys')
+local k = require('plug_keys')
 local u = require('utils')
-
-specs.dracula_cs = {
-  'Mofiqul/dracula.nvim',
-  lazy = false,
-  priority = 1337
-}
-
-specs.indentline = {
-  'lukas-reineke/indent-blankline.nvim',
-  event = 'VeryLazy',
-  opts = {
-    char = '│',
-    filetype_exclude = {
-      'TelescopePrompt',
-      'Trouble',
-      'checkhealth',
-      'help',
-      'lazy',
-      'lspinfo',
-      'man',
-      'quickfix',
-    },
-    show_trailing_blankline_indent = false,
-    show_current_context = false,
-  },
-}
 
 specs.surround = {
   'kylechui/nvim-surround',
@@ -58,7 +32,6 @@ specs.comment = {
   end,
 }
 
-
 specs.ai = {
   'echasnovski/mini.ai',
   event = 'VeryLazy', -- TODO lazier
@@ -88,8 +61,12 @@ specs.todo = {
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {
     highlight = {
-      pattern = [[.*<(KEYWORDS)\s*]]
-    }
+      keyword = "bg",
+      pattern = [[<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
+    },
+    search = {
+      pattern = [[(KEYWORDS)]], -- ripgrep regex
+    },
   },
 }
 
@@ -98,11 +75,6 @@ specs.trouble = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   keys = k.trouble(),
 }
-
--- specs.sleuth = {
---   'tpope/vim-sleuth',
---   event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
--- }
 
 specs.undotree = {
   'mbbill/undotree',
@@ -115,11 +87,10 @@ specs.undotree = {
   keys = k.undotree(),
 }
 
-specs.marks = {
-  'chentoast/marks.nvim',
-  event = 'VeryLazy',
-  opts = {},
-}
+-- specs.sleuth = {
+--   'tpope/vim-sleuth',
+--   event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
+-- }
 
 -- specs.readline = {
 --   'linty-org/readline.nvim',

@@ -16,7 +16,6 @@
 
 ## configuration:
 - check todo comments pattern!
-- move deps from lspconfig
 - readline plugin
 
 ## overkill:

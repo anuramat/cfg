@@ -63,13 +63,9 @@ specs.lspconfig = {
     -- mappings
     local on_attach = function(_, buffer) k.lsp(buffer) end
 
-    -- cmp and ufo
+    -- lsp capabilities: default and cmp
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-    capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    }
 
     -- register servers
     for server, settings in pairs(cfgs) do

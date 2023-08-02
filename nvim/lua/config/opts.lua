@@ -55,7 +55,8 @@ o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
-o.foldenable = false
+o.foldcolumn = '1'
+o.foldenable = true
 o.foldmethod = 'indent'
 o.ignorecase = true
 o.report = 0

@@ -35,7 +35,11 @@ specs.ufo = {
   dependencies = 'kevinhwang91/promise-async',
   opts = {
     fold_virt_text_handler = foldIndicatorHandler
-  }
+  },
+  keys = {
+    { 'zM', require('ufo').closeAllFolds },
+    { 'zR', require('ufo').openAllFolds },
+  },
 }
 
 return u.values(specs)

@@ -35,8 +35,13 @@ specs.treesitter = {
   },
   config = function(_, opts)
     require('nvim-treesitter.configs').setup(opts)
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    -- vim.opt.foldmethod = 'expr'
+    -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    require('ufo').setup({
+      provider_selector = function(bufnr, filetype, buftype)
+        return { 'treesitter', 'indent' }
+      end
+    })
   end,
 }
 return u.values(specs)

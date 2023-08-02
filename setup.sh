@@ -5,10 +5,11 @@ continue_prompt "Install configs?" && {
   install2folder nvim "$HOME/.config"
   install2folder config/karabiner.json "$HOME/.config/karabiner"
   install2folder config/config.fish "$HOME/.config/fish"
+  install2folder config/shellcheckrc "$HOME/.config"
   install2file config/bashrc.sh "$HOME/.bashrc"
-  install2file config/shellcheckrc "$HOME/.config/shellcheckrc"
   install2file config/git.cfg "$HOME/.gitconfig"
   install2file config/editor.cfg "$HOME/.editorconfig"
+  install2file config/condarc.yaml "$HOME/.condarc"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash

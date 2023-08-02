@@ -55,8 +55,13 @@ o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
-o.foldcolumn = '1'
+o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:' -- nicer foldcolumn (numbers are still stupid)
+o.foldcolumn = '0'                                            -- TODO change when it looks less ugly
+-- ufo magic TODO wtf
 o.foldenable = true
+o.foldlevel = 99
+o.foldlevelstart = 99
+-- ufo magic end
 o.foldmethod = 'indent'
 o.ignorecase = true
 o.report = 0

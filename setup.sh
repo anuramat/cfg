@@ -2,16 +2,16 @@
 . ./lib/utils.sh
 cfgdir="${XDG_CONFIG_HOME:-$HOME/.config}"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-install2file config/prompt.fish "$cfgdir/fish/functions/fish_prompt.fish"
 continue_prompt "Install configs?" && {
-  install2folder nvim "$cfgdir"
-  install2folder config/karabiner.json "$cfgdir/karabiner"
-  install2folder config/config.fish "$cfgdir/fish"
-  install2folder config/shellcheckrc "$cfgdir"
   install2file config/bashrc.sh "$HOME/.bashrc"
-  install2file config/git.cfg "$HOME/.gitconfig"
-  install2file config/editor.cfg "$HOME/.editorconfig"
   install2file config/condarc.yaml "$HOME/.condarc"
+  install2file config/editor.cfg "$HOME/.editorconfig"
+  install2file config/git.cfg "$HOME/.gitconfig"
+  install2file config/prompt.fish "$cfgdir/fish/functions/fish_prompt.fish"
+  install2folder config/config.fish "$cfgdir/fish"
+  install2folder config/karabiner.json "$cfgdir/karabiner"
+  install2folder config/shellcheckrc "$cfgdir"
+  install2folder nvim "$cfgdir"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # common

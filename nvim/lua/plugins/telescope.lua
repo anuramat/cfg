@@ -10,8 +10,21 @@ specs.telescope = {
   config = function()
     local telescope = require('telescope')
     telescope.setup({
+      defaults = {
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          -- defaults until this point
+          '--hidden',
+        },
+      },
       pickers = {
-        find_files = { hidden = true, file_ignore_patterns = { '%.[^/]+/' } },
+        find_files = { hidden = true, file_ignore_patterns = { '%.git/' } },
         keymaps = { show_plug = false },
         colorscheme = { enable_preview = true },
       },

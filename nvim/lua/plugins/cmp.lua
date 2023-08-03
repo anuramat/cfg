@@ -20,7 +20,11 @@ specs.cmp = {
     cmp.setup({
       mapping = cmp.mapping.preset.insert(k.cmp.main()),
       snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end, },
-      sources = cmp.config.sources({ { name = 'nvim_lsp' }, { name = 'luasnip' } }, { { name = 'buffer' } }),
+      sources = cmp.config.sources(
+        { { name = 'nvim_lsp' }, { name = 'luasnip' } },
+        { { name = 'path', option = { trailing_slash = true } } },
+        { { name = 'buffer' } }
+      ),
       window = { documentation = cmp.config.window.bordered() },
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

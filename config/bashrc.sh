@@ -24,23 +24,19 @@ alias tree="$default_exa --tree"
 alias bathelp="bat --plain --language=help"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 __overprompt() {
-	local -r status=$?
-  echo # Separate command-output blocks
-  echo -n " " # Offset
+  local -r status=$?
+  echo                       # Separate command-output blocks
+  echo -n " "                # Offset
   echo -n "${PWD/#$HOME/\~}" # Current working directory, with tilde abbreviation
   # Git branch/commit hash, if any
-	# Thanks GPT TODO understand hehe
-	if [ -d .git ] || git rev-parse --git-dir >/dev/null 2>&1; then
-		# local -r repo_name=$(basename "$(git rev-parse --show-toplevel)")
+  if git rev-parse --git-dir >/dev/null 2>&1; then
     local branch
-		branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-		[ -z "$branch" ] && branch=$(git rev-parse --short HEAD 2>/dev/null)
-    # echo -n " ($repo_name/$branch)"
+    branch=$(git branch --show-current)
+    [ -z "$branch" ] && branch=$(git rev-parse --short HEAD)
     echo -n " ($branch)"
-	fi
-
-  # Return code, if non-zero  
-	[ "$status" -ne 0 ] && echo -n " [$status]"
+  fi
+  # Return code, if non-zero
+  [ "$status" -ne 0 ] && echo -n " [$status]"
 }
 PS1='$(__overprompt)\n '
 PS2='│'
@@ -59,12 +55,12 @@ export FZF_ALT_C_OPTS="--preview 'tree {}'"
 eval "$(zoxide init bash --cmd j)"
 # Conda init
 if __conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"; then
-	eval "$__conda_setup"
+  eval "$__conda_setup"
 else
-	if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
-		. "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
-	else
-		export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
-	fi
+  if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+    . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+  else
+    export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+  fi
 fi
 unset __conda_setup

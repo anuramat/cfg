@@ -264,6 +264,7 @@ M.haskell_tools = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = function()
+  -- kinda bloat
   -- [C] := changes behaviour == slightly different compared to the built-in mapping
   -- [S] := shadows something entirely different
   local rl = require('readline')

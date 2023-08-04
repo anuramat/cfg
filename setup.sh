@@ -5,15 +5,15 @@ set -e
 export __UTILS_OVERWRITE="always"
 continue_prompt "Install configs?" && {
   install2file config/bashrc.sh "$HOME/.bashrc"
+  install2file config/batconfig "$XDG_CONFIG_HOME/bat/config"
   install2file config/gitconfig.cfg "$XDG_CONFIG_HOME/git/config"
   install2folder config/condarc "$XDG_CONFIG_HOME/conda"
   install2folder config/config.fish "$XDG_CONFIG_HOME/fish"
-  install2folder config/karabiner.json "$XDG_CONFIG_HOME/karabiner"
   install2folder config/fish_prompt.fish "$XDG_CONFIG_HOME/fish/functions"
+  install2folder config/karabiner.json "$XDG_CONFIG_HOME/karabiner"
   install2folder config/ripgreprc "$XDG_CONFIG_HOME"
   install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
   install2folder nvim "$XDG_CONFIG_HOME"
-  install2file config/batconfig "$XDG_CONFIG_HOME/bat/config"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash

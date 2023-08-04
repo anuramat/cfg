@@ -1,1 +1,2 @@
-vim.cmd('setlocal noexpandtab')
+-- vim.cmd('setlocal noexpandtab')
+vim.opt_local.expandtab = false

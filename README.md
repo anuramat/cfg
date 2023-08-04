@@ -68,7 +68,7 @@ bash setup.sh
 
 - Remove all shortcuts from dock
 
-# Potential problems etc.
+# Potential problems
 
 - If developer stuff appears in your spotlight:
 ```sh
@@ -80,5 +80,3 @@ rm -r /Applications/Xcode.app
 ```sh
 /usr/sbin/softwareupdate --install-rosetta --agree-to-license
 ```
-
-- The only POSIX-incompatible part is the "local"s in utils.sh

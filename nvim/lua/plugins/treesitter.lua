@@ -2,11 +2,8 @@ local specs = {}
 local k = require('plug_keys')
 local u = require('utils')
 
-local langs = {
-  'go', 'gosum', 'gomod', 'gowork', 'python', 'haskell', 'bash', 'c', 'json',
-  'lua', 'luadoc', 'luap', 'markdown', 'markdown_inline', 'python', 'query',
-  'regex', 'vim', 'vimdoc', 'yaml', 'sql'
-}
+local langs = { "fish", 'bash', 'c', 'go', 'gomod', 'gosum', 'gowork', 'haskell', 'json', 'lua', 'luadoc', 'luap',
+  'markdown', 'markdown_inline', 'python', 'python', 'query', 'regex', 'sql', 'vim', 'vimdoc', 'yaml' }
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
@@ -45,4 +42,5 @@ specs.treesitter = {
     })
   end,
 }
+
 return u.values(specs)

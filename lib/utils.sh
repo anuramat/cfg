@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# Uses __UTILS_OVERWRITE variable ("always"/any)
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
 ensure_path() {
   # $1 -- target path
@@ -46,6 +52,11 @@ install2folder() {
   local -r original="$(realpath "$1")"
   local -r target_dir="$2"
 
+  [ -e "$1" ] || {
+    echo "[cfg.fail] file \"$1\" not found!"
+    return 1
+  }
+
   ensure_path "$target_dir" || return 1
   install2file "$original" "$target_dir"
 }
@@ -57,10 +68,11 @@ install2file() {
   local -r target="$2"
   local -r target_dir="$(dirname "$2")"
 
-  [ -e "$original" ] || {
-    echo "[cfg.fail] file \"$original\" not found!"
+  [ -e "$1" ] || {
+    echo "[cfg.fail] file \"$1\" not found!"
     return 1
   }
+
   ensure_path "$target_dir" || return 1
   make_symlink "$original" "$target" || return 1
 }
@@ -95,7 +107,6 @@ continue_prompt() {
 try_overwrite() {
   # $1 -- target
   local -r target="$1"
-
-  continue_prompt "overwrite \"$target\"?" || return 1
+  [ "$__UTILS_OVERWRITE" = "always" ] || continue_prompt "overwrite \"$target\"?" || return 1
   rm -rf "$target" || return 1
 }

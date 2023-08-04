@@ -1,32 +1,31 @@
 #!/usr/bin/env bash
+set -e
 . ./lib/utils.sh
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+export __UTILS_OVERWRITE="always"
 continue_prompt "Install configs?" && {
   install2file config/bashrc.sh "$HOME/.bashrc"
-  install2file config/condarc.yaml "$HOME/.condarc"
-  install2file config/git.cfg "$XDG_CONFIG_HOME/git/config"
-  install2file config/prompt.fish "$XDG_CONFIG_HOME/fish/functions/fish_prompt.fish"
+  install2file config/gitconfig.cfg "$XDG_CONFIG_HOME/git/config"
+  install2folder config/condarc "$XDG_CONFIG_HOME/conda"
   install2folder config/config.fish "$XDG_CONFIG_HOME/fish"
   install2folder config/karabiner.json "$XDG_CONFIG_HOME/karabiner"
-  install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
+  install2folder config/fish_prompt.fish "$XDG_CONFIG_HOME/fish/functions"
   install2folder config/ripgreprc "$XDG_CONFIG_HOME"
+  install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
   install2folder nvim "$XDG_CONFIG_HOME"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# bash
+ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
+# fish
+./lib/vars.fish
 # common
 ensure_string "hehe" "$HOME/.hushlogin"
 continue_prompt "Install fzf integration?" && {
   /opt/homebrew/opt/fzf/install
 }
-# bash
-ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
-# fish
-./lib/vars.fish
-continue_prompt "Make fish the default shell?" && {
+# set shell
+continue_prompt "Change shell to fish?" && {
   set_shell /opt/homebrew/bin/fish
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ macOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

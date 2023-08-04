@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-# Configures fish shell (partially, the rest is in the config files)
+# Sets permanent fish variables (other are set from config.fish)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ XDG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 set -Ux XDG_CACHE_HOME "$HOME/.cache"

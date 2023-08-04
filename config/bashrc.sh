@@ -18,7 +18,7 @@ alias la="$default_exa --long --all"
 alias tree="$default_exa --tree"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~ External requirements ~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 export _ZO_RESOLVE_SYMLINKS="1"
-eval "$(zoxide init bash)"
+eval "$(zoxide init bash --cmd j)"
 # shellcheck disable=SC1091 # SC sometimes can't follow paths
 [ -f ~/.fzf.bash ] && source "$HOME/.fzf.bash"
 # Preview file content using bat

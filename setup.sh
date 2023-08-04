@@ -2,6 +2,7 @@
 set -e
 . ./lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# TODO check that XDG_CONFIG_HOME is set
 export __UTILS_OVERWRITE="always"
 continue_prompt "Install configs?" && {
   install2file config/bashrc.sh "$HOME/.bashrc"

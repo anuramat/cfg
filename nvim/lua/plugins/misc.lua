@@ -87,10 +87,10 @@ specs.undotree = {
   keys = k.undotree(),
 }
 
--- specs.sleuth = {
---   'tpope/vim-sleuth',
---   event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' },
--- }
+specs.sleuth = {
+  'tpope/vim-sleuth',
+  event = { 'BufReadPre', 'BufNewFile' },
+}
 
 -- specs.readline = {
 --   'linty-org/readline.nvim',

@@ -264,20 +264,28 @@ M.haskell_tools = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = function()
+  -- [C] := changes behaviour == slightly different compared to the built-in mapping
+  -- [S] := shadows something entirely different
   local rl = require('readline')
-  s('!', '<c-k>', rl.kill_line)
-  s('!', '<c-u>', rl.backward_kill_line)
-  s('!', '<a-d>', rl.kill_word)
+  s('!', '<c-k>', rl.kill_line) -- [S] compose in i-mode
+  -- s('!', '<C-u>', rl.backward_kill_line) -- [C] deletes from column 0, not from first non-blank character
+
+  -- s('!', '<c-h>', '<bs>')   -- it's the default anyway
+  s('!', '<c-d>', '<delete>')          -- [S] c: useless
+
+  s('!', '<c-w>', rl.unix_word_rubout) -- [C] kills WORDS, not words
   s('!', '<a-bs>', rl.backward_kill_word)
-  s('!', '<c-w>', rl.unix_word_rubout)
-  s('!', '<c-d>', '<delete>') -- delete-char
-  s('!', '<c-h>', '<bs>')     -- backward-delete-char
-  s('!', '<c-a>', rl.beginning_of_line)
-  s('!', '<c-e>', rl.end_of_line)
-  s('!', '<a-f>', rl.forward_word)
+  s('!', '<a-d>', rl.kill_word)
+
+  s('!', '<c-b>', '<left>')  -- [S/C] c: beginning of line
+  s('!', '<c-f>', '<right>') -- [S] c: cmdline-window
   s('!', '<a-b>', rl.backward_word)
-  s('!', '<c-f>', '<right>') -- forward-char
-  s('!', '<c-b>', '<left>')  -- backward-char
+  s('!', '<a-f>', rl.forward_word)
+  s('!', '<c-a>', rl.beginning_of_line) -- [S] c: useless, i: insert last insert
+  s('i', '<c-e>', rl.end_of_line)       -- it's already the default mapping for c-mode
+
+  -- s('!', '<c-n>', '<down>') -- [S] completion/cmd history
+  -- s('!', '<c-p>', '<up>')   -- [S] completion/history
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

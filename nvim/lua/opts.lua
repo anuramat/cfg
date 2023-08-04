@@ -6,7 +6,7 @@ o.formatoptions = 'qwj' -- add 'ro/' to autoprepend comment leader
 o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 2
-o.textwidth = 79
+o.textwidth = 119
 -- Autoformat on save
 local af_group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {

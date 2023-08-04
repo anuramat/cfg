@@ -92,12 +92,12 @@ specs.sleuth = {
   event = { 'BufReadPre', 'BufNewFile' },
 }
 
--- specs.readline = {
---   'linty-org/readline.nvim',
---   event = 'VeryLazy',
---   config = function()
---     k.readline()
---   end,
--- }
+specs.readline = {
+  'linty-org/readline.nvim',
+  event = 'VeryLazy',
+  config = function()
+    k.readline()
+  end,
+}
 
 return u.values(specs)

@@ -1,0 +1,25 @@
+# Truncate long lines
+--max-columns=150
+--max-columns-preview
+
+# Search hidden files and directories.
+--hidden
+
+# Follow symbolic links.
+--follow
+
+# Don't respect ignore files (.gitignore, .ignore, etc.).
+--no-ignore
+
+# Ignore
+--glob=!{.git,.svn,node_modules,tealdeer,Trash,vendor}
+--glob=!*.{lock}
+
+# Don't print lines longer than this limit.
+--max-columns=200
+
+# Searches case insensitively.
+--smart-case
+
+# Sort by file path.
+--sort=path

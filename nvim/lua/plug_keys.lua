@@ -182,14 +182,6 @@ M.harpoon = function()
     unpack(get_num_mappings()),
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Surround ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.surround = {
-  -- using defaults: ysiw( ds(
-}
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.comment = {
-  -- using defaults: gcc
-}
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mini.ai ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.miniai = function()
   local ai = require('mini.ai')

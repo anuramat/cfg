@@ -4,11 +4,18 @@ local u = require('utils')
 
 specs.surround = {
   'kylechui/nvim-surround',
-  version = '*',      -- use last release instead of main
-  event = 'VeryLazy', -- TODO lazier
-  opts = {
-    keymaps = k.surround
-  },
+  version = '*',
+  opts = {},
+  keys = {
+    { "<C-g>s", mode = "i" },
+    { "<C-g>S", mode = "i" },
+    { "ys" },
+    { "yS" },
+    { "S",      mode = "x" },
+    { "gS",     mode = "x" },
+    { "ds" },
+    { "cs" },
+  }
 }
 
 specs.treesj = {
@@ -24,12 +31,15 @@ specs.treesj = {
 specs.comment = {
   'numToStr/Comment.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
-  event        = 'VeryLazy',
   config       = function()
-    local opts = k.comment
-    opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
-    require('Comment').setup(opts)
+    require('Comment').setup({
+      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+    })
   end,
+  keys         = {
+    { "gc", mode = { 'n', 'x' } },
+    { "gb", mode = { 'n', 'x' } },
+  },
 }
 
 specs.ai = {

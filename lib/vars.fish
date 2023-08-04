@@ -6,7 +6,7 @@ set -Ux XDG_CACHE_HOME "$HOME/.cache"
 set -Ux XDG_DATA_HOME "$HOME/.local/share"
 set -Ux XDG_STATE_HOME "$HOME/.local/state"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc common stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-set -Ux LC_ALL 'en_US.UTF-8'
+set -Ux LC_ALL "en_US.UTF-8"
 set -Ux EDITOR "nvim"
 set -Ux VISUAL "$EDITOR"
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
@@ -22,6 +22,7 @@ alias -s ls "$default_exa"
 alias -s ll "$default_exa --long"
 alias -s la "$default_exa --long --all"
 alias -s tree "$default_exa --tree"
+alias -s  bathelp "bat --plain --language=help"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ External bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Read ripgrep settings
 set -Ux RIPGREP_CONFIG_PATH "$XDG_CONFIG_HOME/ripgreprc"

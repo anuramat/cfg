@@ -1,7 +1,6 @@
 local specs = {}
 local k = require('plug_keys')
 local u = require('utils')
-
 local cfgs = {}
 
 cfgs.bashls = {}
@@ -41,6 +40,12 @@ cfgs.lua_ls = {
 
 specs.neodev = { 'folke/neodev.nvim', opts = {} }
 
+local on_attach = function(client, buffer)
+  k.lsp(buffer)
+  u.setup_autoformat(client, buffer)
+end
+
+
 specs.lspconfig = {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -51,16 +56,15 @@ specs.lspconfig = {
   config = function()
     local lspconfig = require('lspconfig')
 
-    -- borders
+    -- Borders
     vim.diagnostic.config { float = { border = 'rounded' } }
     vim.lsp.handlers['textDocument/hover'] =
         vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] =
         vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
-    require('lspconfig.ui.windows').default_options.border = 'rounded' -- <cmd>LspInfo
+    require('lspconfig.ui.windows').default_options.border = 'rounded'
 
-    -- mappings
-    local on_attach = function(_, buffer) k.lsp(buffer) end
+    local group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
 
     -- lsp capabilities: default and cmp
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -85,8 +89,11 @@ specs.null = {
     local null_ls = require('null-ls')
     null_ls.setup({
       sources = {
-        null_ls.builtins.formatting.shfmt
-      }
+        null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.diagnostics.fish,
+        null_ls.builtins.formatting.fish_indent,
+      },
+      on_attach = on_attach,
     })
   end
 }

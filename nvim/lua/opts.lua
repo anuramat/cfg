@@ -7,17 +7,6 @@ o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 2
 o.textwidth = 119
--- Autoformat on save
-local af_group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = af_group,
-  callback = function()
-    local client = vim.lsp.get_active_clients()[1]
-    if not (client and client.server_capabilities.documentFormattingProvider) then return end
-    -- TODO figure out why this errors out on markdown:
-    pcall(function() vim.lsp.buf.format({ async = false }) end)
-  end,
-})
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Highlight on yank ~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local hl_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {

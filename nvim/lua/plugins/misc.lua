@@ -44,7 +44,10 @@ specs.comment = {
 
 specs.ai = {
   'echasnovski/mini.ai',
-  event = 'VeryLazy', -- TODO lazier
+  keys = {
+    { "a", mode = { "x", "o" } },
+    { "i", mode = { "x", "o" } },
+  },
   dependencies = { 'nvim-treesitter-textobjects' },
   opts = function()
     return {

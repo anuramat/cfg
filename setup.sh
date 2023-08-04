@@ -13,6 +13,7 @@ continue_prompt "Install configs?" && {
   install2folder config/ripgreprc "$XDG_CONFIG_HOME"
   install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
   install2folder nvim "$XDG_CONFIG_HOME"
+  install2file config/batconfig "$XDG_CONFIG_HOME/bat/config"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash

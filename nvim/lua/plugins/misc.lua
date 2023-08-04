@@ -108,4 +108,12 @@ specs.readline = {
   keys = k.readline
 }
 
+specs.mdpreview = {
+  'iamcco/markdown-preview.nvim',
+  config = function()
+    vim.fn['mkdp#util#install']()
+    vim.g.mkdp_auto_close = 0
+  end,
+}
+
 return u.values(specs)

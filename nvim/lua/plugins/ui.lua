@@ -3,19 +3,10 @@ local u = require('utils')
 
 specs.dracula_cs = {
   'Mofiqul/dracula.nvim',
-  -- 'shaunsingh/nord.nvim',
   priority = 1337,
   lazy = false,
   config = function()
     vim.cmd.colorscheme('dracula-soft')
-    u.style_codelens()
-  end,
-}
-
-specs.nord_cs = {
-  'shaunsingh/nord.nvim',
-  config = function()
-    vim.cmd.colorscheme('nord')
     u.style_codelens()
   end,
 }

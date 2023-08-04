@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 . ./lib/utils.sh
-cfgdir="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 continue_prompt "Install configs?" && {
   install2file config/bashrc.sh "$HOME/.bashrc"
   install2file config/condarc.yaml "$HOME/.condarc"
-  install2file config/editor.cfg "$HOME/.editorconfig"
-  install2file config/git.cfg "$HOME/.gitconfig"
-  install2file config/prompt.fish "$cfgdir/fish/functions/fish_prompt.fish"
-  install2folder config/config.fish "$cfgdir/fish"
-  install2folder config/karabiner.json "$cfgdir/karabiner"
-  install2folder config/shellcheckrc "$cfgdir"
-  install2folder nvim "$cfgdir"
+  install2file config/git.cfg "$XDG_CONFIG_HOME/git/config"
+  install2file config/prompt.fish "$XDG_CONFIG_HOME/fish/functions/fish_prompt.fish"
+  install2folder config/config.fish "$XDG_CONFIG_HOME/fish"
+  install2folder config/karabiner.json "$XDG_CONFIG_HOME/karabiner"
+  install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
+  install2folder config/ripgreprc "$XDG_CONFIG_HOME"
+  install2folder nvim "$XDG_CONFIG_HOME"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # common

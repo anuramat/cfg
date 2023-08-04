@@ -104,7 +104,6 @@ specs.sleuth = {
 
 specs.readline = {
   'linty-org/readline.nvim',
-  event = 'VeryLazy',
   keys = k.readline
 }
 

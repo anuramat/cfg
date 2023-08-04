@@ -9,6 +9,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export LC_ALL="en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Paths ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 eval "$(/opt/homebrew/bin/brew shellenv bash)"
 export GOPATH="$HOME/go"
@@ -36,7 +37,7 @@ gitprompt() {
 }
 PS1='\n$PWD$(gitprompt)\n'
 PS2='│'
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ External bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Read ripgrep settings
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
 # Resolve symlinks to get true paths for database

@@ -43,21 +43,17 @@ bash setup.sh
 - Turn on battery percentage in menu bar
 
 ### Desktop & Dock
-
 - Dock:
     - Automatically hide and show the Dock - On
     - Show recent applications in Dock - Off
     - Show indicators for open applications - Off
-
 - Menu Bar:
     - Automatically - Always
     - Recent - None
-
 - Windows & Apps:
     - Prefer tabs - Always
     - Ask to keep changes - On
     - Close windows when quitting - Off
-
 - Mission Control:
     - Automatically rearrange Spaces based on most recent use - Off
     - When switching to an application, switch to a Space with open windows - 
@@ -72,7 +68,8 @@ bash setup.sh
 
 - If developer stuff appears in your spotlight:
 ```sh
-mkdir /Applications/Xcode.app uncheck the "developer" checkbox in prefs/spotlight
+mkdir /Applications/Xcode.app
+# uncheck the "developer" checkbox in prefs/spotlight
 rm -r /Applications/Xcode.app
 ```
 

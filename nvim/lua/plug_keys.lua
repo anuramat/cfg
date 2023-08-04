@@ -271,7 +271,7 @@ M.readline = function()
   s('!', '<c-k>', rl.kill_line) -- [S] compose in i-mode
   -- s('!', '<C-u>', rl.backward_kill_line) -- [C] deletes from column 0, not from first non-blank character
 
-  -- s('!', '<c-h>', '<bs>')   -- it's the default anyway
+  -- s('!', '<c-h>', '<bs>')   -- it's already the default anyway
   s('!', '<c-d>', '<delete>')          -- [S] c: useless
 
   s('!', '<c-w>', rl.unix_word_rubout) -- [C] kills WORDS, not words

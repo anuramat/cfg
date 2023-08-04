@@ -5,6 +5,10 @@ macOS zero to hero:
 - packages
 - configs
 
+Assumes:
+- default XDG paths
+- default Apple Silicon Homebrew path (`/opt/homebrew/`)
+
 ## CLI 
 
 Brewfile is somewhat bloated, comment out unwanted packages before installing.

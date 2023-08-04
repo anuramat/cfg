@@ -94,8 +94,6 @@ M.cmp =
           fallback()
         end
       end, { 'i', 's' }),
-      ['<c-f>'] = cmp.mapping.scroll_docs(4),
-      ['<c-b>'] = cmp.mapping.scroll_docs(-4),
     }
   end,
   cmdline = function()

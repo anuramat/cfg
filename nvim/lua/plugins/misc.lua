@@ -105,9 +105,7 @@ specs.sleuth = {
 specs.readline = {
   'linty-org/readline.nvim',
   event = 'VeryLazy',
-  config = function()
-    k.readline()
-  end,
+  keys = k.readline
 }
 
 return u.values(specs)

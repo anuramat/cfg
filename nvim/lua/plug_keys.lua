@@ -255,30 +255,27 @@ M.haskell_tools = function()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.readline = function()
-  -- kinda bloat
+M.readline = {
   -- [C] := changes behaviour == slightly different compared to the built-in mapping
   -- [S] := shadows something entirely different
-  local rl = require('readline')
-  s('!', '<c-k>', rl.kill_line) -- [S] compose in i-mode
-  -- s('!', '<C-u>', rl.backward_kill_line) -- [C] deletes from column 0, not from first non-blank character
-
-  -- s('!', '<c-h>', '<bs>')   -- it's already the default anyway
-  s('!', '<c-d>', '<delete>')          -- [S] c: useless
-
-  s('!', '<c-w>', rl.unix_word_rubout) -- [C] kills WORDS, not words
-  s('!', '<a-bs>', rl.backward_kill_word)
-  s('!', '<a-d>', rl.kill_word)
-
-  s('!', '<c-b>', '<left>')  -- [S/C] c: beginning of line
-  s('!', '<c-f>', '<right>') -- [S] c: cmdline-window
-  s('!', '<a-b>', rl.backward_word)
-  s('!', '<a-f>', rl.forward_word)
-  s('!', '<c-a>', rl.beginning_of_line) -- [S] c: useless, i: insert last insert
-  s('i', '<c-e>', rl.end_of_line)       -- it's already the default mapping for c-mode
-
-  -- s('!', '<c-n>', '<down>') -- [S] completion/cmd history
-  -- s('!', '<c-p>', '<up>')   -- [S] completion/history
-end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+  -- Delete
+  -- { mode = '!', '<c-h>', '<bs>' },   -- it's already the default anyway
+  { mode = '!', '<c-d>',  '<delete>' },                                            -- [S] c: useless
+  -- { mode = '!', '<C-u>', function() require('readline').backward_kill_line() end },  -- [C] deletes from column 0, not from first non-blank character
+  { mode = '!', '<c-k>',  function() require('readline').kill_line() end },        -- [S] compose in i-mode
+  { mode = '!', '<c-w>',  function() require('readline').unix_word_rubout() end }, -- [C] kills WORDS, not words
+  { mode = '!', '<a-bs>', function() require('readline').backward_kill_word() end },
+  { mode = '!', '<a-d>',  function() require('readline').kill_word() end },
+  -- Move
+  { mode = '!', '<c-b>',  '<left>' },  -- [S/C] c: beginning of line
+  { mode = '!', '<c-f>',  '<right>' }, -- [S] c: cmdline-window
+  { mode = '!', '<a-b>',  function() require('readline').backward_word() end },
+  { mode = '!', '<a-f>',  function() require('readline').forward_word() end },
+  { mode = '!', '<c-a>',  function() require('readline').beginning_of_line() end }, -- [S] c: useless, i: insert last insert
+  { mode = 'i', '<c-e>',  function() require('readline').end_of_line() end },       -- it's already the default mapping for c-mode
+  -- Up/down
+  -- { mode = '!', '<c-n>', '<down>'}, -- [S] completion
+  -- { mode = '!', '<c-p>', '<up>'},   -- [S] completion
+}
 return M
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

@@ -40,4 +40,7 @@ ensure_path "$screenshot_dir"
 defaults write com.apple.screencapture location -string "$screenshot_dir"
 defaults write -g ApplePressAndHoldEnabled -bool false # allow key repeat on hold
 defaults write NSGlobalDomain AppleLanguages -array "en" system language
+# Finder: allow quitting via Cmd + Q; doing so will also hide desktop icons
+defaults write com.apple.finder QuitMenuItem -bool true
+pkill Finder
 sudo languagesetup -langspec English # login language

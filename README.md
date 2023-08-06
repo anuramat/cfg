@@ -50,13 +50,6 @@ bash setup.sh
     - Prefer tabs - Always
     - Ask to keep changes - On
     - Close windows when quitting - Off
-- Mission Control:
-    - When switching to an application, switch to a Space with open windows - 
-    Off
-
-## GUI Misc
-
-- Remove all shortcuts from dock
 
 # Potential problems
 

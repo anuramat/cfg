@@ -64,7 +64,7 @@ defaults write com.apple.dock show-process-indicators -bool false # Hide indicat
 defaults write com.apple.dock expose-group-apps -bool true        # Group windows by application
 killall Dock
 # Misc
-defaults write -g AppleSpacesSwitchOnActivate -bool false
+defaults write -g AppleSpacesSwitchOnActivate -bool false                 # Switch to space with open application on Cmd+Tab
 defaults write -g AppleInterfaceStyle Dark                                # Dark mode
 defaults write -g ApplePressAndHoldEnabled -bool false                    # Allow key repeat on hold
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder

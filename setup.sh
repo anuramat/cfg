@@ -54,6 +54,9 @@ defaults write com.apple.finder QuitMenuItem -bool true                     # Al
 defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true # Show folder icon in title bar
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 killall Finder
+# sadf
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desktop/"
 # Dock
 defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock tilesize -int 48

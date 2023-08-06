@@ -51,6 +51,7 @@ defaults write com.apple.finder ShowPathbar -bool true                      # Sh
 defaults write com.apple.finder _FXSortFoldersFirst -bool true              # Keep folders on the top
 defaults write com.apple.finder QuitMenuItem -bool true                     # Allow quit on Cmd+Q
 defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true # Show folder icon in title bar
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 killall Finder
 # Dock
 defaults write com.apple.dock minimize-to-application -bool true
@@ -66,6 +67,9 @@ defaults write com.apple.dock show-process-indicators -bool false # Hide indicat
 defaults write com.apple.dock expose-group-apps -bool true        # Group windows by application
 defaults write com.apple.dock persistent-apps -array              # Delete all apps shortcuts
 killall Dock
+# not tested : don't write dsstore on external drives
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Misc
 defaults write -g AppleSpacesSwitchOnActivate -bool false                 # Switch to space with open application on Cmd+Tab
 defaults write -g AppleInterfaceStyle Dark                                # Dark mode

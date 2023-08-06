@@ -53,7 +53,8 @@ defaults write com.apple.finder QuitMenuItem -bool true                     # Al
 defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true # Show folder icon in title bar
 killall Finder
 # Dock
-defaults write com.apple.dock tilesize -int 48 && killall Dock
+defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock tilesize -int 48
 defaults write com.apple.dock autohide -bool true                 # Hide dock
 defaults write com.apple.dock autohide-delay -float 0             # Remove unhide delay
 defaults write com.apple.dock autohide-time-modifier -float 0     # Remove hide/unhide animation

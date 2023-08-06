@@ -43,10 +43,6 @@ bash setup.sh
 - Turn on battery percentage in menu bar
 
 ### Desktop & Dock
-- Dock:
-    - Automatically hide and show the Dock - On
-    - Show recent applications in Dock - Off
-    - Show indicators for open applications - Off
 - Menu Bar:
     - Automatically - Always
     - Recent - None
@@ -55,10 +51,8 @@ bash setup.sh
     - Ask to keep changes - On
     - Close windows when quitting - Off
 - Mission Control:
-    - Automatically rearrange Spaces based on most recent use - Off
     - When switching to an application, switch to a Space with open windows - 
     Off
-    - Group windows by application - On
 
 ## GUI Misc
 

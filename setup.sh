@@ -62,6 +62,7 @@ defaults write com.apple.dock show-recents -bool true             # Do not show 
 defaults write com.apple.dock static-only -bool true              # Only show opened apps
 defaults write com.apple.dock show-process-indicators -bool false # Hide indicater for open applications
 defaults write com.apple.dock expose-group-apps -bool true        # Group windows by application
+defaults write com.apple.dock persistent-apps -array              # Delete all apps shortcuts
 killall Dock
 # Misc
 defaults write -g AppleSpacesSwitchOnActivate -bool false                 # Switch to space with open application on Cmd+Tab

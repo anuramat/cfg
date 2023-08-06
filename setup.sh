@@ -42,7 +42,7 @@ screenshot_dir="$HOME/Screenshots"
 ensure_path "$screenshot_dir"
 osascript -e 'tell application "System Preferences" to quit' # So it doesn't interfere
 # Finder
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true             # Show file extensions
+defaults write -g AppleShowAllExtensions -bool true                         # Show file extensions
 defaults write com.apple.finder CreateDesktop -bool false                   # Hide icons from desktop
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf           # Search current folder by default
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false  # Hide warning on extension change
@@ -64,10 +64,11 @@ defaults write com.apple.dock show-process-indicators -bool false # Hide indicat
 defaults write com.apple.dock expose-group-apps -bool true        # Group windows by application
 killall Dock
 # Misc
+defaults write -g AppleSpacesSwitchOnActivate -bool false
 defaults write -g AppleInterfaceStyle Dark                                # Dark mode
 defaults write -g ApplePressAndHoldEnabled -bool false                    # Allow key repeat on hold
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
 defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default (&& killall TextEdit ?)
 # Language
-defaults write NSGlobalDomain AppleLanguages -array en # Change system language
-sudo languagesetup -langspec English                   # login language
+defaults write -g AppleLanguages -array en # Change system language
+sudo languagesetup -langspec English       # login language

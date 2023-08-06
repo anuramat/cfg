@@ -42,6 +42,7 @@ screenshot_dir="$HOME/Screenshots"
 ensure_path "$screenshot_dir"
 osascript -e 'tell application "System Preferences" to quit' # So it doesn't interfere
 # Finder
+defaults write com.apple.finder ShowStatusBar -bool true
 defaults write -g AppleShowAllExtensions -bool true                         # Show file extensions
 defaults write com.apple.finder CreateDesktop -bool false                   # Hide icons from desktop
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf           # Search current folder by default

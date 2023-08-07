@@ -15,9 +15,10 @@ specs.haskell = {
     local hls_config = {
       hls = {
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
-        on_attach = function(_, buf)
-          hk.lsp(buf)
-          k.lsp(buf)
+        on_attach = function(client, buffer)
+          u.setup_autoformat(client, buffer)
+          hk.lsp(buffer)
+          k.lsp(buffer)
         end
       }
     }

@@ -53,4 +53,4 @@ else
 fi
 unset __conda_setup
 # Ble.sh
-# [ -f "$XDG_DATA_HOME/blesh/ble.sh" ] && . "$XDG_DATA_HOME/blesh/ble.sh"
+[ -f "$XDG_DATA_HOME/blesh/ble.sh" ] && . "$XDG_DATA_HOME/blesh/ble.sh"

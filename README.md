@@ -18,17 +18,17 @@ Paths are configured in `shell/profile.sh`
 Brewfile is somewhat bloated, **comment out unwanted packages before installing**.
 
 ```sh
-# install git and stuff (might take some time)
+# install git and stuff (takes some time)
 xcode-select --install
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# clone this repo, create dev folder
+# clone this
 cd && git clone https://github.com/anuramat/cfg && cd cfg
-# install from Brewfile
+# install packages from Brewfile
 brew analytics off
 brew bundle install
-# install config files and shiet
-bash setup.sh
+# remember to restart afterwards
+./setup.sh
 ```
 
 ## GUI Preferences 
@@ -36,13 +36,6 @@ bash setup.sh
 ### Keyboard:
 - Delete everything in "Text replacements..."  
 - Keybinds
-
-### Trackpad/More Gestures:
-- App Exposè - Swipe Down with Three Fingers
-- Swipe between pages - Off
-
-### Control Centre:
-- Turn on battery percentage in menu bar
 
 # Potential problems
 

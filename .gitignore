@@ -234,4 +234,5 @@ tags
 
 # install script data
 Brewfile.lock.json
-**/karabiner/automatic_backups/*
+**/karabiner/automatic_backups
+**/config/iterm2/AppSupport

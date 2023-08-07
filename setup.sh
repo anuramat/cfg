@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2088
 set -e
 . ./lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -19,8 +20,8 @@ continue_prompt "Install configs?" && {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
-# fish
-./lib/vars.fish
+# fish functions and variables
+./bin/setup.fish
 # common
 ensure_string "hehe" "$HOME/.hushlogin"
 continue_prompt "Install fzf integration?" && {

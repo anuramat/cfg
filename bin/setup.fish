@@ -1,10 +1,10 @@
 #!/usr/bin/env fish
 # Sets permanent fish variables (other are set from config.fish)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ XDG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-set -Ux XDG_CONFIG_HOME "$HOME/.config"
-set -Ux XDG_CACHE_HOME "$HOME/.cache"
-set -Ux XDG_DATA_HOME "$HOME/.local/share"
-set -Ux XDG_STATE_HOME "$HOME/.local/state"
+set -Ux XDG_CONFIG_HOME "$XDG_CONFIG_HOME"
+set -Ux XDG_CACHE_HOME "$XDG_CACHE_HOME"
+set -Ux XDG_DATA_HOME "$XDG_DATA_HOME"
+set -Ux XDG_STATE_HOME "$XDG_STATE_HOME"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The usual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 set -Ux LC_ALL "en_US.UTF-8"
 set -Ux EDITOR nvim
@@ -12,9 +12,9 @@ set -Ux VISUAL "$EDITOR"
 set -Ux MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -U fish_greeting
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Paths ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-fish_add_path /opt/homebrew/bin/
-set -Ux GOPATH "$HOME/go"
-fish_add_path "$HOME/go/bin"
+fish_add_path "$HOMEBREW_PREFIX/bin/"
+set -Ux GOPATH "$GOPATH"
+fish_add_path "$GOPATH/bin"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 set -l default_exa "exa --group-directories-first --icons -h --git --color=always"
 alias -s f nvim

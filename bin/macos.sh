@@ -60,4 +60,5 @@ defaults write -g KeyRepeat -float 2              # delay
 # Language
 defaults write -g AppleLanguages -array en  # Change system language
 defaults write -g AppleLocale -string en_RU # TODO test
-# sudo languagesetup -langspec English        # login language
+# TODO add more
+sudo languagesetup -langspec English # login language

@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # Uses __UTILS_OVERWRITE variable ("always"/any)
 
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-
 ensure_path() {
   # $1 -- target path
   local -r target="$1"
@@ -78,7 +73,7 @@ install2file() {
 }
 
 set_shell() {
-  shell="$1"
+  local -r shell="$(dirname "$1")/$(basename "$1")"
 
   [ "$SHELL" = "$shell" ] && return
   [ -f "$shell" ] || {

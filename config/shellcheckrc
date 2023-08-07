@@ -1,2 +1,3 @@
 # Expressions don't expand in single quotes, use double quotes for that.
+disable=SC1091
 disable=SC2016

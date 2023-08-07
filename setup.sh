@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 set -e
 . ./lib/utils.sh
-. ./misc/xdg.sh
+. ./shell/profile.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO check that XDG_CONFIG_HOME is set, print paths in terminal
 export __UTILS_OVERWRITE="always" # WARNING will overwrite your files without a prompt, unless they are protected
 continue_prompt "Install configs?" && {
-  install2file misc/bashrc.sh "$HOME/.bashrc"
+  install2file shell/bashrc.sh "$HOME/.bashrc"
+  install2file shell/profile.sh "$HOME/.profile"
   # symlink everything from ./config folder to $XDG_CONFIG_HOME
   find config -maxdepth 1 -mindepth 1 -print0 | xargs -0I {} bash -c ". lib/utils.sh; install2folder {} $XDG_CONFIG_HOME"
 }
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
 # common

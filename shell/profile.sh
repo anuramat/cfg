@@ -17,7 +17,7 @@ export PATH="$GOPATH/bin${PATH:+:$PATH}"
 export LC_ALL="en_US.UTF-8"
 
 # editor
-if command -v "nvim"; then
+if command -v "nvim" >/dev/null 2>&1; then
   export EDITOR="nvim"
 else
   export EDITOR="vi"
@@ -25,6 +25,6 @@ fi
 export VISUAL="$EDITOR"
 
 # pretty manpages
-if command -v "bat"; then
+if command -v "bat" >/dev/null 2>&1; then
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi

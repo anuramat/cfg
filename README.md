@@ -4,6 +4,7 @@ macOS zero to hero:
 - Install scripts
 - Packages
 - Configs
+- macOS preferences
 
 Assumes:
 - default XDG paths 

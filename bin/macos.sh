@@ -97,7 +97,8 @@ defaults write $trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
 defaults write $trackpad USBMouseStopsTrackpad -int 0
 defaults write $trackpad UserPreferences -bool true
 # Spotlight
-./bin/spotlight.py
+! [ -e /Applications/Xcode.app ] && touch /Applications/Xcode.app
+./bin/spotlight.py && killall Spotlight SystemUIServer mds
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 killall Dock Finder SystemUIServer
 echo "[cfg] restart pls"

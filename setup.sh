@@ -80,6 +80,17 @@ defaults write -g AppleInterfaceStyle Dark                                # Dark
 defaults write -g ApplePressAndHoldEnabled -bool false                    # Allow key repeat on hold
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
 defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default (&& killall TextEdit ?)
+defaults write -g AppleWindowTabbingMode -string always                   # Prefer tabs to windows
+# Keyboard
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g TISRomanSwitchState -bool false # turn off automatic input method switching
+defaults write -g InitialKeyRepeat -float 15      # repeat period
+defaults write -g KeyRepeat -float 2              # delay
 # Language
-defaults write -g AppleLanguages -array en # Change system language
-sudo languagesetup -langspec English       # login language
+defaults write -g AppleLanguages -array en  # Change system language
+defaults write -g AppleLocale -string en_RU # TODO test
+sudo languagesetup -langspec English        # login language

@@ -30,9 +30,7 @@ bash setup.sh
 ## GUI Preferences 
 
 ### Keyboard:
-- Key repeat rate: rightmost
-- Delay until repeat: rightmost - 1
-- Turn off everything in "Text replacements..." and "Input sources/Edit..."
+- Delete everything in "Text replacements..."  
 
 ### Trackpad/More Gestures:
 - App Exposè - Swipe Down with Three Fingers

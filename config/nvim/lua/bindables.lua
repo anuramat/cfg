@@ -3,9 +3,8 @@ local u = require('utils')
 
 --- Creates comment header I guess.
 --- @param chr string Character that fills the header
---- @param adjust_width boolean Whether to adjust the header width to indentation
---- @param width_factor float If present, width = textwidth * width_factor
-function M.create_comment_header(chr, adjust_width, width_factor)
+--- @param width_factor float|nil If present, width = textwidth * width_factor
+function M.create_comment_header(chr, width_factor)
   vim.ui.input({ prompt = 'Header text: ' }, function(input)
     -- in case user cancels with escape
     if input == nil then
@@ -34,11 +33,9 @@ function M.create_comment_header(chr, adjust_width, width_factor)
     if width_factor ~= nil then
       width = math.floor(width * width_factor)
     end
-    if adjust_width then
-      vim.api.nvim_set_current_line(commentstring)
-      vim.cmd('normal ==')
-      width = width - u.get_indent()
-    end
+    vim.api.nvim_set_current_line(commentstring)
+    vim.cmd('normal ==')
+    width = width - u.get_indent()
 
     -- insert the filler
     local filling_width = width - #header + 2

@@ -88,8 +88,6 @@ specs.null = {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.shfmt,
-        null_ls.builtins.diagnostics.fish,
-        null_ls.builtins.formatting.fish_indent,
       },
       on_attach = on_attach,
     })

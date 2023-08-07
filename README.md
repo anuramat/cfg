@@ -41,6 +41,7 @@ bash setup.sh
 
 ### TODO:
 - Number format, time format
+- Keybinds
 
 # Potential problems
 

@@ -2,7 +2,7 @@ local specs = {}
 local k = require('plug_keys')
 local u = require('utils')
 
-local langs = { "fish", 'bash', 'c', 'go', 'gomod', 'gosum', 'gowork', 'haskell', 'json', 'lua', 'luadoc', 'luap',
+local langs = { 'bash', 'c', 'go', 'gomod', 'gosum', 'gowork', 'haskell', 'json', 'lua', 'luadoc', 'luap',
   'markdown', 'markdown_inline', 'python', 'python', 'query', 'regex', 'sql', 'vim', 'vimdoc', 'yaml' }
 
 specs.treesitter = {

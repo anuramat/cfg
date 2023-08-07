@@ -59,7 +59,7 @@ defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g TISRomanSwitchState -bool false # turn off automatic input method switching
 # Language
 defaults write -g AppleLanguages -array en      # Change system language
-defaults write -g AppleLocale -string en_RU@USD # Set locale
+defaults write -g AppleLocale -string ru_RU@USD # Set locale
 # Menu bar
 menuclock=com.apple.menuextra.clock.plist
 defaults write $menuclock ShowAMPM -bool true

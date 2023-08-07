@@ -81,6 +81,8 @@ defaults write -g ApplePressAndHoldEnabled -bool false                    # Allo
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
 defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default (&& killall TextEdit ?)
 defaults write -g AppleWindowTabbingMode -string always                   # Prefer tabs to windows
+defaults write -g NSCloseAlwaysConfirmsChanges -bool false                # Ask to save on close
+defaults write -g NSQuitAlwaysKeepsWindows -bool false                    # Close windows on <Cmd-Q>
 # Keyboard
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false

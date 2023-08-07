@@ -35,19 +35,12 @@ bash setup.sh
 ### Trackpad/More Gestures:
 - App Exposè - Swipe Down with Three Fingers
 - Swipe between pages - Off
-- Default web browser
 
 ### Control Centre:
 - Turn on battery percentage in menu bar
 
-### Desktop & Dock
-- Menu Bar:
-    - Automatically - Always
-    - Recent - None
-- Windows & Apps:
-    - Prefer tabs - Always
-    - Ask to keep changes - On
-    - Close windows when quitting - Off
+### TODO:
+- Number format, time format
 
 # Potential problems
 

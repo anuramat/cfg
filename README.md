@@ -1,17 +1,20 @@
 # anuramat/cfg
 
 macOS zero to hero:
-- install scripts
-- packages
-- configs
+- Install scripts
+- Packages
+- Configs
 
 Assumes:
-- default XDG paths
+- default XDG paths 
 - default Apple Silicon Homebrew path (`/opt/homebrew/`)
+Paths are configured in `shell/profile.sh`
+
+`setup.sh` **overwrites without prompt*** files in `$XDG_CONFIG_HOME` with symlinks to files in `./config`
 
 ## CLI 
 
-Brewfile is somewhat bloated, comment out unwanted packages before installing.
+Brewfile is somewhat bloated, **comment out unwanted packages before installing**.
 
 ```sh
 # install git and stuff (might take some time)

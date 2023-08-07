@@ -1,11 +1,11 @@
 local M = {}
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>
 -- Closely integrated mappings do not (have to) conform to this "rule".
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local s = vim.keymap.set
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
   local n = function(keys, func, desc)
     s('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
@@ -35,7 +35,7 @@ M.lsp = function(buffer)
   n('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   n('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.trouble = function()
   local d = function(x) return 'Trouble: ' .. x end
   return {
@@ -49,7 +49,7 @@ M.trouble = function()
     { '<leader>tc', '<cmd>TroubleClose<cr>',                  desc = d('Close') },
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.flash = function()
   local d = function(x) return 'Flash: ' .. x end
   return {
@@ -61,13 +61,13 @@ M.flash = function()
     'f', 'F',
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesj = { {
   '<leader>j',
   function() require('treesj').toggle() end,
   desc = 'TreeSJ: Toggle'
 } }
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- for the most part using cmp defaults
 -- trying to match default vim ins/cmdline-completion hotkeys
 M.cmp =
@@ -118,7 +118,7 @@ M.cmp =
     return result
   end,
 }
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.telescope = {
   d = function(x) return 'Telescope: ' .. x end,
   builtin = function()
@@ -158,7 +158,7 @@ M.telescope = {
     }
   end
 }
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.harpoon = function()
   local d = function(x) return 'Harpoon: ' .. x end
   local get_num_mappings = function()
@@ -180,7 +180,7 @@ M.harpoon = function()
     unpack(get_num_mappings()),
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ mini.ai ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ miniAI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.miniai = function()
   local ai = require('mini.ai')
   return { -- TODO more textobjects
@@ -192,7 +192,7 @@ M.miniai = function()
     c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }, {}),
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.undotree = function()
   local function d(x) return 'UndoTree: ' .. x end
   return {
@@ -216,7 +216,7 @@ M.treesitter = {
     swap_previous = { ['<a-h>'] = '@parameter.inner' },
   }
 }
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.gitsigns = function(buffer)
   local gs = package.loaded.gitsigns
   local function ss(mode, l, r, desc)
@@ -235,7 +235,7 @@ M.gitsigns = function(buffer)
   ss('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff This ~')
   ss({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select Hunk')
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ haskell-tools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HaskellTools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.haskell_tools = function()
   local d = function(x) return 'Haskell Tools: ' .. x end
   local ht = require('haskell-tools')
@@ -252,28 +252,39 @@ M.haskell_tools = function()
     end
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = {
   -- [C] := changes behaviour == slightly different compared to the built-in mapping
   -- [S] := shadows something entirely different
-  -- Delete
-  -- { mode = '!', '<c-h>', '<bs>' },   -- it's already the default anyway
-  { mode = '!', '<c-d>',  '<delete>' },                                            -- [S] c: useless
-  -- { mode = '!', '<C-u>', function() require('readline').backward_kill_line() end },  -- [C] deletes from column 0, not from first non-blank character
-  { mode = '!', '<c-k>',  function() require('readline').kill_line() end },        -- [S] compose in i-mode
-  { mode = '!', '<c-w>',  function() require('readline').unix_word_rubout() end }, -- [C] kills WORDS, not words
+  -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Delete ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+  -- { mode = '!', '<c-h>', '<bs>' },
+  -- It's already the default anyway
+  { mode = '!', '<c-d>',  '<delete>' },
+  -- [S] c: useless
+  -- { mode = '!', '<C-u>', function() require('readline').backward_kill_line() end },
+  -- [C] deletes from column 0, not from first non-blank character
+  { mode = '!', '<c-k>',  function() require('readline').kill_line() end },
+  -- [S] compose in i-mode
+  { mode = '!', '<c-w>',  function() require('readline').unix_word_rubout() end },
+  -- [C] kills WORDS, not words
   { mode = '!', '<a-bs>', function() require('readline').backward_kill_word() end },
   { mode = '!', '<a-d>',  function() require('readline').kill_word() end },
-  -- Move
-  { mode = '!', '<c-b>',  '<left>' },  -- [S/C] c: beginning of line
-  { mode = '!', '<c-f>',  '<right>' }, -- [S] c: cmdline-window
+  -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Left/Right ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+  { mode = '!', '<c-b>',  '<left>' },
+  -- [S/C] c: beginning of line
+  { mode = '!', '<c-f>',  '<right>' },
+  -- [S] c: cmdline-window
   { mode = '!', '<a-b>',  function() require('readline').backward_word() end },
   { mode = '!', '<a-f>',  function() require('readline').forward_word() end },
-  { mode = '!', '<c-a>',  function() require('readline').beginning_of_line() end }, -- [S] c: useless, i: insert last insert
-  { mode = 'i', '<c-e>',  function() require('readline').end_of_line() end },       -- it's already the default mapping for c-mode
-  -- Up/down
-  -- { mode = '!', '<c-n>', '<down>'}, -- [S] completion
-  -- { mode = '!', '<c-p>', '<up>'},   -- [S] completion
+  { mode = '!', '<c-a>',  function() require('readline').beginning_of_line() end },
+  -- [S] c: useless, i: insert last insert
+  { mode = 'i', '<c-e>',  function() require('readline').end_of_line() end },
+  -- it's already the default mapping for c-mode
+  -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Up/Down ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+  -- { mode = '!', '<c-n>', '<down>'},
+  -- [S] completion
+  -- { mode = '!', '<c-p>', '<up>'},
+  -- [S] completion
 }
 return M
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

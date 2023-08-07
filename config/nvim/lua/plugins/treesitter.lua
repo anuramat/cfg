@@ -36,7 +36,7 @@ specs.treesitter = {
     -- vim.opt.foldmethod = 'expr'
     -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
     require('ufo').setup({
-      provider_selector = function(bufnr, filetype, buftype)
+      provider_selector = function(bufnr, filetype, buftype) --luacheck:ignore
         return { 'treesitter', 'indent' }
       end
     })

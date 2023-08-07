@@ -37,7 +37,7 @@ o.showmode = false
 o.signcolumn = 'yes'
 o.termguicolors = true
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Folding ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
--- TODO turn on after hiding numbers and fixing alignment:
+-- TODO turn on after hiding numbers and fixing spacing:
 o.foldcolumn = '0'
 o.foldenable = false
 o.foldmethod = 'indent'

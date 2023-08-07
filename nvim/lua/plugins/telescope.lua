@@ -25,7 +25,7 @@ specs.telescope = {
         },
       },
       pickers = {
-        find_files = { hidden = true, file_ignore_patterns = { '.git/' } },
+        find_files = { hidden = true, file_ignore_patterns = { '%.git/' } },
         keymaps = { show_plug = false },
         colorscheme = { enable_preview = true },
       },

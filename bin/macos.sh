@@ -97,8 +97,28 @@ defaults write $trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
 defaults write $trackpad USBMouseStopsTrackpad -int 0
 defaults write $trackpad UserPreferences -bool true
 # Spotlight
-! [ -e /Applications/Xcode.app ] && touch /Applications/Xcode.app
-./bin/spotlight.py && killall Spotlight SystemUIServer mds
+defaults write com.apple.Spotlight orderedItems -array \
+	'{enabled = true; name = "APPLICATIONS";}' \
+	'{enabled = false; name = "BOOKMARKS";}' \
+	'{enabled = true; name = "MENU_EXPRESSION";}' \
+	'{enabled = true; name = "CONTACT";}' \
+	'{enabled = true; name = "MENU_CONVERSION";}' \
+	'{enabled = true; name = "MENU_DEFINITION";}' \
+	'{enabled = false; name = "DOCUMENTS";}' \
+	'{enabled = true; name = "EVENT_TODO";}' \
+	'{enabled = false; name = "DIRECTORIES";}' \
+	'{enabled = false; name = "FONTS";}' \
+	'{enabled = false; name = "IMAGES";}' \
+	'{enabled = false; name = "MESSAGES";}' \
+	'{enabled = false; name = "MOVIES";}' \
+	'{enabled = false; name = "MUSIC";}' \
+	'{enabled = false; name = "MENU_OTHER";}' \
+	'{enabled = true; name = "PDF";}' \
+	'{enabled = false; name = "PRESENTATIONS";}' \
+	'{enabled = false; name = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+	'{enabled = false; name = "SPREADSHEETS";}' \
+	'{enabled = true; name = "SYSTEM_PREFS";}' \
+	'{enabled = false; name = "SOURCE";}'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 killall Dock Finder SystemUIServer
 echo "[cfg] restart pls"

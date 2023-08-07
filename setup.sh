@@ -8,7 +8,9 @@ export __UTILS_OVERWRITE="always" # WARNING will overwrite your files without a 
 continue_prompt "Install configs?" && {
   install2file shell/bashrc.sh "$HOME/.bashrc"
   install2file shell/profile.sh "$HOME/.profile"
-  find config -maxdepth 1 -mindepth 1 -print0 | xargs -0I {} bash -c ". lib/utils.sh; install2folder {} $XDG_CONFIG_HOME"
+  # file.ext -> .file
+  find shell -maxdepth 1 -mindepth 1 -print0 | xargs -n1 -0I{} bash -c '. lib/utils.sh; basename {} | xargs -I# echo {} $HOME/$(basename {} | perl -pe "s/(.*)\..*/.\1/")' 
+  find config -maxdepth 1 -mindepth 1 -print0 | xargs -n1 -0I{} bash -c ". lib/utils.sh; install2folder {} $XDG_CONFIG_HOME"
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash

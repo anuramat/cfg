@@ -1,19 +1,13 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2139 # That's exactly the behaviour I want
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ XDG ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The usual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+bind 'set bell-style none' # disable annoying sound
+. "$HOME/.profile"
 export LC_ALL="en_US.UTF-8"
 export EDITOR="nvim"
 export VISUAL="$EDITOR"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Paths ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-eval "$(/opt/homebrew/bin/brew shellenv bash)"
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin${PATH:+:$PATH}"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'" 
+eval "$(/opt/homebrew/bin/brew shellenv bash)" # brew env variables
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 default_exa="exa --group-directories-first --group --icons --header --git --color=always"
 alias f="nvim"

@@ -36,4 +36,3 @@ brew bundle install
 ### Keyboard:
 - Delete everything in "Text replacements..."  
 - Keybinds
-

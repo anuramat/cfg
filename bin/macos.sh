@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 . ./lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ System settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# shoutout to https://macos-defaults.com
+# Shoutout to https://macos-defaults.com
 # and https://mths.be/macos
+# Breaks every major release :(
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 screenshot_dir="$HOME/Screenshots"
 ensure_path "$screenshot_dir"
@@ -45,7 +46,7 @@ defaults write -g AppleSpacesSwitchOnActivate -bool false                 # Swit
 defaults write -g AppleWindowTabbingMode -string always                   # Prefer tabs to windows
 defaults write -g NSCloseAlwaysConfirmsChanges -bool false                # Ask to save on close
 defaults write -g NSQuitAlwaysKeepsWindows -bool false                    # Close windows on <Cmd-Q>
-defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default (&& killall TextEdit ?)
+defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
 # Keyboard
 defaults write -g InitialKeyRepeat -float 15 # repeat period
@@ -98,27 +99,26 @@ defaults write $trackpad USBMouseStopsTrackpad -int 0
 defaults write $trackpad UserPreferences -bool true
 # Spotlight
 defaults write com.apple.Spotlight orderedItems -array \
-	'{enabled = true; name = "APPLICATIONS";}' \
-	'{enabled = false; name = "BOOKMARKS";}' \
-	'{enabled = true; name = "MENU_EXPRESSION";}' \
-	'{enabled = true; name = "CONTACT";}' \
-	'{enabled = true; name = "MENU_CONVERSION";}' \
-	'{enabled = true; name = "MENU_DEFINITION";}' \
-	'{enabled = false; name = "DOCUMENTS";}' \
-	'{enabled = true; name = "EVENT_TODO";}' \
-	'{enabled = false; name = "DIRECTORIES";}' \
-	'{enabled = false; name = "FONTS";}' \
-	'{enabled = false; name = "IMAGES";}' \
-	'{enabled = false; name = "MESSAGES";}' \
-	'{enabled = false; name = "MOVIES";}' \
-	'{enabled = false; name = "MUSIC";}' \
-	'{enabled = false; name = "MENU_OTHER";}' \
-	'{enabled = true; name = "PDF";}' \
-	'{enabled = false; name = "PRESENTATIONS";}' \
-	'{enabled = false; name = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
-	'{enabled = false; name = "SPREADSHEETS";}' \
 	'{enabled = true; name = "SYSTEM_PREFS";}' \
-	'{enabled = false; name = "SOURCE";}'
+	'{enabled = true; name = "PDF";}' \
+	'{enabled = true; name = "MENU_EXPRESSION";}' \
+	'{enabled = true; name = "MENU_DEFINITION";}' \
+	'{enabled = true; name = "MENU_CONVERSION";}' \
+	'{enabled = true; name = "EVENT_TODO";}' \
+	'{enabled = true; name = "CONTACT";}' \
+	'{enabled = true; name = "APPLICATIONS";}' \
+	'{enabled = false; name = "SPREADSHEETS";}' \
+	'{enabled = false; name = "SOURCE";}' \
+	'{enabled = false; name = "PRESENTATIONS";}' \
+	'{enabled = false; name = "MUSIC";}' \
+	'{enabled = false; name = "MOVIES";}' \
+	'{enabled = false; name = "MESSAGES";}' \
+	'{enabled = false; name = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+	'{enabled = false; name = "MENU_OTHER";}' \
+	'{enabled = false; name = "IMAGES";}' \
+	'{enabled = false; name = "FONTS";}' \
+	'{enabled = false; name = "DOCUMENTS";}' \
+	'{enabled = false; name = "DIRECTORIES";}' \
+	'{enabled = false; name = "BOOKMARKS";}'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-killall Dock Finder SystemUIServer
 echo "[cfg] restart pls"

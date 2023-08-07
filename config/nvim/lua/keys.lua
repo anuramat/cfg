@@ -39,5 +39,7 @@ v('<a-k>', ":m '<-2<cr>gv=gv", 'Move Lines Up')
 i('<a-j>', '<esc><cmd>m .+1<cr>==gi', 'Move Line Down')
 i('<a-k>', '<esc><cmd>m .-2<cr>==gi', 'Move Line Up')
 -- Header
-local header = function() b.create_comment_header('~', false) end
+local header = function() b.create_comment_header('~') end
+local halfheader = function() b.create_comment_header('~', true, 0.5) end
 n('<leader>#', header, 'Create Comment Header')
+n('<leader>$', halfheader, 'Create Comment Header (half width)')

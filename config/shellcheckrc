@@ -1,3 +1,4 @@
-# Expressions don't expand in single quotes, use double quotes for that.
+# Not following (path to a source file)
 disable=SC1091
+# Expressions don't expand in single quotes, use double quotes for that.
 disable=SC2016

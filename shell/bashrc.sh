@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2139 # That's exactly the behaviour I want
 bind 'set bell-style none'                     # disable annoying sound
 eval "$(/opt/homebrew/bin/brew shellenv bash)" # brew env variables
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -29,8 +28,6 @@ __overprompt() {
 PS1='$(__overprompt)\n '
 PS2='│'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Ripgrep
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
 # Zoxide
 # TODO add zoxide-fzf options
 export _ZO_RESOLVE_SYMLINKS="1"
@@ -54,3 +51,5 @@ else
 	fi
 fi
 unset __conda_setup
+# Ble.sh
+[ -f "$XDG_DATA_HOME/blesh/ble.sh" ] && . "$XDG_DATA_HOME/blesh/ble.sh"

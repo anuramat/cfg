@@ -1,4 +1,7 @@
-# Not following (dynamic path to a source file)
+# not following a dynamic path to a source file
 disable=SC1091
-# Expressions don't expand in single quotes, use double quotes for that.
+disable=SC1090
+# expressions don't expand in single quotes
 disable=SC2016
+# alias x="$var" expands when defined, not when used
+disable=SC2139 

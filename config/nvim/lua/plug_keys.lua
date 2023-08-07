@@ -259,26 +259,26 @@ M.readline = {
   -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Delete ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
   -- { mode = '!', '<c-h>', '<bs>' },
   -- It's already the default anyway
-  { mode = '!', '<c-d>',  '<delete>' },
+  { mode = '!', '<c-d>', '<delete>' },
   -- [S] c: useless
   -- { mode = '!', '<C-u>', function() require('readline').backward_kill_line() end },
   -- [C] deletes from column 0, not from first non-blank character
-  { mode = '!', '<c-k>',  function() require('readline').kill_line() end },
+  { mode = '!', '<c-k>', function() require('readline').kill_line() end },
   -- [S] compose in i-mode
-  { mode = '!', '<c-w>',  function() require('readline').unix_word_rubout() end },
+  -- { mode = '!', '<c-w>', function() require('readline').unix_word_rubout() end },
   -- [C] kills WORDS, not words
-  { mode = '!', '<a-bs>', function() require('readline').backward_kill_word() end },
-  { mode = '!', '<a-d>',  function() require('readline').kill_word() end },
+  -- { mode = '!', '<a-bs>', function() require('readline').backward_kill_word() end },
+  { mode = '!', '<a-d>', function() require('readline').kill_word() end },
   -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Left/Right ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-  { mode = '!', '<c-b>',  '<left>' },
+  { mode = '!', '<c-b>', '<left>' },
   -- [S/C] c: beginning of line
-  { mode = '!', '<c-f>',  '<right>' },
+  { mode = '!', '<c-f>', '<right>' },
   -- [S] c: cmdline-window
-  { mode = '!', '<a-b>',  function() require('readline').backward_word() end },
-  { mode = '!', '<a-f>',  function() require('readline').forward_word() end },
-  { mode = '!', '<c-a>',  function() require('readline').beginning_of_line() end },
+  { mode = '!', '<a-b>', function() require('readline').backward_word() end },
+  { mode = '!', '<a-f>', function() require('readline').forward_word() end },
+  { mode = '!', '<c-a>', function() require('readline').beginning_of_line() end },
   -- [S] c: useless, i: insert last insert
-  { mode = 'i', '<c-e>',  function() require('readline').end_of_line() end },
+  { mode = 'i', '<c-e>', function() require('readline').end_of_line() end },
   -- it's already the default mapping for c-mode
   -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Up/Down ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
   -- { mode = '!', '<c-n>', '<down>'},

@@ -18,8 +18,10 @@ ensure_string "hehe" "$HOME/.hushlogin"
 	}
 }
 # Install fzf shell integration
-continue_prompt "Install fzf integration?" && {
-	"$HOMEBREW_PREFIX/opt/fzf/install"
+[ -f "$HOME/.fzf.bash" ] || {
+	continue_prompt "Install fzf integration?" && {
+		"$HOMEBREW_PREFIX/opt/fzf/install"
+	}
 }
 # iTerm2
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$XDG_CONFIG_HOME/iterm2"       # Set config path

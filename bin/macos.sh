@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+. ./lib/utils.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ System settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # shoutout to https://macos-defaults.com
 # and https://mths.be/macos

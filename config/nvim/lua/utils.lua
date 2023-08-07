@@ -1,6 +1,5 @@
 local M = {}
 
-local af_group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
 
 --- Checks if string is empty
 --- @param s string
@@ -81,19 +80,35 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
+local af_group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
 --- Creates format autocommand for a client-buffer pair
 --- Meant to be called in an on_attach handler
 --- @param client table
 --- @param buffer integer
 function M.setup_autoformat(client, buffer)
-  vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
+  -- check if we can format at all
+  if not client.server_capabilities.documentFormattingProvider then
+    return
+  end
+  -- helper
+  local cleanup = function()
+    vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
+  end
+  -- make sure we're the only lsp providing autoformatting
+  cleanup()
+  -- actual autoformatting
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = af_group,
     buffer = buffer,
     callback = function()
-      if not (client and client.server_capabilities.documentFormattingProvider) then return end
       vim.lsp.buf.format({ async = false })
     end,
+  })
+  -- cleanup on detach
+  vim.api.nvim_create_autocmd('LspDetach', {
+    group = af_group,
+    buffer = buffer,
+    callback = cleanup
   })
 end
 

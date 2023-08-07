@@ -2,22 +2,17 @@
 # shellcheck disable=SC2088
 set -e
 . ./lib/utils.sh
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Config files ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO check that XDG_CONFIG_HOME is set
 export __UTILS_OVERWRITE="always"
 continue_prompt "Install configs?" && {
-  install2file config/bashrc.sh "$HOME/.bashrc"
-  install2file config/batconfig "$XDG_CONFIG_HOME/bat/config"
-  install2folder config/git "$XDG_CONFIG_HOME"
-  install2folder config/condarc "$XDG_CONFIG_HOME/conda"
-  install2folder config/config.fish "$XDG_CONFIG_HOME/fish"
-  install2folder config/fish_prompt.fish "$XDG_CONFIG_HOME/fish/functions"
-  install2folder config/karabiner.json "$XDG_CONFIG_HOME/karabiner"
-  install2folder config/ripgreprc "$XDG_CONFIG_HOME"
-  install2folder config/shellcheckrc "$XDG_CONFIG_HOME"
-  install2folder nvim "$XDG_CONFIG_HOME"
+  install2file misc/bashrc.sh "$HOME/.bashrc"
+  install2folder misc/config.fish "$XDG_CONFIG_HOME/fish"
+  install2folder misc/fish_prompt.fish "$XDG_CONFIG_HOME/fish/functions"
+  # symlink everything from ./config folder to $XDG_CONFIG_HOME
+  find config -maxdepth 1 -mindepth 1 -print0 | xargs -0I {} bash -c ". lib/utils.sh; install2folder {} $XDG_CONFIG_HOME"
 }
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bash
 ensure_string 'source "$HOME/.bashrc"' "$HOME/.bash_profile"
 # fish functions and variables

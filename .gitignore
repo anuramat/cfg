@@ -234,3 +234,4 @@ tags
 
 # install script data
 Brewfile.lock.json
+**/karabiner/automatic_backups/*

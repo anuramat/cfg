@@ -65,6 +65,36 @@ defaults write $menuclock ShowAMPM -bool true
 defaults write $menuclock ShowDate -integer 0
 defaults write $menuclock ShowDayOfWeek -bool true
 defaults write $menuclock ShowSeconds -bool true
+# Trackpad
+trackpad=com.apple.AppleMultitouchTrackpad
+defaults write $trackpad ActuateDetents -int 1
+defaults write $trackpad ActuationStrength -int 1
+defaults write $trackpad Clicking -int 0
+defaults write $trackpad DragLock -int 0
+defaults write $trackpad Dragging -int 0
+defaults write $trackpad FirstClickThreshold -int 1
+defaults write $trackpad ForceSuppressed -bool false
+defaults write $trackpad SecondClickThreshold -int 1
+defaults write $trackpad TrackpadCornerSecondaryClick -int 0
+defaults write $trackpad TrackpadFiveFingerPinchGesture -int 2
+defaults write $trackpad TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write $trackpad TrackpadFourFingerPinchGesture -int 2
+defaults write $trackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults write $trackpad TrackpadHandResting -bool true
+defaults write $trackpad TrackpadHorizScroll -int 1
+defaults write $trackpad TrackpadMomentumScroll -bool true
+defaults write $trackpad TrackpadPinch -int 1
+defaults write $trackpad TrackpadRightClick -bool true
+defaults write $trackpad TrackpadRotate -int 1
+defaults write $trackpad TrackpadScroll -bool true
+defaults write $trackpad TrackpadThreeFingerDrag -bool false
+defaults write $trackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write $trackpad TrackpadThreeFingerTapGesture -int 2
+defaults write $trackpad TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write $trackpad TrackpadTwoFingerDoubleTapGesture -int 1
+defaults write $trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+defaults write $trackpad USBMouseStopsTrackpad -int 0
+defaults write $trackpad UserPreferences -bool true
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 killall Dock Finder SystemUIServer
 echo "[cfg] restart pls"

@@ -35,6 +35,9 @@ bash setup.sh
 
 ### Keyboard:
 - Delete everything in "Text replacements..."  
+- Keybinds
+
+- Trackpad
 
 ### Trackpad/More Gestures:
 - App Exposè - Swipe Down with Three Fingers
@@ -42,10 +45,6 @@ bash setup.sh
 
 ### Control Centre:
 - Turn on battery percentage in menu bar
-
-### TODO:
-- Number format, time format
-- Keybinds
 
 # Potential problems
 

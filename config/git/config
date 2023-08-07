@@ -3,6 +3,7 @@ name = Arsen Nuramatov
 email = anuramat@pm.me
 
 [core]
+excludesfile = ~/.config/git/ignore
 pager = delta
 
 [interactive]

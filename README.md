@@ -37,16 +37,3 @@ brew bundle install
 - Delete everything in "Text replacements..."  
 - Keybinds
 
-# Potential problems
-
-- If developer stuff appears in your spotlight:
-```sh
-mkdir /Applications/Xcode.app
-# uncheck the "developer" checkbox in prefs/spotlight
-rm -r /Applications/Xcode.app
-```
-
-- If for some reason rosetta doesn't get installed:
-```sh
-/usr/sbin/softwareupdate --install-rosetta --agree-to-license
-```

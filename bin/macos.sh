@@ -59,12 +59,13 @@ defaults write -g TISRomanSwitchState -bool false # turn off automatic input met
 # Language
 defaults write -g AppleLanguages -array en      # Change system language
 defaults write -g AppleLocale -string en_RU@USD # Set locale
-# Clock in menubar
+# Menu bar
 menuclock=com.apple.menuextra.clock.plist
 defaults write $menuclock ShowAMPM -bool true
 defaults write $menuclock ShowDate -integer 0
 defaults write $menuclock ShowDayOfWeek -bool true
 defaults write $menuclock ShowSeconds -bool true
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true # Battery percentage
 # Trackpad
 trackpad=com.apple.AppleMultitouchTrackpad
 defaults write $trackpad ActuateDetents -int 1

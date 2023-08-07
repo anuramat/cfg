@@ -37,8 +37,6 @@ bash setup.sh
 - Delete everything in "Text replacements..."  
 - Keybinds
 
-- Trackpad
-
 ### Trackpad/More Gestures:
 - App Exposè - Swipe Down with Three Fingers
 - Swipe between pages - Off

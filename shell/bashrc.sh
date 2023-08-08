@@ -56,3 +56,4 @@ unset __conda_setup
 # ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #
 [[ ${BLE_VERSION-} ]] && ble-attach
 # ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #
+setcolors

@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>ClosingTmuxWindowKillsTmuxWindows</key>
 	<true/>
 	<key>ClosingTmuxWindowKillsTmuxWindows_selection</key>
 	<integer>1</integer>
+	<key>Command</key>
+	<string></string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Dracula</key>
@@ -226,6 +230,8 @@
 	<key>DimBackgroundWindows</key>
 	<true/>
 	<key>DimOnlyText</key>
+	<true/>
+	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
 	<key>GlobalKeyMap</key>
 	<dict>
@@ -592,6 +598,8 @@
 			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Text</key>
+			<string></string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -937,8 +945,6 @@
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
-			<key>Set Local Environment Vars</key>
-			<true/>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
@@ -1609,6 +1615,10 @@
 			<string>/Users/arsen</string>
 		</dict>
 	</array>
+	<key>OpenArrangementAtStartup</key>
+	<false/>
+	<key>OpenNoWindowsAtStartup</key>
+	<true/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1649,11 +1659,9 @@
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.50371093749999996</real>
+	<real>0.59999999999999998</real>
 	<key>SwitchPaneModifier</key>
 	<integer>5</integer>
-	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>

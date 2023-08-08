@@ -63,6 +63,11 @@ install2file() {
 	local -r target="$2"
 	local -r target_dir="$(dirname "$2")"
 
+	# HACK, read use gitignore instead
+	[ "$(basename "$original")" = .DS_Store ] && {
+		return
+	}
+
 	[ -e "$1" ] || {
 		echo "[cfg.fail] file \"$1\" not found!"
 		return 1

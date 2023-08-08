@@ -236,3 +236,4 @@ tags
 Brewfile.lock.json
 **/karabiner/automatic_backups
 **/config/iterm2/AppSupport
+**/git/config_private

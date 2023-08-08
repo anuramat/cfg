@@ -1,6 +1,5 @@
-[user]
-name = Arsen Nuramatov
-email = anuramat@pm.me
+[include]
+path=private
 
 [core]
 pager = delta

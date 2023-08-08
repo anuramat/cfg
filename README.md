@@ -16,16 +16,15 @@ Before running anything:
 
 ## CLI 
 ```sh
-# install git and stuff (takes some time)
+# devtools
 xcode-select --install
-# install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # clone this
 cd && git clone https://github.com/anuramat/cfg && cd cfg
-# install packages from Brewfile
+# install packages
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
 brew analytics off
 brew bundle install
-# remember to restart afterwards
+# install configs and prefs
 ./setup.sh
 ```
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~ Blesh (first part) ~~~~~~~~~~~~~~~~~~ #
-[[ $- == *i* ]] && source "$XDG_DATA_HOME/blesh/ble.sh" --noattach
+source "$XDG_DATA_HOME/blesh/ble.sh" --noattach
 # ~~~~~~~~~~~~~~~~~~~ Basic settings ~~~~~~~~~~~~~~~~~~~~ #
 bind 'set bell-style none' # Disable annoying sound
 # ~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -34,15 +34,15 @@ PS2='│'
 [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 # ~~~~~~~~~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO add zoxide-fzf options
-eval "$(zoxide init bash --cmd j)"
 export _ZO_RESOLVE_SYMLINKS="1"
+eval "$(zoxide init bash --cmd j)"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Fzf ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ -f ~/.fzf.bash ] && {
-	. "$HOME/.fzf.bash"
-	ble-import -d integration/fzf-completion
-	ble-import -d integration/fzf-key-bindings
 	export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 	export FZF_ALT_C_OPTS="--preview 'tree {}'"
+	# . "$HOME/.fzf.bash"
+	ble-import -d integration/fzf-completion
+	ble-import -d integration/fzf-key-bindings
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Exa ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 export EXA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=35:ux=36:ue=36:gr=34:gw=35:gx=36:tr=34:tw=35:tx=36"

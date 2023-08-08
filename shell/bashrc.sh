@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# start blesh init
+# ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #
 [[ $- == *i* ]] && source "$XDG_DATA_HOME/blesh/ble.sh" --noattach
-
+# ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #
 bind 'set bell-style none'                     # disable annoying sound
 eval "$(/opt/homebrew/bin/brew shellenv bash)" # brew env variables
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -51,9 +51,10 @@ else
 	if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
 		. "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
 	else
-		export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+		export PATH="/opt/homebrew/Caskroom/miniforge/base/bin${PATH:+:$PATH}"
 	fi
 fi
 unset __conda_setup
-
+# ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #
 [[ ${BLE_VERSION-} ]] && ble-attach
+# ~~~~~~~~~~~~~~~~~~ blesh init magic ~~~~~~~~~~~~~~~~~~~ #

@@ -55,5 +55,8 @@ unset __conda_setup
 # Ble.sh
 [ -f "$XDG_DATA_HOME/blesh/ble.sh" ] && {
 	. "$XDG_DATA_HOME/blesh/ble.sh"
-	bleopt edit_abell= # no bell
+	# no audible bell
+	bleopt edit_abell=
+	# visual bell
+	bleopt edit_vbell=1 vbell_default_message=' BEL ' vbell_duration=3000
 }

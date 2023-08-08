@@ -1,22 +1,20 @@
 # anuramat/cfg
 
 macOS zero to hero:
-- Install scripts
 - Packages
 - Configs
 - macOS preferences
 
 Assumes:
-- default XDG paths 
-- default Apple Silicon Homebrew path (`/opt/homebrew/`)
-Paths are configured in `shell/profile.sh`
+- Default XDG paths 
+- Default Apple Silicon Homebrew path (`/opt/homebrew/`)
 
-`setup.sh` **overwrites without prompt*** files in `$XDG_CONFIG_HOME` with symlinks to files in `./config`
+Before running anything:
+- Modify install paths in `shell/profile.sh`
+- Modify `setup.sh`, if you don't want to overwrite files automatically
+- Comment out unwanted packages from `Brewfile`
 
 ## CLI 
-
-Brewfile is somewhat bloated, **comment out unwanted packages before installing**.
-
 ```sh
 # install git and stuff (takes some time)
 xcode-select --install
@@ -31,8 +29,6 @@ brew bundle install
 ./setup.sh
 ```
 
-## GUI Preferences 
-
-### Keyboard:
+## Keyboard settings:
 - Delete everything in "Text replacements..."  
 - Keybinds

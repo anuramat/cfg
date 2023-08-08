@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # shellcheck disable=2086
 # https://spec.draculatheme.com/
-c_cyan="#8BE9FD"      # builtin
-c_fg="#F8F8F2"        # vars
-c_pink="#FF79C6"      # escapes
-c_green="#50FA7B"     # function
-c_purple="#BD93F9"    # constant
-c_red="#FF5555"       # error
-c_yellow="#F1FA8C"    # strings
-c_selection="#44475A" # selection
-c_comment="#6272A4"   # comment
-c_orange="#FFB86C"
+c_cyan="#8BE9FD"       # builtin
+c_fg="#F8F8F2"         # vars
+c_pink="#FF79C6"       # escapes
+c_green="#50FA7B"      # function
+c_purple="#BD93F9"     # constant
+c_red="#FF5555"        # error
+c_yellow="#F1FA8C"     # strings
+c_selection="#44475A"  # blue grey
+c_comment="#6272A4"    # comment
+c_orange="#FFB86C"     # ?
 undef="bg=red,fg=blue" # stuff that isn't added yet
 # ~~~~~~~~~~~~~~~~~~~~~~~ editing ~~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s region fg=$c_selection

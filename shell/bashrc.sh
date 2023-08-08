@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# start blesh init
+[[ $- == *i* ]] && source "$XDG_DATA_HOME/blesh/ble.sh" --noattach
+
 bind 'set bell-style none'                     # disable annoying sound
 eval "$(/opt/homebrew/bin/brew shellenv bash)" # brew env variables
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -52,11 +55,5 @@ else
 	fi
 fi
 unset __conda_setup
-# Ble.sh
-[ -f "$XDG_DATA_HOME/blesh/ble.sh" ] && {
-	. "$XDG_DATA_HOME/blesh/ble.sh"
-	# no audible bell
-	bleopt edit_abell=
-	# visual bell
-	bleopt edit_vbell=1 vbell_default_message=' HEHE ' vbell_duration=3000
-}
+
+[[ ${BLE_VERSION-} ]] && ble-attach

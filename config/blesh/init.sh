@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=2086
+bleopt edit_abell= # no bell
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # https://spec.draculatheme.com/
 c_cyan="#8BE9FD"      # builtin
 c_fg="#F8F8F2"        # vars
@@ -11,7 +13,7 @@ c_yellow="#F1FA8C"    # strings
 c_selection="#44475A" # blue grey
 c_comment="#6272A4"   # comment
 c_orange="#FFB86C"    # ?
-gigaerr="bg=red,fg=blue,bold"
+gigaerr="fg=$c_red,standout"
 # ~~~~~~~~~~~~~~~~~~~~~~~ Editor ~~~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s region fg=$c_selection
 ble-face -s region_target fg=$c_selection
@@ -79,8 +81,9 @@ ble-face -s argument_error fg=$c_red
 ble-face -s overwrite_mode standout
 # dunno
 ble-face -s region_insert fg=$c_fg,bold
-ble-face -s menu_filter_fixed fg=$c_orange,bold
-ble-face -s menu_filter_input fg=$c_orange,standout
+# eg when typing a path: /first_part/second
+ble-face -s menu_filter_fixed fg=$c_pink,bold     # first part
+ble-face -s menu_filter_input fg=$c_pink,standout # second part
 # visual bell
 ble-face -s vbell $gigaerr
 ble-face -s vbell_erase $gigaerr

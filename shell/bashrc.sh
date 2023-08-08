@@ -12,7 +12,6 @@ alias ll="$default_exa --long"
 alias la="$default_exa --long --all"
 alias tree="$default_exa --tree"
 alias bathelp="bat --plain --language=help"
-alias conv="plutil -convert xml1"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 __overprompt() {
 	local -r status=$?

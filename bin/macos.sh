@@ -67,7 +67,7 @@ defaults write $menuclock ShowDate -integer 0
 defaults write $menuclock ShowDayOfWeek -bool true
 defaults write $menuclock ShowSeconds -bool true
 defaults write $menuclock IsAnalog -bool false
-defaults write $menuclock FlashDateSeparators -bool true
+defaults write $menuclock FlashDateSeparators -bool false
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true # Battery percentage
 # Trackpad
 trackpad=com.apple.AppleMultitouchTrackpad

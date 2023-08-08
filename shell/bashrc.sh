@@ -58,5 +58,5 @@ unset __conda_setup
 	# no audible bell
 	bleopt edit_abell=
 	# visual bell
-	bleopt edit_vbell=1 vbell_default_message=' BEL ' vbell_duration=3000
+	bleopt edit_vbell=1 vbell_default_message=' HEHE ' vbell_duration=3000
 }

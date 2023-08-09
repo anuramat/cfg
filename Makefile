@@ -6,4 +6,4 @@ lua:
 	luacheck . --globals=vim
 
 shell:
-	fd -ug "**.sh" --color=never | xargs shellcheck 
+	fd -0ug "**.sh" | xargs -0I{} sh -c 'echo "Checking {}" && shellcheck -o all {}'

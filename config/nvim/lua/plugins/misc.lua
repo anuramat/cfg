@@ -139,6 +139,8 @@ specs.mdpreview = {
 
 specs.align = {
   'echasnovski/mini.align',
+  opts = {
+  },
   keys = {
     'ga',
     'gA',

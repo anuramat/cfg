@@ -29,7 +29,7 @@ brew bundle install
 ```
 
 ## Manual prefs:
-- Delete everything in "Text replacements..."  
-- Keybinds
-- Choose a screensaver
-- Lock Screen -> "Require password..." = "Immediately"
+- Delete everything in "Text replacements..." (TODO)
+- Keybinds (TODO)
+- Choose a screensaver (no point in setting up automatically)
+- Lock Screen -> "Require password..." = "Immediately" (no chance of setting through defaults)

@@ -135,4 +135,12 @@ specs.mdpreview = {
   end,
 }
 
+specs.minialign = {
+  'echasnovski/mini.align',
+  keys = {
+    'ga',
+    'gA',
+  }
+}
+
 return u.values(specs)

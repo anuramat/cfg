@@ -14,6 +14,8 @@ Before running anything:
 - Modify `setup.sh`, if you don't want to overwrite files automatically
 - Comment out unwanted packages from `Brewfile`
 
+If you don't know/remember what some package does, it might be [here](forgettable.md)
+
 ## CLI 
 ```sh
 # devtools

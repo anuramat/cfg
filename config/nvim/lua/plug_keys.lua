@@ -183,14 +183,9 @@ end
 M.miniai = function()
   local ts = require('mini.ai').gen_spec.treesitter
   return {
-    b = false, -- any brackets -- bad habit
-    q = false, -- any quotation marks -- bad habit
-    -- everything bloky
-    o = ts({
-      a = { '@block.outer', '@conditional.outer', '@loop.outer', '@frame.outer' },
-      i = { '@block.inner', '@conditional.inner', '@loop.inner', '@frame.inner' },
-    }, {}),
-    -- functions
+    b = false, -- = ([{
+    q = false, -- = `'"
+    -- ~~~~~~~~~~~~~~~~~~~ functions ~~~~~~~~~~~~~~~~~~~ --
     F = ts({
       a = { '@function.outer' },
       i = { '@function.inner' },
@@ -203,7 +198,8 @@ M.miniai = function()
       a = { '@parameter.outer' },
       i = { '@parameter.inner' },
     }, {}),
-    -- next two behave ~ the same
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- next two behave ~ the same: inner = rhs, outer = entire line
     e = ts({
       a = { '@assignment.outer' },
       i = { '@assignment.rhs' },
@@ -212,15 +208,19 @@ M.miniai = function()
       a = { '@return.outer' },
       i = { '@return.inner' },
     }),
-    -- misc
-    s = ts({
+    -- ~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~ --
+    s = ts({ -- both literals and definition
       a = { '@class.outer' },
       i = { '@class.inner' },
     }, {}),
-    c = ts({
+    c = ts({ -- inner doesn't work with most languages, use outer
       a = { '@comment.outer' },
       i = { '@comment.inner' },
     }),
+    o = ts({ -- any other blocks
+      a = { '@block.outer', '@conditional.outer', '@loop.outer', '@frame.outer' },
+      i = { '@block.inner', '@conditional.inner', '@loop.inner', '@frame.inner' },
+    }, {}),
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

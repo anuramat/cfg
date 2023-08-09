@@ -10,7 +10,7 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 
 # Homebrew path
 export HOMEBREW_PREFIX="/opt/homebrew"
-eval "$("${HOME}BREW_PREFIX/bin/brew" shellenv)" # brew env variables
+eval "$("${HOMEBREW_PREFIX}/bin/brew" shellenv)" # brew env variables
 
 # Go modules and binaries
 export GOPATH="${HOME}/go"

@@ -1,3 +1,5 @@
+# here we go
+enable=all
 # not following a dynamic path to a source file
 disable=SC1091
 disable=SC1090
@@ -5,9 +7,11 @@ disable=SC1090
 disable=SC2016
 # alias x="$var" expands when defined, not when used
 disable=SC2139 
-# here we go
-enable=all
 # ignored non-zero return codes
 disable=SC2312
 # prefer [[]] over [] when possible
 disable=SC2292
+# referenced but not assigned
+disable=SC2154
+# explicit -n to check string emptiness
+disable=SC2244

@@ -8,11 +8,21 @@ local n = function(l, r, d) s('n', l, r, { silent = true, desc = de(d) }) end
 local v = function(l, r, d) s('v', l, r, { silent = true, desc = de(d) }) end
 local i = function(l, r, d) s('i', l, r, { silent = true, desc = de(d) }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- Basics
 s({ 'n', 'v' }, '<space>', '<nop>', { silent = true, desc = de("NOP") })
 s('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = de("Leave Terminal Mode") })
--- Buffer
-n('<leader>bn', ':bn<cr>', 'Next Buffer')
-n('<leader>bp', ':bp<cr>', 'Previous Buffer')
+-- ~~~~~~~~~~~~~~~~~~~~~~ Buffer ~~~~~~~~~~~~~~~~~~~~~~~ --
+-- Ignore
+local skip_qf = function(f)
+  return function()
+    f()
+    if vim.bo.filetype == 'qf' then
+      f()
+    end
+  end
+end
+n('<leader>bn', skip_qf(vim.cmd.bn), 'Next Buffer')
+n('<leader>bp', skip_qf(vim.cmd.bp), 'Previous Buffer')
 n('<leader>bd', ':bd<cr>', 'Delete Buffer')
 n('<leader>bD', ':bd!<cr>', 'Delete Buffer (forced)')
 -- Quickfix

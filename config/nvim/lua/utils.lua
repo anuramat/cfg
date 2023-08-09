@@ -80,7 +80,8 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
-local af_group = vim.api.nvim_create_augroup('FormatHelpers', { clear = true })
+local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
+
 --- Sets up autoformatting and format commands for buffer if client is capable.
 --- Meant to be called in an on_attach handler
 --- @param client table
@@ -88,9 +89,8 @@ local af_group = vim.api.nvim_create_augroup('FormatHelpers', { clear = true })
 function M.setup_autoformat(client, buffer)
   -- XXX Will use first suitable lsp to do formatting
   -- To modify, add "filter" option to lsp.buf.format opts
-  local formatcmd = 'Format'
-  local autoformatcmd = 'AutoFormat'
-  local noautoformatcmd = 'NoAutoFormat'
+  local format_cmd = 'Format'
+  local noformat_cmd = 'Noformat'
   -- check if we can format at all
   if not client.server_capabilities.documentFormattingProvider then
     return
@@ -109,18 +109,12 @@ function M.setup_autoformat(client, buffer)
     vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
   end
   local cmds_on = function()
-    vim.api.nvim_buf_create_user_command(buffer, formatcmd, function()
-      vim.lsp.buf.format({ bufnr = buffer, async = true })
-    end, {})
-    vim.api.nvim_buf_create_user_command(buffer, autoformatcmd, function()
-      autoformat_on()
-    end, {})
-    vim.api.nvim_buf_create_user_command(buffer, noautoformatcmd, function()
-      autoformat_off()
-    end, {})
+    vim.api.nvim_buf_create_user_command(buffer, format_cmd, autoformat_on, {})
+    vim.api.nvim_buf_create_user_command(buffer, noformat_cmd, autoformat_off, {})
   end
   local cmds_off = function()
-    pcall(function() vim.api.nvim_buf_del_user_command(buffer, formatcmd) end)
+    pcall(function() vim.api.nvim_buf_del_user_command(buffer, format_cmd) end)
+    pcall(function() vim.api.nvim_buf_del_user_command(buffer, noformat_cmd) end)
   end
   local cleanup = function()
     autoformat_off()
@@ -130,7 +124,7 @@ function M.setup_autoformat(client, buffer)
 
   -- make sure we don't have get two autocmds
   cleanup()
-  -- start autoformatting, set up command
+  -- start autoformatting, set up commands
   cmds_on()
   autoformat_on()
 

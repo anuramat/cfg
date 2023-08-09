@@ -2,16 +2,16 @@
 # shellcheck disable=2086
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bleopt input_encoding=UTF-8
-bleopt pager=bat
-bleopt editor=nvim
 
-bleopt vbell_default_message=' HEHE '
-bleopt vbell_duration=2000
+bleopt editor=$EDITOR
+
+bleopt vbell_default_message=' DING DING '
+bleopt vbell_duration=500
 bleopt vbell_align=center
 
 # bells during edit
 bleopt edit_abell=
-bleopt edit_vbell=
+bleopt edit_vbell=1
 
 bleopt history_lazyload=1
 
@@ -99,7 +99,7 @@ ble-face -s overwrite_mode standout
 ble-face -s region_insert fg=$c_fg,bold
 # visual bell
 ble-face -s vbell $gigaerr
-ble-face -s vbell_erase $gigaerr
+ble-face -s vbell_erase none
 ble-face -s vbell_flash $gigaerr
 # prompt on the bottom of the screen (currently empty)
 ble-face -s prompt_status_line $gigaerr

@@ -103,13 +103,12 @@ ble-face -s vbell_erase $gigaerr
 ble-face -s vbell_flash $gigaerr
 # prompt on the bottom of the screen (currently empty)
 ble-face -s prompt_status_line $gigaerr
-# eg when typing a path: /first_part/second
-# doesn't work in rc for some reason
 
 my/complete-load-hook() {
 	bleopt complete_auto_delay=300
-	ble-face -s menu_filter_input fg=$c_fg,bold # second part
+	# eg when typing a path: /first_part/second
 	ble-face -s menu_filter_fixed bold          # first part
+	ble-face -s menu_filter_input fg=$c_fg,bold # second part
 }
 
 blehook/eval-after-load complete my/complete-load-hook

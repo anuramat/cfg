@@ -103,7 +103,7 @@ ble-face -s vbell_erase $gigaerr
 ble-face -s vbell_flash $gigaerr
 # prompt on the bottom of the screen (currently empty)
 ble-face -s prompt_status_line $gigaerr
-
+# TODO move stuff around
 my/complete-load-hook() {
 	bleopt complete_auto_delay=300
 	# eg when typing a path: /first_part/second

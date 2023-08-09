@@ -36,14 +36,11 @@ o.showmatch = true
 o.showmode = false
 o.signcolumn = 'yes'
 o.termguicolors = true
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Folding ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
--- TODO turn on after hiding numbers and fixing spacing:
-o.foldcolumn = '0'
-o.foldenable = false
-o.foldmethod = 'indent'
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
+o.foldenable = false
+o.foldmethod = 'indent'
 o.ignorecase = true
 o.report = 0
 o.smartcase = true
@@ -53,4 +50,4 @@ o.updatetime = 100 -- has influence on some plugins
 o.virtualedit = 'block'
 o.wildoptions = 'fuzzy,pum'
 vim.opt.backupdir:remove('.') -- don't shit in your cwd
-vim.opt.path:append("**")
+vim.opt.path:append("**")     -- :find over entire cwd tree

@@ -3,7 +3,6 @@ local M = {}
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>
 -- Closely integrated mappings do not (have to) conform to this "rule".
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local s = vim.keymap.set
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.lsp = function(buffer)
@@ -182,19 +181,46 @@ M.harpoon = function()
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ miniAI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.miniai = function()
-  local ai = require('mini.ai')
+  local ts = require('mini.ai').gen_spec.treesitter
   return {
-    o = ai.gen_spec.treesitter({
-      a = { '@block.outer', '@conditional.outer', '@loop.outer' },
-      i = { '@block.inner', '@conditional.inner', '@loop.inner' },
-    }, {}),                                                                             -- ???
-    f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }, {}),   -- override: improved
-    a = ai.gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }, {}), -- override: improved
-    c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }, {}),         -- class
-    b = false,                                                                          -- override: disable (any brackets)
-    q = false,                                                                          -- override: disable (any quotation marks)
-    -- other mini textobjs: a=argument, ?=userprompt, "default" (any other symbol)
-    -- for "default" <op>a<sym> includes (a,b], not [a,b], since it is intended for separators
+    b = false, -- any brackets -- bad habit
+    q = false, -- any quotation marks -- bad habit
+    -- everything bloky
+    o = ts({
+      a = { '@block.outer', '@conditional.outer', '@loop.outer', '@frame.outer' },
+      i = { '@block.inner', '@conditional.inner', '@loop.inner', '@frame.inner' },
+    }, {}),
+    -- functions
+    F = ts({
+      a = { '@function.outer' },
+      i = { '@function.inner' },
+    }, {}),
+    f = ts({
+      a = { '@call.outer' },
+      i = { '@call.inner' },
+    }),
+    a = ts({
+      a = { '@parameter.outer' },
+      i = { '@parameter.inner' },
+    }, {}),
+    -- next two behave ~ the same
+    e = ts({
+      a = { '@assignment.outer' },
+      i = { '@assignment.rhs' },
+    }),
+    r = ts({
+      a = { '@return.outer' },
+      i = { '@return.inner' },
+    }),
+    -- misc
+    s = ts({
+      a = { '@class.outer' },
+      i = { '@class.inner' },
+    }, {}),
+    c = ts({
+      a = { '@comment.outer' },
+      i = { '@comment.inner' },
+    }),
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

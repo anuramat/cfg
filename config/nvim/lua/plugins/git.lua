@@ -5,7 +5,6 @@ local u = require('utils')
 specs.fugitive = {
   'tpope/vim-fugitive',
   lazy = false, -- so that merge tool works
-  -- event = 'VeryLazy', -- TODO lazier
 }
 
 specs.signs = {

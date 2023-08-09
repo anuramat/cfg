@@ -1,24 +1,15 @@
 #!/usr/bin/env bash
 # shellcheck disable=2086
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bleopt input_encoding=UTF-8
-
-bleopt editor=$EDITOR
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bleopt vbell_default_message=' DING DING '
 bleopt vbell_duration=500
 bleopt vbell_align=center
-
-# bells during edit
 bleopt edit_abell=
 bleopt edit_vbell=1
-
-bleopt history_lazyload=1
-
-bleopt term_index_colors=auto
-#bleopt term_true_colors=semicolon
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # https://spec.draculatheme.com/
+# ~~~~~~~~~~~~~~~~~~~~ Define colors ~~~~~~~~~~~~~~~~~~~~ #
+# TODO change colors again, add more colors from the link, move stuff fr
 c_cyan="#8BE9FD"      # builtin
 c_fg="#F8F8F2"        # vars
 c_pink="#FF79C6"      # escapes
@@ -36,6 +27,10 @@ ble-face -s region_target fg=$c_selection
 ble-face -s region_match fg=$c_orange,reverse
 ble-face -s disabled fg=$c_comment
 ble-face -s auto_complete fg=$c_purple
+my/complete-load-hook() {                    # eg when typing a path: /first_part/second
+	ble-face -s menu_filter_fixed bold          # first part
+	ble-face -s menu_filter_input fg=$c_fg,bold # second part
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~ Syntax ~~~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s syntax_default fg=$c_fg
 ble-face -s syntax_command fg=$c_green
@@ -92,23 +87,13 @@ ble-face -s varname_transform fg=$c_fg
 ble-face -s varname_unset fg=$c_comment
 ble-face -s argument_option fg=$c_orange,italic
 ble-face -s argument_error fg=$c_red
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Junk ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# replace mode in vi mode
-ble-face -s overwrite_mode standout
-# dunno
-ble-face -s region_insert fg=$c_fg,bold
-# visual bell
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
+ble-face -s overwrite_mode standout     # replace mode in vi mode
+ble-face -s region_insert fg=$c_fg,bold # ???
+ble-face -s prompt_status_line $gigaerr # ??? prompt on the bottom of the screen (currently empty)
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Bells ~~~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s vbell $gigaerr
 ble-face -s vbell_erase none
 ble-face -s vbell_flash $gigaerr
-# prompt on the bottom of the screen (currently empty)
-ble-face -s prompt_status_line $gigaerr
-# TODO move stuff around
-my/complete-load-hook() {
-	bleopt complete_auto_delay=300
-	# eg when typing a path: /first_part/second
-	ble-face -s menu_filter_fixed bold          # first part
-	ble-face -s menu_filter_input fg=$c_fg,bold # second part
-}
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up hooks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 blehook/eval-after-load complete my/complete-load-hook

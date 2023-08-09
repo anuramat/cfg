@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 . ./lib/utils.sh
-. ./shell/profile.sh
+. ./home/profile.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Comment out to ask before overwriting
-export __UTILS_OVERWRITE="always"
-# Install $HOME dotfiles
-find shell -maxdepth 1 -mindepth 1 -print0 | xargs -0I{} bash -c '. lib/utils.sh; install2file {} $HOME/$(dotfilify {})'
-# Install $XDG_CONFIG_HOME configs
-find config -maxdepth 1 -mindepth 1 -print0 | xargs -0I{} bash -c ". lib/utils.sh; install2folder {} ${XDG_CONFIG_HOME}"
+# Install configs
+./bin/configs.sh
 # Suppress login message
 ensure_string "hehe" "${HOME}/.hushlogin"
 # Make bash the default shell
@@ -27,4 +23,4 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${XDG_CONFIG_HOM
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true                      # Autoload
 defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -int 2 # Autosave
 # System settings
-./bin/macos.sh
+./bin/prefs.sh

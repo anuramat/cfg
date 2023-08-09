@@ -80,30 +80,60 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
-local af_group = vim.api.nvim_create_augroup('LSPAutoformat', { clear = true })
---- Creates format autocommand for a client-buffer pair
+local af_group = vim.api.nvim_create_augroup('FormatHelpers', { clear = true })
+--- Sets up autoformatting and format commands for buffer if client is capable.
 --- Meant to be called in an on_attach handler
 --- @param client table
 --- @param buffer integer
 function M.setup_autoformat(client, buffer)
+  -- XXX Will use first suitable lsp to do formatting
+  -- To modify, add "filter" option to lsp.buf.format opts
+  local formatcmd = 'Format'
+  local autoformatcmd = 'AutoFormat'
+  local noautoformatcmd = 'NoAutoFormat'
   -- check if we can format at all
   if not client.server_capabilities.documentFormattingProvider then
     return
   end
-  -- helper
-  local cleanup = function()
+  -- ~~~~~~~~~~~~~~~~~ On/off switches ~~~~~~~~~~~~~~~~~ --
+  local autoformat_on = function()
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = af_group,
+      buffer = buffer,
+      callback = function()
+        vim.lsp.buf.format({ bufnr = buffer, async = false })
+      end,
+    })
+  end
+  local autoformat_off = function()
     vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
   end
-  -- make sure we're the only lsp providing autoformatting
+  local cmds_on = function()
+    vim.api.nvim_buf_create_user_command(buffer, formatcmd, function()
+      vim.lsp.buf.format({ bufnr = buffer, async = true })
+    end, {})
+    vim.api.nvim_buf_create_user_command(buffer, autoformatcmd, function()
+      autoformat_on()
+    end, {})
+    vim.api.nvim_buf_create_user_command(buffer, noautoformatcmd, function()
+      autoformat_off()
+    end, {})
+  end
+  local cmds_off = function()
+    pcall(function() vim.api.nvim_buf_del_user_command(buffer, formatcmd) end)
+  end
+  local cleanup = function()
+    autoformat_off()
+    cmds_off()
+  end
+  -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
+  -- make sure we don't have get two autocmds
   cleanup()
-  -- actual autoformatting
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    group = af_group,
-    buffer = buffer,
-    callback = function()
-      vim.lsp.buf.format({ async = false })
-    end,
-  })
+  -- start autoformatting, set up command
+  cmds_on()
+  autoformat_on()
+
   -- cleanup on detach
   vim.api.nvim_create_autocmd('LspDetach', {
     group = af_group,

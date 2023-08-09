@@ -5,9 +5,7 @@
 # and https://mths.be/macos
 # Breaks every major release :(
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-screenshot_dir="$HOME/Screenshots"
-ensure_path "$screenshot_dir"
-# Finder
+# ~~~~~~~~~~~~~~~~~~~~~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~ #
 finder=com.apple.finder
 defaults write -g AppleShowAllExtensions -bool true                         # Show file extensions
 defaults write $finder CreateDesktop -bool false                            # Hide icons from desktop
@@ -22,7 +20,7 @@ defaults write $finder ShowStatusBar -bool false                            # Do
 defaults write $finder _FXShowPosixPathInTitle -bool true                   # Show full path in title
 defaults write $finder _FXSortFoldersFirst -bool true                       # Keep folders on the top
 defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true # Show folder icon in title bar
-# Dock
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Dock ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 dock=com.apple.dock
 defaults write $dock minimize-to-application -bool true
 defaults write $dock tilesize -int 48
@@ -36,19 +34,30 @@ defaults write $dock static-only -bool true              # Only show opened apps
 defaults write $dock show-process-indicators -bool false # Hide indicater for open applications
 defaults write $dock expose-group-apps -bool true        # Group windows by application
 defaults write $dock persistent-apps -array              # Delete all apps shortcuts
-# not tested : don't write dsstore on external drives
+# ~~~~~~~~~~~~~~~~~~~~~ Hot corners ~~~~~~~~~~~~~~~~~~~~~ #
+# Bottom left corner - Screensaver/Lock
+for corner in tl tr br bl; do
+	defaults write $dock "wvous-$corner-corner" -int 0
+	defaults write $dock "wvous-$corner-modifier" -int 0
+done
+defaults write $dock wvous-bl-corner -int 5
+defaults write $dock wvous-bl-modifier -int 0
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
+defaults write -g AppleInterfaceStyle Dark                 # Dark mode
+defaults write -g ApplePressAndHoldEnabled -bool false     # Allow key repeat on hold
+defaults write -g AppleSpacesSwitchOnActivate -bool false  # Switch to space with open application on Cmd+Tab
+defaults write -g AppleWindowTabbingMode -string always    # Prefer tabs to windows
+defaults write -g NSCloseAlwaysConfirmsChanges -bool false # Ask to save on close
+defaults write -g NSQuitAlwaysKeepsWindows -bool false     # Close windows on <Cmd-Q>
+defaults write com.apple.TextEdit RichText -bool false     # Use txt by default
+# Not tested : don't write dsstore on external drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-# Misc
-defaults write -g AppleInterfaceStyle Dark                                # Dark mode
-defaults write -g ApplePressAndHoldEnabled -bool false                    # Allow key repeat on hold
-defaults write -g AppleSpacesSwitchOnActivate -bool false                 # Switch to space with open application on Cmd+Tab
-defaults write -g AppleWindowTabbingMode -string always                   # Prefer tabs to windows
-defaults write -g NSCloseAlwaysConfirmsChanges -bool false                # Ask to save on close
-defaults write -g NSQuitAlwaysKeepsWindows -bool false                    # Close windows on <Cmd-Q>
-defaults write com.apple.TextEdit RichText -bool false                    # Use txt by default
+# Screenshot directory
+screenshot_dir="$HOME/Screenshots"
+ensure_path "$screenshot_dir"
 defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
-# Keyboard
+# ~~~~~~~~~~~~~~~~~~~~~~ Keyboard ~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g InitialKeyRepeat -float 15 # repeat period
 defaults write -g KeyRepeat -float 2         # delay
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
@@ -57,10 +66,10 @@ defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g TISRomanSwitchState -bool false # turn off automatic input method switching
-# Language
+# ~~~~~~~~~~~~~~~~~~~~~~ Language ~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g AppleLanguages -array en      # Change system language
 defaults write -g AppleLocale -string ru_RU@USD # Set locale
-# Menu bar
+# ~~~~~~~~~~~~~~~~~~~~~~ Menu bar ~~~~~~~~~~~~~~~~~~~~~~~ #
 menuclock=com.apple.menuextra.clock.plist
 defaults write $menuclock ShowAMPM -bool true
 defaults write $menuclock ShowDate -integer 0
@@ -69,7 +78,7 @@ defaults write $menuclock ShowSeconds -bool true
 defaults write $menuclock IsAnalog -bool false
 defaults write $menuclock FlashDateSeparators -bool false
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true # Battery percentage
-# Trackpad
+# ~~~~~~~~~~~~~~~~~~~~~~ Trackpad ~~~~~~~~~~~~~~~~~~~~~~~ #
 trackpad=com.apple.AppleMultitouchTrackpad
 defaults write $trackpad ActuateDetents -int 1
 defaults write $trackpad ActuationStrength -int 1
@@ -99,7 +108,7 @@ defaults write $trackpad TrackpadTwoFingerDoubleTapGesture -int 1
 defaults write $trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
 defaults write $trackpad USBMouseStopsTrackpad -int 0
 defaults write $trackpad UserPreferences -bool true
-# Spotlight
+# ~~~~~~~~~~~~~~~~~~~~~~ Spotlight ~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write com.apple.Spotlight orderedItems -array \
 	'{enabled = true; name = "SYSTEM_PREFS";}' \
 	'{enabled = true; name = "PDF";}' \

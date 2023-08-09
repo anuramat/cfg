@@ -28,6 +28,8 @@ brew bundle install
 ./setup.sh
 ```
 
-## Keyboard settings:
+## Manual prefs:
 - Delete everything in "Text replacements..."  
 - Keybinds
+- Choose a screensaver
+- Lock Screen -> "Require password..." = "Immediately"

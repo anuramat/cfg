@@ -113,7 +113,7 @@ specs.readline = {
 specs.mdpreview = {
   'iamcco/markdown-preview.nvim',
   init = function()
-    local wrap = function(cmd)
+    local load_then_exec = function(cmd)
       return function()
         vim.cmd.delcommand(cmd)
         vim.cmd('Lazy load markdown-preview.nvim')
@@ -121,12 +121,9 @@ specs.mdpreview = {
         vim.cmd(cmd)
       end
     end
-    _G.lazy_mkdp_toggle = wrap('MarkdownPreviewToggle')
-    vim.cmd('command! MarkdownPreviewToggle lua lazy_mkdp_toggle()')
-    _G.lazy_mkdp = wrap('MarkdownPreview')
-    vim.cmd('command! MarkdownPreview lua lazy_mkdp()')
-    _G.lazy_mkdp_stop = wrap('MarkdownPreviewStop')
-    vim.cmd('command! MarkdownPreviewStop lua lazy_mkdp_stop()')
+    for _, cmd in pairs({ 'MarkdownPreview', 'MarkdownPreviewStop', 'MarkdownPreviewToggle' }) do
+      vim.api.nvim_create_user_command(cmd, load_then_exec(cmd), {})
+    end
   end,
   build = function()
     vim.fn['mkdp#util#install']()

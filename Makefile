@@ -1,4 +1,9 @@
-.PHONY: check
+.PHONY: check lua shell
 
-check:
+check: lua shell
+
+lua:
 	luacheck . --globals=vim
+
+shell:
+	fd -ug "**.sh" --color=never | xargs shellcheck 

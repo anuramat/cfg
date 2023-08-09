@@ -6,12 +6,13 @@ blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
 # ~~~~~~~~~~~~~~~~~~~ Basic settings ~~~~~~~~~~~~~~~~~~~~ #
 bind 'set bell-style none' # Disable annoying sound
 # ~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~ #
-default_exa="exa --group-directories-first --group --icons --header --git --color=always"
+exa="exa --group-directories-first --group --icons --header --git --color=always"
 alias f="nvim"
-alias ls="${default_exa}"
-alias ll="${default_exa} --long"
-alias la="${default_exa} --long --all"
-alias tree="${default_exa} --tree"
+alias ls="${exa}"
+alias ll="${exa} --long"
+alias la="${exa} --long --all"
+alias tree="${exa} --tree"
+alias fd="fd -H"
 # ~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~ #
 __overprompt() {
 	local -r status=$?

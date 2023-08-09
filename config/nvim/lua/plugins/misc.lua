@@ -142,8 +142,8 @@ specs.align = {
   opts = {
   },
   keys = {
-    'ga',
-    'gA',
+    { mode = { 'x', 'n' }, 'ga' },
+    { mode = { 'x', 'n' }, 'gA' },
   }
 }
 

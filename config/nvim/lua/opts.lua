@@ -58,3 +58,4 @@ o.updatetime = 100 -- has influence on some plugins
 o.virtualedit = 'block'
 o.wildoptions = 'fuzzy,pum'
 vim.opt.backupdir:remove('.') -- don't shit in your cwd
+vim.opt.path:append("**")

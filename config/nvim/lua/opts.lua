@@ -41,11 +41,6 @@ o.termguicolors = true
 o.foldcolumn = '0'
 o.foldenable = false
 o.foldmethod = 'indent'
--- ufo magic start --
-o.foldenable = true
-o.foldlevel = 99
-o.foldlevelstart = 99
--- ufo magic end --
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'

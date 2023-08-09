@@ -13,7 +13,6 @@ specs.treesitter = {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'JoosepAlviste/nvim-ts-context-commentstring',
-    'kevinhwang91/nvim-ufo',
   },
   opts = {
     highlight = { enable = true },
@@ -32,14 +31,9 @@ specs.treesitter = {
     },
   },
   config = function(_, opts)
+    vim.o.foldmethod = 'expr'
+    vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
     require('nvim-treesitter.configs').setup(opts)
-    -- vim.opt.foldmethod = 'expr'
-    -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-    require('ufo').setup({
-      provider_selector = function(bufnr, filetype, buftype) --luacheck:ignore
-        return { 'treesitter', 'indent' }
-      end
-    })
   end,
 }
 

@@ -53,6 +53,7 @@ specs.ai = {
     return {
       n_lines = 500,
       custom_textobjects = k.miniai(),
+      silent = true,
     }
   end,
 }
@@ -75,6 +76,7 @@ specs.todo = {
   opts = {
     highlight = {
       keyword = 'bg',
+      -- TODO fix
       pattern = [[<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
     },
     search = {
@@ -135,7 +137,7 @@ specs.mdpreview = {
   end,
 }
 
-specs.minialign = {
+specs.align = {
   'echasnovski/mini.align',
   keys = {
     'ga',

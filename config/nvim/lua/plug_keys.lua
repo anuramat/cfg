@@ -183,13 +183,18 @@ end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ miniAI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.miniai = function()
   local ai = require('mini.ai')
-  return { -- TODO more textobjects
+  return {
     o = ai.gen_spec.treesitter({
       a = { '@block.outer', '@conditional.outer', '@loop.outer' },
       i = { '@block.inner', '@conditional.inner', '@loop.inner' },
-    }, {}),
-    f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }, {}),
-    c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }, {}),
+    }, {}),                                                                             -- ???
+    f = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }, {}),   -- override: improved
+    a = ai.gen_spec.treesitter({ a = '@parameter.outer', i = '@parameter.inner' }, {}), -- override: improved
+    c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }, {}),         -- class
+    b = false,                                                                          -- override: disable (any brackets)
+    q = false,                                                                          -- override: disable (any quotation marks)
+    -- other mini textobjs: a=argument, ?=userprompt, "default" (any other symbol)
+    -- for "default" <op>a<sym> includes (a,b], not [a,b], since it is intended for separators
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
@@ -203,7 +208,7 @@ M.undotree = function()
     }
   }
 end
--- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Treesitter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSitter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesitter = {
   inc_selection = {
     init_selection = '<c-space>',

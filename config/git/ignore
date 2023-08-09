@@ -1,1 +1,4 @@
-.DS_Store
+# macOS
+.DS_Store 
+# Python
+__pycache__/

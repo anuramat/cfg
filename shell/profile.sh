@@ -1,4 +1,7 @@
 #!/usr/bin/env sh
+# __pycache__ folder
+export PYTHONPYCACHEPREFIX=/tmp/pycache
+
 # XDG paths
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"

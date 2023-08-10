@@ -22,7 +22,6 @@ specs.telescope = {
           -- custom
           '--smart-case',
           '--ignore',
-          '--glob=!lazy-lock.json',
         },
       },
       pickers = {

@@ -149,18 +149,12 @@ specs.align = {
 
 specs.harpoon = {
   'ThePrimeagen/harpoon',
-  event = 'VeryLazy', -- because we need to get tabline
+  event = 'VeryLazy', -- load early cause tabline
   keys = k.harpoon(),
   dependencies = {
-    'nvim-lua/plenary.nvim', },
-  config = function()
-    -- require('telescope').load_extension('harpoon')
-    require('harpoon').setup {
-      tabline = true, -- is ignored I guess because of the lualine
-      tabline_prefix = "   ",
-      tabline_suffix = "   ",
-    }
-  end
+    'nvim-lua/plenary.nvim',
+  },
+  opts = { tabline = true }
 }
 
 return u.values(specs)

@@ -78,7 +78,7 @@ specs.lspconfig = {
 specs.null = {
   -- TODO add border around info hover window
   'jose-elias-alvarez/null-ls.nvim',
-  event = { 'bufreadpre', 'bufnewfile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()
     local null_ls = require('null-ls')

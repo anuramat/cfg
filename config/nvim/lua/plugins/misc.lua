@@ -47,6 +47,7 @@ specs.align = {
 specs.trailspace = {
   'echasnovski/mini.trailspace',
   version = false,
+  opts = {},
 }
 
 return u.values(specs)

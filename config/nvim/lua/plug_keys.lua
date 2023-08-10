@@ -1,5 +1,5 @@
 local M = {}
-local fu = require('fmt_utils')
+local fu = require('fmt')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>

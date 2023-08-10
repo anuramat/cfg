@@ -1,5 +1,5 @@
 local specs = {}
-local fu = require('fmt_utils')
+local fu = require('fmt')
 local k = require('plug_keys')
 local u = require('utils')
 

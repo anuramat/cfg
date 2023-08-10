@@ -12,7 +12,6 @@ lua_fmt:
 
 .PHONY: lua_lint
 lua_lint: lua_fmt
-	@ stylua --check --output-format=summary .
 	@ echo -e "\nChecking Lua files"
 	@ luacheck . --globals=vim | ghead -n -2
 

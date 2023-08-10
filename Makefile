@@ -18,6 +18,6 @@ RED=\033[1;31m%s\033[0m # red bold text
 .PHONY: shell_lint
 shell_lint:
 	# ~~~~~~~~~~~~~~~~~~~~ Shellcheck ~~~~~~~~~~~~~~~~~~~~~ #
-	@fd -0ug "**.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
+	@fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
 	@echo
-	@fd -ug "**.sh" | wc -l | xargs -I{} echo "{} files total."
+	@fd -ug "*.sh" | wc -l | xargs -I{} echo "{} files total."

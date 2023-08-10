@@ -23,9 +23,9 @@ end
 --- Get indentation of the line under cursor.
 --- @return integer indent_level Indentation level in spaces.
 function M.get_indent()
-  local line_i = vim.api.nvim_win_get_cursor(0)[1] -- Get the current line number
+  local line_i = vim.api.nvim_win_get_cursor(0)[1]                         -- Get the current line number
   local line = vim.api.nvim_buf_get_lines(0, line_i - 1, line_i, false)[1] -- Get the current line content
-  local ts = vim.api.nvim_buf_get_option(0, 'tabstop') -- Get the current tabstop value
+  local ts = vim.api.nvim_buf_get_option(0, 'tabstop')                     -- Get the current tabstop value
 
   local spaces = line:match('^ *') or ''
   local tabs = line:match('^\t*') or ''
@@ -108,7 +108,6 @@ function M.setup_autoformat(client, buffer)
   local format_cmd = 'Format'
   local noformat_cmd = 'Noformat'
   -- check if we can format at all
-  -- TODO add check on server being in blacklist (eg luals, cause null-ls should handle it)
   if not client.server_capabilities.documentFormattingProvider then
     return
   end

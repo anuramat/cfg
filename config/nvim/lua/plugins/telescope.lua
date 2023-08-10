@@ -19,9 +19,6 @@ specs.telescope = {
           '--line-number',
           '--column',
           '--smart-case',
-          -- defaults until this point
-          '--hidden',
-          '--glob=!{.git,.svn,node_modules,tealdeer,Trash,vendor}'
         },
       },
       pickers = {

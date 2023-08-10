@@ -93,12 +93,12 @@ continue_prompt() {
 	while true; do
 		read -rp "${prompt} (y/n): " choice
 		case "${choice}" in
-		y | Y)
-			return 0
-			;;
-		*)
-			return 1
-			;;
+			y | Y)
+				return 0
+				;;
+			*)
+				return 1
+				;;
 		esac
 	done
 }

@@ -5,6 +5,7 @@ blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
 [ -r "${blesh_path}" ] && source "${blesh_path}" --noattach
 # ~~~~~~~~~~~~~~~~~~~ Basic settings ~~~~~~~~~~~~~~~~~~~~ #
 bind 'set bell-style none' # Disable annoying sound
+shopt -s globstar
 # ~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~ #
 exa="exa --group-directories-first --group --icons --header --git --color=always"
 alias f="nvim"

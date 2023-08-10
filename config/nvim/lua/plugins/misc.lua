@@ -58,7 +58,6 @@ specs.readline = {
   keys = k.readline
 }
 
-
 specs.align = {
   'echasnovski/mini.align',
   opts = {

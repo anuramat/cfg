@@ -21,8 +21,8 @@ specs.surround = {
 specs.ai = {
   'echasnovski/mini.ai',
   keys = {
-    { "a", mode = { "x", "o" } },
-    { "i", mode = { "x", "o" } },
+    { 'a', mode = { 'x', 'o' } },
+    { 'i', mode = { 'x', 'o' } },
   },
   dependencies = { 'nvim-treesitter-textobjects' },
   opts = function()

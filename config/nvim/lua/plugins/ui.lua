@@ -1,4 +1,5 @@
 local specs = {}
+local k = require('plug_keys')
 local u = require('utils')
 
 specs.dracula_cs = {
@@ -35,6 +36,28 @@ specs.marks = {
   'chentoast/marks.nvim',
   event = 'VeryLazy',
   opts = {},
+}
+
+specs.todo = {
+  'folke/todo-comments.nvim',
+  event = 'VeryLazy',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  opts = {
+    highlight = {
+      keyword = 'bg',
+      -- TODO fix
+      pattern = [[<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
+    },
+    search = {
+      pattern = [[(KEYWORDS)]], -- ripgrep regex
+    },
+  },
+}
+
+specs.trouble = {
+  'folke/trouble.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  keys = k.trouble(),
 }
 
 return u.values(specs)

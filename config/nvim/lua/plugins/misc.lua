@@ -37,28 +37,6 @@ specs.flash = {
   keys = k.flash(),
 }
 
-specs.todo = {
-  'folke/todo-comments.nvim',
-  event = 'VeryLazy',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  opts = {
-    highlight = {
-      keyword = 'bg',
-      -- TODO fix
-      pattern = [[<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
-    },
-    search = {
-      pattern = [[(KEYWORDS)]], -- ripgrep regex
-    },
-  },
-}
-
-specs.trouble = {
-  'folke/trouble.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  keys = k.trouble(),
-}
-
 specs.undotree = {
   'mbbill/undotree',
   cmd = {

@@ -13,7 +13,7 @@ lua_lint:
 	@luacheck . --globals=vim
 
 shell_format: 
-	@shfmt -s -w -ci -bn **/*.sh
+	@shfmt -s -w -ci -bn -kp **/*.sh
 
 width=35
 GRN=\033[1;32m%s\033[0m # green bold text

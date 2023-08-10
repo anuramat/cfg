@@ -59,7 +59,7 @@ specs.lspconfig = {
     vim.diagnostic.config({ float = { border = 'rounded' } })
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] =
-      vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+        vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     -- LSP capabilities: default and cmp
@@ -85,7 +85,9 @@ specs.null = {
     local null_ls = require('null-ls')
     null_ls.setup({
       sources = {
-        null_ls.builtins.formatting.shfmt,
+        null_ls.builtins.formatting.shfmt.with({
+          extra_args = { "-s", "-w", "-ci", "-bn", "-kp" },
+        }),
       },
       on_attach = on_attach,
     })

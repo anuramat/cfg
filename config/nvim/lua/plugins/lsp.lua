@@ -87,7 +87,7 @@ specs.null = {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.shfmt.with({
-          extra_args = { '-s', '-ci', '-bn', '-kp' },
+          extra_args = { '-s', '-ci', '-bn' },
         }),
       },
       on_attach = on_attach,

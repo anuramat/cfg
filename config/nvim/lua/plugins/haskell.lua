@@ -1,7 +1,7 @@
 local specs = {}
+local fu = require('fmt_utils')
 local k = require('plug_keys')
 local u = require('utils')
-local fu = require('fmt_utils')
 
 specs.haskell = {
   'mrcjkb/haskell-tools.nvim',
@@ -17,7 +17,7 @@ specs.haskell = {
       hls = {
         capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities),
         on_attach = function(client, buffer)
-          fu.setup_autoformat(client, buffer)
+          fu.setup_lsp_af(client, buffer)
           hk.lsp(buffer)
           k.lsp(buffer)
         end,

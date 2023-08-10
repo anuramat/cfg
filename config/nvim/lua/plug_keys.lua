@@ -1,5 +1,4 @@
 local M = {}
-local u = require('utils')
 local fu = require('fmt_utils')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:

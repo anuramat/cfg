@@ -109,7 +109,7 @@ function M.setup_autoformat(client, buffer)
     return
   end
   -- ~~~~~~~~~~~~~~~~~ On/off switches ~~~~~~~~~~~~~~~~~ --
-  local autoformat_on = function()
+  local function autoformat_on()
     vim.api.nvim_create_autocmd('BufWritePre', {
       group = af_group,
       buffer = buffer,
@@ -118,18 +118,18 @@ function M.setup_autoformat(client, buffer)
       end,
     })
   end
-  local autoformat_off = function()
+  local function autoformat_off()
     vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
   end
-  local cmds_on = function()
+  local function cmds_on()
     vim.api.nvim_buf_create_user_command(buffer, format_cmd, autoformat_on, {})
     vim.api.nvim_buf_create_user_command(buffer, noformat_cmd, autoformat_off, {})
   end
-  local cmds_off = function()
+  local function cmds_off()
     pcall(function() vim.api.nvim_buf_del_user_command(buffer, format_cmd) end)
     pcall(function() vim.api.nvim_buf_del_user_command(buffer, noformat_cmd) end)
   end
-  local cleanup = function()
+  local function cleanup()
     autoformat_off()
     cmds_off()
   end

@@ -115,7 +115,7 @@ specs.readline = {
 specs.mdpreview = {
   'iamcco/markdown-preview.nvim',
   init = function()
-    local load_then_exec = function(cmd)
+    local function load_then_exec(cmd)
       return function()
         vim.cmd.delcommand(cmd)
         vim.cmd('Lazy load markdown-preview.nvim')
@@ -144,6 +144,16 @@ specs.align = {
   keys = {
     { mode = { 'x', 'n' }, 'ga' },
     { mode = { 'x', 'n' }, 'gA' },
+  }
+}
+
+specs.harpoon = {
+  'ThePrimeagen/harpoon',
+  keys = k.harpoon(),
+  dependencies = {
+    'nvim-lua/plenary.nvim', },
+  opts = {
+    tabline = true
   }
 }
 

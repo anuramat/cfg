@@ -5,12 +5,12 @@ local M = {}
 -- Closely integrated mappings do not (have to) conform to this "rule".
 local s = vim.keymap.set
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LSP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.lsp = function(buffer)
-  local n = function(keys, func, desc)
+function M.lsp(buffer)
+  local function n(keys, func, desc)
     s('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
 
-  local list_workspace_folders = function()
+  local function list_workspace_folders()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end
 
@@ -34,9 +34,10 @@ M.lsp = function(buffer)
   n('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   n('<leader>lwl', list_workspace_folders, 'List Workspace Folders')
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.trouble = function()
-  local d = function(x) return 'Trouble: ' .. x end
+function M.trouble()
+  local function d(x) return 'Trouble: ' .. x end
   return {
     { '<leader>tt', '<cmd>TroubleToggle<cr>',                 desc = d('Toggle') },
     { '<leader>tD', '<cmd>Trouble workspace_diagnostics<cr>', desc = d('Workspace Diagnostics') },
@@ -48,9 +49,10 @@ M.trouble = function()
     { '<leader>tc', '<cmd>TroubleClose<cr>',                  desc = d('Close') },
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.flash = function()
-  local d = function(x) return 'Flash: ' .. x end
+function M.flash()
+  local function d(x) return 'Flash: ' .. x end
   return {
     { 's', mode = 'n',          function() require('flash').jump() end,       desc = d('Jump') },
     { 'r', mode = 'o',          function() require('flash').remote() end,     desc = d('Remote') },
@@ -60,6 +62,7 @@ M.flash = function()
     'f', 'F',
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesj = { {
   '<leader>j',
@@ -122,7 +125,7 @@ M.telescope = {
   d = function(x) return 'Telescope: ' .. x end,
   builtin = function()
     local d = M.telescope.d
-    local tfuz = function()
+    local function tfuz()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
         winblend = 10,
         previewer = false,
@@ -158,9 +161,10 @@ M.telescope = {
   end
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.harpoon = function()
-  local d = function(x) return 'Harpoon: ' .. x end
-  local get_num_mappings = function()
+
+function M.harpoon()
+  local function d(x) return 'Harpoon: ' .. x end
+  local function get_num_mappings()
     local res = {}
     for i = 1, 9 do
       res[i] = {
@@ -179,8 +183,9 @@ M.harpoon = function()
     unpack(get_num_mappings()),
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ miniAI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.miniai = function()
+function M.miniai()
   local ts = require('mini.ai').gen_spec.treesitter
   return {
     b = false, -- = ([{
@@ -223,8 +228,9 @@ M.miniai = function()
     }, {}),
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.undotree = function()
+function M.undotree()
   local function d(x) return 'UndoTree: ' .. x end
   return {
     {
@@ -234,6 +240,7 @@ M.undotree = function()
     }
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSitter ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesitter = {
   inc_selection = {
@@ -248,7 +255,7 @@ M.treesitter = {
   }
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.gitsigns = function(buffer)
+function M.gitsigns(buffer)
   local gs = package.loaded.gitsigns
   local function ss(mode, l, r, desc)
     s(mode, l, r, { buffer = buffer, desc = 'GitSigns: ' .. desc })
@@ -266,9 +273,10 @@ M.gitsigns = function(buffer)
   ss('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff This ~')
   ss({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select Hunk')
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HaskellTools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.haskell_tools = function()
-  local d = function(x) return 'Haskell Tools: ' .. x end
+function M.haskell_tools()
+  local function d(x) return 'Haskell Tools: ' .. x end
   local ht = require('haskell-tools')
   return {
     main = function(buf)
@@ -283,6 +291,7 @@ M.haskell_tools = function()
     end
   }
 end
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = {
   { mode = '!', '<c-d>', '<delete>' },

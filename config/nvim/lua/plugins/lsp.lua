@@ -40,7 +40,7 @@ cfgs.lua_ls = {
 
 specs.neodev = { 'folke/neodev.nvim', opts = {} }
 
-local on_attach = function(client, buffer)
+local function on_attach(client, buffer)
   k.lsp(buffer)
   u.setup_autoformat(client, buffer)
 end

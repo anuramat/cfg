@@ -19,7 +19,7 @@ specs.signs = {
       changedelete = { text = '▎' },
       untracked = { text = '▎' },
     },
-    on_attach = k.gitsigns
+    on_attach = k.gitsigns,
   },
 }
 

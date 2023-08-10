@@ -2,8 +2,29 @@ local specs = {}
 local k = require('plug_keys')
 local u = require('utils')
 
-local langs = { 'bash', 'c', 'go', 'gomod', 'gosum', 'gowork', 'haskell', 'json', 'lua', 'luadoc', 'luap',
-  'markdown', 'markdown_inline', 'python', 'python', 'query', 'regex', 'sql', 'vim', 'vimdoc', 'yaml' }
+local langs = {
+  'bash',
+  'c',
+  'go',
+  'gomod',
+  'gosum',
+  'gowork',
+  'haskell',
+  'json',
+  'lua',
+  'luadoc',
+  'luap',
+  'markdown',
+  'markdown_inline',
+  'python',
+  'python',
+  'query',
+  'regex',
+  'sql',
+  'vim',
+  'vimdoc',
+  'yaml',
+}
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
@@ -23,7 +44,7 @@ specs.treesitter = {
       keymaps = k.treesitter.inc_selection,
     },
     textobjects = {
-      swap = u.merge({ enable = true }, k.treesitter.textobj_swap)
+      swap = u.merge({ enable = true }, k.treesitter.textobj_swap),
     },
     context_commentstring = {
       enable = true,

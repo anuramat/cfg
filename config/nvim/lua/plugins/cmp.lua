@@ -19,7 +19,11 @@ specs.cmp = {
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup({
       mapping = cmp.mapping.preset.insert(k.cmp.main()),
-      snippet = { expand = function(args) require('luasnip').lsp_expand(args.body) end, },
+      snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
       sources = cmp.config.sources(
         { { name = 'nvim_lsp' }, { name = 'luasnip' } },
         { { name = 'path', option = { trailing_slash = true } } },
@@ -32,7 +36,8 @@ specs.cmp = {
       mapping = cmp.mapping.preset.cmdline(k.cmp.cmdline()),
       sources = cmp.config.sources(
         { { name = 'path', option = { trailing_slash = true } } },
-        { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }),
+        { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
+      ),
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline({ '/', '?' }, {
@@ -51,7 +56,7 @@ specs.luasnip = {
     end,
   },
   -- if build fails, install jsregexp luarock
-  build = "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp",
+  build = 'echo \'NOTE: jsregexp is optional, so not a big deal if it fails to build\'; make install_jsregexp',
 }
 
 return u.values(specs)

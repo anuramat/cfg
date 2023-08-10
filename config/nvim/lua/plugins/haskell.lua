@@ -19,8 +19,8 @@ specs.haskell = {
           u.setup_autoformat(client, buffer)
           hk.lsp(buffer)
           k.lsp(buffer)
-        end
-      }
+        end,
+      },
     }
     local hls_augroup = vim.api.nvim_create_augroup('haskell-lsp', { clear = true })
     vim.api.nvim_create_autocmd('FileType', {
@@ -35,8 +35,7 @@ specs.haskell = {
         -- ht.dap.discover_configurations(bufnr)
       end,
     })
-  end
+  end,
 }
-
 
 return u.values(specs)

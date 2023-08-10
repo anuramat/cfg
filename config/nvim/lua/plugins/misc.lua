@@ -7,7 +7,7 @@ specs.flash = {
   opts = {
     modes = {
       search = { enabled = false },
-      char = { enabled = false }
+      char = { enabled = false },
     },
   },
   keys = k.flash(),
@@ -31,17 +31,16 @@ specs.sleuth = {
 
 specs.readline = {
   'linty-org/readline.nvim',
-  keys = k.readline
+  keys = k.readline,
 }
 
 specs.align = {
   'echasnovski/mini.align',
-  opts = {
-  },
+  opts = {},
   keys = {
     { mode = { 'x', 'n' }, 'ga' },
     { mode = { 'x', 'n' }, 'gA' },
-  }
+  },
 }
 
 return u.values(specs)

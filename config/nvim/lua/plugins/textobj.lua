@@ -11,11 +11,11 @@ specs.surround = {
     { '<C-g>S', mode = 'i' },
     { 'ys' },
     { 'yS' },
-    { 'S',      mode = 'x' },
-    { 'gS',     mode = 'x' },
+    { 'S', mode = 'x' },
+    { 'gS', mode = 'x' },
     { 'ds' },
     { 'cs' },
-  }
+  },
 }
 
 specs.ai = {

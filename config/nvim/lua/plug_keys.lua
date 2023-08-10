@@ -37,43 +37,71 @@ end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Trouble ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.trouble()
-  local function d(x) return 'Trouble: ' .. x end
+  local function d(x)
+    return 'Trouble: ' .. x
+  end
   return {
-    { '<leader>tt', '<cmd>TroubleToggle<cr>',                 desc = d('Toggle') },
+    { '<leader>tt', '<cmd>TroubleToggle<cr>', desc = d('Toggle') },
     { '<leader>tD', '<cmd>Trouble workspace_diagnostics<cr>', desc = d('Workspace Diagnostics') },
-    { '<leader>td', '<cmd>Trouble document_diagnostics<cr>',  desc = d('Document Diagnostics') },
-    { '<leader>tl', '<cmd>Trouble loclist <cr>',              desc = d('Location List') },
-    { '<leader>tq', '<cmd>Trouble quickfix<cr>',              desc = d('Quickfix') },
-    { '<leader>tr', '<cmd>Trouble lsp_references<cr>',        desc = d('LSP References') },
-    { '<leader>tR', '<cmd>TroubleRefresh<cr>',                desc = d('Refresh') },
-    { '<leader>tc', '<cmd>TroubleClose<cr>',                  desc = d('Close') },
+    { '<leader>td', '<cmd>Trouble document_diagnostics<cr>', desc = d('Document Diagnostics') },
+    { '<leader>tl', '<cmd>Trouble loclist <cr>', desc = d('Location List') },
+    { '<leader>tq', '<cmd>Trouble quickfix<cr>', desc = d('Quickfix') },
+    { '<leader>tr', '<cmd>Trouble lsp_references<cr>', desc = d('LSP References') },
+    { '<leader>tR', '<cmd>TroubleRefresh<cr>', desc = d('Refresh') },
+    { '<leader>tc', '<cmd>TroubleClose<cr>', desc = d('Close') },
   }
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Flash ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.flash()
-  local function d(x) return 'Flash: ' .. x end
+  local function d(x)
+    return 'Flash: ' .. x
+  end
   return {
-    { 's', mode = 'n',          function() require('flash').jump() end,       desc = d('Jump') },
-    { 'r', mode = 'o',          function() require('flash').remote() end,     desc = d('Remote') },
-    { 'S', mode = { 'n', 'o' }, function() require('flash').treesitter() end, desc = d('Treesitter') },
+    {
+      's',
+      mode = 'n',
+      function()
+        require('flash').jump()
+      end,
+      desc = d('Jump'),
+    },
+    {
+      'r',
+      mode = 'o',
+      function()
+        require('flash').remote()
+      end,
+      desc = d('Remote'),
+    },
+    {
+      'S',
+      mode = { 'n', 'o' },
+      function()
+        require('flash').treesitter()
+      end,
+      desc = d('Treesitter'),
+    },
     -- register default mappings for lazy loading
-    't', 'T',
-    'f', 'F',
+    't',
+    'T',
+    'f',
+    'F',
   }
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ TreeSJ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.treesj = { {
   '<leader>j',
-  function() require('treesj').toggle() end,
-  desc = 'TreeSJ: Toggle'
+  function()
+    require('treesj').toggle()
+  end,
+  desc = 'TreeSJ: Toggle',
 } }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CMP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- for the most part using cmp defaults
 -- trying to match default vim ins/cmdline-completion hotkeys
-M.cmp =
-{
+M.cmp = {
   main = function()
     local luasnip = require('luasnip')
     local cmp = require('cmp')
@@ -114,7 +142,7 @@ M.cmp =
             cmp.abort()
           end
           fallback()
-        end
+        end,
       })
     end
     return result
@@ -122,7 +150,9 @@ M.cmp =
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Telescope ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.telescope = {
-  d = function(x) return 'Telescope: ' .. x end,
+  d = function(x)
+    return 'Telescope: ' .. x
+  end,
   builtin = function()
     local d = M.telescope.d
     local function tfuz()
@@ -132,54 +162,84 @@ M.telescope = {
       }))
     end
     return {
-      { '<leader>fp', require('telescope.builtin').builtin,              desc = d('Pickers') },
-      { '<leader>fo', require('telescope.builtin').find_files,           desc = d('Find Files') },
-      { '<leader>fb', require('telescope.builtin').buffers,              desc = d('Buffers') },
-      { '<leader>fg', require('telescope.builtin').live_grep,            desc = d('Live Grep') },
-      { '<leader>f/', tfuz,                                              desc = d('Buffer Fuzzy Find') },
-      { '<leader>fm', require('telescope.builtin').marks,                desc = d('Marks') },
-      { '<leader>fh', require('telescope.builtin').help_tags,            desc = d('Help') },
-      { '<leader>fk', require('telescope.builtin').keymaps,              desc = d('Keymaps') },
+      { '<leader>fp', require('telescope.builtin').builtin, desc = d('Pickers') },
+      { '<leader>fo', require('telescope.builtin').find_files, desc = d('Find Files') },
+      { '<leader>fb', require('telescope.builtin').buffers, desc = d('Buffers') },
+      { '<leader>fg', require('telescope.builtin').live_grep, desc = d('Live Grep') },
+      { '<leader>f/', tfuz, desc = d('Buffer Fuzzy Find') },
+      { '<leader>fm', require('telescope.builtin').marks, desc = d('Marks') },
+      { '<leader>fh', require('telescope.builtin').help_tags, desc = d('Help') },
+      { '<leader>fk', require('telescope.builtin').keymaps, desc = d('Keymaps') },
       { '<leader>fs', require('telescope.builtin').lsp_document_symbols, desc = d('LSP Document Symbols') },
       {
         '<leader>fS',
         require('telescope.builtin').lsp_dynamic_workspace_symbols,
-        desc = d('LSP Dynamic Workspace Symbols')
+        desc = d('LSP Dynamic Workspace Symbols'),
       },
       { '<leader>fr', require('telescope.builtin').lsp_references, desc = d('LSP References') },
-      { '<leader>fd', require('telescope.builtin').diagnostics,    desc = d('LSP Diagnostics') },
+      { '<leader>fd', require('telescope.builtin').diagnostics, desc = d('LSP Diagnostics') },
     }
   end,
   zoxide = function()
     return {
       {
         '<leader>fj',
-        function() require('telescope').extensions.zoxide.list() end,
-        desc = M.telescope.d('Zoxide')
-      }
+        function()
+          require('telescope').extensions.zoxide.list()
+        end,
+        desc = M.telescope.d('Zoxide'),
+      },
     }
-  end
+  end,
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Harpoon ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 
 function M.harpoon()
-  local function d(x) return 'Harpoon: ' .. x end
+  local function d(x)
+    return 'Harpoon: ' .. x
+  end
   local function get_num_mappings()
     local res = {}
     for i = 1, 9 do
       res[i] = {
         '<leader>h' .. tostring(i),
-        function() require('harpoon.ui').nav_file(i) end,
-        desc = d('File #' .. tostring(i))
+        function()
+          require('harpoon.ui').nav_file(i)
+        end,
+        desc = d('File #' .. tostring(i)),
       }
     end
     return res
   end
   return {
-    { '<leader>ha', function() require('harpoon.mark').add_file() end,        desc = d('Add File') },
-    { '<leader>hl', function() require('harpoon.ui').toggle_quick_menu() end, desc = d('List Files') },
-    { '<leader>hp', function() require('harpoon.ui').nav_prev() end,          desc = d('Prev File') },
-    { '<leader>hn', function() require('harpoon.ui').nav_next() end,          desc = d('Next File') },
+    {
+      '<leader>ha',
+      function()
+        require('harpoon.mark').add_file()
+      end,
+      desc = d('Add File'),
+    },
+    {
+      '<leader>hl',
+      function()
+        require('harpoon.ui').toggle_quick_menu()
+      end,
+      desc = d('List Files'),
+    },
+    {
+      '<leader>hp',
+      function()
+        require('harpoon.ui').nav_prev()
+      end,
+      desc = d('Prev File'),
+    },
+    {
+      '<leader>hn',
+      function()
+        require('harpoon.ui').nav_next()
+      end,
+      desc = d('Next File'),
+    },
     unpack(get_num_mappings()),
   }
 end
@@ -231,13 +291,15 @@ end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UndoTree ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.undotree()
-  local function d(x) return 'UndoTree: ' .. x end
+  local function d(x)
+    return 'UndoTree: ' .. x
+  end
   return {
     {
       '<leader>u',
       '<cmd>UndotreeToggle<cr>',
       desc = d('Toggle'),
-    }
+    },
   }
 end
 
@@ -249,10 +311,10 @@ M.treesitter = {
     scope_incremental = false,
     node_decremental = '<bs>',
   },
-  textobj_swap  = {
+  textobj_swap = {
     swap_next = { ['<a-l>'] = '@parameter.inner' },
     swap_previous = { ['<a-h>'] = '@parameter.inner' },
-  }
+  },
 }
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GitSigns ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.gitsigns(buffer)
@@ -268,41 +330,84 @@ function M.gitsigns(buffer)
   ss('n', '<leader>gR', gs.reset_buffer, 'Reset Buffer')
   ss('n', '<leader>gu', gs.undo_stage_hunk, 'Undo Stage Hunk')
   ss('n', '<leader>gp', gs.preview_hunk, 'Preview Hunk')
-  ss('n', '<leader>gb', function() gs.blame_line({ full = true }) end, 'Blame Line')
+  ss('n', '<leader>gb', function()
+    gs.blame_line({ full = true })
+  end, 'Blame Line')
   ss('n', '<leader>gd', gs.diffthis, 'Diff This')
-  ss('n', '<leader>gD', function() gs.diffthis('~') end, 'Diff This ~')
+  ss('n', '<leader>gD', function()
+    gs.diffthis('~')
+  end, 'Diff This ~')
   ss({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select Hunk')
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HaskellTools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.haskell_tools()
-  local function d(x) return 'Haskell Tools: ' .. x end
+  local function d(x)
+    return 'Haskell Tools: ' .. x
+  end
   local ht = require('haskell-tools')
   return {
     main = function(buf)
       s('n', '<leader>sp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
-      s('n', '<leader>sb',
-        function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, { buffer = buf, desc = d('Toggle Buffer REPL') })
+      s('n', '<leader>sb', function()
+        ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+      end, { buffer = buf, desc = d('Toggle Buffer REPL') })
       s('n', '<leader>sq', ht.repl.quit, { buffer = buf, desc = d('Quit REPL') })
     end,
     lsp = function(buf)
       s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buf, desc = d('Show Hoogle Signature') })
       s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buf, desc = d('Evaluate All') })
-    end
+    end,
   }
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = {
   { mode = '!', '<c-d>', '<delete>' },
-  { mode = '!', '<c-k>', function() require('readline').kill_line() end },
-  { mode = '!', '<a-d>', function() require('readline').kill_word() end },
+  {
+    mode = '!',
+    '<c-k>',
+    function()
+      require('readline').kill_line()
+    end,
+  },
+  {
+    mode = '!',
+    '<a-d>',
+    function()
+      require('readline').kill_word()
+    end,
+  },
   { mode = '!', '<c-b>', '<left>' },
   { mode = 'i', '<c-f>', '<right>' },
-  { mode = '!', '<a-b>', function() require('readline').backward_word() end },
-  { mode = '!', '<a-f>', function() require('readline').forward_word() end },
-  { mode = '!', '<c-a>', function() require('readline').beginning_of_line() end },
-  { mode = 'i', '<c-e>', function() require('readline').end_of_line() end },
+  {
+    mode = '!',
+    '<a-b>',
+    function()
+      require('readline').backward_word()
+    end,
+  },
+  {
+    mode = '!',
+    '<a-f>',
+    function()
+      require('readline').forward_word()
+    end,
+  },
+  {
+    mode = '!',
+    '<c-a>',
+    function()
+      require('readline').beginning_of_line()
+    end,
+  },
+  {
+    mode = 'i',
+    '<c-e>',
+    function()
+      require('readline').end_of_line()
+    end,
+  },
 }
 return M
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

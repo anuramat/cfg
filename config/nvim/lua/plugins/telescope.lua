@@ -53,7 +53,7 @@ specs.zoxide = {
   keys = k.telescope.zoxide(),
   config = function()
     require('telescope').load_extension('zoxide')
-  end
+  end,
 }
 
 return u.values(specs)

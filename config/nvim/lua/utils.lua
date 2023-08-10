@@ -1,6 +1,5 @@
 local M = {}
 
-
 --- Checks if string is empty
 --- @param s string
 --- @return boolean is_blank
@@ -24,9 +23,9 @@ end
 --- Get indentation of the line under cursor.
 --- @return integer indent_level Indentation level in spaces.
 function M.get_indent()
-  local line_i = vim.api.nvim_win_get_cursor(0)[1]                         -- Get the current line number
+  local line_i = vim.api.nvim_win_get_cursor(0)[1] -- Get the current line number
   local line = vim.api.nvim_buf_get_lines(0, line_i - 1, line_i, false)[1] -- Get the current line content
-  local ts = vim.api.nvim_buf_get_option(0, 'tabstop')                     -- Get the current tabstop value
+  local ts = vim.api.nvim_buf_get_option(0, 'tabstop') -- Get the current tabstop value
 
   local spaces = line:match('^ *') or ''
   local tabs = line:match('^\t*') or ''
@@ -81,8 +80,12 @@ end
 --- @param b table
 function M.merge(a, b)
   local c = {}
-  for k, v in pairs(a) do c[k] = v end
-  for k, v in pairs(b) do c[k] = v end
+  for k, v in pairs(a) do
+    c[k] = v
+  end
+  for k, v in pairs(b) do
+    c[k] = v
+  end
   return c
 end
 
@@ -105,6 +108,7 @@ function M.setup_autoformat(client, buffer)
   local format_cmd = 'Format'
   local noformat_cmd = 'Noformat'
   -- check if we can format at all
+  -- TODO add check on server being in blacklist (eg luals, cause null-ls should handle it)
   if not client.server_capabilities.documentFormattingProvider then
     return
   end
@@ -126,8 +130,12 @@ function M.setup_autoformat(client, buffer)
     vim.api.nvim_buf_create_user_command(buffer, noformat_cmd, autoformat_off, {})
   end
   local function cmds_off()
-    pcall(function() vim.api.nvim_buf_del_user_command(buffer, format_cmd) end)
-    pcall(function() vim.api.nvim_buf_del_user_command(buffer, noformat_cmd) end)
+    pcall(function()
+      vim.api.nvim_buf_del_user_command(buffer, format_cmd)
+    end)
+    pcall(function()
+      vim.api.nvim_buf_del_user_command(buffer, noformat_cmd)
+    end)
   end
   local function cleanup()
     autoformat_off()
@@ -145,7 +153,7 @@ function M.setup_autoformat(client, buffer)
   vim.api.nvim_create_autocmd('LspDetach', {
     group = af_group,
     buffer = buffer,
-    callback = cleanup
+    callback = cleanup,
   })
 end
 

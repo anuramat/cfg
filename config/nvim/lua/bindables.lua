@@ -11,7 +11,6 @@ function M.create_comment_header(chr, width_factor)
       return
     end
 
-
     -- Get the header format string
     local commentstring = vim.api.nvim_buf_get_option(0, 'commentstring')
     print('' == vim.api.nvim_buf_get_option(0, 'commentstring'))
@@ -50,8 +49,8 @@ function M.create_comment_header(chr, width_factor)
     end
 
     header = string.format(header, filling) -- Fill
-    vim.api.nvim_set_current_line(header)   -- Overwrite current line with header
-    vim.cmd('normal ==')                    -- Fix indenting
+    vim.api.nvim_set_current_line(header) -- Overwrite current line with header
+    vim.cmd('normal ==') -- Fix indenting
   end)
 end
 

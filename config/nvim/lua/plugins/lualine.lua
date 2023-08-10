@@ -27,14 +27,17 @@ specs.lualine = {
             display_components = { 'lsp_client_name', 'spinner' },
             timer = { spinner = 100 }, -- limited by statusline refresh rate
             spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-          }
-
+          },
         },
         lualine_y = {
           { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
           {
-            function() return '  ' .. require('dap').status() end,
-            cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
+            function()
+              return '  ' .. require('dap').status()
+            end,
+            cond = function()
+              return package.loaded['dap'] and require('dap').status() ~= ''
+            end,
           },
           {
             'tabs',

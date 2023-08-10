@@ -6,5 +6,5 @@ vim.api.nvim_create_autocmd('WinEnter', {
     if not vim.bo.modifiable and #vim.api.nvim_tabpage_list_wins(0) == 1 then
       vim.cmd.quit()
     end
-  end
+  end,
 })

@@ -15,7 +15,7 @@ specs.harpoon = {
     vim.cmd('highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7')
     vim.cmd('highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7')
     return { tabline = true }
-  end
+  end,
 }
 
 return u.values(specs)

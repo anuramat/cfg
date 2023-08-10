@@ -1,5 +1,6 @@
 local specs = {}
 local u = require('utils')
+
 specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -14,10 +15,11 @@ specs.lualine = {
         refresh = { statusline = 100 },
       },
       extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },
+      -- tabline = { lualine_a = { { tabline } } },
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { { 'branch', icon = '󰊢' } },
-        lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '', unnamed = '' } }, },
+        lualine_b = { { 'branch', icon = '󰊢', align = 'right' } },
+        lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '', unnamed = '' } } },
         lualine_x = {
           {
             'lsp_progress',

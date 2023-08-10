@@ -147,14 +147,4 @@ specs.align = {
   }
 }
 
-specs.harpoon = {
-  'ThePrimeagen/harpoon',
-  event = 'VeryLazy', -- load early cause tabline
-  keys = k.harpoon(),
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
-  opts = { tabline = true }
-}
-
 return u.values(specs)

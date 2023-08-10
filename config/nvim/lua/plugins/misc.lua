@@ -36,11 +36,17 @@ specs.readline = {
 
 specs.align = {
   'echasnovski/mini.align',
+  version = false,
   opts = {},
   keys = {
     { mode = { 'x', 'n' }, 'ga' },
     { mode = { 'x', 'n' }, 'gA' },
   },
+}
+
+specs.trailspace = {
+  'echasnovski/mini.trailspace',
+  version = false,
 }
 
 return u.values(specs)

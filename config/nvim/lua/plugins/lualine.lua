@@ -1,6 +1,5 @@
 local specs = {}
 local u = require('utils')
-
 specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -12,35 +11,40 @@ specs.lualine = {
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         globalstatus = true,
-        refresh = { statusline = 300, tabline = 1000, winbar = 1000, },
+        refresh = { statusline = 100, tabline = 1000, winbar = 1000, },
       },
       extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { { 'branch', icon = '󰊢' } },
         lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '', unnamed = '' } }, },
-        lualine_x = { { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ', }, }, },
-        lualine_y = {
-          { 'lsp_progress' },
+        lualine_x = {
           {
-            function()
-              return '  ' .. require('dap').status()
-            end,
-            cond = function()
-              return package.loaded['dap'] and require('dap').status() ~= ''
-            end,
+            'lsp_progress',
+            -- With spinner
+            display_components = { 'lsp_client_name', 'spinner' },
+            timer = { spinner = 100 }, -- limited by statusline refresh rate
+            spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+          }
+
+        },
+        lualine_y = {
+          { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
+          {
+            function() return '  ' .. require('dap').status() end,
+            cond = function() return package.loaded['dap'] and require('dap').status() ~= '' end,
+          },
+          {
+            'tabs',
+            mode = 2,
+            tabs_color = { active = {}, inactive = { fg = 'grey' } },
           },
         },
         lualine_z = {
-          { 'progress', padding = { left = 1, right = 0 }, separator = '' },
-          { 'location', padding = { left = 1, right = 1 } },
+          { 'location', padding = { left = 1, right = 1 }, fmt = u.trim },
+          { 'progress', padding = { left = 1, right = 1 }, fmt = u.trim },
         },
       },
-      tabline = {
-        lualine_a = { { 'buffers', show_filename_only = false, hide_filename_extension = true, mode = 4 } },
-        lualine_z = { { 'tabs' } },
-      },
-      -- winbar = {}, inactive_winbar = { lualine_c = { 'filename' } },
     }
   end,
 }

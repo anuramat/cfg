@@ -1,9 +1,11 @@
--- if quickfix is the only window in this tabpage -- close it
+local u = require('utils')
+-- if the only window in this tabpage does not have an actual file as a buffer -- close it
+local non = { "qf", "help" }
 local qf_group = vim.api.nvim_create_augroup('QuickfixKiller', { clear = true })
 vim.api.nvim_create_autocmd('WinEnter', {
   group = qf_group,
   callback = function()
-    if vim.bo.filetype == "qf" and #vim.api.nvim_tabpage_list_wins(0) == 1 then
+    if not vim.bo.modifiable and #vim.api.nvim_tabpage_list_wins(0) == 1 then
       vim.cmd.quit()
     end
   end

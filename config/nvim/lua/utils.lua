@@ -8,6 +8,19 @@ function M.is_blank(s)
   return s:match('^%s*$') ~= nil
 end
 
+--- Check if table contains a specified element
+--- @param table table
+--- @param elem any
+--- @return boolean
+function M.contains(table, elem)
+  for _, v in pairs(table) do
+    if v == elem then
+      return true
+    end
+  end
+  return false
+end
+
 --- Get indentation of the line under cursor.
 --- @return integer indent_level Indentation level in spaces.
 function M.get_indent()

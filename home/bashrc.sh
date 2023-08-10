@@ -17,9 +17,8 @@ alias fd="fd -H"
 # ~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~ #
 __overprompt() {
 	local -r status=$?
-	echo                         # Separate command-output blocks
-	echo -n " "                  # Offset
-	echo -n "${PWD/#${HOME}/\~}" # Current working directory, with tilde abbreviation
+	# Current working directory, with tilde abbreviation
+	echo -en "\n ${PWD/#${HOME}/\~}"
 	# Git branch/commit hash, if any
 	if git rev-parse --git-dir >/dev/null 2>&1; then
 		local branch
@@ -28,9 +27,9 @@ __overprompt() {
 		echo -n " (${branch})"
 	fi
 	# Return code, if non-zero
-	[ "${status}" -ne 0 ] && echo -n " [${status}]"
+	[ "${status}" -ne 0 ] && echo -en " [${status}]\n "
 }
-PS1='$(__overprompt)\n '
+PS1='$(__overprompt) '
 PS2='│'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~ #

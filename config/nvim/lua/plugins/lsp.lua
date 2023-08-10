@@ -78,6 +78,7 @@ specs.lspconfig = {
 }
 
 specs.null = {
+  -- TODO add border around info hover window
   'jose-elias-alvarez/null-ls.nvim',
   event = { 'bufreadpre', 'bufnewfile' },
   dependencies = 'nvim-lua/plenary.nvim',
@@ -86,7 +87,7 @@ specs.null = {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.shfmt.with({
-          extra_args = { "-s", "-w", "-ci", "-bn", "-kp" },
+          -- extra_args = { "-s", "-w", "-ci", "-bn", "-kp" },
         }),
       },
       on_attach = on_attach,

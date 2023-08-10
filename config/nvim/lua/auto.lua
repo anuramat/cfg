@@ -1,4 +1,3 @@
-local u = require('utils')
 -- if the only window in this tabpage does not have an actual file as a buffer -- close it
 local qf_group = vim.api.nvim_create_augroup('QuickfixKiller', { clear = true })
 vim.api.nvim_create_autocmd('WinEnter', {

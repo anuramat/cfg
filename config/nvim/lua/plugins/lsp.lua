@@ -1,6 +1,7 @@
 local specs = {}
 local k = require('plug_keys')
 local u = require('utils')
+local fu = require('fmt_utils')
 
 -- These servers will be ignored when trying to format
 _G.fmt_blacklist = { 'lua_ls' }
@@ -67,7 +68,7 @@ specs.lspconfig = {
         capabilities = capabilities,
         on_attach = function(client, buffer)
           k.lsp(buffer)
-          u.setup_autoformat(client, buffer)
+          fu.setup_autoformat(client, buffer)
         end,
         settings = settings,
       })
@@ -92,7 +93,7 @@ specs.null = {
       },
       on_attach = function(client, buffer)
         k.lsp(buffer)
-        u.setup_autoformat(client, buffer)
+        fu.setup_autoformat(client, buffer)
       end,
     })
   end,

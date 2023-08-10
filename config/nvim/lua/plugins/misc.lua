@@ -47,7 +47,11 @@ specs.align = {
 specs.trailspace = {
   'echasnovski/mini.trailspace',
   version = false,
-  opts = {},
+  event = 'VeryLazy',
+  opts = function()
+    vim.api.nvim_create_user_command('TrimTrailingWhitespace', require('mini.trailspace').trim, {})
+    return {}
+  end,
 }
 
 return u.values(specs)

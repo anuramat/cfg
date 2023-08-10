@@ -3,14 +3,14 @@ local s = vim.keymap.set
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The leader himself ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 vim.g.mapleader = ' '
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helpers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-local function de(d) return "User: " .. d end
+local function de(d) return 'User: ' .. d end
 local function norm(l, r, d) s('n', l, r, { silent = true, desc = de(d) }) end
 local function vis(l, r, d) s('v', l, r, { silent = true, desc = de(d) }) end
 local function ins(l, r, d) s('i', l, r, { silent = true, desc = de(d) }) end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- Basics
-s({ 'n', 'v' }, '<space>', '<nop>', { silent = true, desc = de("NOP") })
-s('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = de("Leave Terminal Mode") })
+s({ 'n', 'v' }, '<space>', '<nop>', { silent = true, desc = de('NOP') })
+s('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = de('Leave Terminal Mode') })
 -- ~~~~~~~~~~~~~~~~~~~~~~ Buffer ~~~~~~~~~~~~~~~~~~~~~~~ --
 -- Ignore
 local function skip_qf(f)

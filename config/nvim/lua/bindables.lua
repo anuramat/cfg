@@ -6,29 +6,29 @@ local u = require('utils')
 --- @param width_factor float|nil If present, width = textwidth * width_factor
 function M.create_comment_header(chr, width_factor)
   vim.ui.input({ prompt = 'Header text: ' }, function(input)
-    -- in case user cancels with escape
+    -- In case user cancels with escape
     if input == nil then
       return
     end
 
 
-    -- get the header format string
+    -- Get the header format string
     local commentstring = vim.api.nvim_buf_get_option(0, 'commentstring')
     print('' == vim.api.nvim_buf_get_option(0, 'commentstring'))
     commentstring = u.trim(commentstring)
     local header
     if commentstring:sub(-2) == '%s' then
-      -- classic case, eg python "# comment"
+      -- Default case, e.g. python "# comment"
       header = commentstring .. commentstring:reverse():sub(3)
     elseif commentstring == '' then
-      -- plaintext
+      -- Plaintext
       header = '%s'
     else
-      -- weird stuff like html "<!-- comment -->"
+      -- Weird stuff like html "<!-- comment -->"
       header = commentstring
     end
 
-    -- calculate result width
+    -- Calculate result width
     local width = vim.api.nvim_buf_get_option(0, 'textwidth')
     if width_factor ~= nil then
       width = math.floor(width * width_factor)
@@ -37,7 +37,7 @@ function M.create_comment_header(chr, width_factor)
     vim.cmd('normal ==')
     width = width - u.get_indent()
 
-    -- insert the filler
+    -- Insert the filler
     local filling_width = width - #header + 2
     local filling
     if not u.is_blank(input) then
@@ -49,9 +49,9 @@ function M.create_comment_header(chr, width_factor)
       filling = string.rep(chr, filling_width)
     end
 
-    header = string.format(header, filling) -- fill
-    vim.api.nvim_set_current_line(header)   -- overwrite current line with header
-    vim.cmd('normal ==')                    -- fix indenting
+    header = string.format(header, filling) -- Fill
+    vim.api.nvim_set_current_line(header)   -- Overwrite current line with header
+    vim.cmd('normal ==')                    -- Fix indenting
   end)
 end
 

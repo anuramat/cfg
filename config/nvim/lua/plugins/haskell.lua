@@ -1,6 +1,6 @@
 local specs = {}
 local fu = require('fmt')
-local k = require('plug_keys')
+local k = require('plugkeys')
 local u = require('utils')
 
 specs.haskell = {

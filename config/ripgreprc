@@ -1,17 +1,14 @@
-# Search hidden files and directories.
+# Search hidden and ignored files
 --hidden
-# Follow symbolic links.
---follow
-# Don't respect ignore files (.gitignore, .ignore, etc.).
 --no-ignore
-# Ignore
+# Still ignore these
 --glob=!{.git,.svn,node_modules}
 --glob=!*.{lock}
-# Don't print lines longer than this limit.
---max-columns=200
+# Follow symbolic links.
+--follow
 # Truncate long lines
+--max-columns=200
 --max-columns-preview
-# Searches case insensitively.
+# Misc
 --smart-case
-# Sort by file path.
 --sort=path

@@ -12,13 +12,16 @@ specs.telescope = {
     telescope.setup({
       defaults = {
         vimgrep_arguments = {
+          -- required
           'rg',
           '--color=never',
           '--no-heading',
           '--with-filename',
           '--line-number',
           '--column',
+          -- custom
           '--smart-case',
+          '--ignore',
         },
       },
       pickers = {

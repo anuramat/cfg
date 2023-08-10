@@ -3,8 +3,9 @@ all: lua_format lua_lint shell_lint
 
 .PHONY: lua_format
 lua_format:
-	# ~~~~~~~~~~~~~~~~~~~~~~ StyLua ~~~~~~~~~~~~~~~~~~~~~~~ #
+	# Formatting lua files...
 	@stylua .
+	# Done.
 
 .PHONY: lua_lint
 lua_lint:

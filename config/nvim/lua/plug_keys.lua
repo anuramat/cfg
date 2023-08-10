@@ -280,14 +280,14 @@ function M.haskell_tools()
   local ht = require('haskell-tools')
   return {
     main = function(buf)
-      s('n', '<leader>hrp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
-      s('n', '<leader>hrb',
+      s('n', '<leader>sp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
+      s('n', '<leader>sb',
         function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, { buffer = buf, desc = d('Toggle Buffer REPL') })
-      s('n', '<leader>hrq', ht.repl.quit, { buffer = buf, desc = d('Quit REPL') })
+      s('n', '<leader>sq', ht.repl.quit, { buffer = buf, desc = d('Quit REPL') })
     end,
     lsp = function(buf)
-      s('n', '<leader>hh', ht.hoogle.hoogle_signature, { buffer = buf, desc = d('Show Hoogle Signature') })
-      s('n', '<leader>he', ht.lsp.buf_eval_all, { buffer = buf, desc = d('Evaluate All') })
+      s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buf, desc = d('Show Hoogle Signature') })
+      s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buf, desc = d('Evaluate All') })
     end
   }
 end

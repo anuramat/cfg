@@ -11,7 +11,7 @@ specs.lualine = {
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         globalstatus = true,
-        refresh = { statusline = 100, tabline = 1000, winbar = 1000, },
+        refresh = { statusline = 100 },
       },
       extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },
       sections = {

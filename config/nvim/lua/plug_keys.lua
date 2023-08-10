@@ -99,7 +99,7 @@ M.cmp =
     }
   end,
   cmdline = function()
-    -- BUG: for some reason mappings need to be wrapped explicitly for cmdline:
+    -- BUG: for some reason mappings need to be wrapped in cmp.mapping explicitly for cmdline:
     -- [key] = cmp.mapping({ c = function })
     local interrupters = { '<c-f>', '<c-d>' }
     local cmp = require('cmp')

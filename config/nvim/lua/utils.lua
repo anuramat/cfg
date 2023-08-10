@@ -96,14 +96,15 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
--- null ls something something
-local fmt_blacklist = { 'lua_ls' }
+--- Format while skipping languages from _G.fmt_blacklist
+--- Replaces opts.filter
+--- @param opts table | nil mirrors that of vim.lsp.buf.format
 function M.format(opts)
   if opts == nil then
     opts = {}
   end
   opts.filter = function(client)
-    return not M.contains(fmt_blacklist, client.name)
+    return not M.contains(_G.fmt_blacklist, client.name)
   end
   vim.lsp.buf.format(opts)
 end
@@ -152,13 +153,11 @@ function M.setup_autoformat(client, buffer)
     cmds_off()
   end
   -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-
   -- make sure we don't have get two autocmds
   cleanup()
   -- start autoformatting, set up commands
   cmds_on()
   autoformat_on()
-
   -- cleanup on detach
   vim.api.nvim_create_autocmd('LspDetach', {
     group = af_group,

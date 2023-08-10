@@ -1,49 +1,47 @@
 local specs = {}
-local cfgs = {}
 local k = require('plug_keys')
 local u = require('utils')
 
-cfgs.bashls = {}
+-- These servers will be ignored when trying to format
+_G.fmt_blacklist = { 'lua_ls' }
 
-cfgs.pyright = {}
+local cfgs = {
+  bashls = {},
+  pyright = {},
 
-cfgs.gopls = {
   gopls = {
-    analyses = {
-      fieldalignment = true,
-      nilness = true,
-      shadow = true,
-      unusedparams = true,
-      unusedwrite = true,
-      useany = true,
-      unusedvariable = true,
+    gopls = {
+      analyses = {
+        fieldalignment = true,
+        nilness = true,
+        shadow = true,
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+        unusedvariable = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
     },
-    staticcheck = true,
-    gofumpt = true,
   },
-}
 
-cfgs.lua_ls = {
-  Lua = {
-    runtime = {
-      version = 'LuaJIT',
-    },
-    workspace = {
-      checkThirdParty = false,
-      library = vim.api.nvim_get_runtime_file('*', true),
-    },
-    telemetry = {
-      enable = false,
+  lua_ls = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file('*', true),
+      },
+      telemetry = {
+        enable = false,
+      },
     },
   },
 }
 
 specs.neodev = { 'folke/neodev.nvim', opts = {} }
-
-local function on_attach(client, buffer)
-  k.lsp(buffer)
-  u.setup_autoformat(client, buffer)
-end
 
 specs.lspconfig = {
   'neovim/nvim-lspconfig',
@@ -54,23 +52,23 @@ specs.lspconfig = {
   },
   config = function()
     local lspconfig = require('lspconfig')
-
-    -- Borders
+    -- ~~~~~~~ Rounded borders for hover windows ~~~~~~~ --
     vim.diagnostic.config({ float = { border = 'rounded' } })
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] =
       vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
     require('lspconfig.ui.windows').default_options.border = 'rounded'
-
-    -- LSP capabilities: default and cmp
+    -- ~~~~ Register capabilities (CMP completion) ~~~~~ --
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-    -- Register servers
+    -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
     for server, settings in pairs(cfgs) do
       lspconfig[server].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = function(client, buffer)
+          k.lsp(buffer)
+          u.setup_autoformat(client, buffer)
+        end,
         settings = settings,
       })
     end
@@ -79,7 +77,6 @@ specs.lspconfig = {
 
 specs.null = {
   -- TODO add border around info hover window
-  -- NOTE lsp overrides are in utils, near u.format definition
   'jose-elias-alvarez/null-ls.nvim',
   event = { 'bufreadpre', 'bufnewfile' },
   dependencies = 'nvim-lua/plenary.nvim',
@@ -93,7 +90,10 @@ specs.null = {
         }),
         fmt.stylua,
       },
-      on_attach = on_attach,
+      on_attach = function(client, buffer)
+        k.lsp(buffer)
+        u.setup_autoformat(client, buffer)
+      end,
     })
   end,
 }

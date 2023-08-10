@@ -59,7 +59,7 @@ specs.lspconfig = {
     vim.diagnostic.config({ float = { border = 'rounded' } })
     vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
     vim.lsp.handlers['textDocument/signatureHelp'] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
     require('lspconfig.ui.windows').default_options.border = 'rounded'
 
     -- LSP capabilities: default and cmp
@@ -79,16 +79,19 @@ specs.lspconfig = {
 
 specs.null = {
   -- TODO add border around info hover window
+  -- NOTE lsp overrides are in utils, near u.format definition
   'jose-elias-alvarez/null-ls.nvim',
   event = { 'bufreadpre', 'bufnewfile' },
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()
     local null_ls = require('null-ls')
+    local fmt = null_ls.builtins.formatting
     null_ls.setup({
       sources = {
-        null_ls.builtins.formatting.shfmt.with({
+        fmt.shfmt.with({
           extra_args = { '-s', '-ci', '-bn' },
         }),
+        fmt.stylua,
       },
       on_attach = on_attach,
     })

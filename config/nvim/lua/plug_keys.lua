@@ -1,4 +1,5 @@
 local M = {}
+local u = require('utils')
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Intro ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- For the most part mappings look like this:
 -- <Leader><ModuleMnemonic><FunctionMnemonic>
@@ -15,7 +16,7 @@ function M.lsp(buffer)
   end
 
   n('<leader>lr', vim.lsp.buf.rename, 'Rename')
-  n('<leader>lf', vim.lsp.buf.format, 'Format Buffer')
+  n('<leader>lf', u.format, 'Format Buffer')
   n('<leader>la', vim.lsp.buf.code_action, 'Code Action')
   n('<leader>ll', vim.lsp.codelens.run, 'CodeLens')
 

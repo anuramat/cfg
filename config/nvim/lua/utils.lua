@@ -96,8 +96,19 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
-local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
+-- null ls something something
+local fmt_blacklist = { 'lua_ls' }
+function M.format(opts)
+  if opts == nil then
+    opts = {}
+  end
+  opts.filter = function(client)
+    return not M.contains(fmt_blacklist, client.name)
+  end
+  vim.lsp.buf.format(opts)
+end
 
+local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
 --- Sets up autoformatting and format commands for buffer if client is capable.
 --- Meant to be called in an on_attach handler
 --- @param client table
@@ -117,7 +128,7 @@ function M.setup_autoformat(client, buffer)
       group = af_group,
       buffer = buffer,
       callback = function()
-        vim.lsp.buf.format({ bufnr = buffer, async = false })
+        M.format({ bufnr = buffer, async = false })
       end,
     })
   end

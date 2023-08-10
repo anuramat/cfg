@@ -27,9 +27,10 @@ __overprompt() {
 		echo -n " (${branch})"
 	fi
 	# Return code, if non-zero
-	[ "${status}" -ne 0 ] && echo -en " [${status}]\n "
+	[ "${status}" -ne 0 ] && echo -en " [${status}]"
+	echo -en "\n "
 }
-PS1='$(__overprompt) '
+PS1='$(__overprompt)'
 PS2='│'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~ #

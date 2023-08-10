@@ -7,7 +7,7 @@
 # Suppress login message
 ensure_string "hehe" "${HOME}/.hushlogin"
 # Make bash the default shell
-[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {
+[  "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {
 	continue_prompt "Change shell to bash?" && {
 		set_shell "${HOMEBREW_PREFIX}/bin/bash"
 	}

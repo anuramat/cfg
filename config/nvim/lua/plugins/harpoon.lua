@@ -8,12 +8,17 @@ specs.harpoon = {
   keys = k.harpoon(),
   dependencies = {
     'nvim-lua/plenary.nvim',
+    'Mofiqul/dracula.nvim',
   },
   opts = function()
-    vim.cmd('highlight! HarpoonInactive guibg=NONE guifg=#63698c')
-    vim.cmd('highlight! HarpoonActive guibg=NONE guifg=white')
-    vim.cmd('highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7')
-    vim.cmd('highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7')
+    local cs = require('dracula').colors()
+
+    vim.api.nvim_set_hl(0, 'HarpoonNumberActive', { fg = cs.purple, bg = cs.black })
+    vim.api.nvim_set_hl(0, 'HarpoonActive', { fg = cs.purple, bg = cs.black })
+
+    vim.api.nvim_set_hl(0, 'HarpoonNumberInactive', { fg = cs.fg, bg = cs.bg })
+    vim.api.nvim_set_hl(0, 'HarpoonInactive', { fg = cs.fg, bg = cs.bg })
+
     return { tabline = true }
   end,
 }

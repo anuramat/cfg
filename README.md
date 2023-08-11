@@ -30,9 +30,9 @@ brew bundle install
 ./setup.sh
 ```
 
-## Preferences (manual)
-- Delete everything in "Text replacements..." (TODO)
-- Keybinds (TODO)
-- Wallpaper (TODO)
-- Choose a screensaver (no point in setting up automatically)
-- Lock Screen -> "Require password..." = "Immediately" (no chance of setting through defaults)
+## Preferences
+- Delete everything in "Text replacements..." (TODO auto)
+- Keybinds (TODO auto)
+- Wallpaper (TODO auto)
+- Set a screensaver
+- "Lock Screen" / delays

@@ -3,15 +3,15 @@ enable=all
 # not following a dynamic path to a source file
 disable=SC1091
 disable=SC1090
-# expressions don't expand in single quotes
-disable=SC2016
+# quotation marks
+disable=SC2016,SC2089,SC2090
 # alias x="$var" expands when defined, not when used
 disable=SC2139 
 # ignored non-zero return codes
 disable=SC2312
-# prefer [[]] over [] when possible
+# prefer [[]] over [] 
 disable=SC2292
 # referenced but not assigned
 disable=SC2154
-# explicit -n to check string emptiness
+# explicit [ -n ] to check string emptiness
 disable=SC2244

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 # import blesh
 blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
@@ -9,14 +8,15 @@ blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
 bind 'set bell-style none' # Disable annoying sound
 shopt -s globstar
 
-# set up the aliases
-exa="exa --group-directories-first --group --icons --header --git --color=always"
+# ~~~~~~~~~~~~~~~~~~~~~~~ aliases ~~~~~~~~~~~~~~~~~~~~~~~ #
+exa="exa --group-directories-first --group --icons --header --git"
 alias f="nvim"
 alias ls="${exa}"
 alias ll="${exa} --long"
 alias la="${exa} --long --all"
 alias tree="${exa} --tree"
 alias fd="fd -H"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
 # colorizes if possible
 __colorize() {
@@ -44,32 +44,20 @@ __overprompt() {
 	printf "\n "
 }
 
-PS1='$(__overprompt)'
-PS2='│'
+PS1='$(__overprompt)' && PS2='│'
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-
-# ~~~~~~~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~ #
 [ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 
-# ~~~~~~~~~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO add zoxide-fzf options
-export _ZO_RESOLVE_SYMLINKS="1"
-eval "$(zoxide init bash --cmd j)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j)"
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~ Fzf ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ -f ~/.fzf.bash ] && {
-	export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-	export FZF_ALT_C_OPTS="--preview 'tree {}'"
 	# . "${HOME}/.fzf.bash" # uncomment if no blesh
 	ble-import -d integration/fzf-completion
 	ble-import -d integration/fzf-key-bindings
 }
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~ Exa ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-export EXA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=35:ux=36:ue=36:gr=34:gw=35:gx=36:tr=34:tw=35:tx=36"
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Conda ~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~ conda ~~~~~~~~~~~~~~~~~~~~~~~~ #
 if __conda_setup="$("${HOMEBREW_PREFIX}/Caskroom/miniforge/base/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
 	eval "${__conda_setup}"
 else
@@ -80,6 +68,6 @@ else
 	fi
 fi
 unset __conda_setup
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Blesh ~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ "${BLE_VERSION}" ] && ble-attach

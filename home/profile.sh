@@ -27,10 +27,24 @@ else
 fi
 export VISUAL="${EDITOR}"
 
-# Pretty manpages
+# Integrate bat
 if command -v "bat" >/dev/null 2>&1; then
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 fi
+
+# Preview directories in fzf using tree/exa
+if command -v "exa" >/dev/null 2>&1; then
+	export FZF_ALT_C_OPTS="--preview 'exa --tree --icons {}'"
+elif command -v "tree" >/dev/null 2>&1; then
+	export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+fi
+
+# Exa  colors
+export EXA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=35:ux=36:ue=36:gr=34:gw=35:gx=36:tr=34:tw=35:tx=36"
+
+# Zoxide settings
+export _ZO_RESOLVE_SYMLINKS="1"
 
 # Read ripgrep settings
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgreprc"

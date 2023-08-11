@@ -20,7 +20,6 @@ specs.telescope = {
           '--line-number',
           '--column',
           -- custom
-          '--smart-case',
           '--ignore',
         },
       },

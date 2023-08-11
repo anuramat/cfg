@@ -10,6 +10,7 @@ bleopt edit_vbell=1
 # https://spec.draculatheme.com/
 # ~~~~~~~~~~~~~~~~~~~~ Define colors ~~~~~~~~~~~~~~~~~~~~ #
 # TODO change colors again, add more colors from the link, move stuff fr
+# cross reference exa colors
 c_cyan="#8BE9FD"      # builtin
 c_fg="#F8F8F2"        # vars
 c_pink="#FF79C6"      # escapes

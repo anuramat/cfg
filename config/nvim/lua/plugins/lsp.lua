@@ -9,6 +9,7 @@ _G.fmt_blacklist = { 'lua_ls' }
 local cfgs = {
   bashls = {},
   pyright = {},
+  bufls = {},
 
   gopls = {
     gopls = {

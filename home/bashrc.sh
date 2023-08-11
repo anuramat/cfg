@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Import blesh
-blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
-[ -r "${blesh_path}" ] && source "${blesh_path}" --noattach
-
 # Basic bash specific stuff
 bind 'set bell-style none' # Disable annoying sound
 shopt -s globstar
@@ -62,19 +58,6 @@ __print_prompt() {
 }
 PS1='$(__print_prompt)' && PS2='│'
 
-# Completion
-[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-
-# TODO add zoxide-fzf options
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j)"
-
-# fzf
-[ -f ~/.fzf.bash ] && {
-	# . "${HOME}/.fzf.bash" # uncomment if no blesh
-	ble-import -d integration/fzf-completion
-	ble-import -d integration/fzf-key-bindings
-}
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~ conda ~~~~~~~~~~~~~~~~~~~~~~~~ #
 if __conda_setup="$("${HOMEBREW_PREFIX}/Caskroom/miniforge/base/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
 	eval "${__conda_setup}"
@@ -87,6 +70,8 @@ else
 fi
 unset __conda_setup
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+[ -f "${HOME}/.fzf.bash" ] && . "${HOME}/.fzf.bash"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j)"
 
-# ble.sh
-[ "${BLE_VERSION}" ] && ble-attach
+blesh_path="${XDG_DATA_HOME}/blesh/ble.sh" && [ -r "${blesh_path}" ] && source "${blesh_path}" && unset blesh_path

@@ -1,15 +1,38 @@
 #!/usr/bin/env bash
-# shellcheck disable=2086
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bleopt vbell_default_message=' DING DING '
 bleopt vbell_duration=500
 bleopt vbell_align=center
 bleopt edit_abell=
 bleopt edit_vbell=1
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+ble-import -d integration/fzf-completion
+ble-import -d integration/fzf-key-bindings
+
+_ble_contrib_fzf_git_config=key-binding:sabbrev:arpeggio
+ble-import -d integration/fzf-git
+
+ble-import contrib/prompt-git
+bleopt prompt_rps1='\q{contrib/git-info}'
+
+# # add this to the top of your bashrc
+# blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
+# if [ -r "${blesh_path}" ]; then
+# 	source "${blesh_path}" --noattach
+# else
+# 	{
+# 		[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+# 		[ -f ~/.fzf.bash ] && . "${HOME}/.fzf.bash"
+# 	}
+# fi
+# unset blesh_path
+# # and this to the bottom
+# [ "${BLE_VERSION}" ] && ble-attach
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # https://spec.draculatheme.com/
 # ~~~~~~~~~~~~~~~~~~~~ Define colors ~~~~~~~~~~~~~~~~~~~~ #
-# TODO change colors again, add more colors from the link, move stuff fr
+# TODO fix colors
 # cross reference exa colors
 c_cyan="#8BE9FD"      # builtin
 c_fg="#F8F8F2"        # vars

@@ -6,6 +6,11 @@ specs.dracula_cs = {
   priority = 1337,
   lazy = false,
   config = function()
+    require('dracula').setup({
+      transparent_bg = true,
+      italic_comment = true,
+      -- lualine_bg_color = '#44475a',
+    })
     vim.cmd.colorscheme('dracula-soft')
     u.style_codelens()
   end,

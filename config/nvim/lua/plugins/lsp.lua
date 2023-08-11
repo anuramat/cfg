@@ -33,7 +33,7 @@ local cfgs = {
       },
       workspace = {
         checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file('*', true),
+        library = u.get_lib_path('config'),
       },
       telemetry = {
         enable = false,

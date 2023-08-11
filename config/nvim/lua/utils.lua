@@ -80,4 +80,17 @@ function M.style_codelens()
   vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
 end
 
+--- Gets plugin paths
+function M.get_lib_path(config_prefix)
+  local paths = vim.api.nvim_get_runtime_file('', true)
+  local result = {}
+  for _, path in pairs(paths) do
+    if not string.find(path, config_prefix) then
+      table.insert(result, path)
+    end
+  end
+  return result
+end
+_G.asdf = M.get_lib_path
+
 return M

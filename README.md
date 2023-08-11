@@ -30,7 +30,7 @@ brew bundle install
 ./setup.sh
 ```
 
-## Manual prefs:
+## Preferences (manual)
 - Delete everything in "Text replacements..." (TODO)
 - Keybinds (TODO)
 - Wallpaper (TODO)

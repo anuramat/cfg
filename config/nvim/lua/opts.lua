@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.cmd.colorscheme('habamax')
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 25
 u.style_codelens()
 o.display = 'lastline,uhex'
 o.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'

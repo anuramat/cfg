@@ -77,7 +77,7 @@ defaults write "${menuclock}" ShowDayOfWeek -bool true
 defaults write "${menuclock}" ShowSeconds -bool true
 defaults write "${menuclock}" IsAnalog -bool false
 defaults write "${menuclock}" FlashDateSeparators -bool false
-defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true # Battery percentage
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 # ~~~~~~~~~~~~~~~~~~~~~~ Trackpad ~~~~~~~~~~~~~~~~~~~~~~~ #
 trackpad=com.apple.AppleMultitouchTrackpad
 defaults write "${trackpad}" ActuateDetents -int 1

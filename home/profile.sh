@@ -49,3 +49,6 @@ export _ZO_RESOLVE_SYMLINKS="1"
 
 # Read ripgrep settings
 export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgreprc"
+
+# Don't let python venvs change the PS1
+VIRTUAL_ENV_DISABLE_PROMPT="1"

@@ -27,10 +27,8 @@ ble-face -s region_target "fg=${c_selection}"
 ble-face -s region_match "fg=${c_orange},reverse"
 ble-face -s disabled "fg=${c_comment}"
 ble-face -s auto_complete "fg=${c_purple}"
-my/complete-load-hook() {           # eg when typing a path: /first_part/second
-	ble-face -s menu_filter_fixed bold # first part
-	ble-face -s menu_filter_input "fg=${c_fg},bold # second part"
-}
+ble-face -s menu_filter_fixed "fg=${c_purple}"      # prefix completed on input+tab
+ble-face -s menu_filter_input "fg=${c_orange},bold" # input on tab-prefix+input / path when cycling on 2nd+ tab
 # ~~~~~~~~~~~~~~~~~~~~~~~ Syntax ~~~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s syntax_default "fg=${c_fg}"
 ble-face -s syntax_command "fg=${c_green}"
@@ -65,15 +63,15 @@ ble-face -s filename_directory_sticky "fg=${c_pink},underline"
 ble-face -s filename_link "fg=${c_cyan},underline"
 ble-face -s filename_orphan "fg=${c_red},underline"
 ble-face -s filename_executable "fg=${c_green},underline"
-ble-face -s filename_other "fg=${c_green},underline"
-ble-face -s filename_socket "fg=${c_pink},underline"
-ble-face -s filename_pipe "fg=${c_pink},underline"
+ble-face -s filename_other "fg=${c_purple},underline"
+ble-face -s filename_socket "fg=${c_fg},underline"
+ble-face -s filename_pipe "fg=${c_fg},underline"
 ble-face -s filename_setuid "fg=${c_fg},underline"
 ble-face -s filename_setgid "fg=${c_fg},underline"
 ble-face -s filename_character "fg=${c_fg},underline"
 ble-face -s filename_block "fg=${c_fg},underline"
 ble-face -s filename_warning "fg=${c_fg},underline"
-ble-face -s filename_url "fg=${c_cyan},underline"
+ble-face -s filename_url "fg=${c_fg},underline"
 ble-face -s filename_ls_colors none
 # ~~~~~~~~~~~~~~~~~~~~~~ Variables ~~~~~~~~~~~~~~~~~~~~~~ #
 ble-face -s varname_readonly "fg=${c_purple}"
@@ -95,5 +93,3 @@ ble-face -s prompt_status_line "${gigaerr}" # ??? prompt on the bottom of the sc
 ble-face -s vbell "${gigaerr}"
 ble-face -s vbell_erase none
 ble-face -s vbell_flash "${gigaerr}"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Set up hooks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-blehook/eval-after-load complete my/complete-load-hook

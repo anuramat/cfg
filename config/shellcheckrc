@@ -15,3 +15,5 @@ disable=SC2292
 disable=SC2154
 # explicit [ -n ] to check string emptiness
 disable=SC2244
+# declare local/export/readonly and assign separately to avoid masking return values
+disable=SC2155

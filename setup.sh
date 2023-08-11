@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+# get helper functions
 . ./lib/utils.sh
+# Env vars
 . ./home/profile.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Install configs

@@ -12,7 +12,7 @@ function M.lsp(buffer)
   end
 
   local function list_workspace_folders()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    vim.print(vim.lsp.buf.list_workspace_folders())
   end
 
   n('<leader>lr', vim.lsp.buf.rename, 'Rename')

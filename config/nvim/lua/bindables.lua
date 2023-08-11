@@ -13,7 +13,6 @@ function M.create_comment_header(chr, width_factor)
 
     -- Get the header format string
     local commentstring = vim.api.nvim_buf_get_option(0, 'commentstring')
-    print('' == vim.api.nvim_buf_get_option(0, 'commentstring'))
     commentstring = u.trim(commentstring)
     local header
     if commentstring:sub(-2) == '%s' then

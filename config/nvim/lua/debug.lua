@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 --- Prints triggered events for debug purposes
 --- @param events table List of events to subscribe to

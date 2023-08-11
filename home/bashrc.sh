@@ -71,7 +71,6 @@ fi
 unset __conda_setup
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-[ -f "${HOME}/.fzf.bash" ] && . "${HOME}/.fzf.bash"
+[ -r "${HOME}/.fzf.bash" ] && . "${HOME}/.fzf.bash"
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j)"
-
 blesh_path="${XDG_DATA_HOME}/blesh/ble.sh" && [ -r "${blesh_path}" ] && source "${blesh_path}" && unset blesh_path

@@ -46,7 +46,7 @@ __print_prompt() {
 	if git rev-parse --git-dir >/dev/null 2>&1; then
 		# Print branch
 		local branch=$(git branch --show-current)
-		[ -z "${branch}" ] && branch="($(git rev-parse --short HEAD))"
+		[ -z "${branch}" ] && branch="$(git rev-parse --short HEAD)"
 		${pink} " (${branch})"
 
 		# Print git status

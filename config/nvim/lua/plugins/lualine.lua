@@ -32,7 +32,10 @@ specs.lualine = {
         lualine_z = { { tabline, padding = { left = 0, right = 1 } } },
       },
       sections = {
-        lualine_a = { 'mode' },
+        lualine_a = {
+          { 'location', padding = { left = 1, right = 1 }, fmt = u.trim },
+          { 'progress', padding = { left = 1, right = 1 }, fmt = u.trim },
+        },
         lualine_b = { { 'branch', icon = '󰊢', align = 'right' } },
         lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '  ', unnamed = '' } } },
         lualine_x = {
@@ -54,15 +57,12 @@ specs.lualine = {
               return package.loaded['dap'] and require('dap').status() ~= ''
             end,
           },
+        },
+        lualine_z = {
           {
             'tabs',
             mode = 2,
-            tabs_color = { active = { bg = cs.black }, inactive = { bg = cs.visual } },
           },
-        },
-        lualine_z = {
-          { 'location', padding = { left = 1, right = 1 }, fmt = u.trim },
-          { 'progress', padding = { left = 1, right = 1 }, fmt = u.trim },
         },
       },
     }

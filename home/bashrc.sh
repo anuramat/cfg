@@ -15,21 +15,28 @@ alias la="${exa} --long --all"
 alias tree="${exa} --tree"
 alias fd="fd -H"
 # ~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~ #
+__colorize() {
+	# $1, $2, $3 - RGB
+	# $4 - text
+	printf "\033[38;2;%s;%s;%sm%s\033[0m" "$1" "$2" "$3" "$4"
+}
 __overprompt() {
 	local -r status=$?
 	# Current working directory, with tilde abbreviation
-	echo -en "\n ${PWD/#${HOME}/\~}"
+	echo
+	__colorize 189 147 249 " ${PWD/#${HOME}/\~}"
 	# Git branch/commit hash, if any
 	if git rev-parse --git-dir >/dev/null 2>&1; then
 		local branch
 		branch=$(git branch --show-current)
 		[ -z "${branch}" ] && branch="($(git rev-parse --short HEAD))"
-		echo -n " (${branch})"
+		__colorize 255 121 198 " (${branch})"
 	fi
 	# Return code, if non-zero
-	[ "${status}" -ne 0 ] && echo -en " [${status}]"
-	echo -en "\n "
+	[ "${status}" -ne 0 ] && __colorize 255 85 85 " [${status}]"
+	printf "\n "
 }
+
 PS1='$(__overprompt)'
 PS2='│'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

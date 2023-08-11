@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 local u = require('utils')
 local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })

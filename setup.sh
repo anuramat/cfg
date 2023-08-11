@@ -6,6 +6,8 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Install configs
 ./bin/configs.sh
+# Install go binaries
+./bin/gogetter.sh
 # Suppress login message
 ensure_string "hehe" "${HOME}/.hushlogin"
 # Make bash the default shell

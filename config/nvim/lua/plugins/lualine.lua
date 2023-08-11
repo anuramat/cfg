@@ -10,7 +10,6 @@ specs.lualine = {
     'ThePrimeagen/harpoon',
   },
   opts = function()
-    local cs = require('dracula').colors()
     return {
       options = {
         theme = 'dracula-nvim',
@@ -29,7 +28,7 @@ specs.lualine = {
             show_filename_only = false,
           },
         },
-        lualine_z = { { tabline, padding = { left = 0, right = 1 } } },
+        lualine_z = { { tabline, padding = { left = 0, right = 1 } } }, -- luacheck: ignore tabline
       },
       sections = {
         lualine_a = {

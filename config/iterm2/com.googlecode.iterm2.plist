@@ -524,7 +524,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>17.747706117021274</real>
+			<real>14.747706117021274</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -924,7 +924,7 @@
 			<key>Normal Font</key>
 			<string>HackNF-Regular 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
-			<true/>
+			<false/>
 			<key>Open Toolbelt</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -972,7 +972,7 @@
 			<key>Thin Strokes</key>
 			<integer>4</integer>
 			<key>Transparency</key>
-			<real>0.38297872340425532</real>
+			<real>0.30214428191489362</real>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>

@@ -4,8 +4,13 @@ local u = require('utils')
 specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
-  dependencies = { 'arkav/lualine-lsp-progress' },
+  dependencies = {
+    'arkav/lualine-lsp-progress',
+    'Mofiqul/dracula.nvim',
+    'ThePrimeagen/harpoon',
+  },
   opts = function()
+    local cs = require('dracula').colors()
     return {
       options = {
         theme = 'dracula-nvim',
@@ -15,11 +20,21 @@ specs.lualine = {
         refresh = { statusline = 100 },
       },
       extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },
-      -- tabline = { lualine_a = { { tabline } } },
+      tabline = {
+        lualine_a = {
+          {
+            'buffers',
+            mode = 4,
+            hide_filename_extension = false,
+            show_filename_only = false,
+          },
+        },
+        lualine_z = { { tabline, padding = { left = 0, right = 1 } } },
+      },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { { 'branch', icon = '󰊢', align = 'right' } },
-        lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '', unnamed = '' } } },
+        lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '  ', unnamed = '' } } },
         lualine_x = {
           {
             'lsp_progress',
@@ -42,7 +57,7 @@ specs.lualine = {
           {
             'tabs',
             mode = 2,
-            tabs_color = { active = {}, inactive = { fg = 'grey' } },
+            tabs_color = { active = { bg = cs.black }, inactive = { bg = cs.visual } },
           },
         },
         lualine_z = {

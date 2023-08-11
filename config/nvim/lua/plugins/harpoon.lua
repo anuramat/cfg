@@ -12,14 +12,24 @@ specs.harpoon = {
   },
   opts = function()
     local cs = require('dracula').colors()
+    local on = { fg = cs.black, bg = cs.purple, bold = true }
+    local off = { fg = cs.fg, bg = cs.visual, bold = true }
 
-    vim.api.nvim_set_hl(0, 'HarpoonNumberActive', { fg = cs.purple, bg = cs.black })
-    vim.api.nvim_set_hl(0, 'HarpoonActive', { fg = cs.purple, bg = cs.black })
+    vim.api.nvim_set_hl(0, 'HarpoonNumberActive', on)
+    vim.api.nvim_set_hl(0, 'HarpoonActive', on)
 
-    vim.api.nvim_set_hl(0, 'HarpoonNumberInactive', { fg = cs.fg, bg = cs.bg })
-    vim.api.nvim_set_hl(0, 'HarpoonInactive', { fg = cs.fg, bg = cs.bg })
+    vim.api.nvim_set_hl(0, 'HarpoonNumberInactive', off)
+    vim.api.nvim_set_hl(0, 'HarpoonInactive', off)
 
-    return { tabline = true }
+    vim.api.nvim_set_hl(0, 'TabLineFill', {})
+
+    return {
+      tabline_prefix = ' ',
+      tabline_suffix = ' ',
+      menu = {
+        width = 80,
+      },
+    }
   end,
 }
 

@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# ~~~~~~~~~~~~~~~~~ Blesh (first part) ~~~~~~~~~~~~~~~~~~ #
+
+# import blesh
 blesh_path="${XDG_DATA_HOME}/blesh/ble.sh"
 [ -r "${blesh_path}" ] && source "${blesh_path}" --noattach
-# ~~~~~~~~~~~~~~~~~~~ Basic settings ~~~~~~~~~~~~~~~~~~~~ #
+
+# basic bash specific stuff
 bind 'set bell-style none' # Disable annoying sound
 shopt -s globstar
-# ~~~~~~~~~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~ #
+
+# set up the aliases
 exa="exa --group-directories-first --group --icons --header --git --color=always"
 alias f="nvim"
 alias ls="${exa}"
@@ -14,12 +17,16 @@ alias ll="${exa} --long"
 alias la="${exa} --long --all"
 alias tree="${exa} --tree"
 alias fd="fd -H"
-# ~~~~~~~~~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~ #
+
+# colorizes if possible
 __colorize() {
 	# $1, $2, $3 - RGB
 	# $4 - text
-	printf "\033[38;2;%s;%s;%sm%s\033[0m" "$1" "$2" "$3" "$4"
+	[ "$(tput colors)" -eq 256 ] && printf "\033[38;2;%s;%s;%sm%s\033[0m" "$1" "$2" "$3" "$4" && return 0
+	printf "%s" "$4"
 }
+
+# draw the prompt
 __overprompt() {
 	local -r status=$?
 	# Current working directory, with tilde abbreviation
@@ -39,13 +46,17 @@ __overprompt() {
 
 PS1='$(__overprompt)'
 PS2='│'
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ E(x)ternal bloat ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+
 # ~~~~~~~~~~~~~~~~~~~~~ Completions ~~~~~~~~~~~~~~~~~~~~~ #
 [ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && . "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+
 # ~~~~~~~~~~~~~~~~~~~~~~~ Zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO add zoxide-fzf options
 export _ZO_RESOLVE_SYMLINKS="1"
 eval "$(zoxide init bash --cmd j)"
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Fzf ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ -f ~/.fzf.bash ] && {
 	export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
@@ -54,8 +65,10 @@ eval "$(zoxide init bash --cmd j)"
 	ble-import -d integration/fzf-completion
 	ble-import -d integration/fzf-key-bindings
 }
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Exa ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 export EXA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=35:ux=36:ue=36:gr=34:gw=35:gx=36:tr=34:tw=35:tx=36"
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Conda ~~~~~~~~~~~~~~~~~~~~~~~~ #
 if __conda_setup="$("${HOMEBREW_PREFIX}/Caskroom/miniforge/base/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
 	eval "${__conda_setup}"
@@ -67,5 +80,6 @@ else
 	fi
 fi
 unset __conda_setup
-# ~~~~~~~~~~~~~~~~~ Blesh (second part) ~~~~~~~~~~~~~~~~~ #
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Blesh ~~~~~~~~~~~~~~~~~~~~~~~~ #
 [ "${BLE_VERSION}" ] && ble-attach

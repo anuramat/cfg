@@ -158,7 +158,7 @@ M.telescope = {
     local d = M.telescope.d
     local function tfuz()
       require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-        winblend = 10,
+        -- winblend = 10, -- pseudo transparency
         previewer = false,
       }))
     end

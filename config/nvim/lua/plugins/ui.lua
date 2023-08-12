@@ -20,6 +20,7 @@ specs.dracula_cs = {
     vim.cmd('highlight! link NormalFloat Normal')
     vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
     -- TODO white border on telescope?
+    -- maybe new theme telescope?
   end,
 }
 

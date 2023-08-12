@@ -17,3 +17,5 @@ disable=SC2154
 disable=SC2244
 # declare local/export/readonly and assign separately to avoid masking return values
 disable=SC2155
+# printf "${var}": escapes get expanded, use %s if this is not intended
+disable=SC2059

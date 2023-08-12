@@ -11,9 +11,15 @@ specs.dracula_cs = {
     dracula.setup({
       italic_comment = true,
       lualine_bg_color = cs.bg,
+      transparent_bg = true, -- default false
     })
     vim.cmd.colorscheme('dracula-soft')
     u.style_codelens()
+
+    vim.cmd('highlight! link FloatBorder Normal')
+    vim.cmd('highlight! link NormalFloat Normal')
+    vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
+    -- TODO white border on telescope?
   end,
 }
 

@@ -524,7 +524,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>14.747706117021274</real>
+			<real>25.043650265957446</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -590,7 +590,7 @@
 			<key>Draw Powerline Glyphs</key>
 			<false/>
 			<key>Flashing Bell</key>
-			<true/>
+			<false/>
 			<key>Foreground Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -609,7 +609,7 @@
 			<key>Initial Text</key>
 			<string></string>
 			<key>Initial Use Transparency</key>
-			<false/>
+			<true/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -924,7 +924,7 @@
 			<key>Normal Font</key>
 			<string>HackNF-Regular 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
-			<false/>
+			<true/>
 			<key>Open Toolbelt</key>
 			<true/>
 			<key>Option Key Sends</key>
@@ -939,8 +939,6 @@
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>1000</integer>
-			<key>Scrollback With Status Bar</key>
-			<false/>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -961,14 +959,10 @@
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
-			<key>Send Idle Alert</key>
-			<true/>
-			<key>Send New Output Alert</key>
-			<true/>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<true/>
+			<false/>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -978,11 +972,11 @@
 			<key>Thin Strokes</key>
 			<integer>4</integer>
 			<key>Transparency</key>
-			<real>0.43371841755319146</real>
+			<real>0.5</real>
 			<key>Unicode Version</key>
 			<integer>9</integer>
 			<key>Unlimited Scrollback</key>
-			<true/>
+			<false/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
@@ -1618,7 +1612,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.0</real>
+			<real>0.90000000000000002</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -1686,10 +1680,6 @@
 	<real>0.59999999999999998</real>
 	<key>SwitchPaneModifier</key>
 	<integer>5</integer>
-	<key>ToolbeltTools</key>
-	<array>
-		<string>Snippets</string>
-	</array>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>findMode_iTerm</key>

@@ -10,11 +10,16 @@ specs.lualine = {
     'ThePrimeagen/harpoon',
   },
   opts = function()
+    local lualine_dracula = require('lualine.themes.dracula-nvim')
+    local dracula_cs = require('dracula').colors()
+    for k, _ in pairs(lualine_dracula) do
+      lualine_dracula[k].b.bg = dracula_cs.visual
+    end
     return {
       options = {
-        theme = 'dracula-nvim',
-        section_separators = { left = '', right = '' },
+        theme = lualine_dracula,
         component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
         globalstatus = true,
         refresh = { statusline = 100 },
       },

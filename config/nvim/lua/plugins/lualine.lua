@@ -32,11 +32,33 @@ specs.lualine = {
       },
       sections = {
         lualine_a = {
-          { 'location', padding = { left = 1, right = 1 }, fmt = u.trim },
-          { 'progress', padding = { left = 1, right = 1 }, fmt = u.trim },
+          {
+            'location',
+            padding = { left = 1, right = 0 },
+            fmt = function(s)
+              local result = string.format('%-6s', u.trim(s))
+              if result[#result] ~= ' ' then
+                result = result .. ' '
+              end
+              return result
+            end,
+          },
+          {
+            'progress',
+            padding = { left = 0, right = 1 },
+          },
         },
-        lualine_b = { { 'branch', icon = '󰊢', align = 'right' } },
-        lualine_c = { { 'filename', path = 3, symbols = { modified = '  ', readonly = '  ', unnamed = '' } } },
+        lualine_b = {
+          {
+            function()
+              return vim.fn.getcwd()
+            end,
+          },
+          { 'branch', icon = '󰊢', align = 'right' },
+        },
+        lualine_c = {
+          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' } },
+        },
         lualine_x = {
           {
             'lsp_progress',

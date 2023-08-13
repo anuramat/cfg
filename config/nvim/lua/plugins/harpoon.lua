@@ -20,8 +20,7 @@ specs.harpoon = {
 
     vim.api.nvim_set_hl(0, 'HarpoonNumberInactive', off)
     vim.api.nvim_set_hl(0, 'HarpoonInactive', off)
-
-    vim.api.nvim_set_hl(0, 'TabLineFill', {})
+    -- vim.api.nvim_set_hl(0, 'TabLineFill', off)
 
     return {
       tabline_prefix = ' ',

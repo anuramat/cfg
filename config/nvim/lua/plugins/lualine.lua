@@ -28,7 +28,7 @@ specs.lualine = {
             show_filename_only = false,
           },
         },
-        lualine_z = { { tabline, padding = { left = 0, right = 1 } } }, -- luacheck: ignore tabline
+        lualine_z = { { tabline, padding = 0 } }, -- luacheck: ignore tabline
       },
       sections = {
         lualine_a = {

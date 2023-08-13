@@ -38,7 +38,7 @@ sync = !git add --all && git commit -am sync && git push
 lg = log --oneline --graph --all --decorate
 df = diff
 ds = diff --staged
-# shows unpushed commits on current branch
+# shows unpushed commits 
 unpushed = log --branches --not --remotes --decorate --oneline
 # if branch exists: prints remote ref
 xor = !git ls-remote --heads origin refs/heads/$(git branch --show-current)

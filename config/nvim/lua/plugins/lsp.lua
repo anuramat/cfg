@@ -10,6 +10,7 @@ local cfgs = {
   bashls = {},
   pyright = {},
   bufls = {},
+  marksman = {},
 
   gopls = {
     gopls = {

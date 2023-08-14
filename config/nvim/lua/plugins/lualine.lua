@@ -56,10 +56,18 @@ specs.lualine = {
         lualine_b = {
           {
             function()
-              return vim.fn.getcwd()
+              local fullpath = vim.fn.getcwd()
+              local home = vim.fn.getenv('HOME')
+              return string.gsub(fullpath, '^' .. home, '~')
             end,
+            padding = 1,
           },
-          { 'branch', icon = '󰊢', align = 'right' },
+          {
+            'branch',
+            icon = '󰊢',
+            align = 'right',
+            padding = { left = 0, right = 1 },
+          },
         },
         lualine_c = {
           { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' } },

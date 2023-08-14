@@ -17,11 +17,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-vim.cmd.colorscheme('habamax')
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = 25
-u.style_codelens()
+o.cursorline = true
 o.display = 'lastline,uhex'
 o.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
 o.laststatus = 3
@@ -37,6 +33,11 @@ o.showmatch = true
 o.showmode = false
 o.signcolumn = 'yes'
 o.termguicolors = true
+vim.cmd.colorscheme('habamax')
+u.style_codelens() -- TODO check if needed for base colorscheme
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_winsize = 25
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'

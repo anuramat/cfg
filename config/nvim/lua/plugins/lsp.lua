@@ -1,48 +1,53 @@
 local specs = {}
-local fu = require('fmt')
+local fmt = require('fmt')
 local k = require('plugkeys')
 local u = require('utils')
 
 -- These servers will be ignored when trying to format
 _G.fmt_blacklist = { 'lua_ls' }
 
-local cfgs = {
-  bashls = {},
-  pyright = {},
-  bufls = {},
-  marksman = {},
-
-  gopls = {
+local function cfgs(util)
+  return {
+    bashls = {},
+    pyright = {},
+    bufls = {},
+    marksman = {},
     gopls = {
-      analyses = {
-        fieldalignment = true,
-        nilness = true,
-        shadow = true,
-        unusedparams = true,
-        unusedwrite = true,
-        useany = true,
-        unusedvariable = true,
+      settings = {
+        gopls = {
+          analyses = {
+            fieldalignment = true,
+            nilness = true,
+            shadow = true,
+            unusedparams = true,
+            unusedwrite = true,
+            useany = true,
+            unusedvariable = true,
+          },
+          staticcheck = true,
+          gofumpt = true,
+        },
       },
-      staticcheck = true,
-      gofumpt = true,
+      root_dir = util.find_git_ancestor,
     },
-  },
-
-  lua_ls = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = u.get_lib_path('config'),
-      },
-      telemetry = {
-        enable = false,
+    lua_ls = {
+      settings = {
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = u.get_lib_path('config'),
+          },
+          telemetry = {
+            enable = false,
+          },
+        },
       },
     },
-  },
-}
+  }
+end
 
 specs.neodev = { 'folke/neodev.nvim', opts = {} }
 
@@ -65,15 +70,13 @@ specs.lspconfig = {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
-    for server, settings in pairs(cfgs) do
-      lspconfig[server].setup({
-        capabilities = capabilities,
-        on_attach = function(client, buffer)
-          k.lsp(buffer)
-          fu.setup_lsp_af(client, buffer)
-        end,
-        settings = settings,
-      })
+    for name, cfg in pairs(cfgs(require('lspconfig.util'))) do
+      cfg.capabilities = capabilities
+      cfg.on_attach = function(client, buffer)
+        k.lsp(buffer)
+        fmt.setup_lsp_af(client, buffer)
+      end
+      lspconfig[name].setup(cfg)
     end
   end,
 }
@@ -85,17 +88,17 @@ specs.null = {
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()
     local null_ls = require('null-ls')
-    local fmt = null_ls.builtins.formatting
+    local null_fmt = null_ls.builtins.formatting
     null_ls.setup({
       sources = {
-        fmt.shfmt.with({
+        null_fmt.shfmt.with({
           extra_args = { '-s', '-ci', '-bn' },
         }),
-        fmt.stylua,
+        null_fmt.stylua,
       },
       on_attach = function(client, buffer)
         k.lsp(buffer)
-        fu.setup_lsp_af(client, buffer)
+        fmt.setup_lsp_af(client, buffer)
       end,
     })
   end,

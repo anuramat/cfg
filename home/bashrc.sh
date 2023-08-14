@@ -33,7 +33,6 @@ __print_prompt() {
 	local -r pink=$(__colorize 255 121 198)
 
 	local -r bold="\033[1m"
-	# local -r ul="\033[4m"
 	local -r norm="\033[0m"
 
 	# Set up colorizers
@@ -44,11 +43,11 @@ __print_prompt() {
 	echo
 
 	# CWD
-	printf " ${purple}%s${norm}" "${PWD/#${HOME}/\~}"
+	printf " ${bold}${purple}%s${norm}" "${PWD/#${HOME}/\~}"
 
 	# Git
 	if git rev-parse --git-dir >/dev/null 2>&1; then
-		printf " ${pink}("
+		printf " ${pink}"
 
 		# Branch
 		local branch=$(git branch --show-current)
@@ -59,19 +58,19 @@ __print_prompt() {
 		local -r git_status="$(git status --porcelain | while read -r line; do
 			echo "${line}" | awk '{print $1}'
 		done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
-		[ "${git_status}" ] && printf " [${git_status}]"
+		[ "${git_status}" ] && printf ":${git_status}"
 
-		printf ")${norm}"
+		printf "${norm}"
 	fi
 
 	# Conda environment
-	[ "${CONDA_DEFAULT_ENV}" ] && printf " ${green}(conda:%s)${norm}" "${CONDA_DEFAULT_ENV}"
+	[ "${CONDA_DEFAULT_ENV}" ] && printf " ${green}conda:%s${norm}" "${CONDA_DEFAULT_ENV}"
 	# Venv environment
 	# TODO do I really need the parent dir name here? Maybe just keep the "venv"?
-	[ "${VIRTUAL_ENV}" ] && printf " ${green}(venv:%s)${norm}" "$(basename "$(dirname "${VIRTUAL_ENV}")")"
+	[ "${VIRTUAL_ENV}" ] && printf " ${green}venv:%s${norm}" "$(basename "$(dirname "${VIRTUAL_ENV}")")"
 
 	# Return code, if non-zero
-	[ "${status}" -ne 0 ] && printf " ${bold}${red}[%s]${norm}" "${status}"
+	[ "${status}" -ne 0 ] && printf " ${bold}${red}%s${norm}" "${status}"
 
 	printf "\n "
 }

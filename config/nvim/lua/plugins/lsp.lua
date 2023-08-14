@@ -6,7 +6,17 @@ local u = require('utils')
 -- These servers will be ignored when trying to format
 _G.fmt_blacklist = { 'lua_ls' }
 
-local function cfgs(util)
+---@param opts { primary: string[], fallback: string[] }
+local function two_step(opts)
+  local util = require('lspconfig.util')
+  return function(fname)
+    local primary_root = util.root_pattern(unpack(opts.primary))(fname)
+    local fallback_root = util.root_pattern(unpack(opts.fallback))(fname)
+    return primary_root or fallback_root
+  end
+end
+
+local function cfgs()
   return {
     bashls = {},
     pyright = {},
@@ -28,7 +38,7 @@ local function cfgs(util)
           gofumpt = true,
         },
       },
-      root_dir = util.find_git_ancestor,
+      root_dir = two_step({ primary = { '.git' }, fallback = { 'go.work', 'go.mod' } }),
     },
     lua_ls = {
       settings = {
@@ -70,7 +80,7 @@ specs.lspconfig = {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
-    for name, cfg in pairs(cfgs(require('lspconfig.util'))) do
+    for name, cfg in pairs(cfgs()) do
       cfg.capabilities = capabilities
       cfg.on_attach = function(client, buffer)
         k.lsp(buffer)

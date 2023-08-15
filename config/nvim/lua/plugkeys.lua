@@ -362,7 +362,7 @@ function M.haskell_tools()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ C ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-function M.c(buffer)
+function M.clangd(buffer)
   vim.api.nvim_buf_set_keymap(
     buffer,
     'n',

@@ -29,7 +29,7 @@ local function cfgs()
         fmt.setup_lsp_af(client, buffer)
         require('clangd_extensions.inlay_hints').setup_autocmd()
         require('clangd_extensions.inlay_hints').set_inlay_hints()
-        -- TODO clangd ext keymaps
+        -- TODO clangd ext keymaps (prob put in spec.config())
       end,
     },
 

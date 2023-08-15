@@ -6,9 +6,8 @@ local u = require('utils')
 -- These servers will be ignored when trying to format
 _G.fmt_blacklist = { 'lua_ls' }
 
---- TODO write
----@param opts { primary: string[], fallback: string[] }
-local function two_step(opts)
+--- @param opts { primary: string[], fallback: string[] }
+local function root_dir_with_fallback(opts)
   local util = require('lspconfig.util')
   return function(fname)
     local primary_root = util.root_pattern(unpack(opts.primary))(fname)
@@ -23,7 +22,15 @@ local function cfgs()
     pyright = {},
     bufls = {},
     marksman = {},
-    clangd = {},
+    clangd = {
+      on_attach = function(client, buffer)
+        k.lsp(buffer)
+        k.c(buffer)
+        fmt.setup_lsp_af(client, buffer)
+        require('clangd_extensions.inlay_hints').setup_autocmd()
+        require('clangd_extensions.inlay_hints').set_inlay_hints()
+      end,
+    },
 
     gopls = {
       settings = {
@@ -41,7 +48,7 @@ local function cfgs()
           gofumpt = true,
         },
       },
-      root_dir = two_step({ primary = { '.git' }, fallback = { 'go.work', 'go.mod' } }),
+      root_dir = root_dir_with_fallback({ primary = { '.git' }, fallback = { 'go.work', 'go.mod' } }),
     },
     lua_ls = {
       settings = {
@@ -85,9 +92,11 @@ specs.lspconfig = {
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
     for name, cfg in pairs(cfgs()) do
       cfg.capabilities = capabilities
-      cfg.on_attach = function(client, buffer)
-        k.lsp(buffer)
-        fmt.setup_lsp_af(client, buffer)
+      if cfg.on_attach == nil then
+        cfg.on_attach = function(client, buffer)
+          k.lsp(buffer)
+          fmt.setup_lsp_af(client, buffer)
+        end
       end
       lspconfig[name].setup(cfg)
     end

@@ -361,7 +361,16 @@ function M.haskell_tools()
     end,
   }
 end
-
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ C ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+function M.c(buffer)
+  vim.api.nvim_buf_set_keymap(
+    buffer,
+    'n',
+    '<leader>sh',
+    '<cmd>ClangdSwitchSourceHeader<cr>',
+    { silent = true, desc = 'clangd: Switch between .c/.h' }
+  )
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 M.readline = {
   { mode = '!', '<c-d>', '<delete>' },

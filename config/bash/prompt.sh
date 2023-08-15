@@ -15,23 +15,20 @@ __print_prompt() {
 	# Capture previous return code
 	local -r status=$?
 
+	# Set up colors
+	# https://spec.draculatheme.com/
 	local -r green=$(__colorize 80 250 123)
 	local -r purple=$(__colorize 189 147 249)
 	local -r red=$(__colorize 255 85 85)
 	local -r pink=$(__colorize 255 121 198)
-
 	local -r bold="\033[1m"
 	local -r norm="\033[0m"
-
-	# Set up colorizers
-	# Take colors from
-	# https://spec.draculatheme.com/
 
 	# Block divider
 	echo
 
 	# CWD
-	printf " ${bold}${purple}%s${norm}" "${PWD/#${HOME}/\~}"
+	printf " ${bold}${purple}%s${norm}" "${PWD/#${HOME}/\~}" # \w doesn't work here
 
 	# Git
 	if git rev-parse --git-dir >/dev/null 2>&1; then
@@ -62,4 +59,5 @@ __print_prompt() {
 
 	printf "\n "
 }
-PS1='$(__print_prompt)' && PS2='│'
+PS1='$(__print_prompt)'
+PS2='│'

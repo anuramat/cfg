@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 exa="exa --group-directories-first --group --icons --header --git"
 alias f="nvim"
 alias ls="${exa}"

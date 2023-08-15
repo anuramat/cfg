@@ -212,6 +212,7 @@ function M.harpoon()
     end
     return res
   end
+  -- TODO add terminal keys
   return {
     {
       '<leader>ha',

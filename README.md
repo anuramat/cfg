@@ -30,6 +30,9 @@ brew bundle install
 ./setup.sh
 ```
 
+## Post-install
+- Get fzf binding scripts (`brew info fzf`)
+
 ## Preferences
 - Delete everything in "Text replacements..." (TODO auto)
 - Keybinds (TODO auto)

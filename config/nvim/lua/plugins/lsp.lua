@@ -23,7 +23,8 @@ local function cfgs()
     pyright = {},
     bufls = {},
     marksman = {},
-    ccls = {},
+    -- ccls = {},
+    clangd = {},
 
     gopls = {
       settings = {

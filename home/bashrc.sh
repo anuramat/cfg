@@ -90,5 +90,5 @@ unset __conda_setup
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 cmp="${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" && [ -r "${cmp}" ] && . "${cmp}" && unset cmp
 fzfpath="${HOME}/.fzf.bash" && [ -r "${fzfpath}" ] && . "${fzfpath}" && unset fzfpath
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
 # blesh_path="${XDG_DATA_HOME}/blesh/ble.sh" && [ -r "${blesh_path}" ] && . "${blesh_path}" && unset blesh_path

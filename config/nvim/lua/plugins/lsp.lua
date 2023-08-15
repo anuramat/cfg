@@ -6,6 +6,7 @@ local u = require('utils')
 -- These servers will be ignored when trying to format
 _G.fmt_blacklist = { 'lua_ls' }
 
+--- TODO write
 ---@param opts { primary: string[], fallback: string[] }
 local function two_step(opts)
   local util = require('lspconfig.util')
@@ -22,6 +23,8 @@ local function cfgs()
     pyright = {},
     bufls = {},
     marksman = {},
+    ccls = {},
+
     gopls = {
       settings = {
         gopls = {

@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Other visuals ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-o.cursorline = true
+-- o.cursorline = true -- TODO turn on after changing color to something readable with comments
 o.display = 'lastline,uhex'
 o.fillchars = 'fold: ,foldopen:,foldsep: ,foldclose:'
 o.laststatus = 3

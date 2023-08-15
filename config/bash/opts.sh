@@ -45,7 +45,7 @@ if command -v "exa" >/dev/null 2>&1; then
 fi
 export _ZO_FZF_OPTS="\
 --no-sort \
---bind=ctrl-z:ignore,btab:up,tab:down \
+--bind=ctrl-z:jump,btab:up,tab:down \
 --cycle \
 --keep-right \
 --border=sharp \

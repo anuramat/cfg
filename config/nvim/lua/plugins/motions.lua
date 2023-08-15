@@ -3,6 +3,8 @@ local k = require('plugkeys')
 local u = require('utils')
 
 specs.flash = {
+  -- TODO move to space-s
+  -- make s=surround (?)
   'folke/flash.nvim',
   opts = {
     modes = {

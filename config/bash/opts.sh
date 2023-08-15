@@ -29,6 +29,11 @@ if command -v "bat" >/dev/null 2>&1; then
 "
 fi
 
+# Use fd by default
+export FZF_DEFAULT_COMMAND="fd ."
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_ALT_C_COMMAND="fd -t d ."
+
 # Preview directories in fzf using tree/exa
 # TODO append instead of overwriting
 if command -v "exa" >/dev/null 2>&1; then

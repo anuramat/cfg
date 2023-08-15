@@ -6,7 +6,7 @@ o.formatoptions = 'qwj' -- add 'ro/' to autoprepend comment leader
 o.shiftround = true
 o.shiftwidth = 0
 o.tabstop = 2
-o.textwidth = 119
+o.textwidth = 110 -- set to 80/120/:echo winwidth(0) on your minimum comfortable screen size
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Highlight on yank ~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 local hl_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {

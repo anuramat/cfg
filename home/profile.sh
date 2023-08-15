@@ -45,6 +45,7 @@ export EXA_COLORS="uu=36:gu=37:sn=32:sb=32:da=34:ur=34:uw=35:ux=36:ue=36:gr=34:g
 
 # Zoxide settings
 # TODO add zoxide-fzf options
+export _ZO_FZF_OPTS=""
 export _ZO_RESOLVE_SYMLINKS="1"
 
 # Read ripgrep settings

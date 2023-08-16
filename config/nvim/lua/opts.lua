@@ -39,6 +39,9 @@ vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 25
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+o.keymap = 'russian-jcukenwin'
+o.iminsert = 0
+vim.cmd('highlight lCursor guifg=NONE guibg=Cyan')
 o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
 o.foldenable = false

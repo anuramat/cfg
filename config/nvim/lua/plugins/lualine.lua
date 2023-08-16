@@ -38,6 +38,10 @@ specs.lualine = {
       sections = {
         lualine_a = {
           {
+            'progress',
+            padding = { left = 1, right = 0 },
+          },
+          {
             'location',
             padding = { left = 1, right = 0 },
             fmt = function(s)
@@ -49,7 +53,17 @@ specs.lualine = {
             end,
           },
           {
-            'progress',
+            function()
+              local keymap = vim.o.keymap
+              if keymap == '' then
+                return ''
+              end
+              if vim.o.iminsert == 1 then
+                return string.upper(keymap:sub(1, 2))
+              else
+                return 'EN'
+              end
+            end,
             padding = { left = 0, right = 1 },
           },
         },

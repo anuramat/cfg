@@ -39,6 +39,8 @@ __git_prompt() {
 			echo "${line}" | awk '{print $1}'
 		done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
 		[ "${git_status}" ] && printf ":${git_status}"
+
+		# TODO Unpushed commits
 	fi
 }
 
@@ -60,7 +62,8 @@ __prompt() {
 	echo
 
 	# CWD
-	printf " ${__bold}${__purple}%s${__norm}" "${PWD/#${HOME}/\~}" # \w wouldn't work here
+	# \w won't do, since this function is called after expanding \w etc.
+	printf " ${__bold}${__purple}%s${__norm}" "${PWD/#${HOME}/\~}"
 
 	# Git
 	printf "${__pink} "

@@ -1,16 +1,4 @@
-#!/usr/bin/env sh
-while test $# -gt 0; do
-	case "$1" in
-		--always-overwrite)
-			__ALWAYS_OVERWRITE="true"
-			;;
-		*)
-			echo "Invalid argument in $0: $1"
-			exit 1
-			;;
-	esac
-	shift
-done
+#!/usr/bin/env bash
 
 ensure_path() {
 	# $1 -- target path

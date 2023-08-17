@@ -25,14 +25,14 @@ sh_fmt:
 	@ fd -0ug "*.sh" | xargs -0I{} shfmt -w -l -s  -ci -bn -kp {} 
 
 width=35
-GRN=\033[1;32m%s\033[0m # green bold text
+GREEN=\033[1;32m%s\033[0m # green bold text
 RED=\033[1;31m%s\033[0m # red bold text
+PURPLE=\033[1;35m%s\033[0m # purple bold text
+
 .PHONY: sh_lint
 sh_lint: sh_fmt
 	@ echo -e "\nChecking shell scripts"
-	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck --color=always -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
-	@ echo -e "$(shell fd -ug "*.sh" | wc -l | tr -d " ") files total"
+	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck --color=always -o all "{}" && printf "$(GREEN)\n" OK || printf "$(RED)\n" FAIL'
 posix:
-	@ echo -e "\nChecking shell scripts (forced POSIX, ignoring shebangs)"
-	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck --color=always -s sh -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
-	@ echo -e "$(shell fd -ug "*.sh" | wc -l | tr -d " ") files total"
+	@ printf "\n$(PURPLE)\n" "Checking shell scripts (forced POSIX, ignoring shebangs)"
+	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck --color=always -s sh -o all "{}" && printf "$(GREEN)\n" OK || printf "$(RED)\n" FAIL'

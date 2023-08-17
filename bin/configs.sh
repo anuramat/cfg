@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-. lib/utils.sh --always-overwrite
+__ALWAYS_OVERWRITE="true"
+. lib/utils.sh
 
 # Install $HOME dotfiles
 for __dotfile in home/*; do

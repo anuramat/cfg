@@ -56,7 +56,7 @@ __norm="\033[0m"
 # Draws the prompt
 __prompt() {
 	# Capture previous return code
-	local -r status=$?
+	local -r __status=$?
 
 	# Block divider
 	echo
@@ -77,7 +77,7 @@ __prompt() {
 	[ "${VIRTUAL_ENV}" ] && printf " ${__green}venv:%s${__norm}" "$(basename "$(dirname "${VIRTUAL_ENV}")")"
 
 	# Return code
-	[ "${status}" -ne 0 ] && printf " ${__bold}${__red}%s${__norm}" "${status}"
+	[ "${__status}" -ne 0 ] && printf " ${__bold}${__red}%s${__norm}" "${__status}"
 
 	printf "\n "
 }

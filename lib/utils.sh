@@ -84,6 +84,7 @@ set_shell() {
 		return 1
 	}
 	sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"${shell}\" /etc/shells"
+	# TODO posix
 	chsh -s "${shell}"
 }
 

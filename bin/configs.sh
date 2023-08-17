@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# Comment out to ask before overwriting
-export __UTILS_OVERWRITE="always"
+. lib/utils.sh --always-overwrite
+
 # Install $HOME dotfiles
-find home -maxdepth 1 -mindepth 1 -print0 | xargs -0I{} bash -c '. lib/utils.sh; install2file {} $HOME/$(dotfilify {})'
+for __dotfile in home/*; do
+	install2file "${__dotfile}" "${HOME}/$(rehide_name "${__dotfile}")"
+done
+
 # Install $XDG_CONFIG_HOME configs
-find config -maxdepth 1 -mindepth 1 -print0 | xargs -0I{} bash -c ". lib/utils.sh; install2folder {} ${XDG_CONFIG_HOME}"
+for __folder in config/*; do
+	install2folder "${__folder}" "${XDG_CONFIG_HOME}"
+done

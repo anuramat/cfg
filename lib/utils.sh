@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
-__UTILS_OVERWRITE="$1"
+while test $# -gt 0; do
+	case "$1" in
+		--always-overwrite)
+			__ALWAYS_OVERWRITE="true"
+			;;
+		*)
+			echo "Invalid argument in $0: $1"
+			exit 1
+			;;
+	esac
+	shift
+done
 
 ensure_path() {
 	# $1 -- target path
@@ -105,11 +116,11 @@ continue_prompt() {
 try_overwrite() {
 	# $1 -- target
 	local -r target="$1"
-	[ "${__UTILS_OVERWRITE}" = "always" ] || continue_prompt "overwrite \"${target}\"?" || return 1
+	[ "${__ALWAYS_OVERWRITE}" = "true" ] || continue_prompt "overwrite \"${target}\"?" || return 1
 	rm -rf "${target}" || return 1
 }
 
-dotfilify() {
+rehide_name() {
 	# $1 -- original name/path
 	basename "$1" | perl -pe 's/(.*)\..*/.\1/'
 }

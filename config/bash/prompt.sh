@@ -16,7 +16,7 @@ __git_prompt() {
 		git_dir="$(realpath "${git_dir}")"
 
 		# Bare repository
-		if [ "$(git rev-parse --is-bare-repository 2>/dev/null)" == "true" ]; then
+		if [ "$(git rev-parse --is-bare-repository 2>/dev/null)" = "true" ]; then
 			printf "$(basename -s .git "${git_dir}")"
 			return
 		fi

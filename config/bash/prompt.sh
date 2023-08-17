@@ -25,12 +25,12 @@ __git_prompt() {
 
 		# Repository name
 		local -r url="$(git config --get remote.origin.url)"
-		local -r path="$(dirname "${git_dir}")"
-		local -r repo_name="$(basename -s .git "${url:-${path}}")"
+		local -r __path="$(dirname "${git_dir}")"
+		local -r repo_name="$(basename -s .git "${url:-${__path}}")"
 		printf "${repo_name}"
 
 		# Branch
-		local branch=$(git branch --show-current)
+		local branch="$(git branch --show-current)"
 		[ -z "${branch}" ] && branch="$(git -C "${root_dir}" rev-parse --short HEAD)"
 		printf ":${branch}"
 
@@ -62,8 +62,7 @@ __prompt() {
 	echo
 
 	# CWD
-	# \w won't do, since this function is called after expanding \w etc.
-	printf " ${__bold}${__purple}%s${__norm}" "${PWD/#${HOME}/\~}"
+	printf " ${__bold}${__purple}%s${__norm}" "${PWD/#${HOME}/"~"}"
 
 	# Git
 	printf "${__pink} "

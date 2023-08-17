@@ -42,7 +42,6 @@ vim.g.netrw_winsize = 25
 o.keymap = 'russian-jcukenwin'
 o.iminsert = 0
 vim.cmd('highlight lCursor guifg=NONE guibg=Cyan')
-o.clipboard = 'unnamedplus'
 o.completeopt = 'menuone,noselect'
 o.foldenable = false
 o.foldmethod = 'indent'

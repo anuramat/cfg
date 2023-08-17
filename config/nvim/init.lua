@@ -1,5 +1,5 @@
 require('keys')
-require('opts')
+vim.cmd('runtime opts.vim')
 require('auto')
 if not vim.g.vscode then
   require('lzy')

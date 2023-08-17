@@ -4,7 +4,7 @@ local u = require('utils')
 --- Creates comment header I guess.
 --- @param chr string Character that fills the header
 --- @param width_factor float|nil If present, width = textwidth * width_factor
-function M.create_comment_header(chr, width_factor)
+function M.create_comment_header(chr, width_factor, base_width)
   vim.ui.input({ prompt = 'Header text: ' }, function(input)
     -- In case user cancels with escape
     if input == nil then
@@ -27,7 +27,10 @@ function M.create_comment_header(chr, width_factor)
     end
 
     -- Calculate result width
-    local width = vim.api.nvim_buf_get_option(0, 'textwidth')
+    local width = base_width
+    if width == nil then
+      width = vim.api.nvim_buf_get_option(0, 'textwidth')
+    end
     if width_factor ~= nil then
       width = math.floor(width * width_factor)
     end

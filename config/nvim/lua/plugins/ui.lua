@@ -13,7 +13,7 @@ specs.dracula_cs = {
       lualine_bg_color = cs.bg,
       transparent_bg = true, -- default false
     })
-    vim.cmd.colorscheme('dracula-soft')
+    vim.cmd.colorscheme('dracula')
     u.style_codelens()
 
     vim.cmd('highlight! link FloatBorder Normal')

@@ -3,17 +3,18 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ System settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Shoutout to https://macos-defaults.com
 # and https://mths.be/macos
-# Breaks every major release :(
+# Breaks on every major release :(
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# ~~~~~~~~~~~~~~~~~~~~~~~ Docker ~~~~~~~~~~~~~~~~~~~~~~~~ #
+osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$(realpath wallpaper.png)\""
+# ~~~~~~~~~~~~~~~~~~~~~~~~ Finder ~~~~~~~~~~~~~~~~~~~~~~~~ #
 finder=com.apple.finder
-defaults write -g AppleShowAllExtensions -bool true                         # Show file extensions
-defaults write "${finder}" CreateDesktop -bool false                        # Hide icons from desktop
-defaults write "${finder}" FXDefaultSearchScope -string SCcf                # Search current folder by default
-defaults write "${finder}" FXEnableExtensionChangeWarning -bool false       # Hide warning on extension change
-defaults write "${finder}" FXPreferredViewStyle -string clmv                # Set default view to columns
-defaults write "${finder}" NewWindowTarget -string "PfDe"                   # "PfDe" for desktop, "PfDo" for documents..., "PfLo" otherwise
-defaults write "${finder}" NewWindowTargetPath -string "file://${HOME}/"    # If PfLo: "file://${PATH}/"
+defaults write -g AppleShowAllExtensions -bool true                   # Show file extensions
+defaults write "${finder}" CreateDesktop -bool false                  # Hide icons from desktop
+defaults write "${finder}" FXDefaultSearchScope -string SCcf          # Search current folder by default
+defaults write "${finder}" FXEnableExtensionChangeWarning -bool false # Hide warning on extension change
+defaults write "${finder}" FXPreferredViewStyle -string clmv          # Set default view to columns
+defaults write "${finder}" NewWindowTarget -string "PfDe"             # "PfDe" for desktop, "PfDo" for documents..., "PfLo" for specific path
+# defaults write "${finder}" NewWindowTargetPath -string "file://${HOME}/"  # If PfLo
 defaults write "${finder}" QuitMenuItem -bool true                          # Allow quit on Cmd+Q
 defaults write "${finder}" ShowPathbar -bool true                           # Show bar on the bottom
 defaults write "${finder}" ShowStatusBar -bool false                        # Don't show status bar on the bottom (size, n_items)

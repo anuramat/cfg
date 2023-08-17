@@ -32,3 +32,7 @@ sh_lint: sh_fmt
 	@ echo -e "\nChecking shell scripts"
 	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
 	@ echo -e "$(shell fd -ug "*.sh" | wc -l | tr -d " ") files total"
+posix:
+	@ echo -e "\nChecking shell scripts (forced POSIX, ignoring shebangs)"
+	@ fd -0ug "*.sh" -x sh -c 'printf "%-$(width)s" "Checking {}: " && shellcheck -s sh -o all "{}" && printf "$(GRN)\n" OK || printf "$(RED)\n" FAIL'
+	@ echo -e "$(shell fd -ug "*.sh" | wc -l | tr -d " ") files total"

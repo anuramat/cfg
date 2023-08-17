@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 install_gobins() {
-	local -r gobins=$1
+	local -r gobins="$1"
 	[ -f "${gobins}" ] || {
 		echo "${gobins} does not exist" && return 1
 	}

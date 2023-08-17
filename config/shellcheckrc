@@ -19,3 +19,5 @@ disable=SC2244
 disable=SC2155
 # printf "${var}": escapes get expanded, use %s if this is not intended
 disable=SC2059
+# WARNING local is not posix
+disable=SC3043

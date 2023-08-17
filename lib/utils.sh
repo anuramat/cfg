@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-# Uses __UTILS_OVERWRITE variable ("always"/any)
+#!/usr/bin/env sh
+__UTILS_OVERWRITE="$1"
 
 ensure_path() {
 	# $1 -- target path
@@ -90,15 +90,14 @@ set_shell() {
 
 continue_prompt() {
 	local -r prompt="$1"
+	local choice
 	while true; do
-		read -rp "${prompt} (y/n): " choice
+		printf "%s (y/n): " "${prompt}"
+		read -r choice
 		case "${choice}" in
-			y | Y)
-				return 0
-				;;
-			*)
-				return 1
-				;;
+			y | Y) return 0 ;;
+			n | N) return 1 ;;
+			*) echo "Invalid response" ;;
 		esac
 	done
 }

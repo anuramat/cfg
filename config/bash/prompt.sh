@@ -63,6 +63,7 @@ __prompt() {
 
 	# CWD
 	printf " ${__bold}${__purple}%s${__norm}" "${PWD/#${HOME}/"~"}"
+	# use sed to make it POSIX
 
 	# Git
 	printf "${__pink} "

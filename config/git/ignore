@@ -4,3 +4,5 @@
 __pycache__/
 # clangd etc
 .cache/
+# ctags
+tags

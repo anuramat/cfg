@@ -1,7 +1,6 @@
 "~~~~~~~~~~~~~~~~~~~ source nvim config ~~~~~~~~~~~~~~~~~~~"
 so $XDG_CONFIG_HOME/nvim/opts.vim
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-colo sorbet
 se is hls " search
 let &t_SI .= "\e[6 q" | let &t_EI .= "\e[2 q" " cursor shape
 se ru sc wmnu " bottom ui

@@ -11,15 +11,15 @@ se ls=2
 " sane yank behaviour
 nn Y y$
 " cls also removes highlight
-nn <C-L> <Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>
+nn <c-l> <cmd>nohlsearch<bar>diffupdate<bar>normal! <c-l><cr>
 " make readline hotkeys break undo
-ino <C-U> <C-G>u<C-U>
-ino <C-W> <C-G>u<C-W>
+ino <c-u> <c-g>u<c-u>
+ino <c-w> <c-g>u<c-w>
 " search selection (to match */# in normal mode)
-xn * y/\V<C-R>"<CR>
-xn # y?\V<C-R>"<CR>
+xn * y/\V<c-r>"<cr>
+xn # y?\V<c-r>"<cr>
 " repeat with the same flags
-nn & :&&<CR>
+nn & :&&<cr>
 nn Q <nop>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ paths ~~~~~~~~~~~~~~~~~~~~~~~~~"
 cal mkdir(expand('~/.vim/view'), 'p')

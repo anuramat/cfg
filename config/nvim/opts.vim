@@ -18,7 +18,7 @@ se sm
 se nosmd " TODO only set if lualine/statusline is up?
 se scl=yes
 se tgc
-colo habamax
+colo lunaperche " blue elflord koehler lunaperche
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=25

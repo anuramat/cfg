@@ -1,30 +1,18 @@
 #!/usr/bin/env bash
-# get helper functions
 . ./lib/utils.sh
-# Env vars
 . ./home/profile.sh
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Install configs
 ./bin/install_configs.sh
-# Install go binaries
 ./bin/install_gobins.sh
-# Suppress login message
-ensure_string "hehe" "${HOME}/.hushlogin"
-# Make bash the default shell
-[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {
+./bin/set_prefs.sh
+./bin/iterm_prefs.sh
+ensure_string "hehe" "${HOME}/.hushlogin"            # Suppress login message
+[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && { # Make bash the default shell
 	continue_prompt "Change shell to bash?" && {
 		set_shell "${HOMEBREW_PREFIX}/bin/bash"
 	}
 }
-# Install fzf shell integration
-[ -f "${HOME}/.fzf.bash" ] || {
+[ -f "${HOME}/.fzf.bash" ] || { # Install fzf shell integration
 	continue_prompt "Install fzf integration?" && {
 		"${HOMEBREW_PREFIX}/opt/fzf/install"
 	}
 }
-# iTerm2
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${XDG_CONFIG_HOME}/iterm2"     # Set config path
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true                      # Autoload
-defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -int 1 # Manual save
-# System settings
-./bin/set_prefs.sh

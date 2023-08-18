@@ -5,9 +5,9 @@
 . ./home/profile.sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Configs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Install configs
-./bin/configs.sh
+./bin/install_configs.sh
 # Install go binaries
-./bin/gogetter.sh
+./bin/install_gobins.sh
 # Suppress login message
 ensure_string "hehe" "${HOME}/.hushlogin"
 # Make bash the default shell
@@ -27,4 +27,4 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${XDG_CONFIG_HOM
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true                      # Autoload
 defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -int 1 # Manual save
 # System settings
-./bin/prefs.sh
+./bin/set_prefs.sh

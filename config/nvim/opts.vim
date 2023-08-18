@@ -1,8 +1,6 @@
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
-se expandtab
-se formatoptions=qwj " add 'ro/' to prepend command leader on <cr>
-se shiftwidth=0 tabstop=2 shiftround
-se textwidth=80
+se sr sw=0 et ts=2
+se tw=80 fo=qwj " add 'ro/' to prepend command leader on <cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
 au TextYankPost * silent! lua vim.highlight.on_yank()
 " se cul

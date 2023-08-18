@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
-NEW_BREWFILE="new.Brewfile"
-brew bundle dump --file "${NEW_BREWFILE}" --force
-comm -13 <(sort Brewfile) <(sort "${NEW_BREWFILE}") >brewdiff
+new_packages="$(comm -13 <(sort Brewfile) <(sort <(brew bundle dump --file - --no-lock)))"
+count="$(echo "${new_packages}" | grep -vc '^$')"
+[ -z "${new_packages}" ] && printf "Nothing new" && exit 0
+printf "%s new line" "${count}"
+[ "${count}" -ne 1 ] && printf "s"
+printf " in the right diff:\n"
+echo "${new_packages}"

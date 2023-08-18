@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 . ./lib/utils.sh
 . ./home/profile.sh
+./bin/configs.sh
 ./bin/pkgs.sh
-./bin/gobins.sh
 ./bin/prefs.sh
 ./bin/iterm_prefs.sh
 ensure_string "hehe" "${HOME}/.hushlogin"            # Suppress login message

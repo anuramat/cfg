@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-brew install
+. lib/utils.sh
+
+install_gobins Gobins
+brew bundle install

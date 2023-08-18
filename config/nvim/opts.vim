@@ -2,7 +2,6 @@
 se sr sw=0 et ts=2
 se tw=80 fo=qwj " add 'ro/' to prepend command leader on <cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
-au TextYankPost * silent! lua vim.highlight.on_yank()
 " se cul
 se dy=lastline,uhex
 se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:
@@ -30,7 +29,14 @@ se cot=menuone,noselect wop=fuzzy,pum
 se nofen fdm=indent
 se ic scs
 se ut=100 noto
-se udf bdir-=.
+se udf
+se dir-=. bdir-=. udir-=. vdir-=.
 se ve=block
 se pa+=**
 pa cfilter
+"~~~~~~~~~~~~~~~~~~~~~~~~~ diffs ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+if has('nvim')
+  au TextYankPost * silent! lua vim.highlight.on_yank()
+else
+  se udir=expand('~/.vimundo')
+endif

@@ -8,8 +8,8 @@ se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:
 se ls=3
 se sbr=↪
 se list
-se lcs=tab:<->,extends:❯,precedes:❮,nbsp:␣,trail:·,lead:·
-" TODO zero width
+se lcs=tab:<->,extends:❯,precedes:❮,nbsp:␣,trail:·,lead:· " TODO zero width chars in lcs or smth
+au TextYankPost * silent! lua vim.highlight.on_yank()
 se mat=1
 se nu rnu
 se so=0
@@ -35,8 +35,6 @@ se ve=block
 se pa+=**
 pa cfilter
 "~~~~~~~~~~~~~~~~~~~~~~~~~ diffs ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-if has('nvim')
-  au TextYankPost * silent! lua vim.highlight.on_yank()
-else
+if !has('nvim')
   se udir=expand('~/.vimundo')
 endif

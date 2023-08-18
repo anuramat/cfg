@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 . ./lib/utils.sh
 . ./home/profile.sh
-./bin/install_configs.sh
-./bin/install_gobins.sh
-./bin/set_prefs.sh
+./bin/pkgs.sh
+./bin/gobins.sh
+./bin/prefs.sh
 ./bin/iterm_prefs.sh
 ensure_string "hehe" "${HOME}/.hushlogin"            # Suppress login message
 [ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && { # Make bash the default shell

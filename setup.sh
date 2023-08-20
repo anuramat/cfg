@@ -1,17 +1,25 @@
 #!/usr/bin/env bash
+set -e
+
 . ./lib/utils.sh
 . ./home/profile.sh
-./bin/configs.sh
-./bin/pkgs.sh
-./bin/prefs.sh
-./bin/iterm_prefs.sh
-ensure_string "hehe" "${HOME}/.hushlogin"            # Suppress login message
-[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && { # Make bash the default shell
+
+./bin/install/configs.sh
+./bin/install/pkgs.sh
+./bin/install/prefs.sh
+./bin/install/iterm_prefs.sh
+
+ensure_string "hehe" "${HOME}/.hushlogin" # Suppress login message
+
+# Make bash the default shell
+[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {
 	continue_prompt "Change shell to bash?" && {
 		set_shell "${HOMEBREW_PREFIX}/bin/bash"
 	}
 }
-[ -f "${HOME}/.fzf.bash" ] || { # Install fzf shell integration
+
+# Install fzf shell integration
+[ -f "${HOME}/.fzf.bash" ] || {
 	continue_prompt "Install fzf integration?" && {
 		"${HOMEBREW_PREFIX}/opt/fzf/install"
 	}

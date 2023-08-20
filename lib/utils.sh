@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+__ALWAYS_OVERWRITE="true"
 
 ensure_path() {
 	# $1 -- target path

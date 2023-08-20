@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bells ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bleopt vbell_default_message=' DING DING '
 bleopt vbell_duration=500

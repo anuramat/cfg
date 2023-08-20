@@ -6,10 +6,10 @@ disable=SC1090
 # quotation marks
 disable=SC2016,SC2089,SC2090
 # alias x="$var" expands when defined, not when used
-disable=SC2139 
+disable=SC2139
 # ignored non-zero return codes
 disable=SC2312
-# prefer [[]] over [] 
+# prefer [[]] over []
 disable=SC2292
 # referenced but not assigned
 disable=SC2154
@@ -21,7 +21,7 @@ disable=SC2155
 disable=SC2059
 # local is not posix
 disable=SC3043
-# "a && b" etc. doesn't trigger "set -e"
+# a in "a && b" and condition in if-statements don't trigger "set -e"
 disable=SC2310
 # "$(command)" doesn't trigger "set -e"
 disable=SC2311

@@ -10,8 +10,12 @@ while getopts 'g:' opt; do
 			echo "[cfg.fail] option requires an argument"
 			exit 1
 			;;
-		*)
+		?)
 			echo "[cfg] illegal option"
+			exit 1
+			;;
+		*)
+			echo "[cfg] error in getopts"
 			exit 1
 			;;
 	esac

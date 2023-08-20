@@ -134,4 +134,4 @@ defaults write com.apple.Spotlight orderedItems -array \
 	'{enabled = false; name = "DIRECTORIES";}' \
 	'{enabled = false; name = "BOOKMARKS";}'
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-echo "[cfg] preferences applied, restart please"
+echo "[cfg] system preferences are applied, restart is required"

@@ -120,9 +120,7 @@ install_gobins() {
 		echo "${gobins} does not exist" && return 1
 	}
 	while read -r package; do
-		[ "${package}" ] || {
-			continue
-		}
+		[ "${package}" ] || continue
 		echo "[cfg] installing $(echo "${package}" | sed -e 's/.*\///g')"
 		go install "${package}"
 	done <"${gobins}"

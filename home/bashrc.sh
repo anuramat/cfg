@@ -1,27 +1,32 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2250
 
 bind 'set bell-style none' # Disable annoying sound
-shopt -s globstar          # TODO write down desc
+shopt -s globstar          # TODO write down desj
 
-. "${HOME}/.profile"                 # basic env vars
-. "${XDG_CONFIG_HOME}/bash/utils.sh" # helper functions
-. "${XDG_CONFIG_HOME}/bash/opts.sh"  # options for external tools
-. "${XDG_CONFIG_HOME}/bash/aliases.sh"
-. "${XDG_CONFIG_HOME}/bash/prompt.sh"
+. "$HOME/.profile" # basic env vars
+
+x="$XDG_CONFIG_HOME/bash"
+. "$x/utils.sh" # helper functions
+. "$x/opts.sh"  # options for external tools
+. "$x/aliases.sh"
+. "$x/prompt.sh"
+[ -r "$x/private.sh" ] && . "$x/private.sh"
+unset x
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~ conda ~~~~~~~~~~~~~~~~~~~~~~~~ #
-__base="${HOMEBREW_PREFIX}/Caskroom/miniforge/base"
-if __conda_setup="$("${__base}/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
-	eval "${__conda_setup}"
-elif [ -r "${__base}/etc/profile.d/conda.sh" ]; then
-	. "${__base}/etc/profile.d/conda.sh"
+b="$HOMEBREW_PREFIX/Caskroom/miniforge/base"
+if cnd="$("$b/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
+	eval "$cnd"
+elif [ -r "$b/etc/profile.d/conda.sh" ]; then
+	. "$b/etc/profile.d/conda.sh"
 else
-	export PATH="${__base}/bin${PATH:+:${PATH}}"
+	export PATH="$b/bin${PATH:+:$PATH}"
 fi
-unset __base
-unset __conda_setup
+unset b
+unset cnd
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-cmp="${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" && [ -r "${cmp}" ] && . "${cmp}" && unset cmp
-fzfpath="${HOME}/.fzf.bash" && [ -r "${fzfpath}" ] && . "${fzfpath}" && unset fzfpath
+cmp="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" && [ -r "$cmp" ] && . "$cmp" && unset cmp
+fzfpath="$HOME/.fzf.bash" && [ -r "$fzfpath" ] && . "$fzfpath" && unset fzfpath
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
 # blesh_path="${XDG_DATA_HOME}/blesh/ble.sh" && [ -r "${blesh_path}" ] && . "${blesh_path}" && unset blesh_path

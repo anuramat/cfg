@@ -3,3 +3,5 @@
 **/karabiner/automatic_backups
 **/iterm2/AppSupport
 **/git/private
+private*
+!private.example*

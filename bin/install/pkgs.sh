@@ -25,4 +25,4 @@ done
 . lib/utils.sh
 
 install_gobins "${__GOBINFILE}"
-brew bundle install
+brew analytics off && brew bundle install

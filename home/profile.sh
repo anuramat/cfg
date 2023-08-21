@@ -28,4 +28,8 @@ export GOPATH="${HOME}/go"
 export PATH="${GOPATH}/bin${PATH:+:${PATH}}"
 
 # __pycache__ folder
-export PYTHONPYCACHEPREFIX=/tmp/pycache
+export PYTHONPYCACHEPREFIX="/tmp/pycache"
+
+# Homebrew
+export HOMEBREW_NO_ANALYTICS="true"
+export HOMEBREW_BUNDLE_NO_LOCK="true"

@@ -15,25 +15,17 @@ Before running anything:
 - Comment out unwanted packages from `Brewfile`
 
 ## CLI
-```sh
-# devtools
+```bash
 xcode-select --install
-# clone this
 cd && git clone https://github.com/anuramat/cfg && cd cfg
-# install packages
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew analytics off
-brew bundle install
-# install configs and prefs
-./setup.sh
+./setup.sh # install configs and prefs
 ```
 
 ## Post-install
 - Get fzf binding scripts (`brew info fzf`)
+- Add "private" file to `./config/git/`
 
 ## Preferences
 - Delete everything in "Text replacements..." (TODO auto)
 - Keybinds (TODO auto)
-- Wallpaper (TODO auto)
-- Set a screensaver
 - "Lock Screen" / delays

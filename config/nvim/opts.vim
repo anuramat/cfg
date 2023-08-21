@@ -41,3 +41,6 @@ se nf=bin,hex
 if !has('nvim')
   se udir=expand('~/.vimundo')
 endif
+"
+"~~~~~~~~~~~~~~~~~~~ markdown ft plugin ~~~~~~~~~~~~~~~~~~~"
+let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh']

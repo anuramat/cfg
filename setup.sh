@@ -4,12 +4,17 @@ set -e
 . ./lib/utils.sh
 . ./home/profile.sh
 
-echo "[cfg] installing configs" && ./bin/install/configs.sh
+! command brew >/dev/null 2>&1 && continue_prompt "Homebrew binary not found, install?" && {
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew analytics off
+}
+
 echo "[cfg] installing executables and GUI apps" && ./bin/install/pkgs.sh -g "go-binaries.txt"
+echo "[cfg] installing configs" && ./bin/install/configs.sh
 echo "[cfg] setting up macOS system preferences" && ./bin/install/prefs.sh
 echo "[cfg] setting up iTerm2" && ./bin/install/iterm_prefs.sh
 
-ensure_string "hehe" "${HOME}/.hushlogin" # Suppress login message
+ensure_string "hehe" "${HOME}/.hushlogin"
 
 # Make bash the default shell
 [ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {

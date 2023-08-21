@@ -17,7 +17,6 @@ local langs = {
   'markdown',
   'markdown_inline',
   'python',
-  'python',
   'query',
   'regex',
   'sql',
@@ -36,7 +35,7 @@ specs.treesitter = {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
-    highlight = { enable = true },
+    highlight = { enable = true, disable = { 'markdown' } },
     indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = langs,
     incremental_selection = {

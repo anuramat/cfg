@@ -34,4 +34,3 @@ se bs=indent,eol,start
 se ai ar " autoindent autoread
 se bo=all " stupid bell
 se cpt=t,d,.,w,b,u,U,i " TODO test and move to nvim
-hi Normal guibg=NONE " transparent bg

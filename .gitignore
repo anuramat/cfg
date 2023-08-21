@@ -1,7 +1,6 @@
-**/Brewfile.lock.json
+Brewfile.lock.json
 **/nvim/lazy-lock.json
 **/karabiner/automatic_backups
 **/iterm2/AppSupport
-**/git/private
 private*
 !private.example*

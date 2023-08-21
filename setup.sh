@@ -4,7 +4,7 @@ set -e
 . ./lib/utils.sh
 . ./home/profile.sh
 
-! command brew >/dev/null 2>&1 && continue_prompt "Homebrew binary not found, install?" && {
+! command -v brew >/dev/null && continue_prompt "Homebrew binary not found, install?" && {
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	brew analytics off
 }

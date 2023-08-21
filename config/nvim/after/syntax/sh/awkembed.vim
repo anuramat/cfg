@@ -1,7 +1,7 @@
 " AWK Embedding:
 " ==============
 " Shamelessly ripped from aspperl.vim by Aaron Hope.
-" TODO test
+" TODO understand???
 if exists("b:current_syntax")
   unlet b:current_syntax
 endif

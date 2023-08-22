@@ -38,10 +38,5 @@ se ve=block
 se pa+=**
 pa cfilter
 se nf=bin,hex
-"~~~~~~~~~~~~~~~~~~~~~~~~~ diffs ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-if !has('nvim')
-  se udir=expand('~/.vimundo')
-endif
-"
 "~~~~~~~~~~~~~~~~~~~ markdown ft plugin ~~~~~~~~~~~~~~~~~~~"
 let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh']

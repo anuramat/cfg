@@ -8,6 +8,6 @@ alias la="${exa} --long --all"
 alias tree="${exa} --tree"
 alias fd="fd -H"
 alias ..="cd .."
-alias ...="cd ..."
-alias ....="cd ...."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 unset exa

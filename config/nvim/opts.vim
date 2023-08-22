@@ -40,9 +40,10 @@ pa cfilter
 se nf=bin,hex
 "~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 com -bang Q q<bang>
+com -bang W w<bang>
 com -bang WQ wq<bang>
 com -bang Wq wq<bang>
-com -bang W w<bang>
 com -bang QA qa<bang>
+com -bang Qa qa<bang>
 "~~~~~~~~~~~~~~~~~~~ markdown ft plugin ~~~~~~~~~~~~~~~~~~~"
 let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh']

@@ -38,5 +38,10 @@ se ve=block
 se pa+=**
 pa cfilter
 se nf=bin,hex
+"~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+com Q q
+com WQ wq
+com Wq wq
+com W w
 "~~~~~~~~~~~~~~~~~~~ markdown ft plugin ~~~~~~~~~~~~~~~~~~~"
 let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh']

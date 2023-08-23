@@ -50,4 +50,6 @@ specs.marks = {
   opts = {},
 }
 
+specs.cursorword = { 'echasnovski/mini.cursorword', version = false }
+
 return u.values(specs)

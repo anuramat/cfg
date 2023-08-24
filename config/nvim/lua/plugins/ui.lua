@@ -54,6 +54,7 @@ specs.cursorword = {
   'echasnovski/mini.cursorword',
   version = false,
   event = 'VeryLazy', -- TODO lazier?
+  opts = { delay = 50 },
 }
 
 return u.values(specs)

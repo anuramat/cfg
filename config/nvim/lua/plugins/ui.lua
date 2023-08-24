@@ -50,6 +50,10 @@ specs.marks = {
   opts = {},
 }
 
-specs.cursorword = { 'echasnovski/mini.cursorword', version = false }
+specs.cursorword = {
+  'echasnovski/mini.cursorword',
+  version = false,
+  event = 'VeryLazy', -- TODO lazier?
+}
 
 return u.values(specs)

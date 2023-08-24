@@ -15,6 +15,9 @@ function M.lsp(buffer)
     vim.print(vim.lsp.buf.list_workspace_folders())
   end
 
+  local function references()
+    vim.lsp.buf.references({ includeDeclaration = false })
+  end
   n('<leader>lr', vim.lsp.buf.rename, 'Rename')
   n('<leader>lf', fu.format, 'Format Buffer')
   n('<leader>la', vim.lsp.buf.code_action, 'Code Action')
@@ -25,7 +28,7 @@ function M.lsp(buffer)
   n('gD', vim.lsp.buf.declaration, 'Declaration')
   n('gi', vim.lsp.buf.implementation, 'Implementation')
   n('go', vim.lsp.buf.type_definition, 'Type Definition')
-  n('gr', vim.lsp.buf.references, 'References')
+  n('gr', references, 'References')
   n('gs', vim.lsp.buf.signature_help, 'Signature Help')
   n('gl', vim.diagnostic.open_float, 'Show Diagnostic')
   n('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')

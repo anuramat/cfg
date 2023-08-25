@@ -13,6 +13,7 @@ ensure_path() {
 	echo "[cfg.write] created path \"$1\""
 }
 
+# TODO refactor (move to shell setup function)
 ensure_string() {
 	# $1 -- string
 	# $2 -- target file

@@ -14,7 +14,7 @@ echo "[cfg] installing executables and GUI apps" && ./bin/install/pkgs.sh -g "go
 echo "[cfg] installing configs" && ./bin/install/configs.sh
 echo "[cfg] setting up iTerm2" && ./bin/install/iterm_prefs.sh
 
-ensure_string "hehe" "$HOME/.hushlogin"
+touch "$HOME/.hushlogin"
 
 # Make bash the default shell
 [ "$SHELL" != "$HOMEBREW_PREFIX/bin/bash" ] && {

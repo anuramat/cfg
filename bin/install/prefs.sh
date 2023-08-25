@@ -70,9 +70,9 @@ defaults write -g TISRomanSwitchState -bool false # turn off automatic input met
 # ~~~~~~~~~~~~~~~~~~ Text replacements ~~~~~~~~~~~~~~~~~~~ #
 replacements="$HOME/Library/KeyboardServices/TextReplacements.db"
 if [ -r "${replacements}" ]; then
-	{ echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 "$replacements"; }
+	echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 "$replacements"
 else
-	{ echo "Couldn't delete text replacements; Do it manually and update the script"; }
+	echo "Couldn't delete text replacements; Do it manually and update the script"
 fi
 defaults delete -g NSUserDictionaryReplacementItems
 # ~~~~~~~~~~~~~~~~~~~~~~ Language ~~~~~~~~~~~~~~~~~~~~~~~ #

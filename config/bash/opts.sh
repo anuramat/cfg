@@ -23,7 +23,7 @@ tx=36\
 # TODO add fallback
 # TODO ls on folders instead of bat
 if command -v "bat" >/dev/null 2>&1; then
-	export FZF_CTRL_T_OPTS="${FZF_CTRL_T_OPTS:+${FZF_CTRL_T_OPTS} } \
+	export FZF_CTRL_T_OPTS="${FZF_CTRL_T_OPTS:+$FZF_CTRL_T_OPTS} \
 --preview 'bat -n --color=always {}' \
 --bind 'ctrl-/:change-preview-window(down|hidden|)'
 "
@@ -31,7 +31,7 @@ fi
 
 # Use fd by default
 export FZF_DEFAULT_COMMAND="fd ."
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d ."
 
 # Preview directories in fzf using tree/exa
@@ -61,8 +61,8 @@ export _ZO_FZF_OPTS="\
 --exit-0 \
 --select-1 \
 --preview-window=down,30%,sharp \
---preview='${__zo_fzf_preview} {2..}' \
+--preview='$__zo_fzf_preview {2..}' \
 "
 
 # Read ripgrep settings
-export RIPGREP_CONFIG_PATH="${XDG_CONFIG_HOME}/ripgreprc"
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"

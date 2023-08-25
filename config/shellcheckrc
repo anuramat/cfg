@@ -24,4 +24,6 @@ disable=SC3043
 # a in "a && b" and condition in if-statements don't trigger "set -e"
 disable=SC2310
 # "$(command)" doesn't trigger "set -e"
-disable=SC2311
+# disable=SC2311
+# prefer ${var} instead of $var
+disable=SC2250

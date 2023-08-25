@@ -52,6 +52,7 @@ defaults write -g AppleWindowTabbingMode -string always    # Prefer tabs to wind
 defaults write -g NSCloseAlwaysConfirmsChanges -bool false # Ask to save on close
 defaults write -g NSQuitAlwaysKeepsWindows -bool false     # Close windows on <Cmd-Q>
 defaults write com.apple.TextEdit RichText -bool false     # Use txt by default
+defaults write -g NSWindowShouldDragOnGesture -bool true   # <Ctrl-Cmd-LMB> to drag window
 # Not tested : don't write dsstore on external drives
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
@@ -68,6 +69,14 @@ defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g TISRomanSwitchState -bool false # turn off automatic input method switching
+# ~~~~~~~~~~~~~~~~~~ Text replacements ~~~~~~~~~~~~~~~~~~~ #
+replacements="$HOME/Library/KeyboardServices/TextReplacements.db"
+if [ -r "${replacements}" ]; then
+	{ echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 "$replacements"; }
+else
+	{ echo "Couldn't delete text replacements; Do it manually and update the script"; }
+fi
+defaults delete -g NSUserDictionaryReplacementItems
 # ~~~~~~~~~~~~~~~~~~~~~~ Language ~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g AppleLanguages -array en      # Change system language
 defaults write -g AppleLocale -string ru_RU@USD # Set locale

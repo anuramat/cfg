@@ -7,41 +7,41 @@ wp_str=$(printf 'tell application "Finder" to set desktop picture to POSIX file 
 [ -r "$wallpaper" ] && osascript -e "$wp_str"
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Finder ~~~~~~~~~~~~~~~~~~~~~~~~ #
 finder=com.apple.finder
-defaults write -g AppleShowAllExtensions -bool true                   # Show file extensions
-defaults write "${finder}" CreateDesktop -bool false                  # Hide icons from desktop
-defaults write "${finder}" FXDefaultSearchScope -string SCcf          # Search current folder by default
-defaults write "${finder}" FXEnableExtensionChangeWarning -bool false # Hide warning on extension change
-defaults write "${finder}" FXPreferredViewStyle -string clmv          # Set default view to columns
-defaults write "${finder}" NewWindowTarget -string "PfDe"             # "PfDe" for desktop, "PfDo" for documents..., "PfLo" for specific path
-# defaults write "${finder}" NewWindowTargetPath -string "file://${HOME}/"  # If PfLo
-defaults write "${finder}" QuitMenuItem -bool true                          # Allow quit on Cmd+Q
-defaults write "${finder}" ShowPathbar -bool true                           # Show bar on the bottom
-defaults write "${finder}" ShowStatusBar -bool false                        # Don't show status bar on the bottom (size, n_items)
-defaults write "${finder}" _FXShowPosixPathInTitle -bool true               # Show full path in title
-defaults write "${finder}" _FXSortFoldersFirst -bool true                   # Keep folders on the top
+defaults write -g AppleShowAllExtensions -bool true                 # Show file extensions
+defaults write "$finder" CreateDesktop -bool false                  # Hide icons from desktop
+defaults write "$finder" FXDefaultSearchScope -string SCcf          # Search current folder by default
+defaults write "$finder" FXEnableExtensionChangeWarning -bool false # Hide warning on extension change
+defaults write "$finder" FXPreferredViewStyle -string clmv          # Set default view to columns
+defaults write "$finder" NewWindowTarget -string "PfDe"             # "PfDe" for desktop, "PfDo" for documents..., "PfLo" for specific path
+# defaults write "$finder" NewWindowTargetPath -string "file://$HOME/"  # If PfLo
+defaults write "$finder" QuitMenuItem -bool true                            # Allow quit on Cmd+Q
+defaults write "$finder" ShowPathbar -bool true                             # Show bar on the bottom
+defaults write "$finder" ShowStatusBar -bool false                          # Don't show status bar on the bottom (size, n_items)
+defaults write "$finder" _FXShowPosixPathInTitle -bool true                 # Show full path in title
+defaults write "$finder" _FXSortFoldersFirst -bool true                     # Keep folders on the top
 defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true # Show folder icon in title bar
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Dock ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 dock=com.apple.dock
-defaults write "${dock}" minimize-to-application -bool true
-defaults write "${dock}" tilesize -int 48
-defaults write "${dock}" autohide -bool true                 # Hide dock
-defaults write "${dock}" autohide-delay -float 0             # Remove unhide delay
-defaults write "${dock}" autohide-time-modifier -float 0     # Remove hide/unhide animation
-defaults write "${dock}" mineffect -string scale             # Set minimize animation
-defaults write "${dock}" mru-spaces -bool false              # Do not rearrange spaces automatically
-defaults write "${dock}" show-recents -bool true             # Do not show recent apps
-defaults write "${dock}" static-only -bool true              # Only show opened apps
-defaults write "${dock}" show-process-indicators -bool false # Hide indicater for open applications
-defaults write "${dock}" expose-group-apps -bool true        # Group windows by application
-defaults write "${dock}" persistent-apps -array              # Delete all apps shortcuts
+defaults write "$dock" minimize-to-application -bool true
+defaults write "$dock" tilesize -int 48
+defaults write "$dock" autohide -bool true                 # Hide dock
+defaults write "$dock" autohide-delay -float 0             # Remove unhide delay
+defaults write "$dock" autohide-time-modifier -float 0     # Remove hide/unhide animation
+defaults write "$dock" mineffect -string scale             # Set minimize animation
+defaults write "$dock" mru-spaces -bool false              # Do not rearrange spaces automatically
+defaults write "$dock" show-recents -bool true             # Do not show recent apps
+defaults write "$dock" static-only -bool true              # Only show opened apps
+defaults write "$dock" show-process-indicators -bool false # Hide indicater for open applications
+defaults write "$dock" expose-group-apps -bool true        # Group windows by application
+defaults write "$dock" persistent-apps -array              # Delete all apps shortcuts
 # ~~~~~~~~~~~~~~~~~~~~~ Hot corners ~~~~~~~~~~~~~~~~~~~~~ #
 # Bottom left corner - Screensaver/Lock
 for corner in tl tr br bl; do
-	defaults write "${dock}" "wvous-${corner}-corner" -int 0
-	defaults write "${dock}" "wvous-${corner}-modifier" -int 0
+	defaults write "$dock" "wvous-$corner-corner" -int 0
+	defaults write "$dock" "wvous-$corner-modifier" -int 0
 done
-defaults write "${dock}" wvous-bl-corner -int 5
-defaults write "${dock}" wvous-bl-modifier -int 0
+defaults write "$dock" wvous-bl-corner -int 5
+defaults write "$dock" wvous-bl-modifier -int 0
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g AppleInterfaceStyle Dark                 # Dark mode
 defaults write -g AppleSpacesSwitchOnActivate -bool false  # Switch to space with open application on Cmd+Tab
@@ -54,9 +54,9 @@ defaults write -g NSWindowShouldDragOnGesture -bool true   # <Ctrl-Cmd-LMB> to d
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Screenshot directory
-screenshot_dir="${HOME}/Screenshots"
-ensure_path "${screenshot_dir}"
-defaults write com.apple.screencapture location -string "${screenshot_dir}" # Set screenshot folder
+screenshot_dir="$HOME/Screenshots"
+ensure_path "$screenshot_dir"
+defaults write com.apple.screencapture location -string "$screenshot_dir" # Set screenshot folder
 # ~~~~~~~~~~~~~~~~~~~~~~ Keyboard ~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g ApplePressAndHoldEnabled -bool false # Allow key repeat on hold
 defaults write -g InitialKeyRepeat -float 15           # repeat period
@@ -69,7 +69,7 @@ defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write -g TISRomanSwitchState -bool false # turn off automatic input method switching
 # ~~~~~~~~~~~~~~~~~~ Text replacements ~~~~~~~~~~~~~~~~~~~ #
 replacements="$HOME/Library/KeyboardServices/TextReplacements.db"
-if [ -r "${replacements}" ]; then
+if [ -r "$replacements" ]; then
 	echo 'delete from ZTEXTREPLACEMENTENTRY;' | sqlite3 "$replacements"
 else
 	echo "Couldn't delete text replacements; Do it manually and update the script"
@@ -80,43 +80,43 @@ defaults write -g AppleLanguages -array en      # Change system language
 defaults write -g AppleLocale -string ru_RU@USD # Set locale
 # ~~~~~~~~~~~~~~~~~~~~~~ Menu bar ~~~~~~~~~~~~~~~~~~~~~~~ #
 menuclock=com.apple.menuextra.clock.plist
-defaults write "${menuclock}" ShowAMPM -bool true
-defaults write "${menuclock}" ShowDate -integer 0
-defaults write "${menuclock}" ShowDayOfWeek -bool true
-defaults write "${menuclock}" ShowSeconds -bool true
-defaults write "${menuclock}" IsAnalog -bool false
-defaults write "${menuclock}" FlashDateSeparators -bool false
+defaults write "$menuclock" ShowAMPM -bool true
+defaults write "$menuclock" ShowDate -integer 0
+defaults write "$menuclock" ShowDayOfWeek -bool true
+defaults write "$menuclock" ShowSeconds -bool true
+defaults write "$menuclock" IsAnalog -bool false
+defaults write "$menuclock" FlashDateSeparators -bool false
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 # ~~~~~~~~~~~~~~~~~~~~~~ Trackpad ~~~~~~~~~~~~~~~~~~~~~~~ #
 trackpad=com.apple.AppleMultitouchTrackpad
-defaults write "${trackpad}" ActuateDetents -int 1
-defaults write "${trackpad}" ActuationStrength -int 1
-defaults write "${trackpad}" Clicking -int 0
-defaults write "${trackpad}" DragLock -int 0
-defaults write "${trackpad}" Dragging -int 0
-defaults write "${trackpad}" FirstClickThreshold -int 1
-defaults write "${trackpad}" ForceSuppressed -bool false
-defaults write "${trackpad}" SecondClickThreshold -int 1
-defaults write "${trackpad}" TrackpadCornerSecondaryClick -int 0
-defaults write "${trackpad}" TrackpadFiveFingerPinchGesture -int 2
-defaults write "${trackpad}" TrackpadFourFingerHorizSwipeGesture -int 2
-defaults write "${trackpad}" TrackpadFourFingerPinchGesture -int 2
-defaults write "${trackpad}" TrackpadFourFingerVertSwipeGesture -int 2
-defaults write "${trackpad}" TrackpadHandResting -bool true
-defaults write "${trackpad}" TrackpadHorizScroll -int 1
-defaults write "${trackpad}" TrackpadMomentumScroll -bool true
-defaults write "${trackpad}" TrackpadPinch -int 1
-defaults write "${trackpad}" TrackpadRightClick -bool true
-defaults write "${trackpad}" TrackpadRotate -int 1
-defaults write "${trackpad}" TrackpadScroll -bool true
-defaults write "${trackpad}" TrackpadThreeFingerDrag -bool false
-defaults write "${trackpad}" TrackpadThreeFingerHorizSwipeGesture -int 2
-defaults write "${trackpad}" TrackpadThreeFingerTapGesture -int 2
-defaults write "${trackpad}" TrackpadThreeFingerVertSwipeGesture -int 2
-defaults write "${trackpad}" TrackpadTwoFingerDoubleTapGesture -int 1
-defaults write "${trackpad}" TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
-defaults write "${trackpad}" USBMouseStopsTrackpad -int 0
-defaults write "${trackpad}" UserPreferences -bool true
+defaults write "$trackpad" ActuateDetents -int 1
+defaults write "$trackpad" ActuationStrength -int 1
+defaults write "$trackpad" Clicking -int 0
+defaults write "$trackpad" DragLock -int 0
+defaults write "$trackpad" Dragging -int 0
+defaults write "$trackpad" FirstClickThreshold -int 1
+defaults write "$trackpad" ForceSuppressed -bool false
+defaults write "$trackpad" SecondClickThreshold -int 1
+defaults write "$trackpad" TrackpadCornerSecondaryClick -int 0
+defaults write "$trackpad" TrackpadFiveFingerPinchGesture -int 2
+defaults write "$trackpad" TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write "$trackpad" TrackpadFourFingerPinchGesture -int 2
+defaults write "$trackpad" TrackpadFourFingerVertSwipeGesture -int 2
+defaults write "$trackpad" TrackpadHandResting -bool true
+defaults write "$trackpad" TrackpadHorizScroll -int 1
+defaults write "$trackpad" TrackpadMomentumScroll -bool true
+defaults write "$trackpad" TrackpadPinch -int 1
+defaults write "$trackpad" TrackpadRightClick -bool true
+defaults write "$trackpad" TrackpadRotate -int 1
+defaults write "$trackpad" TrackpadScroll -bool true
+defaults write "$trackpad" TrackpadThreeFingerDrag -bool false
+defaults write "$trackpad" TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write "$trackpad" TrackpadThreeFingerTapGesture -int 2
+defaults write "$trackpad" TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write "$trackpad" TrackpadTwoFingerDoubleTapGesture -int 1
+defaults write "$trackpad" TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+defaults write "$trackpad" USBMouseStopsTrackpad -int 0
+defaults write "$trackpad" UserPreferences -bool true
 # ~~~~~~~~~~~~~~~~~~~~~~ Spotlight ~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write com.apple.Spotlight orderedItems -array \
 	'{enabled = true; name = "SYSTEM_PREFS";}' \

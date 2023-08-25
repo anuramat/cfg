@@ -5,12 +5,12 @@ set -e
 
 # Install $HOME dotfiles
 for __dotfile in home/*; do
-	install2file "${__dotfile}" "${HOME}/$(rehide_name "${__dotfile}")"
+	install2file "$__dotfile" "$HOME/$(rehide_name "$__dotfile")"
 done
 
-install2folder config/nvim/after "${HOME}/.vim/"
+install2folder config/nvim/after "$HOME/.vim/"
 
 # Install $XDG_CONFIG_HOME configs
 for __folder in config/*; do
-	install2folder "${__folder}" "${XDG_CONFIG_HOME}"
+	install2folder "$__folder" "$XDG_CONFIG_HOME"
 done

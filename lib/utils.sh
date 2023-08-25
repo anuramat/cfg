@@ -5,9 +5,9 @@ ensure_path() {
 	# $1 -- target path
 	local -r target="$1"
 
-	[ -d "${target}" ] && return
-	mkdir -p "${target}" || {
-		echo "[cfg.fail] create path \"${target}\""
+	[ -d "$target" ] && return
+	mkdir -p "$target" || {
+		echo "[cfg.fail] create path \"$target\""
 		return 1
 	}
 	echo "[cfg.write] created path \"$1\""
@@ -20,13 +20,13 @@ ensure_string() {
 	local -r string="$1"
 	local -r target="$2"
 
-	grep -Fq "${string}" "${target}" && return
-	ensure_path "$(dirname "${target}")" || return 1
-	echo "${string}" >>"${target}" || {
-		echo "[cfg.fail] append string \"${string}\" to ${target}"
+	grep -Fq "$string" "$target" && return
+	ensure_path "$(dirname "$target")" || return 1
+	echo "$string" >>"$target" || {
+		echo "[cfg.fail] append string \"$string\" to $target"
 		return 1
 	}
-	echo "[cfg.write] appended \"${string}\" to ${target}"
+	echo "[cfg.write] appended \"$string\" to $target"
 }
 
 make_symlink() {
@@ -35,13 +35,13 @@ make_symlink() {
 	local -r original="$(realpath "$1")"
 	local target="$2"
 
-	[ -d "${target}" ] && target="${target}/$(basename "${original}")"
-	[ -e "${target}" ] && { try_overwrite "${target}" || return 1; }
-	ln -sf "${original}" "${target}" || {
-		echo "[cfg.fail] make symlink @ \"${target}\""
+	[ -d "$target" ] && target="$target/$(basename "$original")"
+	[ -e "$target" ] && { try_overwrite "$target" || return 1; }
+	ln -sf "$original" "$target" || {
+		echo "[cfg.fail] make symlink @ \"$target\""
 		return 1
 	}
-	echo "[cfg.write] created symlink @ \"${target}\""
+	echo "[cfg.write] created symlink @ \"$target\""
 }
 
 install2folder() {
@@ -53,8 +53,8 @@ install2folder() {
 		return 1
 	}
 
-	ensure_path "${target_dir}" || return 1
-	install2file "${original}" "${target_dir}"
+	ensure_path "$target_dir" || return 1
+	install2file "$original" "$target_dir"
 }
 
 install2file() {
@@ -64,7 +64,7 @@ install2file() {
 	local -r target="$2"
 	local -r target_dir="$(dirname "$2")"
 
-	git check-ignore "${original}" >/dev/null 2>&1 && {
+	git check-ignore "$original" >/dev/null 2>&1 && {
 		return
 	}
 
@@ -73,30 +73,30 @@ install2file() {
 		return 1
 	}
 
-	ensure_path "${target_dir}" || return 1
-	make_symlink "${original}" "${target}" || return 1
+	ensure_path "$target_dir" || return 1
+	make_symlink "$original" "$target" || return 1
 }
 
 set_shell() {
 	local -r shell="$(dirname "$1")/$(basename "$1")"
 
-	[ "${SHELL}" = "${shell}" ] && return
-	[ -f "${shell}" ] || {
-		echo "[cfg.fail] shell \"${shell}\" not found"
+	[ "$SHELL" = "$shell" ] && return
+	[ -f "$shell" ] || {
+		echo "[cfg.fail] shell \"$shell\" not found"
 		return 1
 	}
-	sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"${shell}\" /etc/shells"
+	sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"$shell\" /etc/shells"
 	# TODO posix
-	chsh -s "${shell}"
+	chsh -s "$shell"
 }
 
 continue_prompt() {
 	local -r prompt="$1"
 	local choice
 	while true; do
-		printf "%s (y/n): " "${prompt}"
+		printf "%s (y/n): " "$prompt"
 		read -r choice
-		case "${choice}" in
+		case "$choice" in
 			y | Y) return 0 ;;
 			n | N) return 1 ;;
 			*) echo "Invalid response" ;;
@@ -107,8 +107,8 @@ continue_prompt() {
 try_overwrite() {
 	# $1 -- target
 	local -r target="$1"
-	[ "${__ALWAYS_OVERWRITE}" = "true" ] || continue_prompt "overwrite \"${target}\"?" || return 1
-	rm -rf "${target}" || return 1
+	[ "$__ALWAYS_OVERWRITE" = "true" ] || continue_prompt "overwrite \"$target\"?" || return 1
+	rm -rf "$target" || return 1
 }
 
 rehide_name() {
@@ -118,12 +118,12 @@ rehide_name() {
 
 install_gobins() {
 	local -r gobins="$1"
-	[ -f "${gobins}" ] || {
-		echo "[cfg.fail] \"${gobins}\" does not exist" && return 1
+	[ -f "$gobins" ] || {
+		echo "[cfg.fail] \"$gobins\" does not exist" && return 1
 	}
 	while read -r package; do
-		[ "${package}" ] || continue
-		echo "[cfg] installing \"$(echo "${package}" | sed -e 's/.*\///g')\""
-		go install "${package}"
-	done <"${gobins}"
+		[ "$package" ] || continue
+		echo "[cfg] installing \"$(echo "$package" | sed -e 's/.*\///g')\""
+		go install "$package"
+	done <"$gobins"
 }

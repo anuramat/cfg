@@ -2,9 +2,9 @@
 set -e
 
 while getopts 'g:' opt; do
-	case "${opt}" in
+	case "$opt" in
 		g)
-			__GOBINFILE="${OPTARG}"
+			__GOBINFILE="$OPTARG"
 			;;
 		:)
 			echo "[cfg.fail] option requires an argument"
@@ -24,5 +24,5 @@ done
 
 . lib/utils.sh
 
-install_gobins "${__GOBINFILE}"
+install_gobins "$__GOBINFILE"
 brew analytics off && brew bundle install

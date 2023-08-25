@@ -26,6 +26,7 @@ specs.mdpreview = {
   end,
 }
 
+-- TODO
 specs.obsidian = {
   'epwalsh/obsidian.nvim',
   lazy = true,

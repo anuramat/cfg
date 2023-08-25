@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-. "${HOME}/.bashrc"
+. "$HOME/.bashrc"

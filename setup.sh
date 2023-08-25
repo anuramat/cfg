@@ -14,18 +14,18 @@ echo "[cfg] installing configs" && ./bin/install/configs.sh
 echo "[cfg] setting up macOS system preferences" && ./bin/install/prefs.sh
 echo "[cfg] setting up iTerm2" && ./bin/install/iterm_prefs.sh
 
-ensure_string "hehe" "${HOME}/.hushlogin"
+ensure_string "hehe" "$HOME/.hushlogin"
 
 # Make bash the default shell
-[ "${SHELL}" != "${HOMEBREW_PREFIX}/bin/bash" ] && {
+[ "$SHELL" != "$HOMEBREW_PREFIX/bin/bash" ] && {
 	continue_prompt "Change shell to bash?" && {
-		set_shell "${HOMEBREW_PREFIX}/bin/bash"
+		set_shell "$HOMEBREW_PREFIX/bin/bash"
 	}
 }
 
 # Install fzf shell integration
-[ -f "${HOME}/.fzf.bash" ] || {
+[ -f "$HOME/.fzf.bash" ] || {
 	continue_prompt "Install fzf integration?" && {
-		"${HOMEBREW_PREFIX}/opt/fzf/install"
+		"$HOMEBREW_PREFIX/opt/fzf/install"
 	}
 }

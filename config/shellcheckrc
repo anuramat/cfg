@@ -1,29 +1,11 @@
 # here we go
 enable=all
-# not following a dynamic path to a source file
-disable=SC1091
-disable=SC1090
-# quotation marks
-disable=SC2016,SC2089,SC2090
-# alias x="$var" expands when defined, not when used
-disable=SC2139
-# ignored non-zero return codes
-disable=SC2312
-# prefer [[]] over []
-disable=SC2292
-# referenced but not assigned
-disable=SC2154
-# explicit [ -n ] to check string emptiness
-disable=SC2244
-# declare local/export/readonly and assign separately to avoid masking return values
-disable=SC2155
-# printf "${var}": escapes get expanded, use %s if this is not intended
+disable=SC1091,SC1090,SC2250,SC2016,SC2089,SC2090,SC2139,SC2292,SC2154,SC2244
+# printf "${var}": escapes in $var get expanded, use %s if this is not intended
 disable=SC2059
 # local is not posix
 disable=SC3043
-# a in "a && b" and condition in if-statements don't trigger "set -e"
-disable=SC2310
-# "$(command)" doesn't trigger "set -e"
-# disable=SC2311
-# prefer ${var} instead of $var
-disable=SC2250
+# declare local/export/readonly and assign separately to avoid masking return values
+# disable=SC2155
+# ignored non-zero return codes
+# disable=SC2312,SC2311,SC2310

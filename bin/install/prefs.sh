@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 set -e
 . ./lib/utils.sh
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ System settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Shoutout to https://macos-defaults.com
-# and https://mths.be/macos
-# Breaks on every major release :(
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-osascript -e "tell application \"Finder\" to set desktop picture to POSIX file \"$(realpath wallpaper.png)\""
+# ~~~~~~~~~~~~~~~~~~~~~~ Wallpaper ~~~~~~~~~~~~~~~~~~~~~~~ #
+wp_path=$(realpath "wallpaper.png")
+wp_str=$(printf 'tell application "Finder" to set desktop picture to POSIX file "%s"' "$wp_path")
+[ -r "$wallpaper" ] && osascript -e "$wp_str"
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Finder ~~~~~~~~~~~~~~~~~~~~~~~~ #
 finder=com.apple.finder
 defaults write -g AppleShowAllExtensions -bool true                   # Show file extensions
@@ -46,7 +44,6 @@ defaults write "${dock}" wvous-bl-corner -int 5
 defaults write "${dock}" wvous-bl-modifier -int 0
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 defaults write -g AppleInterfaceStyle Dark                 # Dark mode
-defaults write -g ApplePressAndHoldEnabled -bool false     # Allow key repeat on hold
 defaults write -g AppleSpacesSwitchOnActivate -bool false  # Switch to space with open application on Cmd+Tab
 defaults write -g AppleWindowTabbingMode -string always    # Prefer tabs to windows
 defaults write -g NSCloseAlwaysConfirmsChanges -bool false # Ask to save on close
@@ -61,8 +58,9 @@ screenshot_dir="${HOME}/Screenshots"
 ensure_path "${screenshot_dir}"
 defaults write com.apple.screencapture location -string "${screenshot_dir}" # Set screenshot folder
 # ~~~~~~~~~~~~~~~~~~~~~~ Keyboard ~~~~~~~~~~~~~~~~~~~~~~~ #
-defaults write -g InitialKeyRepeat -float 15 # repeat period
-defaults write -g KeyRepeat -float 2         # delay
+defaults write -g ApplePressAndHoldEnabled -bool false # Allow key repeat on hold
+defaults write -g InitialKeyRepeat -float 15           # repeat period
+defaults write -g KeyRepeat -float 2                   # delay
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
@@ -142,5 +140,5 @@ defaults write com.apple.Spotlight orderedItems -array \
 	'{enabled = false; name = "DOCUMENTS";}' \
 	'{enabled = false; name = "DIRECTORIES";}' \
 	'{enabled = false; name = "BOOKMARKS";}'
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 echo "[cfg] system preferences are applied, restart is required"

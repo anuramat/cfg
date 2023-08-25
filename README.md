@@ -1,31 +1,23 @@
 # anuramat/cfg
 
-macOS zero to hero:
-- Packages
-- Configs
-- macOS preferences
+- Brew packages and Go binaries
+- Configs/dotfiles
+- macOS system preferences
 
-Assumes:
-- Default XDG paths
-- Default Apple Silicon Homebrew path (`/opt/homebrew/`)
-
-Before running anything:
-- Modify install paths in `shell/profile.sh`
-- Modify `setup.sh`, if you don't want to overwrite files automatically
-- Comment out unwanted packages from `Brewfile`
-
-## CLI
 ```bash
 xcode-select --install
 cd && git clone https://github.com/anuramat/cfg && cd cfg
-./setup.sh # install configs and prefs
+./setup.sh
 ```
 
-## Post-install
-- Get fzf binding scripts (`brew info fzf`)
-- Add "private" file to `./config/git/`
+## Manual setup
+- Install fzf binding scripts (`brew info fzf`)
+- Add "private" files if necessary (`fd -u private.example`)
+- Keybinds in "System Settings"
+- "Lock Screen" -> delays
 
-## Preferences
-- Delete everything in "Text replacements..." (TODO auto)
-- Keybinds (TODO auto)
-- "Lock Screen" / delays
+## Structure
+- `./config/*` - symlinked to `$XDG_CONFIG_HOME`
+- `./home/*` - `$HOME`
+- `./bin/**` - called by `setup.sh`; can be used standalone
+- `./utils/**` - used by `setup.sh` and `./bin/**`

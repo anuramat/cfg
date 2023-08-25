@@ -9,9 +9,9 @@ set -e
 	brew analytics off
 }
 
+echo "[cfg] setting up macOS system preferences" && ./bin/install/prefs.sh
 echo "[cfg] installing executables and GUI apps" && ./bin/install/pkgs.sh -g "go-binaries.txt"
 echo "[cfg] installing configs" && ./bin/install/configs.sh
-echo "[cfg] setting up macOS system preferences" && ./bin/install/prefs.sh
 echo "[cfg] setting up iTerm2" && ./bin/install/iterm_prefs.sh
 
 ensure_string "hehe" "$HOME/.hushlogin"

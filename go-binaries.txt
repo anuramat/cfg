@@ -1,1 +1,0 @@
-github.com/bufbuild/buf-language-server/cmd/bufls@latest

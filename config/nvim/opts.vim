@@ -38,6 +38,7 @@ se ve=block
 se pa+=**
 pa cfilter
 se nf=bin,hex
+se mouse=
 "~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 com -bang Q q<bang>
 com -bang W w<bang>

@@ -4,7 +4,10 @@ local k = require('plugkeys')
 local u = require('utils')
 
 -- These servers will be ignored when trying to format
-_G.fmt_blacklist = { 'lua_ls' }
+_G.fmt_srv_blacklist = { 'lua_ls' }
+_G.fmt_ft_blacklist = {
+  'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
+}
 
 --- @param opts { primary: string[], fallback: string[] }
 local function root_dir_with_fallback(opts)

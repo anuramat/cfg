@@ -14,7 +14,7 @@ function M.format(opts)
     opts = {}
   end
   opts.filter = function(client)
-    return not u.contains(_G.fmt_blacklist, client.name)
+    return not u.contains(_G.fmt_srv_blacklist, client.name)
   end
   vim.lsp.buf.format(opts)
 end
@@ -56,7 +56,10 @@ end
 --- @param client table
 --- @param buffer integer
 function M.setup_lsp_af(client, buffer)
-  if not client.server_capabilities.documentFormattingProvider then
+  if
+    not client.server_capabilities.documentFormattingProvider
+    or u.contains(_G.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
+  then
     return
   end
   local clean = get_cleaner(buffer)

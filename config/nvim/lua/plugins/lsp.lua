@@ -20,7 +20,6 @@ local function cfgs()
   return {
     bashls = {},
     pyright = {},
-    bufls = {},
     marksman = {},
     -- clangd = {
     --   on_attach = function(client, buffer)
@@ -118,10 +117,7 @@ specs.null = {
       sources = {
         nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
         nlf.stylua,
-        nlf.buf,
-        nld.buf,
-        -- nld.protolint, -- diag and fmt
-        -- nld.protoc_gen_lint, -- diag only
+        nld.protolint,
       },
       on_attach = function(client, buffer)
         k.lsp(buffer)

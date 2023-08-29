@@ -22,16 +22,17 @@ local function cfgs()
     pyright = {},
     bufls = {},
     marksman = {},
-    clangd = {
-      on_attach = function(client, buffer)
-        k.lsp(buffer)
-        k.clangd(buffer)
-        fmt.setup_lsp_af(client, buffer)
-        require('clangd_extensions.inlay_hints').setup_autocmd()
-        require('clangd_extensions.inlay_hints').set_inlay_hints()
-        -- TODO clangd ext keymaps (prob put in spec.config())
-      end,
-    },
+    -- clangd = {
+    --   on_attach = function(client, buffer)
+    --     k.lsp(buffer)
+    --     k.clangd(buffer)
+    --     fmt.setup_lsp_af(client, buffer)
+    --     require('clangd_extensions.inlay_hints').setup_autocmd()
+    --     require('clangd_extensions.inlay_hints').set_inlay_hints()
+    --     -- TODO clangd ext keymaps (prob put in spec.config())
+    --     -- TODO ignore protobuf
+    --   end,
+    -- },
 
     gopls = {
       settings = {
@@ -111,13 +112,16 @@ specs.null = {
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()
     local null_ls = require('null-ls')
-    local null_fmt = null_ls.builtins.formatting
+    local nlf = null_ls.builtins.formatting
+    local nld = null_ls.builtins.diagnostics
     null_ls.setup({
       sources = {
-        null_fmt.shfmt.with({
-          extra_args = { '-s', '-ci', '-bn' },
-        }),
-        null_fmt.stylua,
+        nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
+        nlf.stylua,
+        nlf.buf,
+        nld.buf,
+        -- nld.protolint, -- diag and fmt
+        -- nld.protoc_gen_lint, -- diag only
       },
       on_attach = function(client, buffer)
         k.lsp(buffer)

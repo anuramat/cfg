@@ -18,8 +18,9 @@ specs.lualine = {
     return {
       options = {
         theme = lualine_dracula,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        --      
         globalstatus = true,
         refresh = { statusline = 100, tabline = 100 },
       },
@@ -40,6 +41,7 @@ specs.lualine = {
           {
             'progress',
             padding = { left = 1, right = 0 },
+            separator = '',
           },
           {
             'location',
@@ -51,6 +53,7 @@ specs.lualine = {
               end
               return result
             end,
+            separator = '',
           },
           {
             function()
@@ -71,16 +74,20 @@ specs.lualine = {
           {
             function()
               local fullpath = vim.fn.getcwd()
+              if fullpath == nil then
+                fullpath = 'error!'
+              end
               local home = vim.fn.getenv('HOME')
               return string.gsub(fullpath, '^' .. home, '~')
             end,
             padding = 1,
+            separator = '',
           },
           {
             'branch',
             icon = '󰊢',
             align = 'right',
-            padding = { left = 0, right = 1 },
+            padding = { left = 1, right = 1 },
           },
         },
         lualine_c = {

@@ -12,13 +12,13 @@ cd && git clone https://github.com/anuramat/cfg && cd cfg
 
 ## Manual setup
 - Install fzf binding scripts (`brew info fzf`)
-- Add "private" files if necessary (`fd -u private.example`)
+- Add `private` files if necessary (`fd -u private.example`)
 - Keybinds in "System Settings" 
   (`Library/Preferences/com.apple.symbolichotkeys.plist`)
-- "Lock Screen" -> delays (???)
+- System Settings -> Lock Screen
 
 ## Structure
 - `./config/*` - symlinked to `$XDG_CONFIG_HOME`
-- `./home/*` - `$HOME`
+- `./home/*` - symlinked to `$HOME`
 - `./bin/**` - called by `setup.sh`; can be used standalone
 - `./utils/**` - used by `setup.sh` and `./bin/**`

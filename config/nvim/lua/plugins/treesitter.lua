@@ -11,6 +11,7 @@ local langs = {
   'gowork',
   'haskell',
   'json',
+  'json5',
   'lua',
   'luadoc',
   'luap',
@@ -35,12 +36,13 @@ specs.treesitter = {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
-    highlight = { enable = true, disable = { 'markdown' } },
+    highlight = { enable = true, disable = {} },
     indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
       keymaps = k.treesitter.inc_selection,
+      additional_vim_regex_highlighting = {},
     },
     textobjects = {
       swap = u.merge({ enable = true }, k.treesitter.textobj_swap),

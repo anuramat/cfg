@@ -34,11 +34,11 @@ __git_prompt() {
 		[ -z "$branch" ] && branch="$(git -C "$root_dir" rev-parse --short HEAD)"
 		printf ":$branch"
 
-		# Status
-		local git_status="$(git -C "$root_dir" status --porcelain | while read -r line; do
-			echo "$line" | awk '{print $1}'
-		done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
-		[ "$git_status" ] && printf ":$git_status"
+		# # Status
+		# local git_status="$(git -C "$root_dir" status --porcelain | while read -r line; do
+		# 	echo "$line" | awk '{print $1}'
+		# done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
+		# [ "$git_status" ] && printf ":$git_status"
 
 		# TODO Unpushed commits
 	fi

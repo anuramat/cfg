@@ -48,4 +48,4 @@ com -bang QA qa<bang>
 com -bang Qa qa<bang>
 "~~~~~~~~~~~~~~~~~~~ markdown ft plugin ~~~~~~~~~~~~~~~~~~~"
 " TODO more langs
-let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh']
+let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh', 'json5=json']

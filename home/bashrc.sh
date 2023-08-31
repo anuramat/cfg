@@ -21,6 +21,6 @@ else
 fi
 unset conda_path conda_hook
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-cmp="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" && [ -r "$cmp" ] && . "$cmp" && unset cmp
-fzfpath="$HOME/.fzf.bash" && [ -r "$fzfpath" ] && . "$fzfpath" && unset fzfpath
+cmp_hook="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" && [ -r "$cmp_hook" ] && . "$cmp_hook" && unset cmp_hook
+fzf_hook="$HOME/.fzf.bash" && [ -r "$fzf_hook" ] && . "$fzf_hook" && unset fzf_hook
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"

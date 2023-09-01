@@ -435,61 +435,75 @@ function M.readline()
   }
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.dap = {
-  {
-    '<leader>dc',
-    function()
-      require('dap').continue()
-    end,
-  },
-  {
-    '<leader>do',
-    function()
-      require('dap').step_out()
-    end,
-  },
-  {
-    '<leader>dn',
-    function()
-      require('dap').step_over()
-    end,
-  },
-  {
-    '<leader>di',
-    function()
-      require('dap').step_into()
-    end,
-  },
-  {
-    '<leader>dB',
-    function()
-      require('dap').set_breakpoint()
-    end,
-  },
-  {
-    '<leader>dbt',
-    function()
-      require('dap').toggle_breakpoint()
-    end,
-  },
-  {
-    '<leader>dbl',
-    function()
-      require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
-    end,
-  },
-  {
-    '<leader>dr',
-    function()
-      require('dap').repl.open()
-    end,
-  },
-  {
-    '<leader>dl',
-    function()
-      require('dap').run_last()
-    end,
-  },
-}
+function M.dap()
+  local function d(x)
+    return 'DAP: ' .. x
+  end
+  return {
+    {
+      '<leader>dc',
+      function()
+        require('dap').continue()
+      end,
+      desc = d('Continue'),
+    },
+    {
+      '<leader>do',
+      function()
+        require('dap').step_out()
+      end,
+      desc = d('Step Out'),
+    },
+    {
+      '<leader>dn',
+      function()
+        require('dap').step_over()
+      end,
+      desc = d('Step Over'),
+    },
+    {
+      '<leader>di',
+      function()
+        require('dap').step_into()
+      end,
+      desc = d('Step Into'),
+    },
+    {
+      '<leader>ds',
+      function()
+        require('dap').set_breakpoint()
+      end,
+      desc = d('Set Breakpoint'),
+    },
+    {
+      '<leader>dt',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = d('Toggle Breakpoint'),
+    },
+    {
+      '<leader>dl',
+      function()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+      end,
+      desc = d('Set Log Point'),
+    },
+    {
+      '<leader>dr',
+      function()
+        require('dap').repl.open()
+      end,
+      desc = d('Open Debug REPL'),
+    },
+    {
+      '<leader>dl',
+      function()
+        require('dap').run_last()
+      end,
+      desc = d('Run Last Debug Session'),
+    },
+  }
+end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 return M

@@ -10,7 +10,6 @@ shopt -s globstar          # Enables ** for recursing into subdirectories
 . "$XDG_CONFIG_HOME/bash/prompt.sh"
 [ -r "$XDG_CONFIG_HOME/bash/private.sh" ] && . "$XDG_CONFIG_HOME/bash/private.sh"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hooks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Conda ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 conda_path="$HOMEBREW_PREFIX/Caskroom/miniforge/base"
 if conda_hook="$("$conda_path/bin/conda" "shell.bash" "hook" 2>/dev/null)"; then
 	eval "$conda_hook"
@@ -20,7 +19,11 @@ else
 	export PATH="$conda_path/bin${PATH:+:$PATH}"
 fi
 unset conda_path conda_hook
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-cmp_hook="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" && [ -r "$cmp_hook" ] && . "$cmp_hook" && unset cmp_hook
-fzf_hook="$HOME/.fzf.bash" && [ -r "$fzf_hook" ] && . "$fzf_hook" && unset fzf_hook
+
+cmp_hook="$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+[ -r "$cmp_hook" ] && . "$cmp_hook"
+unset cmp_hook
+
+[ -r ~/.fzf.bash ] && . ~/.fzf.bash
+
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"

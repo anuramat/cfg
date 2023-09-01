@@ -17,7 +17,6 @@ local function ins(l, r, d)
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 -- Basics
-s({ 'n', 'v' }, '<space>', '<nop>', { silent = true, desc = de('NOP') })
 s('t', '<esc>', '<c-\\><c-n>', { silent = true, desc = de('Leave Terminal Mode') })
 -- ~~~~~~~~~~~~~~~~~~~~~~ Buffer ~~~~~~~~~~~~~~~~~~~~~~~ --
 -- Ignore
@@ -54,3 +53,4 @@ end, 'Create Comment Header')
 norm('<leader>$', function()
   b.create_comment_header('~', nil, 60)
 end, 'Create Comment Subheader')
+-- TODO move some to vimscript so that vim can also use it?

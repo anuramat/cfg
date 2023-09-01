@@ -35,6 +35,7 @@ __git_prompt() {
 		printf ":$branch"
 
 		# # Status
+		# TODO make this faster
 		# local git_status="$(git -C "$root_dir" status --porcelain | while read -r line; do
 		# 	echo "$line" | awk '{print $1}'
 		# done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
@@ -63,7 +64,7 @@ __prompt() {
 
 	# CWD
 	printf " $__bold$__purple%s$__norm" "${PWD/#$HOME/"~"}"
-	# use sed to make it POSIX
+	# TODO use sed to make it POSIX?
 
 	# Git
 	printf "$__pink "
@@ -73,7 +74,7 @@ __prompt() {
 	# Conda
 	[ "$CONDA_DEFAULT_ENV" ] && printf " $__greenconda:%s$__norm" "$CONDA_DEFAULT_ENV"
 	# Python venv
-	# TODO make it parentdir/venvdir
+	# TODO make it "$parentdirname/$venvdirname"
 	[ "$VIRTUAL_ENV" ] && printf " $__greenvenv:%s$__norm" "$(basename "$(dirname "$VIRTUAL_ENV")")"
 
 	# Return code

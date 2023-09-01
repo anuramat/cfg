@@ -111,9 +111,9 @@ try_overwrite() {
 	rm -rf "$target" || return 1
 }
 
-rehide_name() {
+remove_extension() {
 	# $1 -- original name/path
-	basename "$1" | perl -pe 's/(.*)\..*/.\1/'
+	basename "$1" | perl -pe 's/^(.*)\..*$/\1/'
 }
 
 install_gobins() {

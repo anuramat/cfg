@@ -5,7 +5,7 @@ set -e
 
 # Install $HOME dotfiles
 for __dotfile in home/*; do
-	install2file "$__dotfile" "$HOME/$(rehide_name "$__dotfile")"
+	install2file "$__dotfile" "$HOME/.$(remove_extension "$__dotfile")"
 done
 
 install2folder config/nvim/after "$HOME/.vim/"

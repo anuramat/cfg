@@ -2,7 +2,6 @@
 se sr sw=0 et ts=2
 se tw=80 fo=qwj " add 'ro/' to prepend command leader on <cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
-" se cul
 se nowrap
 se dy=lastline,uhex
 se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:
@@ -25,9 +24,9 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=25
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" set noto ttimeout ttm=50
+se noto
 se kmp=russian-jcukenwin imi=0
-" se spl=en,ru
+" se spl=en
 se cot=menuone,noselect wop=fuzzy,pum
 se nofen fdm=indent
 se ic scs

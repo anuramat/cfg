@@ -497,7 +497,7 @@ function M.dap()
       desc = d('Open Debug REPL'),
     },
     {
-      '<leader>dl',
+      '<leader>dd',
       function()
         require('dap').run_last()
       end,

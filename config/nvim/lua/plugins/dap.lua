@@ -26,8 +26,16 @@ specs.dap_go = {
 
 specs.dap = {
   'mfussenegger/nvim-dap',
+  dependencies = {
+    'theHamsta/nvim-dap-virtual-text',
+  },
   config = function() end,
   keys = k.dap,
+}
+
+specs.dap_vt = {
+  'theHamsta/nvim-dap-virtual-text',
+  opts = {},
 }
 
 -- TODO understand, move keys, rewrite

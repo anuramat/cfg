@@ -376,52 +376,120 @@ function M.clangd(buffer)
   )
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Readline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-M.readline = {
-  { mode = '!', '<c-d>', '<delete>' },
+function M.readline()
+  local function d(x)
+    return 'Readline: ' .. x
+  end
+  return {
+    { mode = '!', '<c-d>', '<delete>', desc = d('Delete right') },
+    {
+      mode = '!',
+      '<c-k>',
+      function()
+        require('readline').kill_line()
+      end,
+      desc = d('Kill line'),
+    },
+    {
+      mode = '!',
+      '<a-d>',
+      function()
+        require('readline').kill_word()
+      end,
+      desc = d('Kill word'),
+    },
+    { mode = '!', '<c-b>', '<left>', desc = d('Move backward') },
+    { mode = 'i', '<c-f>', '<right>', desc = d('Move forward') },
+    {
+      mode = '!',
+      '<a-b>',
+      function()
+        require('readline').backward_word()
+      end,
+      desc = d('Move one word backward'),
+    },
+    {
+      mode = '!',
+      '<a-f>',
+      function()
+        require('readline').forward_word()
+      end,
+      desc = d('Move one word forward'),
+    },
+    {
+      mode = '!',
+      '<c-a>',
+      function()
+        require('readline').beginning_of_line()
+      end,
+      desc = d('Move to the beginning of the line'),
+    },
+    {
+      mode = 'i',
+      '<c-e>',
+      function()
+        require('readline').end_of_line()
+      end,
+      desc = d('Move to the end of the line'),
+    },
+  }
+end
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAP ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+M.dap = {
   {
-    mode = '!',
-    '<c-k>',
+    '<leader>dc',
     function()
-      require('readline').kill_line()
+      require('dap').continue()
     end,
   },
   {
-    mode = '!',
-    '<a-d>',
+    '<leader>do',
     function()
-      require('readline').kill_word()
-    end,
-  },
-  { mode = '!', '<c-b>', '<left>' },
-  { mode = 'i', '<c-f>', '<right>' },
-  {
-    mode = '!',
-    '<a-b>',
-    function()
-      require('readline').backward_word()
+      require('dap').step_out()
     end,
   },
   {
-    mode = '!',
-    '<a-f>',
+    '<leader>dn',
     function()
-      require('readline').forward_word()
+      require('dap').step_over()
     end,
   },
   {
-    mode = '!',
-    '<c-a>',
+    '<leader>di',
     function()
-      require('readline').beginning_of_line()
+      require('dap').step_into()
     end,
   },
   {
-    mode = 'i',
-    '<c-e>',
+    '<leader>dB',
     function()
-      require('readline').end_of_line()
+      require('dap').set_breakpoint()
+    end,
+  },
+  {
+    '<leader>dbt',
+    function()
+      require('dap').toggle_breakpoint()
+    end,
+  },
+  {
+    '<leader>dbl',
+    function()
+      require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+    end,
+  },
+  {
+    '<leader>dr',
+    function()
+      require('dap').repl.open()
+    end,
+  },
+  {
+    '<leader>dl',
+    function()
+      require('dap').run_last()
     end,
   },
 }
-return M
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+return M

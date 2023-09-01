@@ -17,7 +17,7 @@ specs.flash = {
 
 specs.readline = {
   'linty-org/readline.nvim',
-  keys = k.readline,
+  keys = k.readline(),
 }
 
 return u.values(specs)

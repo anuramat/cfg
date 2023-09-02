@@ -2,9 +2,11 @@
 --hidden
 --no-ignore
 # Still ignore these
---glob=!{.git,.svn,node_modules,lazy-lock.json,__pycache__,.cache}
---glob=!*.{lock}
-
+--glob=!{.git,.svn}
+--glob=!{node_modules}
+--glob=!{__pycache__,venv}
+--glob=!*.{lock,lock.json}
+--glob=!{**/.cache/}
 # Follow symbolic links.
 --follow
 # Truncate long lines

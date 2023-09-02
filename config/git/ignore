@@ -2,7 +2,10 @@
 .DS_Store
 # Python
 __pycache__/
+venv/
 # clangd etc
 .cache/
 # ctags
 tags
+# haskell
+.stack-work/

@@ -1,17 +1,28 @@
 # Search hidden and ignored files
 --hidden
 --no-ignore
+
 # Still ignore these
+# VCS
 --glob=!{.git,.svn}
---glob=!{node_modules}
+# Node
+--glob=!node_modules
+# Python
 --glob=!{__pycache__,venv}
+# Lock files
 --glob=!*.{lock,lock.json}
---glob=!{**/.cache/}
+# Clangd, etc
+--glob=!.cache
+# Haskell
+--glob=!.stack-work
+
 # Follow symbolic links.
 --follow
+
 # Truncate long lines
 --max-columns=200
 --max-columns-preview
+
 # Misc
 --smart-case
 --sort=path

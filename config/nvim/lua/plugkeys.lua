@@ -346,24 +346,18 @@ function M.gitsigns(buffer)
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HaskellTools ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-function M.haskell_tools()
+function M.haskell_tools(buf)
   local function d(x)
     return 'Haskell Tools: ' .. x
   end
   local ht = require('haskell-tools')
-  return {
-    main = function(buf)
-      s('n', '<leader>sp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
-      s('n', '<leader>sb', function()
-        ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-      end, { buffer = buf, desc = d('Toggle Buffer REPL') })
-      s('n', '<leader>sq', ht.repl.quit, { buffer = buf, desc = d('Quit REPL') })
-    end,
-    lsp = function(buf)
-      s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buf, desc = d('Show Hoogle Signature') })
-      s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buf, desc = d('Evaluate All') })
-    end,
-  }
+  s('n', '<leader>sb', function()
+    ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+  end, { buffer = buf, desc = d('Toggle Buffer REPL') })
+  s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buf, desc = d('Evaluate All') })
+  s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buf, desc = d('Show Hoogle Signature') })
+  s('n', '<leader>sp', ht.repl.toggle, { buffer = buf, desc = d('Toggle Package REPL') })
+  s('n', '<leader>sq', ht.repl.quit, { buffer = buf, desc = d('Quit REPL') })
 end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ C ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 function M.clangd(buffer)

@@ -9,11 +9,10 @@ specs.todo = {
   opts = {
     highlight = {
       keyword = 'bg',
-      -- TODO fix
-      pattern = [[<(KEYWORDS)]], -- pattern or table of patterns, used for highlighting (vim regex)
+      pattern = [[<(KEYWORDS)>]], -- vim regex
     },
     search = {
-      pattern = [[(KEYWORDS)]], -- ripgrep regex
+      pattern = [[\b(KEYWORDS)\b]], -- ripgrep regex
     },
   },
 }
@@ -22,6 +21,7 @@ specs.trouble = {
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   keys = k.trouble(),
+  keykey,
 }
 
 specs.treesj = {
@@ -35,7 +35,7 @@ specs.treesj = {
 }
 
 specs.comment = {
-  -- TODO move to space-comment?
+  -- TODO: move to space-comment?
   'numToStr/Comment.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
   config = function()

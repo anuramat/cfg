@@ -5,6 +5,8 @@
 # Still ignore these
 # VCS
 --glob=!{.git,.svn}
+# Go
+--glob=!go.sum
 # Node
 --glob=!node_modules
 # Python

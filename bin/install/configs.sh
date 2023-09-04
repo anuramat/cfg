@@ -2,6 +2,7 @@
 set -e
 
 . lib/utils.sh
+. home/profile.sh
 
 # Install $HOME dotfiles
 for __dotfile in home/*; do

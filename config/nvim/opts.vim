@@ -18,7 +18,7 @@ se sm
 se nosmd
 se scl=yes
 se tgc
-colo sorbet
+" colo sorbet
 hi Normal guibg=NONE " transparent bg
 let g:netrw_banner=0
 let g:netrw_liststyle=3

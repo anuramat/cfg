@@ -9,12 +9,6 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # Locale
 export LC_ALL="en_US.UTF-8"
 
-# Homebrew path
-export HOMEBREW_PREFIX="/opt/homebrew"
-if _brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv)"; then
-	eval "$_brewshellenv"
-fi
-
 # Editor
 for editor in nvim vim nvi vi; do
 	if command -v "$editor" >/dev/null 2>&1; then
@@ -31,7 +25,3 @@ export PATH="$GOPATH/bin${PATH:+:$PATH}"
 
 # __pycache__ folder
 export PYTHONPYCACHEPREFIX="/tmp/pycache"
-
-# Homebrew
-export HOMEBREW_NO_ANALYTICS="true"
-export HOMEBREW_BUNDLE_NO_LOCK="true"

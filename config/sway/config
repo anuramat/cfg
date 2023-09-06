@@ -218,3 +218,7 @@ bindsym $mod+p exec grim -g "$(slurp)" /tmp/$(date +'%y.%m.%d_%H:%M:%S%z.png')
 # from nix config TODO
 exec dbus-sway-environment
 exec configure-gtk
+
+input * {
+    xkb_options "ctrl:swapcaps"
+}

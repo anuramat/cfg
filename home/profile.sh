@@ -6,6 +6,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# User binaries
+export PATH="$HOME/bin${PATH:+:$PATH}"
+
 # Locale
 export LC_ALL="en_US.UTF-8"
 

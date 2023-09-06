@@ -19,3 +19,4 @@ for __folder in config/*; do
 done
 
 touch "$HOME/.hushlogin"
+mkdir "$HOME/bin"

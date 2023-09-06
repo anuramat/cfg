@@ -20,3 +20,4 @@ done
 
 touch "$HOME/.hushlogin"
 mkdir "$HOME/bin"
+mkdir "$HOME/Screenshots"

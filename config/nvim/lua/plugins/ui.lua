@@ -11,7 +11,7 @@ specs.dracula_cs = {
     local opts = {
       italic_comment = true,
       lualine_bg_color = cs.bg,
-      transparent_bg = true, -- default false
+      transparent_bg = false,
     }
     dracula.setup(opts)
 
@@ -57,94 +57,69 @@ specs.cursorword = {
   opts = { delay = 50 },
 }
 
--- specs.which = {
---   'folke/which-key.nvim',
---   event = 'VeryLazy',
---   init = function()
---     vim.o.timeout = true
---     vim.o.timeoutlen = 1000
---   end,
---   config = function()
---     local wk = require('which-key')
---     -- local opts = { operators = { gc = 'Comments', ys = 'Surround', ga = 'Align' } } -- TODO fix
---     local mappings = {
---       ['<leader>b'] = { name = 'Buffer' },
---       ['<leader>h'] = { name = 'Harpoon' },
---       ['<leader>f'] = { name = 'Telescope' },
---       ['<leader>l'] = { name = 'LSP' },
---       ['<leader>lw'] = { name = 'LSP Workspace' }, -- fix ("+prefix" shows instead of "+LSP Workspace")
---       ['<leader>d'] = { name = 'DAP' },
---       ['<leader>t'] = { name = 'Trouble' },
---       ['<leader>g'] = { name = 'Git' },
---       ['<leader>q'] = { name = 'Quickfix' },
---     }
---     wk.register(mappings)
---     wk.setup(opts)
---   end,
--- }
+specs.which = {
+  'folke/which-key.nvim',
+  event = 'VeryLazy',
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 1000
+  end,
+  config = function()
+    local wk = require('which-key')
+    local opts = {
+      operators = { gc = 'Comments', ys = 'Surround', ga = 'Align' },
+      icons = {
+        breadcrumb = '»', -- symbol used in the command line area that shows your active key combo
+        separator = '', -- symbol used between a key and it's label
+        group = '+', -- symbol prepended to a group
+      },
+      triggers_nowait = {
+        'z=',
+      },
+    } -- TODO fix
+    local mappings = {
+      ['<leader>b'] = { name = 'Buffer' },
+      ['<leader>h'] = { name = 'Harpoon' },
+      ['<leader>f'] = { name = 'Telescope' },
+      ['<leader>l'] = { name = 'LSP' },
+      ['<leader>lw'] = { name = 'LSP Workspace' }, -- fix ("+prefix" shows instead of "+LSP Workspace")
+      ['<leader>d'] = { name = 'DAP' },
+      ['<leader>t'] = { name = 'Trouble' },
+      ['<leader>g'] = { name = 'Git' },
+      ['<leader>q'] = { name = 'Quickfix' },
+    }
+    wk.register(mappings)
+    wk.setup(opts)
+  end,
+}
 
 specs.zen = {
   'folke/zen-mode.nvim',
+  event = 'VeryLazy',
   opts = {
     window = {
-      backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-      -- height and width can be:
-      -- * an absolute number of cells when > 1
-      -- * a percentage of the width / height of the editor when <= 1
-      -- * a function that returns the width or the height
-      width = 120, -- width of the Zen window
-      height = 1, -- height of the Zen window
-      -- by default, no options are changed for the Zen window
-      -- uncomment any of the options below, or add other vim.wo options you want to apply
-      options = {
-        -- signcolumn = "no", -- disable signcolumn
-        -- number = false, -- disable number column
-        -- relativenumber = false, -- disable relative numbers
-        -- cursorline = false, -- disable cursorline
-        -- cursorcolumn = false, -- disable cursor column
-        -- foldcolumn = "0", -- disable fold column
-        -- list = false, -- disable whitespace characters
-      },
+      backdrop = 1,
+      width = 120,
+      height = 1,
+      options = {},
     },
     plugins = {
-      -- disable some global vim options (vim.o...)
-      -- comment the lines to not apply the options
       options = {
         enabled = true,
-        ruler = false, -- disables the ruler text in the cmd line area
-        showcmd = false, -- disables the command in the last line of the screen
+        ruler = false,
+        showcmd = false,
       },
-      twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
-      gitsigns = { enabled = false }, -- disables git signs
-      tmux = { enabled = false }, -- disables the tmux statusline
-      -- this will change the font size on kitty when in zen mode
-      -- to make this work, you need to set the following kitty options:
-      -- - allow_remote_control socket-only
-      -- - listen_on unix:/tmp/kitty
-      kitty = {
-        enabled = false,
-        font = '+4', -- font size increment
-      },
-      -- this will change the font size on alacritty when in zen mode
-      -- requires  Alacritty Version 0.10.0 or higher
-      -- uses `alacritty msg` subcommand to change font size
-      alacritty = {
-        enabled = false,
-        font = '14', -- font size
-      },
-      -- this will change the font size on wezterm when in zen mode
-      -- See alse also the Plugins/Wezterm section in this projects README
-      wezterm = {
-        enabled = false,
-        -- can be either an absolute font size or the number of incremental steps
-        font = '+4', -- (10% increase per step)
-      },
+      gitsigns = { enabled = true }, -- hide gitsigns
+      tmux = { enabled = true }, -- hide tmux bar WARNING can hide bar until tmux restart
     },
-    -- callback where you can add custom code when the Zen window opens
-    on_open = function(win) end,
-    -- callback where you can add custom code when the Zen window closes
-    on_close = function() end,
   },
+}
+
+specs.fidget = {
+  'j-hui/fidget.nvim',
+  tag = 'legacy',
+  event = 'LspAttach',
+  opts = {},
 }
 
 return u.values(specs)

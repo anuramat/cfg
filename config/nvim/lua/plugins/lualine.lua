@@ -94,15 +94,6 @@ specs.lualine = {
           { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' } },
         },
         lualine_x = {
-          {
-            'lsp_progress',
-            -- With spinner
-            display_components = { 'lsp_client_name', 'spinner' },
-            timer = { spinner = 100 }, -- limited by statusline refresh rate
-            spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-          },
-        },
-        lualine_y = {
           { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
           {
             function()
@@ -113,6 +104,7 @@ specs.lualine = {
             end,
           },
         },
+        lualine_y = { 'encoding', 'fileformat', 'filetype' },
         lualine_z = {
           {
             'tabs',

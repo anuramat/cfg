@@ -27,7 +27,7 @@ export EDITOR="$VISUAL"
 
 # Go modules and binaries
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin${PATH:+:$PATH}"
+export PATH="${PATH:+$PATH:}$GOPATH/bin"
 
 # __pycache__ folder
 export PYTHONPYCACHEPREFIX="/tmp/pycache"

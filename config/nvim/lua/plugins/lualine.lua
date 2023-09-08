@@ -5,7 +5,6 @@ specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   dependencies = {
-    'arkav/lualine-lsp-progress',
     'Mofiqul/dracula.nvim',
     'ThePrimeagen/harpoon',
   },
@@ -29,6 +28,7 @@ specs.lualine = {
         lualine_a = {
           {
             'buffers',
+            max_length = vim.o.columns * 4 / 5,
             mode = 4,
             hide_filename_extension = false,
             show_filename_only = false,
@@ -91,7 +91,8 @@ specs.lualine = {
           },
         },
         lualine_c = {
-          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' } },
+          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' }, separator = '' },
+          { 'filetype' },
         },
         lualine_x = {
           { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
@@ -104,7 +105,7 @@ specs.lualine = {
             end,
           },
         },
-        lualine_y = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = {},
         lualine_z = {
           {
             'tabs',

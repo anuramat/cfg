@@ -17,37 +17,14 @@ end
 
 specs.harpoon = {
   'ThePrimeagen/harpoon',
-  event = 'VeryLazy', -- load early cause tabline
+  event = 'VeryLazy', -- Load early beacuse of the tabline
   -- TODO add terminal keys
+  -- stylua: ignore
   keys = u.prefix('<leader>h', {
-    {
-      'a',
-      function()
-        require('harpoon.mark').add_file()
-      end,
-      desc = 'Harpoon this file',
-    },
-    {
-      'l',
-      function()
-        require('harpoon.ui').toggle_quick_menu()
-      end,
-      desc = 'List Harpoons',
-    },
-    {
-      'p',
-      function()
-        require('harpoon.ui').nav_prev()
-      end,
-      desc = 'Prev Harpoon',
-    },
-    {
-      'n',
-      function()
-        require('harpoon.ui').nav_next()
-      end,
-      desc = 'Next Harpoon',
-    },
+    { 'a', function() require('harpoon.mark').add_file() end, desc = 'Harpoon this file' },
+    { 'l', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'List Harpoons' },
+    { 'p', function() require('harpoon.ui').nav_prev() end, desc = 'Prev Harpoon' },
+    { 'n', function() require('harpoon.ui').nav_next() end, desc = 'Next Harpoon' },
     unpack(get_num_mappings()),
   }),
   dependencies = {

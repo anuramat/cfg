@@ -53,7 +53,7 @@ specs.marks = {
 specs.cursorword = {
   'echasnovski/mini.cursorword',
   version = false,
-  event = 'VeryLazy', -- TODO lazier?
+  event = 'VeryLazy',
   opts = { delay = 50 },
 }
 

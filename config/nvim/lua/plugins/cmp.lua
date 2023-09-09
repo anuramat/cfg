@@ -49,10 +49,6 @@ specs.cmp = {
         { { name = 'buffer' } }
       ),
       window = { documentation = cmp.config.window.bordered() },
-      sorting = {
-        -- TEST ME
-        -- require("clangd_extensions.cmp_scores"),
-      },
     })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline setup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     -- ~~~~~~~~~~~~~~~~~~~~~~ keys ~~~~~~~~~~~~~~~~~~~~~~ --

@@ -1,4 +1,4 @@
--- Personal advanced mappings
+local u = require('utils')
 
 --- Creates comment header I guess
 --- @param chr string Character that fills the header

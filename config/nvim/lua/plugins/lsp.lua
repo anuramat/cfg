@@ -1,6 +1,6 @@
 local specs = {}
-local fmt = require('fmt')
 local k = require('plugkeys')
+local lsp_utils = require('lsp_utils')
 local u = require('utils')
 
 -- These servers will be ignored when trying to format
@@ -98,8 +98,8 @@ specs.lspconfig = {
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
         cfg.on_attach = function(client, buffer)
-          k.lsp(buffer)
-          fmt.setup_lsp_af(client, buffer)
+          lsp_utils.lsp_keys(buffer)
+          lsp_utils.setup_lsp_af(client, buffer)
         end
       end
       lspconfig[name].setup(cfg)
@@ -123,8 +123,8 @@ specs.null = {
         nld.protolint,
       },
       on_attach = function(client, buffer)
-        k.lsp(buffer)
-        fmt.setup_lsp_af(client, buffer)
+        lsp_utils.lsp_keys(buffer)
+        lsp_utils.setup_lsp_af(client, buffer)
       end,
     })
   end,

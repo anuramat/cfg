@@ -1,6 +1,5 @@
 local specs = {}
-local fu = require('fmt')
-local k = require('plugkeys')
+local lsp_utils = require('lsp_utils')
 local u = require('utils')
 
 local s = vim.keymap.set
@@ -25,7 +24,7 @@ specs.haskell = {
       hls = {
         capabilities = capabilities,
         on_attach = function(client, buffer, ht)
-          fu.setup_lsp_af(client, buffer)
+          lsp_utils.setup_lsp_af(client, buffer)
 
           s('n', '<leader>sb', repl_toggler(ht, buffer), { buffer = buffer, desc = 'Toggle Buffer REPL' })
           s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buffer, desc = 'Evaluate All' })
@@ -33,7 +32,7 @@ specs.haskell = {
           s('n', '<leader>sp', ht.repl.toggle, { buffer = buffer, desc = 'Toggle Package REPL' })
           s('n', '<leader>sq', ht.repl.quit, { buffer = buffer, desc = 'Quit REPL' })
 
-          k.lsp(buffer)
+          lsp_utils.lsp_keys(buffer)
 
           ht.dap.discover_configurations(buffer)
         end,

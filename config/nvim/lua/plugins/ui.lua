@@ -100,6 +100,7 @@ specs.which = {
         d = 'DAP',
         t = 'Trouble',
         g = 'Git',
+        s = 'Language specific hotkeys',
       },
     }
     wk.register(mappings)

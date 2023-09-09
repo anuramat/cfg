@@ -1,5 +1,4 @@
 local specs = {}
-local k = require('plugkeys')
 local lsp_utils = require('lsp_utils')
 local u = require('utils')
 
@@ -9,6 +8,7 @@ _G.fmt_ft_blacklist = {
   'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
 }
 
+--- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }
 local function root_dir_with_fallback(opts)
   local util = require('lspconfig.util')
@@ -19,22 +19,29 @@ local function root_dir_with_fallback(opts)
   end
 end
 
+--- Returns configs for specific lsps
+--- @return table configs
 local function cfgs()
   return {
     bashls = {},
     pyright = {},
     marksman = {},
-    -- clangd = {
-    --   on_attach = function(client, buffer)
-    --     k.lsp(buffer)
-    --     vim.api.nvim_buf_set_keymap( buffer, 'n', '<leader>sh', '<cmd>ClangdSwitchSourceHeader<cr>', { silent = true, desc = 'clangd: Switch between .c/.h' })
-    --     fmt.setup_lsp_af(client, buffer)
-    --     require('clangd_extensions.inlay_hints').setup_autocmd()
-    --     require('clangd_extensions.inlay_hints').set_inlay_hints()
-    --     -- TODO clangd ext keymaps (prob put in spec.config())
-    --     -- TODO ignore protobuf
-    --   end,
-    -- },
+    clangd = {
+      on_attach = function(client, buffer)
+        lsp_utils.lsp_keys(buffer)
+        vim.api.nvim_buf_set_keymap(
+          buffer,
+          'n',
+          '<leader>sh',
+          '<cmd>ClangdSwitchSourceHeader<cr>',
+          { silent = true, desc = 'clangd: Switch between .c/.h' }
+        )
+        lsp_utils.setup_lsp_af(client, buffer)
+        require('clangd_extensions.inlay_hints').setup_autocmd()
+        require('clangd_extensions.inlay_hints').set_inlay_hints()
+      end,
+      filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' }, -- 'proto' removed
+    },
 
     gopls = {
       settings = {
@@ -74,6 +81,9 @@ local function cfgs()
 end
 
 specs.neodev = { 'folke/neodev.nvim', opts = {} }
+
+-- TODO clangd ext keymaps
+specs.clangd_extensions = { 'p00f/clangd_extensions.nvim' }
 
 specs.lspconfig = {
   'neovim/nvim-lspconfig',

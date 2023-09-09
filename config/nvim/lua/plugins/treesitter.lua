@@ -1,5 +1,4 @@
 local specs = {}
-local k = require('plugkeys')
 local u = require('utils')
 
 local langs = {

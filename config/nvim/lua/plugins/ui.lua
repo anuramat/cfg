@@ -68,11 +68,10 @@ specs.which = {
     local wk = require('which-key')
     local opts = {
       operators = { -- XXX keep this up to date
-        gc = 'Comment',
-        ys = 'Surround',
-        ga = 'Align',
-        gA = 'Align',
-        gb = 'Block comment',
+        ['<leader>c'] = 'Comment',
+        ['<leader>s'] = 'Surround',
+        ['<leader>a'] = 'Align',
+        ['<leader>A'] = 'Align',
       },
       key_labels = {
         ['<leader>'] = 'LDR',

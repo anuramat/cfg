@@ -51,13 +51,20 @@ specs.treesj = {
 }
 
 specs.comment = {
-  -- TODO: move to space-comment?
   'numToStr/Comment.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
   config = function()
     --- @diagnostic disable-next-line: missing-fields
     require('Comment').setup({
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      toggler = {
+        line = '<leader>cc',
+        block = '<leader>bc',
+      },
+      opleader = {
+        line = '<leader>c',
+        block = '<leader>b',
+      },
     })
   end,
   keys = {

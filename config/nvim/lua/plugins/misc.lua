@@ -1,5 +1,4 @@
 local specs = {}
-local k = require('plugkeys')
 local u = require('utils')
 
 specs.undotree = {
@@ -27,10 +26,16 @@ specs.sleuth = {
 specs.align = {
   'echasnovski/mini.align',
   version = false,
-  opts = {},
+  lazy = false,
+  opts = {
+    mappings = {
+      start = '<leader>a',
+      start_with_preview = '<leader>A',
+    },
+  },
   keys = {
-    { mode = { 'x', 'n' }, 'ga' },
-    { mode = { 'x', 'n' }, 'gA' },
+    { mode = { 'x', 'n' }, '<leader>a' },
+    { mode = { 'x', 'n' }, '<leader>A' },
   },
 }
 

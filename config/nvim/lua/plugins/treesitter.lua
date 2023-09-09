@@ -50,7 +50,11 @@ specs.treesitter = {
       additional_vim_regex_highlighting = {},
     },
     textobjects = {
-      swap = u.merge({ enable = true }, k.treesitter.textobj_swap),
+      swap = {
+        enable = true,
+        swap_next = { ['<a-l>'] = '@parameter.inner' },
+        swap_previous = { ['<a-h>'] = '@parameter.inner' },
+      },
     },
     context_commentstring = {
       enable = true,

@@ -10,7 +10,13 @@ specs.undotree = {
     'UndotreeFocus',
     'UndotreeToggle',
   },
-  keys = k.undotree(),
+  keys = {
+    {
+      '<leader>u',
+      '<cmd>UndotreeToggle<cr>',
+      desc = 'Undotree',
+    },
+  },
 }
 
 specs.sleuth = {

@@ -4,14 +4,14 @@ local u = require('utils')
 specs.todo = {
   'folke/todo-comments.nvim',
   event = 'VeryLazy',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
   opts = {
     highlight = {
       keyword = 'bg',
       pattern = [[<(KEYWORDS)>]], -- vim regex
     },
     search = {
-      pattern = [[\b(KEYWORDS)rb]], -- ripgrep regex
+      pattern = [[\b(KEYWORDS)\b]], -- ripgrep regex
     },
   },
 }

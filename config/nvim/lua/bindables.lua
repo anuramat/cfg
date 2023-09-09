@@ -1,7 +1,7 @@
 local M = {}
 local u = require('utils')
 
---- Creates comment header I guess.
+--- Creates comment header I guess
 --- @param chr string Character that fills the header
 --- @param width_factor float|nil If present, width = textwidth * width_factor
 function M.create_comment_header(chr, width_factor, base_width)

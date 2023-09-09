@@ -26,8 +26,8 @@ let g:netrw_winsize=25
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 se noto
 se kmp=russian-jcukenwin imi=0
-" se spl=en
-se cot=menuone,noselect wop=fuzzy,pum
+" se spl=en,ru
+se cot=menu,menuone,noselect,preview wop=fuzzy,pum
 se nofen fdm=indent
 se ic scs
 se ut=100

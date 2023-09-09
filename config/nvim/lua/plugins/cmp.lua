@@ -125,13 +125,13 @@ specs.cmp = {
     -- BUG: for some reason mappings need to be wrapped in cmp.mapping explicitly for cmdline:
     -- [key] = cmp.mapping({ c = function })
     local cmdline_keys = {
-      ['<c-z>'] = cmp_force_next(true),
-      ['<tab>'] = cmp_force_next(true),
-      ['<s-tab>'] = cmp_force_prev(),
-      ['<c-e>'] = mapping.abort(),
-      ['<c-y>'] = mapping.confirm({ select = false }),
-      ['<c-n>'] = cmp_force_next(),
-      ['<c-p>'] = cmp_force_prev(),
+      ['<c-z>'] = { c = cmp_force_next(true) },
+      ['<tab>'] = { c = cmp_force_next(true) },
+      ['<s-tab>'] = { c = cmp_force_prev() },
+      ['<c-e>'] = { c = mapping.abort() },
+      ['<c-y>'] = { c = mapping.confirm({ select = false }) },
+      ['<c-n>'] = { c = cmp_force_next() },
+      ['<c-p>'] = { c = cmp_force_prev() },
     }
     local cmdline_interrupters = { '<c-f>', '<c-d>' }
     for _, hotkey in pairs(cmdline_interrupters) do -- this fixes BUG: cmp menu gets stuck on c_^f
@@ -151,11 +151,6 @@ specs.cmp = {
         { { name = 'path', option = { trailing_slash = true } } },
         { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
       ),
-    })
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-    cmp.setup.cmdline({ '/', '?' }, {
-      mapping = mapping.preset.cmdline(), -- TODO specify
-      sources = { { name = 'buffer' } },
     })
   end,
 }

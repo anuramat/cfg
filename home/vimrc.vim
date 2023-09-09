@@ -1,5 +1,5 @@
 "~~~~~~~~~~~~~~~~~~~ source nvim config ~~~~~~~~~~~~~~~~~~~"
-so $XDG_CONFIG_HOME/nvim/opts.vim
+so $XDG_CONFIG_HOME/nvim/base.vim
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 se is hls " search
 let &t_SI .= "\e[6 q" | let &t_EI .= "\e[2 q" " cursor shape

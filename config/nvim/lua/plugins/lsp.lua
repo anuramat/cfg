@@ -108,7 +108,6 @@ specs.lspconfig = {
 }
 
 specs.null = {
-  -- TODO add border around info hover window
   'jose-elias-alvarez/null-ls.nvim',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = 'nvim-lua/plenary.nvim',
@@ -126,6 +125,7 @@ specs.null = {
         lsp_utils.lsp_keys(buffer)
         lsp_utils.setup_lsp_af(client, buffer)
       end,
+      border = 'rounded',
     })
   end,
 }

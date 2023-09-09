@@ -81,6 +81,7 @@ function M.style_codelens()
 end
 
 --- Gets plugin paths
+--- @param config_prefix string
 function M.get_lib_path(config_prefix)
   local paths = vim.api.nvim_get_runtime_file('', true)
   local result = {}
@@ -92,5 +93,16 @@ function M.get_lib_path(config_prefix)
   return result
 end
 _G.asdf = M.get_lib_path
+
+--- Adds prefix to lazy.nvim keymap spec
+--- @param prefix string Prefix to add to mappings
+--- @param keys table Lazy.nvim keysmap spec without prefixes
+--- @return table keys Lazy.nvim keymap spec with prefixes
+function M.prefix(prefix, keys)
+  for k, _ in pairs(keys) do
+    keys[k][1] = prefix .. keys[k][1]
+  end
+  return keys
+end
 
 return M

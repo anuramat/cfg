@@ -41,7 +41,12 @@ specs.treesitter = {
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
-      keymaps = k.treesitter.inc_selection,
+      keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = false,
+        node_decremental = '<bs>',
+      },
       additional_vim_regex_highlighting = {},
     },
     textobjects = {

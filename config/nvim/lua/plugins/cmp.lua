@@ -16,9 +16,28 @@ specs.cmp = {
   },
   config = function()
     local cmp = require('cmp')
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insert mode setup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~ keys ~~~~~~~~~~~~~~~~~~~~~~ --
+    local luasnip = require('luasnip')
+    local insert_keys = {
+      ['<tab>'] = cmp.mapping(function(fallback)
+        if luasnip.locally_jumpable(1) then
+          luasnip.jump(1)
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+      ['<s-tab>'] = cmp.mapping(function(fallback)
+        if luasnip.locally_jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { 'i', 's' }),
+    }
+    -- ~~~~~~~~~~~~~~~~~~~~~ setup ~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup({
-      mapping = cmp.mapping.preset.insert(k.cmp.main()),
+      mapping = cmp.mapping.preset.insert(insert_keys),
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
@@ -35,15 +54,34 @@ specs.cmp = {
         -- require("clangd_extensions.cmp_scores"),
       },
     })
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ cmdline setup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~ keys ~~~~~~~~~~~~~~~~~~~~~~ --
+    -- BUG: for some reason mappings need to be wrapped in cmp.mapping explicitly for cmdline:
+    -- [key] = cmp.mapping({ c = function })
+    local cmdline_interrupters = { '<c-f>', '<c-d>' }
+    local cmdline_keys = {
+      ['<c-n>'] = cmp.mapping({ c = cmp.config.disable }),
+      ['<c-p>'] = cmp.mapping({ c = cmp.config.disable }),
+    }
+    for _, hotkey in pairs(cmdline_interrupters) do -- this fixes BUG: cmp menu gets stuck on c_^f
+      cmdline_keys[hotkey] = cmp.mapping({
+        c = function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          end
+          fallback()
+        end,
+      })
+    end
+    -- ~~~~~~~~~~~~~~~~~~~~~ setup ~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(k.cmp.cmdline()),
+      mapping = cmp.mapping.preset.cmdline(cmdline_keys),
       sources = cmp.config.sources(
         { { name = 'path', option = { trailing_slash = true } } },
         { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
       ),
     })
-    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline({ '/', '?' }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = { { name = 'buffer' } },

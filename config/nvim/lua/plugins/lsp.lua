@@ -27,7 +27,7 @@ local function cfgs()
     -- clangd = {
     --   on_attach = function(client, buffer)
     --     k.lsp(buffer)
-    --     k.clangd(buffer)
+    --     vim.api.nvim_buf_set_keymap( buffer, 'n', '<leader>sh', '<cmd>ClangdSwitchSourceHeader<cr>', { silent = true, desc = 'clangd: Switch between .c/.h' })
     --     fmt.setup_lsp_af(client, buffer)
     --     require('clangd_extensions.inlay_hints').setup_autocmd()
     --     require('clangd_extensions.inlay_hints').set_inlay_hints()

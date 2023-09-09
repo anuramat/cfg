@@ -1,6 +1,11 @@
+"~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
-nnoremap <Space><Space> <NOP>
+nnoremap <Leader><Leader> <NOP>
 tnoremap <esc> <c-\><c-n>
+xnoremap <leader>p "_dP
+"~~~~~~~~~~~~~~~~~~~~~~~~~~ cmds ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+com! KillAll :silent %bd|e#|bd#
+" typos
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
 se sr sw=0 et ts=2 " indentation (2 spaces)
 se tw=80 fo=qwj " foramtting; add 'ro/' to prepend command leader on <cr>
@@ -19,15 +24,6 @@ se nf=bin,hex,unsigned " ^a/^x number formats
 let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh', 'json5=json']
 " se spl=en,ru " spelling languages (russian will trigger download)
 " se pa+=** " recurse in path
-"~~~~~~~~~~~~~~~~~~~~~~~~~~ cmds ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-com! KillAll :silent %bd|e#|bd#
-" typos
-com! -bang Q q<bang>
-com! -bang W w<bang>
-com! -bang WQ wq<bang>
-com! -bang Wq wq<bang>
-com! -bang QA qa<bang>
-com! -bang Qa qa<bang>
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
 se nowrap
 se dy=lastline,uhex " XXX idk
@@ -43,19 +39,27 @@ se nosmd " turn off mode indicator in cmdline TODO add mode indicator to fallbac
 se scl=yes " gutter
 se tgc " 24-bit color
 " hi Normal guibg=NONE " transparent bg (guibg has nothing to do with gui)
-try
-  colo sorbet
-catch
-  colo elflord
-endtry
+if !exists("g:colors_name") " so that we can re-source without changing colorscheme
+  try
+    colo sorbet
+  catch
+    colo elflord
+  endtry
+endif
 " pseudo-transparency, looks ugly with transparent bg
-try
+if has('nvim')
   se winbl=0 " floating window transparency
   se pb=30 " popup transparency
-catch
-endtry
+endif
 se ph=20 " popup max height
 " hi Normal guibg=NONE " transparent bg (guibg has nothing to do with gui)
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 let g:netrw_winsize=25
+"~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+com! -bang Q q<bang>
+com! -bang W w<bang>
+com! -bang WQ wq<bang>
+com! -bang Wq wq<bang>
+com! -bang QA qa<bang>
+com! -bang Qa qa<bang>

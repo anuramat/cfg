@@ -124,6 +124,7 @@ in
     defaultEditor = true;
   };
 
+nixpkgs.config.allowUnfree = true;
 
   services.pipewire = {
     enable = true;

@@ -21,5 +21,5 @@ for __folder in config/*; do
 done
 
 touch "$HOME/.hushlogin"
-mkdir "$HOME/bin"
-mkdir "$HOME/Screenshots"
+ensure_path "$HOME/bin"
+ensure_path "$HOME/Screenshots"

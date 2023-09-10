@@ -3,7 +3,7 @@
 # Don't let python venvs change the PS1
 export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
-# Colorizes a string (if possible)
+# Converts RGB values to 24-bit color escape code
 __colorize() {
 	# $1, $2, $3 - RGB
 	# $4 - text
@@ -25,8 +25,8 @@ __git_prompt() {
 
 		# Repository name
 		local -r url="$(git config --get remote.origin.url)"
-		local -r __path="$(dirname "$git_dir")"
-		local -r repo_name="$(basename -s .git "${url:-$__path}")"
+		local -r path="$(dirname "$git_dir")"
+		local -r repo_name="$(basename -s .git "${url:-$path}")"
 		printf "$repo_name"
 
 		# Branch
@@ -34,12 +34,9 @@ __git_prompt() {
 		[ -z "$branch" ] && branch="$(git -C "$root_dir" rev-parse --short HEAD)"
 		printf ":$branch"
 
-		# # Status
-		# TODO make this faster
-		# local git_status="$(git -C "$root_dir" status --porcelain | while read -r line; do
-		# 	echo "$line" | awk '{print $1}'
-		# done | tr -d '\n' | sed 's/./&\n/g' | sort | uniq | tr -d '\n')"
-		# [ "$git_status" ] && printf ":$git_status"
+		# Status
+		local -r porcelain="$(git -C "$root_dir" status --porcelain)"
+		[ "$git_status" ] && printf ":$git_status"
 
 		# TODO Unpushed commits
 	fi
@@ -55,32 +52,27 @@ __bold="\033[1m"
 __norm="\033[0m"
 
 # Draws the prompt
-__prompt() {
-	# Capture previous return code
-	local -r __status=$?
+__python() {
+	local -r sep=" "
+	local need_sep
 
-	# Block divider
-	echo
+	printf " "
 
-	# CWD
-	printf " $__bold$__purple%s$__norm" "${PWD/#$HOME/"~"}"
-	# TODO use sed to make it POSIX?
+	# conda
+	[ "$CONDA_DEFAULT_ENV" ] && printf "${__green}conda:%s$__norm" "$CONDA_DEFAULT_ENV" && need_sep="true"
 
-	# Git
-	printf "$__pink "
-	__git_prompt
-	printf "$__norm"
+	[ "$need_sep" = "true" ] && printf "$sep"
 
-	# Conda
-	[ "$CONDA_DEFAULT_ENV" ] && printf " $__greenconda:%s$__norm" "$CONDA_DEFAULT_ENV"
-	# Python venv
-	# TODO make it "$parentdirname/$venvdirname"
-	[ "$VIRTUAL_ENV" ] && printf " $__greenvenv:%s$__norm" "$(basename "$(dirname "$VIRTUAL_ENV")")"
-
-	# Return code
-	[ "$__status" -ne 0 ] && printf " $__bold$__red%s$__norm" "$__status"
-
-	printf "\n "
+	# venv
+	[ "$VIRTUAL_ENV" ] && printf "${__green}venv:%s$__norm" "$VIRTUAL_ENV" && need_sep="true"
 }
-PS1='$(__prompt)'
+
+__status() {
+	[ "$__status" -ne 0 ] && printf "$__bold$__red%s$__norm" "$__status"
+}
+
+__path="$__bold$__purple\w$__norm"
+
+PROMPT_COMMAND='__status=$?' # Capture last return code
+PS1="\n $__path\$(__git_prompt) \$(__status)\n "
 PS2='│'

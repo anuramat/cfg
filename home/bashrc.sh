@@ -3,9 +3,8 @@
 bind 'set bell-style none' # Disable annoying sound
 shopt -s globstar          # Enables ** for recursing into subdirectories
 
-. "$HOME/.profile"                 # basic env vars
-. "$XDG_CONFIG_HOME/bash/utils.sh" # helper functions
-. "$XDG_CONFIG_HOME/bash/opts.sh"  # options for external tools
+. "$HOME/.profile"                # basic env vars
+. "$XDG_CONFIG_HOME/bash/opts.sh" # options for external tools
 . "$XDG_CONFIG_HOME/bash/aliases.sh"
 . "$XDG_CONFIG_HOME/bash/prompt.sh"
 [ -r "$XDG_CONFIG_HOME/bash/private.sh" ] && . "$XDG_CONFIG_HOME/bash/private.sh"

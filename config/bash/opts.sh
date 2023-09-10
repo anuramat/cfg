@@ -1,48 +1,16 @@
 #!/usr/bin/env bash
-
-# Exa  colors
-export EXA_COLORS="\
-uu=36:\
-gu=37:\
-sn=32:\
-sb=32:\
-da=34:\
-ur=34:\
-uw=35:\
-ux=36:\
-ue=36:\
-gr=34:\
-gw=35:\
-gx=36:\
-tr=34:\
-tw=35:\
-tx=36\
+# ~~~~~~~~~~~~~~~~~~~~~~~~~ fzf ~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+export FZF_DEFAULT_OPTS="\
+--bind 'ctrl-/:change-preview-window(down|hidden|)' \
+--preview '$XDG_CONFIG_HOME/bash/fzf_previewer.sh {}'
 "
 
-# Integrate bat
-# TODO add fallback
-# TODO ls on folders instead of bat
-if command -v "bat" >/dev/null 2>&1; then
-	export FZF_CTRL_T_OPTS="${FZF_CTRL_T_OPTS:+$FZF_CTRL_T_OPTS} \
---preview 'bat -n --color=always {}' \
---bind 'ctrl-/:change-preview-window(down|hidden|)'
-"
+if command -v "fd" >/dev/null 2>&1; then
+	export FZF_DEFAULT_COMMAND="fd ."
+	export FZF_ALT_C_COMMAND="fd -t d ."
 fi
-
-# Use fd by default
-export FZF_DEFAULT_COMMAND="fd ."
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d ."
-
-# Preview directories in fzf using tree/exa
-# TODO append instead of overwriting
-if command -v "exa" >/dev/null 2>&1; then
-	export FZF_ALT_C_OPTS="--preview 'exa --tree --icons {}'"
-elif command -v "tree" >/dev/null 2>&1; then
-	export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
-fi
-
-# Zoxide settings
+# ~~~~~~~~~~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
+# TODO prettify
 export _ZO_RESOLVE_SYMLINKS="1"
 __zo_fzf_preview='ls --color=always -Cp'
 if command -v "exa" >/dev/null 2>&1; then
@@ -63,6 +31,5 @@ export _ZO_FZF_OPTS="\
 --preview-window=down,30%,sharp \
 --preview='$__zo_fzf_preview {2..}' \
 "
-
-# Read ripgrep settings
+# ~~~~~~~~~~~~~~~~~~~~ read ripgreprc ~~~~~~~~~~~~~~~~~~~~ #
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"

@@ -3,6 +3,7 @@ let mapleader = " "
 nnoremap <Leader><Leader> <NOP>
 tnoremap <esc> <c-\><c-n>
 xnoremap <leader>p "_dP
+nnoremap <c-c> <silent><c-c>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ cmds ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 com! KillAll :silent %bd|e#|bd#
 " typos

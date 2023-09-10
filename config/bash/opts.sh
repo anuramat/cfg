@@ -3,7 +3,8 @@
 # replace find
 if command -v "fd" >/dev/null 2>&1; then
 	export FZF_DEFAULT_COMMAND="fd ."
-	export FZF_ALT_C_COMMAND="fd -t d ."
+	export FZF_ALT_C_COMMAND="fd . -t d --strip-cwd-prefix"
+	export FZF_CTRL_T_COMMAND="fd . -t f --strip-cwd-prefix"
 fi
 # default opts
 export FZF_DEFAULT_OPTS=" \
@@ -14,8 +15,17 @@ export FZF_DEFAULT_OPTS=" \
 --tabstop=2 \
 --height=50% \
 \
+\
 --bind='ctrl-/:change-preview-window(down|hidden|)' \
---bind='ctrl-j:jump-accept' \
+--bind='ctrl-j:accept' \
+--bind='ctrl-s:jump-accept' \
+\
+--bind='ctrl-y:preview-up' \
+--bind='ctrl-e:preview-down' \
+--bind='ctrl-u:preview-half-page-up' \
+--bind='ctrl-d:preview-half-page-down' \
+--bind='ctrl-b:preview-page-up' \
+--bind='ctrl-f:preview-page-down' \
 "
 # zoxide
 __zo_fzf_preview='ls --color=always -Cp'

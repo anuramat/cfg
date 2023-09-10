@@ -11,7 +11,7 @@ specs.flash = {
   },
   keys = {
     {
-      '<leader>j',
+      '<leader>s',
       mode = 'n',
       function()
         require('flash').jump()
@@ -19,7 +19,7 @@ specs.flash = {
       desc = 'Jump',
     },
     {
-      '<leader>j',
+      '<leader>s',
       mode = 'o',
       function()
         require('flash').treesitter()

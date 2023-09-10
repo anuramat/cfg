@@ -86,7 +86,7 @@ mode "resize" {
         bindsym $right resize grow width 10px
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        # bindsym Ctrl+[ mode "default"
+        bindsym Ctrl+bracketleft mode "default"
 }
 bindsym $mod+r mode "resize"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

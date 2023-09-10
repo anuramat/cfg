@@ -234,6 +234,7 @@ nixpkgs.config.allowUnfree = true;
     firefox
     # Misc
     i3status
+    wev
     # sway/wayland stuff, haven't checked if it is required yet TODO
     dbus-sway-environment
     configure-gtk

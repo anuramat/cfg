@@ -1,68 +1,48 @@
 #!/usr/bin/env bash
-
-# Exa  colors
-export EXA_COLORS="\
-uu=36:\
-gu=37:\
-sn=32:\
-sb=32:\
-da=34:\
-ur=34:\
-uw=35:\
-ux=36:\
-ue=36:\
-gr=34:\
-gw=35:\
-gx=36:\
-tr=34:\
-tw=35:\
-tx=36\
-"
-
-# Integrate bat
-# TODO add fallback
-# TODO ls on folders instead of bat
-if command -v "bat" >/dev/null 2>&1; then
-	export FZF_CTRL_T_OPTS="${FZF_CTRL_T_OPTS:+$FZF_CTRL_T_OPTS} \
---preview 'bat -n --color=always {}' \
---bind 'ctrl-/:change-preview-window(down|hidden|)'
-"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ fzf ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~ default command ~~~~~~~~~~~~~~~~~~~~ #
+if command -v "fd" >/dev/null 2>&1; then
+	export FZF_DEFAULT_COMMAND="fd ."
+	export FZF_ALT_C_COMMAND="fd . -t d --strip-cwd-prefix"
+	export FZF_CTRL_T_COMMAND="fd . -t f --strip-cwd-prefix"
 fi
+# ~~~~~~~~~~~~~~~~~~~~~ default opts ~~~~~~~~~~~~~~~~~~~~~ #
+export FZF_DEFAULT_OPTS="
+--preview='$XDG_CONFIG_HOME/bash/fzf_previewer.sh {}'
+--layout=reverse
+--keep-right
+--info=inline
+--tabstop=2
+--multi
+--height=50%
 
-# Use fd by default
-export FZF_DEFAULT_COMMAND="fd ."
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d ."
+--bind='ctrl-/:change-preview-window(down|hidden|)'
+--bind='ctrl-j:accept'
+--bind='tab:toggle+down'
+--bind='btab:toggle+up'
 
-# Preview directories in fzf using tree/exa
-# TODO append instead of overwriting
-if command -v "exa" >/dev/null 2>&1; then
-	export FZF_ALT_C_OPTS="--preview 'exa --tree --icons {}'"
-elif command -v "tree" >/dev/null 2>&1; then
-	export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
-fi
-
-# Zoxide settings
-export _ZO_RESOLVE_SYMLINKS="1"
+--bind='ctrl-y:preview-up'
+--bind='ctrl-e:preview-down'
+--bind='ctrl-u:preview-half-page-up'
+--bind='ctrl-d:preview-half-page-down'
+--bind='ctrl-b:preview-page-up'
+--bind='ctrl-f:preview-page-down'
+"
+# ~~~~~~~~~~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
 __zo_fzf_preview='ls --color=always -Cp'
 if command -v "exa" >/dev/null 2>&1; then
-	__zo_fzf_preview='exa --group-directories-first --icons'
+	__zo_fzf_preview='exa --group-directories-first --icons --grid'
 fi
-export _ZO_FZF_OPTS="\
---no-sort \
---bind=ctrl-z:jump,btab:up,tab:down \
---cycle \
---keep-right \
---border=sharp \
---height=45% \
---info=inline \
---layout=reverse \
---tabstop=1 \
---exit-0 \
---select-1 \
---preview-window=down,30%,sharp \
---preview='$__zo_fzf_preview {2..}' \
+export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS
+--no-sort
+--exit-0
+--select-1
+--preview='$__zo_fzf_preview {2..}'
 "
-
-# Read ripgrep settings
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# zoxide
+export _ZO_RESOLVE_SYMLINKS="1"
+# ripgrep
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
+# node.js
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"

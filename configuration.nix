@@ -33,14 +33,16 @@ let
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
     executable = true;
-    text = let
-      schema = pkgs.gsettings-desktop-schemas;
-      datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-    in ''
-      export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
-      gnome_schema=org.gnome.desktop.interface
-      gsettings set $gnome_schema gtk-theme 'Dracula'
-    '';
+    text =
+      let
+        schema = pkgs.gsettings-desktop-schemas;
+        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+      in
+      ''
+        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+        gnome_schema=org.gnome.desktop.interface
+        gsettings set $gnome_schema gtk-theme 'Dracula'
+      '';
   };
 in
 {
@@ -57,7 +59,7 @@ in
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -88,7 +90,7 @@ in
     HandleLidSwitch=docked
     # HandleLidSwitchExternalPower=
     # hibernate ignore poweroff suspend
-    '';
+  '';
 
   users.users.anuramat = {
     description = "Arsen Nuramatov";
@@ -102,58 +104,58 @@ in
       zoxide
       bats # bash testing
       nodePackages_latest.bash-language-server
-bear # compilation database generator for clangd
-black # py fmt
-broot # XXX file mgr
-xplr # XXX file mgr
-delve # go debugger
-difftastic
-duf
-du-dust
-ctop
-ffmpeg
-git-filter-repo
-gofumpt
-golangci-lint
-grpc
-gopls
-grpcui
-grpcurl
-htop
-httpie
-imagemagick
-kubectx
-kubectl
-nodejs_20
-lazydocker
-lazygit
-less
-llvm
-lua-language-server
-luajitPackages.luacheck
-luajitPackages.luarocks
-marksman
-ncdu
-netcat
-nmap
-nnn
-nvi
-parallel
-peco
-perl
-prettyping
-pyright
-ranger
-rename
-ruby
-shellcheck
-shfmt
-stylua
-tmux
-tree
-universal-ctags
-yamlfmt
-youtube-dl
+      bear # compilation database generator for clangd
+      black # py fmt
+      broot # XXX file mgr
+      xplr # XXX file mgr
+      delve # go debugger
+      difftastic
+      duf
+      du-dust
+      ctop
+      ffmpeg
+      git-filter-repo
+      gofumpt
+      golangci-lint
+      grpc
+      gopls
+      grpcui
+      grpcurl
+      htop
+      httpie
+      imagemagick
+      kubectx
+      kubectl
+      nodejs_20
+      lazydocker
+      lazygit
+      less
+      llvm
+      lua-language-server
+      luajitPackages.luacheck
+      luajitPackages.luarocks
+      marksman
+      ncdu
+      netcat
+      nmap
+      nnn
+      nvi
+      parallel
+      peco
+      perl
+      prettyping
+      pyright
+      ranger
+      rename
+      ruby
+      shellcheck
+      shfmt
+      stylua
+      tmux
+      tree
+      universal-ctags
+      yamlfmt
+      youtube-dl
 
 
       # GUI
@@ -163,8 +165,8 @@ youtube-dl
     ];
   };
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   fonts.fonts = with pkgs; [
     nerdfonts
   ];
@@ -174,7 +176,7 @@ youtube-dl
     defaultEditor = true;
   };
 
-nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   services.pipewire = {
     enable = true;
@@ -207,7 +209,7 @@ nixpkgs.config.allowUnfree = true;
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
   console.useXkbConfig = true;
-   environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     # Basics
     wget
     curl
@@ -220,6 +222,7 @@ nixpkgs.config.allowUnfree = true;
     gmp
     python3
     go
+    nixpkgs-fmt
     # CLI
     bash-completion
     nix-bash-completions
@@ -242,7 +245,7 @@ nixpkgs.config.allowUnfree = true;
     xdg-utils # for opening default programs when clicking links
     glib # gsettings
     dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme  # default gnome cursors
+    gnome3.adwaita-icon-theme # default gnome cursors
     swaylock
     swayidle
     grim # screenshot functionality
@@ -251,7 +254,7 @@ nixpkgs.config.allowUnfree = true;
     bemenu # wayland clone of dmenu
     mako # notification system developed by swaywm maintainer
     wdisplays # tool to configure displays
-   ];
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

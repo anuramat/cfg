@@ -98,14 +98,8 @@ in
       # CLI
       conda
       exercism
-      exa
-      bat
       ripgrep-all
-      fd
-      ripgrep
-      fzf
       zoxide
-      delta 
       # GUI
       kitty
       telegram-desktop
@@ -154,25 +148,37 @@ nixpkgs.config.allowUnfree = true;
   services.xserver = {
     layout = "us,ru";
     # xkbVariant = "workman,";
-    # xkbOptions = "grp:win_space_toggle";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
   console.useXkbConfig = true;
    environment.systemPackages = with pkgs; [
-    # CLI
-    croc
+    # Basics
     wget
+    curl
+    clang
+    bash
+    coreutils-full
     git
     gnumake
     gcc
     gmp
-    clang
-    i3status
     python3
     go
+    # CLI
+    bash-completion
+    nix-bash-completions
+    exa
+    croc
+    bat
+    fd
+    ripgrep
+    fzf
+    delta
     # GUI
     firefox
-    # sway/wayland stuff, haven't checked if it is required yet
+    # Misc
+    i3status
+    # sway/wayland stuff, haven't checked if it is required yet TODO
     dbus-sway-environment
     configure-gtk
     wayland

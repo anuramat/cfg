@@ -146,6 +146,7 @@ specs.cmp = {
     end
     -- ~~~~~~~~~~~~~~~~~~~~~ setup ~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup.cmdline(':', {
+      completion = { autocomplete = false },
       mapping = cmdline_keys,
       sources = cmp.config.sources(
         { { name = 'path', option = { trailing_slash = true } } },

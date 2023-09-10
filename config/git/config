@@ -34,7 +34,6 @@ br = branch
 sw = switch
 cm = commit
 ps = push
-sync = !git add --all && git commit -am sync && git push
 lg = log --oneline --graph --all --decorate
 df = diff
 ds = diff --staged

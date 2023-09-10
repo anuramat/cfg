@@ -1,21 +1,14 @@
 # anuramat/cfg
 
-- Brew packages and Go binaries
-- Configs/dotfiles
-- macOS system preferences
+Requirements:
+- NixOS v???
+- Internet connection
+- git
 
-```bash
-xcode-select --install
-cd && git clone https://github.com/anuramat/cfg && cd cfg
+## Installation
+```sh
 ./setup.sh
 ```
-
-## Manual setup
-- Install fzf binding scripts (`brew info fzf`)
-- Add `private` files if necessary (`fd -u private.example`)
-- Keybinds in "System Settings" 
-  (`Library/Preferences/com.apple.symbolichotkeys.plist`)
-- System Settings -> Lock Screen
 
 ## Structure
 - `./config/*` - symlinked to `$XDG_CONFIG_HOME`

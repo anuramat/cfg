@@ -14,6 +14,7 @@ export FZF_DEFAULT_OPTS="
 --info=inline
 --tabstop=2
 --multi
+--height=50%
 
 --bind='ctrl-/:change-preview-window(down|hidden|)'
 --bind='ctrl-j:accept'
@@ -28,7 +29,6 @@ export FZF_DEFAULT_OPTS="
 --bind='ctrl-b:preview-page-up'
 --bind='ctrl-f:preview-page-down'
 "
-# --height=50%
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 export _ZO_RESOLVE_SYMLINKS="1"
 # ~~~~~~~~~~~~~~~~~~~ fzf integration ~~~~~~~~~~~~~~~~~~~~ #

@@ -18,7 +18,6 @@ end
 specs.harpoon = {
   'ThePrimeagen/harpoon',
   event = 'VeryLazy', -- Load early beacuse of the tabline
-  -- TODO add terminal keys
   -- stylua: ignore
   keys = u.prefix('<leader>h', {
     { 'a', function() require('harpoon.mark').add_file() end, desc = 'Harpoon this file' },

@@ -84,14 +84,14 @@ __python() {
 	[ "$VIRTUAL_ENV" ] && printf "$sep${__green}venv:%s$__norm" "$VIRTUAL_ENV" && sep=' '
 }
 
-__status() {
-	printf "$__bold__red"
-	[ "$__status" -ne 0 ] && printf "$__status"
+__return_code() {
+	printf "$__bold$__red"
+	[ "$__last_return_code" -ne 0 ] && printf "$__last_return_code"
 	printf "$__norm"
 }
 
 __path="$__bold$__purple\w$__norm"
 
-PROMPT_COMMAND='__status=$?' # Capture last return code
-PS1="\n $__path \$(__git) \$(__python) \$(__status)\n "
+PROMPT_COMMAND='__last_return_code=$?' # Capture last return code
+PS1="\n $__path \$(__git) \$(__python) \$(__return_code)\n "
 PS2='│'

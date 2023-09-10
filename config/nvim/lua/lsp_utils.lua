@@ -9,7 +9,7 @@ local noformat_cmd = 'Noformat'
 --- Format while skipping languages from _G.fmt_blacklist
 --- Replaces opts.filter
 --- @param opts table | nil mirrors that of vim.lsp.buf.format
-function format(opts)
+local function format(opts)
   if opts == nil then
     opts = {}
   end

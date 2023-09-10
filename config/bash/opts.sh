@@ -18,7 +18,6 @@ export FZF_DEFAULT_OPTS="
 
 --bind='ctrl-/:change-preview-window(down|hidden|)'
 --bind='ctrl-j:accept'
---bind='ctrl-s:jump-accept'
 --bind='tab:toggle+down'
 --bind='btab:toggle+up'
 

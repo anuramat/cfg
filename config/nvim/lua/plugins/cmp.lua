@@ -37,34 +37,36 @@ local function wrap_snippet_jump(jump_size)
 end
 
 --- Select next entry, with fallback
---- @param complete true | nil Open completion menu instead of calling fallback
+--- @param opts? { force_complete: boolean }  Open completion menu instead of calling fallback
 --- @return function mapping
-local function cmp_force_next(complete)
+local function cmp_next(opts)
   local cmp = require('cmp')
   return function(fallback)
-    if cmp.visible() then
-      cmp.select_next_item()
-    elseif complete then
+    if not cmp.visible() then
+      if opts and not opts.force_complete then
+        fallback()
+        return
+      end
       cmp.complete()
-    else
-      fallback()
     end
+    cmp.select_next_item()
   end
 end
 
 --- Select previous entry, with fallback
---- @param complete true | nil Open completion menu instead of calling fallback
---- @return function
-local function cmp_force_prev(complete)
+--- @param opts? { force_complete: boolean }  Open completion menu instead of calling fallback
+--- @return function mapping
+local function cmp_prev(opts)
   local cmp = require('cmp')
   return function(fallback)
-    if cmp.visible() then
-      cmp.select_prev_item()
-    elseif complete then
+    if not cmp.visible() then
+      if opts and not opts.force_complete then
+        fallback()
+        return
+      end
       cmp.complete()
-    else
-      fallback()
     end
+    cmp.select_prev_item()
   end
 end
 
@@ -90,8 +92,8 @@ specs.cmp = {
       ['<c-e>'] = mapping.abort(),
       ['<tab>'] = wrap_snippet_jump(1),
       ['<s-tab>'] = wrap_snippet_jump(-1),
-      ['<c-n>'] = cmp_force_next(true),
-      ['<c-p>'] = cmp_force_prev(true),
+      ['<c-n>'] = cmp_next({ force_complete = true }),
+      ['<c-p>'] = cmp_prev({ force_complete = true }),
     }
     -- ~~~~~~~~~~~~~~~~~~~~~ setup ~~~~~~~~~~~~~~~~~~~~~~ --
     cmp.setup({
@@ -125,13 +127,13 @@ specs.cmp = {
     -- BUG: for some reason mappings need to be wrapped in cmp.mapping explicitly for cmdline:
     -- [key] = cmp.mapping({ c = function })
     local cmdline_keys = {
-      ['<c-z>'] = { c = cmp_force_next(true) },
-      ['<tab>'] = { c = cmp_force_next(true) },
-      ['<s-tab>'] = { c = cmp_force_prev() },
+      ['<c-z>'] = { c = cmp_next({ force_complete = true }) },
+      ['<tab>'] = { c = cmp_next({ force_complete = true }) },
+      ['<s-tab>'] = { c = cmp_prev() },
       ['<c-e>'] = { c = mapping.abort() },
       ['<c-y>'] = { c = mapping.confirm({ select = false }) },
-      ['<c-n>'] = { c = cmp_force_next() },
-      ['<c-p>'] = { c = cmp_force_prev() },
+      ['<c-n>'] = { c = cmp_next() },
+      ['<c-p>'] = { c = cmp_prev() },
     }
     local cmdline_interrupters = { '<c-f>', '<c-d>' }
     for _, hotkey in pairs(cmdline_interrupters) do -- this fixes BUG: cmp menu gets stuck on c_^f

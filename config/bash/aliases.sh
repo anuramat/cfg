@@ -22,6 +22,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+alias conda="micromamba"
+
 alias icat="kitty +kitten icat"
 
 alias nire="sudo nixos-rebuild switch"

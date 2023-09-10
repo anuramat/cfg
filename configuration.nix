@@ -96,10 +96,66 @@ in
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       # CLI
-      conda
+      micromamba
       exercism
       ripgrep-all
       zoxide
+      bats # bash testing
+      nodePackages_latest.bash-language-server
+bear # compilation database generator for clangd
+black # py fmt
+broot # XXX file mgr
+xplr # XXX file mgr
+delve # go debugger
+difftastic
+duf
+du-dust
+ctop
+ffmpeg
+git-filter-repo
+gofumpt
+golangci-lint
+grpc
+gopls
+grpcui
+grpcurl
+htop
+httpie
+imagemagick
+kubectx
+kubectl
+nodejs_20
+lazydocker
+lazygit
+less
+llvm
+lua-language-server
+luajitPackages.luacheck
+luajitPackages.luarocks
+marksman
+ncdu
+netcat
+nmap
+nnn
+nvi
+parallel
+peco
+perl
+prettyping
+pyright
+ranger
+rename
+ruby
+shellcheck
+shfmt
+stylua
+tmux
+tree
+universal-ctags
+yamlfmt
+youtube-dl
+
+
       # GUI
       kitty
       telegram-desktop

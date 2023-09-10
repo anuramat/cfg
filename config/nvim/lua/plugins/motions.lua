@@ -1,10 +1,7 @@
 local specs = {}
-local k = require('plugkeys')
 local u = require('utils')
 
 specs.flash = {
-  -- TODO move to space-s
-  -- make s=surround (?)
   'folke/flash.nvim',
   opts = {
     modes = {
@@ -12,12 +9,24 @@ specs.flash = {
       char = { enabled = false },
     },
   },
-  keys = k.flash(),
-}
-
-specs.readline = {
-  'linty-org/readline.nvim',
-  keys = k.readline(),
+  keys = {
+    {
+      '<leader>s',
+      mode = 'n',
+      function()
+        require('flash').jump()
+      end,
+      desc = 'Jump',
+    },
+    {
+      '<leader>s',
+      mode = 'o',
+      function()
+        require('flash').treesitter()
+      end,
+      desc = 'TS node',
+    },
+  },
 }
 
 return u.values(specs)

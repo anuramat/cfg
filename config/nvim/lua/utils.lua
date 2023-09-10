@@ -81,6 +81,7 @@ function M.style_codelens()
 end
 
 --- Gets plugin paths
+--- @param config_prefix string
 function M.get_lib_path(config_prefix)
   local paths = vim.api.nvim_get_runtime_file('', true)
   local result = {}
@@ -92,5 +93,32 @@ function M.get_lib_path(config_prefix)
   return result
 end
 _G.asdf = M.get_lib_path
+
+--- Adds prefix to lazy.nvim keymap spec
+--- @param prefix string Prefix to add to mappings
+--- @param keys table Lazy.nvim keysmap spec without prefixes
+--- @return table keys Lazy.nvim keymap spec with prefixes
+function M.prefix(prefix, keys)
+  for k, _ in pairs(keys) do
+    keys[k][1] = prefix .. keys[k][1]
+  end
+  return keys
+end
+
+--- Prints triggered events for debug purposes
+--- @param events table List of events to subscribe to
+function M.debug_events(events)
+  local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
+  local counter = 0
+  for _, e in pairs(events) do
+    vim.api.nvim_create_autocmd(e, {
+      group = g,
+      callback = function(opts)
+        vim.notify('Event ' .. tostring(counter) .. ' triggered: ' .. opts.event)
+        counter = counter + 1
+      end,
+    })
+  end
+end
 
 return M

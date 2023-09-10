@@ -11,7 +11,7 @@ specs.dracula_cs = {
     local opts = {
       italic_comment = true,
       lualine_bg_color = cs.bg,
-      transparent_bg = true, -- default false
+      transparent_bg = false,
     }
     dracula.setup(opts)
 
@@ -53,7 +53,7 @@ specs.marks = {
 specs.cursorword = {
   'echasnovski/mini.cursorword',
   version = false,
-  event = 'VeryLazy', -- TODO lazier?
+  event = 'VeryLazy',
   opts = { delay = 50 },
 }
 
@@ -66,21 +66,79 @@ specs.which = {
   end,
   config = function()
     local wk = require('which-key')
-    -- local opts = { operators = { gc = 'Comments', ys = 'Surround', ga = 'Align' } } -- TODO fix
+    local opts = {
+      operators = { -- XXX keep this up to date
+        ['<leader>c'] = 'Comment',
+        ['<leader>s'] = 'Surround',
+        ['<leader>a'] = 'Align',
+        ['<leader>A'] = 'Align',
+      },
+      key_labels = {
+        ['<leader>'] = 'LDR',
+        ['<space>'] = 'SPC',
+        ['<cr>'] = 'RET',
+        ['<tab>'] = 'TAB',
+        ['<esc>'] = 'ESC',
+        ['<bs>'] = 'BSP', -- BUG doesn't change "up"/"close" binding label
+      },
+      icons = {
+        breadcrumb = '', -- cmdline: shows active combo
+        separator = '', -- used between a key and its label
+        group = '+', -- symbol prepended to a group
+      },
+      triggers_nowait = {
+        'z=',
+      },
+    }
     local mappings = {
-      ['<leader>b'] = { name = 'Buffer' },
-      ['<leader>h'] = { name = 'Harpoon' },
-      ['<leader>f'] = { name = 'Telescope' },
-      ['<leader>l'] = { name = 'LSP' },
-      ['<leader>lw'] = { name = 'LSP Workspace' }, -- fix ("+prefix" shows instead of "+LSP Workspace")
-      ['<leader>d'] = { name = 'DAP' },
-      ['<leader>t'] = { name = 'Trouble' },
-      ['<leader>g'] = { name = 'Git' },
-      ['<leader>q'] = { name = 'Quickfix' },
+      mode = { 'n' },
+      ['<leader>'] = { -- XXX keep this up to date
+        b = 'Buffer',
+        h = 'Harpoon',
+        f = 'Telescope',
+        l = { name = 'LSP', w = 'Workspace' },
+        d = 'DAP',
+        t = 'Trouble',
+        g = 'Git',
+        s = 'Language specific hotkeys',
+      },
     }
     wk.register(mappings)
     wk.setup(opts)
   end,
+}
+
+specs.zen = {
+  'folke/zen-mode.nvim',
+  event = 'VeryLazy',
+  opts = {
+    window = {
+      backdrop = 1,
+      width = 1,
+      height = 1,
+      options = {},
+    },
+    plugins = {
+      options = {
+        enabled = true,
+        ruler = false,
+        showcmd = false,
+      },
+      gitsigns = { enabled = true }, -- hide gitsigns
+      tmux = { enabled = true }, -- hide tmux bar WARNING can hide bar until tmux restart
+      kitty = { -- TODO change increment
+        enabled = false,
+        font = '+4', -- font size increment
+      },
+    },
+  },
+}
+
+specs.fidget = {
+  'j-hui/fidget.nvim',
+  tag = 'legacy',
+  event = 'LspAttach',
+  opts = {},
 }
 
 return u.values(specs)

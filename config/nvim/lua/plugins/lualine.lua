@@ -5,7 +5,6 @@ specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   dependencies = {
-    'arkav/lualine-lsp-progress',
     'Mofiqul/dracula.nvim',
     'ThePrimeagen/harpoon',
   },
@@ -29,12 +28,13 @@ specs.lualine = {
         lualine_a = {
           {
             'buffers',
+            max_length = vim.o.columns * 4 / 5,
             mode = 4,
             hide_filename_extension = false,
             show_filename_only = false,
           },
         },
-        lualine_z = { { tabline, padding = 0 } }, -- luacheck: ignore tabline
+        lualine_z = { { _G.tabline, padding = 0 } },
       },
       sections = {
         lualine_a = {
@@ -91,18 +91,10 @@ specs.lualine = {
           },
         },
         lualine_c = {
-          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' } },
+          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' }, separator = '' },
+          { 'filetype' },
         },
         lualine_x = {
-          {
-            'lsp_progress',
-            -- With spinner
-            display_components = { 'lsp_client_name', 'spinner' },
-            timer = { spinner = 100 }, -- limited by statusline refresh rate
-            spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
-          },
-        },
-        lualine_y = {
           { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
           {
             function()
@@ -113,6 +105,7 @@ specs.lualine = {
             end,
           },
         },
+        lualine_y = {},
         lualine_z = {
           {
             'tabs',

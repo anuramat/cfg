@@ -1,5 +1,4 @@
 local specs = {}
-local k = require('plugkeys')
 local u = require('utils')
 
 local langs = {
@@ -41,11 +40,20 @@ specs.treesitter = {
     ensure_installed = langs,
     incremental_selection = {
       enable = true,
-      keymaps = k.treesitter.inc_selection,
+      keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = false,
+        node_decremental = '<bs>',
+      },
       additional_vim_regex_highlighting = {},
     },
     textobjects = {
-      swap = u.merge({ enable = true }, k.treesitter.textobj_swap),
+      swap = {
+        enable = true,
+        swap_next = { ['<a-l>'] = '@parameter.inner' },
+        swap_previous = { ['<a-h>'] = '@parameter.inner' },
+      },
     },
     context_commentstring = {
       enable = true,

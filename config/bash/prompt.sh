@@ -10,7 +10,7 @@ __colorcode_from_rgb() {
 }
 
 # Goes through "git status --porcelain=v1" output, searching for the letter
-__git_status_attr() { # TODO naming (prob everywhere in this file)
+__git_status_attr() {
 	# $1 - target letter
 	# $2 - output symbol (defautls to $1)
 	grep -q -e "^.$1" -e "^$1." && {

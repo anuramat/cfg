@@ -4,6 +4,8 @@ set -e
 . ./lib/utils.sh
 . ./home/profile.sh
 
+# TODO rewrite configuration.nix, rebuild
+
 echo "[cfg] installing configs"
 
 # Install $HOME dotfiles

@@ -10,36 +10,60 @@ __colorize() {
 	[ "$(tput colors)" -eq 256 ] && printf "\033[38;2;%s;%s;%sm" "$1" "$2" "$3"
 }
 
-__git_prompt() {
+# Goes through "git status --porcelain=v1" output, searching for the letter
+__grep_porce_letter() { # TODO naming (prob everywhere in this file)
+	# $1 - target letter
+	# $2 - output symbol (defautls to $1)
+	grep -q -e "^.$1" -e "^$1." && {
+		[ "$2" ] && printf "$2" && return
+		printf "$1"
+	}
+}
+
+__git_status() {
+	# $1 - root dir
+	local porcelain=$(git -C "$1" status --porcelain)
+	printf "$(echo "$porcelain" | __grep_porce_letter A)" # A: addition of a file
+	printf "$(echo "$porcelain" | __grep_porce_letter C)" # C: copy of a file into a new one
+	printf "$(echo "$porcelain" | __grep_porce_letter D)" # D: deletion of a file
+	printf "$(echo "$porcelain" | __grep_porce_letter M)" # M: modification of the contents or mode of a file
+	printf "$(echo "$porcelain" | __grep_porce_letter R)" # R: renaming of a file
+	printf "$(echo "$porcelain" | __grep_porce_letter T)" # T: change in the type of the file
+	printf "$(echo "$porcelain" | __grep_porce_letter U)" # U: file is unmerged (you must complete the merge before it can be committed)
+	printf "$(echo "$porcelain" | __grep_porce_letter X)" # X: "unknown" change type (most probably a bug, please report it)
+}
+
+__git() {
+	printf "$__pink"
 	local git_dir
 	if git_dir="$(git rev-parse --git-dir 2>/dev/null)"; then
 		git_dir="$(realpath "$git_dir")"
+		local -r root_dir="$(dirname "$git_dir")"
+		local -r sep=':'
 
-		# Bare repository
+		# Bare repository case
 		if [ "$(git rev-parse --is-bare-repository 2>/dev/null)" = "true" ]; then
 			printf "$(basename -s .git "$git_dir")"
 			return
 		fi
 
-		local -r root_dir="$(realpath "$git_dir"/..)"
-
 		# Repository name
 		local -r url="$(git config --get remote.origin.url)"
-		local -r path="$(dirname "$git_dir")"
-		local -r repo_name="$(basename -s .git "${url:-$path}")"
+		local -r repo_name="$(basename -s .git "${url:-$root_dir}")"
 		printf "$repo_name"
 
 		# Branch
 		local branch="$(git branch --show-current)"
 		[ -z "$branch" ] && branch="$(git -C "$root_dir" rev-parse --short HEAD)"
-		printf ":$branch"
+		printf "$sep$branch"
 
 		# Status
-		local -r porcelain="$(git -C "$root_dir" status --porcelain)"
-		[ "$git_status" ] && printf ":$git_status"
+		local -r git_status="$(__git_status "$root_dir")"
+		[ "$git_status" ] && printf "$sep$git_status"
 
 		# TODO Unpushed commits
 	fi
+	printf "$__norm"
 }
 
 # Set up colors
@@ -53,26 +77,21 @@ __norm="\033[0m"
 
 # Draws the prompt
 __python() {
-	local -r sep=" "
-	local need_sep
-
-	printf " "
-
+	local -r sep=''
 	# conda
-	[ "$CONDA_DEFAULT_ENV" ] && printf "${__green}conda:%s$__norm" "$CONDA_DEFAULT_ENV" && need_sep="true"
-
-	[ "$need_sep" = "true" ] && printf "$sep"
-
+	[ "$CONDA_DEFAULT_ENV" ] && printf "$sep${__green}conda:%s$__norm" "$CONDA_DEFAULT_ENV" && sep=' '
 	# venv
-	[ "$VIRTUAL_ENV" ] && printf "${__green}venv:%s$__norm" "$VIRTUAL_ENV" && need_sep="true"
+	[ "$VIRTUAL_ENV" ] && printf "$sep${__green}venv:%s$__norm" "$VIRTUAL_ENV" && sep=' '
 }
 
 __status() {
-	[ "$__status" -ne 0 ] && printf "$__bold$__red%s$__norm" "$__status"
+	printf "$__bold__red"
+	[ "$__status" -ne 0 ] && printf "$__status"
+	printf "$__norm"
 }
 
 __path="$__bold$__purple\w$__norm"
 
 PROMPT_COMMAND='__status=$?' # Capture last return code
-PS1="\n $__path\$(__git_prompt) \$(__status)\n "
+PS1="\n $__path \$(__git) \$(__python) \$(__status)\n "
 PS2='│'

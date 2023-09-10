@@ -13,7 +13,6 @@ ensure_path() {
 	echo "[cfg.write] created path \"$1\""
 }
 
-# TODO refactor (move to shell setup function)
 ensure_string() {
 	# $1 -- string
 	# $2 -- target file
@@ -86,7 +85,7 @@ set_shell() {
 		return 1
 	}
 	sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"$shell\" /etc/shells"
-	# TODO posix
+	# HACK this is ugly
 	chsh -s "$shell"
 }
 
@@ -114,16 +113,4 @@ try_overwrite() {
 remove_extension() {
 	# $1 -- original name/path
 	basename "$1" | perl -pe 's/^(.*)\..*$/\1/'
-}
-
-install_gobins() {
-	local -r gobins="$1"
-	[ -f "$gobins" ] || {
-		echo "[cfg.fail] \"$gobins\" does not exist" && return 1
-	}
-	while read -r package; do
-		[ "$package" ] || continue
-		echo "[cfg] installing \"$(echo "$package" | sed -e 's/.*\///g')\""
-		go install "$package"
-	done <"$gobins"
 }

@@ -156,8 +156,8 @@ in
       universal-ctags
       yamlfmt
       youtube-dl
-
-
+      nodePackages_latest.yaml-language-server
+    nixd
       # GUI
       kitty
       telegram-desktop

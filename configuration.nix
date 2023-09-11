@@ -5,6 +5,7 @@
 { config, pkgs, lib, ... }:
 
 let
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # bash script to let dbus know about important env variables and
   # propagate them to relevent services run at the end of sway config
   # see
@@ -44,6 +45,8 @@ let
         gsettings set $gnome_schema gtk-theme 'Dracula'
       '';
   };
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 in
 {
   imports =
@@ -157,7 +160,7 @@ in
       yamlfmt
       youtube-dl
       nodePackages_latest.yaml-language-server
-    nixd
+      # nixd # TODO, remember to remove the one from profile
       # GUI
       kitty
       telegram-desktop
@@ -176,7 +179,9 @@ in
     defaultEditor = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   services.pipewire = {
     enable = true;

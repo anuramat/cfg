@@ -86,13 +86,13 @@ in
   #services.tlp.enable = true;
 
   services.logind.extraConfig = ''
-    HandlePowerKey=suspend
+    HandlePowerKey=hibernate
+    HandlePowerKeyLongPress=ignore
     HandleSuspendKey=suspend
     HandleHibernateKey=suspend
     HandleLidSwitch=suspend
-    HandleLidSwitch=docked
-    # HandleLidSwitchExternalPower=
-    # hibernate ignore poweroff suspend
+    HandleLidSwitchDocked=ignore
+    HandleLidSwitchExternalPower=ignore
   '';
 
   users.users.anuramat = {

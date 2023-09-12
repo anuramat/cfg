@@ -29,8 +29,10 @@ specs.flash = {
   },
 }
 
-specs.unimpaired = {
-  'tummetott/unimpaired.nvim',
+specs.brackets = {
+  'echasnovski/mini.bracketed',
+  lazy = false,
   opts = {},
 }
+
 return u.values(specs)

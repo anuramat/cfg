@@ -26,7 +26,6 @@ specs.sleuth = {
 specs.align = {
   'echasnovski/mini.align',
   version = false,
-  lazy = false,
   opts = {
     mappings = {
       start = '<leader>a',
@@ -34,8 +33,8 @@ specs.align = {
     },
   },
   keys = {
-    { mode = { 'x', 'n' }, '<leader>a' },
-    { mode = { 'x', 'n' }, '<leader>A' },
+    { mode = { 'x', 'n' }, '<leader>a', desc = 'Align' },
+    { mode = { 'x', 'n' }, '<leader>A', desc = 'Interactive align' },
   },
 }
 
@@ -51,6 +50,13 @@ specs.trailspace = {
 
 specs.dadbod = {
   'tpope/vim-dadbod',
+  lazy = false,
+}
+
+specs.dadbod_ui = {
+  'kristijanhusak/vim-dadbod-ui',
+  dependencies = { 'tpope/vim-dadbod' },
+  lazy = false,
 }
 
 return u.values(specs)

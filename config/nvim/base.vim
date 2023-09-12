@@ -1,6 +1,5 @@
 "~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
-nnoremap <Leader><Leader> <NOP>
 tnoremap <esc> <c-\><c-n>
 xnoremap <leader>p "_dP
 nnoremap <c-c> <silent><c-c>

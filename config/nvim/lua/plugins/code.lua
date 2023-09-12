@@ -68,7 +68,7 @@ specs.comment = {
     })
   end,
   keys = {
-    { '<leader>c', mode = { 'n', 'x' } },
+    { '<leader>c', mode = { 'n', 'x' }, desc = 'Comment' },
   },
 }
 

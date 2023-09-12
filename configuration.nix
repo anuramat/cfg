@@ -240,6 +240,7 @@ in
     delta
     # GUI
     firefox
+    chromium
     # Misc
     i3status
     wev

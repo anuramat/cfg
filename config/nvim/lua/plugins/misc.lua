@@ -49,4 +49,8 @@ specs.trailspace = {
   end,
 }
 
+specs.dadbod = {
+  'tpope/vim-dadbod',
+}
+
 return u.values(specs)

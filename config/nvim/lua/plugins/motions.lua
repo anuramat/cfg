@@ -29,4 +29,8 @@ specs.flash = {
   },
 }
 
+specs.unimpaired = {
+  'tummetott/unimpaired.nvim',
+  opts = {},
+}
 return u.values(specs)

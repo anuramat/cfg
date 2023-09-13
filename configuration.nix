@@ -162,6 +162,7 @@ in
       yamlfmt
       youtube-dl
       nodePackages_latest.yaml-language-server
+      taskwarrior
       # nixd # TODO, remember to remove the one from profile
       # GUI
       gimp-with-plugins

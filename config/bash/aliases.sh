@@ -28,3 +28,5 @@ alias icat="kitty +kitten icat"
 
 alias nire="sudo nixos-rebuild switch"
 alias nied="sudo -e /etc/nixos/configuration.nix"
+
+alias open=xdg-open

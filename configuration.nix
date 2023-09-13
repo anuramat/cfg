@@ -280,16 +280,15 @@ in
     swaylock # lockscreen
     wdisplays # tool to configure displays
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    # waycopy
-    # unchecked TODO
+    bemenu # wayland clone of dmenu
     wayland
+    # unchecked TODO
     dbus-sway-environment
     configure-gtk
     glib # gsettings
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     swayidle
-    bemenu # wayland clone of dmenu
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

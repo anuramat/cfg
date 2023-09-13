@@ -282,10 +282,10 @@ in
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
     wayland
+    glib # gsettings (gtk etc)
     # unchecked TODO
     dbus-sway-environment
     configure-gtk
-    glib # gsettings
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
     swayidle

@@ -68,10 +68,6 @@ in
   time.timeZone = "Etc/GMT+6";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    keyMap = "us";
-    useXkbConfig = true;
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -84,8 +80,8 @@ in
   # I don't fucking know what this one does, but
   # wiki says this is required
   sound.enable = true;
-  # The most popular sound server
-  hardware.pulseaudio.enable = true;
+  # The most popular sound server, but i use pipewire
+  # hardware.pulseaudio.enable = true;
 
   # TODO uncomment
   #services.thermald.enable = true;
@@ -168,12 +164,34 @@ in
       nodePackages_latest.yaml-language-server
       # nixd # TODO, remember to remove the one from profile
       # GUI
+      gimp-with-plugins
       kitty
       telegram-desktop
+      discord
+      discordo
+      djview
+      djvulibre
+      apvlv
+      vlc
+      transmission
+      transmission-gtk
+      spotify
+      tor-browser-bundle-bin
+      slack
+      gnome.pomodoro
+      solanum # yet another pomodoro
+      aria
+      sageWithDoc
+      onionshare
+      onionshare-gui
+      obsidian
+      obs-studio
       # haskellPackages.ghcup # broken as of 2023-09-05
     ];
   };
-
+  virtualisation.docker = {
+    enable = true;
+  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   fonts.fonts = with pkgs; [
@@ -219,7 +237,7 @@ in
     # xkbVariant = "workman,";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
-  console.useXkbConfig = true;
+
   environment.systemPackages = with pkgs; [
     # Basics
     wget

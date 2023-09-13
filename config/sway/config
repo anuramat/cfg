@@ -4,13 +4,16 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term kitty
+set $term kitty -1
+# foot is faster tho
 set $screenshot_dir "$HOME/Screenshots"
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+font Hack Nerd Font 13
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu pkill -0 bemenu-run || bemenu-run --fn $uifont -b -p "BM: " --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Idle ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Example configuration:
+# Example configuration: TODO
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
@@ -25,9 +28,10 @@ input type:keyboard {
         repeat_rate 50
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+Return exec $term
+bindsym $mod+t exec $term
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+o exec swaylock
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
@@ -89,6 +93,9 @@ mode "resize" {
         bindsym Ctrl+bracketleft mode "default"
 }
 bindsym $mod+r mode "resize"
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+default_border none
+default_floating_border none
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bar {
     position top

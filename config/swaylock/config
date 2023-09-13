@@ -1,0 +1,6 @@
+indicator-caps-lock
+indicator-radius=100
+daemonize
+show-failed-attempts
+ignore-empty-password
+font=Hack Nerd Font

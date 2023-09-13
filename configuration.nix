@@ -96,7 +96,7 @@ in
     HandleLidSwitchDocked=ignore
     HandleLidSwitchExternalPower=ignore
   '';
-
+  programs.kdeconnect.enable = true;
   users.users.anuramat = {
     description = "Arsen Nuramatov";
     isNormalUser = true;
@@ -167,7 +167,10 @@ in
       # GUI
       gimp-with-plugins
       kitty
+      # alacritty
       telegram-desktop
+      syncthing
+
       discord
       discordo
       djview
@@ -269,22 +272,24 @@ in
     # Misc
     i3status
     wev
-    # sway/wayland stuff, haven't checked if it is required yet TODO
+    # desktop env
+    grim # screenshot
+    slurp # select area for screenshot
+    mako # notifications
+    xdg-utils # for opening default programs when clicking links
+    swaylock # lockscreen
+    wdisplays # tool to configure displays
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    # waycopy
+    # unchecked TODO
+    wayland
     dbus-sway-environment
     configure-gtk
-    wayland
-    xdg-utils # for opening default programs when clicking links
     glib # gsettings
     dracula-theme # gtk theme
     gnome3.adwaita-icon-theme # default gnome cursors
-    swaylock
     swayidle
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     bemenu # wayland clone of dmenu
-    mako # notification system developed by swaywm maintainer
-    wdisplays # tool to configure displays
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

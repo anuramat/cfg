@@ -44,22 +44,16 @@ specs.indentline = {
   },
 }
 
-specs.marks = {
-  'chentoast/marks.nvim',
-  event = 'VeryLazy',
-  opts = {},
-}
-
 specs.cursorword = {
   'echasnovski/mini.cursorword',
   version = false,
   event = 'VeryLazy',
-  opts = { delay = 50 },
+  opts = { delay = 0 },
 }
 
 specs.zen = {
   'folke/zen-mode.nvim',
-  event = 'VeryLazy',
+  cmd = 'ZenMode',
   opts = {
     window = {
       backdrop = 1,
@@ -128,29 +122,28 @@ specs.clue = {
         { mode = 'n', keys = '[' },
 
         -- Operators
-        { mode = 'n', keys = 'y' },
         { mode = 'n', keys = 'c' },
         { mode = 'n', keys = 'd' },
       },
 
       clues = {
-        -- Built in
+        -- ~~~~~~~~~~~~~~~~~~~~ Vim ~~~~~~~~~~~~~~~~~~~~~ --
         miniclue.gen_clues.builtin_completion(),
         miniclue.gen_clues.g(),
         miniclue.gen_clues.marks(),
         miniclue.gen_clues.registers(),
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
-
-        -- Custom
-        { mode = 'n', keys = '<Leader>c', desc = 'Comment' },
+        -- ~~~~~~~~~~~~~~~~~~~ Custom ~~~~~~~~~~~~~~~~~~~ --
         { mode = 'n', keys = '<Leader>d', desc = '+Debug' },
         { mode = 'v', keys = '<Leader>d', desc = '+Debug' },
+
         { mode = 'n', keys = '<Leader>f', desc = '+Telescope' },
         { mode = 'n', keys = '<Leader>g', desc = '+Git' },
         { mode = 'n', keys = '<Leader>h', desc = '+Harpoon' },
         { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
         { mode = 'n', keys = '<Leader>t', desc = '+Trouble' },
+        -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
       },
       window = {
         delay = 0,

@@ -59,4 +59,18 @@ specs.dadbod_ui = {
   lazy = false,
 }
 
+specs.marks = {
+  'chentoast/marks.nvim',
+  event = 'VeryLazy',
+  opts = {
+    default_mappings = false,
+    builtin_marks = {},
+  },
+  keys = {
+    { 'dm', '<Plug>(Marks-delete)', desc = 'Delete mark' },
+    { 'dm-', '<Plug>(Marks-deleteline)', desc = 'Delete all marks on the current line' },
+    { 'dm=', '<Plug>(Marks-deletebuf)', 'Delete all marks in the current buffer' },
+  },
+}
+
 return u.values(specs)

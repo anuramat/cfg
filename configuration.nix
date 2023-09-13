@@ -65,21 +65,27 @@ in
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Etc/GMT+6";
 
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
+  console = {
+    keyMap = "us";
+    useXkbConfig = true;
+  };
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
+  # some more boilerplate from wiki https://nixos.wiki/wiki/Printing
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  # for a WiFi printer
+  services.avahi.openFirewall = true;
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  # I don't fucking know what this one does, but
+  # wiki says this is required
+  sound.enable = true;
+  # The most popular sound server
+  hardware.pulseaudio.enable = true;
 
   # TODO uncomment
   #services.thermald.enable = true;

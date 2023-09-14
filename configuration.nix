@@ -114,7 +114,7 @@ in
       broot # XXX file mgr
       xplr # XXX file mgr
       delve # go debugger
-      difftastic
+      difftastic # syntax aware diffs
       duf
       du-dust
       ctop
@@ -163,7 +163,8 @@ in
       youtube-dl
       nodePackages_latest.yaml-language-server
       taskwarrior
-      # nixd # TODO, remember to remove the one from profile
+      ghq
+      nixd
       # GUI
       gimp-with-plugins
       kitty
@@ -250,29 +251,28 @@ in
     bash
     coreutils-full
     git
-    gnumake
+    # gnumake
     gcc
-    gmp
+    gmp # required to build somthing NOTE probably can be removed
     python3
     go
-    nixpkgs-fmt
+    nixpkgs-fmt # nix formatter
     # CLI
     bash-completion
     nix-bash-completions
-    exa
-    croc
-    bat
-    fd
+    exa # better ls
+    croc # send/receive files
+    bat # better cat with syntax hl
+    fd # find alternative
     ripgrep
     fzf
-    delta
+    delta # better diffs
     # GUI
     firefox
     chromium
-    # Misc
+    # Desktop environment
     i3status
-    wev
-    # desktop env
+    wev # wayland event viewer
     grim # screenshot
     slurp # select area for screenshot
     mako # notifications
@@ -286,8 +286,8 @@ in
     # unchecked TODO
     dbus-sway-environment
     configure-gtk
-    dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme # default gnome cursors
+    # dracula-theme # gtk theme
+    # gnome3.adwaita-icon-theme # default gnome cursors
     swayidle
   ];
 

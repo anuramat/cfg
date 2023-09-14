@@ -1,11 +1,12 @@
 local specs = {}
 local u = require('utils')
 
-local function current_buffer_fuzzy_find()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-    winblend = vim.o.winblend,
-    previewer = false,
-  }))
+local function picker(name)
+  return function()
+    require('telescope.builtin')[name](require('telescope.themes').get_ivy({
+      winblend = vim.o.winblend,
+    }))
+  end
 end
 
 specs.telescope = {
@@ -13,17 +14,17 @@ specs.telescope = {
   dependencies = { 'nvim-lua/plenary.nvim' },
   -- stylua: ignore
   keys = u.prefix('<leader>f', {
-    { '/', current_buffer_fuzzy_find,                                  desc = 'Fuzzy Search' },
-    { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols', },
-    { 'b', require('telescope.builtin').buffers,                       desc = 'Buffers' },
-    { 'd', '<cmd>Telescope harpoon marks<cr>',                         desc = 'Harpoons' },
-    { 'd', require('telescope.builtin').diagnostics,                   desc = 'Diagnostics' },
-    { 'g', require('telescope.builtin').live_grep,                     desc = 'Live Grep' },
-    { 'm', require('telescope.builtin').marks,                         desc = 'Marks' },
-    { 'o', require('telescope.builtin').find_files,                    desc = 'Files' },
-    { 'p', require('telescope.builtin').builtin,                       desc = 'Pickers' },
-    { 'r', require('telescope.builtin').lsp_references,                desc = 'References' },
-    { 's', require('telescope.builtin').lsp_document_symbols,          desc = 'Document Symbols' },
+    { '/', picker('current_buffer_fuzzy_find'),                                  desc = 'Fuzzy search' },
+    { 'S', picker('lsp_dynamic_workspace_symbols'), desc = 'Dynamic workspace symbols', },
+    { 'b', picker('buffers'),                       desc = 'Buffers' },
+    { 'd', picker('diagnostics'),                   desc = 'Diagnostics' },
+    { 'g', picker('live_grep'),                     desc = 'Live grep' },
+    { 'G', picker('grep_string'),                   desc = 'Grep word under cursor' },
+    { 'm', picker('marks'),                         desc = 'Marks' },
+    { 'o', picker('find_files'),                    desc = 'Files' },
+    { 'p', picker('builtin'),                       desc = 'Pickers' },
+    { 'r', picker('lsp_references'),                desc = 'References' },
+    { 's', picker('lsp_document_symbols'),          desc = 'Document symbols' },
   }),
   config = function()
     local telescope = require('telescope')
@@ -40,6 +41,7 @@ specs.telescope = {
           -- custom
           '--ignore',
         },
+        winblend = vim.o.winblend,
       },
       pickers = {
         keymaps = { show_plug = false },

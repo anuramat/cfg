@@ -65,7 +65,7 @@ in
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = "Etc/GMT+6";
+  time.timeZone = "Etc/GMT-6";
 
   i18n.defaultLocale = "en_US.UTF-8";
 

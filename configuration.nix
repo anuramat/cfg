@@ -80,8 +80,6 @@ in
   # I don't fucking know what this one does, but
   # wiki says this is required
   sound.enable = true;
-  # The most popular sound server, but i use pipewire
-  # hardware.pulseaudio.enable = true;
 
   # TODO uncomment
   #services.thermald.enable = true;
@@ -210,12 +208,14 @@ in
     allowUnfree = true;
   };
 
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
-
   # xdg-desktop-portal works by exposing a series of D-Bus interfaces
   # known as portals under a well-known name
   # (org.freedesktop.portal.Desktop) and object path
@@ -318,6 +318,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
-

@@ -269,6 +269,7 @@ in
     # GUI
     chromium
     firefox
+    okular # document viewer
     # Desktop environment
     i3status
     wev          # wayland event viewer

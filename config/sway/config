@@ -8,7 +8,6 @@ set $term kitty -1
 # foot is faster tho
 set $screenshot_dir "$HOME/Screenshots"
 font Hack Nerd Font 13
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu pkill bemenu-run || bemenu-run --fn $uifont -b -p "BM: " --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill

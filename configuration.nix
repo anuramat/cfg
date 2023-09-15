@@ -275,16 +275,16 @@ in
     slurp # select area for screenshot
     mako # notifications
     xdg-utils # for opening default programs when clicking links
-    swaylock # lockscreen
     wdisplays # tool to configure displays
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    bemenu # wayland clone of dmenu
     wayland
+    swayidle # idle events
+    swaylock # lockscreen
+    bemenu # wayland clone of dmenu
     glib # gsettings (gtk etc)
     # unchecked TODO
     dbus-sway-environment
     configure-gtk
-    swayidle
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

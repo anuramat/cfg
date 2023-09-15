@@ -134,7 +134,6 @@ in
       nodejs_20
       lazydocker
       lazygit
-      less
       llvm
       lua-language-server
       luajitPackages.luacheck
@@ -244,31 +243,31 @@ in
 
   environment.systemPackages = with pkgs; [
     # Basics
-    wget
-    curl
-    clang
     bash
+    clang
     coreutils-full
-    git
-    # gnumake
+    curl
     gcc
-    gmp # required to build somthing NOTE probably can be removed
-    python3
+    git
+    gnumake
     go
+    less
     nixpkgs-fmt # nix formatter
+    python3
+    wget
     # CLI
     bash-completion
-    nix-bash-completions
-    exa # better ls
-    croc # send/receive files
     bat # better cat with syntax hl
-    fd # find alternative
-    ripgrep
-    fzf
+    croc # send/receive files
     delta # better diffs
+    exa # better ls
+    fd # find alternative
+    fzf
+    nix-bash-completions
+    ripgrep
     # GUI
-    firefox
     chromium
+    firefox
     # Desktop environment
     i3status
     wev # wayland event viewer

@@ -284,8 +284,6 @@ in
     # unchecked TODO
     dbus-sway-environment
     configure-gtk
-    # dracula-theme # gtk theme
-    # gnome3.adwaita-icon-theme # default gnome cursors
     swayidle
   ];
 

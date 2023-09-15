@@ -65,7 +65,7 @@ in
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  time.timeZone = "Etc/GMT-6";
+  time.timeZone = "Etc/GMT-6"; # WARN inverted
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -164,7 +164,6 @@ in
       nodePackages_latest.yaml-language-server
       taskwarrior
       ghq
-      nixd
       # GUI
       gimp-with-plugins
       kitty

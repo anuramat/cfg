@@ -161,6 +161,7 @@ in
       nodePackages_latest.yaml-language-server
       taskwarrior
       ghq
+      gh
       # GUI
       gimp-with-plugins
       kitty
@@ -270,18 +271,19 @@ in
     firefox
     # Desktop environment
     i3status
-    wev # wayland event viewer
-    grim # screenshot
-    slurp # select area for screenshot
-    mako # notifications
-    xdg-utils # for opening default programs when clicking links
-    wdisplays # tool to configure displays
+    wev          # wayland event viewer
+    grim         # screenshot
+    slurp        # select area for screenshot
+    mako         # notifications
+    xdg-utils    # for opening default programs when clicking links
+    wdisplays    # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wayland
-    swayidle # idle events
-    swaylock # lockscreen
-    bemenu # wayland clone of dmenu
-    glib # gsettings (gtk etc)
+    swayidle     # idle events
+    swaylock     # lockscreen
+    bemenu       # wayland clone of dmenu
+    glib         # gsettings (gtk etc)
+    pavucontrol  # gui audio configuration
     # unchecked TODO
     dbus-sway-environment
     configure-gtk

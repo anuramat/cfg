@@ -101,6 +101,11 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ];
     packages = with pkgs; [
+      # file managers TODO choose one?
+      ranger
+      nnn
+      broot
+      xplr
       # CLI
       micromamba
       exercism
@@ -110,22 +115,20 @@ in
       nodePackages_latest.bash-language-server
       bear # compilation database generator for clangd
       black # py fmt
-      broot # XXX file mgr
-      xplr # XXX file mgr
       delve # go debugger
       difftastic # syntax aware diffs
-      duf
-      du-dust
+      duf # disk usage (better "df")
+      du-dust # file disk usage (better "du")
       ctop
       ffmpeg
-      git-filter-repo
-      gofumpt
-      golangci-lint
-      grpc
-      gopls
+      git-filter-repo # rewrite/analyze repository history
+      gofumpt # strict go formatter
+      golangci-lint # gigalinter for go
+      gopls # Go LSP
       grpcui
       grpcurl
-      htop
+      htop # better top
+      atop
       httpie
       imagemagick
       kubectx
@@ -141,29 +144,35 @@ in
       ncdu
       netcat
       nmap
-      nnn
+      glow
       nvi
       parallel
       peco
       perl
       prettyping
       pyright
-      ranger
       rename
       ruby
-      shellcheck
-      shfmt
-      stylua
+      shellcheck # *sh linter
+      shfmt # posix/bash/mksh formatter
+      stylua # Lua formatter
       tmux
-      tree
+      tree # not really needed, use "exa --tree" instead
       universal-ctags
       yamlfmt
       youtube-dl
       nodePackages_latest.yaml-language-server
-      taskwarrior
-      ghq
-      gh
+      taskwarrior # TODO todos
+      ghq # git repository manager
+      gh # GitHub CLI
+      lsix # ls for images (sixel)
+      pandoc # markup converter
+      nvtop # top for GPUs
+      sox # ffmpeg for audio
+      wtf # dashboard
+      libqalculate # qalc - advanced calculator
       # GUI
+      qalculate-gtk # gui for qalc
       gimp-with-plugins
       kitty
       # alacritty

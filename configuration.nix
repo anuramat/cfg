@@ -103,103 +103,103 @@ in
     packages = with pkgs; [
       # file managers TODO choose one?
       ranger
-      nnn
-      broot
-      xplr
-      # CLI
-      micromamba
-      exercism
-      ripgrep-all
-      zoxide
-      bats # bash testing
-      nodePackages_latest.bash-language-server
-      bear # compilation database generator for clangd
-      black # py fmt
-      delve # go debugger
-      difftastic # syntax aware diffs
-      duf # disk usage (better "df")
-      du-dust # file disk usage (better "du")
-      ctop
-      ffmpeg
-      git-filter-repo # rewrite/analyze repository history
-      gofumpt # strict go formatter
-      golangci-lint # gigalinter for go
-      gopls # Go LSP
-      grpcui
-      grpcurl
-      htop # better top
-      atop
-      httpie
-      imagemagick
-      kubectx
-      kubectl
-      nodejs_20
-      lazydocker
-      lazygit
-      llvm
-      lua-language-server
-      luajitPackages.luacheck
-      luajitPackages.luarocks
-      marksman
-      ncdu
-      netcat
-      nmap
-      glow
-      nvi
-      parallel
-      peco
-      perl
-      prettyping
-      pyright
-      rename
-      ruby
-      shellcheck # *sh linter
-      shfmt # posix/bash/mksh formatter
-      stylua # Lua formatter
-      tmux
-      tree # not really needed, use "exa --tree" instead
-      universal-ctags
-      yamlfmt
-      youtube-dl
-      nodePackages_latest.yaml-language-server
-      taskwarrior # TODO todos
-      ghq # git repository manager
-      gh # GitHub CLI
-      lsix # ls for images (sixel)
-      pandoc # markup converter
-      nvtop # top for GPUs
-      sox # ffmpeg for audio
-      wtf # dashboard
-      libqalculate # qalc - advanced calculator
-      # GUI
-      qalculate-gtk # gui for qalc
-      gimp-with-plugins
-      kitty
-      # alacritty
-      telegram-desktop
-      syncthing
+        nnn
+        broot
+        xplr
+# CLI
+        micromamba
+        exercism
+        ripgrep-all
+        zoxide
+        bats # bash testing
+        nodePackages_latest.bash-language-server
+        bear # compilation database generator for clangd
+        black # py fmt
+        delve # go debugger
+        difftastic # syntax aware diffs
+        duf # disk usage (better "df")
+        du-dust # directory disk usage (better du)
+        ncdu # directory sidk usage (better du)
+        ffmpeg
+        git-filter-repo # rewrite/analyze repository history
+        gofumpt # strict go formatter
+        golangci-lint # gigalinter for go
+        grpc
+        gopls # Go LSP
+        grpcui # postman for grpc
+        grpcurl # curl for grpc
+        htop # better top
+        atop # even better top
+        ctop # container top
+        httpie # better curl
+        imagemagick
+        kubectx
+        kubectl
+        nodejs_20
+        lazydocker
+        lazygit
+        llvm
+        lua-language-server
+        luajitPackages.luacheck
+        luajitPackages.luarocks
+        marksman
+        netcat
+        nmap
+        glow # markdown viewer
+        nvi # vi clone
+        parallel
+        peco # interactive filtering
+        perl
+        prettyping # better "ping"
+        pyright # Python LSP
+        ruby
+        shellcheck # *sh linter
+        shfmt # posix/bash/mksh formatter
+        stylua # Lua formatter
+        tmux
+        tree # not really needed, use "exa --tree" instead
+        universal-ctags
+        yamlfmt
+        youtube-dl
+        nodePackages_latest.yaml-language-server
+        taskwarrior # TODO todos
+        ghq # git repository manager
+        gh # GitHub CLI
+        lsix # ls for images (sixel)
+        pandoc # markup converter
+        nvtop # top for GPUs
+        sox # ffmpeg for audio
+        wtf # dashboard
+        libqalculate # qalc - advanced calculator
+# GUI
+        qalculate-gtk # gui for qalc
+        gimp-with-plugins
+        kitty
+# alacritty
+        telegram-desktop
+        syncthing
 
-      discord
-      discordo
-      djview
-      djvulibre
-      apvlv
-      vlc
-      transmission
-      transmission-gtk
-      spotify
-      tor-browser-bundle-bin
-      slack
-      gnome.pomodoro
-      solanum # yet another pomodoro
-      aria
-      sageWithDoc
-      onionshare
-      onionshare-gui
-      obsidian
-      obs-studio
-      # haskellPackages.ghcup # broken as of 2023-09-05
-    ];
+        discord
+        discordo
+        djview
+        djvulibre
+        apvlv
+        vlc
+        transmission
+        transmission-gtk
+        spotify
+        tor-browser-bundle-bin
+        slack
+        gnome.pomodoro
+        solanum # yet another pomodoro
+        aria
+        sageWithDoc
+        onionshare
+        onionshare-gui
+        obsidian
+        obs-studio
+# haskellPackages.ghcup # broken as of 2023-09-05
+        ];
   };
   virtualisation.docker = {
     enable = true;

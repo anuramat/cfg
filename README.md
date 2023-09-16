@@ -20,3 +20,5 @@ Requirements:
 - TODO figure out how to get unstable packages declaratively
 - TODO get dracula for fd/exa/kitty
 - exa -> eza when the package is available
+
+- nixd

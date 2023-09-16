@@ -45,6 +45,10 @@ let
         gsettings set $gnome_schema gtk-theme 'Dracula'
       '';
   };
+
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 in
@@ -101,112 +105,114 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ];
     packages = with pkgs; [
-        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CLI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        qrcp # send files to mobile over Wi-Fi using QR
-        exercism # CLI for exercism.org
-        ripgrep-all # grep over pdfs etc
-        zoxide # better cd
-        difftastic # syntax aware diffs
-        # ~~~~~~~~~~~~~~~~~~~~~~ File managers ~~~~~~~~~~~~~~~~~~~~~~~
-        # TODO choose one?
-        ranger
-        nnn
-        broot
-        xplr
-        # ~~~~~~~~~~~~~~~~~~~~~~~~ Languages ~~~~~~~~~~~~~~~~~~~~~~~~~
-        nodejs_20
-        ruby
-        perl
-        # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
-        micromamba # conda rewrite in C++
-        gopls # Go LSP
-        bats # Bash testing
-        nodePackages_latest.bash-language-server
-        yamlfmt # YAML formatter
-        bear # Compilation database generator for clangd
-        black # Python formatter
-        delve # Go debugger
-        gofumpt # strict go formatter
-        golangci-lint # gigalinter for go
-        pyright # Python LSP
-        shellcheck # *sh linter
-        shfmt # posix/bash/mksh formatter
-        stylua # Lua formatter
-        lua-language-server
-        luajitPackages.luacheck
-        luajitPackages.luarocks
-        marksman # markdown LSP
-        # ~~~~~~~~~~~~~~~~~~~~~~~~ Disk usage ~~~~~~~~~~~~~~~~~~~~~~~~
-        duf # disk usage (better "df")
-        du-dust # directory disk usage (better du)
-        ncdu # directory sidk usage (better du)
-        # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
-        ffmpeg # video
-        pandoc # markup (latex, markdown, etc)
-        sox # audio
-        imagemagickBig # images NOTE I don't know what "Big" means, might as well just use "imagemagick"
-        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        git-filter-repo # rewrite/analyze repository history
-        grpcui # postman for grpc
-        grpcurl # curl for grpc
-        htop # better top
-        atop # even better top
-        ctop # container top
-        httpie # better curl
-        kubectx
-        kubectl
-        lazydocker
-        lazygit
-        llvm
-        netcat
-        nmap
-        glow # markdown viewer
-        nvi # vi clone
-        parallel
-        peco # interactive filtering
-        prettyping # better "ping"
-        tmux
-        tree # not really needed, use "exa --tree" instead
-        universal-ctags
-        youtube-dl
-        nodePackages_latest.yaml-language-server
-        taskwarrior # TODO todos
-        ghq # git repository manager
-        gh # GitHub CLI
-        lsix # ls for images (sixel)
-        nvtop # top for GPUs
-        wtf # dashboard
-        libqalculate # qalc - advanced calculator
-        aria # downloader
-        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        qalculate-gtk # gui for qalc
-        gimp-with-plugins
-        kitty
-        alacritty
-        foot
-        telegram-desktop
-        element-desktop
-        syncthing
-        discord
-        discordo
-        djview
-        djvulibre
-        apvlv
-        vlc
-        transmission
-        transmission-gtk
-        spotify
-        tor-browser-bundle-bin
-        slack
-        gnome.pomodoro
-        solanum # yet another pomodoro
-        sageWithDoc
-        onionshare
-        onionshare-gui
-        obsidian
-        obs-studio
-# haskellPackages.ghcup # broken as of 2023-09-05
-        ];
+      unstable.eza
+      unstable.nixd
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CLI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      qrcp # send files to mobile over Wi-Fi using QR
+      exercism # CLI for exercism.org
+      ripgrep-all # grep over pdfs etc
+      zoxide # better cd
+      difftastic # syntax aware diffs
+      # ~~~~~~~~~~~~~~~~~~~~~~ File managers ~~~~~~~~~~~~~~~~~~~~~~~
+      # TODO choose one?
+      ranger
+      nnn
+      broot
+      xplr
+      # ~~~~~~~~~~~~~~~~~~~~~~~~ Languages ~~~~~~~~~~~~~~~~~~~~~~~~~
+      nodejs_20
+      ruby
+      perl
+      # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
+      micromamba # conda rewrite in C++
+      gopls # Go LSP
+      bats # Bash testing
+      nodePackages_latest.bash-language-server
+      yamlfmt # YAML formatter
+      bear # Compilation database generator for clangd
+      black # Python formatter
+      delve # Go debugger
+      gofumpt # strict go formatter
+      golangci-lint # gigalinter for go
+      pyright # Python LSP
+      shellcheck # *sh linter
+      shfmt # posix/bash/mksh formatter
+      stylua # Lua formatter
+      lua-language-server
+      luajitPackages.luacheck
+      luajitPackages.luarocks
+      marksman # markdown LSP
+      # ~~~~~~~~~~~~~~~~~~~~~~~~ Disk usage ~~~~~~~~~~~~~~~~~~~~~~~~
+      duf # disk usage (better "df")
+      du-dust # directory disk usage (better du)
+      ncdu # directory sidk usage (better du)
+      # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
+      ffmpeg # video
+      pandoc # markup (latex, markdown, etc)
+      sox # audio
+      imagemagickBig # images NOTE I don't know what "Big" means, might as well just use "imagemagick"
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      git-filter-repo # rewrite/analyze repository history
+      grpcui # postman for grpc
+      grpcurl # curl for grpc
+      htop # better top
+      atop # even better top
+      ctop # container top
+      httpie # better curl
+      kubectx
+      kubectl
+      lazydocker
+      lazygit
+      llvm
+      netcat
+      nmap
+      glow # markdown viewer
+      nvi # vi clone
+      parallel
+      peco # interactive filtering
+      prettyping # better "ping"
+      tmux
+      tree # not really needed, use "exa --tree" instead
+      universal-ctags
+      youtube-dl
+      nodePackages_latest.yaml-language-server
+      taskwarrior # TODO todos
+      ghq # git repository manager
+      gh # GitHub CLI
+      lsix # ls for images (sixel)
+      nvtop # top for GPUs
+      wtf # dashboard
+      libqalculate # qalc - advanced calculator
+      aria # downloader
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      qalculate-gtk # gui for qalc
+      gimp-with-plugins
+      kitty
+      alacritty
+      foot
+      telegram-desktop
+      element-desktop
+      syncthing
+      discord
+      discordo
+      djview
+      djvulibre
+      apvlv
+      vlc
+      transmission
+      transmission-gtk
+      spotify
+      tor-browser-bundle-bin
+      slack
+      gnome.pomodoro
+      solanum # yet another pomodoro
+      sageWithDoc
+      onionshare
+      onionshare-gui
+      obsidian
+      obs-studio
+      # haskellPackages.ghcup # broken as of 2023-09-05
+    ];
   };
   virtualisation.docker = {
     enable = true;
@@ -224,6 +230,12 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
+
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
   };
 
   security.rtkit.enable = true;
@@ -289,21 +301,21 @@ in
     firefox
     okular # document viewer
     # Desktop environment
-    i3status     # status line generator
-    wev          # wayland event viewer
-    grim         # screenshot
-    slurp        # select area for screenshot
-    mako         # notifications
-    xdg-utils    # for opening default programs when clicking links
-    wdisplays    # gui display configuration
+    i3status # status line generator
+    wev # wayland event viewer
+    grim # screenshot
+    slurp # select area for screenshot
+    mako # notifications
+    xdg-utils # for opening default programs when clicking links
+    wdisplays # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wayland
     waybar
-    swayidle     # idle events
-    swaylock     # lockscreen
-    bemenu       # wayland clone of dmenu
-    glib         # gsettings (gtk etc)
-    pavucontrol  # gui audio configuration
+    swayidle # idle events
+    swaylock # lockscreen
+    bemenu # wayland clone of dmenu
+    glib # gsettings (gtk etc)
+    pavucontrol # gui audio configuration
     # unchecked TODO
     dbus-sway-environment
     configure-gtk

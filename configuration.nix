@@ -182,7 +182,10 @@ in
         qalculate-gtk # gui for qalc
         gimp-with-plugins
         kitty
+        alacritty
+        foot
         telegram-desktop
+        element-desktop
         syncthing
         discord
         discordo

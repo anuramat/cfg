@@ -13,9 +13,10 @@ Requirements:
 ## Files
 - `./config/*` - symlinked to `$XDG_CONFIG_HOME`
 - `./home/*` - symlinked to `$HOME`
-- `./configuration.nix`
+- `./configuration.nix` - TODO install from setup.sh to `/etc/nixos/configuration.nix`
 
 ## Misc
 - put [apropos](https://nixos.wiki/wiki/Apropos) where it belongs
 - TODO figure out how to get unstable packages declaratively
-- TODO get dracula for fd and kitty 
+- TODO get dracula for fd/exa/kitty
+- exa -> eza when the package is available

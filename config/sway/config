@@ -16,9 +16,10 @@ focus_wrapping no
 exec swayidle -w timeout 60 'swaylock -f' before-sleep 'swaylock -f'
 output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 input type:keyboard {
-    xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle"
-        repeat_delay 250
-        repeat_rate 50
+    xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
+    repeat_delay 250
+    repeat_rate 50
+    xkb_layout us,ru
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Basic
@@ -29,22 +30,21 @@ bindsym $mod+o exec swaylock -f
 bindsym $mod+Ctrl+period reload
 bindsym $mod+period exec $term $EDITOR $XDG_CONFIG_HOME/sway/config
 bindsym $mod+Ctrl+q exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
-# moving/resizing with $mod+LMB/RMB
 floating_modifier $mod normal
-
 # Focus
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-
 # Move
 bindsym $mod+Ctrl+$left move left
 bindsym $mod+Ctrl+$down move down
 bindsym $mod+Ctrl+$up move up
 bindsym $mod+Ctrl+$right move right
-
-# Media keys
+# Brightness
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
+# Volume
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+

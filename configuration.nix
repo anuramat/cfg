@@ -95,10 +95,11 @@ in
     HandleLidSwitchExternalPower=ignore
   '';
   programs.kdeconnect.enable = true;
+  programs.light.enable = true;
   users.users.anuramat = {
     description = "Arsen Nuramatov";
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "video" ];
     packages = with pkgs; [
       # CLI
       micromamba

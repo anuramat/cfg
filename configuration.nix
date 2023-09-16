@@ -101,85 +101,89 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ];
     packages = with pkgs; [
-      # file managers TODO choose one?
-      ranger
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CLI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        qrcp # send files to mobile over Wi-Fi using QR
+        exercism # CLI for exercism.org
+        ripgrep-all # grep over pdfs etc
+        zoxide # better cd
+        difftastic # syntax aware diffs
+        # ~~~~~~~~~~~~~~~~~~~~~~ File managers ~~~~~~~~~~~~~~~~~~~~~~~
+        # TODO choose one?
+        ranger
         nnn
         broot
         xplr
-# CLI
-qrcp # send files to mobile over Wi-Fi using QR
-        micromamba
-        exercism
-        ripgrep-all
-        zoxide
-        bats # bash testing
+        # ~~~~~~~~~~~~~~~~~~~~~~~~ Languages ~~~~~~~~~~~~~~~~~~~~~~~~~
+        nodejs_20
+        ruby
+        perl
+        # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
+        micromamba # conda rewrite in C++
+        gopls # Go LSP
+        bats # Bash testing
         nodePackages_latest.bash-language-server
-        bear # compilation database generator for clangd
-        black # py fmt
-        delve # go debugger
-        difftastic # syntax aware diffs
+        yamlfmt # YAML formatter
+        bear # Compilation database generator for clangd
+        black # Python formatter
+        delve # Go debugger
+        gofumpt # strict go formatter
+        golangci-lint # gigalinter for go
+        pyright # Python LSP
+        shellcheck # *sh linter
+        shfmt # posix/bash/mksh formatter
+        stylua # Lua formatter
+        lua-language-server
+        luajitPackages.luacheck
+        luajitPackages.luarocks
+        marksman # markdown LSP
+        # ~~~~~~~~~~~~~~~~~~~~~~~~ Disk usage ~~~~~~~~~~~~~~~~~~~~~~~~
         duf # disk usage (better "df")
         du-dust # directory disk usage (better du)
         ncdu # directory sidk usage (better du)
-        ffmpeg
+        # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
+        ffmpeg # video
+        pandoc # markup (latex, markdown, etc)
+        sox # audio
+        imagemagickBig # images NOTE I don't know what "Big" means, might as well just use "imagemagick"
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         git-filter-repo # rewrite/analyze repository history
-        gofumpt # strict go formatter
-        golangci-lint # gigalinter for go
-        grpc
-        gopls # Go LSP
         grpcui # postman for grpc
         grpcurl # curl for grpc
         htop # better top
         atop # even better top
         ctop # container top
         httpie # better curl
-        imagemagick
         kubectx
         kubectl
-        nodejs_20
         lazydocker
         lazygit
         llvm
-        lua-language-server
-        luajitPackages.luacheck
-        luajitPackages.luarocks
-        marksman
         netcat
         nmap
         glow # markdown viewer
         nvi # vi clone
         parallel
         peco # interactive filtering
-        perl
         prettyping # better "ping"
-        pyright # Python LSP
-        ruby
-        shellcheck # *sh linter
-        shfmt # posix/bash/mksh formatter
-        stylua # Lua formatter
         tmux
         tree # not really needed, use "exa --tree" instead
         universal-ctags
-        yamlfmt
         youtube-dl
         nodePackages_latest.yaml-language-server
         taskwarrior # TODO todos
         ghq # git repository manager
         gh # GitHub CLI
         lsix # ls for images (sixel)
-        pandoc # markup converter
         nvtop # top for GPUs
-        sox # ffmpeg for audio
         wtf # dashboard
         libqalculate # qalc - advanced calculator
-# GUI
+        aria # downloader
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         qalculate-gtk # gui for qalc
         gimp-with-plugins
         kitty
-# alacritty
         telegram-desktop
         syncthing
-
         discord
         discordo
         djview
@@ -193,7 +197,6 @@ qrcp # send files to mobile over Wi-Fi using QR
         slack
         gnome.pomodoro
         solanum # yet another pomodoro
-        aria
         sageWithDoc
         onionshare
         onionshare-gui

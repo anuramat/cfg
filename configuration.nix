@@ -107,6 +107,7 @@ in
         broot
         xplr
 # CLI
+qrcp # send files to mobile over Wi-Fi using QR
         micromamba
         exercism
         ripgrep-all

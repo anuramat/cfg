@@ -1,21 +1,20 @@
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
 set $term kitty -1
-# foot is faster tho
+# alt: foot
+set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
-font Hack Nerd Font 13
-# set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu pkill bemenu-run || bemenu-run -l 10 --fn $uifont -b -p "BM: " --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec
-
+set $font Hack Nerd Font 13
+font $font
+set $menu pkill bemenu-run || bemenu-run -i -l 10 --fn "$font" -p "" | xargs swaymsg exec
+# alt: dmenu
 focus_wrapping no
 exec swayidle -w timeout 60 'swaylock -f' before-sleep 'swaylock -f'
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 input type:keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle"
         repeat_delay 250
@@ -98,24 +97,28 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-default_border pixel 5
-default_floating_border normal 5
+default_border pixel 3
+default_floating_border normal 3
+focus_follows_mouse no
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# bar {
+#     height $bar_height
+#     position top
+#     status_command i3status
+#     colors {
+#         statusline #ffffff
+#         background #32323280
+#         inactive_workspace #32323280 #00000000 #32323280
+#         focused_workspace #000000FF #FFFFFFFF #000000FF
+#     }
+# }
 bar {
-    position top
-        status_command i3status
-        colors {
-            statusline #ffffff
-                background #323232
-                inactive_workspace #32323200 #32323200 #5c5c5c
-        }
+    swaybar_command waybar
 }
 include /etc/sway/config.d/*
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Screenshot an area
 bindsym $mod+p exec grim -g "$(slurp)" $screenshot_dir/$(date +'%y.%m.%d_%H:%M:%S%z.png')
-
 # from nix config TODO
 exec dbus-sway-environment
 exec configure-gtk
-# end TODO

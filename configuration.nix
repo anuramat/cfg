@@ -245,6 +245,7 @@ in
   environment.systemPackages = with pkgs; [
     # Basics
     bash
+    killall
     clang
     coreutils-full
     curl
@@ -253,25 +254,25 @@ in
     gnumake
     go
     less
-    nixpkgs-fmt # nix formatter
     python3
     wget
     # CLI
     bash-completion
+    nix-bash-completions
+    nixpkgs-fmt # nix formatter
     bat # better cat with syntax hl
     croc # send/receive files
     delta # better diffs
     exa # better ls
     fd # find alternative
-    fzf
-    nix-bash-completions
-    ripgrep
+    fzf # fuzzy finder
+    ripgrep # better grep
     # GUI
     chromium
     firefox
     okular # document viewer
     # Desktop environment
-    i3status
+    i3status     # status line generator
     wev          # wayland event viewer
     grim         # screenshot
     slurp        # select area for screenshot
@@ -280,6 +281,7 @@ in
     wdisplays    # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wayland
+    waybar
     swayidle     # idle events
     swaylock     # lockscreen
     bemenu       # wayland clone of dmenu

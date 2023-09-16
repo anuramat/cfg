@@ -9,7 +9,7 @@ set $term kitty -1
 set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
-font $font
+font "pango:$font"
 set $menu pkill bemenu-run || bemenu-run -i -l 10 --fn "$font" -p "" | xargs swaymsg exec
 # alt: dmenu
 focus_wrapping no

@@ -17,8 +17,4 @@ Requirements:
 
 ## Misc
 - put [apropos](https://nixos.wiki/wiki/Apropos) where it belongs
-- TODO figure out how to get unstable packages declaratively
 - TODO get dracula for fd/exa/kitty
-- exa -> eza when the package is available
-
-- nixd

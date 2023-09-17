@@ -103,7 +103,11 @@ in
   users.users.anuramat = {
     description = "Arsen Nuramatov";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "network"
+    ];
     packages = with pkgs; [
       unstable.eza
       unstable.nixd
@@ -285,6 +289,7 @@ in
     less
     python3
     wget
+    wirelesstools
     # CLI
     bash-completion
     nix-bash-completions

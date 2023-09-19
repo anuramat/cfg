@@ -30,8 +30,8 @@ export FZF_DEFAULT_OPTS="
 "
 # ~~~~~~~~~~~~~~~~~~~~~~~~ zoxide ~~~~~~~~~~~~~~~~~~~~~~~~ #
 __zo_fzf_preview='ls --color=always -Cp'
-if command -v "$LSCMD" >/dev/null 2>&1; then
-	__zo_fzf_preview="$LSCMD --group-directories-first --icons --grid"
+if command -v "eza" >/dev/null 2>&1; then
+	__zo_fzf_preview="$EZACMD --group-directories-first --icons --grid"
 fi
 export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS
 --no-sort

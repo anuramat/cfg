@@ -13,7 +13,7 @@ export PATH="$HOME/bin${PATH:+:$PATH}"
 export LC_ALL="en_US.UTF-8"
 
 # ls replacement
-export LSCMD="eza"
+export EZACMD="eza --group-directories-first --group --icons --header --git --color=always"
 
 # Vim
 for editor in nvim vim nvi vi; do

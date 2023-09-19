@@ -2,18 +2,16 @@
 
 alias f="nvim"
 
-if command -v "$LSCMD" >/dev/null 2>&1; then
+if command -v "eza" >/dev/null 2>&1; then
 	# config file is proposed:
-	__lscmd="$LSCMD --group-directories-first --group --icons --header --git"
-	alias ls="$__lscmd"
-	alias ll="$__lscmd --long"
-	alias la="$__lscmd --long --all"
-	alias tree="$__lscmd --tree"
+	alias ls="$EZACMD"
+	alias ll="$EZACMD --long"
+	alias la="$EZACMD --long --all"
+	alias tree="$EZACMD --tree"
 else
 	alias ll="ls -lth"
 	alias la="ls -alth"
 fi
-unset __lscmd
 
 alias fd="fd -H"
 

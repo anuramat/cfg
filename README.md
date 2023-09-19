@@ -17,5 +17,5 @@ Requirements:
 
 ## Misc
 - put [apropos](https://nixos.wiki/wiki/Apropos) where it belongs
-- TODO get dracula for fd/exa/kitty
+- TODO get dracula for fd/eza/kitty
 - TODO add scripts from `$HOME/bin`

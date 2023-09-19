@@ -2,19 +2,18 @@
 
 alias f="nvim"
 
-if command -v exa >/dev/null 2>&1; then
+if command -v "$LSCMD" >/dev/null 2>&1; then
 	# config file is proposed:
-	# https://github.com/ogham/exa/issues/511
-	__exa="exa --group-directories-first --group --icons --header --git"
-	alias ls="$__exa"
-	alias ll="$__exa --long"
-	alias la="$__exa --long --all"
-	alias tree="$__exa --tree"
-	unset exa
+	__lscmd="$LSCMD --group-directories-first --group --icons --header --git"
+	alias ls="$__lscmd"
+	alias ll="$__lscmd --long"
+	alias la="$__lscmd --long --all"
+	alias tree="$__lscmd --tree"
 else
 	alias ll="ls -lth"
 	alias la="ls -alth"
 fi
+unset __lscmd
 
 alias fd="fd -H"
 
@@ -30,3 +29,5 @@ alias nire="sudo nixos-rebuild switch"
 alias nied="sudo -e /etc/nixos/configuration.nix"
 
 alias open=xdg-open
+
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'

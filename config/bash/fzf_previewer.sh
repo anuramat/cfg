@@ -2,8 +2,8 @@
 # shellcheck disable=SC2086
 
 if [ -d $1 ]; then
-	if command -v "exa" >/dev/null 2>&1; then
-		exa --tree --icons $1
+	if command -v "$LSCMD" >/dev/null 2>&1; then
+		"$LSCMD" --tree --icons $1
 		exit
 	fi
 

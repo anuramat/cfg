@@ -82,7 +82,7 @@ in
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
-  # I don't fucking know what this one does, but
+  # NOTE I don't fucking know what this one does, but
   # wiki says this is required
   sound.enable = true;
 
@@ -126,6 +126,7 @@ in
       xplr
       # ~~~~~~~~~~~~~~~~~~~~~~~~ Languages ~~~~~~~~~~~~~~~~~~~~~~~~~
       nodejs_20
+      yarn
       ruby
       perl
       # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
@@ -229,6 +230,7 @@ in
     nerdfonts
   ];
 
+  # TODO CHECK
   programs.neovim = {
     enable = true;
     defaultEditor = true;

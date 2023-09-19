@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias f="nvim"
+alias d="$XDG_CONFIG_HOME/emacs/bin/doom"
 
 if command -v exa >/dev/null 2>&1; then
 	# config file is proposed:

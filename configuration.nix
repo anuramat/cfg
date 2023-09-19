@@ -46,6 +46,7 @@ let
       '';
   };
 
+  # 37M download on each rebuild
   unstableTarball =
     fetchTarball
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
@@ -165,6 +166,7 @@ in
       httpie # better curl
       kubectx
       kubectl
+      emacs-gtk
       lazydocker
       lazygit
       llvm

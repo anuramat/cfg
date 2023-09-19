@@ -12,7 +12,7 @@ export PATH="$HOME/bin${PATH:+:$PATH}"
 # Locale
 export LC_ALL="en_US.UTF-8"
 
-# Editor
+# Vim
 for editor in nvim vim nvi vi; do
 	if command -v "$editor" >/dev/null 2>&1; then
 		VISUAL="$editor"
@@ -21,6 +21,9 @@ for editor in nvim vim nvi vi; do
 done
 export VISUAL
 export EDITOR="$VISUAL"
+
+# Emacs
+PATH="$XDG_CONFIG_HOME/emacs/bin${PATH:+:$PATH}"
 
 # Go modules and binaries
 export GOPATH="$HOME/go"

@@ -14,7 +14,6 @@ set $menu pkill bemenu-run || bemenu-run -i -l 10 --fn "$font" -p "" | xargs swa
 # alt: dmenu
 focus_wrapping no
 exec swayidle -w timeout 60 'swaylock -f' before-sleep 'swaylock -f'
-output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 input type:keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
     repeat_delay 250
@@ -96,10 +95,6 @@ mode "resize" {
         bindsym Ctrl+bracketleft mode "default"
 }
 bindsym $mod+r mode "resize"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-default_border pixel 3
-default_floating_border normal 3
-focus_follows_mouse no
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # bar {
 #     height $bar_height
@@ -122,3 +117,31 @@ bindsym $mod+p exec grim -g "$(slurp)" $screenshot_dir/$(date +'%y.%m.%d_%H:%M:%
 # from nix config TODO
 exec dbus-sway-environment
 exec configure-gtk
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+default_border pixel 3
+default_floating_border normal 3
+focus_follows_mouse no
+output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# ~~~~~~~~~~~~~~~~~~~~~ Colorscheme ~~~~~~~~~~~~~~~~~~~~~~ #
+#class                  border  bground text    indicator child_border
+client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+
+client.background       #F8F8F2
+
+bar {
+    colors {
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+    }
+}

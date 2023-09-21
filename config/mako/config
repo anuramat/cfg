@@ -1,1 +1,16 @@
 default-timeout=5000
+
+# customized dracula
+
+background-color=#282a36
+text-color=#ffffff
+border-color=#aaaaaa
+
+[urgency=low]
+border-color=#aaaaaa
+
+[urgency=normal]
+border-color=#f1fa8c
+
+[urgency=high]
+border-color=#ff5555

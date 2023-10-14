@@ -91,7 +91,7 @@ in
   #services.tlp.enable = true;
 
   services.logind.extraConfig = ''
-    HandlePowerKey=hibernate
+    HandlePowerKey=hybrid-sleep
     HandlePowerKeyLongPress=ignore
     HandleSuspendKey=suspend
     HandleHibernateKey=suspend
@@ -291,9 +291,13 @@ in
     gnumake
     go
     less
+    lsof
     python3
     wget
     wirelesstools
+    zip
+    unzip
+    progress
     # CLI
     bash-completion
     nix-bash-completions

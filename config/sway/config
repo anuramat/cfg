@@ -113,7 +113,7 @@ bar {
 include /etc/sway/config.d/*
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Screenshot an area
-bindsym $mod+p exec grim -g "$(slurp)" $screenshot_dir/$(date +'%y.%m.%d_%H:%M:%S%z.png')
+bindsym $mod+p exec grim -g "$(slurp)" - | tee $screenshot_dir/$(date +'%y.%m.%d_%Hh%Mm%Ss%z.png') | wl-copy
 # from nix config TODO
 exec dbus-sway-environment
 exec configure-gtk

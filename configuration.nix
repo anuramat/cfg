@@ -342,8 +342,17 @@ in
     xdg-utils # for opening default programs when clicking links
     wdisplays # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    wayland
-    waybar
+    wayland # TODO check if this is directly required
+    imv
+
+    nwg-bar
+    nwg-menu
+    nwg-dock
+    nwg-panel
+    nwg-drawer
+    nwg-wrapper
+    nwg-launchers
+
     swayidle # idle events
     swaylock # lockscreen
     bemenu # wayland clone of dmenu

@@ -26,8 +26,8 @@ bindsym $mod+t exec $term
 bindsym $mod+d exec $menu
 bindsym $mod+q kill
 bindsym $mod+o exec swaylock -f
-bindsym $mod+Ctrl+period reload
-bindsym $mod+period exec $term $EDITOR $XDG_CONFIG_HOME/sway/config
+bindsym $mod+Ctrl+comma reload
+bindsym $mod+comma exec $term $EDITOR $XDG_CONFIG_HOME/sway/config
 bindsym $mod+Ctrl+q exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
 floating_modifier $mod normal
 # Focus
@@ -112,8 +112,11 @@ bar {
 }
 include /etc/sway/config.d/*
 # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Screenshot an area
-bindsym $mod+p exec grim -g "$(slurp)" - | tee $screenshot_dir/$(date +'%y.%m.%d_%Hh%Mm%Ss%z.png') | wl-copy
+## Screenshot to ~/Screenshots/
+# bindsym $mod+p exec grim -g "$(slurp)" - | tee $screenshot_dir/$(date +'%y.%m.%d_%Hh%Mm%Ss%z.png') | wl-copy
+## Screenshot with markup GUI
+bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
+
 # from nix config TODO
 exec dbus-sway-environment
 exec configure-gtk

@@ -43,6 +43,8 @@ let
         export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
         gnome_schema=org.gnome.desktop.interface
         gsettings set $gnome_schema gtk-theme 'Dracula'
+        gsettings set $gnome_schema icon-theme 'Dracula'
+        gsettings set $gnome_schema color-scheme 'prefer-dark'
       '';
   };
 
@@ -87,8 +89,16 @@ in
   sound.enable = true;
 
   # TODO uncomment
-  #services.thermald.enable = true;
-  #services.tlp.enable = true;
+  services.thermald.enable = true; # cooling control
+  services.tlp.enable = true; # power management, wifi/bluetooth cli switches
+
+  hardware.bluetooth =
+    {
+      enable = true;
+      powerOnBoot = true;
+    };
+
+  services.blueman.enable = true; # bluetooth
 
   services.logind.extraConfig = ''
     HandlePowerKey=hybrid-sleep
@@ -99,7 +109,6 @@ in
     HandleLidSwitchDocked=ignore
     HandleLidSwitchExternalPower=ignore
   '';
-  programs.kdeconnect.enable = true;
   programs.light.enable = true;
   users.users.anuramat = {
     description = "Arsen Nuramatov";
@@ -191,7 +200,18 @@ in
       wtf # dashboard
       libqalculate # qalc - advanced calculator
       aria # downloader
+      hyprpicker # gigasimple terminal color picker
+      neofetch
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # file managers
+      cinnamon.nemo
+      # libsForQt5.dolphin
+      # xfce.thunar
+      # gnome.nautilus
+      # ---------------
+
+      flameshot # screenshot + markup
+      swappy # screenshot + markup, more terminal friendly
       qalculate-gtk # gui for qalc
       gimp-with-plugins
       kitty
@@ -204,7 +224,7 @@ in
       discordo
       djview
       djvulibre
-      apvlv
+      apvlv # vi-like pdf/epub viewer
       vlc
       transmission
       transmission-gtk
@@ -275,7 +295,6 @@ in
   };
   services.xserver = {
     layout = "us,ru";
-    # xkbVariant = "workman,";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
 
@@ -284,7 +303,7 @@ in
     bash
     killall
     clang
-    coreutils-full
+    coreutils-full # just in case
     curl
     gcc
     git
@@ -294,10 +313,11 @@ in
     lsof
     python3
     wget
-    wirelesstools
+    wirelesstools # iw*
     zip
     unzip
-    progress
+    progress # progress status for cp etc
+    efibootmgr
     # CLI
     bash-completion
     nix-bash-completions
@@ -329,6 +349,10 @@ in
     bemenu # wayland clone of dmenu
     glib # gsettings (gtk etc)
     pavucontrol # gui audio configuration
+    networkmanagerapplet
+    # gtk themes, stored in /run/current-system/sw/share/themes
+    dracula-theme
+    dracula-icon-theme
     # unchecked TODO
     dbus-sway-environment
     configure-gtk
@@ -346,6 +370,17 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  services.udev =
+    {
+      enable = true;
+      extraRules = ''
+        # Suspend the system when battery level drops to 5% or lower
+        SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
+      '';
+    };
+
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

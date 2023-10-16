@@ -210,6 +210,7 @@ in
       # gnome.nautilus
       # ---------------
 
+      # davinci-resolve
       flameshot # screenshot + markup
       swappy # screenshot + markup, more terminal friendly
       qalculate-gtk # gui for qalc
@@ -245,6 +246,8 @@ in
     enable = true;
   };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  nix.package = pkgs.nixUnstable;
 
   fonts.fonts = with pkgs; [
     nerdfonts
@@ -380,14 +383,17 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  services.udev =
-    {
-      enable = true;
-      extraRules = ''
-        # Suspend the system when battery level drops to 5% or lower
-        SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
-      '';
-    };
+  # services.udev =
+  #   {
+  #     enable = true;
+  #     extraRules = ''
+  #       # Suspend the system when battery level drops to 5% or lower
+  #       SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
+  #     '';
+  #   };
+  services.upower = {
+    enable = true;
+  };
 
 
 

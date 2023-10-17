@@ -1,17 +1,11 @@
 # > man 5 configuration.nix
-# or
 # > nixos help
 
 { config, pkgs, lib, ... }:
 
 let
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # bash script to let dbus know about important env variables and
-  # propagate them to relevent services run at the end of sway config
-  # see
-  # https://github.com/emersion/xdg-desktop-portal-wlr/wiki/"It-doesn't-work"-Troubleshooting-Checklist
-  # note: this is pretty much the same as  /etc/sway/config.d/nixos.conf but also restarts  
-  # some user services to make sure they have the correct environment variables
+  # https://nixos.wiki/wiki/Sway
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -23,7 +17,6 @@ let
       systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
     '';
   };
-
   # currently, there is some friction between sway and gtk:
   # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
   # the suggested way to set gtk settings is with gsettings
@@ -61,20 +54,19 @@ in
       ./hardware-configuration.nix
     ];
 
+  networking.hostName = "anuramat-t480"; # Define your hostname.
+
+  time.timeZone = "Etc/GMT-6"; # WARN inverted
+  i18n.defaultLocale = "en_US.UTF-8";
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "anuramat-t480"; # Define your hostname.
 
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-
-  # Set your time zone.
-  time.timeZone = "Etc/GMT-6"; # WARN inverted
-
-  i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -84,9 +76,6 @@ in
   # for a WiFi printer
   services.avahi.openFirewall = true;
 
-  # NOTE I don't fucking know what this one does, but
-  # wiki says this is required
-  sound.enable = true;
 
   # TODO uncomment
   services.thermald.enable = true; # cooling control
@@ -114,9 +103,11 @@ in
     description = "Arsen Nuramatov";
     isNormalUser = true;
     extraGroups = [
-      "wheel"
-      "video"
-      "network"
+      "wheel" # root
+      "video" # screen brightess
+      "network" # wifi
+      "docker" # docker
+      "audio" # just in case
     ];
     packages = with pkgs; [
       unstable.eza
@@ -239,16 +230,17 @@ in
       onionshare-gui
       obsidian
       obs-studio
+      cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
     ];
   };
+
   virtualisation.docker = {
     enable = true;
   };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   nix.package = pkgs.nixUnstable;
-
   fonts.fonts = with pkgs; [
     nerdfonts
   ];
@@ -257,11 +249,12 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    vimAlias = false;
+    viAlias = false;
   };
 
   nixpkgs.config = {
     allowUnfree = true;
-
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
         config = config.nixpkgs.config;
@@ -269,33 +262,35 @@ in
     };
   };
 
-  security.rtkit.enable = true;
+
+  # https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
+    # TODO some of these aren't needed probably
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
   };
-  # xdg-desktop-portal works by exposing a series of D-Bus interfaces
-  # known as portals under a well-known name
-  # (org.freedesktop.portal.Desktop) and object path
-  # (/org/freedesktop/portal/desktop).
-  # The portal interfaces include APIs for file access, opening URIs,
-  # printing and others.
-  services.dbus.enable = true;
+  # "sound.enable is only meant for ALSA-based configurations"
+  sound.enable = false;
+  # "optional but recommended"
+  security.rtkit.enable = true;
+
+  services.dbus.enable = true; # TODO is this needed explicitly? try pruning?
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  # enable sway window manager
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
   };
+
+  # keyboard
   services.xserver = {
     layout = "us,ru";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
@@ -370,49 +365,17 @@ in
     configure-gtk
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # services.udev =
-  #   {
-  #     enable = true;
-  #     extraRules = ''
-  #       # Suspend the system when battery level drops to 5% or lower
-  #       SUBSYSTEM=="power_supply", ATTR{status}=="Discharging", ATTR{capacity}=="[0-9]", RUN+="${pkgs.systemd}/bin/systemctl suspend"
-  #     '';
-  #   };
   services.upower = {
     enable = true;
   };
 
-
-
-  # Open ports in the firewall.
+  # networking.firewall.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
+  # backup the configuration.nix to /run/current-system/configuration.nix
+  system.copySystemConfiguration = true;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It's perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  # determines default settings for stateful data
+  system.stateVersion = "23.05"; # WARN: DON'T TOUCH
 }

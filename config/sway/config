@@ -123,17 +123,15 @@ bar {
         binding_mode       #FF5555 #FF5555 #F8F8F2
     }
 }
-include /etc/sway/config.d/*
-# ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~ Screenshot ~~~~~~~~~~~~~~~~~~~~~~ #
 ## Screenshot to ~/Screenshots/
 # bindsym $mod+p exec grim -g "$(slurp)" - | tee $screenshot_dir/$(date +'%y.%m.%d_%Hh%Mm%Ss%z.png') | wl-copy
 ## Screenshot with markup GUI
 bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
-
-# from nix config TODO
+# ~~~~~~~ NixOS boilerplate from configuration.nix ~~~~~~~ #
 exec dbus-sway-environment
 exec configure-gtk
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Visual ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~ Visuals ~~~~~~~~~~~~~~~~~~~~~~~~ #
 default_border pixel 3
 default_floating_border normal 3
 focus_follows_mouse no

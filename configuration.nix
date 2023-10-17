@@ -277,7 +277,7 @@ in
   # "optional but recommended"
   security.rtkit.enable = true;
 
-  services.dbus.enable = true; # TODO is this needed explicitly? try pruning?
+  # services.dbus.enable = true; # TODO is this needed explicitly? try pruning?
 
   xdg.portal = {
     enable = true;

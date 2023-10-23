@@ -4,6 +4,10 @@
 { config, pkgs, lib, ... }:
 
 let
+  username = "anuramat";
+  fullname = "Arsen Nuramatov";
+  hostname = "anuramat-t480";
+  timezone = "Etc/GMT-6";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/Sway
   dbus-sway-environment = pkgs.writeTextFile {
@@ -41,7 +45,6 @@ let
       '';
   };
 
-  # 37M download on each rebuild
   unstableTarball =
     fetchTarball
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
@@ -49,58 +52,12 @@ let
 
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-
-  networking.hostName = "anuramat-t480"; # Define your hostname.
-
-  time.timeZone = "Etc/GMT-6"; # WARN inverted
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  # some more boilerplate from wiki https://nixos.wiki/wiki/Printing
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  # for a WiFi printer
-  services.avahi.openFirewall = true;
-
-
-  # TODO uncomment
-  services.thermald.enable = true; # cooling control
-  services.tlp.enable = true; # power management, wifi/bluetooth cli switches
-
-  hardware.bluetooth =
-    {
-      enable = true;
-      powerOnBoot = true;
-    };
-
-  services.blueman.enable = true; # bluetooth
-
-  services.logind.extraConfig = ''
-    HandlePowerKey=hybrid-sleep
-    HandlePowerKeyLongPress=ignore
-    HandleSuspendKey=suspend
-    HandleHibernateKey=suspend
-    HandleLidSwitch=suspend
-    HandleLidSwitchDocked=ignore
-    HandleLidSwitchExternalPower=ignore
-  '';
-  programs.light.enable = true;
-  users.users.anuramat = {
-    description = "Arsen Nuramatov";
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  imports = [ ./hardware-configuration.nix ];
+  networking.hostName = hostname; # Define your hostname.
+  time.timeZone = timezone; # WARN inverted
+  users.users.${username} = {
+    description = fullname;
     isNormalUser = true;
     extraGroups = [
       "wheel" # root
@@ -200,7 +157,6 @@ in
       # xfce.thunar
       # gnome.nautilus
       # ---------------
-
       # davinci-resolve
       flameshot # screenshot + markup
       swappy # screenshot + markup, more terminal friendly
@@ -230,27 +186,67 @@ in
       onionshare-gui
       obsidian
       obs-studio
-      cheese # webcam
+      gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
     ];
+
   };
 
-  virtualisation.docker = {
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
+  # Pick only one of the below networking options.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  # ~~~~~~~~~~~~~~~~~~~~~~~~ Printers ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # Enable CUPS to print documents, available @ http://localhost:631/
+  services.printing = {
     enable = true;
+    # drivers = [ YOUR_DRIVER ];
   };
+  # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true; # Open udp 5353 for network devices discovery
+  };
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Power ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  services = {
+    thermald.enable = true; # cooling
+    tlp.enable = true; # voltage, wifi/bluetooth cli switches
+    upower.enable = true; # suspend on low battery
+  };
+  # ~~~~~~~~~~~~~~~~~~~~~~~~ Bluetooth ~~~~~~~~~~~~~~~~~~~~~~~~~
+  hardware.bluetooth =
+    {
+      enable = true;
+      powerOnBoot = true;
+    };
+  services.blueman.enable = true; # bluetooth
+  # ~~~~~~~~~~~~~~~~~~~~~~~~ Power keys ~~~~~~~~~~~~~~~~~~~~~~~~
+  services.logind.extraConfig = ''
+    HandlePowerKey=hybrid-sleep
+    HandlePowerKeyLongPress=ignore
+    HandleSuspendKey=suspend
+    HandleHibernateKey=suspend
+    HandleLidSwitch=suspend
+    HandleLidSwitchDocked=ignore
+    HandleLidSwitchExternalPower=ignore
+  '';
+  programs.light.enable = true; # Brightness control
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  virtualisation.docker.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nix.package = pkgs.nixUnstable;
   fonts.fonts = with pkgs; [
     nerdfonts
   ];
 
-  # TODO CHECK
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
-    vimAlias = false;
-    viAlias = false;
   };
 
   nixpkgs.config = {
@@ -262,7 +258,7 @@ in
     };
   };
 
-
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Sound ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
     # TODO some of these aren't needed probably
@@ -277,20 +273,19 @@ in
   # "optional but recommended"
   security.rtkit.enable = true;
 
-  # services.dbus.enable = true; # TODO is this needed explicitly? try pruning?
-
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
   xdg.portal = {
     enable = true;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-  };
-
-  # keyboard
+  services.dbus.enable = true;
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~ Keyboard ~~~~~~~~~~~~~~~~~~~~~~~~~
+  # TODO figure out how to manage multiple keyboards
   services.xserver = {
     layout = "us,ru";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
@@ -331,43 +326,31 @@ in
     chromium
     firefox
     okular # document viewer
-    # Desktop environment
-    i3status # status line generator
-    wev # wayland event viewer
     grim # screenshot
     slurp # select area for screenshot
+    i3status # status line generator
+    wev # wayland event viewer (useful for debug)
     mako # notifications
-    xdg-utils # for opening default programs when clicking links
+    xdg-utils # for default actions on link clicks
     wdisplays # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     wayland # TODO check if this is directly required
-    imv
-
-    nwg-bar
-    nwg-menu
-    nwg-dock
-    nwg-panel
-    nwg-drawer
-    nwg-wrapper
-    nwg-launchers
-
+    imv # image viewer for terminal workflows
+    playerctl # media controls
     swayidle # idle events
     swaylock # lockscreen
     bemenu # wayland clone of dmenu
     glib # gsettings (gtk etc)
     pavucontrol # gui audio configuration
-    networkmanagerapplet
+    networkmanagerapplet # gui network TODO check if this even works
     # gtk themes, stored in /run/current-system/sw/share/themes
     dracula-theme
     dracula-icon-theme
-    # unchecked TODO
+    # sway scripts
     dbus-sway-environment
     configure-gtk
   ];
 
-  services.upower = {
-    enable = true;
-  };
 
   # networking.firewall.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];

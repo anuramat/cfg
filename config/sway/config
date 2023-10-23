@@ -100,6 +100,10 @@ bar {
     height $bar_height
     position top
     status_command i3status
+    separator_symbol " | "
+    mode hide
+    modifier $mod
+    icon_theme "Dracula"
     colors {
         background #282A36
         statusline #F8F8F2

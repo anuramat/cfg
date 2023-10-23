@@ -330,6 +330,7 @@ in
     slurp # select area for screenshot
     i3status # status line generator
     wev # wayland event viewer (useful for debug)
+    libnotify # notify-send mako
     mako # notifications
     xdg-utils # for default actions on link clicks
     wdisplays # gui display configuration

@@ -19,18 +19,18 @@ order += "battery all"
 order += "tztime local"
 
 wireless wlp3s0 {
-  format_up = "WLAN: %ip %essid%quality %bitrate"
-  format_down = "WLAN: down"
+  format_up = "%essid%quality"
+  format_down = "WLAN down"
 }
 
 ethernet enp0s31f6 {
-  format_up = "LAN: %ip:%speed)"
-  format_down = "LAN: down"
+  format_up = "LAN up"
+  format_down = "LAN down"
 }
 
 battery 0 {
-  format = "%status %percentage"
-  format_down = "N/A"
+  format = "I: %status %percentage"
+  format_down = "I: N/A"
   status_chr = "⚡"
   status_bat = "🔋"
   status_unk = "?"
@@ -41,8 +41,8 @@ battery 0 {
 }
 
 battery 1 {
-  format = "%status %percentage"
-  format_down = "N/A"
+  format = "E: %status %percentage"
+  format_down = "E: N/A"
   status_chr = "⚡"
   status_bat = "🔋"
   status_unk = "?"
@@ -50,8 +50,6 @@ battery 1 {
   path = "/sys/class/power_supply/BAT%d/uevent"
   integer_battery_capacity = true
   last_full_capacity = true
-  low_threshold = 15
-  threshold_type = time
 }
 
 battery all {
@@ -64,14 +62,14 @@ tztime local {
 }
 
 memory {
-  format = "RAM: %free"
+  format = "RAM(f): %free"
   threshold_degraded = "10%"
 }
 
 cpu_usage {
-  format = "CPU: %usage"
+  format = "CPU(u): %usage"
 }
 
 disk "/" {
-  format = "STRG: %free"
+  format = "DSK(f): %free"
 }

@@ -54,8 +54,16 @@ in
 {
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
   imports = [ ./hardware-configuration.nix ];
-  networking.hostName = hostname; # Define your hostname.
   time.timeZone = timezone; # WARN inverted
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  # TODO what does this even do
+  # Use the systemd-boot EFI boot loader.
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
   users.users.${username} = {
     description = fullname;
     isNormalUser = true;
@@ -193,11 +201,25 @@ in
     ];
   };
 
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # set cloudflare dns
-  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
+  fonts.fonts = with pkgs; [
+    nerdfonts
+  ];
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+  };
+  # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
+  # TODO why set nameservers twice?
+  networking =
+    {
+      # firewall.enable = true;
+      # firewall.allowedTCPPorts = [ ... ];
+      # firewall.allowedUDPPorts = [ ... ];
+      networkmanager.enable = true; # TODO gui?;
+      hostName = hostname;
+      networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
+    };
   # use dnssec and DNSoverTLS (might break on a different ns)
   services.resolved = {
     enable = true;
@@ -208,28 +230,19 @@ in
       DNSOverTLS=yes
     '';
   };
-
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-  };
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
-  # Pick only one of the below networking options.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   # ~~~~~~~~~~~~~~~~~~~~~~~~ Printers ~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Enable CUPS to print documents, available @ http://localhost:631/
-  services.printing = {
-    enable = true;
-    # drivers = [ YOUR_DRIVER ];
-  };
-  # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true; # Open udp 5353 for network devices discovery
+  services = {
+    # Enable CUPS to print documents, available @ http://localhost:631/
+    printing = {
+      enable = true;
+      # drivers = [ YOUR_DRIVER ];
+    };
+    # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true; # Open udp 5353 for network devices discovery
+    };
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Power ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   services = {
@@ -256,13 +269,9 @@ in
   '';
   programs.light.enable = true; # Brightness control
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
   virtualisation.docker.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  fonts.fonts = with pkgs; [
-    nerdfonts
-  ];
 
   programs.neovim = {
     enable = true;
@@ -392,10 +401,6 @@ in
         # "--data=/home/${username}/.local/share/syncthing" # where to store the database files
       ];
     };
-
-  # networking.firewall.enable = true;
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
 
   # backup the configuration.nix to /run/current-system/configuration.nix
   system.copySystemConfiguration = true;

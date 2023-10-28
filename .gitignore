@@ -4,3 +4,4 @@ Brewfile.lock.json
 **/iterm2/AppSupport
 private*
 !private.example*
+*.pem

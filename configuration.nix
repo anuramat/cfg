@@ -77,6 +77,9 @@ in
       difftastic # syntax aware diffs
       # ~~~~~~~~~~~~~~~~~~~~~~ File managers ~~~~~~~~~~~~~~~~~~~~~~~
       # TODO choose one?
+      vifm
+      mc
+      xdragon
       ranger
       nnn
       broot
@@ -153,7 +156,7 @@ in
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # file managers
       cinnamon.nemo
-      # libsForQt5.dolphin
+      dolphin
       # xfce.thunar
       # gnome.nautilus
       # ---------------
@@ -167,7 +170,6 @@ in
       foot
       telegram-desktop
       element-desktop
-      syncthing
       discord
       discordo
       djview
@@ -189,11 +191,28 @@ in
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
     ];
-
   };
+
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # set cloudflare dns
+  networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+  # use dnssec and DNSoverTLS (might break on a different ns)
+  services.resolved = {
+    enable = true;
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    extraConfig = ''
+      DNSOverTLS=yes
+    '';
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+  };
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -324,7 +343,7 @@ in
     ripgrep # better grep
     # GUI
     chromium
-    firefox
+    firefox # TODO delete
     okular # document viewer
     grim # screenshot
     slurp # select area for screenshot
@@ -342,6 +361,14 @@ in
     swaylock # lockscreen
     bemenu # wayland clone of dmenu
     glib # gsettings (gtk etc)
+    qt5ct
+    unstable.qt6ct
+    libsForQt5.qtstyleplugins
+    libsForQt5.qtcurve
+    libsForQt5.lightly
+    libsForQt5.qtstyleplugin-kvantum
+    libsForQt5.qqc2-desktop-style
+    libsForQt5.qqc2-breeze-style
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
     # gtk themes, stored in /run/current-system/sw/share/themes
@@ -352,6 +379,19 @@ in
     configure-gtk
   ];
 
+  services.syncthing =
+    {
+      # NOTE this is a mess, everything is stored in .config, for now will have to ignore all of it in cfg repo
+      # use XDG when transitioning to home manager
+      enable = true;
+      user = username;
+      dataDir = "/home/anuramat/Syncthing"; # parent directory for folders declared with nix; $HOME for user if user == "syncthing"
+      configDir = "/home/${username}/.config/syncthing"; # keys, database, configuration, nix stuff
+      extraFlags = [
+        # "--config=/home/${username}/.config/syncthing" # keys and configuration
+        # "--data=/home/${username}/.local/share/syncthing" # where to store the database files
+      ];
+    };
 
   # networking.firewall.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];

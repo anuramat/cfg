@@ -218,7 +218,7 @@ in
       # firewall.allowedUDPPorts = [ ... ];
       networkmanager.enable = true; # TODO gui?;
       hostName = hostname;
-      networking.nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
+      nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };
   # use dnssec and DNSoverTLS (might break on a different ns)
   services.resolved = {
@@ -318,7 +318,9 @@ in
     layout = "us,ru";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
-
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-24.8.6"
+  ];
   environment.systemPackages = with pkgs; [
     # Basics
     bash

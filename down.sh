@@ -20,6 +20,7 @@ for __folder in config/*; do
 	install2folder "$__folder" "$XDG_CONFIG_HOME"
 done
 
+# TODO move all of this to configuration.nix or home manager
 touch "$HOME/.hushlogin"
 ensure_path "$HOME/bin"
 ensure_path "$HOME/Screenshots"

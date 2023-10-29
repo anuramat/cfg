@@ -62,9 +62,8 @@ specs.treesitter = {
   },
   config = function(_, opts)
     require('nvim-treesitter.configs').setup(opts)
-    -- XXX doesn't always work
-    -- vim.o.foldmethod = 'expr'
-    -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+    vim.o.foldmethod = 'expr'
+    vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
   end,
 }
 

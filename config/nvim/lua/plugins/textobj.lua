@@ -4,18 +4,16 @@ local u = require('utils')
 specs.surround = {
   'kylechui/nvim-surround',
   version = '*',
-  opts = { keymaps = false },
+  opts = {},
   keys = {
-    { '<C-g>s', '<plug>(nvim-surround-insert)', desc = 'Surround cursor', mode = 'i' },
-    { '<C-g>S', '<plug>(nvim-surround-insert-line)', desc = 'Surround cursor on new lines', mode = 'i' },
-    { 'ys', '<plug>(nvim-surround-normal)', desc = 'Surround' },
-    { 'yss', '<plug>(nvim-surround-normal-cur)', desc = 'Surround current line' },
-    { 'yS', '<plug>(nvim-surround-normal-line)', desc = 'Surround on new lines' },
-    { 'ySS', '<plug>(nvim-surround-normal-cur-line)', desc = 'Surround on new lines' },
-    { 'S', '<plug>(nvim-surround-visual)', desc = 'Surround selection', mode = 'x' },
-    { 'gS', '<plug>(nvim-surround-visual-line)', desc = 'Surround on new lines', mode = 'x' },
-    { 'ds', '<plug>(nvim-surround-delete)', desc = 'Delete surrounding' },
-    { 'cs', '<plug>(nvim-surround-change)', desc = 'Change surrounding' },
+    { '<C-g>s', mode = 'i' },
+    { '<C-g>S', mode = 'i' },
+    { 'ys' },
+    { 'yS' },
+    { 'S', mode = 'x' },
+    { 'gS', mode = 'x' },
+    { 'ds' },
+    { 'cs' },
   },
 }
 

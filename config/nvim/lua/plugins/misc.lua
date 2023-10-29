@@ -26,6 +26,7 @@ specs.sleuth = {
 specs.align = {
   'echasnovski/mini.align',
   version = false,
+  lazy = false,
   opts = {
     mappings = {
       start = '<leader>a',
@@ -33,8 +34,8 @@ specs.align = {
     },
   },
   keys = {
-    { mode = { 'x', 'n' }, '<leader>a', desc = 'Align' },
-    { mode = { 'x', 'n' }, '<leader>A', desc = 'Interactive align' },
+    { mode = { 'x', 'n' }, '<leader>a' },
+    { mode = { 'x', 'n' }, '<leader>A' },
   },
 }
 
@@ -46,31 +47,6 @@ specs.trailspace = {
     vim.api.nvim_create_user_command('TrimTrailingWhitespace', require('mini.trailspace').trim, {})
     return {}
   end,
-}
-
-specs.dadbod = {
-  'tpope/vim-dadbod',
-  lazy = false,
-}
-
-specs.dadbod_ui = {
-  'kristijanhusak/vim-dadbod-ui',
-  dependencies = { 'tpope/vim-dadbod' },
-  lazy = false,
-}
-
-specs.marks = {
-  'chentoast/marks.nvim',
-  event = 'VeryLazy',
-  opts = {
-    default_mappings = false,
-    builtin_marks = {},
-  },
-  keys = {
-    { 'dm', '<Plug>(Marks-delete)', desc = 'Delete mark' },
-    { 'dm-', '<Plug>(Marks-deleteline)', desc = 'Delete all marks on the current line' },
-    { 'dm=', '<Plug>(Marks-deletebuf)', 'Delete all marks in the current buffer' },
-  },
 }
 
 return u.values(specs)

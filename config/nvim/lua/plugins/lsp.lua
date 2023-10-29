@@ -23,10 +23,6 @@ end
 --- @return table configs
 local function cfgs()
   return {
-    -- nil_ls = {}, -- better diagnostics in some regards
-    nixd = {},
-    yamlls = {},
-
     bashls = {},
     pyright = {},
     marksman = {},

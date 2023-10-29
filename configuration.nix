@@ -109,6 +109,7 @@ in
       mc
       xdragon
       ranger
+      lf
       nnn
       broot
       xplr
@@ -214,7 +215,7 @@ in
       sageWithDoc
       onionshare
       onionshare-gui
-      obsidian
+      unstable.obsidian
       obs-studio
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05

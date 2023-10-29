@@ -29,4 +29,10 @@ specs.flash = {
   },
 }
 
+specs.brackets = {
+  'echasnovski/mini.bracketed',
+  lazy = false,
+  opts = {},
+}
+
 return u.values(specs)

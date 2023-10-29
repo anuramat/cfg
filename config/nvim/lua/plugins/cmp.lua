@@ -43,7 +43,7 @@ local function cmp_next(opts)
   local cmp = require('cmp')
   return function(fallback)
     if not cmp.visible() then
-      if opts and not opts.force_complete then
+      if opts == nil or not opts.force_complete then
         fallback()
         return
       end
@@ -60,7 +60,7 @@ local function cmp_prev(opts)
   local cmp = require('cmp')
   return function(fallback)
     if not cmp.visible() then
-      if opts and not opts.force_complete then
+      if opts == nil or not opts.force_complete then
         fallback()
         return
       end
@@ -164,21 +164,6 @@ specs.luasnip = {
     'rafamadriz/friendly-snippets',
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
-
-      local ls = require('luasnip')
-      local i = ls.insert_node
-      local s = ls.snippet
-      local fmt = require('luasnip.extras.fmt').fmt
-      ls.add_snippets('sh', {
-        s(
-          'chksrc',
-          fmt(
-            '{var}="{path}" && [ -r "${{{var}}}" ] && . "${{{var}}}" && unset {var}',
-            { var = i(1, 'var'), path = i(0, 'path') },
-            { repeat_duplicates = true }
-          )
-        ),
-      })
     end,
   },
   -- if build fails, install jsregexp luarock

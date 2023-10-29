@@ -73,13 +73,6 @@ function M.merge(a, b)
   return c
 end
 
---- Changes CodeLens highlight group
-function M.style_codelens()
-  local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
-  clhl.standout = true
-  vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
-end
-
 --- Gets plugin paths
 --- @param config_prefix string
 function M.get_lib_path(config_prefix)

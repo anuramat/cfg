@@ -3,7 +3,9 @@ local lsp_utils = require('lsp_utils')
 local u = require('utils')
 
 -- These servers will be ignored when trying to format
-_G.fmt_srv_blacklist = { 'lua_ls' }
+_G.fmt_srv_blacklist = {
+  'lua_ls', -- using stylua instead
+}
 _G.fmt_ft_blacklist = {
   'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
 }
@@ -23,6 +25,10 @@ end
 --- @return table configs
 local function cfgs()
   return {
+    -- nil_ls = {}, -- better diagnostics in some regards
+    nixd = {},
+    yamlls = {},
+
     bashls = {},
     pyright = {},
     marksman = {},
@@ -57,6 +63,7 @@ local function cfgs()
           },
           staticcheck = true,
           gofumpt = true,
+          semanticTokens = true,
         },
       },
       root_dir = root_dir_with_fallback({ primary = { '.git' }, fallback = { 'go.work', 'go.mod' } }),
@@ -69,7 +76,7 @@ local function cfgs()
           },
           workspace = {
             checkThirdParty = false,
-            library = u.get_lib_path('config'),
+            library = u.get_lib_path('config'), -- too slow
           },
           telemetry = {
             enable = false,
@@ -80,8 +87,6 @@ local function cfgs()
   }
 end
 
-specs.neodev = { 'folke/neodev.nvim', opts = {} }
-
 -- TODO clangd ext keymaps
 specs.clangd_extensions = { 'p00f/clangd_extensions.nvim' }
 
@@ -89,7 +94,6 @@ specs.lspconfig = {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'folke/neodev.nvim',
     'hrsh7th/nvim-cmp',
   },
   config = function()
@@ -118,7 +122,7 @@ specs.lspconfig = {
 }
 
 specs.null = {
-  'jose-elias-alvarez/null-ls.nvim',
+  'nvimtools/none-ls.nvim', -- maintained 'jose-elias-alvarez/null-ls.nvim' fork
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()

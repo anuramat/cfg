@@ -10,15 +10,17 @@ end
 
 specs.telescope = {
   'nvim-telescope/telescope.nvim',
-  tag = '0.1.2',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    -- 'nvim-telescope/telescope-media-files.nvim', -- kinda shit, lots of requirements
+  },
   -- stylua: ignore
   keys = u.prefix('<leader>f', {
     { '/', current_buffer_fuzzy_find,                                  desc = 'Fuzzy Search' },
     { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols', },
     { 'b', require('telescope.builtin').buffers,                       desc = 'Buffers' },
-    { 'd', '<cmd>Telescope harpoon marks<cr>',                         desc = 'Harpoons' },
-    { 'd', require('telescope.builtin').diagnostics,                   desc = 'Diagnostics' },
+    { 'h', '<cmd>Telescope harpoon marks<cr>',                         desc = 'Harpoons' },
+    { 'd', require('telescope.builtin').diagnostics,                   desc = 'Workspace Diagnostics' },
     { 'g', require('telescope.builtin').live_grep,                     desc = 'Live Grep' },
     { 'm', require('telescope.builtin').marks,                         desc = 'Marks' },
     { 'o', require('telescope.builtin').find_files,                    desc = 'Files' },
@@ -69,7 +71,7 @@ specs.zoxide = {
   'jvgrootveld/telescope-zoxide',
   keys = {
     {
-      '<leader>fz',
+      '<leader>fj',
       function()
         require('telescope').extensions.zoxide.list()
       end,

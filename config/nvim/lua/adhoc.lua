@@ -1,5 +1,14 @@
 local u = require('utils')
 
+--- Toggles the case of the first letter in the symbol under cursor
+--- @param access string
+local function make_public()
+  --- TODO maybe make useful in other scenarios
+  local s = vim.fn.expand('<cword>')
+  vim.lsp.buf.rename(s:sub(1, 1):upper() .. s:sub(2))
+  vim.cmd.sleep(100, 'm')
+end
+
 --- Creates comment header I guess
 --- @param chr string Character that fills the header
 --- @param width_factor float|nil If present, width = textwidth * width_factor
@@ -65,3 +74,6 @@ end, 'Header')
 set('<leader>$', function()
   create_comment_header('~', nil, 60)
 end, 'Subheader')
+
+-- vim.api.nvim_create_user_command('GoMakePublic', make_public, {})
+-- vim.cmd('noremap <leader>q :GoMakePublic<cr>')

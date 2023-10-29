@@ -17,6 +17,8 @@ require('lazy').setup('plugins', {
   change_detection = { enabled = false },
   defaults = {
     lazy = true,
+    version = false,
+    cond = not vim.g.vscode,
   },
   ui = {
     border = 'rounded',

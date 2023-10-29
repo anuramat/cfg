@@ -19,7 +19,6 @@ specs.lualine = {
         theme = lualine_dracula,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        --      
         globalstatus = true,
         refresh = { statusline = 100, tabline = 100 },
       },

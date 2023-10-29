@@ -1,6 +1,8 @@
 local specs = {}
 local u = require('utils')
 
+-- Highlights and searches comment tags like XXX
+-- Generic plugin
 specs.todo = {
   'folke/todo-comments.nvim',
   event = 'VeryLazy',
@@ -16,6 +18,7 @@ specs.todo = {
   },
 }
 
+-- Quickfix replacement
 specs.trouble = {
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -32,6 +35,7 @@ specs.trouble = {
   }),
 }
 
+-- Splits/joins code blocks based on Treesitter
 specs.treesj = {
   'Wansmer/treesj',
   version = false,
@@ -41,7 +45,7 @@ specs.treesj = {
   },
   keys = {
     {
-      '<leader>m',
+      '<leader>j',
       function()
         require('treesj').toggle()
       end,
@@ -50,6 +54,19 @@ specs.treesj = {
   },
 }
 
+-- -- Splits/joins code blocks based on special per-language rules
+-- specs.splitjoin = {
+--   'AndrewRadev/splitjoin.vim',
+--   lazy = false,
+--   config = function()
+--     vim.g.splitjoin_split_mapping = '<leader>J'
+--     vim.g.splitjoin_join_mapping = '<leader>j'
+--   end,
+-- }
+
+-- Comments lines
+-- Generic plugin, see also:
+-- tpope/vim-commentary
 specs.comment = {
   'numToStr/Comment.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
@@ -68,7 +85,7 @@ specs.comment = {
     })
   end,
   keys = {
-    { '<leader>c', mode = { 'n', 'x' } },
+    { '<leader>c', mode = { 'n', 'x' }, desc = 'Comment' },
   },
 }
 

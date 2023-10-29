@@ -56,10 +56,10 @@ specs.dap_vt = {
 specs.dap_ui = {
   'rcarriga/nvim-dap-ui',
   -- stylua: ignore
-  keys = {
-    { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-    { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-  },
+  keys = u.prefix('<leader>d', {
+    { "u", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+    { "e", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+  }),
   opts = {},
   config = function(_, opts)
     local dap = require('dap')

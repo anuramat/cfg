@@ -52,18 +52,37 @@ let
 
 in
 {
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  # ~~~~~~~~~~~~~~~~~~~~~~~ NixOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~
+  system =
+    {
+      # backup the configuration.nix to /run/current-system/configuration.nix
+      copySystemConfiguration = true;
+      # determines default settings for stateful data
+      stateVersion = "23.05"; # WARN: DON'T TOUCH
+    };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [ ./hardware-configuration.nix ];
+  nixpkgs.config = {
+    permittedInsecurePackages = [
+      "electron-24.8.6"
+    ];
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
   time.timeZone = timezone; # WARN inverted
   i18n.defaultLocale = "en_US.UTF-8";
-
   # TODO what does this even do
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   users.users.${username} = {
     description = fullname;
     isNormalUser = true;
@@ -73,6 +92,7 @@ in
       "network" # wifi
       "docker" # docker
       "audio" # just in case
+      "syncthing"
     ];
     packages = with pkgs; [
       unstable.eza
@@ -200,7 +220,6 @@ in
       # haskellPackages.ghcup # broken as of 2023-09-05
     ];
   };
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
   fonts.fonts = with pkgs; [
     nerdfonts
@@ -208,6 +227,7 @@ in
   qt = {
     enable = true;
     platformTheme = "qt5ct";
+    style = "adwaita-dark";
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
   # TODO why set nameservers twice?
@@ -257,7 +277,7 @@ in
       powerOnBoot = true;
     };
   services.blueman.enable = true; # bluetooth
-  # ~~~~~~~~~~~~~~~~~~~~~~~~ Power keys ~~~~~~~~~~~~~~~~~~~~~~~~
+  # ~~~~~~~~~~~~~~~~~~~~~~~ Special keys ~~~~~~~~~~~~~~~~~~~~~~~
   services.logind.extraConfig = ''
     HandlePowerKey=hybrid-sleep
     HandlePowerKeyLongPress=ignore
@@ -268,24 +288,6 @@ in
     HandleLidSwitchExternalPower=ignore
   '';
   programs.light.enable = true; # Brightness control
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  virtualisation.docker.enable = true;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  programs.neovim = {
-    enable = true;
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Sound ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
@@ -298,9 +300,9 @@ in
   };
   # "sound.enable is only meant for ALSA-based configurations"
   sound.enable = false;
+  # RealtimeKit, scheduling priotity of user processes, used eg by PulseAudio to get realtime priority
   # "optional but recommended"
   security.rtkit.enable = true;
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   programs.sway = {
     enable = true;
@@ -318,9 +320,7 @@ in
     layout = "us,ru";
     xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
   };
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-24.8.6"
-  ];
+  # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
   environment.systemPackages = with pkgs; [
     # Basics
     bash
@@ -341,6 +341,7 @@ in
     unzip
     progress # progress status for cp etc
     efibootmgr
+    unstable.neovim
     # CLI
     bash-completion
     nix-bash-completions
@@ -374,12 +375,7 @@ in
     glib # gsettings (gtk etc)
     qt5ct
     unstable.qt6ct
-    libsForQt5.qtstyleplugins
-    libsForQt5.qtcurve
-    libsForQt5.lightly
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.qqc2-desktop-style
-    libsForQt5.qqc2-breeze-style
+    adwaita-qt
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
     # gtk themes, stored in /run/current-system/sw/share/themes
@@ -389,7 +385,8 @@ in
     dbus-sway-environment
     configure-gtk
   ];
-
+  # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
+  virtualisation.docker.enable = true;
   services.syncthing =
     {
       # NOTE this is a mess, everything is stored in .config, for now will have to ignore all of it in cfg repo
@@ -403,10 +400,4 @@ in
         # "--data=/home/${username}/.local/share/syncthing" # where to store the database files
       ];
     };
-
-  # backup the configuration.nix to /run/current-system/configuration.nix
-  system.copySystemConfiguration = true;
-
-  # determines default settings for stateful data
-  system.stateVersion = "23.05"; # WARN: DON'T TOUCH
 }

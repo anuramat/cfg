@@ -376,6 +376,7 @@ in
     qt5ct
     unstable.qt6ct
     adwaita-qt
+    adwaita-qt6
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
     # gtk themes, stored in /run/current-system/sw/share/themes

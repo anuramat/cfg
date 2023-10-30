@@ -2,7 +2,6 @@ ignore-empty-password
 daemonize
 
 indicator-caps-lock
-# disable-caps-lock-text
 hide-keyboard-layout
 
 indicator-radius=100

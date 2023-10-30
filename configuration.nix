@@ -49,7 +49,6 @@ let
     fetchTarball
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 in
 {
   # ~~~~~~~~~~~~~~~~~~~~~~~ NixOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -320,7 +319,7 @@ in
     enable = true;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = true;
+    # xdgOpenUsePortal = true;
   };
   services.dbus.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
@@ -397,8 +396,8 @@ in
       # use XDG paths when transitioning to home manager
       enable = true;
       user = username;
-      dataDir = "/home/anuramat/Syncthing"; # parent directory for folders declared with nix; $HOME for user if user == "syncthing"
-      configDir = "/home/${username}/.config/syncthing"; # keys, database, configuration, nix stuff
+      dataDir = "/home/anuramat"; # parent directory for folders declared with nix
+      configDir = "/home/${username}/.config/syncthing"; # keys, database, configuration
       extraFlags = [
         # "--config=/home/${username}/.config/syncthing" # keys and configuration
         # "--data=/home/${username}/.local/share/syncthing" # where to store the database files

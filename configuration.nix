@@ -141,6 +141,10 @@ in
       duf # disk usage (better "df")
       du-dust # directory disk usage (better du)
       ncdu # directory sidk usage (better du)
+      # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
+      swayimg
+      imv
+      nomacs # GUI
       # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
       ffmpeg # video
       pandoc # markup (latex, markdown, etc)
@@ -184,18 +188,21 @@ in
       neofetch
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # file managers
-      cinnamon.nemo
+      cinnamon.nemo # wayland native
       dolphin
-      # xfce.thunar
-      # gnome.nautilus
-      # ---------------
+      xfce.thunar
+      gnome.nautilus
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # davinci-resolve
       flameshot # screenshot + markup
       swappy # screenshot + markup, more terminal friendly
       qalculate-gtk # gui for qalc
       gimp-with-plugins
+      krita
+      inkscape-with-extensions
       kitty
       alacritty
+      zathura # document viewer
       foot
       telegram-desktop
       element-desktop
@@ -313,14 +320,9 @@ in
     enable = true;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
   };
   services.dbus.enable = true;
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~ Keyboard ~~~~~~~~~~~~~~~~~~~~~~~~~
-  # TODO figure out how to manage multiple keyboards
-  services.xserver = {
-    layout = "us,ru";
-    xkbOptions = "ctrl:swapcaps,altwin:swap_lalt_lwin,grp:alt_shift_toggle";
-  };
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
   environment.systemPackages = with pkgs; [
     # Basics
@@ -392,7 +394,7 @@ in
   services.syncthing =
     {
       # NOTE this is a mess, everything is stored in .config, for now will have to ignore all of it in cfg repo
-      # use XDG when transitioning to home manager
+      # use XDG paths when transitioning to home manager
       enable = true;
       user = username;
       dataDir = "/home/anuramat/Syncthing"; # parent directory for folders declared with nix; $HOME for user if user == "syncthing"

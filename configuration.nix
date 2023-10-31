@@ -48,9 +48,6 @@ let
   unstableTarball =
     fetchTarball
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
-  masterTarball =
-    fetchTarball
-      https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 in
 {
@@ -71,9 +68,6 @@ in
     allowUnfree = true;
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-      master = import masterTarball {
         config = config.nixpkgs.config;
       };
     };
@@ -203,7 +197,7 @@ in
       alacritty
       zathura # document viewer
       foot
-      master.telegram-desktop
+      unstable.telegram-desktop
       element-desktop
       discord
       discordo

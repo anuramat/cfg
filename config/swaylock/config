@@ -9,7 +9,8 @@ font=Hack Nerd Font
 
 # Dracula colorscheme
 # color=282a36
-color=000000 # black is cooler
+# black is cooler
+color=000000
 inside-color=1F202A
 line-color=1F202A
 ring-color=bd93f9

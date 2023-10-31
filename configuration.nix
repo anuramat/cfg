@@ -186,12 +186,7 @@ in
       hyprpicker # gigasimple terminal color picker
       neofetch
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # file managers
       cinnamon.nemo # wayland native
-      dolphin
-      xfce.thunar
-      gnome.nautilus
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # davinci-resolve
       flameshot # screenshot + markup
       swappy # screenshot + markup, more terminal friendly

@@ -104,7 +104,7 @@ bar {
     position top
     status_command i3status
     separator_symbol " | "
-    mode hide
+    # mode hide
     modifier $mod
     icon_theme "Dracula"
     colors {

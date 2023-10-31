@@ -48,6 +48,9 @@ let
   unstableTarball =
     fetchTarball
       https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+  masterTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs/archive/master.tar.gz;
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 in
 {
@@ -68,6 +71,9 @@ in
     allowUnfree = true;
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+      master = import masterTarball {
         config = config.nixpkgs.config;
       };
     };
@@ -185,11 +191,10 @@ in
       aria # downloader
       hyprpicker # gigasimple terminal color picker
       neofetch
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      mosh
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       cinnamon.nemo # wayland native
       # davinci-resolve
-      flameshot # screenshot + markup
-      swappy # screenshot + markup, more terminal friendly
       qalculate-gtk # gui for qalc
       gimp-with-plugins
       krita
@@ -198,7 +203,7 @@ in
       alacritty
       zathura # document viewer
       foot
-      telegram-desktop
+      master.telegram-desktop
       element-desktop
       discord
       discordo
@@ -339,6 +344,7 @@ in
     progress # progress status for cp etc
     efibootmgr
     unstable.neovim
+    w3m # text based web browser
     # CLI
     bash-completion
     nix-bash-completions
@@ -354,8 +360,15 @@ in
     chromium
     firefox # TODO delete
     okular # document viewer
-    grim # screenshot
-    slurp # select area for screenshot
+    # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
+    slurp # select screen region
+    # grim # screenshot a specified region
+    # shotman # grim, but with simple preview afterwards
+    swappy # grim, but with minimal markup
+    flameshot # more bloated swappy
+    # wf-recorder # grim but for video
+    kooha # gui screen capture
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     i3status # status line generator
     wev # wayland event viewer (useful for debug)
     libnotify # notify-send mako
@@ -369,17 +382,17 @@ in
     swayidle # idle events
     swaylock # lockscreen
     bemenu # wayland clone of dmenu
+    pavucontrol # gui audio configuration
+    networkmanagerapplet # gui network TODO check if this even works
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
     glib # gsettings (gtk etc)
     qt5ct
     unstable.qt6ct
     adwaita-qt
     adwaita-qt6
-    pavucontrol # gui audio configuration
-    networkmanagerapplet # gui network TODO check if this even works
-    # gtk themes, stored in /run/current-system/sw/share/themes
     dracula-theme
     dracula-icon-theme
-    # sway scripts
+    # ~~~~~~~~~~~~~~~~~~~~~~~ Sway scripts ~~~~~~~~~~~~~~~~~~~~~~~
     dbus-sway-environment
     configure-gtk
   ];

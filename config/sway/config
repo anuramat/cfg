@@ -133,6 +133,14 @@ default_border pixel 3
 default_floating_border normal 3
 focus_follows_mouse no
 output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
+    scale 1.5
+    pos 0 0
+}
+output eDP-1 {
+    pos 320 1440
+}
 # ~~~~~~~~~~~~~~~~~~~~~ Colorscheme ~~~~~~~~~~~~~~~~~~~~~~ #
 #class                  border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4

@@ -96,7 +96,8 @@ in
       pointerCursor = {
         name = "Adwaita";
         package = pkgs.gnome.adwaita-icon-theme;
-        size = 48;
+        size = 24;
+        gtk.enable = true;
         x11 = {
           enable = true;
           defaultCursor = "Adwaita";
@@ -363,6 +364,7 @@ in
     unstable.neovim
     w3m # text based web browser
     usbutils
+    wally-cli
     # CLI
     bash-completion
     nix-bash-completions
@@ -394,7 +396,6 @@ in
     xdg-utils # for default actions on link clicks
     wdisplays # gui display configuration
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    wayland # TODO check if this is directly required
     imv # image viewer for terminal workflows
     playerctl # media controls
     swayidle # idle events
@@ -415,6 +416,8 @@ in
     dbus-sway-environment
     configure-gtk
   ];
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~ Hardware ~~~~~~~~~~~~~~~~~~~~~~~~~
+  hardware.keyboard.zsa.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
   virtualisation.docker.enable = true;
   services.syncthing =

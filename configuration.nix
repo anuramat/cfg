@@ -8,6 +8,7 @@ let
   fullname = "Arsen Nuramatov";
   hostname = "anuramat-t480";
   timezone = "Etc/GMT-6";
+  version = "23.05";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/Sway
   dbus-sway-environment = pkgs.writeTextFile {
@@ -45,9 +46,13 @@ let
       '';
   };
 
+  home-manager =
+    fetchTarball
+      "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+
   unstableTarball =
     fetchTarball
-      https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
+      "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 in
 {
@@ -57,10 +62,13 @@ in
       # backup the configuration.nix to /run/current-system/configuration.nix
       copySystemConfiguration = true;
       # determines default settings for stateful data
-      stateVersion = "23.05"; # WARN: DON'T TOUCH
+      stateVersion = version; # WARN: DON'T TOUCH
     };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  imports = [ ./hardware-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    (import "${home-manager}/nixos")
+  ];
   nixpkgs.config = {
     permittedInsecurePackages = [
       "electron-24.8.6"
@@ -82,6 +90,21 @@ in
     efi.canTouchEfiVariables = true;
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  home-manager.users.${username} = {
+    home = {
+      stateVersion = version;
+      pointerCursor = {
+        name = "Adwaita";
+        package = pkgs.gnome.adwaita-icon-theme;
+        size = 48;
+        x11 = {
+          enable = true;
+          defaultCursor = "Adwaita";
+        };
+      };
+    };
+  };
+
   users.users.${username} = {
     description = fullname;
     isNormalUser = true;
@@ -339,6 +362,7 @@ in
     efibootmgr
     unstable.neovim
     w3m # text based web browser
+    usbutils
     # CLI
     bash-completion
     nix-bash-completions
@@ -386,6 +410,7 @@ in
     adwaita-qt6
     dracula-theme
     dracula-icon-theme
+    gnome3.adwaita-icon-theme
     # ~~~~~~~~~~~~~~~~~~~~~~~ Sway scripts ~~~~~~~~~~~~~~~~~~~~~~~
     dbus-sway-environment
     configure-gtk

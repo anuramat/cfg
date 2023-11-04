@@ -1,9 +1,4 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
 set $term kitty -1
 # alt: foot
 set $bar_height 30
@@ -25,11 +20,19 @@ input 2:10:TPPS/2_IBM_TrackPoint {
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Basic
+set $mod Mod4
+
+set $left h
+set $down j
+set $up k
+set $right l
+
 bindsym $mod+t exec $term
-bindsym $mod+d exec $menu
+bindsym $mod+space exec $menu
+bindsym $mod+q kill
+
 bindsym $mod+n exec "makoctl dismiss"
 bindsym $mod+ctrl+n exec "makoctl dismiss --all"
-bindsym $mod+q kill
 bindsym $mod+ctrl+comma reload
 bindsym $mod+comma exec $term $EDITOR $XDG_CONFIG_HOME/sway/config
 bindsym $mod+ctrl+q exec swaylock --daemonize
@@ -86,21 +89,20 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+ctrl+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+ctrl+m floating toggle
+bindsym $mod+m focus mode_toggle
 bindsym $mod+a focus parent
 
 bindsym $mod+ctrl+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 mode "resize" {
-    bindsym $left resize shrink width 10px
-        bindsym $down resize grow height 10px
-        bindsym $up resize shrink height 10px
-        bindsym $right resize grow width 10px
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym Ctrl+bracketleft mode "default"
+    bindsym $left resize shrink width 50px
+        bindsym $down resize grow height 50px
+        bindsym $up resize shrink height 50px
+        bindsym $right resize grow width 50px
+        bindsym $mod+r mode "default"
+        bindsym escape mode "default"
 }
 bindsym $mod+r mode "resize"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

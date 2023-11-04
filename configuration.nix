@@ -114,8 +114,9 @@ in
       "video" # screen brightess
       "network" # wifi
       "docker" # docker
-      "audio" # just in case
-      "syncthing"
+      "audio" # just in case (?)
+      "syncthing" # just in case default syncthing settings are used
+      "plugdev" # pluggable devices : required by zsa voyager
     ];
     packages = with pkgs; [
       unstable.eza
@@ -183,7 +184,7 @@ in
       httpie # better curl
       kubectx
       kubectl
-      emacs-gtk
+      # emacs-gtk
       lazydocker
       lazygit
       llvm
@@ -243,6 +244,12 @@ in
       obs-studio
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
+
+      nyxt
+      qutebrowser
+      luakit
+      vieb
+      vimb
     ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -363,8 +370,9 @@ in
     efibootmgr
     unstable.neovim
     w3m # text based web browser
-    usbutils
-    wally-cli
+    usbutils # just in case
+    libusb # zsa voyager
+    wally-cli # zsa voyager
     # CLI
     bash-completion
     nix-bash-completions
@@ -377,7 +385,8 @@ in
     fzf # fuzzy finder
     ripgrep # better grep
     # GUI
-    chromium
+    vivaldi
+    google-chrome
     firefox # TODO delete
     okular # document viewer
     # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
@@ -417,7 +426,14 @@ in
     configure-gtk
   ];
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Hardware ~~~~~~~~~~~~~~~~~~~~~~~~~
-  hardware.keyboard.zsa.enable = true;
+  services.udev.extraRules = ''
+    # Rules for Oryx web flashing and live training
+    KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+
+    # Keymapp Flashing rules for the Voyager
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
+  '';
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
   virtualisation.docker.enable = true;
   services.syncthing =

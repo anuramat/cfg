@@ -196,7 +196,7 @@ in
       peco # interactive filtering
       prettyping # better "ping"
       tmux
-      tree # not really needed, use "exa --tree" instead
+      tree # prefer "exa --tree" instead
       universal-ctags
       youtube-dl
       nodePackages_latest.yaml-language-server
@@ -222,6 +222,7 @@ in
       alacritty
       zathura # document viewer
       foot
+      cool-retro-term
       unstable.telegram-desktop
       element-desktop
       discord
@@ -380,12 +381,10 @@ in
     bat # better cat with syntax hl
     croc # send/receive files
     delta # better diffs
-    exa # better ls
     fd # find alternative
     fzf # fuzzy finder
     ripgrep # better grep
     # GUI
-    vivaldi
     google-chrome
     firefox # TODO delete
     okular # document viewer
@@ -410,6 +409,7 @@ in
     swayidle # idle events
     swaylock # lockscreen
     bemenu # wayland clone of dmenu
+    j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~

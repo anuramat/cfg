@@ -18,6 +18,9 @@ input 1:1:AT_Translated_Set_2_keyboard {
 input 2:10:TPPS/2_IBM_TrackPoint {
     pointer_accel 0.5
 }
+input 1739:0:Synaptics_TM3276-022 {
+    events disabled
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Basic
 set $mod Mod4
@@ -48,8 +51,8 @@ bindsym $mod+ctrl+$down move down
 bindsym $mod+ctrl+$up move up
 bindsym $mod+ctrl+$right move right
 # Brightness
-bindsym XF86MonBrightnessDown exec light -U 20
-bindsym XF86MonBrightnessUp exec light -A 20
+bindsym XF86MonBrightnessDown exec light -U 25
+bindsym XF86MonBrightnessUp exec light -A 25
 # Volume
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-

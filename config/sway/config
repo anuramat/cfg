@@ -5,7 +5,7 @@ set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
 font "pango:$font"
-set $menu pkill bemenu-run || bemenu-run -i -l 10 --fn "$font" -p "" | xargs swaymsg exec
+set $menu pkill bemenu || j4-dmenu-desktop --dmenu='BEMENU_BACKEND=wayland bemenu -i -l 10 -m -2 -p "" --fn "$font"' --wrapper='swaymsg exec' --no-generic --term='$term' --display-binary
 focus_wrapping no
 exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 input 1:1:AT_Translated_Set_2_keyboard {
@@ -129,9 +129,6 @@ bar {
     }
 }
 # ~~~~~~~~~~~~~~~~~~~~~~ Screenshot ~~~~~~~~~~~~~~~~~~~~~~ #
-## Screenshot to ~/Screenshots/
-# bindsym $mod+p exec grim -g "$(slurp)" - | tee $screenshot_dir/$(date +'%y.%m.%d_%Hh%Mm%Ss%z.png') | wl-copy
-## Screenshot with markup GUI
 bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
 # ~~~~~~~ NixOS boilerplate from configuration.nix ~~~~~~~ #
 exec dbus-sway-environment

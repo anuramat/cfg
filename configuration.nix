@@ -392,9 +392,9 @@ in
     okular # document viewer
     # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
     slurp # select screen region
-    # grim # screenshot a specified region
+    grim # screenshot a specified region
     # shotman # grim, but with simple preview afterwards
-    swappy # grim, but with minimal markup
+    swappy # markup wrapper for grim
     flameshot # more bloated swappy
     # wf-recorder # grim but for video
     kooha # gui screen capture

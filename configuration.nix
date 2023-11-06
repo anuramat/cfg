@@ -245,7 +245,9 @@ in
       obs-studio
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
-
+      qtox
+      protonvpn-gui
+      protonvpn-cli
       nyxt
       qutebrowser
       luakit

@@ -6,9 +6,8 @@ set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
 font "pango:$font"
 set $menu pkill bemenu-run || bemenu-run -i -l 10 --fn "$font" -p "" | xargs swaymsg exec
-# alt: dmenu
 focus_wrapping no
-exec swayidle -w timeout 60 'swaylock -f' before-sleep 'swaylock -f'
+exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
     repeat_delay 250

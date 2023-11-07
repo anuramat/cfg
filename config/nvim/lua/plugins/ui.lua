@@ -11,7 +11,7 @@ specs.dracula_cs = {
     local opts = {
       italic_comment = true,
       lualine_bg_color = cs.bg,
-      transparent_bg = false,
+      transparent_bg = true,
     }
     dracula.setup(opts)
 
@@ -87,7 +87,9 @@ specs.fidget = {
   'j-hui/fidget.nvim',
   tag = 'legacy',
   event = 'LspAttach',
-  opts = {},
+  opts = {
+    window = { blend = 0 }, -- fixes black background on transparent theme
+  },
 }
 
 specs.clue = {

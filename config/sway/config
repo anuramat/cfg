@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $term kitty -1
-# alt: foot
+set $term foot
+# set $term kitty -1
 set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13

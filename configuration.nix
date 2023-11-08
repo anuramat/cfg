@@ -218,10 +218,10 @@ in
       gimp-with-plugins
       krita
       inkscape-with-extensions
-      kitty
-      alacritty
+      kitty # cute but bloat
+      alacritty # can't nerd
       zathura # document viewer
-      foot
+      foot # can't nerd, no gpu
       cool-retro-term
       unstable.telegram-desktop
       element-desktop
@@ -414,6 +414,7 @@ in
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
+    mpv # cli media player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
     glib # gsettings (gtk etc)
     qt5ct

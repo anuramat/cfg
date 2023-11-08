@@ -137,7 +137,7 @@ exec configure-gtk
 default_border pixel 3
 default_floating_border normal 3
 focus_follows_mouse no
-output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /path/to/file fill
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
     scale 1.5

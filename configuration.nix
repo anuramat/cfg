@@ -410,6 +410,11 @@ in
     playerctl # media controls
     swayidle # idle events
     swaylock # lockscreen
+    swaybg # wallpaper helper
+    mpvpaper # video wallpaper
+    swww # wp helper + animated wallpaper
+    wallutils # wallpaper helper wit dynamic wallpapers
+    wbg # stupid simple wp helper
     bemenu # wayland clone of dmenu
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration

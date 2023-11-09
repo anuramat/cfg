@@ -385,6 +385,7 @@ in
     delta # better diffs
     fd # find alternative
     fzf # fuzzy finder
+    jq
     ripgrep # better grep
     # GUI
     google-chrome
@@ -418,11 +419,13 @@ in
     wpaperd # swaybg+ daemon
 
     kanshi
-    nwg-displays
     wlopm
     wlr-randr
 
+    input-remapper # supports even joysticks
+
     bemenu # wayland clone of dmenu
+    tofi # dmenu/rofi replacement (centered)
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration
     networkmanagerapplet # gui network TODO check if this even works
@@ -465,3 +468,6 @@ in
       ];
     };
 }
+
+
+

@@ -421,8 +421,6 @@ in
     wlopm
     wlr-randr
 
-    input-remapper # supports even joysticks
-
     bemenu # wayland clone of dmenu
     tofi # dmenu/rofi replacement (centered)
     j4-dmenu-desktop # .desktop for dmenu

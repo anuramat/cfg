@@ -413,8 +413,9 @@ in
     swaybg # wallpaper helper
     mpvpaper # video wallpaper
     swww # wp helper + animated wallpaper
-    wallutils # wallpaper helper wit dynamic wallpapers
+    wallutils # bunch of wallpaper related utils
     wbg # stupid simple wp helper
+    wpaperd # swaybg+ daemon
     bemenu # wayland clone of dmenu
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration

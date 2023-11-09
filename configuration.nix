@@ -416,6 +416,12 @@ in
     wallutils # bunch of wallpaper related utils
     wbg # stupid simple wp helper
     wpaperd # swaybg+ daemon
+
+    kanshi
+    nwg-displays
+    wlopm
+    wlr-randr
+
     bemenu # wayland clone of dmenu
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration

@@ -218,10 +218,9 @@ in
       gimp-with-plugins
       krita
       inkscape-with-extensions
-      kitty # cute but bloat
-      alacritty # can't nerd
+      alacritty # gpu
       zathura # document viewer
-      foot # can't nerd, no gpu
+      foot # minimal
       cool-retro-term
       unstable.telegram-desktop
       element-desktop

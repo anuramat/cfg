@@ -400,6 +400,9 @@ in
     kooha # gui screen capture
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     i3status # status line generator
+    waybar # most popular bar
+    yambar
+    eww-wayland # widget (primarily bars)
     wev # wayland event viewer (useful for debug)
     libnotify # notify-send mako
     mako # notifications

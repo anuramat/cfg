@@ -367,6 +367,7 @@ in
     killall
     clang
     coreutils-full # just in case
+    coreutils-prefixed # to keep mac compatibility where possible
     curl
     gcc
     git

@@ -1,5 +1,3 @@
-SHELL := /bin/bash
-
 .PHONY: all
 all: lua_lint sh_lint
 

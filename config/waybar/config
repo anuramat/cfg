@@ -3,7 +3,7 @@
     "spacing": 10,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "mpris"],
     "modules-center": [],
-    "modules-right": [ "idle_inhibitor", "sway/language", "pulseaudio", "backlight", "network", "bluetooth", "cpu", "memory", "disk", "temperature", "keyboard-state",  "battery", "clock", "tray"],
+    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network", "bluetooth", "cpu", "memory", "disk", "temperature", "keyboard-state",  "battery", "tray", "clock", "idle_inhibitor"],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,

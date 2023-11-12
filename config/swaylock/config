@@ -2,7 +2,7 @@ ignore-empty-password
 daemonize
 
 indicator-caps-lock
-hide-keyboard-layout
+# hide-keyboard-layout
 
 indicator-radius=100
 font=Hack Nerd Font

@@ -1,139 +1,64 @@
+/* https://github.com/Alexays/Waybar/wiki/Styling */
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./colors.css");
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 10px;
     font-size: 13pt;
     font-family: "Hack Nerd Font";
+    background: rgba(0,0,0,0);
+    color: @foreground;
     min-height: 30px;
 }
-#workspaces button {
-    /* workspace buttons */
-    padding: 0 10px;
+/*~~~~~~~~~~~~~~~~~~~~~~~~~ Left ~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/* #waybar box {
+    padding: 5px 5px;
+} */
+#workspaces {
     background: @background;
-    color: @foreground;
 }
-/*
-#workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
+#workspaces * {
+    background: @background;
+    padding: 0 5px;
+}
+#workspaces label {
+    background: rgba(0,0,0,0.0); /* so that it doesn't overlap with box-shadow */
+}
+#workspaces button.focused, #mode {
+    box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
     background-image: linear-gradient(0deg, @selection, @background-darker);
-}
-#workspaces button.active {
-    background-image: linear-gradient(0deg, @purple, @selection);
-}
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
 }
 #workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-#taskbar button.active {
-    background-image: linear-gradient(0deg, @selection, @background-darker);
-}
-*/
-/* **************************** */
-
-window#waybar {
-    background: @background-darker;
-    border-bottom: 2px solid @background;
-    color: @foreground;
-    opacity: 0.9;
-    transition-duration: .5s;
-    transition-property: background-color;
+    background: @purple;
+    color: @background;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
-
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
-
-#window,
-#workspaces {
-    margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
+/*~~~~~~~~~~~~~~~~~~~~~~~~ Right ~~~~~~~~~~~~~~~~~~~~~~~~~*/
+.modules-right * {
     background: @background;
+    padding: 0 10px;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @background;
+    color: @green;
 }
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: @background;
+    background-color: @green;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        color: @white;
+        background-color: @red;
     }
 }
 
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+#battery.critical:not(.charging), #temperature.critical {
+    background-color: @background;
+    color: @white;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -141,56 +66,52 @@ button:hover {
     animation-direction: alternate;
 }
 
-label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-}
-
-#memory {
-}
-
-#disk {
-}
-
-#backlight {
+#temperature {
+    color: @pink;
 }
 
 #network {
+    color: @cyan;
+    padding: 0 20px 0 10px;
+}
+#network.disconnected {
+    color: @red;
 }
 
-#network.disconnected {
+#cpu {
+    color: @orange;
+    padding: 0 15px 0 10px;
 }
+
+#memory {
+    color: @orange;
+    padding: 0 17px 0 10px;
+}
+
+#disk {
+    color: @orange;
+}
+
+#backlight {
+    color: @yellow;
+    padding: 0 10px 0 10px;
+}
+
 
 #pulseaudio {
+    color: @yellow;
 }
-
 #pulseaudio.muted {
-}
-
-#wireplumber {
+    color: @red;
 }
 
 #wireplumber.muted {
+    color: @red
 }
 
-#custom-media {
-}
-
-#custom-media.custom-spotify {
-}
-
-#custom-media.custom-vlc {
-}
-
-#temperature {
-}
-
-#temperature.critical {
-}
 
 #tray {
+    padding: 0;
 }
 
 #tray > .passive {
@@ -202,35 +123,21 @@ label:focus {
 }
 
 #idle_inhibitor {
+    padding: 0 17px 0 10px;
 }
 
 #idle_inhibitor.activated {
+    color: @purple;
 }
 
 #language {
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
 }
 
 #keyboard-state {
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-    background-color: transparent;
 }

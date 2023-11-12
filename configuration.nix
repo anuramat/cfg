@@ -121,6 +121,7 @@ in
       "audio" # just in case (?)
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
+      "input" # le unsecure, used by waybar-keyboard-state
     ];
     packages = with pkgs; [
       unstable.eza
@@ -172,6 +173,7 @@ in
       # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
       imv
       swayimg
+      vimiv-qt
       nomacs # GUI
       # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
       ffmpeg # video
@@ -409,10 +411,7 @@ in
     # wf-recorder # grim but for video
     kooha # gui screen capture
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    i3status # status line generator
-    waybar # most popular bar
-    # unstable.waybar-mpris
-    yambar
+    waybar # status bar
     eww-wayland # widget (primarily bars)
     wev # wayland event viewer (useful for debug)
     libnotify # notify-send mako

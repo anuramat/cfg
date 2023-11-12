@@ -411,7 +411,7 @@ in
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     i3status # status line generator
     waybar # most popular bar
-    unstable.waybar-mpris
+    # unstable.waybar-mpris
     yambar
     eww-wayland # widget (primarily bars)
     wev # wayland event viewer (useful for debug)
@@ -465,6 +465,7 @@ in
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
+  documentation.man.generateCaches = true; # apropos
   virtualisation.docker.enable = true;
   services.syncthing =
     {

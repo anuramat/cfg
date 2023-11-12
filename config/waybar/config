@@ -1,7 +1,7 @@
 {
     "position": "top",
     "spacing": 10,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/waybar-mpris"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "mpris"],
     "modules-center": [],
     "modules-right": [ "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state",  "battery", "battery#bat0", "battery#bat1", "clock", "tray"],
     "keyboard-state": {
@@ -108,16 +108,19 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/waybar-mpris": {
-        "return-type": "json",
-        "exec": "waybar-mpris --position --autofocus --order 'ARTIST:TITLE' ",
-        "on-click": "playerctl play",
-        "on-click-right": "playerctl next",
-        "on-click-middle": "playerctl previous",
-        "max-length": 50
-        //"player-icons": { "spotify" : "" },
-        //"status-icons" : { "playing": "▶", "paused": "⏸" },
-        //"ignored-players": ["firefox"]
+    "mpris": {
+            "format": "{player_icon}  {status_icon} {dynamic}",
+            "player": "spotify",
+            "player-icons": {
+                "default": "",
+                "spotify": "󰓇"
+            },
+            "dynamic-priority": ["title", "artist", "length", "position", "album"],
+            "status-icons": {
+                "paused": "󰏤",
+                "playing": "󰐊"
+            },
+            "dynamic-len": 70,
     }
 }
 

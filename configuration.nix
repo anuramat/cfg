@@ -95,6 +95,9 @@ in
     #   };
     #   cursorTheme = null; # probably overlap with pointerCursor
     # };
+    xdg.mimeApps = {
+      enable = true;
+    };
     home = {
       stateVersion = version;
       pointerCursor = {
@@ -219,6 +222,7 @@ in
       mosh
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       cinnamon.nemo # wayland native
+      steam
       # davinci-resolve
       qalculate-gtk # gui for qalc
       gimp-with-plugins

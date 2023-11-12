@@ -80,7 +80,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "foot nmtui"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -120,7 +121,8 @@
             "format": "{percentage_used}% "
     },
     "bluetooth": {
-            "format": "{status} "
+            "format": "{status} ",
+            "on-click-right": "blueman-manager"
     },
     "sway/language": {
             "tooltip-format": "{flag} {long} {variant}"

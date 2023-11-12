@@ -274,7 +274,11 @@ in
       firewall.enable = true;
       # firewall.allowedTCPPorts = [ ... ];
       # firewall.allowedUDPPorts = [ ... ];
-      networkmanager.enable = true; # TODO gui?;
+      networkmanager = {
+        enable = true; # TODO find a decent gui?;
+        wifi.backend = "iwd";
+      };
+      wireless.iwd.enable = true;
       hostName = hostname;
       nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };
@@ -439,7 +443,6 @@ in
     tofi # dmenu/rofi replacement (centered)
     j4-dmenu-desktop # .desktop for dmenu
     pavucontrol # gui audio configuration
-    networkmanagerapplet # gui network TODO check if this even works
     mpv # cli media player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
     glib # gsettings (gtk etc)

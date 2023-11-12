@@ -404,7 +404,6 @@ in
     inetutils # common network stuff
     # GUI
     google-chrome
-    firefox # TODO delete
     okular # document viewer
     # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
     slurp # select screen region

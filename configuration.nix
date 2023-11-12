@@ -83,18 +83,18 @@ in
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   home-manager.users.${username} = {
-    gtk = {
-      enable = true;
-      theme = {
-        package = pkgs.dracula-theme;
-        name = "Dracula";
-      };
-      iconTheme = {
-        package = pkgs.dracula-icon-theme;
-        name = "Dracula";
-      };
-      cursorTheme = null; # probably overlap with pointerCursor
-    };
+    # gtk = { # writes a symlink to .config/gtk-3.0, no thanks
+    #   enable = true;
+    #   theme = {
+    #     package = pkgs.dracula-theme;
+    #     name = "Dracula";
+    #   };
+    #   iconTheme = {
+    #     package = pkgs.dracula-icon-theme;
+    #     name = "Dracula";
+    #   };
+    #   cursorTheme = null; # probably overlap with pointerCursor
+    # };
     home = {
       stateVersion = version;
       pointerCursor = {

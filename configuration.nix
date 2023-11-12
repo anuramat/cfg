@@ -97,6 +97,9 @@ in
     # };
     xdg.mimeApps = {
       enable = true;
+      defaultApplications = {
+        "text/plain" = [ "neovim.desktop" ];
+      };
     };
     home = {
       stateVersion = version;

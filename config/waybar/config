@@ -114,7 +114,7 @@
                 "paused": "󰏤",
                 "playing": "󰐊"
             },
-            "dynamic-len": 65,
+            "dynamic-len": 50
     },
     "disk": {
             "path": "/",

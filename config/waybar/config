@@ -1,53 +1,119 @@
 {
-  "layer": "top",
-  "position": "top",
-  "height": 24,
-  "spacing": 4,
-  "modules-left": [
-    "wlr/workspaces",
-    "wlr/taskbar"
-  ],
-  "modules-center": [
-    "hyprland/window"
-  ],
-  "modules-right": [
-    "tray",
-    "hyprland/language",
-    "custom/weather",
-    "clock"
-  ],
-  "wlr/taskbar": {
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "ignore-list": [
-      "foot"
-    ]
-  },
-  "wlr/workspaces": {
-    "on-click": "activate",
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1"
-  },
-  "hyprland/window": {
-    "max-length": 128
-  },
-  "clock": {
-    "format": "{:%c}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  "tray": {
-    "spacing": 4
-  },
-  "custom/weather": {
-    "exec": "~/.config/waybar/wittr.sh",
-    "return-type": "json",
-    "format": "{}",
-    "tooltip": true,
-    "interval": 900
-  },
-  "hyprland/language": {
-    "format-pl": "[pl]",
-    "format-en": "[us]",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
-  }
+    "position": "top",
+    "spacing": 10,
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/waybar-mpris"],
+    "modules-center": [],
+    "modules-right": [ "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state",  "battery", "battery#bat2", "clock", "tray"],
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "{:%Y-%m-%d %H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "󰖁 {icon}  {format_source}",
+        "format-muted": "󰖁  {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"] // 󰝟 󰖁
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/waybar-mpris": {
+        "return-type": "json",
+        "exec": "waybar-mpris --position --autofocus --order 'ARTIST:TITLE' ",
+        "on-click": "playerctl play",
+        "on-click-right": "playerctl next",
+        "on-click-middle": "playerctl previous",
+        "max-length": 50
+        //"player-icons": { "spotify" : "" },
+        //"status-icons" : { "playing": "▶", "paused": "⏸" },
+        //"ignored-players": ["firefox"]
+    }
 }
+
+

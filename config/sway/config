@@ -5,9 +5,9 @@ set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
 font "pango:$font"
-# set $menu pkill bemenu || j4-dmenu-desktop --dmenu='BEMENU_BACKEND=wayland bemenu -i -l 10 -m -2 -p "" --fn "$font"' --wrapper='swaymsg exec' --no-generic --term='$term' --display-binary
 set $menu pkill tofi || j4-dmenu-desktop --dmenu="tofi -c $XDG_CONFIG_HOME/tofi.cfg" --wrapper='swaymsg exec' --no-generic --term='$term' --display-binary
 focus_wrapping no
+exec_always autotiling
 exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
@@ -138,7 +138,7 @@ exec configure-gtk
 default_border pixel 3
 default_floating_border normal 3
 focus_follows_mouse no
-gaps inner 10
+# gaps inner 10
 # output * bg /path/to/file fill
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output "Lenovo Group Limited LEN T27p-10 0x00007F36" {

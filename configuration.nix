@@ -22,12 +22,6 @@ let
       systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
     '';
   };
-  # currently, there is some friction between sway and gtk:
-  # https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
-  # the suggested way to set gtk settings is with gsettings
-  # for gsettings to work, we need to tell it where the schemas are
-  # using the XDG_DATA_DIR environment variable
-  # run at the end of sway config
   configure-gtk = pkgs.writeTextFile {
     name = "configure-gtk";
     destination = "/bin/configure-gtk";
@@ -40,8 +34,6 @@ let
       ''
         export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
         gnome_schema=org.gnome.desktop.interface
-        gsettings set $gnome_schema gtk-theme 'Dracula'
-        gsettings set $gnome_schema icon-theme 'Dracula'
         gsettings set $gnome_schema color-scheme 'prefer-dark'
       '';
   };
@@ -91,6 +83,18 @@ in
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   home-manager.users.${username} = {
+    gtk = {
+      enable = true;
+      theme = {
+        package = pkgs.dracula-theme;
+        name = "Dracula";
+      };
+      iconTheme = {
+        package = pkgs.dracula-icon-theme;
+        name = "Dracula";
+      };
+      cursorTheme = null; # probably overlap with pointerCursor
+    };
     home = {
       stateVersion = version;
       pointerCursor = {
@@ -166,8 +170,8 @@ in
       du-dust # directory disk usage (better du)
       ncdu # directory sidk usage (better du)
       # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
-      swayimg
       imv
+      swayimg
       nomacs # GUI
       # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
       ffmpeg # video
@@ -245,8 +249,6 @@ in
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
       qtox
-      protonvpn-gui
-      protonvpn-cli
       nyxt
       qutebrowser
       luakit
@@ -267,14 +269,14 @@ in
   # TODO why set nameservers twice?
   networking =
     {
-      # firewall.enable = true;
+      firewall.enable = true;
       # firewall.allowedTCPPorts = [ ... ];
       # firewall.allowedUDPPorts = [ ... ];
       networkmanager.enable = true; # TODO gui?;
       hostName = hostname;
       nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };
-  # use dnssec and DNSoverTLS (might break on a different ns)
+  # uses DNSSEC and DNSoverTLS, might break on a different ns
   services.resolved = {
     enable = true;
     dnssec = "true";
@@ -341,6 +343,9 @@ in
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      autotiling # dynamic tiling
+    ];
   };
   xdg.portal = {
     enable = true;
@@ -376,6 +381,7 @@ in
     libusb # zsa voyager
     wally-cli # zsa voyager
     # CLI
+    file
     bash-completion
     nix-bash-completions
     nixpkgs-fmt # nix formatter
@@ -386,6 +392,9 @@ in
     fzf # fuzzy finder
     jq
     ripgrep # better grep
+
+    dig # dns utils
+    inetutils # common network stuff
     # GUI
     google-chrome
     firefox # TODO delete
@@ -401,6 +410,7 @@ in
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     i3status # status line generator
     waybar # most popular bar
+    unstable.waybar-mpris
     yambar
     eww-wayland # widget (primarily bars)
     wev # wayland event viewer (useful for debug)
@@ -411,14 +421,15 @@ in
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     imv # image viewer for terminal workflows
     playerctl # media controls
-    swayidle # idle events
-    swaylock # lockscreen
     swaybg # wallpaper helper
     mpvpaper # video wallpaper
     swww # wp helper + animated wallpaper
     wallutils # bunch of wallpaper related utils
     wbg # stupid simple wp helper
     wpaperd # swaybg+ daemon
+    swayidle # idle events
+    swaylock # lockscreen
+
 
     kanshi
     wlopm
@@ -436,8 +447,8 @@ in
     unstable.qt6ct
     adwaita-qt
     adwaita-qt6
-    dracula-theme
-    dracula-icon-theme
+    # dracula-theme
+    # dracula-icon-theme
     gnome3.adwaita-icon-theme
     # ~~~~~~~~~~~~~~~~~~~~~~~ Sway scripts ~~~~~~~~~~~~~~~~~~~~~~~
     dbus-sway-environment
@@ -468,6 +479,3 @@ in
       ];
     };
 }
-
-
-

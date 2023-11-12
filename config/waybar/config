@@ -3,7 +3,7 @@
     "spacing": 10,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/waybar-mpris"],
     "modules-center": [],
-    "modules-right": [ "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state",  "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": [ "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state",  "battery", "battery#bat0", "battery#bat1", "clock", "tray"],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -72,8 +72,13 @@
         // "format-full": "",
         "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
+    "battery#bat0": {
+        "bat": "BAT0"
+        // "bat": "/sys/class/power_supply/BAT1/uevent"
+    },
+    "battery#bat1": {
+        "bat": "BAT1"
+        // "bat": "/sys/class/power_supply/BAT1/uevent"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface

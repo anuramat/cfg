@@ -383,6 +383,7 @@ in
     # CLI
     file
     bash-completion
+    acpi
     nix-bash-completions
     nixpkgs-fmt # nix formatter
     bat # better cat with syntax hl

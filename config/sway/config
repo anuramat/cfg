@@ -108,26 +108,9 @@ mode "resize" {
         bindsym escape mode "default"
 }
 bindsym $mod+r mode "resize"
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~ #
 bar {
-    height $bar_height
-    position top
-    status_command i3status
-    separator_symbol " | "
-    # mode hide
-    modifier $mod
-    icon_theme "Dracula"
-    colors {
-        background #282A36
-        statusline #F8F8F2
-        separator  #44475A
-
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
-    }
+    swaybar_command waybar
 }
 # ~~~~~~~~~~~~~~~~~~~~~~ Screenshot ~~~~~~~~~~~~~~~~~~~~~~ #
 bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -

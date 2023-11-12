@@ -3,7 +3,7 @@
 @import url("./colors.css");
 * {
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     font-size: 13pt;
     font-family: "Hack Nerd Font";
     background: rgba(0,0,0,0);
@@ -12,7 +12,7 @@
 }
 /*~~~~~~~~~~~~~~~~~~~~~~~~~ Left ~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /* #waybar box {
-    padding: 5px 5px;
+    padding: 2px 2px;
 } */
 #workspaces {
     background: @background;

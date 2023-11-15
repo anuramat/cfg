@@ -10,6 +10,7 @@ com! KillAll :silent %bd|e#|bd#
 se sr sw=0 et ts=2 " indentation (2 spaces)
 se tw=80 fo=qwj " foramtting; add 'ro/' to prepend command leader on <cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+se mouse=
 se noto " no timeout on key sequences
 se kmp=russian-jcukenwin imi=0 " cyrillic on i_c^
 se cot=menu,menuone,noselect,preview wop=fuzzy,pum " completion settings

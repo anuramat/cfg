@@ -285,7 +285,10 @@ in
         enable = true; # TODO find a decent gui?;
         wifi.backend = "iwd";
       };
-      wireless.iwd.enable = true;
+      wireless.iwd = {
+        enable = true;
+        settings = { Settings = { AutoConnect = true; }; };
+      };
       hostName = hostname;
       nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };

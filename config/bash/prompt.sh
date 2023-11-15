@@ -92,6 +92,23 @@ __return_code_prompt() {
 
 __path="$__bold$__purple\w$__norm"
 
+osc7_cwd() {
+	local strlen=${#PWD}
+	local encoded=""
+	local pos c o
+	for ((pos = 0; pos < strlen; pos++)); do
+		c=${PWD:pos:1}
+		case "$c" in
+			[-/:_.!\'\(\)~[:alnum:]]) o="${c}" ;;
+			*) printf -v o '%%%02X' "'${c}" ;;
+		esac
+		encoded+="${o}"
+	done
+	printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
+}
+
 PROMPT_COMMAND='__last_return_code=$?' # Capture last return code
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+
 PS1="\n $__path\$(__git_prompt)\$(__python_prompt)\$(__return_code_prompt)\n "
 PS2='│'

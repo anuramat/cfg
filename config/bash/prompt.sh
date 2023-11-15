@@ -93,6 +93,7 @@ __return_code_prompt() {
 __path="$__bold$__purple\w$__norm"
 
 osc7_cwd() {
+	# as stolen from foot term wiki
 	local strlen=${#PWD}
 	local encoded=""
 	local pos c o
@@ -107,8 +108,9 @@ osc7_cwd() {
 	printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 
-PROMPT_COMMAND='__last_return_code=$?' # Capture last return code
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }osc7_cwd
+# Capture last return code
+# Make new terminal instances use CWD
+PROMPT_COMMAND='__last_return_code=$?;'osc7_cwd
 
 PS1="\n $__path\$(__git_prompt)\$(__python_prompt)\$(__return_code_prompt)\n "
 PS2='│'

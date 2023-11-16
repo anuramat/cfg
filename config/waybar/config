@@ -107,18 +107,19 @@
         "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "mpris": {
+            "interval": 1,
             "format": "{player_icon}  {status_icon} {dynamic}",
             "player": "spotify",
             "player-icons": {
                 "default": "",
                 "spotify": "󰓇"
             },
-            "dynamic-priority": ["title", "artist", "length", "position", "album"],
+            "dynamic-priority": ["length", "position", "album"],
             "status-icons": {
                 "paused": "󰏤",
                 "playing": "󰐊"
             },
-            "dynamic-len": 66, // might need recalibration after ANY changes
+            "dynamic-len":1,
             "max-length": 999, // non empty - turns on ellipsis
     },
     "disk": {

@@ -118,7 +118,8 @@
                 "paused": "󰏤",
                 "playing": "󰐊"
             },
-            "dynamic-len": 50
+            "dynamic-len": 66, // might need recalibration after ANY changes
+            "max-length": 999, // non empty - turns on ellipsis
     },
     "disk": {
             "path": "/",

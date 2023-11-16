@@ -78,12 +78,11 @@
         "bat": "BAT1"
     },
     "network": {
-        "format-wifi": "{essid} {icon}", // {signalStrength}%
+        "format-wifi": "{essid} {icon}",
         "format-ethernet": "E/N 󰈀",
         "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
         "format-linked": "No IP 󰌚",
         "format-disconnected": "D/C 󰌙",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click-right": "foot nmtui",
         "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
@@ -104,7 +103,9 @@
             "car": "",
             "default": ["󰕿", "󰖀", "󰕾"] 
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "mpris": {
             "format": "{player_icon}  {status_icon} {dynamic}",

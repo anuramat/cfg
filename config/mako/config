@@ -14,3 +14,6 @@ border-color=#f1fa8c
 
 [urgency=high]
 border-color=#ff5555
+
+[app-name=Spotify]
+invisible=1

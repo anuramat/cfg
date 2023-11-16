@@ -3,7 +3,7 @@
     "spacing": 10,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "mpris"],
     "modules-center": [],
-    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network", "bluetooth", "cpu", "memory", "disk", "temperature", "keyboard-state",  "battery", "tray", "clock", "idle_inhibitor"],
+    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network", "bluetooth", "disk", "battery", "tray", "clock", "idle_inhibitor"],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -13,6 +13,9 @@
             "locked": "",
             "unlocked": ""
         }
+    },
+    "sway/workspaces": {
+      "disable-scroll": true
     },
     "sway/mode": {
         "format": "{}"
@@ -32,12 +35,13 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        // "icon-size":24,
         "spacing": 10
     },
     "clock": {
         "format": "{:%Y-%m-%d %H:%M:%S}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 1
     },
     "cpu": {
         "format": "{usage}% ",
@@ -74,14 +78,14 @@
         "bat": "BAT1"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{essid} {icon}", // {signalStrength}%
+        "format-ethernet": "E/N 󰈀",
+        "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
+        "format-linked": "No IP 󰌚",
+        "format-disconnected": "D/C 󰌙",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click-right": "foot nmtui"
+        "on-click-right": "foot nmtui",
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -89,8 +93,8 @@
         "format-bluetooth": "{volume}% {icon}  {format_source}",
         "format-bluetooth-muted": "{volume}% 󰖁 {icon}  {format_source}",
         "format-muted": "{volume}% 󰖁  {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "{volume}% ",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "{volume}% 󰍭",
         "format-icons": {
             "headphone": "",
             "hands-free": "󰋎",

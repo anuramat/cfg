@@ -3,7 +3,7 @@
     "spacing": 10,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "mpris"],
     "modules-center": [],
-    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network", "bluetooth", "disk", "battery", "tray", "clock", "idle_inhibitor"],
+    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network#wlan", "custom/wlan", "bluetooth", "disk", "battery", "tray", "clock", "idle_inhibitor"],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -66,7 +66,7 @@
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% 󰂄",
-        "format-plugged": "{capacity}% ",
+        "format-plugged": "{capacity}% 󰚥",
         "format-alt": "{time} {icon}",
         "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
         "interval": 1
@@ -77,14 +77,22 @@
     "battery#external": {
         "bat": "BAT1"
     },
-    "network": {
+    "network#wlan": {
+        "interface": "wlan0",
         "format-wifi": "{essid} {icon}",
         "format-ethernet": "E/N 󰈀",
         "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
         "format-linked": "No IP 󰌚",
-        "format-disconnected": "D/C 󰌙",
+        "format-disconnected": "",
+        // "format-disconnected": "D/C 󰌙",
+        // "format-disabled": "󰤭",
         "on-click-right": "foot nmtui",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
+        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+        "interval": 1,
+    },
+    "custom/wlan": { // "network" fucks up disabled/disconnected for some reason
+         "exec": "ifconfig | grep wlan0 -q || echo '󰤭'",
+         "interval": 1,
     },
     "pulseaudio": {
         "format": "{volume}% {icon}  {format_source}",

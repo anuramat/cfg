@@ -93,6 +93,10 @@ tooltip {
 #network.disabled {
     color: @red;
 }
+#custom-wlan{
+    color: @red;
+    padding-right: 13px;
+}
 
 #cpu {
     color: @purple;

@@ -99,6 +99,8 @@ in
       enable = true;
       defaultApplications = {
         "text/plain" = [ "neovim.desktop" ];
+        "x-scheme-handler/http" = [ "google-chrome.desktop" ];
+        "x-scheme-handler/https" = [ "google-chrome.desktop" ];
       };
     };
     home = {
@@ -404,11 +406,13 @@ in
     nix-bash-completions
     nixpkgs-fmt # nix formatter
     bat # better cat with syntax hl
+    exiftool
+    libwebp
     croc # send/receive files
     delta # better diffs
     fd # find alternative
     fzf # fuzzy finder
-    jq
+    jq # json processor
     ripgrep # better grep
 
     dig # dns utils
@@ -435,12 +439,14 @@ in
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     imv # image viewer for terminal workflows
     playerctl # media controls
+
     swaybg # wallpaper helper
     mpvpaper # video wallpaper
     swww # wp helper + animated wallpaper
     wallutils # bunch of wallpaper related utils
     wbg # stupid simple wp helper
     wpaperd # swaybg+ daemon
+
     swayidle # idle events
     swaylock # lockscreen
 
@@ -449,9 +455,8 @@ in
     wlopm
     wlr-randr
 
-    bemenu # wayland clone of dmenu
-    tofi # dmenu/rofi replacement (centered)
-    j4-dmenu-desktop # .desktop for dmenu
+    tofi # ala dmenu
+    j4-dmenu-desktop # .desktop source for dmenu
     pavucontrol # gui audio configuration
     mpv # cli media player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~

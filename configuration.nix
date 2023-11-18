@@ -81,6 +81,7 @@ in
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   home-manager.users.${username} = {
     # gtk = { # writes a symlink to .config/gtk-3.0, no thanks
@@ -95,14 +96,6 @@ in
     #   };
     #   cursorTheme = null; # probably overlap with pointerCursor
     # };
-    xdg.mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "text/plain" = [ "neovim.desktop" ];
-        "x-scheme-handler/http" = [ "google-chrome.desktop" ];
-        "x-scheme-handler/https" = [ "google-chrome.desktop" ];
-      };
-    };
     home = {
       stateVersion = version;
       pointerCursor = {
@@ -221,6 +214,7 @@ in
       nvtop # top for GPUs
       wtf # dashboard
       libqalculate # qalc - advanced calculator
+      bc # simple calculator
       aria # downloader
       hyprpicker # gigasimple terminal color picker
       neofetch
@@ -362,14 +356,37 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
-      autotiling # dynamic tiling
+      autotiling
     ];
   };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    # xdgOpenUsePortal = true;
+  xdg = {
+    portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      # xdgOpenUsePortal = true; # will use gtk app picker
+    };
+    mime = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/http" = [ "google-chrome.desktop" ];
+        "x-scheme-handler/https" = [ "google-chrome.desktop" ];
+        "text/plain" = [ "nvim.desktop" ];
+
+        "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/bmp" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-eps" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-ico" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-portable-bitmap" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-portable-graymap" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-portable-pixmap" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-xbitmap" = [ "org.nomacs.ImageLounge.desktop" ];
+        "image/x-xpixmap" = [ "org.nomacs.ImageLounge.desktop" ];
+      };
+    };
   };
   services.dbus.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
@@ -389,7 +406,7 @@ in
     lsof
     python3
     wget
-    wirelesstools # iw*
+    wirelesstools # iwconfig etc
     zip
     unzip
     progress # progress status for cp etc
@@ -414,10 +431,10 @@ in
     fzf # fuzzy finder
     jq # json processor
     ripgrep # better grep
-
     dig # dns utils
     inetutils # common network stuff
-    # GUI
+    easyocr
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     google-chrome
     okular # document viewer
     # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
@@ -430,54 +447,45 @@ in
     kooha # gui screen capture
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     waybar # status bar
-    eww-wayland # widget (primarily bars)
     wev # wayland event viewer (useful for debug)
-    libnotify # notify-send mako
+    libnotify # notify-send
     mako # notifications
-    xdg-utils # for default actions on link clicks
-    wdisplays # gui display configuration
+    xdg-utils
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
-    imv # image viewer for terminal workflows
-    playerctl # media controls
-
+    playerctl # cli media player controls
     swaybg # wallpaper helper
-    mpvpaper # video wallpaper
-    swww # wp helper + animated wallpaper
-    wallutils # bunch of wallpaper related utils
-    wbg # stupid simple wp helper
-    wpaperd # swaybg+ daemon
-
+    mpvpaper # video wallpaper helper
     swayidle # idle events
     swaylock # lockscreen
 
-
+    wdisplays # gui display configuration
     kanshi
     wlopm
     wlr-randr
 
-    tofi # ala dmenu
+    tofi # dmenu replacement
     j4-dmenu-desktop # .desktop source for dmenu
     pavucontrol # gui audio configuration
-    mpv # cli media player
+    mpv # cli video player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
     glib # gsettings (gtk etc)
     qt5ct
     unstable.qt6ct
     adwaita-qt
     adwaita-qt6
-    # dracula-theme
-    # dracula-icon-theme
+    dracula-theme
+    dracula-icon-theme
     gnome3.adwaita-icon-theme
     # ~~~~~~~~~~~~~~~~~~~~~~~ Sway scripts ~~~~~~~~~~~~~~~~~~~~~~~
     dbus-sway-environment
     configure-gtk
   ];
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Hardware ~~~~~~~~~~~~~~~~~~~~~~~~~
+  # ZSA Voyager
   services.udev.extraRules = ''
     # Rules for Oryx web flashing and live training
     KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
     KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
-
     # Keymapp Flashing rules for the Voyager
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';

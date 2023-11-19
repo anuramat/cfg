@@ -25,6 +25,9 @@
   }
 }
 /*~~~~~~~~~~~~~~~~~~~~~~ workspaces ~~~~~~~~~~~~~~~~~~~~~~*/
+#workspaces {
+  padding: 0;
+}
 /* number labels on workspace buttons */
 #workspaces label {
   background: rgba(0, 0, 0, 0); /* so that it doesn't overlap with box-shadow */

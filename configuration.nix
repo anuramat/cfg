@@ -11,11 +11,35 @@ let
   version = "23.05";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/Sway
+  transparent-inactive = pkgs.writeTextFile {
+    name = "transparent-inactive";
+    destination = "/bin/transparent-inactive";
+    executable = true;
+    text = ''
+      #!/usr/bin/env python
+      import i3ipc
+      transparency_val = '0.7';
+      ipc              = i3ipc.Connection()
+      prev_focused     = None
+      for window in ipc.get_tree():
+          if window.focused:
+              prev_focused = window
+          else:
+              window.command('opacity ' + transparency_val)
+      def on_window_focus(ipc, focused):
+          global prev_focused
+          if focused.container.id != prev_focused.id: # https://github.com/swaywm/sway/issues/2859
+              focused.container.command('opacity 1')
+              prev_focused.command('opacity ' + transparency_val)
+              prev_focused = focused.container
+      ipc.on("window::focus", on_window_focus)
+      ipc.main()
+    '';
+  };
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
     executable = true;
-
     text = ''
       dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
       systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
@@ -37,7 +61,9 @@ let
         gsettings set $gnome_schema color-scheme 'prefer-dark'
       '';
   };
-
+  pythonPackages = ps: with ps; [
+    i3ipc
+  ];
   home-manager =
     fetchTarball
       "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
@@ -217,7 +243,6 @@ in
       bc # simple calculator
       aria # downloader
       hyprpicker # gigasimple terminal color picker
-      hyprland
       neofetch
       mosh
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -358,6 +383,7 @@ in
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       autotiling
+      transparent-inactive
     ];
   };
   xdg = {
@@ -365,12 +391,10 @@ in
       enable = true;
       wlr.enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      xdgOpenUsePortal = true; # will use gtk app picker
     };
     mime = {
       enable = true;
-      # defaultApplications = {
-      addedAssociations = {
+      defaultApplications = {
         "x-scheme-handler/http" = [ "google-chrome.desktop" ];
         "x-scheme-handler/https" = [ "google-chrome.desktop" ];
         "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
@@ -408,7 +432,7 @@ in
     go
     less
     lsof
-    python3
+    (python3.withPackages pythonPackages)
     wget
     wirelesstools # iwconfig etc
     zip

@@ -98,10 +98,10 @@
       "format-ethernet": "E/N 󰈀",
       "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
       "format-linked": "No IP 󰌚",
-      "format-disconnected": "",
-      // "format-disconnected": "D/C 󰌙",
+      "format-disconnected": "D/C 󰌙",
       // "format-disabled": "󰤭",
-      "on-click-right": "foot nmtui",
+      "on-click": "foot nmtui",
+      "on-click": "foot nmtui",
       "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
       "interval": 1
     },
@@ -152,7 +152,7 @@
     },
     "bluetooth": {
       "format": "{status} ",
-      "on-click-right": "blueman-manager"
+      "on-click": "blueman-manager"
     },
   }
 ]

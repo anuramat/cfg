@@ -62,6 +62,8 @@ bindsym XF86AudioPrev exec playerctl -p spotify previous
 bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioStop exec playerctl -p spotify stop
 bindsym XF86AudioPlay exec playerctl -p spotify play
+bindsym $mod+equal gaps inner all plus 2
+bindsym $mod+minus gaps inner all minus 2
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Workspaces ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -97,8 +99,8 @@ bindsym $mod+ctrl+m floating toggle
 bindsym $mod+m focus mode_toggle
 bindsym $mod+a focus parent
 
-bindsym $mod+ctrl+minus move scratchpad
-bindsym $mod+minus scratchpad show
+# bindsym $mod+ctrl+minus move scratchpad
+# bindsym $mod+minus scratchpad show
 
 mode "resize" {
     bindsym $left resize shrink width 50px
@@ -119,12 +121,13 @@ bindsym $mod+p exec grim -g "$(slurp)" - | swappy -f -
 exec dbus-sway-environment
 exec configure-gtk
 # ~~~~~~~~~~~~~~~~~~~~~~~ Visuals ~~~~~~~~~~~~~~~~~~~~~~~~ #
-default_border pixel 3
-default_floating_border normal 3
+default_border none
+default_floating_border pixel 3
 focus_follows_mouse no
-smart_borders on
 smart_gaps off
-gaps inner 10
+gaps inner 5
+gaps vertical 5
+gaps horizontal 10
 # output * bg ~/wp.png fill
 seat * hide_cursor when-typing enable
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

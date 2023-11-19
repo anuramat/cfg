@@ -173,9 +173,7 @@ in
       du-dust # directory disk usage (better du)
       ncdu # directory sidk usage (better du)
       # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
-      imv
       swayimg
-      vimiv-qt
       nomacs # GUI
       # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
       ffmpeg # video

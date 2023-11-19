@@ -4,7 +4,7 @@
     "spacing": 10,
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
-    "modules-right": ["sway/language", "tray", "clock", "idle_inhibitor"],
+    "modules-right": ["sway/language",  "clock", "idle_inhibitor"],
     "sway/window": {
       "rewrite": {
         "(.*) - Google Chrome": "󰖟 $1",

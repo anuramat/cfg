@@ -8,7 +8,7 @@
     "sway/window": {
       "rewrite": {
         "(.*) - Google Chrome": "󰖟 $1",
-        "(.*) \\((.*)\\)": "$2",
+        "(.*) - qutebrowser": "󰖟 $1",
         "": "Sway" // such a dirty trick
       }
     },

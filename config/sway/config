@@ -5,7 +5,7 @@ set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
 font "pango:$font"
-set $menu pkill tofi || j4-dmenu-desktop --dmenu="tofi -c $XDG_CONFIG_HOME/tofi.cfg" --wrapper='swaymsg exec' --no-generic --term='$term' --display-binary
+set $menu pkill tofi || swaymsg exec "$(tofi-drun -c $XDG_CONFIG_HOME/tofi.cfg)"
 focus_wrapping no
 exec_always autotiling
 exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
@@ -62,8 +62,6 @@ bindsym XF86AudioPrev exec playerctl -p spotify previous
 bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioStop exec playerctl -p spotify stop
 bindsym XF86AudioPlay exec playerctl -p spotify play
-bindsym $mod+equal gaps inner all plus 2
-bindsym $mod+minus gaps inner all minus 2
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Workspaces ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -86,7 +84,7 @@ bindsym $mod+ctrl+8 move container to workspace number 8
 bindsym $mod+ctrl+9 move container to workspace number 9
 bindsym $mod+ctrl+0 move container to workspace number 10
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+b splith
+bindsym $mod+c splith
 bindsym $mod+v splitv
 
 bindsym $mod+s layout stacking
@@ -99,16 +97,18 @@ bindsym $mod+ctrl+m floating toggle
 bindsym $mod+m focus mode_toggle
 bindsym $mod+a focus parent
 
-# bindsym $mod+ctrl+minus move scratchpad
-# bindsym $mod+minus scratchpad show
+bindsym $mod+ctrl+u move scratchpad
+bindsym $mod+u scratchpad show
 
 mode "resize" {
     bindsym $left resize shrink width 50px
-        bindsym $down resize grow height 50px
-        bindsym $up resize shrink height 50px
-        bindsym $right resize grow width 50px
-        bindsym $mod+r mode "default"
-        bindsym escape mode "default"
+    bindsym $down resize grow height 50px
+    bindsym $up resize shrink height 50px
+    bindsym $right resize grow width 50px
+    bindsym $mod+r mode "default"
+    bindsym escape mode "default"
+    bindsym ctrl+c mode "default"
+    bindsym ctrl+bracketleft mode "default"
 }
 bindsym $mod+r mode "resize"
 # ~~~~~~~~~~~~~~~~~~~~~~ Status bar ~~~~~~~~~~~~~~~~~~~~~~ #

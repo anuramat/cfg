@@ -173,6 +173,7 @@ in
       du-dust # directory disk usage (better du)
       ncdu # directory sidk usage (better du)
       # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
+      imv
       swayimg
       nomacs # GUI
       # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -216,6 +217,7 @@ in
       bc # simple calculator
       aria # downloader
       hyprpicker # gigasimple terminal color picker
+      hyprland
       neofetch
       mosh
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -453,6 +455,7 @@ in
     libnotify # notify-send
     mako # notifications
     xdg-utils
+    xdg-ninja
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     playerctl # cli media player controls
     swaybg # wallpaper helper
@@ -466,7 +469,6 @@ in
     wlr-randr
 
     tofi # dmenu replacement
-    j4-dmenu-desktop # .desktop source for dmenu
     pavucontrol # gui audio configuration
     mpv # cli video player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -6,10 +6,10 @@
     "modules-center": ["sway/window"],
     "modules-right": ["sway/language", "tray", "clock", "idle_inhibitor"],
     "sway/window": {
-      "max-length": 50,
       "rewrite": {
-        "(.*) - Google Chrome": "🌎 $1",
-        "(.*) \\((.*)\\)": "$2"
+        "(.*) - Google Chrome": "󰖟 $1",
+        "(.*) \\((.*)\\)": "$2",
+        "": "Sway" // such a dirty trick
       }
     },
     "sway/workspaces": {

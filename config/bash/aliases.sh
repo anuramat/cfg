@@ -21,11 +21,7 @@ alias ....="cd ../../.."
 
 alias conda="micromamba"
 
-alias icat="kitty +kitten icat"
-
 alias nire="sudo nixos-rebuild switch"
 alias nied="sudo -e /etc/nixos/configuration.nix"
-
-alias open=xdg-open
 
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'

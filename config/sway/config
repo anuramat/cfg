@@ -122,8 +122,10 @@ exec configure-gtk
 default_border pixel 3
 default_floating_border normal 3
 focus_follows_mouse no
-# gaps inner 10
-output * bg ~/wp.png fill
+smart_borders on
+smart_gaps off
+gaps inner 10
+# output * bg ~/wp.png fill
 seat * hide_cursor when-typing enable
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 output "Lenovo Group Limited LEN T27p-10 0x00007F36" {

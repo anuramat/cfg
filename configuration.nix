@@ -149,6 +149,7 @@ in
       ruby
       perl
       # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
+      nodePackages.prettier # formatting
       micromamba # conda rewrite in C++
       gopls # Go LSP
       bats # Bash testing
@@ -222,43 +223,43 @@ in
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       cinnamon.nemo # wayland native
       steam
-      # davinci-resolve
       qalculate-gtk # gui for qalc
-      gimp-with-plugins
-      krita
-      inkscape-with-extensions
-      alacritty # gpu
-      zathura # document viewer
-      foot # minimal
+
+      # davinci-resolve
+      gimp-with-plugins # raster graphics
+      krita # raster graphics, digital art
+      inkscape-with-extensions # vector graphics
+      alacritty # gpu terminal
+      foot # minimal terminal
       cool-retro-term
       unstable.telegram-desktop
-      element-desktop
+      element-desktop # matrix client
       discord
-      discordo
+
       djview
       djvulibre
+
       apvlv # vi-like pdf/epub viewer
-      vlc
-      transmission
+      zathura # document viewer
+
+      vlc # gui video player
+      transmission # torrent client
       transmission-gtk
       spotify
       tor-browser-bundle-bin
       slack
+      uair
       gnome.pomodoro
-      solanum # yet another pomodoro
-      sageWithDoc
-      onionshare
+      gnome-solanum # yet another pomodoro
+      sageWithDoc # computer algebra
+      onionshare # tor-based file-sharing etc
       onionshare-gui
-      unstable.obsidian
-      obs-studio
+      unstable.obsidian # markdown personal knowledge database
+      obs-studio # screencasting/streaming
       gnome.cheese # webcam
       # haskellPackages.ghcup # broken as of 2023-09-05
-      qtox
-      nyxt
-      qutebrowser
-      luakit
-      vieb
-      vimb
+      qtox # p2p IM
+      qutebrowser # vim-like browser
     ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -364,13 +365,16 @@ in
       enable = true;
       wlr.enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-      # xdgOpenUsePortal = true; # will use gtk app picker
+      xdgOpenUsePortal = true; # will use gtk app picker
     };
     mime = {
       enable = true;
-      defaultApplications = {
+      # defaultApplications = {
+      addedAssociations = {
         "x-scheme-handler/http" = [ "google-chrome.desktop" ];
         "x-scheme-handler/https" = [ "google-chrome.desktop" ];
+        "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+
         "text/plain" = [ "nvim.desktop" ];
 
         "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
@@ -414,13 +418,13 @@ in
     unstable.neovim
     w3m # text based web browser
     usbutils # just in case
+    file
+    # CLI
+    nix-bash-completions
     libusb # zsa voyager
     wally-cli # zsa voyager
-    # CLI
-    file
     bash-completion
     acpi
-    nix-bash-completions
     nixpkgs-fmt # nix formatter
     bat # better cat with syntax hl
     exiftool

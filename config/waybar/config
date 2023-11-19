@@ -1,146 +1,158 @@
-{
+[
+  {
     "position": "top",
     "spacing": 10,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "mpris"],
-    "modules-center": [],
-    "modules-right": [ "sway/language", "pulseaudio", "backlight", "network#wlan", "custom/wlan", "bluetooth", "disk", "battery", "tray", "clock", "idle_inhibitor"],
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "scrolllock": true,
-        "format": "{name}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["sway/language", "tray", "clock", "idle_inhibitor"],
+    "sway/window": {
+      "max-length": 50,
+      "rewrite": {
+        "(.*) - Google Chrome": "🌎 $1",
+        "(.*) \\((.*)\\)": "$2"
+      }
     },
     "sway/workspaces": {
       "disable-scroll": true
     },
     "sway/mode": {
-        "format": "{}"
+      "format": "{}"
     },
     "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": ["", ""],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
     },
     "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        // "icon-size":24,
-        "spacing": 10
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
     },
     "clock": {
-        "format": "{:%Y-%m-%d %H:%M:%S}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "interval": 1
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["󱃃","󰔏","󱃂"]
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
-        "format-plugged": "{capacity}% 󰚥",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
-        "interval": 1
-    },
-    "battery#internal": {
-        "bat": "BAT0"
-    },
-    "battery#external": {
-        "bat": "BAT1"
-    },
-    "network#wlan": {
-        "interface": "wlan0",
-        "format-wifi": "{essid} {icon}",
-        "format-ethernet": "E/N 󰈀",
-        "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
-        "format-linked": "No IP 󰌚",
-        "format-disconnected": "",
-        // "format-disconnected": "D/C 󰌙",
-        // "format-disabled": "󰤭",
-        "on-click-right": "foot nmtui",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "interval": 1,
-    },
-    "custom/wlan": { // "network" fucks up disabled/disconnected for some reason
-         "exec": "ifconfig | grep wlan0 -q || echo '󰤭'",
-         "interval": 1,
-    },
-    "pulseaudio": {
-        "format": "{volume}% {icon}  {format_source}",
-        "format-bluetooth": "{volume}% {icon}  {format_source}",
-        "format-bluetooth-muted": "{volume}% 󰖁 {icon}  {format_source}",
-        "format-muted": "{volume}% 󰖁  {format_source}",
-        "format-source": "{volume}% 󰍬",
-        "format-source-muted": "{volume}% 󰍭",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "󰋎",
-            "headset": "󰋎",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["󰕿", "󰖀", "󰕾"] 
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
-        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-    },
-    "mpris": {
-            "interval": 1,
-            "format": "{player_icon}  {status_icon} {dynamic}",
-            "player": "spotify",
-            "player-icons": {
-                "default": "",
-                "spotify": "󰓇"
-            },
-            "dynamic-priority": ["length", "position", "album"],
-            "status-icons": {
-                "paused": "󰏤",
-                "playing": "󰐊"
-            },
-            "dynamic-len":1,
-            "max-length": 999, // non empty - turns on ellipsis
-    },
-    "disk": {
-            "path": "/",
-            "format": "{percentage_used}% "
-    },
-    "bluetooth": {
-            "format": "{status} ",
-            "on-click-right": "blueman-manager"
+      "format": "{:%Y-%m-%d %H:%M:%S}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "interval": 1
     },
     "sway/language": {
-            "tooltip-format": "{flag} {long} {variant}"
+      "tooltip-format": "{flag} {long} {variant}"
     }
-}
-
-
+  },
+  {
+    "position": "bottom",
+    "spacing": 10,
+    "modules-left": ["pulseaudio", "backlight"],
+    "modules-center": ["mpris"],
+    "modules-right": [
+      "network#wlan",
+      "custom/wlan",
+      "bluetooth",
+      "battery",
+      "disk",
+      "tray"
+    ],
+    "tray": {
+      // "icon-size":24,
+      "spacing": 10
+    },
+    "cpu": {
+      "format": "{usage}% ",
+      "tooltip": false
+    },
+    "memory": {
+      "format": "{}% "
+    },
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["󱃃", "󰔏", "󱃂"]
+    },
+    "backlight": {
+      "format": "{percent}% {icon}",
+      "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% 󰂄",
+      "format-plugged": "{capacity}% 󰚥",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "interval": 1
+    },
+    "battery#internal": {
+      "bat": "BAT0"
+    },
+    "battery#external": {
+      "bat": "BAT1"
+    },
+    "network#wlan": {
+      "interface": "wlan0",
+      "format-wifi": "{essid} {icon}",
+      "format-ethernet": "E/N 󰈀",
+      "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
+      "format-linked": "No IP 󰌚",
+      "format-disconnected": "",
+      // "format-disconnected": "D/C 󰌙",
+      // "format-disabled": "󰤭",
+      "on-click-right": "foot nmtui",
+      "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+      "interval": 1
+    },
+    "custom/wlan": {
+      // "network" fucks up disabled/disconnected for some reason
+      "exec": "ifconfig | grep wlan0 -q || echo '󰤭'",
+      "interval": 1
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}  {format_source}",
+      "format-bluetooth": "{volume}% {icon}  {format_source}",
+      "format-bluetooth-muted": "{volume}% 󰖁 {icon}  {format_source}",
+      "format-muted": "{volume}% 󰖁  {format_source}",
+      "format-source": "{volume}% 󰍬",
+      "format-source-muted": "{volume}% 󰍭",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "󰋎",
+        "headset": "󰋎",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["󰕿", "󰖀", "󰕾"]
+      },
+      "on-click": "pavucontrol",
+      "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+      "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "mpris": {
+      "interval": 1,
+      "format": "{player_icon}  {status_icon} {dynamic}",
+      "player": "spotify",
+      "player-icons": {
+        "default": "",
+        "spotify": "󰓇"
+      },
+      "dynamic-priority": ["length", "position", "album"],
+      "status-icons": {
+        "paused": "󰏤",
+        "playing": "󰐊"
+      },
+      "dynamic-len": 1,
+      "max-length": 999 // non empty - turns on ellipsis
+    },
+    "disk": {
+      "path": "/",
+      "format": "{percentage_used}% "
+    },
+    "bluetooth": {
+      "format": "{status} ",
+      "on-click-right": "blueman-manager"
+    },
+  }
+]

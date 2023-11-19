@@ -2,152 +2,124 @@
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./colors.css");
 * {
-    border: none;
-    border-radius: 6px;
-    font-size: 13pt;
-    font-family: "Hack Nerd Font";
-    background: rgba(0,0,0,0);
-    color: @foreground;
-    padding: 0;
-    margin: 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 13pt;
+  font-family: "Hack Nerd Font";
+  background: rgba(0, 0, 0, 0);
+  color: @foreground;
+  padding: 0;
+  margin: 0;
 }
 /* the bar, basically */
 #waybar > box {
-    margin: 2px;
+  margin: 2px;
 }
-/*~~~~~~~~~~~~~~~~~~~~~~~~~ Left ~~~~~~~~~~~~~~~~~~~~~~~~~*/
-.modules-left {
+@keyframes blink {
+  to {
+    color: @white;
+    background-color: @red;
+  }
 }
-#workspaces {
-    background: @background;
-}
+/*~~~~~~~~~~~~~~~~~~~~~~ workspaces ~~~~~~~~~~~~~~~~~~~~~~*/
 /* number labels on workspace buttons */
 #workspaces label {
-    background: rgba(0,0,0,0.0); /* so that it doesn't overlap with box-shadow */
+  background: rgba(0, 0, 0, 0); /* so that it doesn't overlap with box-shadow */
 }
 #workspaces button {
-    padding: 0 5px;
+  padding: 0 5px;
 }
-#workspaces button.focused, #mode {
-    box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
-    background-image: linear-gradient(0deg, @selection, @background-darker);
-}
-#mode {
-    padding: 0 10px;
+#workspaces button.focused {
+  box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
+  background-image: linear-gradient(0deg, @selection, @background-darker);
 }
 #workspaces button.urgent {
-    background: @purple;
-    color: @background;
+  background: @purple;
+  color: @background;
 }
-/*~~~~~~~~~~~~~~~~~~~~~~~~ Right ~~~~~~~~~~~~~~~~~~~~~~~~~*/
-.modules-right > * > * {
-    background: @background;
-    padding: 0 7px;
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#mode {
+  padding: 0 10px;
+  background: @red;
+  color: @background;
 }
-
+/* basically most elements (box->left/mid/center->element*/
+box > * > * {
+  background: @background;
+  padding: 0 7px;
+}
 tooltip {
-    background: @background;
+  background: @background;
 }
-
 #battery {
-    background-color: @background;
-    color: @green;
+  color: @green;
 }
-
-#battery.charging, #battery.plugged {
-    color: @background;
-    background-color: @green;
+#battery.charging,
+#battery.plugged {
+  color: @background;
+  background-color: @green;
 }
-
-@keyframes blink {
-    to {
-        color: @white;
-        background-color: @red;
-    }
-}
-
 #battery.warning:not(.charging) {
-    color: @yellow;
+  color: @yellow;
 }
-#battery.critical:not(.charging), #temperature.critical {
-    background-color: @background;
-    color: @white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#battery.critical:not(.charging),
+#temperature.critical {
+  background-color: @background;
+  color: @white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
-
 #temperature {
-    color: @purple;
+  color: @purple;
 }
-
 #network {
-    color: @cyan;
-    padding-right: 12px;
+  color: @cyan;
+  padding-right: 12px;
 }
 #network.disconnected {
-    color: @yellow;
+  color: @yellow;
 }
 #network.disabled {
-    color: @red;
+  color: @red;
 }
-#custom-wlan{
-    color: @red;
-    padding-right: 13px;
+#custom-wlan {
+  color: @red;
+  padding-right: 13px;
 }
-
 #cpu {
-    color: @purple;
-    padding-right: 13px;
+  color: @purple;
+  padding-right: 13px;
 }
-
 #memory {
-    color: @purple;
-    padding-right: 13px;
+  color: @purple;
+  padding-right: 13px;
 }
-
 #disk {
-    color: @purple;
-    padding-right: 12px;
+  color: @purple;
+  padding-right: 12px;
 }
-
 #backlight {
-    padding-right: 10px;
+  padding-right: 10px;
 }
-
-
 #pulseaudio.muted {
-    color: @red;
+  color: @red;
 }
 #wireplumber.muted {
-    color: @red
+  color: @red;
 }
-
-
 #tray {
-    padding: 4px 6px;
+  padding: 4px 6px;
 }
-
 #idle_inhibitor {
-    padding-right: 13px;
+  padding-right: 13px;
 }
-
 #idle_inhibitor.activated {
-    color: @purple;
+  color: @purple;
 }
-
 #language {
-    /* https://github.com/Alexays/Waybar/issues/952 */
-    min-width: 20px; /* HACK */
-}
-
-#keyboard-state {
-}
-#keyboard-state box {
-}
-
-#keyboard-state > label.locked {
-    color: @red;
+  /* https://github.com/Alexays/Waybar/issues/952 */
+  min-width: 20px; /* HACK */
 }

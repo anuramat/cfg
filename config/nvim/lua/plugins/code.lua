@@ -69,11 +69,10 @@ specs.treesj = {
 -- tpope/vim-commentary
 specs.comment = {
   'numToStr/Comment.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   config = function()
     --- @diagnostic disable-next-line: missing-fields
     require('Comment').setup({
-      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
       toggler = {
         line = '<leader>cc',
         block = '<leader>bc',

@@ -32,7 +32,6 @@ specs.treesitter = {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
     highlight = { enable = true, disable = {} },
@@ -54,10 +53,6 @@ specs.treesitter = {
         swap_next = { ['<a-l>'] = '@parameter.inner' },
         swap_previous = { ['<a-h>'] = '@parameter.inner' },
       },
-    },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false, -- Comment.nvim takes care of this
     },
   },
   config = function(_, opts)

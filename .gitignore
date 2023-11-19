@@ -6,5 +6,6 @@ private*
 !private.example*
 *.pem
 
+# keep bookmarks outside
 **/qutebrowser/*
 !**/qutebrowser/config.py

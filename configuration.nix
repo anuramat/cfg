@@ -447,6 +447,7 @@ in
     nix-bash-completions
     libusb # zsa voyager
     wally-cli # zsa voyager
+    qflipper
     bash-completion
     acpi
     nixpkgs-fmt # nix formatter

@@ -93,7 +93,7 @@
       "bat": "BAT1"
     },
     "network#wlan": {
-      "interface": "wlan0",
+      "interface": "wl*",
       "format-wifi": "{essid} {icon}",
       "format-ethernet": "E/N 󰈀",
       "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
@@ -107,7 +107,7 @@
     },
     "custom/wlan": {
       // "network" fucks up disabled/disconnected for some reason
-      "exec": "ifconfig | grep wlan0 -q || echo '󰤭'",
+      "exec": "ifconfig | grep 'wl.*' -q || echo '󰤭'",
       "interval": 1
     },
     "pulseaudio": {

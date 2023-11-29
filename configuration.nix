@@ -149,6 +149,7 @@ in
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
       "input" # le unsecure, used by waybar-keyboard-state
+      "dialout" # serial ports
     ];
     packages = with pkgs; [
       unstable.eza
@@ -398,6 +399,7 @@ in
         "x-scheme-handler/http" = [ "google-chrome.desktop" ];
         "x-scheme-handler/https" = [ "google-chrome.desktop" ];
         "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+        "x-scheme-handler/vscode" = [ "code-url-handler.desktop" ];
 
         "text/plain" = [ "nvim.desktop" ];
 
@@ -440,6 +442,7 @@ in
     progress # progress status for cp etc
     efibootmgr
     unstable.neovim
+    vscode
     w3m # text based web browser
     usbutils # just in case
     file
@@ -447,7 +450,6 @@ in
     nix-bash-completions
     libusb # zsa voyager
     wally-cli # zsa voyager
-    qflipper
     bash-completion
     acpi
     nixpkgs-fmt # nix formatter
@@ -480,6 +482,7 @@ in
     libnotify # notify-send
     mako # notifications
     xdg-utils
+    desktop-file-utils
     xdg-ninja
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     playerctl # cli media player controls
@@ -518,7 +521,11 @@ in
     # Keymapp Flashing rules for the Voyager
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';
+  # Flipper Zero
+  hardware.flipperzero.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
+  services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
   documentation.man.generateCaches = true; # apropos
   virtualisation.docker.enable = true;
   services.syncthing =

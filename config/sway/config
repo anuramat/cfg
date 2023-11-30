@@ -136,13 +136,27 @@ gaps horizontal 10
 seat * hide_cursor when-typing enable
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_outputs`
-# built-in display
-bindsym $mod+i move workspace to output eDP-1
+set $internal "eDP-1"
+set $external "DP-1"
+# default display outputs (second output = fallback)
+workspace 1 output $internal
+workspace 2 output $internal
+workspace 3 output $internal
+workspace 4 output $internal
+workspace 5 output $internal
+workspace 6 output $external $internal
+workspace 7 output $external $internal
+workspace 8 output $external $internal
+workspace 9 output $external $internal
+workspace 10 output $external $internal
+
+bindsym $mod+i move workspace to output $internal
+bindsym $mod+o move workspace to output $external
+
 output eDP-1 {
     pos 320 1440
 }
-# external
-bindsym $mod+o move workspace to output DP-1
+# 4k
 output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
     scale 1.5
     pos 0 0

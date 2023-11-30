@@ -1,4 +1,4 @@
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+#socp pocket carry ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $term foot
 # set $term kitty -1
 set $bar_height 30
@@ -135,12 +135,17 @@ gaps horizontal 10
 # output * bg ~/wp.png fill
 seat * hide_cursor when-typing enable
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# `swaymsg -t get_outputs`
+# built-in display
+bindsym $mod+i move workspace to output eDP-1
+output eDP-1 {
+    pos 320 1440
+}
+# external
+bindsym $mod+o move workspace to output DP-1
 output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
     scale 1.5
     pos 0 0
-}
-output eDP-1 {
-    pos 320 1440
 }
 # ~~~~~~~~~~~~~~~~~~~~~ Colorscheme ~~~~~~~~~~~~~~~~~~~~~~ #
 #class                  border  bground text    indicator child_border

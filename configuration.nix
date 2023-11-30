@@ -18,7 +18,7 @@ let
     text = ''
       #!/usr/bin/env python
       import i3ipc
-      transparency_val = '0.7';
+      transparency_val = '0.8';
       ipc              = i3ipc.Connection()
       prev_focused     = None
       for window in ipc.get_tree():

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 alias f="nvim"
+alias d="xdg-open"
 
 if command -v "eza" >/dev/null 2>&1; then
 	# config file is proposed:

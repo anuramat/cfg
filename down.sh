@@ -24,3 +24,4 @@ done
 touch "$HOME/.hushlogin"
 ensure_path "$HOME/bin"
 ensure_path "$HOME/Screenshots"
+# TODO maybe ensure path for all xdg paths

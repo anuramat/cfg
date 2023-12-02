@@ -2,6 +2,7 @@
 
 alias f="nvim"
 alias d="xdg-open"
+alias tofi-clear-cache="rm $XDG_CACHE_HOME/tofi-drun"
 
 if command -v "eza" >/dev/null 2>&1; then
 	# config file is proposed:

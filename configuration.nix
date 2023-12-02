@@ -312,6 +312,23 @@ in
         "x-scheme-handler/vscode" = [ "code-url-handler.desktop" ];
 
         "text/plain" = [ "nvim.desktop" ];
+        "text/english" = [ "nvim.desktop" ];
+        "text/x-makefile" = [ "nvim.desktop" ];
+        "text/x-c++hdr" = [ "nvim.desktop" ];
+        "text/x-c++src" = [ "nvim.desktop" ];
+        "text/x-chdr" = [ "nvim.desktop" ];
+        "text/x-csrc" = [ "nvim.desktop" ];
+        "text/x-java" = [ "nvim.desktop" ];
+        "text/x-moc" = [ "nvim.desktop" ];
+        "text/x-pascal" = [ "nvim.desktop" ];
+        "text/x-tcl" = [ "nvim.desktop" ];
+        "text/x-tex" = [ "nvim.desktop" ];
+        "application/x-shellscript" = [ "nvim.desktop" ];
+        "text/x-c" = [ "nvim.desktop" ];
+        "text/x-c++" = [ "nvim.desktop" ];
+
+        "inode/directory" = [ "nnn.desktop" ];
+
 
         "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
         "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];

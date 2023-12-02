@@ -152,140 +152,50 @@ in
       "dialout" # serial ports
     ];
     packages = with pkgs; [
-      unstable.eza
-      unstable.nixd
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CLI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      qrcp # send files to mobile over Wi-Fi using QR
-      exercism # CLI for exercism.org
-      ripgrep-all # grep over pdfs etc
-      zoxide # better cd
-      difftastic # syntax aware diffs
-      # ~~~~~~~~~~~~~~~~~~~~~~ File managers ~~~~~~~~~~~~~~~~~~~~~~~
-      # TODO choose one?
-      vifm
-      mc
-      xdragon
-      ranger
-      lf
-      nnn
-      broot
-      xplr
-      # ~~~~~~~~~~~~~~~~~~~~~~~~ Languages ~~~~~~~~~~~~~~~~~~~~~~~~~
-      nodejs_20
-      yarn
-      ruby
-      perl
-      # ~~~~~~~~~~~~~~~~~~~~~ Language support ~~~~~~~~~~~~~~~~~~~~~
-      nodePackages.prettier # formatting
-      micromamba # conda rewrite in C++
-      gopls # Go LSP
-      bats # Bash testing
-      nodePackages_latest.bash-language-server
-      yamlfmt # YAML formatter
-      bear # Compilation database generator for clangd
-      black # Python formatter
-      delve # Go debugger
-      gofumpt # strict go formatter
-      golangci-lint # gigalinter for go
-      pyright # Python LSP
-      shellcheck # *sh linter
-      shfmt # posix/bash/mksh formatter
-      stylua # Lua formatter
-      lua-language-server
-      luajitPackages.luacheck
-      luajitPackages.luarocks
-      marksman # markdown LSP
-      # ~~~~~~~~~~~~~~~~~~~~~~~~ Disk usage ~~~~~~~~~~~~~~~~~~~~~~~~
-      duf # disk usage (better "df")
-      du-dust # directory disk usage (better du)
-      ncdu # directory sidk usage (better du)
-      # ~~~~~~~~~~~~~~~~~~~~~~ Image viewers ~~~~~~~~~~~~~~~~~~~~~~~
-      imv
-      swayimg
-      nomacs # GUI
-      # ~~~~~~~~~~~~~~~~~~~~~~~ Swiss tools ~~~~~~~~~~~~~~~~~~~~~~~~
-      ffmpeg # video
-      pandoc # markup (latex, markdown, etc)
-      sox # audio
-      imagemagickBig # images NOTE I don't know what "Big" means, might as well just use "imagemagick"
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      git-filter-repo # rewrite/analyze repository history
-      grpcui # postman for grpc
-      grpcurl # curl for grpc
-      htop # better top
-      atop # even better top
-      ctop # container top
-      httpie # better curl
-      kubectx
-      kubectl
-      # emacs-gtk
-      lazydocker
-      lazygit
-      llvm
-      netcat
-      nmap
-      glow # markdown viewer
-      nvi # vi clone
-      parallel
-      peco # interactive filtering
-      prettyping # better "ping"
-      tmux
-      tree # prefer "exa --tree" instead
-      universal-ctags
-      youtube-dl
-      nodePackages_latest.yaml-language-server
-      taskwarrior # TODO todos
-      ghq # git repository manager
-      gh # GitHub CLI
-      lsix # ls for images (sixel)
-      nvtop # top for GPUs
-      wtf # dashboard
-      libqalculate # qalc - advanced calculator
-      bc # simple calculator
-      aria # downloader
-      hyprpicker # gigasimple terminal color picker
-      neofetch
-      mosh
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      cinnamon.nemo # wayland native
-      steam
-      qalculate-gtk # gui for qalc
-
-      # davinci-resolve
-      gimp-with-plugins # raster graphics
-      krita # raster graphics, digital art
-      inkscape-with-extensions # vector graphics
-      alacritty # gpu terminal
+      ### Terminals
       foot # minimal terminal
-      cool-retro-term
-      unstable.telegram-desktop
-      element-desktop # matrix client
-      discord
+      alacritty # gpu terminal
+      cool-retro-term # cute terminal
 
+      ### Random
+      cinnamon.nemo # wayland native
+      gnome-solanum # really simple one
+      gnome.cheese # webcam
+      gnome.pomodoro # slightly bloated
+      qalculate-gtk # gui for qalc
+      spotify
+      tor-browser-bundle-bin
+      transmission # torrent client
+      transmission-gtk # gui wrapper for transmission
+      unstable.obsidian # markdown personal knowledge database
+      vlc # gui video player
+
+      ### Media
+      gimp-with-plugins # raster graphics
+      # krita # raster graphics, digital art
+      # inkscape-with-extensions # vector graphics
+      # davinci-resolve
+
+      ### Social
+      element-desktop # matrix client
+      slack
+      discord
+      unstable.telegram-desktop
+
+      ### Document viewers
       djview
       djvulibre
-
       apvlv # vi-like pdf/epub viewer
       zathura # document viewer
 
-      vlc # gui video player
-      transmission # torrent client
-      transmission-gtk
-      spotify
-      tor-browser-bundle-bin
-      slack
-      uair
-      gnome.pomodoro
-      gnome-solanum # yet another pomodoro
-      sageWithDoc # computer algebra
+      ### Random rare
+      obs-studio # screencasting/streaming
       onionshare # tor-based file-sharing etc
       onionshare-gui
-      unstable.obsidian # markdown personal knowledge database
-      obs-studio # screencasting/streaming
-      gnome.cheese # webcam
-      # haskellPackages.ghcup # broken as of 2023-09-05
       qtox # p2p IM
-      qutebrowser # vim-like browser
+      sageWithDoc # computer algebra
+      steam
+      hyprpicker # gigasimple terminal color picker
     ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -421,61 +331,169 @@ in
   services.dbus.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
   environment.systemPackages = with pkgs; [
-    # Basics
+    ### Barebones
+    gnumake
+    gcc
     bash
     killall
-    clang
-    coreutils-full # just in case
+    coreutils-full
     coreutils-prefixed # to keep mac compatibility where possible
     curl
-    gcc
     git
-    gnumake
-    go
     less
     lsof
-    (python3.withPackages pythonPackages)
     wget
-    wirelesstools # iwconfig etc
     zip
     unzip
     progress # progress status for cp etc
-    efibootmgr
-    unstable.neovim
-    vscode
-    w3m # text based web browser
+    nvi # vi clone
     usbutils # just in case
     file
-    # CLI
-    nix-bash-completions
-    libusb # zsa voyager
-    wally-cli # zsa voyager
+
+    ### File managers
+    # TODO choose one
+    vifm
+    mc
+    xdragon
+    ranger
+    lf
+    nnn
+    broot
+    xplr
+
+    ### Languages support
+    go
+    nodejs_20
+    yarn
+    ruby
+    perl
+    llvm
+    clang
+    (python3.withPackages pythonPackages)
+
+    ### Language tooling
+    universal-ctags # maintained ctags
+    jq # json processor
+    bats # Bash testing
+    bear # Compilation database generator for clangd
+    black # Python formatter
+    delve # Go debugger
+    gofumpt # strict go formatter
+    golangci-lint # gigalinter for go
+    gopls # Go LSP
+    lua-language-server
+    luajitPackages.luacheck
+    luajitPackages.luarocks
     bash-completion
-    acpi
+    marksman # markdown LSP
+    micromamba # conda rewrite in C++
     nixpkgs-fmt # nix formatter
+    nodePackages.prettier # formatting
+    nodePackages_latest.bash-language-server
+    nodePackages_latest.yaml-language-server
+    pyright # Python LSP
+    shellcheck # *sh linter
+    shfmt # posix/bash/mksh formatter
+    stylua # Lua formatter
+    unstable.nixd # nix LSP
+    nix-bash-completions
+    yamlfmt # YAML formatter
+
+    ### Image viewers
+    imv # terminal image viewer
+    swayimg # terminal image viewer
+    nomacs # GUI image viewer
+
+    ### Media tools
+    easyocr # neural OCR
+    ffmpeg # CLI multimedia processing
+    pandoc # markup converter (latex, markdown, etc)
+    sox # CLI audio processing
+    imagemagickBig # CLI image manipulation
+    libwebp # tools for WebP image format
+    exiftool # read/write EXIF metadata
+
+    ### Web shit
+    grpcui # postman for grpc
+    grpcurl # curl for grpc
+    httpie # better curl
+    prettyping # better "ping"
+    kubectx
+    kubectl
+
+    ### Monitoring
+    htop # better top
+    atop # even better top
+    ctop # container top
+    nvtop # top for GPUs
+    duf # disk usage (better "df")
+    du-dust # directory disk usage (better du)
+    ncdu # directory sidk usage (better du)
+
+    ### Git
+    ghq # git repository manager
+    git-filter-repo # rewrite/analyze repository history
+    gh # GitHub CLI
+
+    ### Networking
+    wirelesstools # iwconfig etc
+    dig # dns utils
+    inetutils # common network stuff
+    nmap
+    netcat
+
+    ### Random linux shit
+    libusb # user-mode USB access lib
+    efibootmgr # EFI boot manager editor
+    acpi # battery status etc
+
+    ### Basic terminal stuff
+    unstable.neovim
+    ripgrep-all # grep over pdfs etc
+    zoxide # better cd
     bat # better cat with syntax hl
-    exiftool
-    libwebp
-    croc # send/receive files
     delta # better diffs
     fd # find alternative
     fzf # fuzzy finder
-    jq # json processor
     ripgrep # better grep
-    dig # dns utils
-    inetutils # common network stuff
-    easyocr
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ GUI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    unstable.eza # better ls
+    difftastic # syntax aware diffs
+    lsix # ls for images (uses sixel)
+    parallel # run parallel jobs
+    tmux # terminal multiplexer
+    peco # interactive filtering
+    aria # downloader
+
+    ### Terminal apps
+    taskwarrior # CLI todo apps
+
+    ### Rarely used terminal stuff
+    wally-cli # ZSA keyboards software
+    croc # send/receive files
+    w3m # text based web browser
+    qrcp # send files to mobile over Wi-Fi using QR
+    exercism # CLI for exercism.org
+    glow # markdown viewer
+    youtube-dl # download youtube videos
+    wtf # TUI dashboard
+    libqalculate # qalc - advanced calculator
+    bc # simple calculator
+    neofetch
+    mosh # ssh over unstable connections
+
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ We got this far ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     google-chrome
     okular # document viewer
+    vscode
     # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
     slurp # select screen region
-    grim # screenshot a specified region
-    # shotman # grim, but with simple preview afterwards
-    swappy # markup wrapper for grim
-    flameshot # more bloated swappy
-    # wf-recorder # grim but for video
-    kooha # gui screen capture
+    grim # CLI screenshot
+    shotman # grim, but with simple preview afterwards
+    swappy # markup wrapper for screenshots
+    flameshot # screeshot tool with markup (slightly bloated)
+    wf-recorder # CLI screen capture
+    kooha # GUI screen capture
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     waybar # status bar
     wev # wayland event viewer (useful for debug)

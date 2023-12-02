@@ -169,3 +169,6 @@ client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
+#
+for_window [app_id="gnome-pomodoro"] floating enable
+for_window [app_id="org.gnome.Solanum"] floating enable

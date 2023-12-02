@@ -182,11 +182,6 @@ in
       discord
       unstable.telegram-desktop
 
-      ### Document viewers
-      djview
-      djvulibre
-      apvlv # vi-like pdf/epub viewer
-      zathura # document viewer
 
       ### Random rare
       obs-studio # screencasting/streaming
@@ -416,10 +411,17 @@ in
     nix-bash-completions
     yamlfmt # YAML formatter
 
-    ### Image viewers
+    ### Viewers
     imv # terminal image viewer
     swayimg # terminal image viewer
     nomacs # GUI image viewer
+    mpv # cli video player
+    ### Document viewers
+    okular
+    djview
+    djvulibre
+    apvlv # vi-like pdf/epub viewer
+    zathura # document viewer
 
     ### Media tools
     easyocr # neural OCR
@@ -501,39 +503,38 @@ in
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ We got this far ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     google-chrome
-    okular # document viewer
     vscode
-    # ~~~~~~~~~~~~~~ Screenshots and screen capture ~~~~~~~~~~~~~~
+    ### Screenshots and screen capture
     slurp # select screen region
     grim # CLI screenshot
-    shotman # grim, but with simple preview afterwards
-    swappy # markup wrapper for screenshots
-    flameshot # screeshot tool with markup (slightly bloated)
+    shotman # screenshot, with simple preview afterwards, no markup
+    swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
-    kooha # GUI screen capture
+    kooha # screen capture with basic gui
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     waybar # status bar
-    wev # wayland event viewer (useful for debug)
-    libnotify # notify-send
+    wev # wayland event viewer
+    libnotify # notify-send etc
     mako # notifications
-    xdg-utils
-    desktop-file-utils
-    xdg-ninja
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    xdg-utils # xdg-open etc
+    desktop-file-utils # update-desktop-database etc
+    xdg-ninja # checks $HOME for bloat
+    wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
     playerctl # cli media player controls
     swaybg # wallpaper helper
     mpvpaper # video wallpaper helper
     swayidle # idle events
     swaylock # lockscreen
-
+    # ~~~~~~~~~~~~~~~~~~~~~ display settings ~~~~~~~~~~~~~~~~~~~~~
+    # TODO Choose one
     wdisplays # gui display configuration
     kanshi
     wlopm
     wlr-randr
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    tofi # dmenu replacement
+    tofi # app launcher
     pavucontrol # gui audio configuration
-    mpv # cli video player
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
     glib # gsettings (gtk etc)
     qt5ct

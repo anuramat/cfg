@@ -119,8 +119,14 @@ bindsym $mod+r mode "resize"
 bar {
     swaybar_command waybar
 }
-# Screenshot
-bindsym $mod+p exec swaymsg -t get_tree | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp | xargs -I {} grim -g "{}" - | swappy -f -
+# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
+bindsym $mod+p exec swaymsg -t get_tree \
+    | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+    | slurp | xargs -I {} grim -g "{}" - | swappy -f -
+bindsym $mod+ctrl+p exec swaymsg -t get_tree \
+    | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+    | xargs -I {} grim -g "{}" - | swappy -f -
+bindsym $mod+shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
 # ~~~~~~~ NixOS boilerplate from configuration.nix ~~~~~~~ #
 exec dbus-sway-environment
 exec configure-gtk

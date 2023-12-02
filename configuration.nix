@@ -417,11 +417,9 @@ in
     nomacs # GUI image viewer
     mpv # cli video player
     ### Document viewers
-    okular
-    djview
-    djvulibre
-    apvlv # vi-like pdf/epub viewer
-    zathura # document viewer
+    okular # GUI * reader
+    zathura # vimmy * reader
+    djview # GUI djvu reader
 
     ### Media tools
     easyocr # neural OCR
@@ -431,6 +429,7 @@ in
     imagemagickBig # CLI image manipulation
     libwebp # tools for WebP image format
     exiftool # read/write EXIF metadata
+    djvulibre # djvu tools
 
     ### Web shit
     grpcui # postman for grpc

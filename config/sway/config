@@ -7,7 +7,7 @@ set $font Hack Nerd Font 13
 font "pango:$font"
 set $menu pkill tofi || swaymsg exec "$(tofi-drun -c $XDG_CONFIG_HOME/tofi.cfg)"
 focus_wrapping no
-exec_always autotiling
+# exec_always autotiling
 exec_always transparent-inactive
 exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 input * {

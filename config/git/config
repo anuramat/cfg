@@ -41,3 +41,4 @@ ds = diff --staged
 unpushed = log --branches --not --remotes --decorate --oneline
 # if branch exists: prints remote ref
 xor = !git ls-remote --heads origin refs/heads/$(git branch --show-current)
+sync = !git commit -am sync && git push

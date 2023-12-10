@@ -363,10 +363,10 @@ in
     file
 
     ### File managers
+    xdragon
     # TODO choose one
     vifm
     mc
-    xdragon
     ranger
     lf
     nnn

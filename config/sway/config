@@ -139,6 +139,7 @@ exec configure-gtk
 default_border none
 default_floating_border pixel 3
 focus_follows_mouse no
+mouse_warping container
 smart_gaps off
 gaps inner 5
 gaps vertical 5
@@ -183,3 +184,4 @@ client.background       #F8F8F2
 #
 for_window [app_id="gnome-pomodoro"] floating enable
 for_window [app_id="org.gnome.Solanum"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable

@@ -558,6 +558,11 @@ in
   '';
   # Flipper Zero
   hardware.flipperzero.enable = true;
+  # Removable media
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = true;
+  };
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;

@@ -66,7 +66,7 @@ let
   ];
   home-manager =
     fetchTarball
-      "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
+      "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
 
   unstableTarball =
     fetchTarball
@@ -109,33 +109,33 @@ in
   };
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  home-manager.users.${username} = {
-    # gtk = { # writes a symlink to .config/gtk-3.0, no thanks
-    #   enable = true;
-    #   theme = {
-    #     package = pkgs.dracula-theme;
-    #     name = "Dracula";
-    #   };
-    #   iconTheme = {
-    #     package = pkgs.dracula-icon-theme;
-    #     name = "Dracula";
-    #   };
-    #   cursorTheme = null; # probably overlap with pointerCursor
-    # };
-    home = {
-      stateVersion = version;
-      pointerCursor = {
-        name = "Adwaita";
-        package = pkgs.gnome.adwaita-icon-theme;
-        size = 24;
-        gtk.enable = true;
-        x11 = {
-          enable = true;
-          defaultCursor = "Adwaita";
-        };
-      };
-    };
-  };
+  # home-manager.users.${username} = {
+  #   # gtk = { # writes a symlink to .config/gtk-3.0, no thanks
+  #   #   enable = true;
+  #   #   theme = {
+  #   #     package = pkgs.dracula-theme;
+  #   #     name = "Dracula";
+  #   #   };
+  #   #   iconTheme = {
+  #   #     package = pkgs.dracula-icon-theme;
+  #   #     name = "Dracula";
+  #   #   };
+  #   #   cursorTheme = null; # probably overlap with pointerCursor
+  #   # };
+  #   home = {
+  #     stateVersion = version;
+  #     pointerCursor = {
+  #       name = "Adwaita";
+  #       package = pkgs.gnome.adwaita-icon-theme;
+  #       size = 24;
+  #       gtk.enable = true;
+  #       x11 = {
+  #         enable = true;
+  #         defaultCursor = "Adwaita";
+  #       };
+  #     };
+  #   };
+  # };
 
   users.users.${username} = {
     description = fullname;
@@ -194,7 +194,7 @@ in
     ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     nerdfonts
   ];
   qt = {

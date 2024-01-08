@@ -481,6 +481,8 @@ in
     tmux # terminal multiplexer
     peco # interactive filtering
     aria # downloader
+    poppler_utils # pdf utils
+    ghostscript
 
     ### Terminal apps
     taskwarrior # CLI todo apps

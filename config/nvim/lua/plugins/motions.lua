@@ -1,7 +1,6 @@
 local specs = {}
 local u = require('utils')
 
--- TODO
 specs.flash = {
   'folke/flash.nvim',
   opts = {
@@ -30,8 +29,6 @@ specs.flash = {
   },
 }
 
--- unimpaired replacement
--- TODO
 specs.brackets = {
   'echasnovski/mini.bracketed',
   lazy = false,

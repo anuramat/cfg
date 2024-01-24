@@ -32,6 +32,7 @@ specs.treesitter = {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
     highlight = { enable = true, disable = {} },
@@ -61,6 +62,12 @@ specs.treesitter = {
     -- vim.o.foldmethod = 'expr'
     -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
     -- vim.o.foldtext = 'v:lua.vim.treesitter.foldtext()' -- check if supported
+    require('ts_context_commentstring').setup({
+      enable_autocmd = false,
+      languages = {
+        typescript = '// %s',
+      },
+    })
   end,
 }
 

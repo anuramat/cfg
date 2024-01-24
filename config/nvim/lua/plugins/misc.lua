@@ -97,12 +97,13 @@ specs.eunuch = {
   event = 'VeryLazy',
 }
 
-specs.symbols = {
-  'Wansmer/symbol-usage.nvim',
-  event = 'BufReadPre', -- NOTE need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
-  opts = {
-    vt_position = 'end_of_line',
-  },
-}
+-- -- unusable until we get a blacklist regex for .pb.go files
+-- specs.symbols = {
+--   'Wansmer/symbol-usage.nvim',
+--   event = 'BufReadPre', -- NOTE need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+--   opts = {
+--     vt_position = 'end_of_line',
+--   },
+-- }
 
 return u.values(specs)

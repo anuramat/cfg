@@ -54,13 +54,20 @@ local function cfgs()
         gopls = {
           analyses = {
             fieldalignment = true,
-            nilness = true,
             shadow = true,
-            unusedparams = true,
             unusedwrite = true,
             useany = true,
             unusedvariable = true,
           },
+          codelenses = {
+            gc_details = true,
+            generate = true,
+            regenerate_cgo = true,
+            tidy = true,
+            upgrade_dependency = true,
+            vendor = true,
+          },
+          usePlaceholders = true,
           staticcheck = true,
           gofumpt = true,
           semanticTokens = true,
@@ -133,7 +140,7 @@ specs.null = {
       sources = {
         nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
         nlf.stylua,
-        nld.protolint,
+        -- nld.protolint,
       },
       on_attach = function(client, buffer)
         lsp_utils.lsp_keys(buffer)

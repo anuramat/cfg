@@ -3,7 +3,6 @@ local u = require('utils')
 
 local function current_buffer_fuzzy_find()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-    winblend = vim.o.winblend,
     previewer = false,
   }))
 end
@@ -40,8 +39,6 @@ specs.telescope = {
           '--with-filename',
           '--line-number',
           '--column',
-          -- custom
-          '--ignore',
         },
       },
       pickers = {

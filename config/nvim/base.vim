@@ -10,7 +10,6 @@ com! KillAll :silent %bd|e#|bd#
 se sr sw=0 et ts=2 " indentation (2 spaces)
 se tw=80 fo=qwj " foramtting; add 'ro/' to prepend command leader on <cr>
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-se mouse=
 se noto " no timeout on key sequences
 se kmp=russian-jcukenwin imi=0 " cyrillic on i_c^
 se cot=menu,menuone,noselect,preview wop=fuzzy,pum " completion settings
@@ -51,7 +50,7 @@ if !exists("g:colors_name") " so that we can re-source without changing colorsch
 endif
 " pseudo-transparency, looks ugly with transparent bg
 if has('nvim')
-  se winbl=0 " floating window transparency
+  se winbl=30 " floating window transparency
   se pb=30 " popup transparency
 endif
 se ph=20 " popup max height
@@ -75,3 +74,6 @@ augroup END
 se smc=200 " max column to do syntax hl, might break entire file
 let g:matchparen_timeout=50
 let g:matchparen_insert_timeout=50
+
+
+se cb=unnamedplus " unnamedplus for clipboard, unnamed for selection

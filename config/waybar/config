@@ -9,17 +9,19 @@
       "pulseaudio",
       "backlight",
     ],
-    "modules-center": ["sway/window"],
+    "modules-center": [
+      "mpris",
+    ],
     "modules-right": [
-      "sway/language",
-      "clock",
       "idle_inhibitor",
       "network#wlan",
       "custom/wlan",
       "bluetooth",
-      "battery",
       "disk",
       "tray",
+      "battery",
+      "sway/language",
+      "clock",
     ],
     "sway/window": {
       "rewrite": {

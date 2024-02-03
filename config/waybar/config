@@ -1,10 +1,26 @@
 [
   {
     "position": "top",
-    "spacing": 10,
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
+    "spacing": 5,
+    "modules-left": [
+      "sway/workspaces",
+      "sway/mode",
+      "sway/scratchpad",
+      "pulseaudio",
+      "backlight",
+    ],
     "modules-center": ["sway/window"],
-    "modules-right": ["sway/language",  "clock", "idle_inhibitor"],
+    "modules-right": [
+      "sway/language",
+      "clock",
+      "idle_inhibitor",
+      "network#wlan",
+      "custom/wlan",
+      "bluetooth",
+      "battery",
+      "disk",
+      "tray",
+    ],
     "sway/window": {
       "rewrite": {
         "(.*) - Google Chrome": "󰖟 $1",
@@ -39,21 +55,7 @@
     },
     "sway/language": {
       "tooltip-format": "{flag} {long} {variant}"
-    }
-  },
-  {
-    "position": "bottom",
-    "spacing": 10,
-    "modules-left": ["pulseaudio", "backlight"],
-    "modules-center": ["mpris"],
-    "modules-right": [
-      "network#wlan",
-      "custom/wlan",
-      "bluetooth",
-      "battery",
-      "disk",
-      "tray"
-    ],
+    },
     "tray": {
       // "icon-size":24,
       "spacing": 10

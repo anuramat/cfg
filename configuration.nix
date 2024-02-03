@@ -180,7 +180,7 @@ in
       element-desktop # matrix client
       slack
       discord
-      unstable.telegram-desktop
+      telegram-desktop
 
 
       ### Random rare
@@ -503,6 +503,7 @@ in
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ We got this far ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    mesa-demos
     google-chrome
     vscode
     ### Screenshots and screen capture

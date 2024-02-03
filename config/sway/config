@@ -136,15 +136,19 @@ bindsym $mod+shift+p exec grim - | swappy -f -
 exec dbus-sway-environment
 exec configure-gtk
 # ~~~~~~~~~~~~~~~~~~~~~~~ Visuals ~~~~~~~~~~~~~~~~~~~~~~~~ #
-default_border none
+# hide_edge_borders both
+smart_borders on
+default_border pixel 3
 default_floating_border pixel 3
+
 focus_follows_mouse no
 mouse_warping container
-smart_gaps off
+
+smart_gaps on
 gaps inner 5
-gaps vertical 5
-gaps horizontal 10
+
 # output * bg ~/wp.png fill
+
 seat * hide_cursor when-typing enable
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Displays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_outputs`

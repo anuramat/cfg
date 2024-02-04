@@ -35,4 +35,4 @@ ds = diff --staged
 # shows unpushed commits
 unpushed = log --branches --not --remotes --decorate --oneline
 cp = !git commit -am auto && git push
-ignored = git status --ignored
+ignored = status --ignored

@@ -13,11 +13,6 @@ features = side-by-side
 [merge]
 conflictstyle = diff3
 ff = true
-tool = fugitive
-[mergetool]
-keepBackup = false
-[mergetool "fugitive"]
-cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 
 [push]
 autoSetupRemote = true
@@ -39,6 +34,5 @@ df = diff
 ds = diff --staged
 # shows unpushed commits 
 unpushed = log --branches --not --remotes --decorate --oneline
-# if branch exists: prints remote ref
-xor = !git ls-remote --heads origin refs/heads/$(git branch --show-current)
 cp = !git commit -am sync && git push
+dft = !GIT_EXTERNAL_DIFF=difft git diff

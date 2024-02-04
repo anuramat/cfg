@@ -32,7 +32,6 @@ ps = push
 lg = log --oneline --graph --all --decorate
 df = diff
 ds = diff --staged
-# shows unpushed commits 
+# shows unpushed commits
 unpushed = log --branches --not --remotes --decorate --oneline
-cp = !git commit -am sync && git push
-dft = !GIT_EXTERNAL_DIFF=difft git diff
+cp = !git commit -am auto && git push

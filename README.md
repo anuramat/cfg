@@ -2,7 +2,8 @@
 NixOS edition
 
 ```sh
-./setup.sh
+./install.sh # home directory: .config/, dotfiles
+./build.sh # configuration.nix
 ```
 
 ## Hier

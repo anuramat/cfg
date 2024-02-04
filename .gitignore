@@ -1,9 +1,9 @@
-Brewfile.lock.json
-**/nvim/lazy-lock.json
-**/karabiner/automatic_backups
-**/iterm2/AppSupport
 private*
 !private.example*
 *.pem
+**/nvim/lazy-lock.json
 
 **/nixos/hardware-configuration.nix
+
+Brewfile.lock.json
+**/karabiner/automatic_backups

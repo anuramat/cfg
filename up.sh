@@ -11,4 +11,4 @@ rm -rd "$local_nixos_folder"
 [ -r "$sys_nixos_folder" ] && cp -rT "$sys_nixos_folder" "$local_nixos_folder"
 
 # push everything
-# git commit -am sync && git push
+git commit -am sync && git push

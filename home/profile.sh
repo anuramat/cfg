@@ -27,9 +27,6 @@ for editor in nvim vim nvi vi; do
 done
 export EDITOR="$VISUAL"
 
-# Emacs
-export PATH="$XDG_CONFIG_HOME/emacs/bin${PATH:+:$PATH}"
-
 # Go modules and binaries
 export GOPATH="$HOME/go"
 export PATH="${PATH:+$PATH:}$GOPATH/bin"

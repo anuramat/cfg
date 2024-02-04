@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-local_nixos_folder="./nixos"
-sys_nixos_folder="/etc/nixos"
+local_nixos_folder="./nixos/"
+sys_nixos_folder="/etc/nixos/"
 
 # copy the config (merges directories, overwrites files)
 sudo rsync -r --chown=root:root "$local_nixos_folder" "$sys_nixos_folder"

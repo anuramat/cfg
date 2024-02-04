@@ -104,8 +104,7 @@
       "format-linked": "No IP 󰌚",
       "format-disconnected": "D/C 󰌙",
       // "format-disabled": "󰤭",
-      "on-click": "foot nmtui",
-      "on-click": "foot nmtui",
+      "on-click": "alacritty -e nmtui",
       "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
       "interval": 1
     },

@@ -501,11 +501,12 @@ in
     neofetch
     mosh # ssh over unstable connections
 
+    ### Random stuff
+    mesa-demos # some 3d demos
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ We got this far ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    mesa-demos
+    ### Web browsers
     google-chrome
-    vscode
+
     ### Screenshots and screen capture
     slurp # select screen region
     grim # CLI screenshot
@@ -513,9 +514,11 @@ in
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
     kooha # screen capture with basic gui
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    ### DE stuff
     waybar # status bar
-    wev # wayland event viewer
+    tofi # app launcher
+    wev # wayland event viewer, useful for debugging
     libnotify # notify-send etc
     mako # notifications
     xdg-utils # xdg-open etc
@@ -527,26 +530,26 @@ in
     mpvpaper # video wallpaper helper
     swayidle # idle events
     swaylock # lockscreen
-    # ~~~~~~~~~~~~~~~~~~~~~ display settings ~~~~~~~~~~~~~~~~~~~~~
+    pavucontrol # gui audio configuration
+
+    ### Display settings
     # TODO Choose one
     wdisplays # gui display configuration
     kanshi
     wlopm
     wlr-randr
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    tofi # app launcher
-    pavucontrol # gui audio configuration
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Themes ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ### Themes etc
     glib # gsettings (gtk etc)
-    qt5ct
-    unstable.qt6ct
+    qt5ct # qt5 gui settings
+    qt6ct # qt6 gui settings
     adwaita-qt
     adwaita-qt6
     dracula-theme
     dracula-icon-theme
     gnome3.adwaita-icon-theme
-    # ~~~~~~~~~~~~~~~~~~~~~~~ Sway scripts ~~~~~~~~~~~~~~~~~~~~~~~
+
+    ### Sway scripts defined in this file
     dbus-sway-environment
     configure-gtk
   ];
@@ -573,15 +576,10 @@ in
   virtualisation.docker.enable = true;
   services.syncthing =
     {
-      # NOTE this is a mess, everything is stored in .config, for now will have to ignore all of it in cfg repo
-      # use XDG paths when transitioning to home manager
       enable = true;
       user = username;
-      dataDir = "/home/anuramat"; # parent directory for folders declared with nix
-      configDir = "/home/${username}/.config/syncthing"; # keys, database, configuration
-      extraFlags = [
-        # "--config=/home/${username}/.config/syncthing" # keys and configuration
-        # "--data=/home/${username}/.local/share/syncthing" # where to store the database files
-      ];
+      dataDir = "/home/${username}"; # parent directory for synchronised folders
+      configDir = "/home/${username}/.config/syncthing"; # keys and settings
+      databaseDir = "/home/${username}/.local/share/syncthing"; # database and logs
     };
 }

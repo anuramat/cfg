@@ -142,7 +142,7 @@ in
     isNormalUser = true;
     extraGroups = [
       "wheel" # root
-      "video" # screen brightess
+      "video" # screen brightness
       "network" # wifi
       "docker" # docker
       "audio" # just in case (?)
@@ -267,7 +267,6 @@ in
     HandleLidSwitchDocked=ignore
     HandleLidSwitchExternalPower=ignore
   '';
-  programs.light.enable = true; # Brightness control
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Sound ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
@@ -538,6 +537,8 @@ in
     kanshi
     wlopm
     wlr-randr
+
+    brightnessctl
 
     ### Themes etc
     glib # gsettings (gtk etc)

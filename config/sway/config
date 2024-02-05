@@ -55,8 +55,8 @@ bindsym $mod+ctrl+$down move down
 bindsym $mod+ctrl+$up move up
 bindsym $mod+ctrl+$right move right
 # Brightness
-bindsym XF86MonBrightnessDown exec light -U 25
-bindsym XF86MonBrightnessUp exec light -A 25
+bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
 # Volume
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

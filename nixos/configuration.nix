@@ -154,7 +154,7 @@ in
     packages = with pkgs; [
       ### Terminals
       foot # minimal terminal
-      alacritty # gpu terminal
+      unstable.alacritty # gpu terminal
       cool-retro-term # cute terminal
 
       ### Random

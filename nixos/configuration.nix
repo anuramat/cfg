@@ -155,6 +155,7 @@ in
       ### Terminals
       foot # minimal terminal
       unstable.alacritty # gpu terminal
+      unstable.alacritty-theme
       cool-retro-term # cute terminal
 
       ### Random

@@ -1,6 +1,6 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $term alacritty
-# set $term kitty -1
+set $term alacritty -e
+set $start_term alacritty
 set $bar_height 30
 set $screenshot_dir "$HOME/Screenshots"
 set $font Hack Nerd Font 13
@@ -34,7 +34,7 @@ set $down j
 set $up k
 set $right l
 
-bindsym $mod+t exec $term
+bindsym $mod+t exec $start_term
 bindsym $mod+space exec $menu
 bindsym $mod+q kill
 

@@ -9,3 +9,5 @@ venv/
 tags
 # haskell
 .stack-work/
+# go
+cover.cov

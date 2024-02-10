@@ -1,9 +1,10 @@
 private*
 !private.example*
+
 *.pem
-**/nvim/lazy-lock.json
 
 **/nixos/hardware-configuration.nix
-
-Brewfile.lock.json
 **/karabiner/automatic_backups
+
+# **/nvim/lazy-lock.json
+# Brewfile.lock.json

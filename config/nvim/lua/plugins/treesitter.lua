@@ -27,11 +27,13 @@ local langs = {
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
-  version = false, -- last release is way too old
+  -- version = false,
+  tag = 'v0.9.2', -- https://github.com/NvChad/NvChad/commit/282a23f4469ee305e05ec7a108a728ee389d87fb
   build = ':TSUpdate',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'nvim-treesitter/nvim-treesitter-context',
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   opts = {
@@ -58,17 +60,45 @@ specs.treesitter = {
   },
   config = function(_, opts)
     require('nvim-treesitter.configs').setup(opts)
+    -- TODO fix ffs
     -- XXX doesn't always work
     -- vim.o.foldmethod = 'expr'
     -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
     -- vim.o.foldtext = 'v:lua.vim.treesitter.foldtext()' -- check if supported
+    require('treesitter-context').setup({
+      enable = true,
+      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+      min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+      line_numbers = true,
+      multiline_threshold = 20, -- Maximum number of lines to show for a single context
+      trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+      mode = 'topline', -- Line used to calculate context. Choices: 'cursor', 'topline'
+      -- separator = '―', -- Separator between context and content. nil or a single character
+      zindex = 20, -- The Z-index of the context window
+    })
+
+    --- @diagnostic disable-next-line: missing-fields
     require('ts_context_commentstring').setup({
-      enable_autocmd = false,
-      languages = {
-        typescript = '// %s',
-      },
+      enable_autocmd = false, -- to integrate with numToStr/Comment.nvim
     })
   end,
+}
+
+-- Comments lines
+-- alternatively tpope/vim-commentary
+specs.comment = {
+  'numToStr/Comment.nvim',
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
+  config = function()
+    --- @diagnostic disable-next-line: missing-fields
+    require('Comment').setup({
+      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+    })
+  end,
+  keys = {
+    { 'gc', mode = { 'n', 'x' }, desc = 'Comment prefix' },
+    { 'gb', mode = { 'n', 'x' }, desc = 'Comment block prefix' },
+  },
 }
 
 return u.values(specs)

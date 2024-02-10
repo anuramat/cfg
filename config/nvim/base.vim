@@ -34,7 +34,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank()
 se nu rnu " relative line numbers
 se so=0 " no scrolloff
 se report=0 shm=asWIcCF " notification settings
-se cul culopt=number
+se cul culopt=line
 se mat=1 sm " highlight matching bracket (deciseconds)
 se nosmd " turn off mode indicator in cmdline TODO add mode indicator to "fallback statusline"
 se scl=yes " gutter

@@ -6,6 +6,7 @@ let &t_SI .= "\e[6 q" | let &t_EI .= "\e[2 q" " cursor shape
 se ru sc wmnu " bottom ui
 filet plugin indent on | syn on " default plugins
 se ls=2
+hi VertSplit guibg=bg guifg=fg
 "~~~~~~~~~~~~~~~~~ default nvim mappings ~~~~~~~~~~~~~~~~~~"
 " sane yank behaviour
 nn Y y$

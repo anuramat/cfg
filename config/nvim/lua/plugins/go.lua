@@ -9,11 +9,14 @@ specs.go = {
     'nvim-treesitter/nvim-treesitter',
   },
   config = function()
-    require('go').setup({ diagnostic = { hdlr = false } })
+    require('go').setup({
+      lsp_keymaps = false,
+      dap_debug_keymap = false,
+      sign_priority = 1000,
+    })
   end,
-  event = { 'CmdlineEnter' },
   ft = { 'go', 'gomod' },
-  -- build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
+  build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }
 
 return u.values(specs)

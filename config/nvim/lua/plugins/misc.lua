@@ -88,6 +88,14 @@ specs.oil = {
   },
 }
 
+specs.tree = {
+  'nvim-tree/nvim-tree.lua',
+  opts = {},
+  keys = {
+    { '<leader>t', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTree' },
+  },
+}
+
 -- File management commands (rename, remove, chmod...)
 -- Must have
 -- see also:

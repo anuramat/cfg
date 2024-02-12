@@ -52,5 +52,6 @@ specs.signs = {
 -- kdheepak/lazygit.nvim
 -- rhysd/conflict-marker.vim
 -- sindrets/diffview.nvim
+-- neogit
 
 return u.values(specs)

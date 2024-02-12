@@ -9,6 +9,15 @@ local function make_public()
   vim.cmd.sleep(100, 'm')
 end
 
+--- Copies the name of the file and the line number to the buffer
+local function quote()
+  local filename = vim.fn.expand('%')
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local result = filename .. ':' .. tostring(row)
+  vim.print(result)
+  vim.fn.setreg('+', result)
+end
+
 --- Creates comment header I guess
 --- @param chr string Character that fills the header
 --- @param width_factor float|nil If present, width = textwidth * width_factor
@@ -77,3 +86,5 @@ end, 'Subheader')
 
 -- vim.api.nvim_create_user_command('GoMakePublic', make_public, {})
 -- vim.cmd('noremap <leader>q :GoMakePublic<cr>')
+
+vim.api.nvim_create_user_command('Quote', quote, {})

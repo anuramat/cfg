@@ -18,7 +18,7 @@ specs.dap_go = {
       initialize_timeout_sec = 20,
       port = '${port}', -- ${port} for random port
       args = {}, -- additional args to pass to delve
-      build_flags = '', -- build flags to pass to delve (because ones from args are ignored in dap mode)
+      build_flags = '', -- build flags to pass to delve (because flags from args are ignored in dap mode)
     },
   },
 }
@@ -39,8 +39,8 @@ specs.dap = {
     { 'o', function() require('dap').step_out() end,          desc = 'Step Out' },
     { 'n', function() require('dap').step_over() end,         desc = 'Step Over' },
     { 'i', function() require('dap').step_into() end,         desc = 'Step Into' },
-    { 's', function() require('dap').set_breakpoint() end,    desc = 'Set Breakpoint' },
-    { 't', function() require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
+    -- { 's', function() require('dap').set_breakpoint() end,    desc = 'Set Breakpoint' },
+    { 'b', function() require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
     { 'l', log_point,                                         desc = 'Set Log Point' },
     { 'r', function() require('dap').repl.open() end,         desc = 'Open Debug REPL' },
     { 'd', function() require('dap').run_last() end,          desc = 'Run Last Debug Session' },

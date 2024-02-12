@@ -1,8 +1,6 @@
 local specs = {}
 local u = require('utils')
 
--- UndoTree
--- Must have, one and only
 specs.undotree = {
   'mbbill/undotree',
   cmd = {
@@ -21,7 +19,6 @@ specs.undotree = {
 }
 
 -- Autodetect indentation settings
--- Must have, one and only
 specs.sleuth = {
   'tpope/vim-sleuth',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -49,7 +46,7 @@ specs.align = {
 }
 
 -- Highlight trailing space
--- One and only, NOT must have, could be replaced with a few lines of code
+-- Could be replaced with a few lines of code tbh
 specs.trailspace = {
   'echasnovski/mini.trailspace',
   version = false,
@@ -61,22 +58,24 @@ specs.trailspace = {
 }
 
 -- Databases
--- One and only
-specs.dadbod = {
-  'tpope/vim-dadbod',
-  lazy = false,
-}
-
--- Dadbod UI
--- One and only
 specs.dadbod_ui = {
   'kristijanhusak/vim-dadbod-ui',
-  dependencies = { 'tpope/vim-dadbod' },
-  lazy = false,
+  dependencies = {
+    { 'tpope/vim-dadbod', lazy = true },
+    { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+  },
+  cmd = {
+    'DBUI',
+    'DBUIToggle',
+    'DBUIAddConnection',
+    'DBUIFindBuffer',
+  },
+  init = function()
+    vim.g.db_ui_use_nerd_fonts = 1
+  end,
 }
 
--- netrw replacement, treats directories as buffers
--- Just a file manager, but a unique one: simple, powerful, vimmy
+-- File manager
 specs.oil = {
   'stevearc/oil.nvim',
   -- event = 'VeryLazy',
@@ -84,15 +83,16 @@ specs.oil = {
   opts = {},
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   keys = {
-    { '<leader>o', '<cmd>Oil<cr>', desc = 'Oil' },
+    { '<leader>o', '<cmd>Oil<cr>', desc = 'File Manager (Oil)' },
   },
 }
 
+-- File tree
 specs.tree = {
   'nvim-tree/nvim-tree.lua',
   opts = {},
   keys = {
-    { '<leader>t', '<cmd>NvimTreeToggle<cr>', desc = 'NvimTree' },
+    { '<leader>t', '<cmd>NvimTreeToggle<cr>', desc = 'File Tree (NvimTree)' },
   },
 }
 

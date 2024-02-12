@@ -9,6 +9,16 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 
 export GRIM_DEFAULT_DIR="$HOME/Screenshots"
 
+# Homebrew path
+export HOMEBREW_PREFIX="/opt/homebrew"
+if _brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv)"; then
+	eval "$_brewshellenv"
+fi
+
+# Go modules and binaries
+export GOPATH="$HOME/go"
+export PATH="${PATH:+$PATH:}$GOPATH/bin"
+
 # User binaries
 export PATH="$HOME/bin${PATH:+:$PATH}"
 
@@ -27,10 +37,6 @@ for editor in nvim vim nvi vi; do
 done
 export EDITOR="$VISUAL"
 
-# Go modules and binaries
-export GOPATH="$HOME/go"
-export PATH="${PATH:+$PATH:}$GOPATH/bin"
-
 # Node
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 
@@ -38,12 +44,6 @@ export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export PYTHONPYCACHEPREFIX="/tmp/pycache"
 export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 # NOTE .pyhistory is still hardcoded: https://github.com/python/cpython/pull/13208
-
-# Homebrew path
-export HOMEBREW_PREFIX="/opt/homebrew"
-if _brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv)"; then
-	eval "$_brewshellenv"
-fi
 
 # Homebrew
 export HOMEBREW_NO_ANALYTICS="true"

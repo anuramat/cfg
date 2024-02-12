@@ -40,7 +40,7 @@ specs.signs = {
       set('n',      ']h', gs.next_hunk,    'Next hunk')
       set('n',      '[h', gs.prev_hunk,    'Previous hunk')
       prefixed('n', 'p',  gs.preview_hunk, 'Preview hunk')
-      prefixed({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select hunk')
+      set({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select hunk')
       -- misc
       prefixed('n', 'b', function() gs.blame_line({ full = true }) end, 'Blame current line')
       prefixed('n', 'd', gs.diffthis, 'Diff')
@@ -48,5 +48,9 @@ specs.signs = {
     end,
   },
 }
+
+-- kdheepak/lazygit.nvim
+-- rhysd/conflict-marker.vim
+-- sindrets/diffview.nvim
 
 return u.values(specs)

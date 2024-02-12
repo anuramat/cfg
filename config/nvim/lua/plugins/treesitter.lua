@@ -27,8 +27,6 @@ local langs = {
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
-  -- version = false,
-  tag = 'v0.9.2', -- https://github.com/NvChad/NvChad/commit/282a23f4469ee305e05ec7a108a728ee389d87fb
   build = ':TSUpdate',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {

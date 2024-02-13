@@ -25,7 +25,7 @@ export PATH="$HOME/bin${PATH:+:$PATH}"
 export LC_ALL="en_US.UTF-8"
 
 # ls replacement
-export EZACMD="eza --group-directories-first --group --icons --header --git --color=always"
+export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"
 
 # Vim
 for editor in nvim vim nvi vi; do

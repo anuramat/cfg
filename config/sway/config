@@ -1,4 +1,6 @@
 set $mod Mod4
+set $mod2 ctrl
+set $mod3 shift
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Outputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_outputs`
 set $internal "eDP-1"
@@ -48,21 +50,40 @@ input 1739:0:Synaptics_TM3276-022 {
     events disabled
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $term alacritty -e
-set $start_term alacritty
-set $font Hack Nerd Font 13
-font "pango:$font"
-set $menu pkill tofi || swaymsg exec "$(tofi-drun -c $XDG_CONFIG_HOME/tofi.cfg)"
 focus_wrapping no
 exec_always transparent-inactive
-exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 # mouse gets centered on container focus
 focus_follows_mouse no
 mouse_warping container
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
 bar {
     swaybar_command waybar
 }
+set $term_run alacritty -e
+set $term_start alacritty
+set $menu pkill tofi || swaymsg exec "$(tofi-drun -c $XDG_CONFIG_HOME/tofi.cfg)"
+set $dismiss_notification "makoctl dismiss"
+set $dismiss_all_notifications "makoctl dismiss --all"
+set $lock_screen swaylock --daemonize
+
+# click to select a window, drag to select a region
+set $screenshot_mouse swaymsg -t get_tree \
+    | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+    | slurp | xargs -I {} grim -g "{}" - | swappy -f -
+set $screenshot_focused_window swaymsg -t get_tree \
+    | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+    | xargs -I {} grim -g "{}" - | swappy -f -
+set $screenshot_all_outputs grim - | swappy -f -
+set $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Looks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+set $font Hack Nerd Font 13
+font "pango:$font"
+gaps inner 5
+default_border pixel 3
+default_floating_border pixel 3
+seat * hide_cursor when-typing enable
+# output * bg ~/wp.png fill
 # ~~~~~~~~~~~~~~~~~~~~~ Colorscheme ~~~~~~~~~~~~~~~~~~~~~~ #
 #class                  border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
@@ -71,23 +92,18 @@ client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
 client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
-# ~~~~~~~~~~~~~~~~~~~~~ UI elements ~~~~~~~~~~~~~~~~~~~~~~ #
-gaps inner 5
-default_border pixel 3
-default_floating_border pixel 3
-seat * hide_cursor when-typing enable
-# output * bg ~/wp.png fill
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $resize r
-bindsym $mod+t exec $start_term
+set $screenshot_key p
+bindsym $mod+t exec $term_start
 bindsym $mod+space exec $menu
 bindsym $mod+q kill
-bindsym $mod+n exec "makoctl dismiss"
-bindsym $mod+ctrl+n exec "makoctl dismiss --all"
-bindsym $mod+ctrl+comma reload
-bindsym $mod+comma exec $term $EDITOR $XDG_CONFIG_HOME/sway/config
-bindsym $mod+ctrl+q exec swaylock --daemonize
+bindsym $mod+n exec $dismiss_notification
+bindsym $mod+$mod2+n exec $dismiss_all_notifications
+bindsym $mod+$mod2+comma reload
+bindsym $mod+comma exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
+bindsym $mod+$mod2+q exec $lock_screen
 floating_modifier $mod normal
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~ #
 bindsym $mod+c splith
@@ -99,13 +115,18 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+ctrl+m floating toggle
+bindsym $mod+$mod2+m floating toggle
 bindsym $mod+m focus mode_toggle
 bindsym $mod+a focus parent
 
-bindsym $mod+ctrl+u move scratchpad
+bindsym $mod+$mod2+u move scratchpad
 bindsym $mod+u scratchpad show
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Obvious stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
+
+bindsym $mod+$screenshot_key exec $screenshot_mouse
+bindsym $mod+$mod3+$screenshot_key exec $screenshot_focused_window
+bindsym $mod+$mod2+$screenshot_key exec $screenshot_all_outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Obvious bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $left h
 set $right l
 set $down j
@@ -129,10 +150,10 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-bindsym $mod+ctrl+$left move left
-bindsym $mod+ctrl+$down move down
-bindsym $mod+ctrl+$up move up
-bindsym $mod+ctrl+$right move right
+bindsym $mod+$mod2+$left move left
+bindsym $mod+$mod2+$down move down
+bindsym $mod+$mod2+$up move up
+bindsym $mod+$mod2+$right move right
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Media ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
@@ -157,34 +178,16 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-bindsym $mod+ctrl+1 move container to workspace number 1
-bindsym $mod+ctrl+2 move container to workspace number 2
-bindsym $mod+ctrl+3 move container to workspace number 3
-bindsym $mod+ctrl+4 move container to workspace number 4
-bindsym $mod+ctrl+5 move container to workspace number 5
-bindsym $mod+ctrl+6 move container to workspace number 6
-bindsym $mod+ctrl+7 move container to workspace number 7
-bindsym $mod+ctrl+8 move container to workspace number 8
-bindsym $mod+ctrl+9 move container to workspace number 9
-bindsym $mod+ctrl+0 move container to workspace number 10
-# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
-set $screenshot_key p
-
-# click to select a window, drag to select a region
-bindsym $mod+$screenshot_key exec swaymsg -t get_tree \
-    | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
-    | slurp | xargs -I {} grim -g "{}" - | swappy -f -
-
-# focused window
-bindsym $mod+ctrl+$screenshot_key exec swaymsg -t get_tree \
-    | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
-    | xargs -I {} grim -g "{}" - | swappy -f -
-
-# focused output
-# bindsym $mod+shift+p exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
-
-# all screens
-bindsym $mod+shift+$screenshot_key exec grim - | swappy -f -
+bindsym $mod+$mod2+1 move container to workspace number 1
+bindsym $mod+$mod2+2 move container to workspace number 2
+bindsym $mod+$mod2+3 move container to workspace number 3
+bindsym $mod+$mod2+4 move container to workspace number 4
+bindsym $mod+$mod2+5 move container to workspace number 5
+bindsym $mod+$mod2+6 move container to workspace number 6
+bindsym $mod+$mod2+7 move container to workspace number 7
+bindsym $mod+$mod2+8 move container to workspace number 8
+bindsym $mod+$mod2+9 move container to workspace number 9
+bindsym $mod+$mod2+0 move container to workspace number 10
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 exec dbus-sway-environment
 exec configure-gtk

@@ -1,10 +1,11 @@
 set $mod Mod4
 set $mod2 ctrl
 set $mod3 shift
+set $mod4 alt
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Outputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_outputs`
-set $internal "eDP-1"
-set $external "DP-1"
+set $internal eDP-1
+set $external DP-1 DP-2
 # default display outputs (second output = fallback)
 workspace 1 output $internal
 workspace 2 output $internal
@@ -16,9 +17,6 @@ workspace 7 output $external $internal
 workspace 8 output $external $internal
 workspace 9 output $external $internal
 workspace 10 output $external $internal
-
-bindsym $mod+i move workspace to output $internal
-bindsym $mod+o move workspace to output $external
 
 output eDP-1 {
     pos 320 1440
@@ -51,22 +49,21 @@ input 1739:0:Synaptics_TM3276-022 {
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 focus_wrapping no
-exec_always transparent-inactive
 # mouse gets centered on container focus
 focus_follows_mouse no
 mouse_warping container
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-exec swayidle -w timeout 300 'swaylock -f' before-sleep 'swaylock -f'
+exec_always transparent-inactive
+exec_always pkill swayidle || swayidle -w
 bar {
     swaybar_command waybar
 }
 set $term_run alacritty -e
 set $term_start alacritty
-set $menu pkill tofi || swaymsg exec "$(tofi-drun -c $XDG_CONFIG_HOME/tofi.cfg)"
+set $menu pkill tofi || swaymsg exec "$(tofi-drun)"
 set $dismiss_notification "makoctl dismiss"
 set $dismiss_all_notifications "makoctl dismiss --all"
 set $lock_screen swaylock --daemonize
-
 # click to select a window, drag to select a region
 set $screenshot_mouse swaymsg -t get_tree \
     | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
@@ -94,39 +91,31 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $resize r
-set $screenshot_key p
 bindsym $mod+t exec $term_start
-bindsym $mod+space exec $menu
 bindsym $mod+q kill
-bindsym $mod+n exec $dismiss_notification
-bindsym $mod+$mod2+n exec $dismiss_all_notifications
-bindsym $mod+$mod2+comma reload
-bindsym $mod+comma exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
+bindsym $mod+space exec $menu
+set $sway_settings_key comma
+set $screenshot_key p
+set $notification_key n
 bindsym $mod+$mod2+q exec $lock_screen
-floating_modifier $mod normal
+bindsym $mod+f fullscreen
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+c splith
-bindsym $mod+v splitv
+set $resize_key r
+bindsym $mod+u focus parent
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-bindsym $mod+f fullscreen
+bindsym $mod+c splith
+bindsym $mod+v splitv
 
 bindsym $mod+$mod2+m floating toggle
 bindsym $mod+m focus mode_toggle
-bindsym $mod+a focus parent
 
-bindsym $mod+$mod2+u move scratchpad
-bindsym $mod+u scratchpad show
-# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
-
-bindsym $mod+$screenshot_key exec $screenshot_mouse
-bindsym $mod+$mod3+$screenshot_key exec $screenshot_focused_window
-bindsym $mod+$mod2+$screenshot_key exec $screenshot_all_outputs
+bindsym $mod+$mod2+y move scratchpad
+bindsym $mod+y scratchpad show
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Obvious bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~ Directional hotkeys ~~~~~~~~~~~~~~~~~~ #
 set $left h
 set $right l
 set $down j
@@ -138,12 +127,12 @@ mode "resize" {
     bindsym $up resize grow height 50px
     bindsym $right resize grow width 50px
 
-    bindsym $mod+$resize mode "default"
+    bindsym $mod+$resize_key mode "default"
     bindsym escape mode "default"
     bindsym ctrl+c mode "default"
     bindsym ctrl+bracketleft mode "default"
 }
-bindsym $mod+$resize mode "resize"
+bindsym $mod+$resize_key mode "resize"
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -154,6 +143,22 @@ bindsym $mod+$mod2+$left move left
 bindsym $mod+$mod2+$down move down
 bindsym $mod+$mod2+$up move up
 bindsym $mod+$mod2+$right move right
+
+bindsym $mod+$mod3+$left move workspace to output left
+bindsym $mod+$mod3+$down move workspace to output down
+bindsym $mod+$mod3+$up move workspace to output up
+bindsym $mod+$mod3+$right move workspace to output right
+# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
+bindsym $mod+$screenshot_key exec $screenshot_mouse
+bindsym $mod+$mod2+$screenshot_key exec $screenshot_focused_window
+bindsym $mod+$mod3+$screenshot_key exec $screenshot_focused_output
+bindsym $mod+$mod4+$screenshot_key exec $screenshot_all_outputs
+# ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
+bindsym $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
+bindsym $mod+$mod2+$sway_settings_key reload
+bindsym $mod+$notification_key exec $dismiss_notification
+bindsym $mod+$mod2+$notification_key exec $dismiss_all_notifications
+floating_modifier $mod normal
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Media ~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # Brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 20%-

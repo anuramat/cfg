@@ -11,9 +11,8 @@ export GRIM_DEFAULT_DIR="$HOME/Screenshots"
 
 # Homebrew path
 export HOMEBREW_PREFIX="/opt/homebrew"
-if _brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv)"; then
-	eval "$_brewshellenv"
-fi
+_brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv 2>/dev/null)"
+eval "$_brewshellenv"
 
 # Go modules and binaries
 export GOPATH="$HOME/go"

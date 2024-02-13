@@ -482,7 +482,8 @@ in
     peco # interactive filtering
     aria # downloader
     poppler_utils # pdf utils
-    ghostscript
+    ghostscript # ???
+    entr # file watcher - runs command on change
 
     ### Terminal apps
     taskwarrior # CLI todo apps

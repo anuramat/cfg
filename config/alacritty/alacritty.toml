@@ -18,6 +18,7 @@ family = "Hack Nerd Font"
 style = "Regular"
 
 [window]
+option_as_alt = "Both"
 startup_mode = "Maximized"
 blur = true
 opacity = 0.7

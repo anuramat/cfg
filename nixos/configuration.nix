@@ -468,6 +468,7 @@ in
 
     ### Basic terminal stuff
     unstable.neovim
+    unstable.vim
     ripgrep-all # grep over pdfs etc
     zoxide # better cd
     bat # better cat with syntax hl

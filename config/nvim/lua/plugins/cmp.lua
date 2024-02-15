@@ -114,7 +114,7 @@ specs.cmp = {
           cmp.config.compare.exact,
           cmp.config.compare.score,
           cmp.config.compare.kind,
-          -- cmp.config.compare.scopes, -- super slow on big files in command line
+          -- cmp.config.compare.scopes, -- super slow on big files in command line, https://github.com/hrsh7th/nvim-cmp/issues/1681
           cmp.config.compare.locality,
           cmp.config.compare.offset,
           require('clangd_extensions.cmp_scores'),

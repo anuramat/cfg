@@ -28,7 +28,7 @@ local langs = {
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' }, -- without VeryLazy - breaks on first open file with telescope
+  event = { 'BufReadPre', 'BufNewFile' }, -- without VeryLazy - breaks on first open file with telescope
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-context',

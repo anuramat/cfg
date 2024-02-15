@@ -424,6 +424,7 @@ in
     ### Media tools
     easyocr # neural OCR
     ffmpeg # CLI multimedia processing
+    handbrake # ghb - GUI for video converting
     pandoc # markup converter (latex, markdown, etc)
     sox # CLI audio processing
     imagemagickBig # CLI image manipulation

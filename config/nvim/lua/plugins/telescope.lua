@@ -11,7 +11,7 @@ specs.telescope = {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    -- 'nvim-telescope/telescope-media-files.nvim', -- kinda shit, lots of requirements
+    'nvim-treesitter/nvim-treesitter',
   },
   -- stylua: ignore
   keys = u.prefix('<leader>f', {

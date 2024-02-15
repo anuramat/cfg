@@ -49,6 +49,11 @@ specs.signs = {
   },
 }
 
+specs.diffview = {
+  'sindrets/diffview.nvim',
+  event = 'VeryLazy',
+}
+
 -- kdheepak/lazygit.nvim
 -- rhysd/conflict-marker.vim
 -- sindrets/diffview.nvim

@@ -1,22 +1,31 @@
-set $mod Mod4
-set $mod2 ctrl
-set $mod3 shift
-set $mod4 alt
+# bindgesture
+# align
+set {
+    $bind bindsym --to-code
+    $mod Mod4
+    $mod2 ctrl
+    $mod3 shift
+    $mod4 alt
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Outputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_outputs`
-set $internal eDP-1
-set $external DP-1 DP-2
-# default display outputs (second output = fallback)
-workspace 1 output $internal
-workspace 2 output $internal
-workspace 3 output $internal
-workspace 4 output $internal
-workspace 5 output $internal
-workspace 6 output $external $internal
-workspace 7 output $external $internal
-workspace 8 output $external $internal
-workspace 9 output $external $internal
-workspace 10 output $external $internal
+set {
+    $internal eDP-1
+    $external DP-1 DP-2
+}
+
+workspace {
+    1 output $internal
+    2 output $internal
+    3 output $internal
+    4 output $internal
+    5 output $internal
+    6 output $external $internal
+    7 output $external $internal
+    8 output $external $internal
+    9 output $external $internal
+    10 output $external $internal
+}
 
 output eDP-1 {
     pos 320 1440
@@ -28,9 +37,11 @@ output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Per app settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_tree`
-for_window [app_id="gnome-pomodoro"] floating enable
-for_window [app_id="org.gnome.Solanum"] floating enable
-for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+for_window {
+    [app_id="gnome-pomodoro"] floating enable
+    [app_id="org.gnome.Solanum"] floating enable
+    [app_id="xdg-desktop-portal-gtk"] floating enable
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 input * {
     repeat_delay 250
@@ -47,32 +58,50 @@ input 2:10:TPPS/2_IBM_TrackPoint {
 input 1739:0:Synaptics_TM3276-022 {
     events disabled
 }
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ General settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 focus_wrapping no
 # mouse gets centered on container focus
 focus_follows_mouse no
 mouse_warping container
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-exec_always transparent-inactive
-exec_always pkill swayidle || swayidle -w
-bar {
-    swaybar_command waybar
+set {
+    $resize_value 50 px
+    $move_value 50 ppt
 }
-set $term_run alacritty -e
-set $term_start alacritty
-set $menu pkill tofi || swaymsg exec "$(tofi-drun)"
-set $dismiss_notification "makoctl dismiss"
-set $dismiss_all_notifications "makoctl dismiss --all"
-set $lock_screen swaylock --daemonize
-# click to select a window, drag to select a region
-set $screenshot_mouse swaymsg -t get_tree \
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+bar swaybar_command waybar
+exec_always {
+    transparent-inactive
+    pkill swayidle || swayidle -w
+}
+set {
+    $term_run alacritty -e
+    $term_start alacritty
+    $menu pkill tofi || swaymsg exec "$(tofi-drun)"
+    $dismiss_notification "makoctl dismiss"
+    $dismiss_all_notifications "makoctl dismiss --all"
+    $lock_screen swaylock --daemonize
+
+    # click to select a window, drag to select a region
+    $screenshot_mouse swaymsg -t get_tree \
     | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
     | slurp | xargs -I {} grim -g "{}" - | swappy -f -
-set $screenshot_focused_window swaymsg -t get_tree \
+    $screenshot_focused_window swaymsg -t get_tree \
     | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
     | xargs -I {} grim -g "{}" - | swappy -f -
-set $screenshot_all_outputs grim - | swappy -f -
-set $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
+    $screenshot_all_outputs grim - | swappy -f -
+    $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
+
+    $brightness_up brightnessctl set 20%-
+    $brightness_down brightnessctl set 20%+
+    $sound_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+    $sound_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    $mute_sound wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    $mute_mic wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    $audio_prev playerctl -p spotify previous
+    $audio_next playerctl -p spotify next
+    $audio_play playerctl -p spotify play
+    $audio_stop playerctl -p spotify stop
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Looks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $font Hack Nerd Font 13
 font "pango:$font"
@@ -91,108 +120,119 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ~~~~~~~~~~~~~~~~~~~~~~~~ Basic ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+t exec $term_start
-bindsym $mod+q kill
-bindsym $mod+space exec $menu
-set $sway_settings_key comma
-set $screenshot_key p
-set $notification_key n
-bindsym $mod+$mod2+q exec $lock_screen
-bindsym $mod+f fullscreen
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~ #
-set $resize_key r
-bindsym $mod+u focus parent
-
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+c splith
-bindsym $mod+v splitv
-
-bindsym $mod+$mod2+m floating toggle
-bindsym $mod+m focus mode_toggle
-
-bindsym $mod+$mod2+y move scratchpad
-bindsym $mod+y scratchpad show
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Obvious bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# ~~~~~~~~~~~~~~~~~ Directional hotkeys ~~~~~~~~~~~~~~~~~~ #
-set $left h
-set $right l
-set $down j
-set $up k
-
-mode "resize" {
-    bindsym $left resize shrink width 50px
-    bindsym $down resize shrink height 50px
-    bindsym $up resize grow height 50px
-    bindsym $right resize grow width 50px
-
-    bindsym $mod+$resize_key mode "default"
-    bindsym escape mode "default"
-    bindsym ctrl+c mode "default"
-    bindsym ctrl+bracketleft mode "default"
-}
-bindsym $mod+$resize_key mode "resize"
-
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
-
-bindsym $mod+$mod2+$left move left
-bindsym $mod+$mod2+$down move down
-bindsym $mod+$mod2+$up move up
-bindsym $mod+$mod2+$right move right
-
-bindsym $mod+$mod3+$left move workspace to output left
-bindsym $mod+$mod3+$down move workspace to output down
-bindsym $mod+$mod3+$up move workspace to output up
-bindsym $mod+$mod3+$right move workspace to output right
-# ~~~~~~~~~~~~~~~~~~~~~ Screenshots ~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+$screenshot_key exec $screenshot_mouse
-bindsym $mod+$mod2+$screenshot_key exec $screenshot_focused_window
-bindsym $mod+$mod3+$screenshot_key exec $screenshot_focused_output
-bindsym $mod+$mod4+$screenshot_key exec $screenshot_all_outputs
-# ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
-bindsym $mod+$mod2+$sway_settings_key reload
-bindsym $mod+$notification_key exec $dismiss_notification
-bindsym $mod+$mod2+$notification_key exec $dismiss_all_notifications
 floating_modifier $mod normal
-# ~~~~~~~~~~~~~~~~~~~~~~~~ Media ~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# Brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 20%-
-bindsym XF86MonBrightnessUp exec brightnessctl set 20%+
-# Volume
-bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-bindsym XF86AudioPrev exec playerctl -p spotify previous
-bindsym XF86AudioNext exec playerctl -p spotify next
-bindsym XF86AudioStop exec playerctl -p spotify stop
-bindsym XF86AudioPlay exec playerctl -p spotify play
-# ~~~~~~~~~~~~~~~~~~~~~~ Workspaces ~~~~~~~~~~~~~~~~~~~~~~ #
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-bindsym $mod+$mod2+1 move container to workspace number 1
-bindsym $mod+$mod2+2 move container to workspace number 2
-bindsym $mod+$mod2+3 move container to workspace number 3
-bindsym $mod+$mod2+4 move container to workspace number 4
-bindsym $mod+$mod2+5 move container to workspace number 5
-bindsym $mod+$mod2+6 move container to workspace number 6
-bindsym $mod+$mod2+7 move container to workspace number 7
-bindsym $mod+$mod2+8 move container to workspace number 8
-bindsym $mod+$mod2+9 move container to workspace number 9
-bindsym $mod+$mod2+0 move container to workspace number 10
+set {
+    $sway_settings_key slash
+    $screenshot_key p
+    $notification_key n
+    $resize_key r
+
+    $float_key m
+    $scratchpad_key u
+}
+$bind {
+    $mod+t exec $term_start
+    $mod+q kill
+    $mod+space exec $menu
+    $mod+$mod2+q exec $lock_screen
+    $mod+f fullscreen
+
+    $mod+o focus parent
+    $mod+i focus child
+
+    $mod+y sticky toggle
+    $mod+s layout stacking
+    $mod+w layout tabbed
+    $mod+e layout toggle split
+    $mod+c splith
+    $mod+v splitv
+    $mod+b splitt
+
+    # Sway settings
+    $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
+    $mod+$mod2+$sway_settings_key reload
+    # Notifications
+    $mod+$notification_key exec $dismiss_notification
+    $mod+$mod2+$notification_key exec $dismiss_all_notifications
+    # Screenshots
+    $mod+$screenshot_key exec $screenshot_mouse
+    $mod+$mod2+$screenshot_key exec $screenshot_focused_window
+    $mod+$mod3+$screenshot_key exec $screenshot_focused_output
+    $mod+$mod4+$screenshot_key exec $screenshot_all_outputs
+}
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Obvious stuff ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+set {
+    $left h
+    $right l
+    $down j
+    $up k
+}
+mode "resize" $bind {
+    $left resize shrink width $resize_value
+    $down resize shrink height $resize_value
+    $up resize grow height $resize_value
+    $right resize grow width $resize_value
+
+    $mod+$resize_key mode "default"
+    escape mode "default"
+    ctrl+c mode "default"
+    ctrl+bracketleft mode "default"
+}
+$bind {
+    $mod+$resize_key mode "resize"
+    $mod+$float_key focus mode_toggle
+    $mod+$mod2+$float_key floating toggle
+    $mod+$scratchpad_key scratchpad show
+    $mod+$mod2+$scratchpad_key move scratchpad
+    # Moving focus
+    $mod+$left focus left
+    $mod+$down focus down
+    $mod+$up focus up
+    $mod+$right focus right
+    # Moving windows
+    $mod+$mod2+$left move left $move_value
+    $mod+$mod2+$down move down $move_value
+    $mod+$mod2+$up move up $move_value
+    $mod+$mod2+$right move right $move_value
+    # Moving workspaces
+    $mod+$mod3+$left move workspace to output left
+    $mod+$mod3+$down move workspace to output down
+    $mod+$mod3+$up move workspace to output up
+    $mod+$mod3+$right move workspace to output right
+    # Switching between workspaces
+    $mod+1 workspace number 1
+    $mod+2 workspace number 2
+    $mod+3 workspace number 3
+    $mod+4 workspace number 4
+    $mod+5 workspace number 5
+    $mod+6 workspace number 6
+    $mod+7 workspace number 7
+    $mod+8 workspace number 8
+    $mod+9 workspace number 9
+    $mod+0 workspace number 10
+    # Moving windows to workspaces
+    $mod+$mod2+1 move container to workspace number 1
+    $mod+$mod2+2 move container to workspace number 2
+    $mod+$mod2+3 move container to workspace number 3
+    $mod+$mod2+4 move container to workspace number 4
+    $mod+$mod2+5 move container to workspace number 5
+    $mod+$mod2+6 move container to workspace number 6
+    $mod+$mod2+7 move container to workspace number 7
+    $mod+$mod2+8 move container to workspace number 8
+    $mod+$mod2+9 move container to workspace number 9
+    $mod+$mod2+0 move container to workspace number 10
+    # Special keys
+    XF86MonBrightnessDown exec $brightness_up
+    XF86MonBrightnessUp   exec $brightness_down
+    XF86AudioMicMute      exec $mute_mic
+    XF86AudioMute         exec $mute_sound
+    XF86AudioLowerVolume  exec $sound_down
+    XF86AudioRaiseVolume  exec $sound_up
+    XF86AudioPrev         exec $audio_prev
+    XF86AudioNext         exec $audio_next
+    XF86AudioStop         exec $audio_stop
+    XF86AudioPlay         exec $audio_play
+}
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 exec dbus-sway-environment
 exec configure-gtk

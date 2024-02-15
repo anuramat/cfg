@@ -105,13 +105,29 @@ specs.eunuch = {
   event = 'VeryLazy',
 }
 
--- -- unusable until we get a blacklist regex for .pb.go files
--- specs.symbols = {
---   'Wansmer/symbol-usage.nvim',
---   event = 'BufReadPre', -- NOTE need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
---   opts = {
---     vt_position = 'end_of_line',
---   },
--- }
+-- unusable until we get a blacklist regex for .pb.go files
+specs.symbols = {
+  'Wansmer/symbol-usage.nvim',
+  event = 'BufReadPre', -- NOTE need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+  opts = {
+    vt_position = 'end_of_line',
+  },
+  disable = {
+    cond = {
+      function(bufnr)
+        -- go codegen
+        local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1]
+        return first_line:match('^// Code generated .* DO NOT EDIT%.')
+      end,
+      function()
+        -- disable for all files outside of the cwd
+        return vim.fn.expand('%:p'):find(vim.fn.getcwd())
+      end,
+      function(bufnr)
+        return u.buf_lines_len(bufnr) > 1000
+      end,
+    },
+  },
+}
 
 return u.values(specs)

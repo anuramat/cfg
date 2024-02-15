@@ -114,4 +114,13 @@ function M.debug_events(events)
   end
 end
 
+--- Prints the number of lines in the buffer
+--- @param bufnr integer Buffer number
+function M.buf_lines_len(bufnr)
+  local file = vim.api.nvim_buf_get_name(bufnr)
+  local wc_output = vim.fn.system({ 'wc', '-l', file })
+  local raw_len = wc_output:match('%d+')
+  return tonumber(raw_len)
+end
+
 return M

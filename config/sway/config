@@ -131,19 +131,20 @@ set {
     $scratchpad_key u
 }
 $bind {
-    $mod+t exec $term_start
+    $mod+semicolon exec $term_start
+
     $mod+q kill
-    $mod+space exec $menu
     $mod+$mod2+q exec $lock_screen
+    $mod+space exec $menu
     $mod+f fullscreen
 
     $mod+o focus parent
     $mod+i focus child
-
     $mod+y sticky toggle
+
+    $mod+a layout tabbed
     $mod+s layout stacking
-    $mod+w layout tabbed
-    $mod+e layout toggle split
+    $mod+d layout toggle split
     $mod+c splith
     $mod+v splitv
     $mod+b splitt

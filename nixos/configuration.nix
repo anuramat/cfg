@@ -10,32 +10,6 @@ let
   timezone = "Etc/GMT-6";
   stateVersion = "23.05";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # https://nixos.wiki/wiki/Sway
-  transparent-inactive = pkgs.writeTextFile {
-    name = "transparent-inactive";
-    destination = "/bin/transparent-inactive";
-    executable = true;
-    text = ''
-      #!/usr/bin/env python
-      import i3ipc
-      transparency_val = '0.8';
-      ipc              = i3ipc.Connection()
-      prev_focused     = None
-      for window in ipc.get_tree():
-          if window.focused:
-              prev_focused = window
-          else:
-              window.command('opacity ' + transparency_val)
-      def on_window_focus(ipc, focused):
-          global prev_focused
-          if focused.container.id != prev_focused.id: # https://github.com/swaywm/sway/issues/2859
-              focused.container.command('opacity 1')
-              prev_focused.command('opacity ' + transparency_val)
-              prev_focused = focused.container
-      ipc.on("window::focus", on_window_focus)
-      ipc.main()
-    '';
-  };
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
     destination = "/bin/dbus-sway-environment";
@@ -47,7 +21,6 @@ let
     '';
   };
   pythonPackages = ps: with ps; [
-    i3ipc
   ];
   home-manager =
     fetchTarball
@@ -203,7 +176,7 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
-      transparent-inactive
+      sway-contrib.inactive-windows-transparency
       dbus-sway-environment
     ];
   };

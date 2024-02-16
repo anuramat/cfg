@@ -70,7 +70,7 @@ set {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bar swaybar_command waybar
 exec_always {
-    transparent-inactive
+    inactive-windows-transparency.py
     pkill swayidle || swayidle -w
 }
 set {

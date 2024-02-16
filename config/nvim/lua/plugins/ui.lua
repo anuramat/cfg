@@ -87,23 +87,10 @@ specs.noice = {
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
-    {
-      'smjonas/inc-rename.nvim',
-      config = function()
-        require('inc_rename').setup()
-      end,
-    },
   },
   event = 'VeryLazy',
   opts = {
-    presets = {
-      lsp_doc_border = true,
-
-      bottom_search = true, -- use a classic bottom cmdline for search
-      command_palette = true, -- position the cmdline and popupmenu together
-      long_message_to_split = true, -- long messages will be sent to a split
-      inc_rename = true, -- enables an input dialog for inc-rename.nvim
-    },
+    presets = { lsp_doc_border = true },
     lsp = {
       override = {
         -- TODO what is this even
@@ -122,7 +109,7 @@ specs.dressing = {
       enabled = false,
     },
   },
-  lazy = false,
+  event = 'VeryLazy',
 }
 
 return u.values(specs)

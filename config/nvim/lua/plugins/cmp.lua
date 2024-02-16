@@ -36,6 +36,8 @@ specs.cmp = {
       mapping = cmp.mapping.preset.insert({
         ['<tab>'] = wrap_snippet_jump(1),
         ['<s-tab>'] = wrap_snippet_jump(-1),
+        ['<c-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<c-f>'] = cmp.mapping.scroll_docs(4),
       }),
       snippet = {
         expand = function(args)

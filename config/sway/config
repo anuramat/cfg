@@ -108,7 +108,22 @@ font "pango:$font"
 gaps inner 5
 default_border pixel 3
 default_floating_border pixel 3
-seat * hide_cursor when-typing enable
+set $cursor_theme Adwaita
+set $cursor_size 100
+seat * {
+    hide_cursor when-typing enable
+    xcursor_theme $cursor_theme $cursor_size
+}
+set $gnome-schema org.gnome.desktop.interface
+exec_always gsettings set $gnome-schema {
+  # TODO set proper themes, check scaling
+  gtk-theme 'Adwaita'
+  icon-theme 'Dracula'
+  text-scaling-factor 1 
+  cursor-theme $cursor_theme
+  cursor-size 1
+  color-scheme 'prefer-dark'
+}
 # output * bg ~/wp.png fill
 # ~~~~~~~~~~~~~~~~~~~~~ Colorscheme ~~~~~~~~~~~~~~~~~~~~~~ #
 #class                  border  bground text    indicator child_border

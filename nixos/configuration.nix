@@ -22,14 +22,8 @@ let
   };
   pythonPackages = ps: with ps; [
   ];
-  home-manager =
-    fetchTarball
-      "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
-
-  unstableTarball =
-    fetchTarball
-      "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
 in
 {
   # ~~~~~~~~~~~~~~~~~~~~~~~ NixOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,18 +37,13 @@ in
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [
     ./hardware-configuration.nix
-    (import "${home-manager}/nixos")
+    <home-manager/nixos>
   ];
   nixpkgs.config = {
     permittedInsecurePackages = [
       "electron-25.9.0"
     ];
     allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import unstableTarball {
-        config = config.nixpkgs.config;
-      };
-    };
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
   time.timeZone = timezone; # WARN inverted

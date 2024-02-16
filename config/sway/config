@@ -121,7 +121,7 @@ exec_always gsettings set $gnome-schema {
   icon-theme 'Dracula'
   text-scaling-factor 1
   cursor-theme $cursor_theme
-  cursor-size 1
+  cursor-size $cursor_size
   color-scheme 'prefer-dark'
 }
 # output * bg ~/wp.png fill

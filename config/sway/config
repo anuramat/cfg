@@ -109,7 +109,7 @@ gaps inner 5
 default_border pixel 3
 default_floating_border pixel 3
 set $cursor_theme Adwaita
-set $cursor_size 100
+set $cursor_size 50
 seat * {
     hide_cursor when-typing enable
     xcursor_theme $cursor_theme $cursor_size
@@ -119,7 +119,7 @@ exec_always gsettings set $gnome-schema {
   # TODO set proper themes, check scaling
   gtk-theme 'Adwaita'
   icon-theme 'Dracula'
-  text-scaling-factor 1 
+  text-scaling-factor 1
   cursor-theme $cursor_theme
   cursor-size 1
   color-scheme 'prefer-dark'
@@ -251,4 +251,13 @@ $bind {
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 exec dbus-sway-environment
+
+# etc:
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
+# dbus-...
+# dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+# systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+
 exec configure-gtk

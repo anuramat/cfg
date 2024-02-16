@@ -77,7 +77,6 @@ specs.zen = {
 
 specs.fidget = {
   'j-hui/fidget.nvim',
-  tag = 'legacy',
   event = 'LspAttach',
   opts = {},
 }

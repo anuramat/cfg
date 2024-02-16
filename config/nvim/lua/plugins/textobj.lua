@@ -4,7 +4,6 @@ local u = require('utils')
 -- The most popular surround plugin (right after tpope/vim-surround)
 specs.surround = {
   'kylechui/nvim-surround',
-  version = '*',
   opts = {
     keymaps = {
       insert = false,

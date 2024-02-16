@@ -66,6 +66,9 @@ com! -bang Wq wq<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
 
+" vsplit help
+cnoreabbrev H vert he
+
 
 augroup qf
     autocmd!

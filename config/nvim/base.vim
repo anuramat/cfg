@@ -1,14 +1,14 @@
 "~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
-tnoremap <esc> <c-\><c-n>
-xnoremap <leader>p "_dP
-nnoremap <c-c> <silent><c-c>
-"~~~~~~~~~~~~~~~~~~~~~~~~~~ cmds ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-com! KillAll :silent %bd|e#|bd#
+tno <esc> <c-\><c-n>
+xn <leader>p "_dP
+nn <c-c> <silent><c-c>
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr
-"~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~~~ general ~~~~~~~~~~~~~~~~~~~~~~~~~"
+se complete=t,i,d,.,w,b,u,U
+se clipboard=unnamedplus " unnamedplus for clipboard, unnamed for selection
 se notimeout " no timeout on key sequences
 se keymap=russian-jcukenwin imi=0 " cyrillic on i_^6
 se completeopt=menu,menuone,noselect,preview " ins completion
@@ -20,10 +20,13 @@ se undofile " persistent undo
 se backupdir-=. " don't write backups to CWD
 se virtualedit=block " move beyond line end in v-block mode
 pa cfilter
-se nf=bin,hex,unsigned " ^a/^x number formats
+se nrformats=bin,hex,unsigned " ^a/^x number formats
 let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh', 'json5=json']
+se synmaxcol=300
+let g:matchparen_timeout=50
+let g:matchparen_insert_timeout=50
 " se spl=en,ru " spelling languages (russian will trigger download)
-" se pa+=** " recurse in path
+" se path+=** " recurse in path
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
 se nowrap
 se dy=lastline,uhex " XXX idk
@@ -58,27 +61,17 @@ se ph=20 " popup max height
 let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
-"~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 com! -bang Q q<bang>
 com! -bang W w<bang>
 com! -bang WQ wq<bang>
 com! -bang Wq wq<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
-
 " vsplit help
 cnoreabbrev H vert he
-
-
+" hide qf buffers
 augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
 augroup END
-se smc=200 " max column to do syntax hl, might break entire file
-let g:matchparen_timeout=50
-let g:matchparen_insert_timeout=50
-
-" TODO add defaults
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
-
-se cb=unnamedplus " unnamedplus for clipboard, unnamed for selection

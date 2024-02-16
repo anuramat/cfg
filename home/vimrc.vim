@@ -31,4 +31,3 @@ se udir=~/.vim/undo bdir=~/.vim/backup dir=~/.vim/swap vdir=~/.vim/view
 packadd! matchit
 se autoindent autoread
 se belloff=all " term bell
-" se cpt=t,d,.,w,b,u,U,i " TODO test and move to nvim

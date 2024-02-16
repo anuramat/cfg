@@ -484,6 +484,7 @@ in
         adwaita-qt
         dracula-theme
         dracula-icon-theme
+        hackneyed
         gnome3.adwaita-icon-theme
 
         ### Sway scripts defined in this file

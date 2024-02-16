@@ -89,6 +89,7 @@ specs.noice = {
   },
   event = 'VeryLazy',
   opts = {
+    cmdline = { format = { help = false } },
     presets = { lsp_doc_border = true },
     lsp = {
       override = {

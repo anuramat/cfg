@@ -20,7 +20,6 @@ specs.todo = {
 -- Splits/joins code blocks based on Treesitter
 specs.treesj = {
   'Wansmer/treesj',
-  version = false,
   opts = {
     use_default_keymaps = false,
     max_join_length = 500,

@@ -58,11 +58,6 @@ specs.treesitter = {
   },
   config = function(_, opts)
     require('nvim-treesitter.configs').setup(opts)
-    -- TODO fix ffs
-    -- XXX doesn't always work
-    -- vim.o.foldmethod = 'expr'
-    -- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-    -- vim.o.foldtext = 'v:lua.vim.treesitter.foldtext()' -- check if supported
     require('treesitter-context').setup({
       enable = true,
       max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -74,7 +69,6 @@ specs.treesitter = {
       -- separator = '―', -- Separator between context and content. nil or a single character
       zindex = 20, -- The Z-index of the context window
     })
-
     --- @diagnostic disable-next-line: missing-fields
     require('ts_context_commentstring').setup({
       enable_autocmd = false, -- to integrate with numToStr/Comment.nvim
@@ -82,21 +76,20 @@ specs.treesitter = {
   end,
 }
 
--- Comments lines
--- alternatively tpope/vim-commentary
+-- Comments lines, post-tpope/vim-commentary
 specs.comment = {
   'numToStr/Comment.nvim',
+  event = 'VeryLazy',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
   config = function()
     --- @diagnostic disable-next-line: missing-fields
     require('Comment').setup({
       pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+      toggler = { line = '<leader>cc', block = '<leader>bb' },
+      opleader = { line = '<leader>c', block = '<leader>b' },
+      extra = { above = '<leader>cO', below = '<leader>co', eol = '<leader>cA' },
     })
   end,
-  keys = {
-    { 'gc', mode = { 'n', 'x' }, desc = 'Comment prefix' },
-    { 'gb', mode = { 'n', 'x' }, desc = 'Comment block prefix' },
-  },
 }
 
 return u.values(specs)

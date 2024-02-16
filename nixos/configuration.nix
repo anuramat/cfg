@@ -8,7 +8,8 @@ let
   fullname = "Arsen Nuramatov";
   hostname = "anuramat-t480";
   timezone = "Etc/GMT-6";
-  stateVersion = "23.05";
+  stateVersion = "23.05"; # WARNING DO NOT EDIT
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -31,8 +32,7 @@ in
     {
       # backup the configuration.nix to /run/current-system/configuration.nix
       copySystemConfiguration = true;
-      # determines default settings for stateful data
-      stateVersion = stateVersion; # WARN: DON'T TOUCH
+      stateVersion = stateVersion;
     };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [
@@ -303,7 +303,7 @@ in
         perl
         llvm
         clang
-        (python3.withPackages pythonPackages)
+        python3
 
         ### Language tooling
         universal-ctags # maintained ctags

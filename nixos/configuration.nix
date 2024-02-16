@@ -8,7 +8,7 @@ let
   fullname = "Arsen Nuramatov";
   hostname = "anuramat-t480";
   timezone = "Etc/GMT-6";
-  version = "23.05";
+  stateVersion = "23.05";
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # https://nixos.wiki/wiki/Sway
   transparent-inactive = pkgs.writeTextFile {
@@ -80,7 +80,7 @@ in
       # backup the configuration.nix to /run/current-system/configuration.nix
       copySystemConfiguration = true;
       # determines default settings for stateful data
-      stateVersion = version; # WARN: DON'T TOUCH
+      stateVersion = stateVersion; # WARN: DON'T TOUCH
     };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [
@@ -101,42 +101,12 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
   time.timeZone = timezone; # WARN inverted
   i18n.defaultLocale = "en_US.UTF-8";
-  # TODO what does this even do
-  # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # home-manager.users.${username} = {
-  #   # gtk = { # writes a symlink to .config/gtk-3.0, no thanks
-  #   #   enable = true;
-  #   #   theme = {
-  #   #     package = pkgs.dracula-theme;
-  #   #     name = "Dracula";
-  #   #   };
-  #   #   iconTheme = {
-  #   #     package = pkgs.dracula-icon-theme;
-  #   #     name = "Dracula";
-  #   #   };
-  #   #   cursorTheme = null; # probably overlap with pointerCursor
-  #   # };
-  #   home = {
-  #     stateVersion = version;
-  #     pointerCursor = {
-  #       name = "Adwaita";
-  #       package = pkgs.gnome.adwaita-icon-theme;
-  #       size = 24;
-  #       gtk.enable = true;
-  #       x11 = {
-  #         enable = true;
-  #         defaultCursor = "Adwaita";
-  #       };
-  #     };
-  #   };
-  # };
-
+  # TODO: icons, cursor
   users.users.${username} = {
     description = fullname;
     isNormalUser = true;
@@ -152,46 +122,6 @@ in
       "dialout" # serial ports
     ];
     packages = with pkgs; [
-      ### Terminals
-      foot # minimal terminal
-      unstable.alacritty # gpu terminal
-      unstable.alacritty-theme
-      cool-retro-term # cute terminal
-
-      ### Random
-      cinnamon.nemo # wayland native
-      gnome-solanum # really simple one
-      gnome.cheese # webcam
-      gnome.pomodoro # slightly bloated
-      qalculate-gtk # gui for qalc
-      spotify
-      tor-browser-bundle-bin
-      transmission # torrent client
-      transmission-gtk # gui wrapper for transmission
-      unstable.obsidian # markdown personal knowledge database
-      vlc # gui video player
-
-      ### Media
-      gimp-with-plugins # raster graphics
-      # krita # raster graphics, digital art
-      # inkscape-with-extensions # vector graphics
-      # davinci-resolve
-
-      ### Social
-      element-desktop # matrix client
-      slack
-      discord
-      telegram-desktop
-
-
-      ### Random rare
-      obs-studio # screencasting/streaming
-      onionshare # tor-based file-sharing etc
-      onionshare-gui
-      qtox # p2p IM
-      sageWithDoc # computer algebra
-      steam
-      hyprpicker # gigasimple terminal color picker
     ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -288,7 +218,6 @@ in
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
-      autotiling
       transparent-inactive
     ];
   };
@@ -343,6 +272,46 @@ in
   services.dbus.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
   environment.systemPackages = with pkgs; [
+    ### Terminals
+    foot # minimal terminal
+    unstable.alacritty # gpu terminal
+    unstable.alacritty-theme
+    cool-retro-term # cute terminal
+
+    ### Random
+    cinnamon.nemo # wayland native
+    gnome-solanum # really simple one
+    gnome.cheese # webcam
+    gnome.pomodoro # slightly bloated
+    qalculate-gtk # gui for qalc
+    spotify
+    tor-browser-bundle-bin
+    transmission # torrent client
+    transmission-gtk # gui wrapper for transmission
+    unstable.obsidian # markdown personal knowledge database
+    vlc # gui video player
+
+    ### Media
+    gimp-with-plugins # raster graphics
+    # krita # raster graphics, digital art
+    # inkscape-with-extensions # vector graphics
+    # davinci-resolve
+
+    ### Comms
+    element-desktop # matrix client
+    slack
+    discord
+    telegram-desktop
+
+    ### Random
+    obs-studio # screencasting/streaming
+    onionshare # tor-based file-sharing etc
+    onionshare-gui
+    qtox # p2p IM
+    sageWithDoc # computer algebra
+    hyprpicker # gigasimple terminal color picker
+    steam
+
     ### Barebones
     gnumake
     gcc

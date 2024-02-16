@@ -109,7 +109,7 @@ gaps inner 5
 default_border pixel 3
 default_floating_border pixel 3
 set $cursor_theme Adwaita
-set $cursor_size 50
+set $cursor_size 100
 seat * {
     hide_cursor when-typing enable
     xcursor_theme $cursor_theme $cursor_size
@@ -259,5 +259,3 @@ exec dbus-sway-environment
 # dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 # systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
 # systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-
-exec configure-gtk

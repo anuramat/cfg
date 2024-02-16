@@ -11,4 +11,5 @@ sudo rsync -r --chown=root:root "$local_nixos_folder" "$sys_nixos_folder"
 sudo nixos-rebuild switch
 
 # clear tofi cache
-rm "$XDG_CACHE_HOME/tofi-drun"
+__tofi="$XDG_CACHE_HOME/tofi-drun"
+[ -f "$__tofi" ] && rm "$__tofi"

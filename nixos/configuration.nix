@@ -259,15 +259,9 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
   environment =
     {
-      # variables =
-      #   let
-      #     schema = pkgs.gsettings-desktop-schemas;
-      #     datadir = "${schema}/share/gsettings-schemas/${schema.name}";
-      #   in
-      #   {
-      #     XDG_DATA_DIRS = "${datadir}:$XDG_DATA_DIRS";
-      #   };
-      shellAliases = { };
+      shellAliases = {
+        l = null;
+      };
       systemPackages = with pkgs; [
         ### Terminals
         foot # minimal terminal

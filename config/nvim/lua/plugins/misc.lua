@@ -32,7 +32,6 @@ specs.sleuth = {
 -- Vonr/align.nvim
 specs.align = {
   'echasnovski/mini.align',
-  version = false,
   opts = {
     mappings = {
       start = '<leader>a',
@@ -49,7 +48,6 @@ specs.align = {
 -- Could be replaced with a few lines of code tbh
 specs.trailspace = {
   'echasnovski/mini.trailspace',
-  version = false,
   event = 'VeryLazy',
   opts = function()
     vim.api.nvim_create_user_command('TrimTrailingWhitespace', require('mini.trailspace').trim, {})

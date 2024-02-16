@@ -25,7 +25,6 @@ specs.surround = {
 -- Custom textobjects
 specs.ai = {
   'echasnovski/mini.ai',
-  version = false,
   keys = {
     { 'a', mode = { 'x', 'o' } },
     { 'i', mode = { 'x', 'o' } },

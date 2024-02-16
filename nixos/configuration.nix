@@ -482,7 +482,6 @@ in
         qt5ct # qt5 gui settings
         qt6ct # qt6 gui settings
         adwaita-qt
-        adwaita-qt6
         dracula-theme
         dracula-icon-theme
         gnome3.adwaita-icon-theme

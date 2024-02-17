@@ -1,6 +1,23 @@
 local specs = {}
 local u = require('utils')
+local make_harpoon = function(harpoon)
+  return function()
+    local contents = {}
+    local marks_length = harpoon:list():length()
+    local current_file_path = vim.fn.fnamemodify(vim.fn.expand('%:p'), ':.')
+    for index = 1, marks_length do
+      local harpoon_file_path = harpoon:list():get(index).value
+      local file_name = harpoon_file_path == '' and '(empty)' or vim.fn.fnamemodify(harpoon_file_path, ':t')
 
+      if current_file_path == harpoon_file_path then
+        contents[index] = string.format('%%#HarpoonNumberActive# %s. %%#HarpoonActive#%s ', index, file_name)
+      else
+        contents[index] = string.format('%%#HarpoonNumberInactive# %s. %%#HarpoonInactive#%s ', index, file_name)
+      end
+    end
+    return table.concat(contents)
+  end
+end
 specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -9,14 +26,9 @@ specs.lualine = {
     'ThePrimeagen/harpoon',
   },
   opts = function()
-    local lualine_dracula = require('lualine.themes.dracula-nvim')
-    local dracula_cs = require('dracula').colors()
-    for k, _ in pairs(lualine_dracula) do
-      lualine_dracula[k].b.bg = dracula_cs.visual
-    end
     return {
       options = {
-        theme = lualine_dracula,
+        theme = require('lualine.themes.dracula-nvim'),
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         -- component_separators = { left = '', right = '' },
@@ -35,7 +47,7 @@ specs.lualine = {
             show_filename_only = false,
           },
         },
-        lualine_z = { { _G.tabline, padding = 0 } },
+        lualine_z = { { make_harpoon(require('harpoon')), padding = 0 } },
       },
       sections = {
         lualine_a = {

@@ -92,7 +92,6 @@ local function cfgs()
           },
           workspace = {
             checkThirdParty = false,
-            library = u.get_lib_path('config'), -- too slow
           },
           telemetry = {
             enable = false,

@@ -1,6 +1,7 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~ imports ~~~~~~~~~~~~~~~~~~~~~~~~~"
 unlet! skip_defaults_vim
 so $VIMRUNTIME/defaults.vim
+autocmd! vimHints
 so $XDG_CONFIG_HOME/nvim/base.vim
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 se hls " search

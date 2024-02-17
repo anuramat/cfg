@@ -428,6 +428,7 @@ in
 
         ### Random stuff
         mesa-demos # some 3d demos
+        neovide # neovim gui
 
         ### Web browsers
         google-chrome

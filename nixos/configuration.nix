@@ -304,6 +304,8 @@ in
         llvm
         clang
         python3
+        stack
+        unstable.haskell-language-server
 
         ### Language tooling
         universal-ctags # maintained ctags

@@ -3,9 +3,7 @@ let mapleader = " "
 tno <esc> <c-\><c-n>
 xn <leader>p "_dP
 nn <c-c> <silent><c-c>
-nn <cr> o<esc>
-nn <c-cr> O<esc>
-nn <s-cr> O<esc>
+nn <c-cr> o<esc>
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr

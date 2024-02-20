@@ -15,7 +15,7 @@ se keymap=russian-jcukenwin imi=0 " cyrillic on i_^6
 se completeopt=menu,menuone,noselect,preview " ins completion
 se wildoptions=fuzzy,pum " cmd completion
 se nofoldenable foldmethod=indent " folds
-se noincsearch smartcase " search settings
+se incsearch ignorecase smartcase " search settings
 se updatetime=100 " period in ms for swap writes and CursorHold autocmd
 se undofile " persistent undo
 se backupdir-=. " don't write backups to CWD

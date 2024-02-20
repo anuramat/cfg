@@ -304,6 +304,9 @@ in
         llvm
         clang
         python3
+        unstable.stack
+        unstable.haskell-language-server
+        unstable.cabal-install
 
         ### Language tooling
         universal-ctags # maintained ctags
@@ -426,9 +429,10 @@ in
         neofetch
         mosh # ssh over unstable connections
 
-        ### Random stuff
+        ### Random stuff TODO
         mesa-demos # some 3d demos
         neovide # neovim gui
+        nix-index
 
         ### Web browsers
         google-chrome

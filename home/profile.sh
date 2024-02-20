@@ -21,6 +21,9 @@ export PATH="${PATH:+$PATH:}$GOPATH/bin"
 # User binaries
 export PATH="$HOME/bin${PATH:+:$PATH}"
 
+# Ghcup
+export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
+
 # Locale
 export LC_ALL="en_US.UTF-8"
 

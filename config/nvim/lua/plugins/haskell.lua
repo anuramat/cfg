@@ -15,11 +15,12 @@ specs.haskell = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
   },
-  branch = '2.x.x',
-  ft = { 'haskell', 'lhaskell', 'cabal' },
+  version = '^3',
+  ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
     vim.g.haskell_tools = {
       hls = {
         capabilities = capabilities,
@@ -31,10 +32,9 @@ specs.haskell = {
           s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buffer, desc = 'Show Hoogle Signature' })
           s('n', '<leader>sp', ht.repl.toggle, { buffer = buffer, desc = 'Toggle Package REPL' })
           s('n', '<leader>sq', ht.repl.quit, { buffer = buffer, desc = 'Quit REPL' })
-
           lsp_utils.lsp_keys(buffer)
 
-          ht.dap.discover_configurations(buffer)
+          ht.dap.discover_configurations(buffer, { autodetect = true, settings_file_pattern = 'launch.json' })
         end,
       },
     }

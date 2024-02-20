@@ -429,9 +429,10 @@ in
         neofetch
         mosh # ssh over unstable connections
 
-        ### Random stuff
+        ### Random stuff TODO
         mesa-demos # some 3d demos
         neovide # neovim gui
+        nix-index
 
         ### Web browsers
         google-chrome

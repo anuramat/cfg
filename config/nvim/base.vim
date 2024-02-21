@@ -44,7 +44,7 @@ se noshowmode " turn off mode indicator in cmdline TODO add mode indicator to "f
 se signcolumn=yes " gutter
 se tgc " 24-bit color
 hi WinSeparator guibg=bg guifg=fg
-let g:border="single" " custom
+let g:border="rounded" " custom
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
     colo sorbet

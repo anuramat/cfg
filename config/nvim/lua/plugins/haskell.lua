@@ -2,7 +2,6 @@ local specs = {}
 local lsp_utils = require('lsp_utils')
 local u = require('utils')
 
-local s = vim.keymap.set
 local function repl_toggler(ht, buffer)
   return function()
     ht.repl.toggle(vim.api.nvim_buf_get_name(buffer))
@@ -25,13 +24,17 @@ specs.haskell = {
       hls = {
         capabilities = capabilities,
         on_attach = function(client, buffer, ht)
+          local s = function(lhs, rhs, desc)
+            vim.keymap.set('n', '<leader>L' .. lhs, rhs, { buffer = buffer, desc = 'Haskell: ' .. desc })
+          end
+
           lsp_utils.setup_lsp_af(client, buffer)
 
-          s('n', '<leader>sb', repl_toggler(ht, buffer), { buffer = buffer, desc = 'Toggle Buffer REPL' })
-          s('n', '<leader>se', ht.lsp.buf_eval_all, { buffer = buffer, desc = 'Evaluate All' })
-          s('n', '<leader>sh', ht.hoogle.hoogle_signature, { buffer = buffer, desc = 'Show Hoogle Signature' })
-          s('n', '<leader>sp', ht.repl.toggle, { buffer = buffer, desc = 'Toggle Package REPL' })
-          s('n', '<leader>sq', ht.repl.quit, { buffer = buffer, desc = 'Quit REPL' })
+          s('b', repl_toggler(ht, buffer), 'Toggle Buffer REPL')
+          s('e', ht.lsp.buf_eval_all, 'Evaluate All')
+          s('h', ht.hoogle.hoogle_signature, 'Show Hoogle Signature')
+          s('p', ht.repl.toggle, 'Toggle Package REPL')
+          s('q', ht.repl.quit, 'Quit REPL')
           lsp_utils.lsp_keys(buffer)
 
           ht.dap.discover_configurations(buffer, { autodetect = true, settings_file_pattern = 'launch.json' })

@@ -14,23 +14,12 @@ specs.dracula_cs = {
       transparent_bg = false,
     }
     dracula.setup(opts)
-
     vim.cmd.colorscheme('dracula')
-
     -- Override shitty default CodeLens style
     local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
-    clhl.standout = true
+    clhl.underline = true
+    clhl.bold = true
     vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
-
-    -- TODO what the fuck does this do
-    vim.cmd('highlight! link FloatBorder Normal')
-    vim.cmd('highlight! link NormalFloat Normal')
-
-    -- Make window borders properly visible
-    vim.cmd('hi WinSeparator guibg=bg guifg=fg')
-
-    -- Make Telescope have proper background
-    vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
   end,
 }
 
@@ -86,20 +75,30 @@ specs.noice = {
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
+    'Mofiqul/dracula.nvim',
+    'hrsh7th/nvim-cmp',
   },
   event = 'VeryLazy',
-  opts = {
-    cmdline = { format = { help = false } },
-    presets = { lsp_doc_border = true },
-    lsp = {
-      override = {
-        -- TODO what is this even
-        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-        ['vim.lsp.util.stylize_markdown'] = true,
-        ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+  opts = function()
+    require('notify').setup({
+      background_colour = require('dracula').colors().bg,
+    })
+    return {
+      cmdline = { format = { help = false } },
+      presets = {
+        lsp_doc_border = true, -- add border to hover docs and signature help
+        bottom_search = false, -- use a classic bottom cmdline for search
       },
-    },
-  },
+      lsp = {
+        override = {
+          -- TODO what is this even
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+          ['vim.lsp.util.stylize_markdown'] = true,
+          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+        },
+      },
+    }
+  end,
 }
 
 specs.dressing = {

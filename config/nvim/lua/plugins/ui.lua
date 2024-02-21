@@ -90,8 +90,8 @@ specs.noice = {
         bottom_search = true, -- use a classic bottom cmdline for search
       },
       lsp = {
-        signature = { enabled = true },
-        hover = { enabled = true },
+        signature = { enabled = true, opts = { border = vim.g.border } },
+        hover = { enabled = true, opts = { border = vim.g.border } },
         override = {
           -- TODO what is this even? it's off by default
           ['vim.lsp.util.convert_input_to_markdown_lines'] = false,

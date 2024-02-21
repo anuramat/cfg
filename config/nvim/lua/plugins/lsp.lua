@@ -113,16 +113,15 @@ specs.lspconfig = {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    -- ~~~~~~~ Rounded borders for hover windows ~~~~~~~ --
-    vim.diagnostic.config({ float = { border = 'rounded' } })
-    require('lspconfig.ui.windows').default_options.border = 'rounded'
-
-    -- replaced by noice
-    -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+    -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
+    vim.diagnostic.config({ float = { border = vim.g.border } }) -- vim.diagnostic.open_float
+    require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
+    -- -- conflicts with noice
+    -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
     -- vim.lsp.handlers['textDocument/signatureHelp'] =
-    --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
-
-    -- ~~~~ Register capabilities (CMP completion) ~~~~~ --
+    --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.border })
+    -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+    -- Register capabilities for CMP
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
@@ -158,7 +157,7 @@ specs.null = {
         lsp_utils.lsp_keys(buffer)
         lsp_utils.setup_lsp_af(client, buffer)
       end,
-      border = 'rounded',
+      border = vim.g.border,
     })
   end,
 }

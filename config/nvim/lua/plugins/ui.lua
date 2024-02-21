@@ -87,15 +87,20 @@ specs.noice = {
       cmdline = { format = { help = false } },
       presets = {
         lsp_doc_border = true, -- add border to hover docs and signature help
-        bottom_search = false, -- use a classic bottom cmdline for search
+        bottom_search = true, -- use a classic bottom cmdline for search
       },
       lsp = {
+        signature = { enabled = true },
+        hover = { enabled = true },
         override = {
-          -- TODO what is this even
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
+          -- TODO what is this even? it's off by default
+          ['vim.lsp.util.convert_input_to_markdown_lines'] = false,
+          ['vim.lsp.util.stylize_markdown'] = false,
+          ['cmp.entry.get_documentation'] = false, -- requires hrsh7th/nvim-cmp and other two options
         },
+      },
+      messages = {
+        view_search = 'cmdline',
       },
     }
   end,

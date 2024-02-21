@@ -20,6 +20,6 @@ require('lazy').setup('plugins', {
     cond = not vim.g.vscode,
   },
   ui = {
-    border = 'rounded',
+    border = vim.g.border,
   },
 })

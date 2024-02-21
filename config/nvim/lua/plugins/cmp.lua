@@ -25,6 +25,7 @@ specs.cmp = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-emoji',
     'saadparwaiz1/cmp_luasnip',
   },
   config = function()
@@ -35,18 +36,29 @@ specs.cmp = {
       mapping = cmp.mapping.preset.insert({
         ['<tab>'] = wrap_snippet_jump(1),
         ['<s-tab>'] = wrap_snippet_jump(-1),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
       }),
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
         end,
       },
-      sources = cmp.config.sources(
+      sources = cmp.config.sources({
         { { name = 'luasnip' }, { name = 'nvim_lsp' } },
-        { { name = 'buffer' } },
-        { { name = 'path', option = { trailing_slash = true } } }
-      ),
-      window = { documentation = cmp.config.window.bordered() },
+        { name = 'buffer' },
+        {
+          name = 'path',
+          option = { trailing_slash = true },
+        },
+      }),
+      window = {
+        -- completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
+      view = {
+        entries = 'native',
+      },
       sorting = {
         comparators = {
           cmp.config.compare.exact,
@@ -64,6 +76,9 @@ specs.cmp = {
     cmp.setup.cmdline(':', {
       completion = { autocomplete = false },
       mapping = cmp.mapping.preset.cmdline(),
+      view = {
+        entries = 'custom',
+      },
       sources = cmp.config.sources(
         { { name = 'path', option = { trailing_slash = true } } },
         { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
@@ -81,8 +96,8 @@ specs.luasnip = {
       require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
-  -- if build fails, install jsregexp luarock
-  build = 'echo \'NOTE: jsregexp is optional, so not a big deal if it fails to build\'; make install_jsregexp',
+  -- if build fails, install jsregexp luarock (or don't, this is optoinal)
+  build = 'make install_jsregexp',
 }
 
 return u.values(specs)

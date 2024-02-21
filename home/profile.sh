@@ -19,6 +19,7 @@ export GOPATH="$HOME/go"
 export PATH="${PATH:+$PATH:}$GOPATH/bin"
 
 # User binaries
+export PATH="$HOME/.local/bin${PATH:+:$PATH}"
 export PATH="$HOME/bin${PATH:+:$PATH}"
 
 # Ghcup

@@ -151,6 +151,7 @@ specs.null = {
       sources = {
         nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
         nlf.stylua,
+        nlf.black,
         -- nld.protolint,
       },
       on_attach = function(client, buffer)

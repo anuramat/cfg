@@ -21,14 +21,14 @@ local function root_dir_with_fallback(opts)
   end
 end
 
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 --- Returns configs for specific lsps
 --- @return table configs
 local function cfgs()
   return {
-    -- nil_ls = {}, -- better diagnostics in some regards
-    nixd = {},
+    nixd = {}, -- nil_ls -- better diagnostics in some regards
     yamlls = {},
-
+    texlab = {},
     bashls = {},
     pyright = {},
     marksman = {},

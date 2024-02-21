@@ -295,7 +295,8 @@ in
         broot
         xplr
 
-        ### Languages support
+        ### Languages
+        #### Compilers/interpreters
         go
         nodejs_20
         yarn
@@ -305,10 +306,8 @@ in
         clang
         python3
         unstable.stack
-        unstable.haskell-language-server
+        #### Language tooling
         unstable.cabal-install
-
-        ### Language tooling
         universal-ctags # maintained ctags
         jq # json processor
         bats # Bash testing
@@ -317,24 +316,27 @@ in
         delve # Go debugger
         gofumpt # strict go formatter
         golangci-lint # gigalinter for go
-        gopls # Go LSP
-        lua-language-server
         luajitPackages.luacheck
         luajitPackages.luarocks
         bash-completion
-        marksman # markdown LSP
         micromamba # conda rewrite in C++
         nixpkgs-fmt # nix formatter
         nodePackages.prettier # formatting
-        nodePackages_latest.bash-language-server
-        nodePackages_latest.yaml-language-server
-        pyright # Python LSP
         shellcheck # *sh linter
         shfmt # posix/bash/mksh formatter
         stylua # Lua formatter
-        unstable.nixd # nix LSP
         nix-bash-completions
         yamlfmt # YAML formatter
+        #### LSPs
+        nodePackages_latest.bash-language-server
+        nodePackages_latest.yaml-language-server
+        lua-language-server
+        unstable.texlab
+        unstable.haskell-language-server
+        unstable.nixd
+        unstable.pyright
+        unstable.gopls
+        unstable.marksman
 
         ### Viewers
         imv # terminal image viewer

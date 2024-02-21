@@ -27,6 +27,7 @@ specs.cmp = {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-emoji',
     'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind.nvim',
   },
   config = function()
     local cmp = require('cmp')
@@ -36,6 +37,7 @@ specs.cmp = {
       mapping = cmp.mapping.preset.insert({
         ['<tab>'] = wrap_snippet_jump(1),
         ['<s-tab>'] = wrap_snippet_jump(-1),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }), -- override select = false
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
       }),
@@ -45,19 +47,37 @@ specs.cmp = {
         end,
       },
       sources = cmp.config.sources({
-        { { name = 'luasnip' }, { name = 'nvim_lsp' } },
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
         { name = 'buffer' },
         {
           name = 'path',
           option = { trailing_slash = true },
         },
+        { name = 'emoji' },
       }),
       window = {
         -- completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
       view = {
-        entries = 'native',
+        entries = {
+          name = 'custom',
+          selection_order = 'near_cursor', -- (lower = better) ---> (closer to cursor = better)
+        },
+      },
+      formatting = {
+        format = require('lspkind').cmp_format({
+          mode = 'symbol_text',
+          menu = {
+            buffer = 'buf',
+            nvim_lsp = 'lsp',
+            luasnip = 'snp',
+            emoji = 'emj',
+            nvim_lua = 'lua',
+            latex_symbols = 'ltx',
+          },
+        }),
       },
       sorting = {
         comparators = {

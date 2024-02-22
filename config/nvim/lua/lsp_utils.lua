@@ -111,6 +111,9 @@ local function setup_lsp_keybinds(buffer)
   set('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic') -- shadows: goto first macro definition
   set(']d', vim.diagnostic.goto_next, 'Next Diagnostic') -- shadows: goto next macro definition
 
+  set_prefixed('q', vim.diagnostic.setloclist, 'Diagnostic Loc List')
+  set_prefixed('Q', vim.diagnostic.setqflist, 'Diagnostic Loc List')
+
   set_prefixed('wa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
   set_prefixed('wr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   set_prefixed('wl', list_workspace_folders, 'List Workspace Folders')

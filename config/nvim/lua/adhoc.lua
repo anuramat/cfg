@@ -1,9 +1,7 @@
 local u = require('utils')
 
---- Toggles the case of the first letter in the symbol under cursor
---- @param access string
+--- Renames symbol under cursor: :oobar -> Foobar
 local function make_public()
-  --- TODO maybe make useful in other scenarios
   local s = vim.fn.expand('<cword>')
   vim.lsp.buf.rename(s:sub(1, 1):upper() .. s:sub(2))
   vim.cmd.sleep(100, 'm')
@@ -17,10 +15,11 @@ local function quote()
   vim.print(result)
   vim.fn.setreg('+', result)
 end
+vim.api.nvim_create_user_command('Quote', quote, {})
 
 --- Creates comment header I guess
 --- @param chr string Character that fills the header
---- @param width_factor float|nil If present, width = textwidth * width_factor
+--- @param width_factor number|nil If present, width = textwidth * width_factor
 local function create_comment_header(chr, width_factor, base_width)
   vim.ui.input({ prompt = 'Header text: ' }, function(input)
     -- In case user cancels with escape
@@ -84,7 +83,4 @@ set('<leader>$', function()
   create_comment_header('~', nil, 60)
 end, 'Subheader')
 
--- vim.api.nvim_create_user_command('GoMakePublic', make_public, {})
 -- vim.cmd('noremap <leader>q :GoMakePublic<cr>')
-
-vim.api.nvim_create_user_command('Quote', quote, {})

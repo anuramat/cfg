@@ -1,5 +1,6 @@
 local specs = {}
 local u = require('utils')
+
 local make_harpoon = function(harpoon)
   return function()
     local contents = {}
@@ -18,6 +19,7 @@ local make_harpoon = function(harpoon)
     return table.concat(contents)
   end
 end
+
 specs.lualine = {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -28,12 +30,9 @@ specs.lualine = {
   opts = function()
     return {
       options = {
-        theme = require('lualine.themes.dracula-nvim'),
+        -- theme = require('lualine.themes.dracula-nvim'),
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        -- component_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = '' },
-        globalstatus = true,
         refresh = { statusline = 100, tabline = 100 },
       },
       extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },

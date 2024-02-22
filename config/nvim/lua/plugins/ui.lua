@@ -129,4 +129,16 @@ specs.dressing = {
   event = 'VeryLazy',
 }
 
+specs.aerial = {
+  'stevearc/aerial.nvim',
+  event = 'BufEnter',
+  opts = {
+    filter_kind = {
+      nix = false,
+    },
+  },
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+  keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
+}
+
 return u.values(specs)

@@ -48,7 +48,7 @@ specs.zen = {
   opts = {
     window = {
       backdrop = 1,
-      width = 1,
+      width = 120,
       height = 1,
       options = {},
     },
@@ -57,6 +57,10 @@ specs.zen = {
         enabled = true,
         ruler = false,
         showcmd = false,
+      },
+      alacritty = {
+        enabled = true,
+        font = '14',
       },
       gitsigns = { enabled = true }, -- hide gitsigns
       tmux = { enabled = true }, -- hide tmux bar BUG can hide bar until tmux restart, careful
@@ -91,7 +95,7 @@ specs.noice = {
       },
       lsp = {
         signature = { enabled = false, opts = { border = vim.g.border } }, -- overwritten by ray-x/lsp_signature.nvim
-        hover = { enabled = true, opts = { border = vim.g.border } },
+        hover = { enabled = false, opts = { border = vim.g.border } },
         override = {
           -- TODO what is this even? it's off by default
           ['vim.lsp.util.convert_input_to_markdown_lines'] = false,

@@ -30,7 +30,8 @@ specs.lualine = {
   opts = function()
     return {
       options = {
-        -- theme = require('lualine.themes.dracula-nvim'),
+        theme = require('lualine.themes.dracula-nvim'),
+        -- theme = require('lualine.themes.gruvbox'),
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },
@@ -44,6 +45,7 @@ specs.lualine = {
             mode = 4,
             hide_filename_extension = false,
             show_filename_only = false,
+            use_mode_colors = true,
           },
         },
         lualine_z = { { make_harpoon(require('harpoon')), padding = 0 } },
@@ -122,6 +124,7 @@ specs.lualine = {
           {
             'tabs',
             mode = 2,
+            use_mode_colors = true,
           },
         },
       },

@@ -110,6 +110,7 @@ specs.lspconfig = {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/nvim-cmp',
+    'ray-x/lsp_signature.nvim',
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -131,6 +132,10 @@ specs.lspconfig = {
         cfg.on_attach = function(client, buffer)
           lsp_utils.lsp_keys(buffer)
           lsp_utils.setup_lsp_af(client, buffer)
+          require('lsp_signature').on_attach({
+            bind = true, -- This is mandatory, otherwise border config won't get registered.
+            handler_opts = { border = 'rounded' },
+          }, buffer)
         end
       end
       lspconfig[name].setup(cfg)

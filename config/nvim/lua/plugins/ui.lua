@@ -90,7 +90,7 @@ specs.noice = {
         bottom_search = true, -- use a classic bottom cmdline for search
       },
       lsp = {
-        signature = { enabled = true, opts = { border = vim.g.border } },
+        signature = { enabled = false, opts = { border = vim.g.border } }, -- overwritten by ray-x/lsp_signature.nvim
         hover = { enabled = true, opts = { border = vim.g.border } },
         override = {
           -- TODO what is this even? it's off by default
@@ -103,6 +103,15 @@ specs.noice = {
         view_search = 'cmdline',
       },
     }
+  end,
+}
+
+specs.signature = {
+  'ray-x/lsp_signature.nvim',
+  event = 'VeryLazy',
+  opts = {},
+  config = function(_, opts)
+    require('lsp_signature').setup(opts)
   end,
 }
 

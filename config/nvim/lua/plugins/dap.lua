@@ -44,7 +44,7 @@ specs.dap = {
     { 'l', log_point,                                         desc = 'Set Log Point' },
     { 'r', function() require('dap').repl.open() end,         desc = 'Open Debug REPL' },
     { 'd', function() require('dap').run_last() end,          desc = 'Run Last Debug Session' },
-  }),
+  }, "DAP"),
 }
 
 specs.dap_vt = {
@@ -59,7 +59,7 @@ specs.dap_ui = {
   keys = u.prefix('<leader>d', {
     { "u", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
     { "e", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
-  }),
+  }, "DAP"),
   opts = {},
   config = function(_, opts)
     local dap = require('dap')

@@ -20,7 +20,7 @@ specs.telescope = {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
-    'debugloop/telescope-undo.nvim',
+    'debugloop/telescope-undo.nvim', -- kinda shit
     'jvgrootveld/telescope-zoxide',
     {
       'nvim-telescope/telescope-fzf-native.nvim',

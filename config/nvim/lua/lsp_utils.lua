@@ -55,7 +55,7 @@ end
 --- Meant to be called in an on_attach handler
 --- @param client table
 --- @param buffer integer
-function M.setup_lsp_af(client, buffer)
+local function setup_lsp_autoformatting(client, buffer)
   if
     not client.server_capabilities.documentFormattingProvider
     or u.contains(_G.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
@@ -76,7 +76,7 @@ function M.setup_lsp_af(client, buffer)
   })
 end
 
-function M.lsp_keys(buffer)
+local function setup_lsp_keybinds(buffer)
   local function set(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
@@ -114,6 +114,21 @@ function M.lsp_keys(buffer)
   set_prefixed('wa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
   set_prefixed('wr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   set_prefixed('wl', list_workspace_folders, 'List Workspace Folders')
+end
+
+-- TODO docstring
+local function setup_signature(buffer)
+  require('lsp_signature').on_attach({
+    bind = true, -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = { border = 'rounded' },
+  }, buffer)
+end
+
+-- TODO docstring
+function M.default_on_attach(client, buffer)
+  setup_lsp_keybinds(buffer)
+  setup_lsp_autoformatting(client, buffer)
+  setup_signature(buffer)
 end
 
 return M

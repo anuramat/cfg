@@ -24,18 +24,17 @@ specs.haskell = {
       hls = {
         capabilities = capabilities,
         on_attach = function(client, buffer, ht)
+          lsp_utils.default_on_attach(client, buffer)
+
           local s = function(lhs, rhs, desc)
             vim.keymap.set('n', '<leader>L' .. lhs, rhs, { buffer = buffer, desc = 'Haskell: ' .. desc })
           end
-
-          lsp_utils.setup_lsp_af(client, buffer)
 
           s('b', repl_toggler(ht, buffer), 'Toggle Buffer REPL')
           s('e', ht.lsp.buf_eval_all, 'Evaluate All')
           s('h', ht.hoogle.hoogle_signature, 'Show Hoogle Signature')
           s('p', ht.repl.toggle, 'Toggle Package REPL')
           s('q', ht.repl.quit, 'Quit REPL')
-          lsp_utils.lsp_keys(buffer)
 
           ht.dap.discover_configurations(buffer, { autodetect = true, settings_file_pattern = 'launch.json' })
         end,

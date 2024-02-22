@@ -34,7 +34,6 @@ local function cfgs()
     marksman = {},
     clangd = {
       on_attach = function(client, buffer)
-        lsp_utils.lsp_keys(buffer)
         vim.api.nvim_buf_set_keymap(
           buffer,
           'n',
@@ -42,7 +41,7 @@ local function cfgs()
           '<cmd>ClangdSwitchSourceHeader<cr>',
           { silent = true, desc = 'clangd: Switch between .c/.h' }
         )
-        lsp_utils.setup_lsp_af(client, buffer)
+        lsp_utils.default_on_attach(client, buffer)
         require('clangd_extensions.inlay_hints').setup_autocmd()
         require('clangd_extensions.inlay_hints').set_inlay_hints()
       end,
@@ -129,14 +128,7 @@ specs.lspconfig = {
     for name, cfg in pairs(cfgs()) do
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
-        cfg.on_attach = function(client, buffer)
-          lsp_utils.lsp_keys(buffer)
-          lsp_utils.setup_lsp_af(client, buffer)
-          require('lsp_signature').on_attach({
-            bind = true, -- This is mandatory, otherwise border config won't get registered.
-            handler_opts = { border = 'rounded' },
-          }, buffer)
-        end
+        cfg.on_attach = lsp_utils.default_on_attach(client, buffer)
       end
       lspconfig[name].setup(cfg)
     end
@@ -158,10 +150,7 @@ specs.null = {
         nlf.black,
         -- nld.protolint,
       },
-      on_attach = function(client, buffer)
-        lsp_utils.lsp_keys(buffer)
-        lsp_utils.setup_lsp_af(client, buffer)
-      end,
+      on_attach = lsp_utils.default_on_attach,
       border = vim.g.border,
     })
   end,

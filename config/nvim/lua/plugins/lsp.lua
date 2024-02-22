@@ -116,10 +116,10 @@ specs.lspconfig = {
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
     vim.diagnostic.config({ float = { border = vim.g.border } }) -- vim.diagnostic.open_float
     require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
-    -- -- conflicts with noice
-    -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
-    -- vim.lsp.handlers['textDocument/signatureHelp'] =
-    --   vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.border })
+
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
+    vim.lsp.handlers['textDocument/signatureHelp'] =
+      vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.border })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     -- Register capabilities for CMP
     local capabilities = vim.lsp.protocol.make_client_capabilities()

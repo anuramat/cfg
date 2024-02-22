@@ -113,7 +113,11 @@ specs.noice = {
 specs.signature = {
   'ray-x/lsp_signature.nvim',
   event = 'VeryLazy',
-  opts = {},
+  opts = {
+    handler_opts = { border = vim.g.border },
+    always_trigger = true,
+    -- TODO read README again, it's fucked
+  },
   config = function(_, opts)
     require('lsp_signature').setup(opts)
   end,

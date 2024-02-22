@@ -128,7 +128,7 @@ specs.lspconfig = {
     for name, cfg in pairs(cfgs()) do
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
-        cfg.on_attach = lsp_utils.default_on_attach(client, buffer)
+        cfg.on_attach = lsp_utils.default_on_attach
       end
       lspconfig[name].setup(cfg)
     end

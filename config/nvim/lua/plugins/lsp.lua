@@ -28,6 +28,7 @@ local function cfgs()
   return {
     nixd = {}, -- nil_ls -- better diagnostics in some regards
     yamlls = {},
+    tsserver = {},
     texlab = {},
     bashls = {},
     pyright = {},

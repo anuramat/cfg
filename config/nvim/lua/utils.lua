@@ -87,23 +87,13 @@ function M.get_lib_path(config_prefix)
 end
 
 --- Adds prefix to lazy.nvim keymap spec
---- @param prefix string Prefix to add to mappings
+--- @param lhs_prefix string Prefix to add to mappings
 --- @param keys table Lazy.nvim keysmap spec without prefixes
+--- @param desc_prefix string Prefix to add to description
 --- @return table keys Lazy.nvim keymap spec with prefixes
-function M.prefix(prefix, keys)
+function M.prefix(lhs_prefix, keys, desc_prefix)
   for k, _ in pairs(keys) do
-    keys[k][1] = prefix .. keys[k][1]
-  end
-  return keys
-end
-
---- Adds prefix to lazy.nvim keymap spec
---- @param prefix string Prefix to add to mappings
---- @param keys table Lazy.nvim keysmap spec without prefixes
---- @return table keys Lazy.nvim keymap spec with prefixes
-function M.prefix_set(prefix, keys)
-  for k, _ in pairs(keys) do
-    keys[k][1] = prefix .. keys[k][1]
+    keys[k][1] = lhs_prefix .. keys[k][1]
   end
   return keys
 end

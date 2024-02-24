@@ -20,6 +20,8 @@ specs.dracula_cs = {
     clhl.underline = true
     clhl.bold = true
     vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
+    -- Make window borders properly visible
+    vim.cmd('hi WinSeparator guibg=bg guifg=fg')
   end,
 }
 

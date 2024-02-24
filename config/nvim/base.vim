@@ -1,9 +1,16 @@
 "~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
 tno <esc> <c-\><c-n>
-xn <leader>p "_dP
 nn <c-c> <silent><c-c>
 nn <c-cr> o<esc>
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
+nn <silent> <leader>q :call ToggleQuickFix()<cr>
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr

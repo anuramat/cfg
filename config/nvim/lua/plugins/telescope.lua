@@ -7,11 +7,25 @@ local function current_buffer_fuzzy_find()
   }))
 end
 
+local function zoxide()
+  require('telescope').extensions.zoxide.list()
+end
+
+local function undo()
+  require('telescope').extensions.undo.undo()
+end
+
 specs.telescope = {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
+    'debugloop/telescope-undo.nvim', -- kinda shit
+    'jvgrootveld/telescope-zoxide',
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+    },
   },
   -- stylua: ignore
   keys = u.prefix('<leader>f', {
@@ -26,8 +40,12 @@ specs.telescope = {
     { 'p', require('telescope.builtin').builtin,                       desc = 'Pickers' },
     { 'r', require('telescope.builtin').lsp_references,                desc = 'References' },
     { 's', require('telescope.builtin').lsp_document_symbols,          desc = 'Document Symbols' },
-  }),
+    { 'j', zoxide , desc = 'Zoxide', },
+    { 'u', undo, desc = 'Undo', },
+  }, "Tele"),
   config = function()
+    require('telescope').load_extension('zoxide')
+    require('telescope').load_extension('fzf')
     local telescope = require('telescope')
     telescope.setup({
       defaults = {
@@ -55,28 +73,6 @@ specs.telescope = {
         zoxide = { prompt_title = 'Zoxide' },
       },
     })
-    require('telescope').load_extension('fzf')
-  end,
-}
-
-specs.fzf = {
-  'nvim-telescope/telescope-fzf-native.nvim',
-  build = 'make',
-}
-
-specs.zoxide = {
-  'jvgrootveld/telescope-zoxide',
-  keys = {
-    {
-      '<leader>fj',
-      function()
-        require('telescope').extensions.zoxide.list()
-      end,
-      desc = 'Zoxide',
-    },
-  },
-  config = function()
-    require('telescope').load_extension('zoxide')
   end,
 }
 

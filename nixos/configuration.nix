@@ -243,6 +243,7 @@ in
         transmission-gtk # gui wrapper for transmission
         unstable.obsidian # markdown personal knowledge database
         vlc # gui video player
+        rclone # rsync for cloud
 
         ### Media
         gimp-with-plugins # raster graphics

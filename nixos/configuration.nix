@@ -463,6 +463,7 @@ in
         swayidle # idle events
         swaylock # lockscreen
         pavucontrol # gui audio configuration
+        sov # workspace overview for sway
 
         ### Display settings
         # TODO Choose one

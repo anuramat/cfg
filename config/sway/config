@@ -109,7 +109,7 @@ gaps inner 5
 default_border pixel 3
 default_floating_border pixel 3
 set $cursor_theme Adwaita
-set $cursor_size 100
+set $cursor_size 25
 seat * {
     hide_cursor when-typing enable
     xcursor_theme $cursor_theme $cursor_size

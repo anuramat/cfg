@@ -244,7 +244,6 @@ in
         unstable.obsidian # markdown personal knowledge database
         vlc # gui video player
         rclone # rsync for cloud
-        restic # backups
 
         ### Media
         gimp-with-plugins # raster graphics
@@ -506,6 +505,7 @@ in
     mountOnMedia = true;
   };
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
+  # TODO restic backups
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
   documentation.man.generateCaches = true; # apropos

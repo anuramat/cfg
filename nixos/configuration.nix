@@ -244,6 +244,7 @@ in
         unstable.obsidian # markdown personal knowledge database
         vlc # gui video player
         rclone # rsync for cloud
+        restic # backups
 
         ### Media
         gimp-with-plugins # raster graphics

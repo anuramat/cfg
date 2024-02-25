@@ -245,6 +245,7 @@ in
         vlc # gui video player
         rclone # rsync for cloud
         hugo # static site generator
+        starship # terminal prompt
 
         ### Media
         gimp-with-plugins # raster graphics

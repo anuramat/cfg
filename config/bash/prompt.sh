@@ -38,7 +38,7 @@ __git_prompt() {
 	local git_dir
 	if git_dir="$(git rev-parse --git-dir 2>/dev/null)"; then
 		git_dir="$(realpath "$git_dir")"
-		local -r root_dir="$(dirname "$git_dir")"
+		local -r root_dir="${git_dir/%"/.git"/}"
 		local -r sep=':'
 		printf ' '
 

@@ -6,7 +6,7 @@ shopt -s globstar          # Enables ** for recursing into subdirectories
 . "$HOME/.profile"                # basic env vars
 . "$XDG_CONFIG_HOME/bash/opts.sh" # options for external tools
 . "$XDG_CONFIG_HOME/bash/aliases.sh"
-. "$XDG_CONFIG_HOME/bash/prompt.sh"
+# . "$XDG_CONFIG_HOME/bash/prompt.sh"
 [ -r "$XDG_CONFIG_HOME/bash/private.sh" ] && . "$XDG_CONFIG_HOME/bash/private.sh"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hooks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # TODO make crossplatform
@@ -32,3 +32,4 @@ if command -v fzf-share >/dev/null; then
 fi
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
+eval "$(starship init bash)"

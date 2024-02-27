@@ -7,6 +7,9 @@
 --glob=!{.git,.svn}
 # Go
 --glob=!go.sum
+--glob=!coverage.html
+--glob=!.testCoverage.txt
+--glob=!*.pb.go
 # Node
 --glob=!node_modules
 # Python

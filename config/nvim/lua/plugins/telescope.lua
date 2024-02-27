@@ -15,6 +15,10 @@ local function undo()
   require('telescope').extensions.undo.undo()
 end
 
+local function live_grep_args()
+  require('telescope').extensions.live_grep_args.live_grep_args()
+end
+
 specs.telescope = {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -26,26 +30,31 @@ specs.telescope = {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
+    {
+      'nvim-telescope/telescope-live-grep-args.nvim',
+      version = '^1.0.0',
+    },
   },
-  -- stylua: ignore
   keys = u.prefix('<leader>f', {
-    { '/', current_buffer_fuzzy_find,                                  desc = 'Fuzzy Search' },
-    { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols', },
-    { 'b', require('telescope.builtin').buffers,                       desc = 'Buffers' },
-    { 'h', '<cmd>Telescope harpoon marks<cr>',                         desc = 'Harpoons' },
-    { 'd', require('telescope.builtin').diagnostics,                   desc = 'Workspace Diagnostics' },
-    { 'g', require('telescope.builtin').live_grep,                     desc = 'Live Grep' },
-    { 'm', require('telescope.builtin').marks,                         desc = 'Marks' },
-    { 'o', require('telescope.builtin').find_files,                    desc = 'Files' },
-    { 'p', require('telescope.builtin').builtin,                       desc = 'Pickers' },
-    { 'r', require('telescope.builtin').lsp_references,                desc = 'References' },
-    { 's', require('telescope.builtin').lsp_document_symbols,          desc = 'Document Symbols' },
-    { 'j', zoxide , desc = 'Zoxide', },
-    { 'u', undo, desc = 'Undo', },
-  }, "Tele"),
+    { '/', current_buffer_fuzzy_find, desc = 'Fuzzy Search' },
+    { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols' },
+    { 'b', require('telescope.builtin').buffers, desc = 'Buffers' },
+    { 'h', '<cmd>Telescope harpoon marks<cr>', desc = 'Harpoons' },
+    { 'd', require('telescope.builtin').diagnostics, desc = 'Workspace Diagnostics' },
+    { 'g', require('telescope.builtin').live_grep, desc = 'Live Grep' },
+    { 'G', live_grep_args, desc = 'Live Grep' },
+    { 'm', require('telescope.builtin').marks, desc = 'Marks' },
+    { 'o', require('telescope.builtin').find_files, desc = 'Files' },
+    { 'p', require('telescope.builtin').builtin, desc = 'Pickers' },
+    { 'r', require('telescope.builtin').lsp_references, desc = 'References' },
+    { 's', require('telescope.builtin').lsp_document_symbols, desc = 'Document Symbols' },
+    { 'j', zoxide, desc = 'Zoxide' },
+    { 'u', undo, desc = 'Undo' },
+  }, 'Tele'),
   config = function()
     require('telescope').load_extension('zoxide')
     require('telescope').load_extension('fzf')
+    require('telescope').load_extension('live_grep_args')
     local telescope = require('telescope')
     telescope.setup({
       defaults = {

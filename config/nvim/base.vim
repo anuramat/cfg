@@ -36,6 +36,7 @@ let g:matchparen_insert_timeout=50
 " se spl=en,ru " spelling languages (russian will trigger download)
 " se path+=** " recurse in path
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
+se cole=1
 se nowrap
 se dy=lastline,uhex " XXX idk
 se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:

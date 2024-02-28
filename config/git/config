@@ -1,41 +1,50 @@
 [include]
-path=private
+  path=private
+  path=delta.gitconfig
+
+[diff]
+  ; external = difft ; use difft by default
+  tool = difftastic ; set default difftool
+[difftool]
+  prompt = false ; idk wtf this is, but without it difftool breaks
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true ; use pager on difftool
 
 [core]
-pager = delta
+  pager = delta
 [interactive]
-diffFilter = delta --color-only
-[delta]
-navigate = true # use n and N to move between diff sections
-light = false
-features = side-by-side
+  diffFilter = delta
 
 [merge]
-conflictstyle = diff3
-ff = true
+  conflictstyle = diff3
+  ff = true
 
 [advice]
-detachedHead = false
+  detachedHead = false
 
 [push]
-autoSetupRemote = true
+  autoSetupRemote = true
 
 [pull]
-rebase = true
-ff = only
+  rebase = true
+  ff = only
 
 [alias]
-uncommit = reset --soft HEAD^
-st = status
-ch = checkout
-br = branch
-sw = switch
-cm = commit
-ps = push
-lg = log --oneline --graph --all --decorate
-df = diff
-ds = diff --staged
-# shows unpushed commits
-unpushed = log --branches --not --remotes --decorate --oneline
-cp = !git add . && git commit -am auto && git push
-ignored = status --ignored
+  uncommit = reset --soft HEAD^
+  st = status
+  ch = checkout
+  br = branch
+  sw = switch
+  cm = commit
+  ps = push
+  lg = log --oneline --graph --all --decorate
+  df = diff
+  ds = diff --staged
+  ; shows unpushed commits
+  unpushed = log --branches --not --remotes --decorate --oneline
+  cp = !git add . && git commit -am auto && git push
+  ignored = status --ignored
+
+; vim:ft=gitconfig

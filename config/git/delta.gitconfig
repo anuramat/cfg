@@ -1,0 +1,25 @@
+[delta]
+    navigate = true ; use n and N to move between diff sections
+    syntax-theme = Dracula
+
+    dr = "#350000"
+    dg = "#003500"
+
+    dark = true
+    syntax-theme = Dracula
+    hunk-header-style = bold syntax
+    line-numbers = true
+    blame-code-style = syntax
+
+    file-style = 232 bold 184
+    file-decoration-style = none
+    hunk-header-decoration-style = none
+    commit-decoration-style = bold box ul
+
+    plus-style = syntax dg
+    minus-style = syntax dr
+
+    plus-emph-style = black green
+    minus-emph-style = black red
+
+; vim:ft=gitconfig

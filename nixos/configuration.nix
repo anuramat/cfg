@@ -201,6 +201,7 @@ in
 
         "inode/directory" = [ "nnn.desktop" ];
 
+        # "application/pdf" = [
 
         "image/gif" = [ "org.nomacs.ImageLounge.desktop" ];
         "image/jpeg" = [ "org.nomacs.ImageLounge.desktop" ];

@@ -41,7 +41,7 @@ specs.lualine = {
         lualine_a = {
           {
             'buffers',
-            max_length = vim.o.columns * 4 / 5,
+            max_length = vim.o.columns,
             mode = 4,
             hide_filename_extension = false,
             show_filename_only = false,

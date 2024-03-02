@@ -92,6 +92,8 @@ __return_code_prompt() {
 
 __path="$__bold$__purple\w$__norm"
 
+# used in terminal options such as "new tabs inherit current working directory"
+# shellcheck disable=all
 osc7_cwd() {
 	# as stolen from foot term wiki
 	local strlen=${#PWD}

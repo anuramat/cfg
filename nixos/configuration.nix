@@ -432,6 +432,7 @@ in
         libqalculate # qalc - advanced calculator
         bc # simple calculator
         neofetch
+        fastfetch
         mosh # ssh over unstable connections
 
         ### Random stuff TODO

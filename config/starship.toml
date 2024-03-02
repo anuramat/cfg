@@ -2,11 +2,17 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 # blank line between prompts
 add_newline = true
+# rearrange modules
+format = ''' $all$status$line_break$character'''
 
 [character]
-success_symbol = '[](bold green)'
-error_symbol = '[](bold red)'
-# also: '➜'
+success_symbol = ''
+error_symbol = ''
+
+[status]
+style = 'bold red'
+format = '[$status: $common_meaning$signal_name]($style) '
+disabled = false
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Nerdfonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 

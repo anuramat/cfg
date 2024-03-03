@@ -23,3 +23,7 @@ alias ....="cd ../../.."
 alias conda="micromamba"
 
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+upload() {
+	curl --upload-file "$1" "https://transfer.sh/$1"
+}

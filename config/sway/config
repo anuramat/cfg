@@ -72,6 +72,7 @@ bar swaybar_command waybar
 exec_always {
     inactive-windows-transparency.py
     pkill swayidle || swayidle -w
+    mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
 }
 set {
     $term_run alacritty -e
@@ -105,7 +106,8 @@ set {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Looks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 set $font Hack Nerd Font 13
 font "pango:$font"
-gaps inner 5
+gaps inner 10
+gaps outer 20
 default_border pixel 3
 default_floating_border pixel 3
 set $cursor_theme Adwaita
@@ -164,6 +166,10 @@ $bind {
     $mod+v splitv
     $mod+b splitt
 
+    $mod+equal gaps inner all plus 10
+    $mod+minus gaps inner all minus 10
+    $mod+bracketright gaps outer all plus 10
+    $mod+bracketleft gaps outer all minus 10
     # Sway settings
     $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
     $mod+$mod2+$sway_settings_key reload

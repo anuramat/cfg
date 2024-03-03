@@ -464,8 +464,9 @@ in
         playerctl # cli media player controls
         swaybg # wallpaper helper
         mpvpaper # video wallpaper helper
+        glpaper # shader wallpaper
+        swaylock-effects # lockscreen, swaylock fork
         swayidle # idle events
-        swaylock # lockscreen
         pavucontrol # gui audio configuration
         sov # workspace overview for sway
 

@@ -1,6 +1,7 @@
 [include]
   path=private
   path=delta.gitconfig
+  path=dracula.gitconfig
 
 [diff]
   ; external = difft ; use difft by default

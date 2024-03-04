@@ -80,6 +80,7 @@ set {
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
     $dismiss_notification "makoctl dismiss"
     $dismiss_all_notifications "makoctl dismiss --all"
+    $click_notificiation "makoctl invoke"
     $lock_screen swaylock --daemonize
 
     # click to select a window, drag to select a region
@@ -174,8 +175,9 @@ $bind {
     $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
     $mod+$mod2+$sway_settings_key reload
     # Notifications
-    $mod+$notification_key exec $dismiss_notification
-    $mod+$mod2+$notification_key exec $dismiss_all_notifications
+    $mod+$notification_key exec $click_notificiation
+    $mod+$mod2+$notification_key exec $dismiss_notification
+    $mod+$mod3+$notification_key exec $dismiss_all_notifications
     # Screenshots
     $mod+$screenshot_key exec $screenshot_mouse
     $mod+$mod2+$screenshot_key exec $screenshot_focused_window

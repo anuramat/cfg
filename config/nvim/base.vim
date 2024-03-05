@@ -71,14 +71,27 @@ let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-com! -bang Q q<bang>
-com! -bang W w<bang>
-com! -bang WQ wq<bang>
-com! -bang Wq wq<bang>
-com! -bang QA qa<bang>
-com! -bang Qa qa<bang>
-" vsplit help
-cnoreabbrev H vert he
+com -bang Q q<bang>
+com -bang W w<bang>
+com -bang WQ wq<bang>
+com -bang Wq wq<bang>
+com -bang QA qa<bang>
+com -bang Qa qa<bang>
+
+function! GetSynstack()
+  " Ensure any folded code is opened; optional, remove if not needed
+  normal! zv
+  " Get current line and column numbers
+  let lnum = line(".")
+  let colnum = col(".")
+  " Iterate over syntax items at the cursor's position
+  for id in synstack(lnum, colnum)
+    " Echo the name of each syntax item's ID
+    echo synIDattr(id, "name")
+  endfor
+endfunction
+command SynStack call GetSynstack()
+
 " hide qf buffers
 augroup qf
     autocmd!

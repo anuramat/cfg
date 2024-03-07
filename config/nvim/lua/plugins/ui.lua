@@ -107,6 +107,7 @@ specs.noice = {
       },
       messages = {
         view_search = 'cmdline',
+        enabled = false,
       },
     }
   end,

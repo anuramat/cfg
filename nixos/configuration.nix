@@ -7,7 +7,7 @@ let
   username = "anuramat";
   fullname = "Arsen Nuramatov";
   hostname = "anuramat-t480";
-  timezone = "Etc/GMT-6";
+  timezone = "Etc/GMT-5";
   stateVersion = "23.05"; # WARNING DO NOT EDIT
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

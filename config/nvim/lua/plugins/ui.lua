@@ -148,11 +148,29 @@ specs.aerial = {
   keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
 }
 
+-- adds animation to scrolling, resizing and cursor movement
 specs.animate = {
   'echasnovski/mini.animate',
   version = '*',
   event = 'VeryLazy',
-  config = not vim.g.neovide,
+  config = function()
+    if vim.g.neovide then
+      return
+    end
+    local animate = require('mini.animate')
+    animate.setup({
+      cursor = {
+        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
+      },
+      scroll = {
+        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
+      },
+      resize = {
+        -- enable = false,
+        timing = animate.gen_timing.exponential({ duration = 20, unit = 'total' }),
+      },
+    })
+  end,
 }
 
 return u.values(specs)

@@ -56,8 +56,11 @@ specs.telescope = {
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('live_grep_args')
     local telescope = require('telescope')
-    telescope.setup({
+    local opts = {
       defaults = {
+        prompt_prefix = ' ',
+        selection_caret = ' ',
+        multi_icon = ' ',
         vimgrep_arguments = {
           -- required
           'rg',
@@ -81,7 +84,15 @@ specs.telescope = {
         },
         zoxide = { prompt_title = 'Zoxide' },
       },
-    })
+    }
+    if vim.g.neovide then
+      opts.defaults.borderchars = {
+        prompt = { ' ' },
+        results = { ' ' },
+        preview = { ' ' },
+      }
+    end
+    telescope.setup(opts)
   end,
 }
 

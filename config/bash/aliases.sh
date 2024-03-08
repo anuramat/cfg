@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-alias f="nvim"
+alias c="clear"
+alias v="nvim"
+alias f="neovide"
 alias d="xdg-open"
 
 if command -v "eza" >/dev/null 2>&1; then

@@ -98,5 +98,17 @@ augroup qf
     autocmd FileType qf set nobuflisted
 augroup END
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ gui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-se linespace=0
-se guifont=Hack\ Nerd\ Font:h13
+se linespace=-1
+se guifont=Hack\ Nerd\ Font:h14
+if exists("g:neovide")
+  se winblend=20 " to show off blur
+  let g:border="solid" " we already have shadows and blur
+  se scrolloff=1 " otherwise cursorline leaves a trail
+  let g:neovide_cursor_animation_length=0.03 " slightly faster cursor animation
+  " let g:neovide_transparency=0.9 " such a bad idea
+  let g:neovide_scroll_animation_far_lines=0 " when scrolling more then a screen, animate this many lines
+
+  let g:neovide_floating_shadow = v:true
+  let g:neovide_floating_z_height = 4
+  let g:neovide_light_radius = 10
+endif

@@ -299,6 +299,7 @@ in
         xplr
 
         vscode
+        jetbrains-toolbox
 
         ### Languages
         #### Compilers/interpreters

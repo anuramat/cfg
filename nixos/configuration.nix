@@ -298,6 +298,8 @@ in
         broot
         xplr
 
+        vscode
+
         ### Languages
         #### Compilers/interpreters
         go

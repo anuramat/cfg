@@ -71,12 +71,12 @@ let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-com -bang Q q<bang>
-com -bang W w<bang>
-com -bang WQ wq<bang>
-com -bang Wq wq<bang>
-com -bang QA qa<bang>
-com -bang Qa qa<bang>
+com! -bang Q q<bang>
+com! -bang W w<bang>
+com! -bang WQ wq<bang>
+com! -bang Wq wq<bang>
+com! -bang QA qa<bang>
+com! -bang Qa qa<bang>
 
 function! GetSynstack()
   " Ensure any folded code is opened; optional, remove if not needed

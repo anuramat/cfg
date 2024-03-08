@@ -106,7 +106,9 @@ specs.lualine = {
         },
         lualine_c = {
           { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' }, separator = '' },
-          { 'filetype' },
+          'filetype',
+          'fileformat',
+          'encoding',
         },
         lualine_x = {
           { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },

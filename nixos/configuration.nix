@@ -298,7 +298,7 @@ in
         broot
         xplr
 
-        vscode
+        # vscode
 
         ### Languages
         #### Compilers/interpreters

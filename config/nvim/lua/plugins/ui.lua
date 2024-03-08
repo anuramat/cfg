@@ -88,6 +88,12 @@ specs.noice = {
   opts = function()
     require('notify').setup({
       background_colour = require('dracula').colors().bg,
+      render = 'wrapped-compact',
+      on_open = function(win)
+        if vim.api.nvim_win_is_valid(win) then
+          vim.api.nvim_win_set_config(win, { border = vim.g.border })
+        end
+      end,
     })
     return {
       cmdline = { format = { help = false } },
@@ -107,7 +113,7 @@ specs.noice = {
       },
       messages = {
         view_search = 'cmdline',
-        enabled = false,
+        -- enabled = false, -- moves messages back to cmdline
       },
     }
   end,
@@ -166,7 +172,7 @@ specs.animate = {
         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
       },
       resize = {
-        -- enable = false,
+        -- enable = false, -- resize animation soft-breaks mouse resize
         timing = animate.gen_timing.exponential({ duration = 20, unit = 'total' }),
       },
     })

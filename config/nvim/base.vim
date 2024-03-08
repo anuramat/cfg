@@ -52,7 +52,7 @@ se noshowmode " turn off mode indicator in cmdline TODO add mode indicator to "f
 se signcolumn=yes " gutter
 se tgc " 24-bit color
 hi WinSeparator guibg=bg guifg=fg
-let g:border="rounded" " custom
+let g:border="single" " custom, see :he nvim_open_win
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
     colo sorbet
@@ -97,3 +97,6 @@ augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
 augroup END
+"~~~~~~~~~~~~~~~~~~~~~~~~~~ gui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+se linespace=0
+se guifont=Hack\ Nerd\ Font:h13

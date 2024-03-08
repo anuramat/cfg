@@ -439,7 +439,7 @@ in
 
         ### Random stuff TODO
         mesa-demos # some 3d demos
-        neovide # neovim gui
+        unstable.neovide # neovim gui
         nix-index
 
         ### Web browsers

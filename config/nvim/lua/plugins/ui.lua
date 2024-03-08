@@ -148,4 +148,11 @@ specs.aerial = {
   keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
 }
 
+specs.animate = {
+  'echasnovski/mini.animate',
+  version = '*',
+  event = 'VeryLazy',
+  config = not vim.g.neovide,
+}
+
 return u.values(specs)

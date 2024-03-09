@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-alias c="clear"
-alias v="nvim"
+c() {
+	curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
+}
+alias t="tldr"
 alias f="neovide"
+alias v="neovide && exit"
 alias d="xdg-open"
 
 if command -v "eza" >/dev/null 2>&1; then

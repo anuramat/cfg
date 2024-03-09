@@ -246,6 +246,7 @@ in
         vlc # gui video player
         rclone # rsync for cloud
         starship # terminal prompt
+        tldr # local cheatsheets
 
         ### Media
         gimp-with-plugins # raster graphics

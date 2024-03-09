@@ -246,6 +246,7 @@ in
         vlc # gui video player
         rclone # rsync for cloud
         starship # terminal prompt
+        cod # completion generator (updates on `cmd --help`)
         tldr # local cheatsheets
 
         ### Media
@@ -316,6 +317,7 @@ in
         unstable.cabal-install
         universal-ctags # maintained ctags
         jq # json processor
+        yq # basic yaml, json, xml, csv, toml processor
         bats # Bash testing
         bear # Compilation database generator for clangd
         black # Python formatter

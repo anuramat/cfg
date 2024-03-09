@@ -150,6 +150,7 @@ set {
 }
 $bind {
     $mod+semicolon exec $term_start
+    $mod+apostrophe exec neovide
 
     $mod+q kill
     $mod+$mod2+q exec $lock_screen

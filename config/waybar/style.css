@@ -49,13 +49,17 @@
   background: @red;
   color: @background;
 }
-/* basically most elements (box->left/mid/center->element*/
+/* basically most elements (box->left/mid/center->element) */
 box > * > * {
   background: @background;
-  padding: 0 7px;
+  padding: 0 7px; /* padding inside the element */
 }
+box.horizontal.modules-center {
+  padding: 0 5px;
+}
+/*~~~~~~~~~~~~~~~~~~~ specific modules ~~~~~~~~~~~~~~~~~~~*/
 tooltip {
-  background: @background;
+  background: @background; /* hover on clock */
 }
 #battery {
   color: @green;

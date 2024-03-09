@@ -173,7 +173,7 @@ specs.animate = {
       },
       resize = {
         -- enable = false, -- resize animation soft-breaks mouse resize
-        timing = animate.gen_timing.exponential({ duration = 20, unit = 'total' }),
+        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
       },
     })
   end,

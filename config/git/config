@@ -1,8 +1,10 @@
+; imports
 [include]
   path=private
   path=delta.gitconfig
   path=dracula.gitconfig
 
+; difftastic
 [diff]
   ; external = difft ; use difft by default
   tool = difftastic ; set default difftool
@@ -13,14 +15,11 @@
 [pager]
   difftool = true ; use pager on difftool
 
+; delta
 [core]
   pager = delta
 [interactive]
   diffFilter = delta
-
-[merge]
-  conflictstyle = diff3
-  ff = true
 
 [advice]
   detachedHead = false
@@ -29,7 +28,6 @@
   autoSetupRemote = true
 
 [pull]
-  rebase = true
   ff = only
 
 [alias]

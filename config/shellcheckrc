@@ -7,3 +7,5 @@ disable=SC3043
 disable=SC2155
 # ignored non-zero return codes
 disable=SC2311
+# 'this is how it'\''s done'
+disable=SC1003

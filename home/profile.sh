@@ -28,6 +28,8 @@ export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
 # Locale
 export LC_ALL="en_US.UTF-8"
 
+# PAGER=less
+
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"
 

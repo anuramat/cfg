@@ -98,14 +98,12 @@ specs.noice = {
     return {
       cmdline = { format = { help = false } },
       presets = {
-        lsp_doc_border = true, -- add border to hover docs and signature help
         bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
         long_message_to_split = true, -- long messages will be sent to a split
       },
       lsp = {
         signature = { enabled = false, opts = { border = vim.g.border } }, -- off because we use ray-x/lsp_signature.nvim
-        hover = { enabled = true, opts = { border = vim.g.border } },
+        hover = { enabled = false, opts = { border = vim.g.border } }, -- off because it fucks up the border color
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,

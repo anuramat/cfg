@@ -125,6 +125,7 @@ specs.signature = {
     handler_opts = { border = vim.g.border },
     always_trigger = true,
     -- TODO read README again, it's fucked
+    -- border doesn't work!
   },
   config = function(_, opts)
     require('lsp_signature').setup(opts)

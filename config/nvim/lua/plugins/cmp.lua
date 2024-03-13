@@ -33,6 +33,9 @@ specs.cmp = {
   },
   config = function()
     local cmp = require('cmp')
+    local window = cmp.config.window.bordered()
+    window.border = vim.g.border
+    window = nil -- noice, lsp_signature
     -- ~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~ --
     --- @diagnostic disable-next-line: redundant-parameter
     cmp.setup({
@@ -59,8 +62,8 @@ specs.cmp = {
         { name = 'emoji' },
       }),
       window = {
-        -- completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = window,
+        documentation = window,
       },
       view = {
         entries = {

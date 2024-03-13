@@ -100,12 +100,13 @@ specs.noice = {
       presets = {
         lsp_doc_border = true, -- add border to hover docs and signature help
         bottom_search = true, -- use a classic bottom cmdline for search
+        command_palette = true, -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
       },
       lsp = {
-        signature = { enabled = false, opts = { border = vim.g.border } }, -- overwritten by ray-x/lsp_signature.nvim
-        hover = { enabled = false, opts = { border = vim.g.border } },
+        signature = { enabled = false, opts = { border = vim.g.border } }, -- off because we use ray-x/lsp_signature.nvim
+        hover = { enabled = true, opts = { border = vim.g.border } },
         override = {
-          -- TODO what is this even? it's off by default
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,
           ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp and other two options
@@ -121,7 +122,6 @@ specs.noice = {
 
 specs.signature = {
   'ray-x/lsp_signature.nvim',
-  event = 'VeryLazy',
   opts = {
     handler_opts = { border = vim.g.border },
     always_trigger = true,

@@ -4,8 +4,8 @@ c() {
 	curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
 }
 alias t="tldr"
-alias f="neovide"
-alias v="neovide && exit"
+alias v="neovide"
+alias f="neovide && exit"
 alias d="xdg-open"
 
 # ls
@@ -17,6 +17,7 @@ if command -v "eza" >/dev/null 2>&1; then
 	alias lt="$EZACMD --long --sort=time"
 	alias tree="$EZACMD --tree"
 else
+	alias ls="ls --color=auto"
 	alias ll="ls -lth --color=auto"
 	alias la="ls -alth --color=auto"
 fi

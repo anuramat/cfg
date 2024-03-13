@@ -136,7 +136,7 @@ specs.lspconfig = {
     end
 
     require('lsp_signature').setup({
-      handler_opts = { border = 'shadow' },
+      handler_opts = { border = 'double' },
       always_trigger = true,
       hint_enable = false, -- virtual hint enable
       hint_prefix = '🐼 ', -- Panda for parameter (hehe)

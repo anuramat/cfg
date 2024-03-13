@@ -8,6 +8,7 @@ alias f="neovide"
 alias v="neovide && exit"
 alias d="xdg-open"
 
+# ls
 if command -v "eza" >/dev/null 2>&1; then
 	# config file is proposed:
 	alias ls="$EZACMD"
@@ -16,11 +17,16 @@ if command -v "eza" >/dev/null 2>&1; then
 	alias lt="$EZACMD --long --sort=time"
 	alias tree="$EZACMD --tree"
 else
-	alias ll="ls -lth"
-	alias la="ls -alth"
+	alias ll="ls -lth --color=auto"
+	alias la="ls -alth --color=auto"
 fi
 
 alias fd="fd -H"
+
+# colorize basic stuff
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -c=auto'
 
 alias ..="cd .."
 alias ...="cd ../.."

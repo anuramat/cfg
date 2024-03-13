@@ -28,7 +28,9 @@ export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
 # Locale
 export LC_ALL="en_US.UTF-8"
 
-# PAGER=less
+export PAGER=less
+# export MANPAGER='nvim +Man!'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"

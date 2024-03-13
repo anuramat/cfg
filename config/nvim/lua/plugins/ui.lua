@@ -104,8 +104,9 @@ specs.noice = {
         long_message_to_split = true, -- long messages will be sent to a split
       },
       lsp = {
-        signature = { enabled = false, opts = { border = vim.g.border } }, -- off because we use ray-x/lsp_signature.nvim
-        hover = { enabled = false, opts = { border = vim.g.border } }, -- off because it fucks up the border color
+        signature = { enabled = false }, -- off because we use ray-x/lsp_signature.nvim
+        hover = { enabled = false }, -- off because it fucks up the border color
+        documentation = { opts = { border = vim.g.border } },
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,

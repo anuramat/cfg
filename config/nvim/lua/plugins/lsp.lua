@@ -119,7 +119,7 @@ specs.lspconfig = {
     require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
 
     -- -- add border to default hover handler (should be replaced with noice, but noice fucks up the border color)
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
+    -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
     -- -- add border to default signature help (replaced with ray-x/lsp_signature.nvim
     -- vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.border })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

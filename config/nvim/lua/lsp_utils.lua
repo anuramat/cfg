@@ -120,18 +120,9 @@ local function setup_lsp_keybinds(buffer)
 end
 
 -- TODO docstring
-local function setup_signature(buffer)
-  require('lsp_signature').on_attach({
-    bind = true, -- This is mandatory, otherwise border config won't get registered.
-    handler_opts = { border = 'rounded' },
-  }, buffer)
-end
-
--- TODO docstring
 function M.default_on_attach(client, buffer)
   setup_lsp_keybinds(buffer)
   setup_lsp_autoformatting(client, buffer)
-  setup_signature(buffer)
 end
 
 return M

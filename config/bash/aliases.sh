@@ -4,7 +4,7 @@ c() {
 	curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
 }
 alias t="tldr"
-alias f="neovim"
+alias f="nvim"
 alias v="neovide && exit"
 alias d="xdg-open"
 

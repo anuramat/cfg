@@ -16,7 +16,7 @@ in
   i18n.defaultLocale = user.defaultLocale;
   system.stateVersion = user.stateVersion;
   networking.hostName = user.hostname;
-
+  xdg.mime.defaultApplications = import ./mime.nix;
   users.users.${user.username} = {
     description = user.fullname;
     isNormalUser = true;

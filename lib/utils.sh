@@ -13,21 +13,6 @@ ensure_path() {
 	echo "[cfg.write] created path \"$1\""
 }
 
-ensure_string() {
-	# $1 -- string
-	# $2 -- target file
-	local -r string="$1"
-	local -r target="$2"
-
-	grep -Fq "$string" "$target" && return
-	ensure_path "$(dirname "$target")" || return 1
-	echo "$string" >>"$target" || {
-		echo "[cfg.fail] append string \"$string\" to $target"
-		return 1
-	}
-	echo "[cfg.write] appended \"$string\" to $target"
-}
-
 make_symlink() {
 	# $1 -- source file
 	# $2 -- target file/directory
@@ -76,19 +61,6 @@ install2file() {
 	make_symlink "$original" "$target" || return 1
 }
 
-set_shell() {
-	local -r shell="$(dirname "$1")/$(basename "$1")"
-
-	[ "$SHELL" = "$shell" ] && return
-	[ -f "$shell" ] || {
-		echo "[cfg.fail] shell \"$shell\" not found"
-		return 1
-	}
-	sudo bash -c "$(declare -f ensure_path); $(declare -f ensure_string); ensure_string \"$shell\" /etc/shells"
-	# HACK this is ugly
-	chsh -s "$shell"
-}
-
 continue_prompt() {
 	local -r prompt="$1"
 	local choice
@@ -108,9 +80,4 @@ try_overwrite() {
 	local -r target="$1"
 	[ "$__ALWAYS_OVERWRITE" = "true" ] || continue_prompt "overwrite \"$target\"?" || return 1
 	rm -rf "$target" || return 1
-}
-
-remove_extension() {
-	# $1 -- original name/path
-	basename "$1" | perl -pe 's/^(.*)\..*$/\1/'
 }

@@ -4,12 +4,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  username = "anuramat";
-  fullname = "Arsen Nuramatov";
-  hostname = "anuramat-t480";
-  timezone = "Etc/GMT-5";
-  stateVersion = "23.05"; # WARNING DO NOT EDIT
-
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Sway boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -25,51 +19,21 @@ let
   ];
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+  user = import ./user.nix;
 in
 {
-  # ~~~~~~~~~~~~~~~~~~~~~~~ NixOS stuff ~~~~~~~~~~~~~~~~~~~~~~~~
-  system =
-    {
-      # backup the configuration.nix to /run/current-system/configuration.nix
-      copySystemConfiguration = true;
-      stateVersion = stateVersion;
-    };
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   imports = [
     ./hardware-configuration.nix
     <home-manager/nixos>
+    ./boilerplate.nix
   ];
-  nixpkgs.config = {
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
-    allowUnfree = true;
-  };
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Basics ~~~~~~~~~~~~~~~~~~~~~~~~~~
-  time.timeZone = timezone; # WARN inverted
-  i18n.defaultLocale = "en_US.UTF-8";
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-  };
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~ User ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # TODO: icons, cursor
-  users.users.${username} = {
-    description = fullname;
-    isNormalUser = true;
-    extraGroups = [
-      "wheel" # root
-      "video" # screen brightness
-      "network" # wifi
-      "docker" # docker
-      "audio" # just in case (?)
-      "syncthing" # just in case default syncthing settings are used
-      "plugdev" # pluggable devices : required by zsa voyager
-      "input" # le unsecure, used by waybar-keyboard-state
-      "dialout" # serial ports
-    ];
-    packages = with pkgs; [
-    ];
   };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~ Misc GUI ~~~~~~~~~~~~~~~~~~~~~~~~~
   fonts.packages = with pkgs; [
@@ -95,7 +59,6 @@ in
         #   enable = true;
         #   settings = { Settings = { AutoConnect = true; }; };
       };
-      hostName = hostname;
       nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };
   # uses DNSSEC and DNSoverTLS, might break on a different ns
@@ -252,9 +215,9 @@ in
   services.syncthing =
     {
       enable = true;
-      user = username;
-      dataDir = "/home/${username}"; # parent directory for synchronised folders
-      configDir = "/home/${username}/.config/syncthing"; # keys and settings
-      databaseDir = "/home/${username}/.local/share/syncthing"; # database and logs
+      user = user.username;
+      dataDir = "/home/${user.username}"; # parent directory for synchronised folders
+      configDir = "/home/${user.username}/.config/syncthing"; # keys and settings
+      databaseDir = "/home/${user.username}/.local/share/syncthing"; # database and logs
     };
 }

@@ -19,7 +19,7 @@
 [core]
   pager = delta
 [interactive]
-  diffFilter = delta
+  diffFilter = delta --color-only
 
 [advice]
   detachedHead = false

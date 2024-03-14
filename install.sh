@@ -2,12 +2,14 @@
 set -e
 
 . ./lib/utils.sh
-. ./home/profile.sh
+. ./home/.profile
 
 echo "[cfg] installing dotfiles"
+shopt -s dotglob
 for __dotfile in home/*; do
-	install2file "$__dotfile" "$HOME/.$(remove_extension "$__dotfile")"
+	install2folder "$__dotfile" "$HOME"
 done
+shopt -u dotglob
 
 echo "[cfg] installing configs"
 for __folder in config/*; do

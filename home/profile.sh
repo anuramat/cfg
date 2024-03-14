@@ -31,7 +31,7 @@ export LC_ALL="en_US.UTF-8"
 export PAGER=less
 # export MANPAGER='nvim +Man!'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-export DELTA_PAGER='less -ir'
+# export DELTA_PAGER='less -ir' # TODO why doesn't this pick up the lesskey config?
 
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"

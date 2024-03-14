@@ -14,12 +14,7 @@
 
 # Use the command 'task show' to see all defaults and overrides
 
-# Files
-### data.location=/home/anuramat/.task
-
-# To use the default location of the XDG directories,
-# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
-
+# XDG compliant directories
 data.location=~/.local/share/task
 hooks.location=~/.config/task/hooks
 

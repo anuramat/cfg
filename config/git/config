@@ -23,6 +23,7 @@
 
 [advice]
   detachedHead = false
+  addEmptyPathspec = false
 
 [push]
   autoSetupRemote = true

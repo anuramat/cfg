@@ -27,11 +27,12 @@ export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
 
 # Locale
 export LC_ALL="en_US.UTF-8"
-# already defined in *.nix
+# just in case, this is already defined in *.nix
 
-export PAGER=less # already defined somewhere in system level rc
+export PAGER=less # just in case, this is already defined somewhere in system level rc
 # export MANPAGER='nvim +Man!'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'" # I don't know how this works
+# docs: It might also be necessary to set MANROFFOPT="-c" if you experience formatting problems.
 
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"

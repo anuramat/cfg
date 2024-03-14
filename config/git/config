@@ -17,7 +17,7 @@
 
 ; delta
 [core]
-  pager = delta
+  pager = "DELTA_PAGER='less -F' delta"
 [interactive]
   diffFilter = delta --color-only
 

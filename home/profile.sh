@@ -27,11 +27,11 @@ export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
 
 # Locale
 export LC_ALL="en_US.UTF-8"
+# already defined in *.nix
 
-export PAGER=less
+export PAGER=less # already defined somewhere in system level rc
 # export MANPAGER='nvim +Man!'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-# export DELTA_PAGER='less -ir' # TODO why doesn't this pick up the lesskey config? # somehow breaks `git diff`
 
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"

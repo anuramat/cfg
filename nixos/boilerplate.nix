@@ -12,7 +12,7 @@ in
       # backup the configuration.nix to /run/current-system/configuration.nix
       copySystemConfiguration = true;
     };
-  time.timeZone = user.timezone; # WARN inverted
+  time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
   system.stateVersion = user.stateVersion;
   networking.hostName = user.hostname;

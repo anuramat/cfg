@@ -7,7 +7,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 
-export GRIM_DEFAULT_DIR="$HOME/Screenshots"
+export GRIM_DEFAULT_DIR="$HOME/screenshots"
 
 # Homebrew path
 export HOMEBREW_PREFIX="/opt/homebrew"

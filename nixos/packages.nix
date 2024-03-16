@@ -21,6 +21,7 @@ pkgs: unstable: with pkgs; [
   starship # terminal prompt
   cod # completion generator (updates on `cmd --help`)
   tldr # local cheatsheets
+  age # file encryption
 
   ### Media
   gimp-with-plugins # raster graphics

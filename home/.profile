@@ -34,6 +34,8 @@ export PAGER=less # just in case, this is already defined somewhere in system le
 export MANPAGER="sh -c 'col -bx | bat -l man -p'" # I don't know how this works
 # docs: It might also be necessary to set MANROFFOPT="-c" if you experience formatting problems.
 
+export TERMCMD="alacritty" # used by rifle
+
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"
 

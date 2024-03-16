@@ -43,6 +43,10 @@ in
     platformTheme = "qt5ct";
     style = "adwaita-dark";
   };
+  # ~~~~~~~~~~~~~~~~~~~~~~~ Home Manager ~~~~~~~~~~~~~~~~~~~~~~~
+  home-manager.users.${user.username} = {
+    home.stateVersion = user.stateVersion;
+  };
   # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
   # TODO why set nameservers twice?
   networking =

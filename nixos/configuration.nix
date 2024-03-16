@@ -47,47 +47,6 @@ in
   home-manager.users.${user.username} = {
     home.stateVersion = user.stateVersion;
   };
-  # ~~~~~~~~~~~~~~~~~~~~~~~~ Networking ~~~~~~~~~~~~~~~~~~~~~~~~
-  # TODO why set nameservers twice?
-  networking =
-    {
-      firewall.enable = true;
-      # firewall.allowedTCPPorts = [ ... ];
-      # firewall.allowedUDPPorts = [ ... ];
-      networkmanager = {
-        enable = true; # TODO find a decent gui?;
-        #   wifi.backend = "iwd";
-        # };
-        # wireless.iwd = {
-        #   enable = true;
-        #   settings = { Settings = { AutoConnect = true; }; };
-      };
-      nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
-    };
-  # uses DNSSEC and DNSoverTLS, might break on a different ns
-  services.resolved = {
-    enable = true;
-    dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    extraConfig = ''
-      DNSOverTLS=yes
-    '';
-  };
-  # ~~~~~~~~~~~~~~~~~~~~~~~~ Printers ~~~~~~~~~~~~~~~~~~~~~~~~~~
-  services = {
-    # Enable CUPS to print documents, available @ http://localhost:631/
-    printing = {
-      enable = true;
-      # drivers = [ YOUR_DRIVER ];
-    };
-    # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
-    avahi = {
-      enable = true;
-      nssmdns = true;
-      openFirewall = true; # Open udp 5353 for network devices discovery
-    };
-  };
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~ Power ~~~~~~~~~~~~~~~~~~~~~~~~~~~
   services = {
     thermald.enable = true; # cooling

@@ -18,6 +18,7 @@ in
     ./modules/networking.nix
     ./modules/boilerplate.nix
     ./modules/peripherals.nix
+    ./modules/overlays.nix
 
     <home-manager/nixos>
   ];

@@ -11,10 +11,13 @@ in
   imports = [
     ./hardware-configuration.nix
 
-    ./boilerplate.nix
-    ./peripherals.nix
-    ./printers.nix
-    ./networking.nix
+    ./modules/gui.nix
+    ./modules/laptop.nix
+    ./modules/printers.nix
+    ./modules/services.nix
+    ./modules/networking.nix
+    ./modules/boilerplate.nix
+    ./modules/peripherals.nix
 
     <home-manager/nixos>
   ];
@@ -44,18 +47,4 @@ in
   # RealtimeKit, scheduling priotity of user processes, used eg by PulseAudio to get realtime priority
   # "optional but recommended"
   security.rtkit.enable = true;
-  # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
-  # TODO restic backups
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true;
-  documentation.man.generateCaches = true; # apropos
-  virtualisation.docker.enable = true;
-  services.syncthing =
-    {
-      enable = true;
-      user = user.username;
-      dataDir = "/home/${user.username}"; # parent directory for synchronised folders
-      configDir = "/home/${user.username}/.config/syncthing"; # keys and settings
-      databaseDir = "/home/${user.username}/.local/share/syncthing"; # database and logs
-    };
 }

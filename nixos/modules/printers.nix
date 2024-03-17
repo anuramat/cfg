@@ -4,7 +4,7 @@
     # Enable CUPS to print documents, available @ http://localhost:631/
     printing = {
       enable = true;
-      # drivers = [ YOUR_DRIVER ];
+      drivers = [ ];
     };
     # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
     avahi = {

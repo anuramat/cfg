@@ -5,6 +5,7 @@ let
   user = import ./user.nix;
 in
 {
+  documentation.man.generateCaches = true; # apropos
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config = {
     allowUnfree = true;

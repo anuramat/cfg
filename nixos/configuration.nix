@@ -111,13 +111,7 @@ in
   };
   services.dbus.enable = true;
   # ~~~~~~~~~~~~~~~~~~~~~ System software ~~~~~~~~~~~~~~~~~~~~~~
-  environment =
-    {
-      shellAliases = {
-        l = null;
-      };
-      systemPackages = import ./packages.nix pkgs unstable;
-    };
+  environment.systemPackages = import ./packages.nix pkgs unstable;
   # ~~~~~~~~~~~~~~~~~~~~~~ Misc software ~~~~~~~~~~~~~~~~~~~~~~~
   # TODO restic backups
   services.gnome.gnome-keyring.enable = true;

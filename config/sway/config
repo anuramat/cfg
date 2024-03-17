@@ -41,6 +41,7 @@ for_window {
     [app_id="gnome-pomodoro"] floating enable
     [app_id="org.gnome.Solanum"] floating enable
     [app_id="xdg-desktop-portal-gtk"] floating enable
+    [app_id="nm-connection-editor"] floating enable
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Inputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 input * {

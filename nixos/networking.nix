@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
   # TODO why set nameservers twice?
   networking =
@@ -8,11 +8,11 @@
       # firewall.allowedUDPPorts = [ ... ];
       networkmanager = {
         enable = true;
-        #   wifi.backend = "iwd";
-        # };
-        # wireless.iwd = {
-        #   enable = true;
-        #   settings = { Settings = { AutoConnect = true; }; };
+        wifi.backend = "iwd"; # autoconnect might be broken from time to time
+      };
+      wireless.iwd = {
+        enable = true;
+        settings = { Settings = { AutoConnect = true; }; };
       };
       nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
     };

@@ -129,4 +129,9 @@ specs.symbols = {
   },
 }
 
+specs.info = {
+  'HiPhish/info.vim',
+  event = 'VeryLazy',
+}
+
 return u.values(specs)

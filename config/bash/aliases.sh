@@ -8,6 +8,8 @@ alias f="nvim"
 alias v="neovide && exit"
 alias d="xdg-open"
 
+alias info="info --vi-keys"
+
 # ls
 if command -v "eza" >/dev/null 2>&1; then
 	# config file is proposed:

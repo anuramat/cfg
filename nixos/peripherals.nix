@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
   # ZSA Voyager
   services.udev.extraRules = ''

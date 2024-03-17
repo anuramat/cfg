@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
   services = {
     # Enable CUPS to print documents, available @ http://localhost:631/

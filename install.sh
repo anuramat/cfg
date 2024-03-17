@@ -18,6 +18,5 @@ shopt -u dotglob
 echo "[cfg] creating directories"
 # TODO move all of this to configuration.nix or home manager
 touch "$HOME/.hushlogin"
-ensure_path "$HOME/bin"
 ensure_path "$HOME/screenshots"
 # TODO maybe ensure path for all xdg paths

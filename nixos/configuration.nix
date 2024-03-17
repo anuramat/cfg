@@ -25,7 +25,7 @@ in
     ./hardware-configuration.nix
 
     ./boilerplate.nix
-    ./hardware.nix
+    ./peripherals.nix
     ./printers.nix
     ./networking.nix
     

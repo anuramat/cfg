@@ -1,3 +1,5 @@
+# - sane defaults
+# - user-specific stuff from user.nix
 { ... }:
 let
   user = import ./user.nix;

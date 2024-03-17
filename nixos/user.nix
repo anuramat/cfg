@@ -1,3 +1,4 @@
+# user-specific variables
 {
   username = "anuramat";
   fullname = "Arsen Nuramatov";

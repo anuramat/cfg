@@ -7,7 +7,7 @@
       # firewall.allowedTCPPorts = [ ... ];
       # firewall.allowedUDPPorts = [ ... ];
       networkmanager = {
-        enable = true; # TODO find a decent gui?;
+        enable = true;
         #   wifi.backend = "iwd";
         # };
         # wireless.iwd = {

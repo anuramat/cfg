@@ -1,6 +1,6 @@
 { ... }:
 let
-  user = import ../user.nix;
+  user = import ../expr/user.nix;
 in
 {
   # TODO restic backups

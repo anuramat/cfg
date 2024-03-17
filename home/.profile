@@ -23,6 +23,7 @@ export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export XCOMPOSECACHE="${XDG_CACHE_HOME}"/X11/xcompose
+export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
 
 # Go modules and binaries
 export PATH="${PATH:+$PATH:}$GOPATH/bin"

@@ -1,4 +1,15 @@
-.PHONY: all
+local_nixos::=./nixos/
+sys_nixos::=/etc/nixos/
+tofi_drun_cache::="${XDG_CACHE_HOME}/tofi-drun"
+
+.PHONY: build
+build:
+	@ # copy the config (merges directories, overwrites files)
+	@ sudo rsync -r --chown=root:root "${local_nixos}" "${sys_nixos}"
+	@ sudo nixos-rebuild switch
+	@ [ -f "${tofi_drun_cache}" ] && rm "${tofi_drun_cache}" || true
+
+.PHONY: lint
 all: lua_lint sh_lint
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lua ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

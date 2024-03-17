@@ -14,24 +14,30 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 _brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv 2>/dev/null)" || true
 eval "$_brewshellenv"
 
+# XDG Compliance
+export GOPATH="$XDG_DATA_HOME/go"
+export STACK_ROOT="$XDG_DATA_HOME"/stack
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export XCOMPOSECACHE="${XDG_CACHE_HOME}"/X11/xcompose
+
 # Go modules and binaries
-export GOPATH="$HOME/go"
 export PATH="${PATH:+$PATH:}$GOPATH/bin"
-
-# User binaries
-export PATH="$HOME/.local/bin${PATH:+:$PATH}"
-export PATH="$HOME/bin${PATH:+:$PATH}"
-
 # Ghcup
 export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
+# User binaries
+export PATH="$HOME/.local/bin${PATH:+:$PATH}"
 
 # Locale
 export LC_ALL="en_US.UTF-8"
 # just in case, this is already defined in *.nix
 
 export PAGER=less # just in case, this is already defined somewhere in system level rc
-# export MANPAGER='nvim +Man!'
-export MANPAGER="sh -c 'col -bx | bat -l man -p'" # I don't know how this works
+export MANPAGER='nvim +Man!'
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'" # I don't know how this works
 # docs: It might also be necessary to set MANROFFOPT="-c" if you experience formatting problems.
 
 export TERMCMD="alacritty" # used by rifle

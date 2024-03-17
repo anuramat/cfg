@@ -3,9 +3,11 @@
   # TODO why set nameservers twice?
   networking =
     {
-      firewall.enable = true;
-      firewall.allowedTCPPorts = [ ];
-      firewall.allowedUDPPorts = [ ];
+      firewall = {
+        enable = true;
+        allowedTCPPorts = [ ];
+        allowedUDPPorts = [ ];
+      };
       networkmanager = {
         enable = true;
       };

@@ -30,8 +30,9 @@ in
       "audio" # just in case (?)
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
-      "input" # le unsecure, used by waybar-keyboard-state
+      # "input" # le unsecure, used by waybar-keyboard-state # XXX
       "dialout" # serial ports
+      "networkmanager" # take a guess
     ];
   };
 }

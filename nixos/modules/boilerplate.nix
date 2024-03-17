@@ -2,7 +2,7 @@
 # - user-specific stuff from user.nix
 { ... }:
 let
-  user = import ./user.nix;
+  user = import ../user.nix;
 in
 {
   documentation.man.generateCaches = true; # apropos
@@ -19,7 +19,7 @@ in
   i18n.defaultLocale = user.defaultLocale;
   system.stateVersion = user.stateVersion;
   networking.hostName = user.hostname;
-  xdg.mime.defaultApplications = import ./mime.nix;
+  xdg.mime.defaultApplications = import ../mime.nix;
   users.users.${user.username} = {
     description = user.fullname;
     isNormalUser = true;

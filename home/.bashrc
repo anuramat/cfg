@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 bind 'set bell-style none' # Disable annoying sound
-shopt -s globstar          # Enables ** for recursing into subdirectories
+shopt -s globstar autocd
+# globstar - Enables ** for recursing into subdirectories
+# autocd - `cd path` -> `path`
 
 . "$HOME/.profile"                # basic env vars
 . "$XDG_CONFIG_HOME/bash/opts.sh" # options for external tools

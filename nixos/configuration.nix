@@ -28,7 +28,7 @@ in
     ./peripherals.nix
     ./printers.nix
     ./networking.nix
-    
+
     <home-manager/nixos>
   ];
   nixpkgs.config.permittedInsecurePackages = [

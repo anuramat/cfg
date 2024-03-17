@@ -231,6 +231,7 @@ pkgs: unstable: with pkgs; [
   kooha # screen capture with basic gui
 
   ### DE stuff
+  networkmanagerapplet
   waybar # status bar
   tofi # app launcher
   wev # wayland event viewer, useful for debugging

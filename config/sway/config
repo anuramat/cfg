@@ -73,6 +73,7 @@ exec_always {
     pkill inactive-windo; inactive-windows-transparency.py
     pkill swayidle; swayidle -w
     pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
+    pkill nm-applet; nm-applet
 }
 set {
     $term_run alacritty -e

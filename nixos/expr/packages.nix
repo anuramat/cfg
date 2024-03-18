@@ -74,7 +74,7 @@ pkgs: unstable: with pkgs; [
   broot
   xplr
 
-  # vscode
+  unstable.vscode
 
   ### Languages
   #### Compilers/interpreters
@@ -119,6 +119,7 @@ pkgs: unstable: with pkgs; [
   unstable.pyright
   unstable.gopls
   unstable.marksman
+  unstable.clang-tools
 
   ### Viewers
   imv # terminal image viewer

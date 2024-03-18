@@ -15,4 +15,5 @@ in
       configDir = "/home/${user.username}/.config/syncthing"; # keys and settings
       databaseDir = "/home/${user.username}/.local/share/syncthing"; # database and logs
     };
+  # TODO somehow use XDG variables
 }

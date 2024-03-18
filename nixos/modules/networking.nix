@@ -11,17 +11,15 @@
       networkmanager = {
         enable = true;
       };
-      nameservers = [ "1.1.1.1" "1.0.0.1" ]; # Set cloudflare dns TODO what does #one.one.one.one mean
+      nameservers = [ "1.1.1.1" "1.0.0.1" ];
     };
   # uses DNSSEC and DNSoverTLS, might break on a different ns
   services.resolved = {
     enable = true;
     dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [ "1.1.1.1" "1.0.0.1" ];
-    extraConfig = ''
-      DNSOverTLS=yes
-    '';
+    dnsovertls = "true";
+    domains = [ "~." ]; # TODO what does this do?
+    fallbackDns = [ "1.1.1.1" "1.0.0.1" ]; # TODO when is this used?
   };
 
   hardware.bluetooth =
@@ -29,5 +27,5 @@
       enable = true;
       powerOnBoot = true;
     };
-  services.blueman.enable = true; # bluetooth
+  services.blueman.enable = true; # bluetooth gui
 }

@@ -123,6 +123,9 @@ tooltip {
 #tray {
   padding: 4px 6px;
 }
+#tray * {
+  background-color: @background;
+}
 #idle_inhibitor {
   padding-right: 13px;
 }

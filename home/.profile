@@ -22,6 +22,7 @@ export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg # ??? I didn't install this...
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
+# mkdir -p "$(dirname "$HISTFILE")" || true # TODO manually create some of these
 export XCOMPOSECACHE="${XDG_CACHE_HOME}"/X11/xcompose
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc

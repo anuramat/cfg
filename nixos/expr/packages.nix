@@ -20,7 +20,7 @@ pkgs: unstable: with pkgs; [
   rclone # rsync for cloud
   starship # terminal prompt
   cod # completion generator (updates on `cmd --help`)
-  tldr # local cheatsheets
+  tealdeer # tldr implementation in rust, adheres to XDG basedir spec
   age # file encryption
 
   ### Media

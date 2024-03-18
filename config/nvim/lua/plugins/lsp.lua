@@ -28,7 +28,6 @@ local function cfgs()
   return {
     nixd = {}, -- nil_ls -- better diagnostics in some regards
     yamlls = {},
-    tsserver = {},
     texlab = {},
     bashls = {},
     pyright = {},
@@ -48,7 +47,6 @@ local function cfgs()
       end,
       filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' }, -- 'proto' removed
     },
-
     gopls = {
       settings = {
         gopls = {

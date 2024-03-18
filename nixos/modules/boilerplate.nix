@@ -33,7 +33,9 @@ in
       "plugdev" # pluggable devices : required by zsa voyager
       # "input" # le unsecure, used by waybar-keyboard-state # XXX
       "dialout" # serial ports
-      "networkmanager" # take a guess
+      "networkmanager"
+      "scanner"
+      "lp" # printers
     ];
   };
 }

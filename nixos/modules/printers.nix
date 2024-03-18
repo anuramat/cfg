@@ -1,5 +1,7 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  # https://nixos.wiki/wiki/Printing
+  # https://nixos.wiki/wiki/Scanners
   services = {
     # Enable CUPS to print documents, available @ http://localhost:631/
     printing = {
@@ -12,5 +14,10 @@
       nssmdns = true;
       openFirewall = true; # Open udp 5353 for network devices discovery
     };
+  };
+  # `scanimage`
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ ];
   };
 }

@@ -251,11 +251,9 @@ pkgs: unstable: with pkgs; [
   sov # workspace overview for sway
 
   ### Display settings
-  # TODO Choose one
-  wdisplays # gui display configuration
-  kanshi
-  wlopm
-  wlr-randr
+  kanshi # plaintext defined display configs
+  wlr-randr # interactive cli display configs
+  wlay # gui display configs (can output kanshi/sway/wlr-randr files)
 
   brightnessctl
 

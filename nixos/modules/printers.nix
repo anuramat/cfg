@@ -3,6 +3,8 @@
   # scanning - `scanimage`
   # printing - http://localhost:631/
   # list printers - `lpstat -p`
+  # list printer jobs - `lpstat`
+  # cancel job - `cancel 1`
   # printing - `system-config-printer`
 
   # https://nixos.wiki/wiki/Printing

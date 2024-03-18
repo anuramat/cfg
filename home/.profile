@@ -9,11 +9,6 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 
 export GRIM_DEFAULT_DIR="$HOME/screenshots"
 
-# Homebrew path
-export HOMEBREW_PREFIX="/opt/homebrew"
-_brewshellenv="$("$HOMEBREW_PREFIX/bin/brew" shellenv 2>/dev/null)" || true
-eval "$_brewshellenv"
-
 # XDG Compliance
 export GOPATH="$XDG_DATA_HOME/go"
 export STACK_ROOT="$XDG_DATA_HOME"/stack # Haskell stack
@@ -37,6 +32,9 @@ export PATH="${PATH:+$PATH:}$GOPATH/bin"
 export PATH="$HOME/.ghcup/bin${PATH:+:$PATH}"
 # User binaries
 export PATH="$HOME/.local/bin${PATH:+:$PATH}"
+
+# Don't let python venvs change the PS1
+export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
 # Locale
 export LC_ALL="en_US.UTF-8"

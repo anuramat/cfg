@@ -25,8 +25,9 @@ set expand-tilde on
 set match-hidden-files off
 # show filetype char
 set visible-stats on
-# TODO
+# show comps without a bell when multiple comps
 set show-all-if-ambiguous on
+# show comps without a bell when no common prefix
 set show-all-if-unmodified on
 # ~~~~~~~~~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~ #
 # reset history modifications after running a command

@@ -29,7 +29,7 @@ set visible-stats on
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 # ~~~~~~~~~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~ #
-# TODO
+# reset history modifications after running a command
 set revert-all-at-newline on
 # mark modified history lines with *
 set mark-modified-lines

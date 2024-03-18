@@ -66,6 +66,7 @@ exec_always {
     pkill swayidle; swayidle -w
     pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
     pkill nm-applet; nm-applet
+    pkill avizo-service; avizo-service
 }
 set {
     $term_run alacritty -e
@@ -86,12 +87,12 @@ set {
     $screenshot_all_outputs grim - | swappy -f -
     $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
 
-    $brightness_up brightnessctl set 20%-
-    $brightness_down brightnessctl set 20%+
-    $sound_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-    $sound_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-    $mute_sound wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    $mute_mic wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+    $brightness_up lightctl up
+    $brightness_down lightctl down
+    $sound_up exec volumectl -u up
+    $sound_down exec volumectl -u down
+    $mute_sound exec volumectl toggle-mute
+    $mute_mic exec volumectl -m toggle-mute
     $audio_prev playerctl -p spotify previous
     $audio_next playerctl -p spotify next
     $audio_play playerctl -p spotify play
@@ -240,8 +241,8 @@ $bind {
     $mod+$mod2+9 move container to workspace number 9
     $mod+$mod2+0 move container to workspace number 10
     # Special keys
-    XF86MonBrightnessDown exec $brightness_up
-    XF86MonBrightnessUp   exec $brightness_down
+    XF86MonBrightnessDown exec $brightness_down
+    XF86MonBrightnessUp   exec $brightness_up
     XF86AudioMicMute      exec $mute_mic
     XF86AudioMute         exec $mute_sound
     XF86AudioLowerVolume  exec $sound_down

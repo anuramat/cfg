@@ -5,7 +5,7 @@
 
 let
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
-  user = import ./user.nix;
+  user = import ./expr/user.nix;
 in
 {
   imports = [
@@ -25,7 +25,7 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-  environment.systemPackages = import ./packages.nix pkgs unstable;
+  environment.systemPackages = import ./expr/packages.nix pkgs unstable;
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

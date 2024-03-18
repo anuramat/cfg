@@ -255,7 +255,7 @@ pkgs: unstable: with pkgs; [
   wlr-randr # interactive cli display configs
   wlay # gui display configs (can output kanshi/sway/wlr-randr files)
 
-  brightnessctl
+  unstable.avizo # brightness/volume control with overlay indicator
 
   ### Themes etc
   glib # gsettings (gtk etc)

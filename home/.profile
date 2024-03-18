@@ -26,6 +26,8 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 
+export HISTFILESIZE=9999
+
 # Go modules and binaries
 export PATH="${PATH:+$PATH:}$GOPATH/bin"
 # Ghcup

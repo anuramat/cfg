@@ -10,6 +10,7 @@
       };
       networkmanager = {
         enable = true;
+        # wifi ignores resolved FIXME
       };
       nameservers = [ "1.1.1.1" "1.0.0.1" ];
     };

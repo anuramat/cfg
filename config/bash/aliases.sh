@@ -37,7 +37,7 @@ alias ....="cd ../../.."
 
 # XDG COMPLIANCE
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-alias wget=wget --hsts-file="$XDG_DATA_HOME/wget-hsts"
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 
 upload() {
 	curl --upload-file "$1" "https://transfer.sh/$1"

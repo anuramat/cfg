@@ -27,6 +27,7 @@ export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss # VLC dependency
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
+export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 
 # Go modules and binaries
 export PATH="${PATH:+$PATH:}$GOPATH/bin"

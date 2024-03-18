@@ -23,11 +23,18 @@ nn & :&&<cr>
 " not exactly like nvim but close enough
 nn Q @q
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ paths ~~~~~~~~~~~~~~~~~~~~~~~~~"
-cal mkdir(expand('~/.vim/view'), 'p')
-cal mkdir(expand('~/.vim/undo'), 'p')
-cal mkdir(expand('~/.vim/backup'), 'p')
-cal mkdir(expand('~/.vim/swap'), 'p')
-se udir=~/.vim/undo bdir=~/.vim/backup dir=~/.vim/swap vdir=~/.vim/view
+let s:swap=resolve($XDG_STATE_HOME..'/vim/swap')
+cal mkdir(s:swap, 'p')
+let &dir=s:swap
+let s:backup=resolve($XDG_STATE_HOME..'/vim/backup')
+cal mkdir(s:backup, 'p')
+let &bdir=s:backup
+let s:view=resolve($XDG_STATE_HOME..'/vim/view')
+cal mkdir(s:view, 'p')
+let &vdir=s:view
+let s:undo=resolve($XDG_STATE_HOME..'/vim/undo')
+cal mkdir(s:undo, 'p')
+let &udir=s:undo
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 packadd! matchit
 se autoindent autoread

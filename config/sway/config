@@ -8,7 +8,7 @@ set {
     $mod4 alt
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Outputs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# `swaymsg -t get_outputs`
+# `swaymsg -t get_outputs` or `wlr-randr`
 set {
     $internal eDP-1
     $external DP-1 DP-2
@@ -25,15 +25,6 @@ workspace {
     8 output $external $internal
     9 output $external $internal
     10 output $external $internal
-}
-
-output eDP-1 {
-    pos 320 1440
-}
-# 4k
-output "Lenovo Group Limited LEN T27p-10 0x00007F36" {
-    scale 1.5
-    pos 0 0
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Per app settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # `swaymsg -t get_tree`

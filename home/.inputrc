@@ -38,3 +38,5 @@ set mark-modified-lines
 set history-size -1
 # show trailing slash for directory symlinks
 set mark-symlinked-directories on
+# without this: |file -> Makefilefile; with this: |file -> Makefile
+set skip-completed-text on

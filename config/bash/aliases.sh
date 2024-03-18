@@ -9,6 +9,7 @@ alias v="neovide && exit"
 alias d="xdg-open"
 
 alias info="info --vi-keys"
+alias mime="xdg-mime query filetype"
 
 # ls
 if command -v "eza" >/dev/null 2>&1; then

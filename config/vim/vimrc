@@ -35,6 +35,8 @@ let &vdir=s:view
 let s:undo=resolve($XDG_STATE_HOME..'/vim/undo')
 cal mkdir(s:undo, 'p')
 let &udir=s:undo
+let s:info=resolve($XDG_STATE_HOME..'/vim/viminfo')
+let &viminfo=&viminfo..',n'..s:info
 "~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 packadd! matchit
 se autoindent autoread

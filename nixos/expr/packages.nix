@@ -176,7 +176,7 @@ pkgs: unstable: with pkgs; [
   acpi # battery status etc
 
   ### Basic terminal stuff
-  unstable.vim
+  unstable.vim-full
   ripgrep-all # grep over pdfs etc
   zoxide # better cd
   bat # better cat with syntax hl

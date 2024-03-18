@@ -230,6 +230,7 @@ pkgs: unstable: with pkgs; [
   kooha # screen capture with basic gui
 
   ### DE stuff
+  system-config-printer # printer gui
   networkmanagerapplet
   waybar # status bar
   tofi # app launcher

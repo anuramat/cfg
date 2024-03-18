@@ -4,7 +4,8 @@ let
   browser = "google-chrome.desktop";
   fileManager = "nnn.desktop";
   documentViewer = "org.pwmt.zathura.desktop";
-  textEditor = "nvim.desktop";
+  # textEditor = "nvim.desktop";
+  textEditor = "neovide.desktop";
   imageViewer = "org.nomacs.ImageLounge.desktop";
   torrentClient = "transmission-gtk.desktop";
   videoPlayer = "mpv.desktop";

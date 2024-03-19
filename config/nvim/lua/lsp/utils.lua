@@ -2,6 +2,7 @@ local M = {}
 
 local u = require('utils')
 local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
+local params = require('lsp.params')
 
 local on_cmd = 'AutoformatOn'
 local off_cmd = 'AutoformatOff'
@@ -15,7 +16,7 @@ local function format(opts)
     opts = {}
   end
   opts.filter = function(client)
-    return not u.contains(_G.fmt_srv_blacklist, client.name)
+    return not u.contains(params.fmt_srv_blacklist, client.name)
   end
   vim.lsp.buf.format(opts)
 end
@@ -71,7 +72,7 @@ end
 local function setup_lsp_autoformatting(client, buffer)
   if
     not client.server_capabilities.documentFormattingProvider
-    or u.contains(_G.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
+    or u.contains(params.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
   then
     return
   end

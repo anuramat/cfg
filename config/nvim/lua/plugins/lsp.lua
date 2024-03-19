@@ -2,15 +2,6 @@ local specs = {}
 local lsp_utils = require('lsp.utils')
 local u = require('utils')
 
--- These servers will be ignored when trying to format
-_G.fmt_srv_blacklist = {
-  'lua_ls', -- using stylua instead
-  'nil_ls', -- using alejandra
-}
-_G.fmt_ft_blacklist = {
-  'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
-}
-
 --- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }
 local function root_dir_with_fallback(opts)

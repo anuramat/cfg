@@ -11,8 +11,8 @@ return {
   config = function()
     local lspconfig = require('lspconfig')
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
-    require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
-
+    -- add border to `:LspInfo` menu
+    require('lspconfig.ui.windows').default_options.border = vim.g.border
     -- -- add border to default hover handler (replaced by folke/noice.nvim)
     -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
     -- -- add border to default signature help (replaced with ray-x/lsp_signature.nvim)

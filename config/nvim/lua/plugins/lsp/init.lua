@@ -1,5 +1,5 @@
 local specs = {}
-local configs = require('lsp.language_specific.lsp_configs')
+local configs = require('plugins.lsp.configs')
 local on_attach = require('lsp.on_attach')
 local u = require('utils')
 

@@ -1,3 +1,4 @@
+M = {}
 local u = require('utils')
 
 local function set(l, r, d)
@@ -84,8 +85,12 @@ set('<leader>$', function()
 end, 'Subheader')
 
 --- Prints triggered events for debug purposes
+--- Usage:
+--- ```lua
+--- M.debug_events({ 'BufReadPre', 'BufNewFile' })
+--- ```
 --- @param events table List of events to subscribe to
-local debug_events = function(events)
+M.debug_events = function(events)
   local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
   local counter = 0
   for _, e in pairs(events) do
@@ -98,3 +103,5 @@ local debug_events = function(events)
     })
   end
 end
+
+return M

@@ -1,5 +1,7 @@
 local M = {}
 
+local lsp_utils = require('lsp.utils')
+
 --- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }
 local root_dir_with_fallback = function(opts)
@@ -32,7 +34,7 @@ M.cfgs = function()
           '<cmd>ClangdSwitchSourceHeader<cr>',
           { silent = true, desc = 'clangd: Switch between .c/.h' }
         )
-        require('lsp.utils').default_on_attach(client, buffer)
+        lsp_utils.default_on_attach(client, buffer)
         require('clangd_extensions.inlay_hints').setup_autocmd()
         require('clangd_extensions.inlay_hints').set_inlay_hints()
       end,

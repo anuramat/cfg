@@ -1,5 +1,7 @@
 local M = {}
 
+local formatting = require('lsp.formatting')
+
 M.setup_lsp_keybinds = function(buffer)
   local function set(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
@@ -19,7 +21,7 @@ M.setup_lsp_keybinds = function(buffer)
   vim.bo[buffer].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   set_prefixed('r', vim.lsp.buf.rename, 'Rename symbol')
-  set_prefixed('f', require('lsp.formatting').format, 'Format buffer')
+  set_prefixed('f', formatting.format, 'Format buffer')
   set_prefixed('a', vim.lsp.buf.code_action, 'Code action')
   set_prefixed('l', vim.lsp.codelens.run, 'CodeLens')
 

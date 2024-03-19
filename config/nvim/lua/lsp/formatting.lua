@@ -1,11 +1,6 @@
 local M = {}
 
 local u = require('utils')
-local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
-
-local on_cmd = 'AutoformatOn'
-local off_cmd = 'AutoformatOff'
-local toggle_cmd = 'AutoformatToggle'
 
 -- These servers will be ignored when trying to format
 local fmt_srv_blacklist = {
@@ -16,6 +11,11 @@ local fmt_srv_blacklist = {
 local fmt_ft_blacklist = {
   'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
 }
+
+local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
+local on_cmd = 'AutoformatOn'
+local off_cmd = 'AutoformatOff'
+local toggle_cmd = 'AutoformatToggle'
 
 --- Format while skipping languages from _G.fmt_blacklist
 --- Replaces opts.filter

@@ -1,6 +1,6 @@
 local specs = {}
+local configs = require('lsp.configs')
 local lsp_utils = require('lsp.utils')
-local params = require('lsp.params')
 local u = require('utils')
 
 -- TODO clangd ext keymaps
@@ -28,7 +28,7 @@ specs.lspconfig = {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
-    for name, cfg in pairs(params.cfgs()) do
+    for name, cfg in pairs(configs.cfgs()) do
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
         cfg.on_attach = lsp_utils.default_on_attach

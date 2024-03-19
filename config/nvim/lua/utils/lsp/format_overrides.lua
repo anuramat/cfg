@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 
 -- These servers will be ignored when trying to format
 M.fmt_srv_blacklist = {

@@ -1,4 +1,4 @@
-M = {}
+local M = {}
 local u = require('utils')
 
 local function set(l, r, d)

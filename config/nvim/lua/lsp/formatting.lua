@@ -1,16 +1,7 @@
 local M = {}
 
+local overrides = require('lsp.format_overrides')
 local u = require('utils')
-
--- These servers will be ignored when trying to format
-local fmt_srv_blacklist = {
-  'lua_ls', -- using stylua instead
-  'nil_ls', -- using alejandra
-}
-
-local fmt_ft_blacklist = {
-  'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
-}
 
 local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
 local on_cmd = 'AutoformatOn'
@@ -25,7 +16,7 @@ M.format = function(opts)
     opts = {}
   end
   opts.filter = function(client)
-    return not u.contains(fmt_srv_blacklist, client.name)
+    return not u.contains(overrides.fmt_srv_blacklist, client.name)
   end
   vim.lsp.buf.format(opts)
 end
@@ -81,7 +72,7 @@ end
 M.setup_lsp_autoformatting = function(client, buffer)
   if
     not client.server_capabilities.documentFormattingProvider
-    or u.contains(fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
+    or u.contains(overrides.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
   then
     return
   end

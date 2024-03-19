@@ -35,7 +35,7 @@ specs.telescope = {
       version = '^1.0.0',
     },
   },
-  keys = u.prefix('<leader>f', {
+  keys = u.lazy_prefix('<leader>f', {
     { '/', current_buffer_fuzzy_find, desc = 'Fuzzy Search' },
     { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols' },
     { 'b', require('telescope.builtin').buffers, desc = 'Buffers' },

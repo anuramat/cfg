@@ -34,7 +34,7 @@ specs.dap = {
   },
   config = function() end,
   -- stylua: ignore
-  keys = u.prefix('<leader>d', {
+  keys = u.lazy_prefix('<leader>d', {
     { 'c', function() require('dap').continue() end,          desc = 'Continue' },
     { 'o', function() require('dap').step_out() end,          desc = 'Step Out' },
     { 'n', function() require('dap').step_over() end,         desc = 'Step Over' },
@@ -56,7 +56,7 @@ specs.dap_vt = {
 specs.dap_ui = {
   'rcarriga/nvim-dap-ui',
   -- stylua: ignore
-  keys = u.prefix('<leader>d', {
+  keys = u.lazy_prefix('<leader>d', {
     { "u", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
     { "e", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
   }, "DAP"),

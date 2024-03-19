@@ -91,9 +91,10 @@ end
 --- @param keys table Lazy.nvim keysmap spec without prefixes
 --- @param desc_prefix string Prefix to add to description
 --- @return table keys Lazy.nvim keymap spec with prefixes
-function M.prefix(lhs_prefix, keys, desc_prefix)
+function M.lazy_prefix(lhs_prefix, keys, desc_prefix)
   for k, _ in pairs(keys) do
     keys[k][1] = lhs_prefix .. keys[k][1]
+    keys[k].desc = desc_prefix .. ': ' .. keys[k].desc
   end
   return keys
 end

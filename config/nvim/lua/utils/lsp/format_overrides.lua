@@ -1,4 +1,5 @@
 M = {}
+
 -- These servers will be ignored when trying to format
 M.fmt_srv_blacklist = {
   'lua_ls', -- using stylua instead

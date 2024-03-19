@@ -19,7 +19,7 @@ sh_fmt:
 	@ # write, list, simplify, case-indent, binary-newline, keep-padding
 	@ # keep padding,
 	@ printf ${heading} "Formatting shell scripts"
-	@ fd -0ug "*.sh" | xargs -0I{} shfmt -w -l -s -ci -bn -kp {}
+	@ . lib/format.sh ; shell
 shell: sh_fmt
 	@ printf ${heading} "Checking shell scripts"
 	@ . lib/test.sh ; autoshell

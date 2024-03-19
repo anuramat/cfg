@@ -14,7 +14,7 @@ run() {
 		if [ "$(file "$filename" --mime-type --brief)" = "$1" ]; then
 			result="$($2 "$filename")" \
 				&& [ -n "$3" ] \
-				&& printf "$ok%$(tput cols)s\r$normal" "OK" || printf "$fail%$(tput cols)s\r$normal" "FAIL"
+				&& { printf "$ok%$(tput cols)s\r$normal" "OK" || printf "$fail%$(tput cols)s\r$normal" "FAIL"; }
 			[ -n "$3" ] && printf "$3\n" "$filename"
 			[ -n "$result" ] && echo "$result"
 		fi

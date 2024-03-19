@@ -1,6 +1,6 @@
 local specs = {}
 local null_sources = require('plugins.null.sources')
-local on_attach = require('lsp.on_attach')
+local on_attach = require('utils.lsp.on_attach')
 local u = require('utils')
 
 -- alternatives:

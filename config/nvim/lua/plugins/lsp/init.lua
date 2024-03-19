@@ -1,6 +1,6 @@
 local specs = {}
 local configs = require('plugins.lsp.configs')
-local on_attach = require('lsp.on_attach')
+local on_attach = require('utils.lsp.on_attach')
 local u = require('utils')
 
 -- TODO clangd ext keymaps

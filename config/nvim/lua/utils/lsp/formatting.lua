@@ -1,6 +1,6 @@
 local M = {}
 
-local overrides = require('lsp.format_overrides')
+local overrides = require('utils.lsp.format_overrides')
 local u = require('utils')
 
 local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })

@@ -1,5 +1,5 @@
 local specs = {}
-local on_attach = require('lsp.on_attach')
+local on_attach = require('utils.lsp.on_attach')
 local u = require('utils')
 
 local function repl_toggler(ht, buffer)

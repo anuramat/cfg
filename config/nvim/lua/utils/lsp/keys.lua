@@ -1,6 +1,6 @@
 local M = {}
 
-local formatting = require('lsp.formatting')
+local formatting = require('utils.lsp.formatting')
 
 M.setup_lsp_keybinds = function(buffer)
   local function set(keys, func, desc)

@@ -1,6 +1,6 @@
 local M = {}
 
-local on_attach = require('lsp.on_attach')
+local on_attach = require('utils.lsp.on_attach')
 
 --- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }

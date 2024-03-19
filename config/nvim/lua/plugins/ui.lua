@@ -105,7 +105,7 @@ specs.noice = {
       },
       lsp = {
         signature = { enabled = false }, -- off because we use ray-x/lsp_signature.nvim
-        hover = { enabled = false }, -- off because it fucks up the border color
+        hover = { enabled = true },
         documentation = { opts = { border = vim.g.border } },
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,

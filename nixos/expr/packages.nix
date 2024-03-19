@@ -1,4 +1,5 @@
-pkgs: unstable: with pkgs; [
+pkgs: unstable:
+with pkgs; [
   ### Terminals
   foot # minimal terminal
   unstable.alacritty # gpu terminal
@@ -98,18 +99,24 @@ pkgs: unstable: with pkgs; [
   black # Python formatter
   delve # Go debugger
   gofumpt # strict go formatter
-  golangci-lint # gigalinter for go
   luajitPackages.luacheck
   luajitPackages.luarocks
   bash-completion
-  micromamba # conda rewrite in C++
-  nixpkgs-fmt # nix formatter
+  # micromamba # conda rewrite in C++ # doesn't fucking work
+  conda
   nodePackages.prettier # formatting
   shellcheck # *sh linter
   shfmt # posix/bash/mksh formatter
   stylua # Lua formatter
   nix-bash-completions
   yamlfmt # YAML formatter
+  #### Linters
+  golangci-lint # gigalinter for go
+  deadnix # nix deadcode
+  statix # nix linter
+  #### Formatters
+  alejandra # nix
+  nixfmt # OFFICIAL formatter
   #### LSPs
   nodePackages_latest.bash-language-server
   nodePackages_latest.yaml-language-server

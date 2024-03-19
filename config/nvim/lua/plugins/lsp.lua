@@ -5,6 +5,7 @@ local u = require('utils')
 -- These servers will be ignored when trying to format
 _G.fmt_srv_blacklist = {
   'lua_ls', -- using stylua instead
+  'nil_ls', -- using alejandra
 }
 _G.fmt_ft_blacklist = {
   'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
@@ -26,8 +27,8 @@ end
 --- @return table configs
 local function cfgs()
   return {
-    -- nixd = {}, -- nil_ls -- better diagnostics in some regards
-    nil_ls = {}, -- nil_ls -- better diagnostics in some regards
+    nixd = {}, -- kinda worse than nil_ls, but being rewritten rn
+    nil_ls = {}, -- no formatting
     yamlls = {},
     texlab = {},
     bashls = {},
@@ -117,9 +118,9 @@ specs.lspconfig = {
     vim.diagnostic.config({ float = { border = vim.g.border } }) -- vim.diagnostic.open_float
     require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
 
-    -- -- add border to default hover handler (should be replaced with noice, but noice fucks up the border color)
-    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
-    -- -- add border to default signature help (replaced with ray-x/lsp_signature.nvim
+    -- -- add border to default hover handler (replaced by folke/noice.nvim)
+    -- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = vim.g.border })
+    -- -- add border to default signature help (replaced with ray-x/lsp_signature.nvim)
     -- vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = vim.g.border })
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     -- Register capabilities for CMP
@@ -139,27 +140,6 @@ specs.lspconfig = {
       always_trigger = true,
       hint_enable = false, -- virtual hint enable
       hint_prefix = '🐼 ', -- Panda for parameter (hehe)
-    })
-  end,
-}
-
-specs.null = {
-  'nvimtools/none-ls.nvim', -- maintained 'jose-elias-alvarez/null-ls.nvim' fork
-  event = { 'BufReadPre', 'BufNewFile' },
-  dependencies = 'nvim-lua/plenary.nvim',
-  config = function()
-    local null_ls = require('null-ls')
-    local nlf = null_ls.builtins.formatting
-    local nld = null_ls.builtins.diagnostics
-    null_ls.setup({
-      sources = {
-        nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
-        nlf.stylua,
-        nlf.black,
-        -- nld.protolint,
-      },
-      on_attach = lsp_utils.default_on_attach,
-      border = vim.g.border,
     })
   end,
 }

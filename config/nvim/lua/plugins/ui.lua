@@ -92,7 +92,7 @@ specs.noice = {
       },
       messages = {
         view_search = 'cmdline',
-        -- enabled = false, -- moves messages back to cmdline
+        enabled = false, -- moves messages back to cmdline
       },
     }
   end,

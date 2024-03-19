@@ -1,5 +1,5 @@
 local specs = {}
-local lsp_utils = require('lsp.utils')
+local on_attach = require('lsp.on_attach')
 local u = require('utils')
 
 local function repl_toggler(ht, buffer)
@@ -24,7 +24,7 @@ specs.haskell = {
       hls = {
         capabilities = capabilities,
         on_attach = function(client, buffer, ht)
-          lsp_utils.default_on_attach(client, buffer)
+          on_attach(client, buffer)
 
           local s = function(lhs, rhs, desc)
             vim.keymap.set('n', '<leader>L' .. lhs, rhs, { buffer = buffer, desc = 'Haskell: ' .. desc })

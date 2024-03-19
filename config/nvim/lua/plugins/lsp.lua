@@ -1,6 +1,6 @@
 local specs = {}
-local configs = require('lsp.configs')
-local lsp_utils = require('lsp.utils')
+local configs = require('lsp.lsp_configs')
+local on_attach = require('lsp.on_attach')
 local u = require('utils')
 
 -- TODO clangd ext keymaps
@@ -31,7 +31,7 @@ specs.lspconfig = {
     for name, cfg in pairs(configs.cfgs()) do
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
-        cfg.on_attach = lsp_utils.default_on_attach
+        cfg.on_attach = on_attach
       end
       lspconfig[name].setup(cfg)
     end

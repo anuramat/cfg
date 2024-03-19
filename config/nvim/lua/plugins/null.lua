@@ -1,5 +1,6 @@
 local specs = {}
-local lsp_utils = require('lsp.utils')
+local null_sources = require('lsp.null_sources')
+local on_attach = require('lsp.on_attach')
 local u = require('utils')
 
 -- alternatives:
@@ -12,22 +13,9 @@ specs.null = {
   dependencies = 'nvim-lua/plenary.nvim',
   config = function()
     local null_ls = require('null-ls')
-    local nlf = null_ls.builtins.formatting
-    local nld = null_ls.builtins.diagnostics
-    local nla = null_ls.builtins.code_actions
     null_ls.setup({
-      sources = {
-        nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
-        nlf.stylua,
-        nlf.black,
-        -- nlf.nixfmt,
-        nlf.alejandra,
-        nld.deadnix,
-        nld.statix,
-        nla.statix,
-        -- nld.protolint,
-      },
-      on_attach = lsp_utils.default_on_attach,
+      sources = null_sources(),
+      on_attach = on_attach,
       border = vim.g.border,
     })
   end,

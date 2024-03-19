@@ -227,6 +227,7 @@ with pkgs; [
   mesa-demos # some 3d demos
   unstable.neovide # neovim gui
   nix-index
+  unstable.neovim
 
   ### Web browsers
   google-chrome

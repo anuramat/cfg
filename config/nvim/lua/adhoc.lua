@@ -1,11 +1,16 @@
 local u = require('utils')
 
---- Renames symbol under cursor: :oobar -> Foobar
+local function set(l, r, d)
+  vim.keymap.set('n', l, r, { silent = true, desc = d })
+end
+
+--- Renames symbol under cursor: foobar -> Foobar
 local function make_public()
   local s = vim.fn.expand('<cword>')
   vim.lsp.buf.rename(s:sub(1, 1):upper() .. s:sub(2))
   vim.cmd.sleep(100, 'm')
 end
+vim.api.nvim_create_user_command('GolangMakePublic', make_public, {})
 
 --- Copies the name of the file and the line number to the buffer
 local function quote()
@@ -17,7 +22,7 @@ local function quote()
 end
 vim.api.nvim_create_user_command('Quote', quote, {})
 
---- Creates comment header I guess
+--- Creates a comment header
 --- @param chr string Character that fills the header
 --- @param width_factor number|nil If present, width = textwidth * width_factor
 local function create_comment_header(chr, width_factor, base_width)
@@ -71,16 +76,9 @@ local function create_comment_header(chr, width_factor, base_width)
     vim.cmd('normal ==') -- Fix indenting
   end)
 end
-
-local function set(l, r, d)
-  vim.keymap.set('n', l, r, { silent = true, desc = d })
-end
-
 set('<leader>#', function()
   create_comment_header('~', nil, 120)
 end, 'Header')
 set('<leader>$', function()
   create_comment_header('~', nil, 60)
 end, 'Subheader')
-
--- vim.cmd('noremap <leader>q :GoMakePublic<cr>')

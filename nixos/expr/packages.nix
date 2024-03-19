@@ -22,6 +22,7 @@ pkgs: unstable: with pkgs; [
   cod # completion generator (updates on `cmd --help`)
   tealdeer # tldr implementation in rust, adheres to XDG basedir spec
   age # file encryption
+  speedtest-cli
 
   ### Media
   gimp-with-plugins # raster graphics

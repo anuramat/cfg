@@ -62,9 +62,9 @@ set {
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 bar swaybar_command waybar
 exec_always {
-    pkill inactive-windo; inactive-windows-transparency.py
+    # pkill inactive-windo; inactive-windows-transparency.py
     pkill swayidle; swayidle -w
-    pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
+    # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
     pkill nm-applet; nm-applet
     pkill avizo-service; avizo-service
 }

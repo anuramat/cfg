@@ -9,3 +9,5 @@ disable=SC2155
 disable=SC2311
 # 'this is how it'\''s done'
 disable=SC1003
+# a && b || c is NOT if-then-else
+disable=SC2015

@@ -1,26 +1,5 @@
 local M = {}
 
--- These servers will be ignored when trying to format
-M.fmt_srv_blacklist = {
-  'lua_ls', -- using stylua instead
-  'nil_ls', -- using alejandra
-}
-
-M.fmt_ft_blacklist = {
-  'proto', -- HACK, for some reason null-ls tries to format with diagnostics.protolint or something
-}
-
---- Root directory function with a fallback
---- @param opts { primary: string[], fallback: string[] }
-local function root_dir_with_fallback(opts)
-  local util = require('lspconfig.util')
-  return function(fname)
-    local primary_root = util.root_pattern(unpack(opts.primary))(fname)
-    local fallback_root = util.root_pattern(unpack(opts.fallback))(fname)
-    return primary_root or fallback_root
-  end
-end
-
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 --- Returns configs for specific lsps
 --- @return table configs
@@ -42,7 +21,7 @@ M.cfgs = function()
           '<cmd>ClangdSwitchSourceHeader<cr>',
           { silent = true, desc = 'clangd: Switch between .c/.h' }
         )
-        lsp_utils.default_on_attach(client, buffer)
+        require('lsp.utils').default_on_attach(client, buffer)
         require('clangd_extensions.inlay_hints').setup_autocmd()
         require('clangd_extensions.inlay_hints').set_inlay_hints()
       end,
@@ -81,7 +60,10 @@ M.cfgs = function()
           semanticTokens = true,
         },
       },
-      root_dir = root_dir_with_fallback({ primary = { '.git' }, fallback = { 'go.work', 'go.mod' } }),
+      root_dir = require('lsp.utils').root_dir_with_fallback({
+        primary = { '.git' },
+        fallback = { 'go.work', 'go.mod' },
+      }),
     },
     lua_ls = {
       settings = {

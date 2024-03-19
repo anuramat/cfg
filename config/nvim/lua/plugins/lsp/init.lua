@@ -11,7 +11,6 @@ return {
   config = function()
     local lspconfig = require('lspconfig')
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
-    vim.diagnostic.config({ float = { border = vim.g.border } }) -- vim.diagnostic.open_float
     require('lspconfig.ui.windows').default_options.border = vim.g.border -- :LspInfo
 
     -- -- add border to default hover handler (replaced by folke/noice.nvim)

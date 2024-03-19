@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-. ./lib/utils.sh
+. ./lib/install.sh
 . ./home/.profile
 
 echo '[cfg] installing $HOME'

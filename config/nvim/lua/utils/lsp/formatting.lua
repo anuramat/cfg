@@ -3,72 +3,109 @@ local M = {}
 local overrides = require('utils.lsp.format_overrides')
 local u = require('utils')
 
-local af_group = vim.api.nvim_create_augroup('LSPAutoformatting', { clear = true })
-local on_cmd = 'AutoformatOn'
-local off_cmd = 'AutoformatOff'
-local toggle_cmd = 'AutoformatToggle'
+local enable_cmd = 'FormatOn'
+local disable_cmd = 'FormatOff'
+local toggle_cmd = 'FormatToggle'
 
---- Format while skipping languages from _G.fmt_blacklist
---- Replaces opts.filter
+local group_name = 'LSPAutoformat'
+local event = 'BufWritePre'
+local group = vim.api.nvim_create_augroup(group_name, { clear = true })
+
+--- Format while skipping blacklisted servers
 --- @param opts table | nil mirrors that of vim.lsp.buf.format
 M.format = function(opts)
   if opts == nil then
     opts = {}
   end
-  opts.filter = function(client)
+
+  -- make a new filter for blacklisted servers
+  local new_filter = function(client)
     return not u.contains(overrides.fmt_srv_blacklist, client.name)
   end
+  -- get the old filter
+  local old_filter = opts.filter
+  if old_filter == nil then
+    old_filter = function(_)
+      return true
+    end
+  end
+  -- merge filters
+  opts.filter = function(client)
+    return old_filter(client) and new_filter(client)
+  end
+
   vim.lsp.buf.format(opts)
 end
-local disabler
---- returns a function that sets up autoformat
-local function enabler(buffer, callback)
-  return function()
-    -- enable af
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = af_group,
-      buffer = buffer,
-      callback = callback,
-    })
-    -- add disable cmd
-    local disable = disabler(buffer, callback)
-    local enable = function()
-      vim.notify('autoformatting is already on')
-    end
-    vim.api.nvim_buf_create_user_command(buffer, on_cmd, enable, {})
-    vim.api.nvim_buf_create_user_command(buffer, off_cmd, disable, {})
-    vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, disable, {})
-  end
+
+--- @param buffer integer
+--- @return boolean
+local function is_enabled(buffer)
+  return #vim.api.nvim_get_autocmds({
+    group = group_name,
+    event = event,
+    buffer = buffer,
+  }) ~= 0
 end
---- returns a function that turns off autoformat
-disabler = function(buffer, callback)
+
+--- Enables autoformat
+--- @param buffer integer
+--- @return function enable
+local function enabler(buffer)
   return function()
-    -- disable af
-    vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
-    -- add enable cmd
-    local enable = enabler(buffer, callback)
-    local disable = function()
-      vim.notify('autoformatting is already off')
+    if is_enabled(buffer) then
+      vim.notify('autoformatting is already on')
+      return
     end
-    vim.api.nvim_buf_create_user_command(buffer, off_cmd, disable, {})
-    vim.api.nvim_buf_create_user_command(buffer, on_cmd, enable, {})
-    vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, enable, {})
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = group,
+      buffer = buffer,
+      callback = function()
+        M.format({ bufnr = buffer, async = false })
+      end,
+    })
   end
 end
 
---- nukes everything
+--- Disables autoformat
+--- @param buffer integer
+--- @return function disable
+local function disabler(buffer)
+  return function()
+    if not is_enabled(buffer) then
+      vim.notify('autoformatting is already off')
+      return
+    end
+    vim.api.nvim_clear_autocmds({ group = group, event = event, buffer = buffer })
+  end
+end
+
+--- Toggles autoformat
+--- @param buffer integer
+--- @return function toggle
+local function toggler(buffer)
+  return function()
+    if is_enabled(buffer) then
+      disabler(buffer)()
+      return
+    end
+    enabler(buffer)()
+  end
+end
+
+--- Nukes everything
 local function cleaner(buffer)
   return function()
-    -- disable af
-    disabler(buffer, function() end)()
-    -- remove cmds
+    -- remove all autocommands
+    vim.api.nvim_clear_autocmds({ group = group, buffer = buffer })
+    -- remove commands
     local function deregister(name)
       pcall(function()
         vim.api.nvim_buf_del_user_command(buffer, name)
       end)
     end
-    deregister(off_cmd)
-    deregister(on_cmd)
+    deregister(disable_cmd)
+    deregister(enable_cmd)
     deregister(toggle_cmd)
   end
 end
@@ -78,23 +115,25 @@ end
 --- @param client table
 --- @param buffer integer
 M.setup_lsp_autoformatting = function(client, buffer)
+  -- filter out blacklisted filetypes
   if
     not client.server_capabilities.documentFormattingProvider
     or u.contains(overrides.fmt_ft_blacklist, vim.api.nvim_buf_get_option(buffer, 'filetype'))
   then
     return
   end
-  local clean = cleaner(buffer)
-  clean() -- make sure we only use one formatter
-  -- enable autoformatting
-  enabler(buffer, function()
-    M.format({ bufnr = buffer, async = false })
-  end)()
+  -- carefully enable af
+  cleaner(buffer)()
+  enabler(buffer)()
+  -- set up commands
+  vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, toggler(buffer), {})
+  vim.api.nvim_buf_create_user_command(buffer, enable_cmd, enabler(buffer), {})
+  vim.api.nvim_buf_create_user_command(buffer, disable_cmd, disabler(buffer), {})
   -- clean on detach
   vim.api.nvim_create_autocmd('LspDetach', {
-    group = af_group,
+    group = group,
     buffer = buffer,
-    callback = clean,
+    callback = cleaner(buffer),
   })
 end
 

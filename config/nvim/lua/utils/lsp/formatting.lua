@@ -32,6 +32,10 @@ local function enabler(buffer, callback)
     })
     -- add disable cmd
     local disable = disabler(buffer, callback)
+    local enable = function()
+      vim.notify('autoformatting is already on')
+    end
+    vim.api.nvim_buf_create_user_command(buffer, on_cmd, enable, {})
     vim.api.nvim_buf_create_user_command(buffer, off_cmd, disable, {})
     vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, disable, {})
   end
@@ -43,6 +47,10 @@ disabler = function(buffer, callback)
     vim.api.nvim_clear_autocmds({ group = af_group, buffer = buffer })
     -- add enable cmd
     local enable = enabler(buffer, callback)
+    local disable = function()
+      vim.notify('autoformatting is already off')
+    end
+    vim.api.nvim_buf_create_user_command(buffer, off_cmd, disable, {})
     vim.api.nvim_buf_create_user_command(buffer, on_cmd, enable, {})
     vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, enable, {})
   end

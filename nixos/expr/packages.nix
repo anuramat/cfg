@@ -117,6 +117,7 @@ pkgs: unstable: with pkgs; [
   unstable.texlab
   unstable.haskell-language-server
   unstable.nixd
+  unstable.nil
   unstable.pyright
   unstable.gopls
   unstable.marksman

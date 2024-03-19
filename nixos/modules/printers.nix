@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # scanning - `scanimage`
   # printing - http://localhost:631/

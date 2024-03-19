@@ -1,7 +1,7 @@
 # > man 5 configuration.nix
 # > nixos help
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 let
   unstable = import <nixos-unstable> { config = config.nixpkgs.config; };

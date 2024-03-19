@@ -26,7 +26,8 @@ end
 --- @return table configs
 local function cfgs()
   return {
-    nixd = {}, -- nil_ls -- better diagnostics in some regards
+    -- nixd = {}, -- nil_ls -- better diagnostics in some regards
+    nil_ls = {}, -- nil_ls -- better diagnostics in some regards
     yamlls = {},
     texlab = {},
     bashls = {},

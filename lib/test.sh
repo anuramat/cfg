@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+heading="$(tput setaf 5 bold)"
 fail="$(tput setaf 1 bold)"
 ok="$(tput setaf 2 bold)"
 normal="$(tput sgr0)"
@@ -17,9 +18,11 @@ check() {
 }
 
 autoshell() {
+	echo "${heading}Checking shell scripts$normal"
 	check 'text/x-shellscript' 'shellcheck --color=always -o all'
 }
 
 posix() {
+	echo "${heading}Checking shell scripts for POSIX compatibility$normal"
 	check 'text/x-shellscript' 'shellcheck --color=always -s sh -o all'
 }

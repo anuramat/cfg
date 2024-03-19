@@ -1,5 +1,5 @@
 local specs = {}
-local lsp_utils = require('lsp_utils')
+local lsp_utils = require('lsp.utils')
 local u = require('utils')
 
 local function repl_toggler(ht, buffer)

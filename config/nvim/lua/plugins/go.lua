@@ -1,7 +1,4 @@
-local specs = {}
-local u = require('utils')
-
-specs.go = {
+return {
   'ray-x/go.nvim',
   dependencies = { -- optional packages
     'ray-x/guihua.lua',
@@ -18,5 +15,3 @@ specs.go = {
   ft = { 'go', 'gomod' },
   build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 }
-
-return u.values(specs)

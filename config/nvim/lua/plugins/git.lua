@@ -12,6 +12,7 @@ specs.signs = {
   'lewis6991/gitsigns.nvim',
   event = 'VeryLazy',
   opts = {
+    sign_priority = 0,
     signs = {
       add = { text = '▎' },
       change = { text = '▎' },

@@ -1,6 +1,7 @@
 local specs = {}
 local u = require('utils')
 
+-- dracula colorscheme
 specs.dracula_cs = {
   'Mofiqul/dracula.nvim',
   priority = 1337,
@@ -25,6 +26,7 @@ specs.dracula_cs = {
   end,
 }
 
+-- show indent line on blank lines
 specs.indentline = {
   'lukas-reineke/indent-blankline.nvim',
   event = 'VeryLazy',
@@ -44,32 +46,7 @@ specs.indentline = {
   },
 }
 
-specs.zen = {
-  'folke/zen-mode.nvim',
-  cmd = 'ZenMode',
-  opts = {
-    window = {
-      backdrop = 1,
-      width = 120,
-      height = 1,
-      options = {},
-    },
-    plugins = {
-      options = {
-        enabled = true,
-        ruler = false,
-        showcmd = false,
-      },
-      alacritty = {
-        enabled = true,
-        font = '14',
-      },
-      gitsigns = { enabled = true }, -- hide gitsigns
-      tmux = { enabled = true }, -- hide tmux bar BUG can hide bar until tmux restart, careful
-    },
-  },
-}
-
+-- lsp progress overlay
 specs.fidget = {
   'j-hui/fidget.nvim',
   event = 'LspAttach',
@@ -131,6 +108,7 @@ specs.dressing = {
   event = 'VeryLazy',
 }
 
+-- symbol outline
 specs.aerial = {
   'stevearc/aerial.nvim',
   event = 'BufEnter',

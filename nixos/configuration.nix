@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  unstable = import <nixos-unstable> {config = config.nixpkgs.config;};
+  unstable = import <nixos-unstable> {inherit (config.nixpkgs) config;};
   user = import ./expr/user.nix;
 in {
   imports = [

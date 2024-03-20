@@ -20,20 +20,18 @@ in {
       sov # workspace overview for sway # TODO use this
     ];
   };
-  xdg = {
-    portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    };
-    mime = {
-      enable = true;
-    };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
+
   services.dbus.enable = true;
   fonts.packages = with pkgs; [
     nerdfonts
   ];
+
   qt = {
     enable = true;
     platformTheme = "qt5ct";

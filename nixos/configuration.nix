@@ -11,7 +11,7 @@ in {
   imports = [
     ./hardware-configuration.nix
 
-    ./modules/sway.nix
+    ./modules/gui
     ./modules/laptop.nix
     ./modules/printers.nix
     ./modules/services.nix

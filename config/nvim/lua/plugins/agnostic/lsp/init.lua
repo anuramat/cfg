@@ -1,4 +1,4 @@
-local configs = require('plugins.lsp.configs')
+local configs = require('plugins.agnostic.lsp.configs')
 local on_attach = require('utils.lsp.on_attach')
 
 return {

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     go
     nodejs_20

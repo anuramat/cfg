@@ -4,12 +4,13 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # Terminals
     foot # minimal terminal
     unstable.alacritty # gpu terminal
     unstable.alacritty-theme
     cool-retro-term # cute terminal
 
-    ### Basics
+    # Basics
     gnumake
     gcc
     bash
@@ -35,11 +36,11 @@
     kubectx
     kubectl
 
-    # completion
+    # Completion # TODO check if this is even used
     bash-completion
     nix-bash-completions
 
-    ### File managers
+    # File managers
     xdragon
     # TODO choose one
     vifm
@@ -50,7 +51,31 @@
     broot
     xplr
 
-    # random
+    # Monitoring
+    htop # better top
+    atop # even better top
+    ctop # container top
+    nvtop # top for GPUs
+    duf # disk usage (better "df")
+    du-dust # directory disk usage (better du)
+    ncdu # directory sidk usage (better du)
+    acpi # battery status etc
+
+    # Git
+    ghq # git repository manager
+    git-filter-repo # rewrite/analyze repository history
+    gh # GitHub CLI
+
+    # Networking
+    wirelesstools # iwconfig etc
+    dig # dns utils
+    inetutils # common network stuff
+    nmap
+    netcat
+
+    # Random linux shit
     usbutils # just in case
+    libusb # user-mode USB access lib
+    efibootmgr # EFI boot manager editor
   ];
 }

@@ -18,40 +18,11 @@ with pkgs; [
   tealdeer # tldr implementation in rust, adheres to XDG basedir spec
   age # file encryption
   speedtest-cli
-
-  ### Random
   obs-studio # screencasting/streaming
   sageWithDoc # computer algebra
   hyprpicker # gigasimple terminal color picker
   steam
-
   unstable.vscode
-
-  ### Monitoring
-  htop # better top
-  atop # even better top
-  ctop # container top
-  nvtop # top for GPUs
-  duf # disk usage (better "df")
-  du-dust # directory disk usage (better du)
-  ncdu # directory sidk usage (better du)
-
-  ### Git
-  ghq # git repository manager
-  git-filter-repo # rewrite/analyze repository history
-  gh # GitHub CLI
-
-  ### Networking
-  wirelesstools # iwconfig etc
-  dig # dns utils
-  inetutils # common network stuff
-  nmap
-  netcat
-
-  ### Random linux shit
-  libusb # user-mode USB access lib
-  efibootmgr # EFI boot manager editor
-  acpi # battery status etc
 
   ### Basic terminal stuff
   unstable.vim-full

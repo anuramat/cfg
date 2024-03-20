@@ -23,6 +23,7 @@ in {
 
     <home-manager/nixos>
   ];
+  _module.args.unstable = unstable;
   nixpkgs.config.permittedInsecurePackages = ["electron-25.9.0"];
   environment.systemPackages = import ./expr/packages.nix pkgs unstable;
   boot = {

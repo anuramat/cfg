@@ -1,8 +1,6 @@
 # - sane defaults
 # - user-specific stuff from user.nix
-_: let
-  user = import ../expr/user.nix;
-in {
+{user, ...}: {
   documentation.man.generateCaches = true; # apropos
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config = {

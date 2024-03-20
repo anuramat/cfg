@@ -1,6 +1,4 @@
-_: let
-  user = import ../expr/user.nix;
-in {
+{user, ...}: {
   # TODO restic backups
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;

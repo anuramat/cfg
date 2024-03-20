@@ -23,6 +23,9 @@ in {
 
     <home-manager/nixos>
   ];
+  _module.args = {
+    inherit unstable user;
+  };
   nixpkgs.config.permittedInsecurePackages = ["electron-25.9.0"];
   environment.systemPackages = import ./expr/packages.nix pkgs unstable;
   boot = {

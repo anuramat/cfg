@@ -1,6 +1,7 @@
 {
   pkgs,
   unstable,
+  ...
 }: {
   environment.systemPackages = with pkgs; [
     unstable.avizo # brightness/volume control with overlay indicator

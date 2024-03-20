@@ -7,5 +7,6 @@ _: {
     ./printer.nix
     ./service.nix
     ./sound.nix
+    ./boot.nix
   ];
 }

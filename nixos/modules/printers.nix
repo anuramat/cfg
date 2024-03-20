@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   # scanning - `scanimage`
   # printing - http://localhost:631/
   # list printers - `lpstat -p`
@@ -13,7 +12,7 @@
     # Enable CUPS to print documents, available @ http://localhost:631/
     printing = {
       enable = true;
-      drivers = [ ];
+      drivers = [];
     };
     # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
     # network printers autodiscovery
@@ -23,9 +22,9 @@
       openFirewall = true; # Open udp 5353 for network devices discovery
     };
   };
-  hardware.printers = { };
+  hardware.printers = {};
   hardware.sane = {
     enable = true;
-    extraBackends = [ ];
+    extraBackends = [];
   };
 }

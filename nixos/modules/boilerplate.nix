@@ -1,21 +1,18 @@
 # - sane defaults
 # - user-specific stuff from user.nix
-{ ... }:
-let
+_: let
   user = import ../expr/user.nix;
-in
-{
+in {
   documentation.man.generateCaches = true; # apropos
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config = {
     allowUnfree = true;
   };
-  system =
-    {
-      # backup the configuration.nix to /run/current-system/configuration.nix
-      # kinda useless if it's split into multiple files
-      copySystemConfiguration = true;
-    };
+  system = {
+    # backup the configuration.nix to /run/current-system/configuration.nix
+    # kinda useless if it's split into multiple files
+    copySystemConfiguration = true;
+  };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
   system.stateVersion = user.stateVersion;

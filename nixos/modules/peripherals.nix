@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   # ZSA Voyager
   services.udev.extraRules = ''
     # Rules for Oryx web flashing and live training

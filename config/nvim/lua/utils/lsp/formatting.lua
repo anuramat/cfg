@@ -6,6 +6,7 @@ local u = require('utils')
 local enable_cmd = 'FormatOn'
 local disable_cmd = 'FormatOff'
 local toggle_cmd = 'FormatToggle'
+local format_cmd = 'Format'
 
 local group_name = 'LSPAutoformat'
 local event = 'BufWritePre'
@@ -129,6 +130,10 @@ M.setup_lsp_autoformatting = function(client, buffer)
   vim.api.nvim_buf_create_user_command(buffer, toggle_cmd, toggler(buffer), {})
   vim.api.nvim_buf_create_user_command(buffer, enable_cmd, enabler(buffer), {})
   vim.api.nvim_buf_create_user_command(buffer, disable_cmd, disabler(buffer), {})
+  -- add persistent `:Format`
+  vim.api.nvim_buf_create_user_command(buffer, format_cmd, function()
+    M.format({ bufnr = buffer, async = false })
+  end, {})
   -- clean on detach
   vim.api.nvim_create_autocmd('LspDetach', {
     group = group,

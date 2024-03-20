@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   services.logind.extraConfig = ''
     HandlePowerKey=hybrid-sleep
     HandlePowerKeyLongPress=ignore

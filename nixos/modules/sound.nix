@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   # https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
     # TODO some of these aren't needed probably

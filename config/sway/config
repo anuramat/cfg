@@ -242,16 +242,16 @@ $bind {
     $mod+$mod2+9 move container to workspace number 9
     $mod+$mod2+0 move container to workspace number 10
     # Special keys
-    XF86MonBrightnessDown exec $brightness_down
-    XF86MonBrightnessUp   exec $brightness_up
-    XF86AudioMicMute      exec $mute_mic
-    XF86AudioMute         exec $mute_sound
-    XF86AudioLowerVolume  exec $sound_down
-    XF86AudioRaiseVolume  exec $sound_up
-    XF86AudioPrev         exec $audio_prev
-    XF86AudioNext         exec $audio_next
-    XF86AudioStop         exec $audio_stop
-    XF86AudioPlay         exec $audio_play
+    --locked XF86MonBrightnessDown exec $brightness_down
+    --locked XF86MonBrightnessUp   exec $brightness_up
+    --locked XF86AudioMicMute      exec $mute_mic
+    --locked XF86AudioMute         exec $mute_sound
+    --locked XF86AudioLowerVolume  exec $sound_down
+    --locked XF86AudioRaiseVolume  exec $sound_up
+    --locked XF86AudioPrev         exec $audio_prev
+    --locked XF86AudioNext         exec $audio_next
+    --locked XF86AudioStop         exec $audio_stop
+    --locked XF86AudioPlay         exec $audio_play
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 exec dbus-sway-environment

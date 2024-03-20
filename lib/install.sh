@@ -31,7 +31,7 @@ install_file() {
 	# make sure destination exists
 	ensure_path "$destination" || return 1
 	# make a symlink
-	ln -stf "$file" "$destination" || {
+	ln -sft "$destination" "$file" || {
 		echo "[cfg.fail] make symlink @ \"$destination\""
 		return 1
 	}
@@ -41,11 +41,11 @@ install_all() {
 	echo '[cfg] installing $HOME'
 	shopt -s dotglob
 	for __dotfile in home/*; do
-		install2folder "$__dotfile" "$HOME"
+		install_file "$__dotfile" "$HOME"
 	done
 	echo '[cfg] installing $XDG_CONFIG_HOME'
 	for __folder in config/*; do
-		install2folder "$__folder" "$XDG_CONFIG_HOME"
+		install_file "$__folder" "$XDG_CONFIG_HOME"
 	done
 	shopt -u dotglob
 

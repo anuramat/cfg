@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 __ALWAYS_OVERWRITE="true"
+. ./home/.profile
+set -e
 
 ensure_path() {
 	# $1 -- target path
@@ -80,4 +82,23 @@ try_overwrite() {
 	local -r target="$1"
 	[ "$__ALWAYS_OVERWRITE" = "true" ] || continue_prompt "overwrite \"$target\"?" || return 1
 	rm -rf "$target" || return 1
+}
+
+install_all() {
+	echo '[cfg] installing $HOME'
+	shopt -s dotglob
+	for __dotfile in home/*; do
+		install2folder "$__dotfile" "$HOME"
+	done
+	echo '[cfg] installing $XDG_CONFIG_HOME'
+	for __folder in config/*; do
+		install2folder "$__folder" "$XDG_CONFIG_HOME"
+	done
+	shopt -u dotglob
+
+	echo "[cfg] creating directories"
+	# TODO move all of this to configuration.nix or home manager
+	touch "$HOME/.hushlogin"
+	ensure_path "$HOME/screenshots"
+	# TODO maybe ensure path for all xdg paths
 }

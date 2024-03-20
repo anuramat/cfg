@@ -1,9 +1,12 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 
-.PHONY: build code
-build:
+.PHONY: system config code
+system:
 	@ printf ${heading} "Building NixOS"
 	@ ./lib/build.sh
+config:
+	@ printf ${heading} "Installing configs"
+	@ . lib/install.sh; install_all
 code: lua sh
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lua ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 .PHONY: lua lua_fmt

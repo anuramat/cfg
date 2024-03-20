@@ -15,7 +15,7 @@ let
   videoPlayer = "mpv.desktop";
 in {
   xdg.mime = {
-    enabled = true;
+    enable = true;
     defaultApplications =
       {
         "x-scheme-handler/tg" = "org.telegram.desktop.desktop";

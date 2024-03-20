@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-__ALWAYS_OVERWRITE="true"
 . ./home/.profile
 set -e
 
@@ -22,7 +21,6 @@ make_symlink() {
 	local target="$2"
 
 	[ -d "$target" ] && target="$target/$(basename "$original")"
-	[ -e "$target" ] && { try_overwrite "$target" || return 1; }
 	ln -sf "$original" "$target" || {
 		echo "[cfg.fail] make symlink @ \"$target\""
 		return 1
@@ -61,27 +59,6 @@ install2file() {
 
 	ensure_path "$target_dir" || return 1
 	make_symlink "$original" "$target" || return 1
-}
-
-continue_prompt() {
-	local -r prompt="$1"
-	local choice
-	while true; do
-		printf "%s (y/n): " "$prompt"
-		read -r choice
-		case "$choice" in
-			y | Y) return 0 ;;
-			n | N) return 1 ;;
-			*) echo "Invalid response" ;;
-		esac
-	done
-}
-
-try_overwrite() {
-	# $1 -- target
-	local -r target="$1"
-	[ "$__ALWAYS_OVERWRITE" = "true" ] || continue_prompt "overwrite \"$target\"?" || return 1
-	rm -rf "$target" || return 1
 }
 
 install_all() {

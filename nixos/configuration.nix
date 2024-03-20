@@ -7,6 +7,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     ./modules
+    ./test
     <home-manager/nixos>
   ];
   _module.args = {

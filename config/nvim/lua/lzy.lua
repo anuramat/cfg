@@ -13,13 +13,17 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('plugins', {
-  change_detection = { enabled = false },
+require('lazy').setup({
+  { import = 'plugins' },
+}, {
+  change_detection = {
+    enabled = false,
+  },
   defaults = {
     lazy = true,
     cond = not vim.g.vscode,
   },
   ui = {
-    border = vim.g.border,
+    border = 'double',
   },
 })

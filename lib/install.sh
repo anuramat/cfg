@@ -14,51 +14,27 @@ ensure_path() {
 	echo "[cfg.write] created path \"$1\""
 }
 
-make_symlink() {
-	# $1 -- source file
-	# $2 -- target file/directory
-	local -r original="$(realpath "$1")"
-	local target="$2"
+# git check-ignore "$original" >/dev/null 2>&1 && {
+# 	return
+# }
 
-	[ -d "$target" ] && target="$target/$(basename "$original")"
-	ln -sf "$original" "$target" || {
-		echo "[cfg.fail] make symlink @ \"$target\""
+install_file() {
+	# $1 -- original file
+	# $2 -- destination directory
+	local -r file="$(realpath "$1")"
+	local -r destination="$(realpath "$2")"
+	# check if file exists
+	[ -e "$file" ] || {
+		echo "[cfg.fail] file \"$destination\" not found!"
 		return 1
 	}
-	echo "[cfg.write] created symlink @ \"$target\""
-}
-
-install2folder() {
-	local -r original="$(realpath "$1")"
-	local -r target_dir="$2"
-
-	[ -e "$1" ] || {
-		echo "[cfg.fail] file \"$1\" not found!"
+	# make sure destination exists
+	ensure_path "$destination" || return 1
+	# make a symlink
+	ln -stf "$file" "$destination" || {
+		echo "[cfg.fail] make symlink @ \"$destination\""
 		return 1
 	}
-
-	ensure_path "$target_dir" || return 1
-	install2file "$original" "$target_dir"
-}
-
-install2file() {
-	# $1 -- source file
-	# $2 -- target file
-	local -r original="$(realpath "$1")"
-	local -r target="$2"
-	local -r target_dir="$(dirname "$2")"
-
-	git check-ignore "$original" >/dev/null 2>&1 && {
-		return
-	}
-
-	[ -e "$1" ] || {
-		echo "[cfg.fail] file \"$1\" not found!"
-		return 1
-	}
-
-	ensure_path "$target_dir" || return 1
-	make_symlink "$original" "$target" || return 1
 }
 
 install_all() {

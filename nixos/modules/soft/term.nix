@@ -28,6 +28,48 @@
     nvi # vi clone
     file
 
+    ### Bread and Butter
+    unstable.vim-full
+    ripgrep-all # grep over pdfs etc
+    zoxide # better cd
+    bat # better cat with syntax hl
+    delta # better diffs
+    fd # find alternative
+    fzf # fuzzy finder
+    ripgrep # better grep
+    unstable.eza # better ls
+    difftastic # syntax aware diffs
+    lsix # ls for images (uses sixel)
+    parallel # run parallel jobs
+    tmux # terminal multiplexer
+    peco # interactive filtering
+    aria # downloader
+    poppler_utils # pdf utils
+    ghostscript # ???
+    entr # file watcher - runs command on change
+
+    # Random TODO
+    taskwarrior # CLI todo apps # TODO move?
+    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
+    xdg-ninja # checks $HOME for bloat
+    rclone # rsync for cloud
+    starship # terminal prompt
+    cod # completion generator (updates on `cmd --help`)
+    age # file encryption
+    speedtest-cli
+
+    ### Rarely used terminal stuff
+    wally-cli # ZSA keyboards software
+    w3m # text based web browser
+    exercism # CLI for exercism.org
+    glow # markdown viewer
+    youtube-dl # download youtube videos
+    wtf # TUI dashboard
+    libqalculate # qalc - advanced calculator
+    bc # simple calculator
+    neofetch
+    fastfetch
+
     # Web
     grpcui # postman for grpc
     grpcurl # curl for grpc
@@ -73,7 +115,7 @@
     nmap
     netcat
 
-    # Random linux shit
+    # Random linux shit TODO
     usbutils # just in case
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor

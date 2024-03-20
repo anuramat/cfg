@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   # TODO make sure we need this, refer to nixos wiki sway page
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -11,8 +10,7 @@ let
       systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
     '';
   };
-in
-{
+in {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -25,7 +23,7 @@ in
     portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
     };
     mime = {
       enable = true;

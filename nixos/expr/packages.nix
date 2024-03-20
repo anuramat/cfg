@@ -1,11 +1,5 @@
 pkgs: unstable:
 with pkgs; [
-  ### Terminals
-  foot # minimal terminal
-  unstable.alacritty # gpu terminal
-  unstable.alacritty-theme
-  cool-retro-term # cute terminal
-
   ### Random
   cinnamon.nemo # wayland native
   gnome-solanum # really simple one
@@ -67,15 +61,6 @@ with pkgs; [
   nix-bash-completions
 
   ### Media tools
-  easyocr # neural OCR
-  ffmpeg # CLI multimedia processing
-  handbrake # ghb - GUI for video converting
-  pandoc # markup converter (latex, markdown, etc)
-  sox # CLI audio processing
-  imagemagickBig # CLI image manipulation
-  libwebp # tools for WebP image format
-  exiftool # read/write EXIF metadata
-  djvulibre # djvu tools
 
   ### Web shit
   grpcui # postman for grpc

@@ -17,7 +17,6 @@ with pkgs; [
   transmission # torrent client
   transmission-gtk # gui wrapper for transmission
   unstable.obsidian # markdown personal knowledge database
-  vlc # gui video player
   xdg-ninja # checks $HOME for bloat
   rclone # rsync for cloud
   starship # terminal prompt
@@ -79,23 +78,8 @@ with pkgs; [
 
   unstable.vscode
 
-  universal-ctags # maintained ctags
-  bear # Compilation database generator for clangd
-  luajitPackages.luarocks
   bash-completion
-  # micromamba # conda rewrite in C++ # doesn't fucking work
-  conda
   nix-bash-completions
-
-  ### Viewers
-  imv # terminal image viewer
-  swayimg # terminal image viewer
-  nomacs # GUI image viewer
-  mpv # cli video player
-  ### Document viewers
-  okular # GUI * reader
-  zathura # vimmy * reader
-  djview # GUI djvu reader
 
   ### Media tools
   easyocr # neural OCR

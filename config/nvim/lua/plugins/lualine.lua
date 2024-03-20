@@ -27,6 +27,9 @@ specs.lualine = {
     'Mofiqul/dracula.nvim',
     'ThePrimeagen/harpoon',
   },
+  init = function()
+    vim.cmd('se noshowmode')
+  end,
   opts = function()
     return {
       options = {

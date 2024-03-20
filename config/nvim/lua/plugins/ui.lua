@@ -29,8 +29,12 @@ specs.dracula_cs = {
 -- show indent line on blank lines
 specs.indentline = {
   'lukas-reineke/indent-blankline.nvim',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   event = 'VeryLazy',
   main = 'ibl',
+  -- init = function()
+  --   vim.cmd('')
+  -- end,
   opts = {
     exclude = {
       filetypes = {
@@ -47,11 +51,12 @@ specs.indentline = {
 }
 
 -- lsp progress overlay
-specs.fidget = {
-  'j-hui/fidget.nvim',
-  event = 'LspAttach',
-  opts = {},
-}
+-- can fuck up on LspDetach with multiple lsps when closing
+-- specs.fidget = {
+--   'j-hui/fidget.nvim',
+--   event = 'LspAttach',
+--   opts = {},
+-- }
 
 specs.noice = {
   'folke/noice.nvim',

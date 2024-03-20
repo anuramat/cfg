@@ -48,7 +48,6 @@ se scrolloff=0
 se report=0 shortmess=asWIcCF " notification settings
 se cursorline cursorlineopt=line
 se matchtime=1 showmatch " highlight matching bracket (deciseconds)
-se noshowmode " turn off mode indicator in cmdline TODO add mode indicator to "fallback statusline"
 se signcolumn=yes " gutter
 se tgc " 24-bit color
 hi WinSeparator guibg=bg guifg=fg

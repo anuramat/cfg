@@ -1,29 +1,6 @@
 local specs = {}
+local langs = require('plugins.treesitter.langs')
 local u = require('utils')
-
-local langs = {
-  'bash',
-  'c',
-  'go',
-  'gomod',
-  'gosum',
-  'gowork',
-  'haskell',
-  'json',
-  'json5',
-  'lua',
-  'luadoc',
-  'luap',
-  'markdown',
-  'markdown_inline',
-  'python',
-  'query',
-  'regex',
-  'sql',
-  'vim',
-  'vimdoc',
-  'yaml',
-}
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
@@ -90,6 +67,22 @@ specs.comment = {
       extra = { above = '<leader>cO', below = '<leader>co', eol = '<leader>cA' },
     })
   end,
+}
+
+-- symbol outline
+specs.aerial = {
+  'stevearc/aerial.nvim',
+  event = 'BufEnter',
+  opts = {
+    filter_kind = {
+      nix = false,
+    },
+  },
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-tree/nvim-web-devicons',
+  },
+  keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
 }
 
 return u.values(specs)

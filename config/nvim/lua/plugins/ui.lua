@@ -26,7 +26,9 @@ specs.dracula_cs = {
   end,
 }
 
--- show indent line on blank lines
+-- show indent line
+--  - on blank lines
+--  - with expandtab
 specs.indentline = {
   'lukas-reineke/indent-blankline.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -53,14 +55,18 @@ specs.indentline = {
   },
 }
 
--- lsp progress overlay
--- can fuck up on LspDetach with multiple lsps when closing
+-- -- lsp progress overlay
+-- -- can fuck up on LspDetach with multiple lsps when closing
 -- specs.fidget = {
 --   'j-hui/fidget.nvim',
 --   event = 'LspAttach',
 --   opts = {},
 -- }
 
+-- custom
+--  - messages
+--  - cmdline
+--  - popupmenu
 specs.noice = {
   'folke/noice.nvim',
   dependencies = {
@@ -106,6 +112,9 @@ specs.noice = {
   end,
 }
 
+-- custom
+--  - vim.ui.select - picker
+--  - vim.ui.input - a text field
 specs.dressing = {
   'stevearc/dressing.nvim',
   opts = {
@@ -114,19 +123,6 @@ specs.dressing = {
     },
   },
   event = 'VeryLazy',
-}
-
--- symbol outline
-specs.aerial = {
-  'stevearc/aerial.nvim',
-  event = 'BufEnter',
-  opts = {
-    filter_kind = {
-      nix = false,
-    },
-  },
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-  keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
 }
 
 -- adds animation to scrolling, resizing and cursor movement
@@ -152,6 +148,15 @@ specs.animate = {
       },
     })
   end,
+}
+
+-- alterntaives:
+-- https://github.com/luochen1990/rainbow -- 1.7k stars
+-- https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
+specs.rainbow = {
+  'HiPhish/rainbow-delimiters.nvim',
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  event = 'BufEnter',
 }
 
 return u.values(specs)

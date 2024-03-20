@@ -6,21 +6,11 @@
   ...
 }: let
   unstable = import <nixos-unstable> {inherit (config.nixpkgs) config;};
-  user = import ./expr/user.nix;
+  user = import ./user.nix;
 in {
   imports = [
     ./hardware-configuration.nix
-
-    ./modules/gui
-    ./modules/laptop.nix
-    ./modules/printers.nix
-    ./modules/services.nix
-    ./modules/networking.nix
-    ./modules/boilerplate.nix
-    ./modules/peripherals.nix
-    ./modules/overlays.nix
-    ./modules/sound.nix
-
+    ./modules
     <home-manager/nixos>
   ];
   _module.args = {

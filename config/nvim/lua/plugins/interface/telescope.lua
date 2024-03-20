@@ -1,4 +1,3 @@
-local specs = {}
 local u = require('utils')
 
 local function current_buffer_fuzzy_find()
@@ -19,7 +18,7 @@ local function live_grep_args()
   require('telescope').extensions.live_grep_args.live_grep_args()
 end
 
-specs.telescope = {
+return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
@@ -95,5 +94,3 @@ specs.telescope = {
     telescope.setup(opts)
   end,
 }
-
-return u.values(specs)

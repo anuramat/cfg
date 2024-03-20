@@ -1,6 +1,4 @@
-local specs = {}
 local on_attach = require('utils.lsp.on_attach')
-local u = require('utils')
 
 local function repl_toggler(ht, buffer)
   return function()
@@ -43,5 +41,3 @@ specs.haskell = {
     require('telescope').load_extension('ht')
   end,
 }
-
-return u.values(specs)

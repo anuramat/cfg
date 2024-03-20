@@ -1,7 +1,4 @@
-local specs = {}
-local u = require('utils')
-
-specs.harpoon = {
+return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
   -- event = 'VeryLazy',
@@ -28,5 +25,3 @@ specs.harpoon = {
     end
   end,
 }
-
-return u.values(specs)

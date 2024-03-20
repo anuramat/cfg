@@ -1,4 +1,3 @@
-local specs = {}
 local u = require('utils')
 
 local make_harpoon = function(harpoon)
@@ -20,7 +19,7 @@ local make_harpoon = function(harpoon)
   end
 end
 
-specs.lualine = {
+return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   dependencies = {
@@ -136,5 +135,3 @@ specs.lualine = {
     }
   end,
 }
-
-return u.values(specs)

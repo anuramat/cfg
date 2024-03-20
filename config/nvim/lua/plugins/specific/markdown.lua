@@ -1,7 +1,4 @@
-local specs = {}
-local u = require('utils')
-
-specs.mdpreview = {
+return {
   'iamcco/markdown-preview.nvim',
   init = function()
     local function load_then_exec(cmd)
@@ -25,5 +22,3 @@ specs.mdpreview = {
     vim.g.mkdp_page_title = '${name}'
   end,
 }
-
-return u.values(specs)

@@ -5,24 +5,31 @@
 }: {
   environment.systemPackages = with pkgs; [
     google-chrome
+
     # GUI frontends
-    networkmanagerapplet
+    networkmanagerapplet # networking
     unstable.avizo # brightness/volume control with overlay indicator
     pavucontrol # gui audio configuration
     system-config-printer # printer gui
-    ###
-    waybar # status bar
+
+    # Opening stuff
     tofi # app launcher
-    wev # wayland event viewer, useful for debugging
-    libnotify # notify-send etc
-    mako # notifications
     xdg-utils # xdg-open etc
     desktop-file-utils # update-desktop-database etc
-    wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
-    playerctl # cli media player controls
 
+    # Big chunks
+    waybar # status bar
+    mako # notifications
     swaylock-effects # lockscreen, swaylock fork
     swayidle # idle events
+
+    # Debug stuff
+    wev # wayland event viewer, useful for debugging
+
+    # Terminal helpers
+    libnotify # notify-send etc
+    wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
+    playerctl # cli media player controls
 
     # Wallpaper helpers
     swaybg # plain

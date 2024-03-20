@@ -85,17 +85,12 @@ with pkgs; [
   bats # Bash testing
   bear # Compilation database generator for clangd
   delve # Go debugger
-  luajitPackages.luacheck
   luajitPackages.luarocks
   bash-completion
   # micromamba # conda rewrite in C++ # doesn't fucking work
   conda
   shellcheck # *sh linter
   nix-bash-completions
-  #### Linters
-  golangci-lint # gigalinter for go
-  deadnix # nix deadcode
-  statix # nix linter
 
   ### Viewers
   imv # terminal image viewer

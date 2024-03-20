@@ -1,7 +1,10 @@
 _: {
   imports = [
-    ./formatter.nix
+    ./format.nix
     ./lsp.nix
-    ./langs.nix
+    ./lang.nix
+    ./debug.nix
+    ./lint.nix
+    ./misc.nix
   ];
 }

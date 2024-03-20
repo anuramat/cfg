@@ -25,50 +25,7 @@ with pkgs; [
   hyprpicker # gigasimple terminal color picker
   steam
 
-  ### Barebones
-  gnumake
-  gcc
-  bash
-  killall
-  coreutils-full
-  coreutils-prefixed # to keep mac compatibility where possible
-  curl
-  git
-  less
-  lsof
-  wget
-  zip
-  unzip
-  progress # progress status for cp etc
-  nvi # vi clone
-  usbutils # just in case
-  file
-
-  ### File managers
-  xdragon
-  # TODO choose one
-  vifm
-  mc
-  ranger
-  lf
-  nnn
-  broot
-  xplr
-
   unstable.vscode
-
-  bash-completion
-  nix-bash-completions
-
-  ### Media tools
-
-  ### Web shit
-  grpcui # postman for grpc
-  grpcurl # curl for grpc
-  httpie # better curl
-  prettyping # better "ping"
-  kubectx
-  kubectl
 
   ### Monitoring
   htop # better top

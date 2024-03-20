@@ -48,5 +48,24 @@
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
     kooha # screen capture with basic gui
+
+    # Random TODO
+    cinnamon.nemo # wayland native
+    gnome-solanum # really simple one
+    gnome.cheese # webcam
+    gnome.pomodoro # slightly bloated
+    qalculate-gtk # gui for qalc
+    spotify
+    tor-browser-bundle-bin
+    transmission # torrent client
+    transmission-gtk # gui wrapper for transmission
+    unstable.obsidian # markdown personal knowledge database
+    obs-studio # screencasting/streaming
+    sageWithDoc # computer algebra
+    hyprpicker # gigasimple terminal color picker
+    steam
+    unstable.vscode
+    mesa-demos # some 3d demos
+    unstable.neovide # neovim gui
   ];
 }

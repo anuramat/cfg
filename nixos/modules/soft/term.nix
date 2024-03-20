@@ -29,6 +29,7 @@
     file
 
     ### Bread and Butter
+    unstable.neovim
     unstable.vim-full
     ripgrep-all # grep over pdfs etc
     zoxide # better cd
@@ -57,6 +58,7 @@
     cod # completion generator (updates on `cmd --help`)
     age # file encryption
     speedtest-cli
+    nix-index
 
     ### Rarely used terminal stuff
     wally-cli # ZSA keyboards software

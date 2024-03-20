@@ -6,7 +6,7 @@ local function repl_toggler(ht, buffer)
   end
 end
 
-specs.haskell = {
+return {
   'mrcjkb/haskell-tools.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',

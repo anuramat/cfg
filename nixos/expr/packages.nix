@@ -31,17 +31,8 @@ with pkgs; [
   # inkscape-with-extensions # vector graphics
   # davinci-resolve
 
-  ### Comms
-  element-desktop # matrix client
-  slack
-  discord
-  telegram-desktop
-
   ### Random
   obs-studio # screencasting/streaming
-  onionshare # tor-based file-sharing etc
-  onionshare-gui
-  qtox # p2p IM
   sageWithDoc # computer algebra
   hyprpicker # gigasimple terminal color picker
   steam
@@ -151,9 +142,7 @@ with pkgs; [
 
   ### Rarely used terminal stuff
   wally-cli # ZSA keyboards software
-  croc # send/receive files
   w3m # text based web browser
-  qrcp # send files to mobile over Wi-Fi using QR
   exercism # CLI for exercism.org
   glow # markdown viewer
   youtube-dl # download youtube videos
@@ -162,21 +151,10 @@ with pkgs; [
   bc # simple calculator
   neofetch
   fastfetch
-  mosh # ssh over unstable connections
 
   ### Random stuff TODO
   mesa-demos # some 3d demos
   unstable.neovide # neovim gui
   nix-index
   unstable.neovim
-
-  ### Themes etc
-  glib # gsettings (gtk etc)
-  qt5ct # qt5 gui settings
-  qt6ct # qt6 gui settings
-  adwaita-qt
-  dracula-theme
-  dracula-icon-theme
-  hackneyed
-  gnome3.adwaita-icon-theme
 ]

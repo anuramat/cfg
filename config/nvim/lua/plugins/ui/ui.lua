@@ -125,30 +125,30 @@ specs.dressing = {
   event = 'VeryLazy',
 }
 
--- adds animation to scrolling, resizing and cursor movement
-specs.animate = {
-  'echasnovski/mini.animate',
-  version = '*',
-  event = 'VeryLazy',
-  config = function()
-    if vim.g.neovide then
-      return
-    end
-    local animate = require('mini.animate')
-    animate.setup({
-      cursor = {
-        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
-      },
-      scroll = {
-        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
-      },
-      resize = {
-        -- enable = false, -- resize animation soft-breaks mouse resize
-        timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
-      },
-    })
-  end,
-}
+-- -- adds animation to scrolling, resizing and cursor movement
+-- specs.animate = {
+--   'echasnovski/mini.animate',
+--   version = '*',
+--   event = 'VeryLazy',
+--   config = function()
+--     if vim.g.neovide then
+--       return
+--     end
+--     local animate = require('mini.animate')
+--     animate.setup({
+--       cursor = {
+--         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
+--       },
+--       scroll = {
+--         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
+--       },
+--       resize = {
+--         -- enable = false, -- resize animation soft-breaks mouse resize
+--         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
+--       },
+--     })
+--   end,
+-- }
 
 -- alterntaives:
 -- https://github.com/luochen1990/rainbow -- 1.7k stars

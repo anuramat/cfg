@@ -25,12 +25,6 @@ with pkgs; [
   age # file encryption
   speedtest-cli
 
-  ### Media
-  gimp-with-plugins # raster graphics
-  # krita # raster graphics, digital art
-  # inkscape-with-extensions # vector graphics
-  # davinci-resolve
-
   ### Random
   obs-studio # screencasting/streaming
   sageWithDoc # computer algebra

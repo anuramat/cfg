@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     element-desktop # matrix client
     slack

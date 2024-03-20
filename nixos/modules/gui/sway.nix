@@ -17,6 +17,7 @@ in {
     extraPackages = with pkgs; [
       sway-contrib.inactive-windows-transparency
       dbus-sway-environment
+      sov # workspace overview for sway # TODO use this
     ];
   };
   xdg = {

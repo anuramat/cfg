@@ -20,9 +20,9 @@
     desktop-file-utils # update-desktop-database etc
     wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
     playerctl # cli media player controls
+
     swaylock-effects # lockscreen, swaylock fork
     swayidle # idle events
-    sov # workspace overview for sway
 
     # Wallpaper helpers
     swaybg # plain

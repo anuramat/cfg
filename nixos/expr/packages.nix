@@ -80,16 +80,11 @@ with pkgs; [
   unstable.vscode
 
   universal-ctags # maintained ctags
-  jq # json processor
-  yq # basic yaml, json, xml, csv, toml processor
-  bats # Bash testing
   bear # Compilation database generator for clangd
-  delve # Go debugger
   luajitPackages.luarocks
   bash-completion
   # micromamba # conda rewrite in C++ # doesn't fucking work
   conda
-  shellcheck # *sh linter
   nix-bash-completions
 
   ### Viewers

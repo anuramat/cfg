@@ -4,11 +4,11 @@ _: {
     ./mime
     ./boilerplate.nix
     ./laptop.nix
-    ./networking.nix
-    ./overlays.nix
-    ./peripherals.nix
-    ./printers.nix
-    ./services.nix
+    ./network.nix
+    ./overlay.nix
+    ./peripheral.nix
+    ./printer.nix
+    ./service.nix
     ./sound.nix
   ];
 }

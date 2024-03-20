@@ -41,7 +41,7 @@ se nowrap
 se dy=lastline,uhex " XXX idk
 se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:
 se ls=3 " show only one statusline
-se sbr=↪ list lcs=tab:│·,extends:❯,precedes:❮,trail:·,lead:·
+se sbr=↪ list lcs=tab:│\ ,extends:❯,precedes:❮,trail:·,lead:·
 au TextYankPost * silent! lua vim.highlight.on_yank()
 se number relativenumber
 se scrolloff=0

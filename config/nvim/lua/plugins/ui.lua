@@ -32,16 +32,19 @@ specs.indentline = {
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   event = 'VeryLazy',
   main = 'ibl',
-  -- init = function()
-  --   vim.cmd('')
-  -- end,
+  init = function()
+    vim.cmd([[se lcs+=lead:\ ]])
+  end,
   opts = {
     exclude = {
       filetypes = {
         'lazy',
       },
     },
-    indent = { char = '│' },
+    indent = {
+      -- char = '│',
+      char = '┃',
+    },
     scope = {
       enabled = true,
       show_start = false,

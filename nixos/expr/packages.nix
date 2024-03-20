@@ -79,57 +79,23 @@ with pkgs; [
 
   unstable.vscode
 
-  ### Languages
-  #### Compilers/interpreters
-  go
-  nodejs_20
-  yarn
-  ruby
-  perl
-  llvm
-  clang
-  python3
-  unstable.stack
-  #### Language tooling
-  unstable.cabal-install
   universal-ctags # maintained ctags
   jq # json processor
   yq # basic yaml, json, xml, csv, toml processor
   bats # Bash testing
   bear # Compilation database generator for clangd
-  black # Python formatter
   delve # Go debugger
-  gofumpt # strict go formatter
   luajitPackages.luacheck
   luajitPackages.luarocks
   bash-completion
   # micromamba # conda rewrite in C++ # doesn't fucking work
   conda
-  nodePackages.prettier # formatting
   shellcheck # *sh linter
-  shfmt # posix/bash/mksh formatter
-  stylua # Lua formatter
   nix-bash-completions
-  yamlfmt # YAML formatter
   #### Linters
   golangci-lint # gigalinter for go
   deadnix # nix deadcode
   statix # nix linter
-  #### Formatters
-  alejandra # nix
-  nixfmt # OFFICIAL formatter
-  #### LSPs
-  nodePackages_latest.bash-language-server
-  nodePackages_latest.yaml-language-server
-  lua-language-server
-  unstable.texlab
-  unstable.haskell-language-server
-  unstable.nixd
-  unstable.nil
-  unstable.pyright
-  unstable.gopls
-  unstable.marksman
-  unstable.clang-tools
 
   ### Viewers
   imv # terminal image viewer

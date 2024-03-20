@@ -18,6 +18,7 @@ with pkgs; [
   transmission-gtk # gui wrapper for transmission
   unstable.obsidian # markdown personal knowledge database
   vlc # gui video player
+  xdg-ninja # checks $HOME for bloat
   rclone # rsync for cloud
   starship # terminal prompt
   cod # completion generator (updates on `cmd --help`)

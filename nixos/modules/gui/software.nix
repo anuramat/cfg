@@ -4,10 +4,13 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    unstable.avizo # brightness/volume control with overlay indicator
     google-chrome
-    system-config-printer # printer gui
+    # GUI frontends
     networkmanagerapplet
+    unstable.avizo # brightness/volume control with overlay indicator
+    pavucontrol # gui audio configuration
+    system-config-printer # printer gui
+    ###
     waybar # status bar
     tofi # app launcher
     wev # wayland event viewer, useful for debugging
@@ -15,22 +18,23 @@
     mako # notifications
     xdg-utils # xdg-open etc
     desktop-file-utils # update-desktop-database etc
-    xdg-ninja # checks $HOME for bloat
     wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
     playerctl # cli media player controls
-    swaybg # wallpaper helper
-    mpvpaper # video wallpaper helper
-    glpaper # shader wallpaper
     swaylock-effects # lockscreen, swaylock fork
     swayidle # idle events
-    pavucontrol # gui audio configuration
     sov # workspace overview for sway
 
-    ### Display settings
+    # Wallpaper helpers
+    swaybg # plain
+    mpvpaper # video
+    glpaper # shader
+
+    # Display settings
     kanshi # plaintext defined display configs
     wlr-randr # interactive cli display configs
     wlay # gui display configs (can output kanshi/sway/wlr-randr files)
-    ### Screenshots and screen capture
+
+    # Screenshots and screen capture
     slurp # select screen region
     grim # CLI screenshot
     shotman # screenshot, with simple preview afterwards, no markup

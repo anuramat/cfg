@@ -4,7 +4,6 @@ _: {
     ./default.nix
     ./laptop.nix
     ./network.nix
-    ./overlay.nix
     ./peripheral.nix
     ./printer.nix
     ./service.nix

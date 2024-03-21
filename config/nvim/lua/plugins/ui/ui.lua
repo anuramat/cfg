@@ -1,34 +1,9 @@
 local specs = {}
 local u = require('utils')
 
--- dracula colorscheme
-specs.dracula_cs = {
-  'Mofiqul/dracula.nvim',
-  priority = 1337,
-  lazy = false,
-  config = function()
-    local dracula = require('dracula')
-    local cs = dracula.colors()
-    local opts = {
-      italic_comment = true,
-      lualine_bg_color = cs.bg,
-      transparent_bg = false,
-    }
-    dracula.setup(opts)
-    vim.cmd.colorscheme('dracula')
-    -- Override shitty default CodeLens style
-    local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
-    clhl.underline = true
-    clhl.bold = true
-    vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
-    -- Make window borders properly visible
-    vim.cmd('hi WinSeparator guibg=bg guifg=fg')
-  end,
-}
-
 -- show indent line
---  - on blank lines
---  - with expandtab
+--  * on blank lines
+--  * with expandtab
 specs.indentline = {
   'lukas-reineke/indent-blankline.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -64,9 +39,9 @@ specs.indentline = {
 -- }
 
 -- custom
---  - messages
---  - cmdline
---  - popupmenu
+--  * messages
+--  * cmdline
+--  * popupmenu
 specs.noice = {
   'folke/noice.nvim',
   dependencies = {
@@ -112,9 +87,9 @@ specs.noice = {
   end,
 }
 
--- custom
---  - vim.ui.select - picker
---  - vim.ui.input - a text field
+-- custom:
+--  * vim.ui.select - picker
+--  * vim.ui.input - a text field
 specs.dressing = {
   'stevearc/dressing.nvim',
   opts = {
@@ -125,31 +100,7 @@ specs.dressing = {
   event = 'VeryLazy',
 }
 
--- -- adds animation to scrolling, resizing and cursor movement
--- specs.animate = {
---   'echasnovski/mini.animate',
---   version = '*',
---   event = 'VeryLazy',
---   config = function()
---     if vim.g.neovide then
---       return
---     end
---     local animate = require('mini.animate')
---     animate.setup({
---       cursor = {
---         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
---       },
---       scroll = {
---         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
---       },
---       resize = {
---         -- enable = false, -- resize animation soft-breaks mouse resize
---         timing = animate.gen_timing.exponential({ duration = 100, unit = 'total' }),
---       },
---     })
---   end,
--- }
-
+-- treesitter based rainbow parentheses
 -- alterntaives:
 -- https://github.com/luochen1990/rainbow -- 1.7k stars
 -- https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars

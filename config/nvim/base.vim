@@ -51,7 +51,7 @@ se matchtime=1 showmatch " highlight matching bracket (deciseconds)
 se signcolumn=yes " gutter
 se tgc " 24-bit color
 hi WinSeparator guibg=bg guifg=fg
-let g:border="single" " custom, see :he nvim_open_win
+let g:border="solid" " custom, see :he nvim_open_win
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
     colo sorbet
@@ -69,14 +69,15 @@ se ph=20 " popup max height
 let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
-"~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
 com! -bang Q q<bang>
 com! -bang W w<bang>
 com! -bang WQ wq<bang>
 com! -bang Wq wq<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
-
+"~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+""" determine highlight group of the item under cursor
 function! GetSynstack()
   " Ensure any folded code is opened; optional, remove if not needed
   normal! zv
@@ -90,8 +91,7 @@ function! GetSynstack()
   endfor
 endfunction
 command SynStack call GetSynstack()
-
-" hide qf buffers
+""" hide qf buffers
 augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
@@ -101,12 +101,10 @@ se linespace=-1
 se guifont=Hack\ Nerd\ Font:h14
 if exists("g:neovide")
   se winblend=20 " to show off blur
-  let g:border="solid" " we already have shadows and blur
   se scrolloff=1 " otherwise cursorline leaves a trail
   let g:neovide_cursor_animation_length=0.03 " slightly faster cursor animation
   " let g:neovide_transparency=0.9 " such a bad idea
   let g:neovide_scroll_animation_far_lines=0 " when scrolling more then a screen, animate this many lines
-
   let g:neovide_floating_shadow = v:true
   let g:neovide_floating_z_height = 4
   let g:neovide_light_radius = 10

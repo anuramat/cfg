@@ -31,7 +31,8 @@ return {
   opts = function()
     return {
       options = {
-        theme = require('lualine.themes.dracula-nvim'),
+        -- theme = require('lualine.themes.dracula-nvim'),
+        theme = 'tokyonight',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },
@@ -124,9 +125,9 @@ return {
         lualine_y = {},
         lualine_z = {
           {
-            'tabs',
-            mode = 2,
-            use_mode_colors = true,
+            -- 'tabs',
+            -- mode = 2,
+            -- use_mode_colors = true,
           },
         },
       },

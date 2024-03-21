@@ -4,17 +4,12 @@ set -e
 
 ensure_path() {
 	local -r path="$1"
-
 	[ -d "$path" ] && return
 	mkdir -p "$path" || {
 		echo >&2 "couldn't create path \"$path\""
 		return 1
 	}
 }
-
-# git check-ignore "$original" >/dev/null 2>&1 && {
-# 	return
-# }
 
 install_file() {
 	# $1 -- original file

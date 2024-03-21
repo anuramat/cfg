@@ -1,4 +1,4 @@
-{lib, ...}:
+lib:
 with lib; let
   # TODO what is going on here
   #
@@ -18,7 +18,7 @@ with lib; let
   files = dir: collect isString (mapAttrsRecursive (path: type: concatStringsSep "/" path) (getDir dir));
 
   # Filters out directories that don't end with .nix or are this file, also makes the strings absolute
-  this = dir:
+  nixFiles = dir:
     map
     (file: ./. + "/${file}")
     (filter
@@ -28,5 +28,5 @@ with lib; let
         && ! hasPrefix "." file)
       (files dir));
 in {
-  inherit this;
+  inherit nixFiles;
 }

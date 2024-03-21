@@ -30,6 +30,7 @@
 
     ### Bread and Butter
     unstable.neovim
+    unstable.helix
     unstable.vim-full
     ripgrep-all # grep over pdfs etc
     zoxide # better cd

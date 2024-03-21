@@ -33,7 +33,6 @@ return {
     return {
       options = {
         theme = require('lualine.themes.dracula-nvim'),
-        -- theme = require('lualine.themes.gruvbox'),
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },

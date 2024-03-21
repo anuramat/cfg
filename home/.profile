@@ -25,6 +25,7 @@ export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss # VLC dependency
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.lua" | so $MYVIMRC'
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export W3M_DIR="$XDG_DATA_HOME/w3m"
 
 export HISTSIZE=-1
 export HISTFILESIZE=-1

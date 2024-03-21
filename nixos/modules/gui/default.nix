@@ -1,4 +1,7 @@
-{helpers, ...}: {
-  imports =
-    helpers.importLevel ./.;
+{...}: {
+  imports = [
+    ./software.nix
+    ./sway.nix
+    ./theme.nix
+  ];
 }

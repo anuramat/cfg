@@ -3,15 +3,13 @@
 set -e
 
 ensure_path() {
-	# $1 -- target path
-	local -r target="$1"
+	local -r path="$1"
 
-	[ -d "$target" ] && return
-	mkdir -p "$target" || {
-		echo "[cfg.fail] create path \"$target\""
+	[ -d "$path" ] && return
+	mkdir -p "$path" || {
+		echo >&2 "couldn't create path \"$path\""
 		return 1
 	}
-	echo "[cfg.write] created path \"$1\""
 }
 
 # git check-ignore "$original" >/dev/null 2>&1 && {
@@ -21,35 +19,32 @@ ensure_path() {
 install_file() {
 	# $1 -- original file
 	# $2 -- destination directory
-	local -r file="$(realpath "$1")"
-	local -r destination="$(realpath "$2")"
-	# check if file exists
-	[ -e "$file" ] || {
-		echo "[cfg.fail] file \"$destination\" not found!"
+	local file
+	file="$(realpath -eq "$1")" || {
+		echo >&2 "file \"$file\" not found"
 		return 1
 	}
-	# make sure destination exists
+	local -r destination="$(realpath -m "$2")"
 	ensure_path "$destination" || return 1
-	# make a symlink
 	ln -sft "$destination" "$file" || {
-		echo "[cfg.fail] make symlink @ \"$destination\""
+		echo >&2 "can't link $file to $destination"
 		return 1
 	}
 }
 
 install_all() {
-	echo '[cfg] installing $HOME'
+	echo 'linking to $HOME'
 	shopt -s dotglob
 	for __dotfile in home/*; do
 		install_file "$__dotfile" "$HOME"
 	done
-	echo '[cfg] installing $XDG_CONFIG_HOME'
+	echo 'linking to $XDG_CONFIG_HOME'
 	for __folder in config/*; do
 		install_file "$__folder" "$XDG_CONFIG_HOME"
 	done
 	shopt -u dotglob
 
-	echo "[cfg] creating directories"
+	echo "creating directories"
 	# TODO move all of this to configuration.nix or home manager
 	touch "$HOME/.hushlogin"
 	ensure_path "$HOME/screenshots"

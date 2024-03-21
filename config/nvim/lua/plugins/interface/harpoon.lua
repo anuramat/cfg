@@ -4,7 +4,6 @@ return {
   -- event = 'VeryLazy',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'Mofiqul/dracula.nvim',
   },
   opts = function()
     local harpoon = require('harpoon')

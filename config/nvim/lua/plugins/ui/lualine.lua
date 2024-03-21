@@ -23,7 +23,6 @@ return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
   dependencies = {
-    'Mofiqul/dracula.nvim',
     'ThePrimeagen/harpoon',
   },
   init = function()

@@ -1,10 +1,10 @@
 _: {
   imports = [
-    ./format.nix
-    ./lsp.nix
-    ./lang.nix
     ./debug.nix
+    ./format.nix
+    ./lang.nix
     ./lint.nix
+    ./lsp.nix
     ./misc.nix
   ];
 }

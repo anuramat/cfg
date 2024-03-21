@@ -29,6 +29,6 @@ require('lazy').setup({
     cond = not vim.g.vscode,
   },
   ui = {
-    border = 'double',
+    border = vim.g.border,
   },
 })

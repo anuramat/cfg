@@ -53,7 +53,7 @@
     # Random TODO
     taskwarrior # CLI todo apps # TODO move?
     tealdeer # tldr implementation in rust, adheres to XDG basedir spec
-    xdg-ninja # checks $HOME for bloat
+    unstable.xdg-ninja # checks $HOME for bloat
     rclone # rsync for cloud
     starship # terminal prompt
     cod # completion generator (updates on `cmd --help`)

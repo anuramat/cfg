@@ -1,47 +1,12 @@
 local specs = {}
 local u = require('utils')
 
--- show indent line
---  * on blank lines
---  * with expandtab
-specs.indentline = {
-  'lukas-reineke/indent-blankline.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  event = 'VeryLazy',
-  main = 'ibl',
-  init = function()
-    vim.cmd([[se lcs+=lead:\ ]])
-  end,
-  opts = {
-    exclude = {
-      filetypes = {
-        'lazy',
-      },
-    },
-    indent = {
-      -- char = '│',
-      char = '┃',
-    },
-    scope = {
-      enabled = true,
-      show_start = false,
-      show_end = false,
-    },
-  },
-}
-
--- -- lsp progress overlay
--- -- can fuck up on LspDetach with multiple lsps when closing
--- specs.fidget = {
---   'j-hui/fidget.nvim',
---   event = 'LspAttach',
---   opts = {},
--- }
-
 -- custom
 --  * messages
 --  * cmdline
---  * popupmenu
+--  * popupmenu TODO wtf is this
+-- messages: passes to nvim-notify, renders natively as a fallback
+-- lsp progress: native rendering
 specs.noice = {
   'folke/noice.nvim',
   dependencies = {
@@ -54,23 +19,21 @@ specs.noice = {
     require('notify').setup({
       render = 'wrapped-compact',
       on_open = function(win)
-        -- set notify border
+        -- set border
         if vim.api.nvim_win_is_valid(win) then
           vim.api.nvim_win_set_config(win, { border = vim.g.border })
         end
       end,
     })
     return {
-      cmdline = { enabled = false },
-      messages = { enabled = false },
-      popupenu = { enabled = false },
+      popupenu = { backend = 'cmp' },
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split
       },
       lsp = {
         signature = { enabled = false }, -- off because we use ray-x/lsp_signature.nvim
-        hover = { enabled = true },
+        hover = { silent = true }, -- don't notify on empty hover
         documentation = { opts = { border = vim.g.border } },
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
@@ -80,6 +43,7 @@ specs.noice = {
       },
     }
   end,
+  keys = { { '<leader>n', '<cmd>NoiceDismiss<cr>', desc = 'Dismiss Message' } },
 }
 
 -- custom:
@@ -89,20 +53,16 @@ specs.dressing = {
   'stevearc/dressing.nvim',
   opts = {
     input = {
-      enabled = false,
+      insert_only = true,
+      border = vim.g.border,
+    },
+    select = {
+      backend = { 'builtin', 'nui' },
+      nui = { border = { style = vim.g.border } },
+      builtin = { border = vim.g.border },
     },
   },
   event = 'VeryLazy',
-}
-
--- treesitter based rainbow parentheses
--- alterntaives:
--- * https://github.com/luochen1990/rainbow -- 1.7k stars
--- * https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
-specs.rainbow = {
-  'HiPhish/rainbow-delimiters.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  event = 'BufEnter',
 }
 
 return u.values(specs)

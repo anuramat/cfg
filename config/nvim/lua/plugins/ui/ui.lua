@@ -47,13 +47,11 @@ specs.noice = {
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',
-    'Mofiqul/dracula.nvim',
     'hrsh7th/nvim-cmp',
   },
   event = 'VeryLazy',
   opts = function()
     require('notify').setup({
-      background_colour = require('dracula').colors().bg,
       render = 'wrapped-compact',
       on_open = function(win)
         -- set notify border
@@ -63,9 +61,10 @@ specs.noice = {
       end,
     })
     return {
-      cmdline = { format = { help = false } },
+      cmdline = { enabled = false },
+      messages = { enabled = false },
+      popupenu = { enabled = false },
       presets = {
-        command_palette = true, -- position the cmdline and popupmenu together
         bottom_search = true, -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split
       },
@@ -78,10 +77,6 @@ specs.noice = {
           ['vim.lsp.util.stylize_markdown'] = true,
           ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp and other two options
         },
-      },
-      messages = {
-        view_search = 'cmdline',
-        enabled = false, -- moves messages back to cmdline
       },
     }
   end,
@@ -102,8 +97,8 @@ specs.dressing = {
 
 -- treesitter based rainbow parentheses
 -- alterntaives:
--- https://github.com/luochen1990/rainbow -- 1.7k stars
--- https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
+-- * https://github.com/luochen1990/rainbow -- 1.7k stars
+-- * https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
 specs.rainbow = {
   'HiPhish/rainbow-delimiters.nvim',
   dependencies = { 'nvim-treesitter/nvim-treesitter' },

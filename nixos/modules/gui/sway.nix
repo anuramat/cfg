@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  unstable,
+  ...
+}: let
   # TODO make sure we need this, refer to nixos wiki sway page
   dbus-sway-environment = pkgs.writeTextFile {
     name = "dbus-sway-environment";
@@ -17,7 +21,7 @@ in {
     extraPackages = with pkgs; [
       sway-contrib.inactive-windows-transparency
       dbus-sway-environment
-      sov # workspace overview for sway # TODO use this
+      unstable.sov # workspace overview for sway # TODO use this
     ];
   };
 

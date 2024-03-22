@@ -1,6 +1,7 @@
 local specs = {}
 local u = require('utils')
 
+-- undotree :)
 specs.undotree = {
   'mbbill/undotree',
   cmd = {
@@ -45,13 +46,12 @@ specs.align = {
 }
 
 -- Highlight trailing space
--- Could be replaced with a few lines of code tbh
 specs.trailspace = {
   'echasnovski/mini.trailspace',
   event = 'VeryLazy',
-  opts = function()
-    vim.api.nvim_create_user_command('TrimTrailingWhitespace', require('mini.trailspace').trim, {})
-    return {}
+  config = function()
+    vim.api.nvim_create_user_command('Trim', require('mini.trailspace').trim, {})
+    vim.cmd([[autocmd FileType lazy lua vim.b.minitrailspace_disable = true; require('mini.trailspace').unhighlight()]])
   end,
 }
 
@@ -104,7 +104,7 @@ specs.eunuch = {
   event = 'VeryLazy',
 }
 
--- unusable until we get a blacklist regex for .pb.go files
+-- "%d usages"
 specs.symbols = {
   'Wansmer/symbol-usage.nvim',
   event = 'BufReadPre', -- NOTE need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
@@ -123,12 +123,14 @@ specs.symbols = {
         return vim.fn.expand('%:p'):find(vim.fn.getcwd())
       end,
       function(bufnr)
+        -- long files
         return u.buf_lines_len(bufnr) > 1000
       end,
     },
   },
 }
 
+-- GNU Info browser
 specs.info = {
   'HiPhish/info.vim',
   event = 'VeryLazy',

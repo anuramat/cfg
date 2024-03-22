@@ -15,6 +15,7 @@ specs.treesitter = {
     highlight = { enable = true, disable = {} },
     indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = langs,
+    sync_install = true, -- only applied to `ensure_installed`
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -23,7 +24,7 @@ specs.treesitter = {
         scope_incremental = false,
         node_decremental = '<bs>',
       },
-      additional_vim_regex_highlighting = {},
+      additional_vim_regex_highlighting = {}, -- use both `:syntax` and Treesitter
     },
     textobjects = {
       swap = {

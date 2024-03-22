@@ -1,10 +1,6 @@
 local u = require('utils')
 
-local function current_buffer_fuzzy_find()
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
-    previewer = false,
-  }))
-end
+-- TODO refactor telescope config
 
 local function zoxide()
   require('telescope').extensions.zoxide.list()
@@ -23,7 +19,6 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
-    'debugloop/telescope-undo.nvim', -- kinda shit
     'jvgrootveld/telescope-zoxide',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -35,7 +30,6 @@ return {
     },
   },
   keys = u.lazy_prefix('<leader>f', {
-    { '/', current_buffer_fuzzy_find, desc = 'Fuzzy Search' },
     { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols' },
     { 'b', require('telescope.builtin').buffers, desc = 'Buffers' },
     { 'h', '<cmd>Telescope harpoon marks<cr>', desc = 'Harpoons' },
@@ -84,7 +78,7 @@ return {
         zoxide = { prompt_title = 'Zoxide' },
       },
     }
-    if vim.g.neovide then
+    if vim.g.border == 'solid' then
       opts.defaults.borderchars = {
         prompt = { ' ' },
         results = { ' ' },

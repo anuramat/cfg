@@ -1,34 +1,18 @@
--- return {
---   'Mofiqul/dracula.nvim',
---   priority = 1337,
---   lazy = false,
---   config = function()
---     local dracula = require('dracula')
---     local cs = dracula.colors()
---     local opts = {
---       italic_comment = true,
---       lualine_bg_color = cs.bg,
---       transparent_bg = false,
---     }
---     dracula.setup(opts)
---     vim.cmd.colorscheme('dracula')
---     -- Override shitty default CodeLens style
---     local clhl = vim.api.nvim_get_hl(0, { name = 'LspCodeLens' })
---     clhl.underline = true
---     clhl.bold = true
---     vim.api.nvim_set_hl(0, 'LspCodeLens', clhl)
---     -- Make window borders properly visible
---     vim.cmd('hi WinSeparator guibg=bg guifg=fg')
---   end,
--- }
+---@diagnostic disable: unused-local
 
-return {
+local function set_colors(name)
+  vim.cmd.colorscheme(name)
+  vim.g.lualine_colorscheme = name
+end
+
+local tokyo = {
   'folke/tokyonight.nvim',
   lazy = false,
   priority = 1000,
   config = function()
     require('tokyonight').setup({
       on_highlights = function(hl, c)
+        -- minimalistic telescope
         local prompt = '#2d3149'
         hl.TelescopeNormal = {
           bg = c.bg_dark,
@@ -59,7 +43,29 @@ return {
         }
       end,
     })
-    vim.g.border = 'solid'
-    vim.cmd.colorscheme('tokyonight')
+    set_colors('tokyonight')
   end,
 }
+
+local cat = {
+  'catppuccin/nvim',
+  name = 'catppuccin',
+  priority = 1000,
+  lazy = false,
+  config = function()
+    require('catppuccin').setup({
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        treesitter = true,
+        notify = true,
+        mini = {
+          enabled = true,
+        },
+      },
+    })
+    set_colors('catppuccin')
+  end,
+}
+
+return cat

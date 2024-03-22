@@ -31,8 +31,8 @@ return {
   opts = function()
     return {
       options = {
-        -- theme = require('lualine.themes.dracula-nvim'),
-        theme = 'tokyonight',
+        -- theme = 'tokyonight',
+        theme = vim.g.lualine_colorscheme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },

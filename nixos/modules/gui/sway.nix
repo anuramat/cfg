@@ -32,9 +32,6 @@ in {
   };
 
   services.dbus.enable = true;
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
 
   qt = {
     enable = true;

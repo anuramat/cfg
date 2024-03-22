@@ -38,4 +38,15 @@ in {
     platformTheme = "qt5ct";
     style = "adwaita-dark";
   };
+
+  # Enabling realtime may improve latency and reduce stuttering, specially in high load scenarios.
+  # Enabling this option allows any program run by the "users" group to request real-time priority.
+  security.pam.loginLimits = [
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
+  ];
 }

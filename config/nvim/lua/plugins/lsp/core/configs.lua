@@ -85,6 +85,12 @@ return function()
           workspace = {
             checkThirdParty = false,
           },
+          -- format = {
+          --   enable = false,
+          -- },
+          hint = {
+            enable = true,
+          },
           telemetry = {
             enable = false,
           },

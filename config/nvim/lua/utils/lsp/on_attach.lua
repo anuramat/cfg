@@ -4,6 +4,5 @@
 return function(client, buffer)
   require('utils.lsp.keys').setup_lsp_keybinds(buffer)
   require('utils.lsp.formatting').setup_lsp_autoformatting(client, buffer)
-  vim.lsp.inlay_hint.enable()
-  -- require('lsp-format').on_attach(client, buffer)
+  vim.lsp.inlay_hint.enable(buffer)
 end

@@ -4,13 +4,13 @@ local u = require('utils')
 
 specs.treesitter = {
   'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
-  event = { 'BufReadPre', 'BufNewFile' }, -- without VeryLazy - breaks on first open file with telescope
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-context',
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
+  build = ':TSUpdate', -- without VeryLazy - breaks on first open file with telescope
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     highlight = { enable = true, disable = {} },
     indent = { enable = true }, -- noexpandtab is broken with python
@@ -57,8 +57,8 @@ specs.treesitter = {
 -- Comments lines, post-tpope/vim-commentary
 specs.comment = {
   'numToStr/Comment.nvim',
-  event = 'VeryLazy',
   dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
+  event = 'VeryLazy',
   config = function()
     --- @diagnostic disable-next-line: missing-fields
     require('Comment').setup({
@@ -73,15 +73,15 @@ specs.comment = {
 -- symbol outline
 specs.aerial = {
   'stevearc/aerial.nvim',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-tree/nvim-web-devicons',
+  },
   event = 'BufEnter',
   opts = {
     filter_kind = {
       nix = false,
     },
-  },
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-tree/nvim-web-devicons',
   },
   keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
 }

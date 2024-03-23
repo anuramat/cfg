@@ -1,6 +1,3 @@
-local configs = require('plugins.agnostic.lsp.configs')
-local on_attach = require('utils.lsp.on_attach')
-
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -10,6 +7,8 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
+    local configs = require('plugins.agnostic.lsp.configs')
+    local on_attach = require('utils.lsp.on_attach')
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
     -- add border to `:LspInfo` menu
     require('lspconfig.ui.windows').default_options.border = vim.g.border

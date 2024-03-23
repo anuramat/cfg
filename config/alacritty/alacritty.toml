@@ -1,4 +1,4 @@
-# https://alacritty.org/config-alacritty-bindings.html
+# `man 5 alacritty-bindings`
 [keyboard]
 bindings = [
   { key = "N", mods = "Control|Shift", action = "CreateNewWindow" }

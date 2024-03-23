@@ -85,16 +85,6 @@ specs.oil = {
   },
 }
 
--- File tree
--- https://github.com/nvim-neo-tree/neo-tree.nvim
-specs.tree = {
-  'nvim-tree/nvim-tree.lua',
-  opts = {},
-  keys = {
-    { '<leader>t', '<cmd>NvimTreeToggle<cr>', desc = 'File Tree (NvimTree)' },
-  },
-}
-
 -- File management commands (rename, remove, chmod...)
 -- Must have
 -- see also:

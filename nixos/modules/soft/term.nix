@@ -20,6 +20,7 @@
     curl
     git
     less
+    tree
     lsof
     wget
     zip

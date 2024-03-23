@@ -5,4 +5,4 @@ vim.diagnostic.config({
   float = { border = vim.g.border }, -- settings for `vim.diagnostic.open_float`
 })
 require('adhoc')
-require('lzy')
+require('plugins')

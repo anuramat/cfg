@@ -14,14 +14,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  { import = 'plugins.ui' },
   { import = 'plugins.dap' },
-  { import = 'plugins.extensions' },
-  { import = 'plugins.interface' },
-  { import = 'plugins.languages' },
   { import = 'plugins.lsp' },
   { import = 'plugins.misc' },
+  { import = 'plugins.extensions' },
   { import = 'plugins.treesitter' },
-  { import = 'plugins.ui' },
+  { import = 'plugins.languages' },
+  { import = 'plugins.interface' },
 }, {
   change_detection = {
     enabled = false,

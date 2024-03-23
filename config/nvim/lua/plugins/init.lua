@@ -20,6 +20,7 @@ require('lazy').setup({
   { import = 'plugins.interface' },
   { import = 'plugins.extensions' },
   { import = 'plugins.agnostic' },
+  { import = 'plugins.treesitter' },
 }, {
   change_detection = {
     enabled = false,

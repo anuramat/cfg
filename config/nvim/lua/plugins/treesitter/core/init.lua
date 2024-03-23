@@ -1,5 +1,5 @@
 local specs = {}
-local langs = require('plugins.agnostic.treesitter.langs')
+local langs = require('plugins.treesitter.core.langs')
 local u = require('utils')
 
 specs.treesitter = {

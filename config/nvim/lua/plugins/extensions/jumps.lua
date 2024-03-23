@@ -1,7 +1,4 @@
-local specs = {}
-local u = require('utils')
-
-specs.flash = {
+return {
   'folke/flash.nvim',
   opts = {
     modes = {
@@ -28,11 +25,3 @@ specs.flash = {
     },
   },
 }
-
-specs.brackets = {
-  'echasnovski/mini.bracketed',
-  lazy = false,
-  opts = {},
-}
-
-return u.values(specs)

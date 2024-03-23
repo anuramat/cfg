@@ -1,24 +1,6 @@
 local specs = {}
 local u = require('utils')
 
--- undotree :)
-specs.undotree = {
-  'mbbill/undotree',
-  cmd = {
-    'UndotreeHide',
-    'UndotreeShow',
-    'UndotreeFocus',
-    'UndotreeToggle',
-  },
-  keys = {
-    {
-      '<leader>u',
-      '<cmd>UndotreeToggle<cr>',
-      desc = 'Undotree',
-    },
-  },
-}
-
 -- Autodetect indentation settings
 specs.sleuth = {
   'tpope/vim-sleuth',
@@ -55,74 +37,12 @@ specs.trailspace = {
   end,
 }
 
--- Databases
-specs.dadbod_ui = {
-  'kristijanhusak/vim-dadbod-ui',
-  dependencies = {
-    { 'tpope/vim-dadbod', lazy = true },
-    { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-  },
-  cmd = {
-    'DBUI',
-    'DBUIToggle',
-    'DBUIAddConnection',
-    'DBUIFindBuffer',
-  },
-  init = function()
-    vim.g.db_ui_use_nerd_fonts = 1
-  end,
-}
-
--- File manager
-specs.oil = {
-  'stevearc/oil.nvim',
-  -- event = 'VeryLazy',
-  lazy = false, -- so that it overrides "nvim <path>"
-  opts = {},
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  keys = {
-    { '<leader>o', '<cmd>Oil<cr>', desc = 'File Manager (Oil)' },
-  },
-}
-
 -- File management commands (rename, remove, chmod...)
 -- Must have
 -- see also:
 -- chrisgrieser/nvim-genghis - drop in lua replacement with some bloat/improvements
 specs.eunuch = {
   'tpope/vim-eunuch',
-  event = 'VeryLazy',
-}
-
--- "%d usages"
-specs.symbols = {
-  'Wansmer/symbol-usage.nvim',
-  event = 'LspAttach',
-  opts = {
-    vt_position = 'end_of_line',
-  },
-  disable = {
-    cond = {
-      function(bufnr)
-        -- go codegen
-        local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1]
-        return first_line:match('^// Code generated .* DO NOT EDIT%.')
-      end,
-      function()
-        -- disable for all files outside of the cwd
-        return vim.fn.expand('%:p'):find(vim.fn.getcwd())
-      end,
-      function(bufnr)
-        -- long files
-        return u.buf_lines_len(bufnr) > 1000
-      end,
-    },
-  },
-}
-
--- GNU Info browser
-specs.info = {
-  'HiPhish/info.vim',
   event = 'VeryLazy',
 }
 

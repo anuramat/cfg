@@ -41,6 +41,7 @@
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
     tmux # terminal multiplexer
+    zellij # ~neo-tmux
     peco # interactive filtering
     aria # downloader
     poppler_utils # pdf utils

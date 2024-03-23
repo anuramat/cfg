@@ -1,3 +1,9 @@
+# https://alacritty.org/config-alacritty-bindings.html
+[keyboard]
+bindings = [
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" }
+]
+
 [font]
 size = 13.0
 

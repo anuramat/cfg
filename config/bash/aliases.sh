@@ -19,6 +19,7 @@ if command -v "eza" >/dev/null 2>&1; then
 	alias la="$EZACMD --long --all"
 	alias lt="$EZACMD --long --sort=time"
 	alias tree="$EZACMD --tree"
+	alias treedir="$EZACMD --tree --only-dirs"
 else
 	alias ls="ls --color=auto"
 	alias ll="ls -lth --color=auto"

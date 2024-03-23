@@ -1,4 +1,5 @@
 -- Databases
+-- never used, might be broken
 return {
   'kristijanhusak/vim-dadbod-ui',
   dependencies = {

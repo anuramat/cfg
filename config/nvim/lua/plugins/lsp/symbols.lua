@@ -1,3 +1,5 @@
+local u = require('utils')
+
 -- "%d usages"
 return {
   'Wansmer/symbol-usage.nvim',

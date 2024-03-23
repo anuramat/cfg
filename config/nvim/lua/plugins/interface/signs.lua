@@ -1,14 +1,4 @@
-local specs = {}
-local u = require('utils')
-
--- https://github.com/tanvirtin/vgit.nvim
--- https://github.com/NeogitOrg/neogit
-specs.fugitive = {
-  'tpope/vim-fugitive',
-  lazy = false, -- so that merge tool works
-}
-
-specs.signs = {
+return {
   'lewis6991/gitsigns.nvim',
   event = 'VeryLazy',
   opts = {
@@ -51,15 +41,3 @@ specs.signs = {
     end,
   },
 }
-
-specs.diffview = {
-  'sindrets/diffview.nvim',
-  event = 'VeryLazy',
-}
-
--- kdheepak/lazygit.nvim
--- rhysd/conflict-marker.vim
--- sindrets/diffview.nvim
--- neogit
-
-return u.values(specs)

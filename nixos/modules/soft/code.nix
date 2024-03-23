@@ -3,9 +3,6 @@
   unstable,
   ...
 }: {
-  services.emacs = {
-    enable = true;
-  };
   environment.systemPackages = with pkgs; [
     nvi
     unstable.neovim

@@ -9,10 +9,8 @@ return {
       dependencies = 'ThePrimeagen/harpoon',
     },
   },
-  init = function()
-    vim.cmd('se noshowmode')
-  end,
   opts = function()
+    vim.o.showmode = false
     return {
       options = {
         -- theme = 'tokyonight',

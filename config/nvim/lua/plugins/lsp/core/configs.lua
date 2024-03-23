@@ -82,14 +82,14 @@ return function()
           runtime = {
             version = 'LuaJIT',
           },
-          workspace = {
-            checkThirdParty = false,
-          },
-          -- format = {
-          --   enable = false,
+          -- workspace = {
+          --   checkThirdParty = 'Disable', -- already in .luarc.json
           -- },
+          format = {
+            enable = false, -- using stylua instead
+          },
           -- hint = {
-          --   enable = true,
+          --   enable = true, -- kinda annoying
           -- },
           telemetry = {
             enable = false,

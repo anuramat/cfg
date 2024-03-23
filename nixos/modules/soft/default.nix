@@ -5,5 +5,6 @@ _: {
     ./edit.nix
     ./term.nix
     ./view.nix
+    ./code.nix
   ];
 }

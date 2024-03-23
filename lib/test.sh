@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 . lib/run.sh
 
-autoshell() {
+shell() {
 	run 'text/x-shellscript' 'shellcheck --color=always -o all' 'Checking file %s'
 }
 

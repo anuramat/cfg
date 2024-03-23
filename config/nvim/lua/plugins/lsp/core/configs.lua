@@ -88,9 +88,9 @@ return function()
           -- format = {
           --   enable = false,
           -- },
-          hint = {
-            enable = true,
-          },
+          -- hint = {
+          --   enable = true,
+          -- },
           telemetry = {
             enable = false,
           },

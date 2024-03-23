@@ -3,6 +3,7 @@ local u = require('utils')
 -- TODO understand, move keys, rewrite
 return {
   'rcarriga/nvim-dap-ui',
+  dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
   -- stylua: ignore
   keys = u.lazy_prefix('<leader>d', {
     { "u", function() require("dapui").toggle({ }) end, desc = "Dap UI" },

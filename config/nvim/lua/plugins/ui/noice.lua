@@ -1,13 +1,10 @@
-local specs = {}
-local u = require('utils')
-
 -- custom
 --  * messages
 --  * cmdline
 --  * popupmenu TODO wtf is this
 -- messages: passes to nvim-notify, renders natively as a fallback
 -- lsp progress: native rendering
-specs.noice = {
+return {
   'folke/noice.nvim',
   dependencies = {
     'MunifTanjim/nui.nvim',
@@ -26,7 +23,20 @@ specs.noice = {
       end,
     })
     return {
-      popupenu = { backend = 'cmp' },
+      popupenu = { backend = 'cmp', enabled = false }, -- TODO what is this
+      cmdline = {
+        view = 'cmdline',
+        format = {
+          cmdline = { conceal = false, icon = '' },
+          search_down = { conceal = false, icon = '' },
+          search_up = { conceal = false, icon = '' },
+          filter = { conceal = false, icon = '' },
+          lua = { conceal = false, icon = '' },
+          help = { conceal = false, icon = '' },
+          input = { conceal = false, icon = '' },
+        },
+      },
+      messages = { enabled = true }, -- forces cmdline
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split
@@ -45,24 +55,3 @@ specs.noice = {
   end,
   keys = { { '<leader>n', '<cmd>NoiceDismiss<cr>', desc = 'Dismiss Message' } },
 }
-
--- custom:
---  * vim.ui.select - picker
---  * vim.ui.input - a text field
-specs.dressing = {
-  'stevearc/dressing.nvim',
-  opts = {
-    input = {
-      insert_only = true,
-      border = vim.g.border,
-    },
-    select = {
-      backend = { 'builtin', 'nui' },
-      nui = { border = { style = vim.g.border } },
-      builtin = { border = vim.g.border },
-    },
-  },
-  event = 'VeryLazy',
-}
-
-return u.values(specs)

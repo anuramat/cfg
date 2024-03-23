@@ -1,5 +1,3 @@
-local M = {}
-
 local on_attach = require('utils.lsp.on_attach')
 
 --- Root directory function with a fallback
@@ -16,7 +14,7 @@ end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 --- Returns configs for specific lsps
 --- @return table configs
-M.cfgs = function()
+return function()
   return {
     nixd = {}, -- kinda worse than nil_ls, but being rewritten rn
     nil_ls = {}, -- no formatting
@@ -95,5 +93,3 @@ M.cfgs = function()
     },
   }
 end
-
-return M

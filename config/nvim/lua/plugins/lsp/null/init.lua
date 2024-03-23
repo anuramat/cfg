@@ -1,4 +1,4 @@
-local null_sources = require('plugins.agnostic.null.sources')
+local null_sources = require('plugins.lsp.null.sources')
 local on_attach = require('utils.lsp.on_attach')
 
 -- alternatives:

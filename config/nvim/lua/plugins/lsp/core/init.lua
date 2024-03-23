@@ -7,7 +7,7 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    local configs = require('plugins.agnostic.lsp.configs')
+    local configs = require('plugins.lsp.core.configs')
     local on_attach = require('utils.lsp.on_attach')
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
     -- add border to `:LspInfo` menu
@@ -22,7 +22,7 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
-    for name, cfg in pairs(configs.cfgs()) do
+    for name, cfg in pairs(configs()) do
       cfg.capabilities = capabilities
       if cfg.on_attach == nil then
         cfg.on_attach = on_attach

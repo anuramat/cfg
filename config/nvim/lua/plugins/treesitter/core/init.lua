@@ -1,8 +1,4 @@
-local specs = {}
-local langs = require('plugins.treesitter.core.langs')
-local u = require('utils')
-
-specs.treesitter = {
+return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -14,7 +10,7 @@ specs.treesitter = {
   opts = {
     highlight = { enable = true, disable = {} },
     indent = { enable = true }, -- noexpandtab is broken with python
-    ensure_installed = langs,
+    ensure_installed = require('plugins.treesitter.core.langs'),
     sync_install = true, -- only applied to `ensure_installed`
     incremental_selection = {
       enable = true,
@@ -53,47 +49,3 @@ specs.treesitter = {
     })
   end,
 }
-
--- Comments lines, post-tpope/vim-commentary
-specs.comment = {
-  'numToStr/Comment.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'JoosepAlviste/nvim-ts-context-commentstring' },
-  event = 'VeryLazy',
-  config = function()
-    --- @diagnostic disable-next-line: missing-fields
-    require('Comment').setup({
-      pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      toggler = { line = '<leader>cc', block = '<leader>bb' },
-      opleader = { line = '<leader>c', block = '<leader>b' },
-      extra = { above = '<leader>cO', below = '<leader>co', eol = '<leader>cA' },
-    })
-  end,
-}
-
--- symbol outline
-specs.aerial = {
-  'stevearc/aerial.nvim',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-tree/nvim-web-devicons',
-  },
-  event = 'BufEnter',
-  opts = {
-    filter_kind = {
-      nix = false,
-    },
-  },
-  keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
-}
-
--- treesitter based rainbow parentheses
--- alterntaives:
--- * https://github.com/luochen1990/rainbow -- 1.7k stars
--- * https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
-specs.rainbow = {
-  'HiPhish/rainbow-delimiters.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter' },
-  event = 'BufEnter',
-}
-
-return u.values(specs)

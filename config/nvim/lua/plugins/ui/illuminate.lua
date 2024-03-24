@@ -1,3 +1,4 @@
+-- echasnovski/mini.cursorword
 return {
   'RRethy/vim-illuminate',
   event = 'VeryLazy',

@@ -5,6 +5,7 @@ return {
     require('illuminate').configure({
       filetypes_denylist = { -- TODO make a vim.g.nonfiles
         'NeogitStatus',
+        'NeogitPopup',
         'oil',
         'lazy',
         'lspinfo',

@@ -1,6 +1,3 @@
-local specs = {}
-local u = require('utils')
-
 --- Jump to a snippet field
 --- Fallback is called if jump isn't possible
 --- @param jump_size integer Relative position of the target field
@@ -16,7 +13,7 @@ local function wrap_snippet_jump(jump_size)
   end
 end
 
-specs.cmp = {
+return {
   'hrsh7th/nvim-cmp',
   dependencies = {
     'L3MON4D3/LuaSnip', -- TODO use vsnip? brand loyalty xd
@@ -113,18 +110,3 @@ specs.cmp = {
     })
   end,
 }
-
-specs.luasnip = {
-  'L3MON4D3/LuaSnip',
-  version = 'v2.*',
-  dependencies = {
-    'rafamadriz/friendly-snippets',
-    config = function()
-      require('luasnip.loaders.from_vscode').lazy_load()
-    end,
-  },
-  -- if build fails, install jsregexp luarock (or don't, this is optoinal)
-  build = 'make install_jsregexp',
-}
-
-return u.values(specs)

@@ -121,7 +121,9 @@ function M.make_imports(relative_path)
     local pieces = vim.split(path, '/', ss)
     local name = pieces[#pieces]
     if vim.fn.isdirectory(path) ~= 0 then
-      table.insert(imports, { import = relative_path .. '.' .. name })
+      if string.sub(name, -4) ~= '.off' then
+        table.insert(imports, { import = relative_path .. '.' .. name })
+      end
     else
       if name ~= 'init.lua' then
         error('top-level non-directories in lua/plugins, only init.lua is allowed')

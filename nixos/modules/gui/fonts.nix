@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{unstable, ...}: {
   fonts = {
-    packages = with pkgs; [
-      nerdfonts
+    packages = [
+      unstable.nerdfonts
     ];
     fontconfig = {
       defaultFonts = {

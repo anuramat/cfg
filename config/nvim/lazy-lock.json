@@ -34,7 +34,6 @@
   "mini.trailspace": { "branch": "main", "commit": "91f2e0c1b0ee7b72189e6f88da03da9d04077051" },
   "neodev.nvim": { "branch": "main", "commit": "6a533ed9d3435dcaa456380d833ea04da37ea2ed" },
   "neogen": { "branch": "main", "commit": "0daffcec249bf42275e322361fe55b89a05ff278" },
-  "neogit": { "branch": "master", "commit": "20ab5a688c2de6fa371865528c737ae901989aa5" },
   "neorg": { "branch": "main", "commit": "086891d396ac9fccd91faf1520f563b6eb9eb942" },
   "noice.nvim": { "branch": "main", "commit": "bf67d70bd7265d075191e7812d8eb42b9791f737" },
   "none-ls.nvim": { "branch": "main", "commit": "18910d09d21d7df339805343bfe4a2b2e41c057b" },
@@ -70,6 +69,7 @@
   "vim-dadbod-completion": { "branch": "master", "commit": "c920cb0ba3dff4b1b0ed373e1c0b3007dec696c2" },
   "vim-dadbod-ui": { "branch": "master", "commit": "165699c573469e6a95b48d35052f848c340c5911" },
   "vim-eunuch": { "branch": "master", "commit": "8fb3904be27b6b60d086f87c2570085902414069" },
+  "vim-fugitive": { "branch": "master", "commit": "193ba9b393931bad768c1d2eed688b0bcc240858" },
   "vim-illuminate": { "branch": "master", "commit": "305bf07b919ac526deb5193280379e2f8b599926" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-table-mode": { "branch": "master", "commit": "e4365bde024f73e205eefa2fb78e3029ddb92ea9" }

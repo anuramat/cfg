@@ -1,4 +1,4 @@
-local on_attach = require('utils.lsp.on_attach')
+local on_attach = require('plugins.lsp.core.on_attach')
 
 local function repl_toggler(ht, buffer)
   return function()

@@ -133,4 +133,13 @@ function M.make_imports(relative_path)
   return imports
 end
 
+--- Safely read a buffer local variable
+function M.buf_get_var(buffer, key, default)
+  local ok, value = pcall(vim.api.nvim_buf_get_var, buffer, key)
+  if not ok then
+    return default
+  end
+  return value
+end
+
 return M

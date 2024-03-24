@@ -4,12 +4,13 @@ return {
   dependencies = {
     'hrsh7th/nvim-cmp',
     'ray-x/lsp_signature.nvim',
+    'lukas-reineke/lsp-format.nvim',
     -- 'folke/neodev.nvim', -- not an actual dependency, a hack to get neodev setup before lspconfig
   },
   config = function()
     local lspconfig = require('lspconfig')
     local configs = require('plugins.lsp.core.configs')
-    local on_attach = require('utils.lsp.on_attach')
+    local on_attach = require('plugins.lsp.core.on_attach')
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
     -- add border to `:LspInfo` menu
     require('lspconfig.ui.windows').default_options.border = vim.g.border

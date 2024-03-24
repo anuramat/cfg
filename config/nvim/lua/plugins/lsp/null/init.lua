@@ -1,5 +1,5 @@
 local null_sources = require('plugins.lsp.null.sources')
-local on_attach = require('utils.lsp.on_attach')
+local on_attach = require('plugins.lsp.core.on_attach')
 
 -- alternatives:
 -- https://github.com/mfussenegger/nvim-lint -- linting

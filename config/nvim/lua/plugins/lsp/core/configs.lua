@@ -17,7 +17,7 @@ end
 return function()
   return {
     nixd = {}, -- kinda worse than nil_ls, but being rewritten rn
-    nil_ls = {}, -- no formatting
+    nil_ls = {},
     yamlls = {},
     texlab = {},
     bashls = {},

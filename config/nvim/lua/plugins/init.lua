@@ -1,3 +1,4 @@
+local u = require('utils')
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 if not vim.loop.fs_stat(lazypath) then
@@ -12,17 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup({
-  { import = 'plugins.ui' },
-  { import = 'plugins.dap' },
-  { import = 'plugins.lsp' },
-  { import = 'plugins.misc' },
-  { import = 'plugins.extensions' },
-  { import = 'plugins.treesitter' },
-  { import = 'plugins.languages' },
-  { import = 'plugins.interface' },
-}, {
+require('lazy').setup(u.make_imports('plugins'), {
   change_detection = {
     enabled = false,
   },

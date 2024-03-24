@@ -108,4 +108,27 @@ function M.buf_lines_len(bufnr)
   return tonumber(raw_len)
 end
 
+--- Creates lazy.nvim plugin spec for all depth 2 modules (`plugins` -> `.config/nvim/lua/plugins/*/*`)
+--- @param relative_path string Path of a folder in nvim/lua WITHOUT leading/trailing slashes
+---@return table imports Import spec for lazy.nvim
+function M.make_imports(relative_path)
+  local imports = {}
+  local ss = { trimempty = true, plain = true }
+  local dir = vim.fn.stdpath('config') .. '/lua/' .. relative_path
+  local path_lines = vim.fn.glob(dir .. '/*')
+  local paths = vim.split(path_lines, '\n', ss)
+  for _, path in pairs(paths) do
+    local pieces = vim.split(path, '/', ss)
+    local name = pieces[#pieces]
+    if vim.fn.isdirectory(path) ~= 0 then
+      table.insert(imports, { import = relative_path .. '.' .. name })
+    else
+      if name ~= 'init.lua' then
+        error('top-level non-directories in lua/plugins, only init.lua is allowed')
+      end
+    end
+  end
+  return imports
+end
+
 return M

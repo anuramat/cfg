@@ -2,18 +2,6 @@ local u = require('utils')
 
 -- TODO refactor telescope config
 
-local function zoxide()
-  require('telescope').extensions.zoxide.list()
-end
-
-local function undo()
-  require('telescope').extensions.undo.undo()
-end
-
-local function live_grep_args()
-  require('telescope').extensions.live_grep_args.live_grep_args()
-end
-
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -30,19 +18,18 @@ return {
     },
   },
   keys = u.lazy_prefix('<leader>f', {
-    { 'S', require('telescope.builtin').lsp_dynamic_workspace_symbols, desc = 'Dynamic Workspace Symbols' },
-    { 'b', require('telescope.builtin').buffers, desc = 'Buffers' },
+    { 'G', '<cmd>Telescope live_grep_args<cr>', desc = 'Live Grep' },
+    { 'S', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = 'Dynamic Workspace Symbols' },
+    { 'b', '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
+    { 'd', '<cmd>Telescope diagnostics<cr>', desc = 'Workspace Diagnostics' },
+    { 'g', '<cmd>Telescope live_grep<cr>', desc = 'Live Grep' },
     { 'h', '<cmd>Telescope harpoon marks<cr>', desc = 'Harpoons' },
-    { 'd', require('telescope.builtin').diagnostics, desc = 'Workspace Diagnostics' },
-    { 'g', require('telescope.builtin').live_grep, desc = 'Live Grep' },
-    { 'G', live_grep_args, desc = 'Live Grep' },
-    { 'm', require('telescope.builtin').marks, desc = 'Marks' },
-    { 'o', require('telescope.builtin').find_files, desc = 'Files' },
-    { 'p', require('telescope.builtin').builtin, desc = 'Pickers' },
-    { 'r', require('telescope.builtin').lsp_references, desc = 'References' },
-    { 's', require('telescope.builtin').lsp_document_symbols, desc = 'Document Symbols' },
-    { 'j', zoxide, desc = 'Zoxide' },
-    { 'u', undo, desc = 'Undo' },
+    { 'j', '<cmd>Telescope zoxide list<cr>', desc = 'Zoxide' },
+    { 'm', '<cmd>Telescope marks<cr>', desc = 'Marks' },
+    { 'o', '<cmd>Telescope find_files<cr>', desc = 'Files' },
+    { 'p', '<cmd>Telescope builtin<cr>', desc = 'Pickers' },
+    { 'r', '<cmd>Telescope lsp_references<cr>', desc = 'References' },
+    { 's', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document Symbols' },
   }, 'Tele'),
   config = function()
     require('telescope').load_extension('zoxide')

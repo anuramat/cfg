@@ -12,7 +12,7 @@
     llvm
     clang
     python3
-    # haskell
+    lua
     unstable.stack
     unstable.cabal-install
   ];

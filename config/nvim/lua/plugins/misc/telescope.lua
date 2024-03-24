@@ -1,7 +1,7 @@
 local u = require('utils')
 
--- TODO refactor telescope config
-
+-- uses fd for find_files
+-- rg for everything else
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -35,14 +35,15 @@ return {
     require('telescope').load_extension('zoxide')
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('live_grep_args')
-    local telescope = require('telescope')
     local opts = {
       defaults = {
         prompt_prefix = ' ',
         selection_caret = ' ',
         multi_icon = ' ',
+        path_display = { 'truncate' },
+        dynamic_preview_title = true,
+        -- border = false,
         vimgrep_arguments = {
-          -- required
           'rg',
           '--color=never',
           '--no-heading',
@@ -53,16 +54,7 @@ return {
       },
       pickers = {
         keymaps = { show_plug = false },
-        colorscheme = { enable_preview = true },
-      },
-      extensions = {
-        fzf = {
-          fuzzy = true,
-          override_generic_sorter = true,
-          override_file_sorter = true,
-          case_mode = 'smart_case',
-        },
-        zoxide = { prompt_title = 'Zoxide' },
+        colorscheme = { enable_preview = false },
       },
     }
     if vim.g.border == 'solid' then
@@ -72,6 +64,6 @@ return {
         preview = { ' ' },
       }
     end
-    telescope.setup(opts)
+    require('telescope').setup(opts)
   end,
 }

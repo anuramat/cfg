@@ -5,6 +5,8 @@
 # Still ignore these
 # VCS
 --glob=!{.git,.svn}
+# Tags
+--glob=!tags
 # Go
 --glob=!go.sum
 --glob=!coverage.html

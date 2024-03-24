@@ -4,7 +4,7 @@ _: {
     ./boot.nix
     ./laptop.nix
     ./network.nix
-    ./peripheral.nix
+    ./peripherals.nix
     ./printer.nix
     ./service.nix
     ./sound.nix

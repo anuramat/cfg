@@ -1,5 +1,6 @@
 return {
   'lukas-reineke/lsp-format.nvim',
+  -- TODO use sync formatting
   opts = {
     lua = {
       exclude = {

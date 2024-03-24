@@ -1,4 +1,5 @@
 -- symbol outline
+-- simrat39/symbols-outline.nvim
 return {
   'stevearc/aerial.nvim',
   dependencies = {

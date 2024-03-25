@@ -13,6 +13,7 @@
     clang
     python3
     lua
+    texliveFull
     unstable.stack
     unstable.cabal-install
   ];

@@ -16,19 +16,36 @@ return {
 
     -- see below for full list of optional dependencies 👇
     'hrsh7th/nvim-cmp',
+    'nvim-telescope/telescope.nvim',
+    'nvim-treesitter/nvim-treesitter',
   },
   opts = {
     workspaces = {
       {
-        name = 'personal',
-        path = '~/vaults/personal',
-      },
-      {
-        name = 'work',
-        path = '~/vaults/work',
+        name = 'obsvlt',
+        path = '~/obsvlt',
       },
     },
-
+    completion = {
+      nvim_cmp = true,
+    },
+    mappings = {
+      -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+      ['gf'] = {
+        action = function()
+          return require('obsidian').util.gf_passthrough()
+        end,
+        opts = { noremap = false, expr = true, buffer = true },
+      },
+      -- Toggle check-boxes.
+      ['<leader>ch'] = {
+        action = function()
+          return require('obsidian').util.toggle_checkbox()
+        end,
+        opts = { buffer = true },
+      },
+    },
+    disable_frontmatter = true,
     -- see below for full list of options 👇
   },
 }

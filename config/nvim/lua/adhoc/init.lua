@@ -1,6 +1,8 @@
 local M = {}
 local u = require('utils')
 
+require('adhoc.gramota')
+
 local function set(l, r, d)
   vim.keymap.set('n', l, r, { silent = true, desc = d })
 end

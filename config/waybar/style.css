@@ -1,4 +1,5 @@
 /* https://github.com/Alexays/Waybar/wiki/Styling */
+/* margin can't be controlled here, ues mragin setting in the config */
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./colors.css");
 * {
@@ -6,17 +7,17 @@
   border-radius: 6px;
   font-size: 13pt;
   font-family: "Hack Nerd Font";
-  background: rgba(0, 0, 0, 0);
+  background: @background-darker;
   color: @foreground;
   padding: 0;
   margin: 0;
 }
-/* the bar, basically */
+window#waybar {
+  border: 3px solid @pink;
+}
+/* the bar contents */
 #waybar > box {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 5px;
 }
 @keyframes blink {
   to {
@@ -34,6 +35,7 @@
 }
 #workspaces button {
   padding: 0 5px;
+  background-color: @background;
 }
 #workspaces button.focused {
   box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
@@ -57,10 +59,14 @@ box > * > * {
 box.horizontal.modules-center {
   padding: 0 5px;
 }
-/*~~~~~~~~~~~~~~~~~~~ specific modules ~~~~~~~~~~~~~~~~~~~*/
-tooltip {
-  background: @background; /* hover on clock */
+tooltip * {
+  background: @background;
 }
+tooltip {
+  /* ??? this is behind the tooltip */
+  background: @background;
+}
+/*~~~~~~~~~~~~~~~~~~~ specific modules ~~~~~~~~~~~~~~~~~~~*/
 #battery {
   color: @green;
 }
@@ -114,9 +120,7 @@ tooltip {
 #backlight {
   padding-right: 10px;
 }
-#pulseaudio.muted {
-  color: @red;
-}
+#pulseaudio.muted,
 #wireplumber.muted {
   color: @red;
 }

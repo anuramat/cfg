@@ -8,6 +8,7 @@ return {
   'haskell',
   'json',
   'json5',
+  'latex',
   'lua',
   'luadoc',
   'luap',

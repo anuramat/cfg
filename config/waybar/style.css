@@ -14,7 +14,7 @@
   margin: 0;
 }
 window#waybar {
-  /* border: 3px solid @pink; */
+  border: 3px solid @pink;
 }
 /* the bar contents */
 #waybar > box {

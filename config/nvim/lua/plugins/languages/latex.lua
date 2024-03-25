@@ -5,7 +5,7 @@ return {
     init = function()
       vim.cmd([[
       let g:vimtex_view_method = 'zathura'
-      " let maplocalleader = ","
+      let g:vimtex_mappings_prefix = '<leader>L'
     ]])
     end,
   },

@@ -40,6 +40,7 @@ window#waybar {
 #workspaces button.focused {
   box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
   background-image: linear-gradient(0deg, @selection, @background-darker);
+  /* background: @selection; */
 }
 #workspaces button.urgent {
   background: @purple;

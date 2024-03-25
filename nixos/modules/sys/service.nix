@@ -1,7 +1,7 @@
 {user, ...}: {
   # TODO restic backups
 
-  services.gnome.gnome-keyring.enable = true; # security credential storage: usernames, passwords, encryption keys
+  services.gnome.gnome-keyring.enable = true; # security credential storage, exposed over dbus
   programs.seahorse.enable = true; # gnome keyring frontend
 
   virtualisation.docker.enable = true;

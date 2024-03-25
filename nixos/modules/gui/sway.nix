@@ -49,4 +49,27 @@ in {
       value = 1;
     }
   ];
+
+  # # kanshi systemd service
+  # systemd.user.services.kanshi = {
+  #   description = "kanshi daemon";
+  #   serviceConfig = {
+  #     Type = "simple";
+  #     ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+  #   };
+  # };
+
+  #   home-manager.users.myUser = {
+  #     home.pointerCursor = {
+  #       name = "Adwaita";
+  #       package = pkgs.gnome.adwaita-icon-theme;
+  #       size = 24;
+  #       x11 = {
+  #         enable = true;
+  #         defaultCursor = "Adwaita";
+  #       };
+  #     };
+  #   };
+
+  # security.pam.services.swaylock = {}; # done automatically by programs.sway.enable
 }

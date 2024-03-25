@@ -1,5 +1,6 @@
 /* https://github.com/Alexays/Waybar/wiki/Styling */
 /* margin can't be controlled here, ues mragin setting in the config */
+/* TODO refactor? */
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./colors.css");
 * {

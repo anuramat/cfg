@@ -60,7 +60,12 @@ set {
     $move_value 50 ppt
 }
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Software ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-bar swaybar_command waybar
+bar {
+    swaybar_command waybar
+    hidden_state hide
+    mode hide
+    modifier $mod
+}
 exec_always {
     # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py

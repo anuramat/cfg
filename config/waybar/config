@@ -1,5 +1,6 @@
 [
   {
+    "ipc": true,
     "position": "top",
     "spacing": 5,
     "modules-left": [

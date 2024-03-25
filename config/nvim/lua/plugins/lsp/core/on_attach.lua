@@ -6,4 +6,3 @@ return function(client, buffer)
   require('lsp-format').on_attach(client, buffer)
   vim.lsp.inlay_hint.enable(buffer)
 end
-

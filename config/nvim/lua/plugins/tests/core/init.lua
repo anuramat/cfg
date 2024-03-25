@@ -1,9 +1,9 @@
 return {
   'nvim-neotest/neotest',
-  lazy=false,
+  lazy = false,
   dependencies = {
     'nvim-neotest/nvim-nio',
-    "nvim-neotest/neotest-go", -- go
+    'nvim-neotest/neotest-go', -- go
     'nvim-lua/plenary.nvim',
     'antoinemadec/FixCursorHold.nvim',
     'nvim-treesitter/nvim-treesitter',

@@ -6,14 +6,17 @@ return function()
   local nla = null_ls.builtins.code_actions
 
   return {
+    -- ~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~ --
     nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),
     nlf.stylua,
     nlf.black,
-    -- nlf.nixfmt,
     nlf.alejandra,
+    nlf.prettier.with({ extra_filetypes = { 'latex', 'toml' } }),
+    -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,
     nld.statix,
+    nld.protolint,
+    -- ~~~~~~~~~~~~~~~~~~ code actions ~~~~~~~~~~~~~~~~~~ --
     nla.statix,
-    -- nld.protolint,
   }
 end

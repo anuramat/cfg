@@ -25,7 +25,7 @@ return {
           on_attach(client, buffer)
 
           local s = function(lhs, rhs, desc)
-            vim.keymap.set('n', '<leader>L' .. lhs, rhs, { buffer = buffer, desc = 'Haskell: ' .. desc })
+            vim.keymap.set('n', '<localleader>' .. lhs, rhs, { buffer = buffer, desc = 'Haskell: ' .. desc })
           end
 
           s('b', repl_toggler(ht, buffer), 'Toggle Buffer REPL')

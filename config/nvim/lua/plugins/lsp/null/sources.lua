@@ -11,7 +11,7 @@ return function()
     nlf.stylua,
     nlf.black,
     nlf.alejandra,
-    nlf.prettier.with({ extra_filetypes = { 'latex', 'toml' } }),
+    nlf.prettier,
     -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,
     nld.statix,

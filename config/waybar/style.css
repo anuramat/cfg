@@ -98,7 +98,7 @@ tooltip {
 #network.disabled {
   color: @red;
 }
-#custom-wlan {
+#custom-wlan-disabled {
   color: @red;
   padding-right: 13px;
 }

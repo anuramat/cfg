@@ -7,7 +7,7 @@
     "modules-left": [
       "pulseaudio",
       "backlight",
-      "mpris",
+      "idle_inhibitor",
     ],
     "modules-center": [
       "sway/mode",
@@ -16,11 +16,6 @@
       "sway/mode",
     ],
     "modules-right": [
-      "idle_inhibitor",
-      "network#wlan",
-      "custom/wlan",
-      "bluetooth",
-      "disk",
       "tray",
       "battery",
       "sway/language",
@@ -111,8 +106,9 @@
       "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
       "interval": 1
     },
-    "custom/wlan": {
-      // "network" fucks up disabled/disconnected for some reason
+    "custom/wlan-disabled": {
+      // use this with network#wlan because "network" never reaches disabled
+      // https://github.com/Alexays/Waybar/issues/2259
       "exec": "ifconfig | grep 'wl.*' -q || echo '󰤭'",
       "interval": 1
     },
@@ -162,4 +158,4 @@
     },
   }
 ]
-// vim:ft=json
+// vim: ft=json commentstring=//\ %s

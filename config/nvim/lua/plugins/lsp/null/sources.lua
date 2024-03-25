@@ -1,4 +1,5 @@
 local function latexindent()
+  -- already used in texlab
   local null_ls = require('null-ls')
   local helpers = require('null-ls.helpers')
   null_ls.register({
@@ -19,7 +20,6 @@ return function()
   local nld = null_ls.builtins.diagnostics
   local nla = null_ls.builtins.code_actions
 
-  latexindent()
   return {
     -- ~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~ --
     nlf.shfmt.with({ extra_args = { '-s', '-ci', '-bn' } }),

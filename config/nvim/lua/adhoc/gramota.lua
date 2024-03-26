@@ -40,6 +40,7 @@ local function fuck(buffer_id, lhs, rhs)
   -- build the result block
   local rhs_table = vim.split(rhs, '\n', { trimempty = true })
   table.insert(rhs_table, '```')
+  table.insert(rhs_table, 1, ':::OUTPUT:::')
   table.insert(rhs_table, 1, '```' .. result_block_type_name)
   -- insert
   for i, line in ipairs(lines) do
@@ -82,7 +83,6 @@ end
 
 local function insert_code(buffer_id, placeholder, lang, code)
   if lang == 'python' then
-    vim.print('test')
     _insert_code(buffer_id, placeholder, code, { name = 'python' })
   end
 end

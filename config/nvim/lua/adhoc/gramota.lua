@@ -2,8 +2,8 @@ local Job = require('plenary.job')
 
 local output_language = 'result'
 local border_pattern = '^```%w*%s*$'
-local placeholder_format = 'generating %s output (%s), do not edit: %s'
-local output_header = ':::OUTPUT:::'
+local placeholder_format = 'output placeholder, block %s: evaluating %s; id: %s'
+local output_header = '::: OUTPUT :::'
 
 ---@class block
 ---@field start integer Line number with the opening triple backtick
@@ -20,8 +20,8 @@ local output_header = ':::OUTPUT:::'
 ---@field name? string Name of the binary in $PATH
 
 --- Generates an random id with a timestamp
----@return string uuid
-local function make_id()
+---@return string uid
+local function make_uid()
   local ts = vim.fn.strftime('%Y.%m.%d-%H:%M:%S-')
   local rand = ''
   for _ = 1, 16 do
@@ -156,8 +156,8 @@ local function wipe_placeholders(buffer_id)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   for i = #lines, 1, -1 do
     local line = lines[i]
-    if string.match(line, string.format(placeholder_format, '.*', '.*', '.*')) then
-      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i - 1, false, {})
+    if string.match(line, '^%s*' .. string.format(placeholder_format, '.*', '.*', '.*') .. '%s*$') then
+      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, {})
     end
   end
 end
@@ -184,12 +184,12 @@ end
 --- Inserts a placeholder after the block, returning the text of the placeholder
 ---@param buffer_id integer
 ---@param block block Input block, for which the placeholder is generated
----@param identifier string Output block number/name
-local function make_placeholder(buffer_id, block, identifier)
+---@param label string Output block number/name
+local function make_placeholder(buffer_id, block, label)
   if block.language == '' then
     return
   end
-  local placeholder = string.format(placeholder_format, block.language, identifier, make_id())
+  local placeholder = string.format(placeholder_format, label, block.language, make_uid())
   vim.api.nvim_buf_set_lines(buffer_id, block.finish, block.finish, false, { placeholder })
   return placeholder
 end
@@ -272,8 +272,9 @@ end
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 
 vim.api.nvim_create_user_command('GramotaWipeAll', function()
-  wipe_results(0)
-  wipe_placeholders(0)
+  local buffer_id = vim.api.nvim_get_current_buf()
+  wipe_results(buffer_id)
+  wipe_placeholders(buffer_id)
 end, {})
 vim.api.nvim_create_user_command('GramotaExecAll', exec_all, {})
 vim.api.nvim_create_user_command('GramotaExecOne', function()

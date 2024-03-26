@@ -2,7 +2,7 @@ local Job = require('plenary.job')
 
 local output_language = 'result'
 local border_pattern = '^```%w*%s*$'
-local placeholder_format = 'generating %s output [%s], do not edit: %s' -- one line only
+local placeholder_format = 'generating %s output (%s), do not edit: %s'
 local output_header = ':::OUTPUT:::'
 
 ---@class block
@@ -19,15 +19,15 @@ local output_header = ':::OUTPUT:::'
 ---@field full_path? string Full path to a binary
 ---@field name? string Name of the binary in $PATH
 
---- Generates an v4 UUID (stolen from internets)
+--- Generates an random id with a timestamp
 ---@return string uuid
-local function make_uuid()
-  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-  local uuid, _ = string.gsub(template, '[xy]', function(c)
-    local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
-    return string.format('%x', v)
-  end)
-  return uuid
+local function make_id()
+  local ts = vim.fn.strftime('%Y.%m.%d-%H:%M:%S-')
+  local rand = ''
+  for _ = 1, 16 do
+    rand = rand .. string.format('%x', math.random(0, 0xf))
+  end
+  return ts .. rand
 end
 
 --- Extracts language from a ``` line
@@ -156,7 +156,7 @@ local function wipe_placeholders(buffer_id)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   for i = #lines, 1, -1 do
     local line = lines[i]
-    if string.match(line, string.format(placeholder_format, '%w+', '%S+', '[%x-]*')) then
+    if string.match(line, string.format(placeholder_format, '.*', '.*', '.*')) then
       vim.api.nvim_buf_set_lines(buffer_id, i - 1, i - 1, false, {})
     end
   end
@@ -189,7 +189,7 @@ local function make_placeholder(buffer_id, block, identifier)
   if block.language == '' then
     return
   end
-  local placeholder = string.format(placeholder_format, block.language, identifier, make_uuid())
+  local placeholder = string.format(placeholder_format, block.language, identifier, make_id())
   vim.api.nvim_buf_set_lines(buffer_id, block.finish, block.finish, false, { placeholder })
   return placeholder
 end
@@ -208,9 +208,9 @@ local function exec_all()
     local placeholder = make_placeholder(buffer_id, block, tostring(i))
     if placeholder then
       -- defer inserting interpreter output
-      table.insert(job_list, function()
-        insert_output(buffer_id, placeholder, block.language, block.input)
-      end)
+      -- table.insert(job_list, function()
+      --   insert_output(buffer_id, placeholder, block.language, block.input)
+      -- end)
     end
   end
   for _, f in ipairs(job_list) do

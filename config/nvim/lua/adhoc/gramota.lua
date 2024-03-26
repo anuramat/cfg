@@ -13,7 +13,7 @@ local footer = '::::::::::::::::'
 
 ---@class border
 ---@field position integer Line number
----@field language string
+---@field language string Input language
 
 --- Generates an random id with a timestamp
 ---@return string uid

@@ -1,9 +1,9 @@
-local Job = require('plenary.job')
-
 local output_language = 'result'
 local border_pattern = '^```%w*%s*$'
 local placeholder_format = 'output placeholder, block %s: evaluating %s; id: %s'
-local output_header = '::: OUTPUT :::'
+local stderr_header = '::: STDERR :::'
+local stdout_header = '::: STDOUT :::'
+local footer = '::::::::::::::'
 
 ---@class block
 ---@field start integer Line number with the opening triple backtick
@@ -14,10 +14,6 @@ local output_header = '::: OUTPUT :::'
 ---@class border
 ---@field position integer Line number
 ---@field language string
-
----@class program
----@field full_path? string Full path to a binary
----@field name? string Name of the binary in $PATH
 
 --- Generates an random id with a timestamp
 ---@return string uid
@@ -41,65 +37,58 @@ end
 --- Replaces a placeholder, wrapping into a output block
 ---@param buffer_id integer
 ---@param lhs string
----@param rhs string[]
+---@param rhs string
 local function fuck(buffer_id, lhs, rhs)
   -- WARNING this function should actually be atomic
   -- although it works for now
   -- TODO figure out how to :(
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the output block
-  table.insert(rhs, '```')
-  if output_header then
-    table.insert(rhs, 1, output_header)
-  end
-  table.insert(rhs, 1, '```' .. output_language)
+  local rhs_table = vim.split(rhs, '\n')
+  table.insert(rhs_table, 1, '```' .. output_language)
+  table.insert(rhs_table, '```')
   -- insert
   for i, line in ipairs(lines) do
     if line == lhs then
-      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs)
+      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs_table)
       break
     end
   end
 end
 
 --- Replaces placeholder with output of a command
----@param program program Interpreter for the input
+---@param program string Interpreter for the input (full path or not)
 ---@return function
 local function stdin_interpreter(program)
   ---@param buffer_id integer
   ---@param placeholder string Placeholder to be replaced (verbatim)
   ---@param input string[]
   return function(buffer_id, placeholder, input)
-    local env = {}
-    local command
-    if not program.full_path then
-      env = { path = vim.fn.expand('$PATH') }
-      command = program.name
-    else
-      command = program.full_path
-    end
-    assert(command ~= nil, 'empty command')
-
-    Job:new({
-      command = command,
-      args = {},
-      env = env,
-      ---@diagnostic disable-next-line: unused-local
-      on_exit = function(j, return_val)
-        vim.schedule(function()
-          -- vim.print('return val', return_val) -- XXX return code?
-          -- TODO display errors
-          fuck(buffer_id, placeholder, j:result())
-        end)
-      end,
-      writer = input,
-    }):start()
+    vim.system({ program }, {
+      text = true,
+      timeout = 150,
+      stdin = input,
+    }, function(out)
+      vim.schedule(function()
+        local output = ''
+        if out.stderr ~= '' then
+          output = output .. stderr_header .. '\n'
+          output = output .. out.stderr
+        end
+        if out.stderr == '' or out.stdout ~= '' then
+          output = output .. stdout_header .. '\n'
+          output = output .. out.stdout
+        end
+        output = output .. footer
+        fuck(buffer_id, placeholder, output)
+      end)
+    end)
   end
 end
 
 local languages = {
-  python = stdin_interpreter({ name = 'python' }),
-  lua = stdin_interpreter({ name = 'lua' }),
+  python = stdin_interpreter('python'),
+  lua = stdin_interpreter('python'),
 }
 
 --- Replaces a placeholder with the interpreter output
@@ -208,9 +197,9 @@ local function exec_all()
     local placeholder = make_placeholder(buffer_id, block, tostring(i))
     if placeholder then
       -- defer inserting interpreter output
-      -- table.insert(job_list, function()
-      --   insert_output(buffer_id, placeholder, block.language, block.input)
-      -- end)
+      table.insert(job_list, function()
+        insert_output(buffer_id, placeholder, block.language, block.input)
+      end)
     end
   end
   for _, f in ipairs(job_list) do

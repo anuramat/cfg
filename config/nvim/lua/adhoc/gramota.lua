@@ -117,6 +117,9 @@ end
 ---@return block[]
 local function find_blocks(lines, search_start, max_blocks)
   local borders = {} ---@type border[]
+  if not search_start then
+    search_start = 1
+  end
   for i = search_start, #lines do
     local line = lines[i]
     if string.match(line, border_pattern) then
@@ -182,6 +185,9 @@ end
 ---@param block block Input block, for which the placeholder is generated
 ---@param identifier string Output block number/name
 local function make_placeholder(buffer_id, block, identifier)
+  if block.language == '' then
+    return
+  end
   local placeholder = string.format(placeholder_format, block.language, identifier, make_uuid())
   vim.api.nvim_buf_set_lines(buffer_id, block.finish, block.finish, false, { placeholder })
   return placeholder
@@ -237,8 +243,9 @@ local function exec_one(buffer_id, position)
   -- step 1 - upstroke
   -- find the ```language line
   local search_start = position
+  local border
   for _ = 1, 3 do
-    local border = seek_up(lines, search_start)
+    border = seek_up(lines, search_start)
     if not border then
       -- no borders above == no block to run
       return
@@ -251,7 +258,7 @@ local function exec_one(buffer_id, position)
   end
   -- step 2 - downstroke
   -- remove the output block
-  local blocks = find_blocks(lines, search_start, 2)
+  local blocks = find_blocks(lines, border.position, 2)
   wipe_block(buffer_id, blocks[2])
   -- make placeholder
   local placeholder = make_placeholder(buffer_id, blocks[1], 'solo') -- TODO check the pattern matching on placeholders

@@ -66,17 +66,17 @@ end
 ---@param placeholder string
 ---@param output output|vim.SystemCompleted Program output
 local function replace_wrapped(buffer_id, placeholder, output)
-  local output_text = ''
-  if output.stderr ~= '' then
-    output = output .. stderr_header .. '\n'
-    output = output .. output.stderr
-  end
+  local text = ''
   if output.stderr == '' or output.stdout ~= '' then
-    output = output .. stdout_header .. '\n'
-    output = output .. output.stdout
+    text = text .. stdout_header .. '\n'
+    text = text .. output.stdout
   end
-  output = output .. footer
-  replace_placeholder(buffer_id, placeholder, output_text)
+  if output.stderr ~= '' then
+    text = text .. stderr_header .. '\n'
+    text = text .. output.stderr
+  end
+  text = text .. footer
+  replace_placeholder(buffer_id, placeholder, text)
 end
 
 --- Replaces placeholder with output of a command

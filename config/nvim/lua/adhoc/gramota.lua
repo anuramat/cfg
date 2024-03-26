@@ -203,6 +203,7 @@ local function exec_one(buffer_id, position)
   end
   vim.print(start, finish) -- XXX
   -- TODO find the next block and delete it if it's a result block
+  -- ACTUALLY no, I want this to work from any line of either result or source blocks
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

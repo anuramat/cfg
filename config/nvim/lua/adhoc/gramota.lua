@@ -1,9 +1,9 @@
 local output_language = 'result'
 local border_pattern = '^```%w*%s*$'
 local placeholder_format = 'output placeholder, block %s: evaluating %s; id: %s'
-local stderr_header = '::: STDERR :::'
-local stdout_header = '::: STDOUT :::'
-local footer = '::::::::::::::'
+local stderr_header = ':::: STDERR ::::'
+local stdout_header = ':::: STDOUT ::::'
+local footer = '::::::::::::::::'
 
 ---@class block
 ---@field start integer Line number with the opening triple backtick

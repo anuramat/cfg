@@ -8,7 +8,7 @@ local placeholder_format = 'generating %s output [%s], do not edit: %s' -- one l
 ---@field start integer Line number with the opening triple backtick
 ---@field finish integer Line number with the closing triple backtick
 ---@field language string Language of the code block
----@field code string Code inside the block
+---@field code string[] Code inside the block
 
 ---@class border
 ---@field position integer Line number
@@ -32,7 +32,7 @@ end
 --- Replaces a placeholder, wrapping into a result block
 ---@param buffer_id integer
 ---@param lhs string
----@param rhstemp string
+---@param rhs string[]
 local function fuck(buffer_id, lhs, rhs)
   -- WARNING this function should actually be atomic
   -- TODO figure out how to :(
@@ -51,40 +51,50 @@ local function fuck(buffer_id, lhs, rhs)
 end
 
 --- Replaces placeholder with output of a command
----@param buffer_id integer
----@param placeholder string Placeholder to be replaced (verbatim)
----@param code string[]
 ---@param program program Interpreter for the code
---- TODO generalize for non filterable programs or make it a wrapper idk (use utils.merge?)
-local function _insert_code(buffer_id, placeholder, code, program)
-  local env = {}
-  local command
-  if not program.full_path then
-    env = { path = vim.fn.expand('$PATH') }
-    command = program.name
-  else
-    command = program.full_path
-  end
-  assert(command ~= nil, 'empty command')
+---@return function
+local function stdin_interpreter(program)
+  ---@param buffer_id integer
+  ---@param placeholder string Placeholder to be replaced (verbatim)
+  ---@param code string[]
+  return function(buffer_id, placeholder, code)
+    local env = {}
+    local command
+    if not program.full_path then
+      env = { path = vim.fn.expand('$PATH') }
+      command = program.name
+    else
+      command = program.full_path
+    end
+    assert(command ~= nil, 'empty command')
 
-  Job:new({
-    command = command,
-    args = {},
-    env = env,
-    on_exit = function(j, return_val)
-      vim.schedule(function()
-        -- vim.print('return val', return_val) -- XXX return code?
-        fuck(buffer_id, placeholder, j:result())
-      end)
-    end,
-    writer = code,
-  }):start()
+    Job:new({
+      command = command,
+      args = {},
+      env = env,
+      on_exit = function(j, return_val)
+        vim.schedule(function()
+          -- vim.print('return val', return_val) -- XXX return code?
+          fuck(buffer_id, placeholder, j:result())
+        end)
+      end,
+      writer = code,
+    }):start()
+  end
 end
 
+local languages = {
+  python = stdin_interpreter({ name = 'python' }),
+  lua = stdin_interpreter({ name = 'lua' }),
+}
+
+--- Replaces a placeholder with the results of running code through an interpreter
+---@param buffer_id integer
+---@param placeholder string
+---@param lang string
+---@param code string[]
 local function insert_code(buffer_id, placeholder, lang, code)
-  if lang == 'python' then
-    _insert_code(buffer_id, placeholder, code, { name = 'python' })
-  end
+  languages[lang](buffer_id, placeholder, code)
 end
 
 --- Wipes placeholders from the buffer
@@ -116,14 +126,12 @@ local function find_blocks(lines)
   for i = 1, #borders / 2 do
     local start = borders[i * 2 - 1]
     local finish = borders[i * 2]
-    local code_lines = vim.list_slice(lines, start.position + 1, finish.position - 1)
-    -- local code = vim.iter(code_lines):join('\n')
     local language = string.gsub(start.contents, '%W*', '')
     if language then
       table.insert(blocks, {
         start = start.position,
         finish = finish.position,
-        code = code_lines,
+        code = vim.list_slice(lines, start.position + 1, finish.position - 1),
         language = language,
       })
     end
@@ -144,11 +152,7 @@ local function wipe_results(buffer_id)
   end
 end
 
-vim.api.nvim_create_user_command('GramotaWipe', function()
-  wipe_results(0)
-  wipe_placeholders(0)
-end, {})
-vim.api.nvim_create_user_command('GramotaExecAll', function()
+local function exec_all()
   local buffer_id = vim.api.nvim_get_current_buf()
   wipe_placeholders(buffer_id)
   wipe_results(buffer_id)
@@ -169,6 +173,14 @@ vim.api.nvim_create_user_command('GramotaExecAll', function()
   for _, f in ipairs(job_list) do
     f()
   end
+end
+
+vim.api.nvim_create_user_command('GramotaWipe', function()
+  wipe_results(0)
+  wipe_placeholders(0)
 end, {})
+vim.api.nvim_create_user_command('GramotaExecAll', exec_all, {})
+
+vim.cmd('map <leader>y <cmd>GramotaExecAll<cr>')
 
 -- TODO command for executing just one block

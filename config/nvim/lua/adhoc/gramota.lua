@@ -181,7 +181,7 @@ local function wipe_results(buffer_id)
   end
 end
 
---- inserts a placeholder after the block, returning the text of the placeholder
+--- Inserts a placeholder after the block, returning the text of the placeholder
 ---@param buffer_id integer
 ---@param block block Input block, for which the placeholder is generated
 ---@param identifier string Output block number/name
@@ -236,7 +236,7 @@ local function seek_up(lines, start)
 end
 
 --- Executes a single block (cursor should be between the start of the input block
---- and the end of the output block, inclusive on both sides).
+--- and the end of the output block, start included, end excluded).
 --- Source block and output block are treated as one if there is no non-whitespace
 --- characters between them.
 ---@param buffer_id integer
@@ -264,7 +264,7 @@ local function exec_one(buffer_id, position)
   local blocks = find_blocks(lines, border.position, 2)
   wipe_block(buffer_id, blocks[2])
   -- make placeholder
-  local placeholder = make_placeholder(buffer_id, blocks[1], 'solo') -- TODO check the pattern matching on placeholders
+  local placeholder = make_placeholder(buffer_id, blocks[1], 'solo')
   -- run the interpreter
   if placeholder then
     insert_output(buffer_id, placeholder, blocks[1].language, blocks[1].input)

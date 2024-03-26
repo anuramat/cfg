@@ -10,6 +10,7 @@ return {
   'javascript',
   'css',
   'json',
+  'nix',
   'json5',
   'latex',
   'lua',

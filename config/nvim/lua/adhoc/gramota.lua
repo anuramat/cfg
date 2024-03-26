@@ -224,15 +224,12 @@ local function seek_up(lines, start)
   return nil
 end
 
---- Executes a single block (cursor should be between the start of the input block
---- and the end of the output block, both inclusive).
----@param buffer_id integer
----@param position integer Row number of the cursor
-local function exec_one(buffer_id, position)
-  local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
-  -- step 1 - upstroke
-  -- find the ```language line
-  -- TODO this is fucking ugly
+--- Finds the start of the input block (cursor should be between the start of
+--- the input block and the end of the output block, both inclusive).
+---@param lines string[]
+---@param position integer
+---@return border? border
+local function seek_start(lines, position)
   local search_start = position
   local border
   local found
@@ -241,7 +238,7 @@ local function exec_one(buffer_id, position)
     i = i + 1
     border = seek_up(lines, search_start)
     if not border then
-      return
+      return nil
     end
     found = border.language ~= '' and border.language ~= output_language
     if found then
@@ -250,10 +247,22 @@ local function exec_one(buffer_id, position)
     search_start = border.position - 1
   end
   if not found or ((i == 4) and not string.match(lines[position], border_pattern)) then
+    return nil
+  end
+  return border
+end
+
+--- Executes a single block (cursor should be between the start of the input block
+--- and the end of the output block, both inclusive).
+---@param buffer_id integer
+---@param position integer Row number of the cursor
+local function exec_one(buffer_id, position)
+  local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
+  local start = seek_start(lines, position)
+  if not start then
     return
   end
-  -- step 2 - downstroke
-  local blocks = find_blocks(lines, border.position, 2)
+  local blocks = find_blocks(lines, start.position, 2)
   wipe_block(buffer_id, blocks[2])
   local placeholder = make_placeholder(buffer_id, blocks[1], 'solo')
   if placeholder then
@@ -278,5 +287,5 @@ end, {})
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 
-vim.cmd('map <leader>Y <cmd>GramotaExecAll<cr>')
-vim.cmd('map <leader>y <cmd>GramotaExecOne<cr>')
+vim.cmd('map <leader>e <cmd>GramotaExecAll<cr>')
+vim.cmd('map <leader>E <cmd>GramotaExecOne<cr>')

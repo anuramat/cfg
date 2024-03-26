@@ -32,20 +32,19 @@ end
 --- Replaces a placeholder, wrapping into a result block
 ---@param buffer_id integer
 ---@param lhs string
----@param rhs string
+---@param rhstemp string
 local function fuck(buffer_id, lhs, rhs)
   -- WARNING this function should actually be atomic
   -- TODO figure out how to :(
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the result block
-  local rhs_table = vim.split(rhs, '\n', { trimempty = true })
-  table.insert(rhs_table, '```')
-  table.insert(rhs_table, 1, ':::OUTPUT:::')
-  table.insert(rhs_table, 1, '```' .. result_block_type_name)
+  table.insert(rhs, '```')
+  table.insert(rhs, 1, ':::OUTPUT:::')
+  table.insert(rhs, 1, '```' .. result_block_type_name)
   -- insert
   for i, line in ipairs(lines) do
     if line == lhs then
-      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs_table)
+      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs)
       break
     end
   end
@@ -72,9 +71,10 @@ local function _insert_code(buffer_id, placeholder, code, program)
     command = command,
     args = {},
     env = env,
-    on_stdout = function(_, data)
+    on_exit = function(j, return_val)
       vim.schedule(function()
-        fuck(buffer_id, placeholder, data)
+        -- vim.print('return val', return_val) -- XXX return code?
+        fuck(buffer_id, placeholder, j:result())
       end)
     end,
     writer = code,

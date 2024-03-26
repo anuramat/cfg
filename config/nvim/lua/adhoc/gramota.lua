@@ -1,4 +1,6 @@
-local result_block_type_name = 'gramotaresult'
+local Job = require('plenary.job')
+
+local result_block_type_name = 'result'
 local start_pattern = '^```%w+'
 local end_pattern = '^```%s*$'
 local placeholder_format = 'generating %s output [%s], do not edit: %s'
@@ -14,17 +16,60 @@ local function make_uuid()
   return uuid
 end
 
-local function insert_code(buffer, placeholder, lang, code)
-  -- TODO input actual job, change opts
-  vim.system({ 'echo', 'test' }, { text = true }, function()
-    -- local lines_mid = vim.api.nvim_buf_get_lines(buffer, 0, vim.api.nvim_buf_line_count(buffer), false)
-    -- for i, v in ipairs(lines_mid) do
-    --   if v == placeholder then
-    --     vim.api.nvim_buf_set_lines(0, i, i + 1, false, { 'this should be code' })
-    --     break
-    --   end
-    -- end
-  end)
+--- Replaces a placeholder, wrapping into a result block
+---@param buffer_id integer
+---@param lhs string
+---@param rhs string
+local function fuck(buffer_id, lhs, rhs)
+  local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
+  -- build the result block
+  local rhs_table = vim.split(rhs, '\n', { trimempty = true })
+  table.insert(rhs_table, '```')
+  table.insert(rhs_table, 1, '```' .. result_block_type_name)
+  -- insert
+  for i, line in ipairs(lines) do
+    if line == lhs then
+      vim.print(rhs_table)
+      vim.api.nvim_buf_set_lines(0, i - 1, i, false, rhs_table)
+      break
+    end
+  end
+end
+
+--- Replaces placeholder with output of a command
+---@param buffer_id integer
+---@param placeholder string Placeholder to be replaced (verbatim)
+---@param code string[]
+---@param program table Interpreter for the code
+--- TODO generalize for non filterable programs or make it a wrapper idk (use utils.merge?)
+local function _insert_code(buffer_id, placeholder, code, program)
+  local env = {}
+  local command
+  if not program.full_path then
+    env = { path = vim.fn.expand('$PATH') }
+    command = program.name
+  else
+    command = program.full_path
+  end
+  Job:new({
+    command = command,
+    args = {},
+    env = env,
+    -- WARNING this function should actually be atomic
+    -- TODO figure out how to :(
+    on_stdout = function(_, data)
+      vim.schedule(function()
+        fuck(buffer_id, placeholder, data)
+      end)
+    end,
+    writer = code,
+  }):start()
+end
+
+local function insert_code(buffer_id, placeholder, lang, code)
+  if lang == 'python' then
+    _insert_code(buffer_id, placeholder, code, { name = 'python' })
+  end
 end
 
 --- Wipes placeholders from the buffer
@@ -44,7 +89,7 @@ local function wipe_results(buffer)
 end
 
 --- Finds the first markdown code block starting from given offset
----@param buffer_lines table<string>
+---@param buffer_lines string[]
 ---@param offset integer
 ---@return string, integer, integer, boolean
 local function find_block(buffer_lines, offset)
@@ -102,19 +147,20 @@ vim.api.nvim_create_user_command('Exec', function()
   end
 end, {})
 
+---@diagnostic disable-next-line: unused-local
 local test = [[
 ```python
 a = 3
 
 print(a+3, 'hahahahah')
 ```
-generating python output [1], do not edit: f680f095-df8e-44ea-8f3d-e1a42ee7797d
+generating python output [1], do not edit: 085c9cd9-4a13-4293-a8df-557b6ece338b
 ```haskell
 a = 3
 
 print(a+3, 'hahahahah')
 ```
-generating haskell output [2], do not edit: bd0f3865-2f49-41d2-bec5-706fddfa1f2c
+generating haskell output [2], do not edit: 7b9137b4-b41f-4e3e-8445-1cbb641cb8d7
 this is important
 
 

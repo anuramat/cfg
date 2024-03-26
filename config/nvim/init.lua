@@ -4,5 +4,5 @@ vim.diagnostic.config({
   update_in_insert = true, -- update diagnostics in insert/replace mode
   float = { border = vim.g.border }, -- settings for `vim.diagnostic.open_float`
 })
-require('adhoc')
 require('plugins')
+require('adhoc')

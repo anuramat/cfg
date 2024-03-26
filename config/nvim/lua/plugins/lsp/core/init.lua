@@ -5,7 +5,7 @@ return {
     'hrsh7th/nvim-cmp',
     'ray-x/lsp_signature.nvim',
     'lukas-reineke/lsp-format.nvim',
-    -- 'folke/neodev.nvim', -- not an actual dependency, a hack to get neodev setup before lspconfig
+    'folke/neodev.nvim', -- not an actual dependency, a hack to get neodev setup before lspconfig
   },
   config = function()
     local lspconfig = require('lspconfig')

@@ -3,7 +3,7 @@ local Job = require('plenary.job')
 local result_block_type_name = 'result'
 local start_pattern = '^```%w+'
 local end_pattern = '^```%s*$'
-local placeholder_format = 'generating %s output [%s], do not edit: %s'
+local placeholder_format = 'generating %s output [%s], do not edit: %s' -- one line only
 
 --- Generates an v4 UUID (stolen from internets)
 ---@return string uuid
@@ -30,7 +30,7 @@ local function fuck(buffer_id, lhs, rhs)
   for i, line in ipairs(lines) do
     if line == lhs then
       vim.print(rhs_table)
-      vim.api.nvim_buf_set_lines(0, i - 1, i, false, rhs_table)
+      vim.api.nvim_buf_set_lines(buffer, i - 1, i, false, rhs_table)
       break
     end
   end
@@ -97,7 +97,7 @@ local function find_block(buffer_lines, offset)
   local lang ---@type string
   local finish ---@type integer
   local block_found ---@type boolean
-  for i = 1, #buffer_lines do
+  for i = offset + 1, #buffer_lines do
     local line = buffer_lines[i]
     if not lang then
       local start_match = string.match(line, start_pattern)
@@ -120,10 +120,11 @@ vim.api.nvim_create_user_command('Exec', function()
   wipe_placeholders(buffer)
   wipe_results(buffer)
   local offset = 0 -- last code block position on j-th iteration
-  local buffer_lines = vim.api.nvim_buf_get_lines(buffer, 0, vim.api.nvim_buf_line_count(0), false)
+  local buffer_lines = vim.api.nvim_buf_get_lines(buffer, 0, vim.api.nvim_buf_line_count(buffer), false)
   local j = -1
   while true do
-    j = j + 1 -- for numbering purposes
+    j = j + 1
+    vim.print(j)
 
     -- find code block
     local lang, start, finish, found = find_block(buffer_lines, offset)
@@ -131,17 +132,20 @@ vim.api.nvim_create_user_command('Exec', function()
     if not found then
       break
     end
+    vim.print(lang, start, finish)
 
     -- extract the code block
     local code_lines = vim.list_slice(buffer_lines, start + 1, finish - 1)
     local code = vim.iter(code_lines):join('\n')
+    vim.print(code)
 
     -- -- insert a placeholder that will be replaced with the code output
-    -- local placeholder = string.format(placeholder_format, lang, tostring(j), make_uuid())
-    -- vim.api.nvim_buf_set_lines(buffer, finish, finish, false, { placeholder })
+    local placeholder = string.format(placeholder_format, lang, tostring(j), make_uuid())
+    vim.api.nvim_buf_set_lines(buffer, finish + j, finish + j, false, { placeholder })
 
-    vim.print(j, start, finish, code_lines)
-
+    if j > 1000 then
+      return
+    end
     -- insert_code(buffer, placeholder, lang, code)
   end
 end, {})
@@ -154,4 +158,8 @@ print('test1')
 ```python
 print('test2')
 ```
+```python
+print('test3')
+```
+important line
 ]]

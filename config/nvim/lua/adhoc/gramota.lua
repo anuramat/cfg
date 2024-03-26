@@ -88,6 +88,7 @@ local function stdin_interpreter(program)
       on_exit = function(j, return_val)
         vim.schedule(function()
           -- vim.print('return val', return_val) -- XXX return code?
+          -- TODO display errors
           fuck(buffer_id, placeholder, j:result())
         end)
       end,
@@ -205,10 +206,12 @@ local function exec_all()
   for i = #blocks, 1, -1 do
     local block = blocks[i]
     local placeholder = make_placeholder(buffer_id, block, tostring(i))
-    -- defer the wrapped interpreter
-    table.insert(job_list, function()
-      insert_output(buffer_id, placeholder, block.language, block.input)
-    end)
+    if placeholder then
+      -- defer inserting interpreter output
+      table.insert(job_list, function()
+        insert_output(buffer_id, placeholder, block.language, block.input)
+      end)
+    end
   end
   for _, f in ipairs(job_list) do
     f()
@@ -263,7 +266,9 @@ local function exec_one(buffer_id, position)
   -- make placeholder
   local placeholder = make_placeholder(buffer_id, blocks[1], 'solo') -- TODO check the pattern matching on placeholders
   -- run the interpreter
-  insert_output(buffer_id, placeholder, blocks[1].language, blocks[1].input)
+  if placeholder then
+    insert_output(buffer_id, placeholder, blocks[1].language, blocks[1].input)
+  end
 end
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --

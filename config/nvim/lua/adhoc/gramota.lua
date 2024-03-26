@@ -24,13 +24,13 @@ local function fuck(buffer_id, lhs, rhs)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the result block
   local rhs_table = vim.split(rhs, '\n', { trimempty = true })
-  table.insert(rhs_table, '```----------') -- TODO remove dashes
-  table.insert(rhs_table, 1, '```---------' .. result_block_type_name) -- TODO remove dashes
+  table.insert(rhs_table, '```') -- TODO remove dashes
+  table.insert(rhs_table, 1, '```' .. result_block_type_name) -- TODO remove dashes
   -- insert
   for i, line in ipairs(lines) do
     if line == lhs then
       vim.print(rhs_table)
-      vim.api.nvim_buf_set_lines(buffer, i - 1, i, false, rhs_table)
+      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs_table)
       break
     end
   end
@@ -122,6 +122,7 @@ vim.api.nvim_create_user_command('Exec', function()
   local offset = 0 -- last code block position on j-th iteration
   local buffer_lines = vim.api.nvim_buf_get_lines(buffer, 0, vim.api.nvim_buf_line_count(buffer), false)
   local j = -1
+  local replacers = {}
   while true do
     j = j + 1
     vim.print(j)
@@ -143,23 +144,11 @@ vim.api.nvim_create_user_command('Exec', function()
     local placeholder = string.format(placeholder_format, lang, tostring(j), make_uuid())
     vim.api.nvim_buf_set_lines(buffer, finish + j, finish + j, false, { placeholder })
 
-    if j > 1000 then
-      return
-    end
-    -- insert_code(buffer, placeholder, lang, code)
+    table.insert(replacers, function()
+      insert_code(buffer, placeholder, lang, code)
+    end)
+  end
+  for _, f in ipairs(replacers) do
+    f()
   end
 end, {})
-
----@diagnostic disable-next-line: unused-local
-local test = [[
-```python
-print('test1')
-```
-```python
-print('test2')
-```
-```python
-print('test3')
-```
-important line
-]]

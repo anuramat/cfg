@@ -24,8 +24,8 @@ local function fuck(buffer_id, lhs, rhs)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the result block
   local rhs_table = vim.split(rhs, '\n', { trimempty = true })
-  table.insert(rhs_table, '```')
-  table.insert(rhs_table, 1, '```' .. result_block_type_name)
+  table.insert(rhs_table, '```----------')
+  table.insert(rhs_table, 1, '```---------' .. result_block_type_name)
   -- insert
   for i, line in ipairs(lines) do
     if line == lhs then
@@ -97,8 +97,8 @@ local function find_block(buffer_lines, offset)
   local lang ---@type string
   local finish ---@type integer
   local block_found ---@type boolean
-  for i, line in ipairs(buffer_lines) do
-    i = i + offset
+  for i = 1, #buffer_lines do
+    local line = buffer_lines[i]
     if not lang then
       local start_match = string.match(line, start_pattern)
       if start_match then
@@ -119,14 +119,11 @@ vim.api.nvim_create_user_command('Exec', function()
   local buffer = vim.api.nvim_get_current_buf()
   wipe_placeholders(buffer)
   wipe_results(buffer)
-
   local offset = 0 -- last code block position on j-th iteration
-  local j = 0
+  local buffer_lines = vim.api.nvim_buf_get_lines(buffer, 0, vim.api.nvim_buf_line_count(0), false)
+  local j = -1
   while true do
     j = j + 1 -- for numbering purposes
-
-    -- read file
-    local buffer_lines = vim.api.nvim_buf_get_lines(buffer, offset, vim.api.nvim_buf_line_count(0), false)
 
     -- find code block
     local lang, start, finish, found = find_block(buffer_lines, offset)
@@ -139,35 +136,22 @@ vim.api.nvim_create_user_command('Exec', function()
     local code_lines = vim.list_slice(buffer_lines, start + 1, finish - 1)
     local code = vim.iter(code_lines):join('\n')
 
-    -- insert a placeholder that will be replaced with the code output
-    local placeholder = string.format(placeholder_format, lang, tostring(j), make_uuid())
-    vim.api.nvim_buf_set_lines(buffer, finish, finish, false, { placeholder })
+    -- -- insert a placeholder that will be replaced with the code output
+    -- local placeholder = string.format(placeholder_format, lang, tostring(j), make_uuid())
+    -- vim.api.nvim_buf_set_lines(buffer, finish, finish, false, { placeholder })
 
-    insert_code(buffer, placeholder, lang, code)
+    vim.print(j, start, finish, code_lines)
+
+    -- insert_code(buffer, placeholder, lang, code)
   end
 end, {})
 
 ---@diagnostic disable-next-line: unused-local
 local test = [[
 ```python
-a = 3
-
-print(a+3, 'hahahahah')
+print('test1')
 ```
-generating python output [1], do not edit: 085c9cd9-4a13-4293-a8df-557b6ece338b
-```haskell
-a = 3
-
-print(a+3, 'hahahahah')
+```python
+print('test2')
 ```
-generating haskell output [2], do not edit: 7b9137b4-b41f-4e3e-8445-1cbb641cb8d7
-this is important
-
-
-
-
-
-
-
-
 ]]

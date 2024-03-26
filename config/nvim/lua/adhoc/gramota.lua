@@ -237,8 +237,6 @@ end
 
 --- Executes a single block (cursor should be between the start of the input block
 --- and the end of the output block, start included, end excluded).
---- Source block and output block are treated as one if there is no non-whitespace
---- characters between them.
 ---@param buffer_id integer
 ---@param position integer Row number of the cursor
 local function exec_one(buffer_id, position)

@@ -15,6 +15,10 @@ local footer = '::::::::::::::::'
 ---@field position integer Line number
 ---@field language string Input language
 
+---@class output
+---@field stderr? string
+---@field stdout? string
+
 --- Generates an random id with a timestamp
 ---@return string uid
 local function make_uid()
@@ -34,26 +38,45 @@ local function get_language(line)
   return match
 end
 
---- Replaces a placeholder, wrapping into a output block
+--- Replaces a placeholder with an output block
 ---@param buffer_id integer
----@param lhs string
----@param rhs string
-local function fuck(buffer_id, lhs, rhs)
+---@param placeholder string
+---@param output string
+local function replace_placeholder(buffer_id, placeholder, output)
   -- WARNING this function should actually be atomic
   -- although it works for now
   -- TODO figure out how to :(
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the output block
-  local rhs_table = vim.split(rhs, '\n')
+  local rhs_table = vim.split(output, '\n')
   table.insert(rhs_table, 1, '```' .. output_language)
   table.insert(rhs_table, '```')
   -- insert
   for i, line in ipairs(lines) do
-    if line == lhs then
+    if line == placeholder then
       vim.api.nvim_buf_set_lines(buffer_id, i - 1, i, false, rhs_table)
       break
     end
   end
+end
+
+--- Replaces a placeholder with an output block,
+--- wrapping stdout and stderr with headers/footers
+---@param buffer_id integer
+---@param placeholder string
+---@param output output|vim.SystemCompleted Program output
+local function replace_wrapped(buffer_id, placeholder, output)
+  local output_text = ''
+  if output.stderr ~= '' then
+    output = output .. stderr_header .. '\n'
+    output = output .. output.stderr
+  end
+  if output.stderr == '' or output.stdout ~= '' then
+    output = output .. stdout_header .. '\n'
+    output = output .. output.stdout
+  end
+  output = output .. footer
+  replace_placeholder(buffer_id, placeholder, output_text)
 end
 
 --- Replaces placeholder with output of a command
@@ -70,17 +93,7 @@ local function stdin_interpreter(program)
       stdin = input,
     }, function(out)
       vim.schedule(function()
-        local output = ''
-        if out.stderr ~= '' then
-          output = output .. stderr_header .. '\n'
-          output = output .. out.stderr
-        end
-        if out.stderr == '' or out.stdout ~= '' then
-          output = output .. stdout_header .. '\n'
-          output = output .. out.stdout
-        end
-        output = output .. footer
-        fuck(buffer_id, placeholder, output)
+        replace_wrapped(buffer_id, placeholder, out)
       end)
     end)
   end

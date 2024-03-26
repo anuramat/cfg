@@ -35,6 +35,7 @@ end
 ---@param rhs string[]
 local function fuck(buffer_id, lhs, rhs)
   -- WARNING this function should actually be atomic
+  -- although it works for now
   -- TODO figure out how to :(
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the result block
@@ -91,20 +92,10 @@ local languages = {
 --- Replaces a placeholder with the results of running code through an interpreter
 ---@param buffer_id integer
 ---@param placeholder string
----@param lang string
+---@param language string
 ---@param code string[]
-local function insert_code(buffer_id, placeholder, lang, code)
-  languages[lang](buffer_id, placeholder, code)
-end
-
---- Wipes placeholders from the buffer
----@param buffer integer Buffer id
-local function wipe_placeholders(buffer)
-  -- HACK TODO reimplement in lua?
-  local regex = string.format(placeholder_format, [[\w\+]], [[\d\+]], [[\w\+-\w\+-\w\+-\w\+-\w\+]])
-  vim.cmd([[silent %g/\M]] .. regex .. '/d')
-  vim.cmd('noh')
-  -- vim.cmd('normal ``zz')
+local function insert_code(buffer_id, placeholder, language, code)
+  languages[language](buffer_id, placeholder, code)
 end
 
 --- Finds all markdown code blocks
@@ -139,6 +130,18 @@ local function find_blocks(lines)
   return blocks
 end
 
+--- Wipes placeholders from the buffer
+---@param buffer_id integer Buffer id
+local function wipe_placeholders(buffer_id)
+  local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
+  for i = #lines, 1, -1 do
+    local line = lines[i]
+    if string.match(line, string.format(placeholder_format, '%w+', '%d+', '[%x-]*')) then
+      vim.api.nvim_buf_set_lines(buffer_id, i - 1, i - 1, false, {})
+    end
+  end
+end
+
 --- Wipes result blocks from the buffer
 ---@param buffer_id integer Buffer id
 local function wipe_results(buffer_id)
@@ -152,6 +155,7 @@ local function wipe_results(buffer_id)
   end
 end
 
+--- Executes all blocks in the buffer
 local function exec_all()
   local buffer_id = vim.api.nvim_get_current_buf()
   wipe_placeholders(buffer_id)
@@ -175,12 +179,45 @@ local function exec_all()
   end
 end
 
+--- Executes a block that contains the specified line
+---@param line integer The line in the block
+local function exec_one(buffer_id, position)
+  local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
+  local language
+  local start
+  local finish
+  for i = position, 1, -1 do
+    local line = lines[i]
+    if string.match(line, border_pattern) then
+      language = string.gsub(line, '%W*', '')
+      start = i
+      break
+    end
+  end
+  assert(language ~= '', 'no language specified for the block')
+  for i = position, #lines do
+    local line = lines[i]
+    if string.match(line, border_pattern) then
+      finish = i
+    end
+  end
+  vim.print(start, finish) -- XXX
+  -- TODO find the next block and delete it if it's a result block
+end
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
 vim.api.nvim_create_user_command('GramotaWipe', function()
   wipe_results(0)
   wipe_placeholders(0)
 end, {})
 vim.api.nvim_create_user_command('GramotaExecAll', exec_all, {})
+vim.api.nvim_create_user_command('GramotaExecOne', function()
+  local win_id = vim.api.nvim_get_current_win()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(win_id))
+  local buffer_id = vim.api.nvim_get_current_buf()
+  exec_one(buffer_id, row)
+end, {})
 
-vim.cmd('map <leader>y <cmd>GramotaExecAll<cr>')
-
--- TODO command for executing just one block
+vim.cmd('map <leader>Y <cmd>GramotaExecAll<cr>')
+vim.cmd('map <leader>y <cmd>GramotaExecOne<cr>')

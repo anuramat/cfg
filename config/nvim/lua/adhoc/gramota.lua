@@ -24,8 +24,8 @@ local function fuck(buffer_id, lhs, rhs)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- build the result block
   local rhs_table = vim.split(rhs, '\n', { trimempty = true })
-  table.insert(rhs_table, '```----------')
-  table.insert(rhs_table, 1, '```---------' .. result_block_type_name)
+  table.insert(rhs_table, '```----------') -- TODO remove dashes
+  table.insert(rhs_table, 1, '```---------' .. result_block_type_name) -- TODO remove dashes
   -- insert
   for i, line in ipairs(lines) do
     if line == lhs then

@@ -88,7 +88,7 @@ end
 
 local languages = {
   python = stdin_interpreter('python'),
-  lua = stdin_interpreter('python'),
+  lua = stdin_interpreter('lua'),
 }
 
 --- Replaces a placeholder with the interpreter output
@@ -225,34 +225,37 @@ local function seek_up(lines, start)
 end
 
 --- Executes a single block (cursor should be between the start of the input block
---- and the end of the output block, start included, end excluded).
+--- and the end of the output block, both inclusive).
 ---@param buffer_id integer
 ---@param position integer Row number of the cursor
 local function exec_one(buffer_id, position)
   local lines = vim.api.nvim_buf_get_lines(buffer_id, 0, vim.api.nvim_buf_line_count(buffer_id), false)
   -- step 1 - upstroke
   -- find the ```language line
+  -- TODO this is fucking ugly
   local search_start = position
   local border
-  for _ = 1, 3 do
+  local found
+  local i = 0
+  while i < 4 do
+    i = i + 1
     border = seek_up(lines, search_start)
     if not border then
-      -- no borders above == no block to run
       return
     end
-    if border.language ~= '' and border.language ~= output_language then
-      -- we found the start, proceed to next step
+    found = border.language ~= '' and border.language ~= output_language
+    if found then
       break
     end
     search_start = border.position - 1
   end
+  if not found or ((i == 4) and not string.match(lines[position], border_pattern)) then
+    return
+  end
   -- step 2 - downstroke
-  -- remove the output block
   local blocks = find_blocks(lines, border.position, 2)
   wipe_block(buffer_id, blocks[2])
-  -- make placeholder
   local placeholder = make_placeholder(buffer_id, blocks[1], 'solo')
-  -- run the interpreter
   if placeholder then
     insert_output(buffer_id, placeholder, blocks[1].language, blocks[1].input)
   end

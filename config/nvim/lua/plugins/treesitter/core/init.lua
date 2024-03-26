@@ -8,7 +8,7 @@ return {
   build = ':TSUpdate', -- without VeryLazy - breaks on first open file with telescope
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
-    highlight = { enable = true, disable = {} },
+    highlight = { enable = true, disable = { 'latex', 'tex' } },
     indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = require('plugins.treesitter.core.langs'),
     sync_install = true, -- only applied to `ensure_installed`

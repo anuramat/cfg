@@ -26,6 +26,17 @@ return {
       vim.cmd([[
       let g:vimtex_view_method = 'zathura'
       let g:vimtex_mappings_prefix = '<localleader>'
+      let g:tex_flavor='latex'
+      let g:tex_conceal='abdmg'
+      let g:vimtex_quickfix_mode=0 " do not open qf automatically
+      " let g:vimtex_syntax_conceal=
+      " g:vimtex_syntax_conceal_disable
+      """ a = accents/ligatures
+      """ b = bold and italic
+      """ d = delimiters
+      """ m = math symbols
+      """ g = Greek
+      """ s = superscripts/subscripts
     ]])
     end,
     config = setup_commands(),

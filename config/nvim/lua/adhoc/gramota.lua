@@ -139,12 +139,16 @@ local function wipe_results(buffer_id)
   for i = #blocks, 1, -1 do
     local block = blocks[i]
     if block.language == result_block_type_name then
-      vim.api.nvim_buf_set_lines(buffer_id, block.start, block.finish + 1, false, {})
+      vim.api.nvim_buf_set_lines(buffer_id, block.start - 1, block.finish, false, {})
     end
   end
 end
 
-vim.api.nvim_create_user_command('Exec', function()
+vim.api.nvim_create_user_command('GramotaWipe', function()
+  wipe_results(0)
+  wipe_placeholders(0)
+end, {})
+vim.api.nvim_create_user_command('GramotaExecAll', function()
   local buffer_id = vim.api.nvim_get_current_buf()
   wipe_placeholders(buffer_id)
   wipe_results(buffer_id)
@@ -166,3 +170,5 @@ vim.api.nvim_create_user_command('Exec', function()
     f()
   end
 end, {})
+
+-- TODO command for executing just one block

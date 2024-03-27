@@ -132,15 +132,12 @@ return {
         lualine_x = {},
         lualine_y = {},
         lualine_z = { layout },
-      }, -- dap TODO
+      },
       sections = {
         lualine_a = { filename },
         lualine_b = { filetype },
-        lualine_c = {
-          encoding,
-          fileformat,
-        },
-        lualine_x = { diagnostics },
+        lualine_c = { encoding, fileformat, diagnostics },
+        lualine_x = { dap_status },
         lualine_y = { location },
         lualine_z = { progress },
       },

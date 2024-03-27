@@ -121,5 +121,7 @@
     usbutils # just in case
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
+    figlet # ascii art
+    banner # ascii art
   ];
 }

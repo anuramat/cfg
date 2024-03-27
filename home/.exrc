@@ -16,7 +16,7 @@ se filec=
 
 se tildeop
 " doesn't work in nvi
-se modelines
+" se modelines
 
 " highlight matching bracket on insert
 se showmatch

@@ -37,6 +37,14 @@ return {
     require('telescope').load_extension('live_grep_args')
     local opts = {
       defaults = {
+        layout_config = {
+          horizontal = {
+            height = 999,
+            preview_cutoff = 120,
+            prompt_position = 'top',
+            width = 999,
+          },
+        },
         prompt_prefix = ' ',
         selection_caret = ' ',
         multi_icon = ' ',

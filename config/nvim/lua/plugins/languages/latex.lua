@@ -56,4 +56,5 @@ return {
     end,
     config = setup_commands(),
   },
+  { 'bytesnake/vim-graphical-preview', lazy = false },
 }

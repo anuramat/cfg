@@ -1,8 +1,14 @@
 ---@diagnostic disable: unused-local
 
-local function set_colors(name)
-  vim.cmd.colorscheme(name)
-  vim.g.lualine_colorscheme = name
+--- Set colorscheme
+---@param nvim string Neovim colorscheme
+---@param lualine? string Lualine colorscheme, if different
+local function set_colors(nvim, lualine)
+  if not lualine then
+    lualine = nvim
+  end
+  vim.cmd.colorscheme(nvim)
+  vim.g.lualine_colorscheme = lualine
 end
 
 local tokyo = {
@@ -12,26 +18,18 @@ local tokyo = {
   config = function()
     require('tokyonight').setup({
       on_highlights = function(hl, c)
-        -- minimalistic telescope
-        local prompt = '#2d3149'
-        hl.TelescopeNormal = {
-          bg = c.bg_dark,
-          fg = c.fg_dark,
-        }
+        -- Hide borders and titles
         hl.TelescopeBorder = {
           bg = c.bg_dark,
           fg = c.bg_dark,
         }
-        hl.TelescopePromptNormal = {
-          bg = prompt,
-        }
         hl.TelescopePromptBorder = {
-          bg = prompt,
-          fg = prompt,
+          bg = c.bg_dark,
+          fg = c.bg_dark,
         }
         hl.TelescopePromptTitle = {
-          bg = prompt,
-          fg = prompt,
+          bg = c.bg_dark,
+          fg = c.bg_dark,
         }
         hl.TelescopePreviewTitle = {
           bg = c.bg_dark,
@@ -43,7 +41,7 @@ local tokyo = {
         }
       end,
     })
-    set_colors('tokyonight')
+    set_colors('tokyonight-night', 'tokyonight')
   end,
 }
 
@@ -53,15 +51,31 @@ local cat = {
   priority = 1000,
   lazy = false,
   config = function()
+    local sign = vim.fn.sign_define
+    -- TODO move
+    sign('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+    sign('DapBreakpointCondition', { text = '●', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
+    sign('DapLogPoint', { text = '◆', texthl = 'DapLogPoint', linehl = '', numhl = '' })
+
     require('catppuccin').setup({
+      dim_inactive = {
+        enabled = true, -- dims the background color of inactive window
+        shade = 'dark',
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
+      },
+      flavour = 'mocha',
       integrations = {
-        cmp = true,
-        gitsigns = true,
-        treesitter = true,
-        notify = true,
-        mini = {
+        aerial = true,
+        harpoon = true,
+        indent_blankline = {
           enabled = true,
+          -- colored_indent_levels = true,
         },
+        neotest = true,
+        noice = true,
+        notify = true,
+        rainbow_delimiters = true,
+        window_picker = true,
       },
     })
     set_colors('catppuccin')

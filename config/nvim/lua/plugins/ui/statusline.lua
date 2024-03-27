@@ -13,45 +13,43 @@ return {
     vim.o.showmode = false
     return {
       options = {
-        -- theme = 'tokyonight',
         theme = vim.g.lualine_colorscheme,
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },
       },
-      extensions = { 'fugitive', 'lazy', 'quickfix', 'trouble', 'man', 'nvim-dap-ui' },
+      extensions = { 'aerial', 'fugitive', 'lazy', 'man', 'neo-tree', 'nvim-dap-ui', 'oil', 'quickfix' },
       tabline = {
-        lualine_a = {
+        lualine_c = {
           {
-            'buffers',
-            max_length = vim.o.columns,
-            mode = 4,
-            hide_filename_extension = false,
-            show_filename_only = false,
-            use_mode_colors = true,
+            'filename',
+            path = 1,
+            symbols = { modified = '  ', readonly = '  ', unnamed = '' },
+            separator = '',
+            padding = { left = 1, right = 1 },
+          },
+          'filetype',
+          'fileformat',
+          'encoding',
+        },
+        lualine_y = {
+          {
+            'location',
+            padding = { left = 1, right = 1 },
+            fmt = u.trim,
+            separator = '',
           },
         },
-        lualine_z = { { 'harpoon2' } },
+        lualine_z = {
+          {
+            'progress',
+            padding = { left = 1, right = 1 },
+            separator = '',
+          },
+        },
       },
       sections = {
         lualine_a = {
-          {
-            'progress',
-            padding = { left = 1, right = 0 },
-            separator = '',
-          },
-          {
-            'location',
-            padding = { left = 1, right = 0 },
-            fmt = function(s)
-              local result = string.format('%-6s', u.trim(s))
-              if result[#result] ~= ' ' then
-                result = result .. ' '
-              end
-              return result
-            end,
-            separator = '',
-          },
           {
             function()
               local keymap = vim.o.keymap
@@ -64,16 +62,13 @@ return {
                 return 'EN'
               end
             end,
-            padding = { left = 0, right = 1 },
+            padding = { left = 1, right = 1 },
           },
         },
         lualine_b = {
           {
             function()
               local fullpath = vim.fn.getcwd()
-              if fullpath == nil then
-                fullpath = 'error!'
-              end
               local home = vim.fn.getenv('HOME')
               return string.gsub(fullpath, '^' .. home, '~')
             end,
@@ -88,13 +83,9 @@ return {
           },
         },
         lualine_c = {
-          { 'filename', path = 1, symbols = { modified = '  ', readonly = '  ', unnamed = '' }, separator = '' },
-          'filetype',
-          'fileformat',
-          'encoding',
+          { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
         },
         lualine_x = {
-          { 'diagnostics', symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' } },
           {
             function()
               return '  ' .. require('dap').status()
@@ -104,7 +95,9 @@ return {
             end,
           },
         },
-        lualine_y = {},
+        lualine_y = {
+          { 'harpoon2' },
+        },
         lualine_z = {
           {
             'tabs',

@@ -1,4 +1,4 @@
--- Custom textobjects
+-- Wrapper for treesitter textobject
 return {
   'echasnovski/mini.ai',
   keys = {

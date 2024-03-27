@@ -14,6 +14,8 @@
     python3
     lua
     texliveFull
+    cargo
+    rustc
     unstable.stack
     unstable.cabal-install
   ];

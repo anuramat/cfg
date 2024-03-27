@@ -41,7 +41,6 @@ return {
           horizontal = {
             height = 999,
             preview_cutoff = 120,
-            prompt_position = 'top',
             width = 999,
           },
         },
@@ -63,6 +62,7 @@ return {
       pickers = {
         keymaps = { show_plug = false },
         colorscheme = { enable_preview = false },
+        buffers = { sort_mru = true },
       },
     }
     if vim.g.border == 'solid' then

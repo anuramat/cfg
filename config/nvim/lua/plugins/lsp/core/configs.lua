@@ -22,7 +22,7 @@ return function()
     texlab = {},
     bashls = {},
     pyright = {},
-    marksman = {},
+    -- marksman = {}, -- I use obsidian.nvim btw
     clangd = {
       on_attach = function(client, buffer)
         vim.api.nvim_buf_set_keymap(

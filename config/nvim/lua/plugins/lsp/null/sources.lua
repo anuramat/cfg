@@ -13,6 +13,21 @@ local function latexindent()
   })
 end
 
+local function cbfmt()
+  local null_ls = require('null-ls')
+  local helpers = require('null-ls.helpers')
+  null_ls.register({
+    name = 'cbfmt',
+    method = null_ls.methods.FORMATTING,
+    filetypes = { 'markdown' },
+    generator = helpers.formatter_factory({
+      to_stdin = true,
+      command = 'cbfmt',
+      args = { '--config', vim.fn.expand('$XDG_CONFIG_HOME') .. '/cbfmt.toml', '-p', 'markdown' },
+    }),
+  })
+end
+
 -- TODO docstring
 return function()
   local null_ls = require('null-ls')
@@ -27,6 +42,7 @@ return function()
     nlf.black,
     nlf.alejandra,
     nlf.prettier,
+    cbfmt,
     -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,
     nld.statix,

@@ -16,5 +16,5 @@ return {
       change_line = 'cS',
     },
   },
-  event = 'VeryLazy',
+  event = 'BufEnter',
 }

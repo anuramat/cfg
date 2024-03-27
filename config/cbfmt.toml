@@ -1,0 +1,4 @@
+[languages]
+go = ["gofumpt"]
+lua = ["stylua -s -"]
+python = ["black --fast -"]

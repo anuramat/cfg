@@ -65,7 +65,7 @@ local filename = {
   'filename',
   path = 1,
   newfile_status = true,
-  symbols = { modified = '[+]', readonly = '[ro]', unnamed = '[no name]', newfile = '[new]' },
+  symbols = { modified = '[modified]', readonly = '[read-only]', unnamed = '[no name]', newfile = '[new]' },
   separator = '',
   cond = custom_cond,
   padding = { left = 1, right = 1 },

@@ -10,7 +10,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   init = require('plugins.ui.dashboard.hide_cursor'),
   opts = function()
-    local layout = {
+    local head = {
       make_button(' 󰈔 ', 'scratch', handlers.new_file),
       make_button(' 󰷉 ', 'note', handlers.obsidian_new),
       make_button(' 󰃶 ', 'today', handlers.obsidian_today),
@@ -21,17 +21,18 @@ return {
       make_button(' 󰅚 ', 'quit', handlers.quit),
       make_button(' 󰉹 ', 'recent', handlers.mru),
     }
-    local win_height = vim.fn.winheight(0)
-    local logo, logo_height = require('plugins.ui.dashboard.logo')()
-    local logo_padding = math.floor((win_height - logo_height) / 2 - #layout)
+    local foot_padding = 3
+    local foot = {
+      { type = 'padding', val = foot_padding },
+      { type = 'text', val = info_string, opts = { position = 'center' } },
+    }
+    local logo = require('plugins.ui.dashboard.logo')(#head, 1 + foot_padding)
     return {
-      layout = u.join(layout, {
-        { type = 'padding', val = logo_padding },
-        { type = 'text', val = logo, opts = { position = 'center' } },
-        { type = 'padding', val = 3 },
-        { type = 'text', val = info_string, opts = { position = 'center' } },
+      layout = u.join_tables({
+        head,
+        logo,
+        foot,
       }),
-      keymap = { press = nil },
     }
   end,
 }

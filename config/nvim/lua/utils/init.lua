@@ -1,5 +1,17 @@
 local M = {}
 
+--- Concatenates `n` copies of `s`
+--- @param s string
+--- @param n integer
+--- @return string
+function M.repeat_string(s, n)
+  local res = ''
+  for _ = 1, n do
+    res = res .. s
+  end
+  return res
+end
+
 --- Checks if string is empty
 --- @param s string
 --- @return boolean is_blank
@@ -42,11 +54,11 @@ function M.trim(s)
 end
 
 --- Gets a list of values from a table.
---- @param specs table
+--- @param t table
 --- @return table
-function M.values(specs)
+function M.values(t)
   local result = {}
-  for _, value in pairs(specs) do
+  for _, value in pairs(t) do
     table.insert(result, value)
   end
   return result
@@ -74,17 +86,28 @@ function M.merge(a, b)
   return c
 end
 
---- Joins tables
+--- Joins two tables
 --- @param a table
 --- @param b table
 --- @return table c
-function M.join(a, b)
+function M.join_two(a, b)
   local c = {}
   for i = 1, #a do
     table.insert(c, a[i])
   end
   for i = 1, #b do
     table.insert(c, b[i])
+  end
+  return c
+end
+
+--- Joins tables
+--- @param tables table[]
+--- @return table c
+function M.join_tables(tables)
+  local c = {}
+  for _, v in ipairs(tables) do
+    c = M.join_two(c, v)
   end
   return c
 end

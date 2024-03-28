@@ -16,7 +16,7 @@ return {
       layout = u.join_tables({
         header.elements,
         body.elements,
-        footer.wrapped_elements(header.height),
+        footer.elements,
       }),
     }
   end,

@@ -1,4 +1,5 @@
 local hide = require('plugins.ui.dashboard.helpers').hide
+local header = require('plugins.ui.dashboard.parts.header')
 local u = require('utils')
 
 local info_string = function()
@@ -14,18 +15,16 @@ local padding = 2
 return {
   output = output,
   height = padding + 1,
-  wrapped_elements = function(header_height)
-    return {
-      {
-        type = 'text',
-        val = function()
-          if hide(output, header_height) then
-            return ''
-          end
-          return output .. u.repeat_string(' \n', padding)
-        end,
-        opts = { position = 'center' },
-      },
-    }
-  end,
+  elements = {
+    {
+      type = 'text',
+      val = function()
+        if hide(output, header.height) then
+          return ''
+        end
+        return output .. u.repeat_string(' \n', padding)
+      end,
+      opts = { position = 'center' },
+    },
+  },
 }

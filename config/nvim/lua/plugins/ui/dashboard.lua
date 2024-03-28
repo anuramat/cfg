@@ -11,6 +11,12 @@ local button_handlers = {
   configs = function()
     require('telescope.builtin').find_files({ cwd = '~/cfg/config/nvim' })
   end,
+  find = function()
+    vim.cmd('Telescope find_files')
+  end,
+  jump = function()
+    vim.cmd('Telescope zoxide list')
+  end,
 }
 
 local headers = {
@@ -88,6 +94,8 @@ return {
       make_button('note', button_handlers.obsidian_new),
       make_button('today', button_handlers.obsidian_today),
       make_button('preferences', button_handlers.configs),
+      make_button('open', button_handlers.find),
+      make_button('jump', button_handlers.find),
       { type = 'text', val = headers.info, opts = { position = 'center' } },
       { type = 'padding', val = 3 },
       { type = 'text', val = logo, opts = { position = 'center' } },

@@ -28,6 +28,7 @@
     progress # progress status for cp etc
     nvi # vi clone
     file
+    unrar-wrapper
 
     ### Bread and Butter
     ripgrep-all # grep over pdfs etc

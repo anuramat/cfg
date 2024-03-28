@@ -1,3 +1,4 @@
+local hide = require('plugins.ui.dashboard.helpers').hide
 local u = require('utils')
 
 local function figlet(text, font)
@@ -18,25 +19,26 @@ end
 local input = 'neovim'
 local output = random_figlet(input)
 
--- wraps output, centering it vertically, and hiding it when it doesn't fit on the screen
-return function(head_height, foot_height)
+-- wraps output, centering it, and hiding it when it doesn't fit on the screen
+return function(header_height, footer_height, push_footer)
   return {
     {
       type = 'text',
       opts = { position = 'center' },
       val = function()
-        local lines = vim.split(output, '\n')
-        local line = lines[2]
-        if #line > vim.fn.winwidth(0) then
-          return ''
-        end
+        local height = #vim.split(output, '\n', { trimempty = true })
         local win_height = vim.fn.winheight(0)
-        local logo_height = #lines
-        if head_height + logo_height + foot_height >= win_height then
+        if hide(output, header_height + footer_height) then
           return ''
         end
-        local logo_padding = math.floor((win_height - logo_height) / 2 - head_height)
-        return u.repeat_string('\n ', logo_padding) .. output
+        local half_complement = (win_height - height) / 2
+        local top_padding = math.floor(half_complement - header_height)
+        output = u.repeat_string(' \n', top_padding) .. output
+        if true then
+          local bottom_padding = math.floor(half_complement - footer_height)
+          return output .. u.repeat_string(' \n', bottom_padding)
+        end
+        return output
       end,
     },
   }

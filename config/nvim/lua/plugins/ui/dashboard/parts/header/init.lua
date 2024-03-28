@@ -24,17 +24,20 @@ end
 local elements = {
   { type = 'padding', val = 1 },
   make_button('  󰈔 ', 'File', handlers.new_file),
-  make_button('  󰉹 ', 'Rcnt', handlers.mru),
   make_button('  󰅚 ', 'Quit', handlers.quit),
-  { type = 'padding', val = 1 },
-  make_button('  󰥨 ', 'Open', handlers.find),
-  make_button('  󰱽 ', 'Grep', handlers.grep),
-  make_button('  󰉋 ', 'Jump', handlers.jump),
   { type = 'padding', val = 1 },
   make_button('  󰷉 ', 'Note', handlers.obsidian_new),
   make_button('  󰃶 ', 'Tday', handlers.obsidian_today),
-  make_button('  󱌣 ', 'Pref', handlers.neovim_config_find),
 }
+
+-- elements = {
+--   { type = 'padding', val = 1 },
+--   { type = 'padding', val = 1 },
+--   { type = 'padding', val = 1 },
+--   { type = 'text', opts = { position = 'center' }, val = '󰈔 File   󰷉 Note' },
+--   { type = 'padding', val = 1 },
+--   { type = 'text', opts = { position = 'center' }, val = '󰃶 Tday   󰅚 Quit' },
+-- }
 
 return {
   elements = elements,

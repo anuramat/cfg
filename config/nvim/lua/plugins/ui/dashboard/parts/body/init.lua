@@ -32,11 +32,10 @@ local function wrapped_elements()
         if hide(raw, header.height + footer.height) then
           return just_pad(win_height)
         end
-        local half_complement = (win_height - height) / 2
-        local top_padding = math.floor(half_complement - header.height)
+        local top_padding = math.floor((win_height - height) / 2 - header.height)
+        local bottom_padding = math.floor(win_height - header.height - top_padding - height - footer.height - 4)
         local output = u.repeat_string(' \n', top_padding) .. raw
         if push_footer then
-          local bottom_padding = math.floor(half_complement - footer.height)
           return output .. u.repeat_string(' \n', bottom_padding)
         end
         return output

@@ -1,4 +1,5 @@
 local M = {}
+local all_events = require('adhoc.events')
 local u = require('utils')
 
 require('adhoc.gramota')
@@ -91,10 +92,13 @@ end, 'Subheader')
 --- ```lua
 --- M.debug_events({ 'BufReadPre', 'BufNewFile' })
 --- ```
---- @param events table List of events to subscribe to
+--- @param events? table List of events to subscribe to
 M.debug_events = function(events)
   local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
   local counter = 0
+  if events == nil then
+    events = all_events
+  end
   for _, e in pairs(events) do
     vim.api.nvim_create_autocmd(e, {
       group = g,

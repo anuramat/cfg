@@ -16,6 +16,7 @@ local make_button = function(icon, name, func)
 end
 
 local elements = {
+  { type = 'padding', val = 1},
   make_button(' 󰈔 ', 'scratch', handlers.new_file),
   make_button(' 󰷉 ', 'note', handlers.obsidian_new),
   make_button(' 󰃶 ', 'today', handlers.obsidian_today),

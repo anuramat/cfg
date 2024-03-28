@@ -18,9 +18,13 @@ return function()
     desc = 'hide cursor for alpha',
     callback = hide_cursor,
   })
-  vim.api.nvim_create_autocmd('BufUnload', {
-    buffer = 0, -- TODO how does this work
+  vim.api.nvim_create_autocmd({   'BufWinEnter' }, {
     desc = 'show cursor after alpha',
-    callback = unhide_cursor,
+    callback = function()
+      if vim.o.ft == 'alpha' then
+        return hide_cursor()
+      end
+      unhide_cursor()
+    end,
   })
 end

@@ -59,6 +59,7 @@ local progress = {
   'progress',
   padding = { left = 1, right = 1 },
   separator = '',
+  cond = custom_cond,
 }
 
 local filename = {
@@ -88,6 +89,7 @@ local location = {
   padding = { left = 1, right = 1 },
   fmt = u.trim,
   separator = '',
+  cond = custom_cond,
 }
 
 local encoding = {

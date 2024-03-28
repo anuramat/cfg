@@ -19,9 +19,8 @@ local output = random_figlet(input)
 return function()
   local lines = vim.split(output, '\n')
   local line = lines[2]
-  local win = vim.api.nvim_get_current_win()
-  if #line > vim.fn.winwidth(win) then
+  if #line > vim.fn.winwidth(0) then
     return ''
   end
-  return output
+  return output, #lines
 end

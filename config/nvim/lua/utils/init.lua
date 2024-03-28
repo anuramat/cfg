@@ -62,6 +62,7 @@ end
 --- Merges tables
 --- @param a table
 --- @param b table
+--- @return table c
 function M.merge(a, b)
   local c = {}
   for k, v in pairs(a) do
@@ -69,6 +70,21 @@ function M.merge(a, b)
   end
   for k, v in pairs(b) do
     c[k] = v
+  end
+  return c
+end
+
+--- Joins tables
+--- @param a table
+--- @param b table
+--- @return table c
+function M.join(a, b)
+  local c = {}
+  for i = 1, #a do
+    table.insert(c, a[i])
+  end
+  for i = 1, #b do
+    table.insert(c, b[i])
   end
   return c
 end

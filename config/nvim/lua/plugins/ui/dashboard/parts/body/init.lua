@@ -38,11 +38,11 @@ local elements = {
       if width > win_width or height + header.height + footer.height >= win_height then
         return just_pad(win_height)
       end
-      local top_padding = math.floor((win_height - height) / 2 - header.height)
-      local bottom_padding = math.floor(win_height - header.height - top_padding - height - footer.height)
-      local output = u.repeat_string(' \n', top_padding) .. raw
+      local top_adaptive_padding = math.floor((win_height - height) / 2 - header.height)
+      local bottom_adaptive_padding = win_height - header.height - top_adaptive_padding - height - footer.height
+      local output = u.repeat_string(' \n', top_adaptive_padding) .. raw
       if push_footer then
-        return output .. u.repeat_string(' \n', bottom_padding)
+        return output .. u.repeat_string(' \n', bottom_adaptive_padding)
       end
       return output
     end,

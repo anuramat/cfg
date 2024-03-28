@@ -17,15 +17,18 @@ end
 
 local elements = {
   { type = 'padding', val = 1 },
-  make_button(' 󰈔 ', 'scratch', handlers.new_file),
-  make_button(' 󰷉 ', 'note', handlers.obsidian_new),
-  make_button(' 󰃶 ', 'today', handlers.obsidian_today),
-  make_button(' 󱌣 ', 'config', handlers.configs),
-  make_button(' 󰥨 ', 'open', handlers.find),
-  make_button(' 󰱽 ', 'grep', handlers.grep),
-  make_button(' 󰉋 ', 'jump', handlers.jump),
-  make_button(' 󰅚 ', 'quit', handlers.quit),
-  make_button(' 󰉹 ', 'recent', handlers.mru),
+  make_button('  󰈔 ', 'scratch', handlers.new_file),
+  make_button('  󰉹 ', 'recent', handlers.mru),
+  { type = 'padding', val = 1 },
+  make_button('  󰷉 ', 'note', handlers.obsidian_new),
+  make_button('  󰃶 ', 'today', handlers.obsidian_today),
+  make_button('  󱌣 ', 'prefs', handlers.neovim_config_find),
+  { type = 'padding', val = 1 },
+  make_button('  󰥨 ', 'open', handlers.find),
+  make_button('  󰱽 ', 'grep', handlers.grep),
+  make_button('  󰉋 ', 'jump', handlers.jump),
+  { type = 'padding', val = 1 },
+  make_button('  󰅚 ', 'quit', handlers.quit),
 }
 
 return {

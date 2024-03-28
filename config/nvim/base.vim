@@ -63,7 +63,7 @@ endif
 " pseudo-transparency, looks ugly with transparent bg
 if has('nvim')
   " se winbl=30 " floating window transparency
-  se pb=30 " popup transparency
+  " se pb=30 " popup transparency
 endif
 se ph=20 " popup max height
 " hi Normal guibg=NONE " transparent bg (guibg has nothing to do with gui)

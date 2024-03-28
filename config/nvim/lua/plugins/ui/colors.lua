@@ -19,26 +19,11 @@ local tokyo = {
     require('tokyonight').setup({
       on_highlights = function(hl, c)
         -- Hide borders and titles
-        hl.TelescopeBorder = {
-          bg = c.bg_dark,
-          fg = c.bg_dark,
-        }
-        hl.TelescopePromptBorder = {
-          bg = c.bg_dark,
-          fg = c.bg_dark,
-        }
-        hl.TelescopePromptTitle = {
-          bg = c.bg_dark,
-          fg = c.bg_dark,
-        }
-        hl.TelescopePreviewTitle = {
-          bg = c.bg_dark,
-          fg = c.bg_dark,
-        }
-        hl.TelescopeResultsTitle = {
-          bg = c.bg_dark,
-          fg = c.bg_dark,
-        }
+        hl.TelescopeBorder = { bg = c.bg_dark, fg = c.bg_dark }
+        -- Add an underline border to the context lines and set the background to normal
+        hl.TreesitterContext = { bg = c.bg }
+        hl.TreesitterContextBottom = { underline = true, sp = c.fg, bg = c.bg }
+        hl.TreesitterContextLineNumberBottom = { underline = true, sp = c.fg, bg = c.bg }
       end,
     })
     set_colors('tokyonight-night', 'tokyonight')
@@ -51,6 +36,8 @@ local cat = {
   priority = 1000,
   lazy = false,
   config = function()
+    local flavour = 'mocha'
+
     local sign = vim.fn.sign_define
     -- TODO move
     sign('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
@@ -63,7 +50,7 @@ local cat = {
         shade = 'dark',
         percentage = 0.15, -- percentage of the shade to apply to the inactive window
       },
-      flavour = 'mocha',
+      flavour = flavour,
       integrations = {
         aerial = true,
         harpoon = true,
@@ -79,6 +66,8 @@ local cat = {
       },
     })
     set_colors('catppuccin')
+    local c = require('catppuccin.palettes').get_palette(flavour)
+    vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = c.base, bg = c.base })
   end,
 }
 

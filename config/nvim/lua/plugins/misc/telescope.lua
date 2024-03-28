@@ -37,6 +37,7 @@ return {
     require('telescope').load_extension('live_grep_args')
     local opts = {
       defaults = {
+        wrap_results = true,
         layout_config = {
           horizontal = {
             height = 999,

@@ -8,7 +8,7 @@ return {
   obsidian_new = function()
     vim.cmd('ObsidianNew')
   end,
-  configs = function()
+  neovim_config_find = function()
     require('telescope.builtin').find_files({ cwd = '~/cfg/config/nvim' })
   end,
   find = function()

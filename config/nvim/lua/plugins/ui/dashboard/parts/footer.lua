@@ -11,9 +11,11 @@ local output = info_string()
 
 local padding = 2
 
-return function(header_height)
-  return {
-    elements = {
+return {
+  output = output,
+  height = padding + 1,
+  wrapped_elements = function(header_height)
+    return {
       {
         type = 'text',
         val = function()
@@ -24,7 +26,6 @@ return function(header_height)
         end,
         opts = { position = 'center' },
       },
-    },
-    height = padding + 1,
-  }
-end
+    }
+  end,
+}

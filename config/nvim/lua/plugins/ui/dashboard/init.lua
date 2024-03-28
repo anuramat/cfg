@@ -1,7 +1,7 @@
 --stylua: ignore
 local header = require('plugins.ui.dashboard.parts.header')
-local footer = require('plugins.ui.dashboard.parts.footer')(header.height)
-local body = require('plugins.ui.dashboard.parts.body')(header.height, footer.height)
+local footer = require('plugins.ui.dashboard.parts.footer')
+local body = require('plugins.ui.dashboard.parts.body')
 
 local u = require('utils')
 
@@ -15,8 +15,8 @@ return {
     return {
       layout = u.join_tables({
         header.elements,
-        body,
-        footer.elements,
+        body.wrapped_elements(header.height, footer.height, true),
+        footer.wrapped_elements(header.height),
       }),
     }
   end,

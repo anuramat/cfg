@@ -18,6 +18,12 @@ return {
         body.elements,
         footer.elements,
       }),
+      opts = {
+        keymap = {
+          press = nil,
+          press_queue = nil,
+        },
+      },
     }
   end,
 }

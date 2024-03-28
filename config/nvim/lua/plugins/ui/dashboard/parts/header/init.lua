@@ -1,9 +1,11 @@
-local handlers = require('plugins.ui.dashboard.parts.header.handlers')
 local u = require('utils')
 
 local used_keys = {}
 
-local make_button = function(icon, name, func)
+local make_button = function(icon, name, cmd)
+  local func = function()
+    vim.cmd(cmd)
+  end
   local key = string.lower(string.sub(name, 1, 1))
   if u.contains(used_keys, key) then
     error('dashboard keymap collision')
@@ -21,14 +23,16 @@ local make_button = function(icon, name, func)
   }
 end
 
-local elements = {
-  { type = 'padding', val = 1 },
-  make_button('  󰈔 ', 'File', handlers.new_file),
-  make_button('  󰅚 ', 'Quit', handlers.quit),
-  { type = 'padding', val = 1 },
-  make_button('  󰷉 ', 'Note', handlers.obsidian_new),
-  make_button('  󰃶 ', 'Tday', handlers.obsidian_today),
-}
+local leftmenu = function()
+  return {
+    { type = 'padding', val = 1 },
+    make_button('  󰈔 ', 'File', 'enew'),
+    make_button('  󰅚 ', 'Quit', 'q'),
+    { type = 'padding', val = 1 },
+    make_button('  󰷉 ', 'Note', 'ObsidianNew'),
+    make_button('  󰃶 ', 'Tday', 'ObsidianToday'),
+  }
+end
 
 -- elements = {
 --   { type = 'padding', val = 1 },
@@ -39,6 +43,7 @@ local elements = {
 --   { type = 'text', opts = { position = 'center' }, val = '󰃶 Tday   󰅚 Quit' },
 -- }
 
+local elements = leftmenu()
 return {
   elements = elements,
   height = #elements,

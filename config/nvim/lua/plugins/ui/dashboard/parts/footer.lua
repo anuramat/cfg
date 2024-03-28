@@ -1,5 +1,5 @@
 local bottom_padding = 2
-local min_top_padding = 2 -- min because body might add some
+local min_top_padding = 2
 
 local header = require('plugins.ui.dashboard.parts.header')
 local u = require('utils')

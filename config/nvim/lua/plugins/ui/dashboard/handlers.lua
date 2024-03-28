@@ -23,4 +23,7 @@ return {
   quit = function()
     vim.cmd('q')
   end,
+  mru = function()
+    vim.cmd('Telescope oldfiles')
+  end,
 }

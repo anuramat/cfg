@@ -12,23 +12,26 @@ local function unhide_cursor()
   vim.opt.guicursor:remove('a:Cursor/lCursor')
 end
 
+local desc = 'Hide cursor in Alpha'
+local ft = 'alpha'
+
 return function()
   vim.api.nvim_create_autocmd({ 'Filetype' }, {
-    pattern = { 'alpha' },
-    desc = 'hide cursor for alpha',
+    pattern = ft,
+    desc = desc,
     callback = hide_cursor,
   })
 
-  vim.api.nvim_create_autocmd({ 'CmdlineEnter'}, {
-    desc = 'show cursor after alpha',
+  vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
+    desc = desc,
     callback = function()
       unhide_cursor()
     end,
   })
-  vim.api.nvim_create_autocmd({ 'CmdlineLeave', 'BufEnter', 'WinEnter', 'BufWinEnter' }, {
-    desc = 'show cursor after alpha',
+  vim.api.nvim_create_autocmd({ 'CmdlineLeave', 'BufWinEnter' }, {
+    desc = desc,
     callback = function()
-      if vim.o.ft == 'alpha' then
+      if vim.o.ft == ft then
         return hide_cursor()
       end
       unhide_cursor()

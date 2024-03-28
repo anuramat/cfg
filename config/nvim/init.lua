@@ -5,6 +5,4 @@ vim.diagnostic.config({
   float = { border = vim.g.border }, -- settings for `vim.diagnostic.open_float`
 })
 require('plugins')
-local adhoc = require('adhoc')
-
--- adhoc.debug_events()
+require('adhoc')

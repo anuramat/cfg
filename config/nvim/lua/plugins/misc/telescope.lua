@@ -8,6 +8,7 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',
     'jvgrootveld/telescope-zoxide',
+    'nvim-telescope/telescope-symbols.nvim',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
@@ -40,8 +41,9 @@ return {
         wrap_results = true,
         layout_config = {
           horizontal = {
+            preview_width = 120,
             height = 999,
-            preview_cutoff = 120,
+            preview_cutoff = 140,
             width = 999,
           },
         },
@@ -68,9 +70,9 @@ return {
     }
     if vim.g.border == 'solid' then
       opts.defaults.borderchars = {
-        prompt = { ' ' },
-        results = { ' ' },
-        preview = { ' ' },
+        prompt = { '' },
+        results = { '' },
+        preview = { '' },
       }
     end
     require('telescope').setup(opts)

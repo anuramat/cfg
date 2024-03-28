@@ -22,11 +22,16 @@ local make_button = function(icon, name, cmd)
   }
 end
 
-return {
+local elements = {
   { type = 'padding', val = 1 },
   make_button('  󰈔 ', 'File', 'enew'),
   make_button('  󰅚 ', 'Quit', 'q'),
   { type = 'padding', val = 1 },
   make_button('  󰷉 ', 'Note', 'ObsidianNew'),
   make_button('  󰃶 ', 'Tday', 'ObsidianToday'),
+}
+
+return {
+  elements = elements,
+  height = #elements,
 }

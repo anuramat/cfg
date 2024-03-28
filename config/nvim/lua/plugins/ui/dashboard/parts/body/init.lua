@@ -8,7 +8,7 @@ local input = 'neovim'
 local push_footer = true
 
 local raw = figlet(input)
-local height = #vim.split(raw, '\n', { trimempty = true })
+local height = #vim.split(raw, '\n', { trimempty = true }) -- TODO remove trimempty
 
 --- Returns body text for the case of hidden banner
 --- @param win_height integer

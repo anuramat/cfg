@@ -6,6 +6,7 @@
 -- lsp progress: native rendering
 return {
   'folke/noice.nvim',
+  enabled = false,
   dependencies = {
     'MunifTanjim/nui.nvim',
     'rcarriga/nvim-notify',

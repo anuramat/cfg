@@ -1,14 +1,20 @@
 local handlers = require('plugins.ui.dashboard.parts.header.handlers')
+local u = require('utils')
+
+local used_keys = {}
 
 local make_button = function(icon, name, func)
-  name = string.format('%-11s', name)
-  local first = string.sub(name, 1, 1)
+  local key = string.lower(string.sub(name, 1, 1))
+  if u.contains(used_keys, key) then
+    error('dashboard keymap collision')
+  end
+  table.insert(used_keys, key)
   return {
     type = 'button',
-    val = icon .. string.upper(first) .. string.sub(name, 2),
+    val = icon .. name,
     on_press = func,
     opts = {
-      keymap = { 'n', string.lower(first), func },
+      keymap = { 'n', key, func },
       position = 'left',
       hl = 'AlphaButtons',
     },
@@ -17,18 +23,17 @@ end
 
 local elements = {
   { type = 'padding', val = 1 },
-  make_button('  󰈔 ', 'scratch', handlers.new_file),
-  make_button('  󰉹 ', 'recent', handlers.mru),
+  make_button('  󰈔 ', 'File', handlers.new_file),
+  make_button('  󰉹 ', 'Rcnt', handlers.mru),
+  make_button('  󰅚 ', 'Quit', handlers.quit),
   { type = 'padding', val = 1 },
-  make_button('  󰷉 ', 'note', handlers.obsidian_new),
-  make_button('  󰃶 ', 'today', handlers.obsidian_today),
-  make_button('  󱌣 ', 'prefs', handlers.neovim_config_find),
+  make_button('  󰥨 ', 'Open', handlers.find),
+  make_button('  󰱽 ', 'Grep', handlers.grep),
+  make_button('  󰉋 ', 'Jump', handlers.jump),
   { type = 'padding', val = 1 },
-  make_button('  󰥨 ', 'open', handlers.find),
-  make_button('  󰱽 ', 'grep', handlers.grep),
-  make_button('  󰉋 ', 'jump', handlers.jump),
-  { type = 'padding', val = 1 },
-  make_button('  󰅚 ', 'quit', handlers.quit),
+  make_button('  󰷉 ', 'Note', handlers.obsidian_new),
+  make_button('  󰃶 ', 'Tday', handlers.obsidian_today),
+  make_button('  󱌣 ', 'Pref', handlers.neovim_config_find),
 }
 
 return {

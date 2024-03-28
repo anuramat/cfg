@@ -1,5 +1,6 @@
 return {
   {
+    -- uses cscope/gtags-cscope
     'dhananjaylatkar/cscope_maps.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -7,6 +8,7 @@ return {
     opts = {},
   },
   {
+    -- regenerates tag files
     'ludovicchabant/vim-gutentags',
     init = function()
       vim.g.gutentags_modules = { 'cscope_maps' } -- This is required. Other config is optional
@@ -18,3 +20,6 @@ return {
   },
 }
 -- https://github.com/skywind3000/gutentags_plus
+-- gtags for gutentags
+-- AFAIU uses gtags-cscope
+-- so shouldn't be needed given that we have a cscope_maps.nvim

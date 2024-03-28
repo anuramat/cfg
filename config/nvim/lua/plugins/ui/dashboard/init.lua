@@ -10,7 +10,6 @@ return {
   'goolord/alpha-nvim',
   event = 'VimEnter',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  init = require('plugins.ui.dashboard.hide_cursor'),
   opts = function()
     return {
       layout = u.join_tables({

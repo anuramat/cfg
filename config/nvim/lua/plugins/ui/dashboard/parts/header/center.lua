@@ -64,7 +64,7 @@ local height = #vim.split(output, '\n', { trim_empty = true })
 
 return {
   elements = {
-    { type = 'button', val = '' },
+    { type = 'button', val = '█' }, -- HAHAHAHA HOLY FUCK
     {
       type = 'text',
       val = function()

@@ -5,5 +5,8 @@ _: {
       efi.canTouchEfiVariables = true;
     };
     kernelModules = ["v4l2loopback"]; # virtual webcam
+    plymouth = {
+      enable = true;
+    };
   };
 }

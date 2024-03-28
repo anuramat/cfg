@@ -7,6 +7,7 @@ return {
     highlight = {
       keyword = 'bg',
       pattern = [[<(KEYWORDS)>]], -- vim regex
+      multiline = false, -- enable multine todo comments
     },
     search = {
       pattern = [[\b(KEYWORDS)\b]], -- ripgrep regex

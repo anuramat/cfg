@@ -19,9 +19,10 @@ return {
       make_button(' 󰉋 ', 'jump', handlers.jump),
       make_button(' 󰅚 ', 'quit', handlers.quit),
       make_button(' 󰉹 ', 'recent', handlers.mru),
-      { type = 'text', val = header.info, opts = { position = 'center' } },
-      { type = 'padding', val = 3 },
       { type = 'text', val = require('plugins.ui.dashboard.logo'), opts = { position = 'center' } },
+      { type = 'padding', val = 3 },
+      { type = 'text', val = header.info, opts = { position = 'center' } },
     },
+    keymap = { press = nil },
   },
 }

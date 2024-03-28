@@ -1,5 +1,4 @@
 local function hide_cursor()
-  vim.print('asdf')
   local hl = vim.api.nvim_get_hl_by_name('Cursor', true)
   hl.blend = 100
   vim.api.nvim_set_hl(0, 'Cursor', hl)

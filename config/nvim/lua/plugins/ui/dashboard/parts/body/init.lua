@@ -35,14 +35,19 @@ local elements = {
     val = function()
       local win_height = vim.fn.winheight(0)
       local win_width = vim.fn.winwidth(0)
-      if width > win_width or height + header.height + footer.height >= win_height then
+      if width > win_width then
         return just_pad(win_height)
       end
-      local top_adaptive_padding = math.floor((win_height - height) / 2 - header.height)
-      local bottom_adaptive_padding = win_height - header.height - top_adaptive_padding - height - footer.height
+      local top_adaptive_padding = math.max(math.floor((win_height - height) / 2 - header.height), 0)
+      local bottom_adaptive_padding =
+        math.max(win_height - header.height - top_adaptive_padding - height - footer.height, 0)
       local output = u.repeat_string(' \n', top_adaptive_padding) .. raw
       if push_footer then
-        return output .. u.repeat_string(' \n', bottom_adaptive_padding)
+        output = output .. u.repeat_string(' \n', bottom_adaptive_padding)
+      end
+      local real_lines = vim.split(output, '\n', { trimempty = true })
+      if #real_lines + footer.height + header.height > win_height then
+        return just_pad(win_height)
       end
       return output
     end,

@@ -102,6 +102,7 @@ end
 local languages = {
   python = stdin_interpreter('python'),
   lua = stdin_interpreter('lua'),
+  bash = stdin_interpreter('bash'),
 }
 
 --- Replaces a placeholder with the interpreter output

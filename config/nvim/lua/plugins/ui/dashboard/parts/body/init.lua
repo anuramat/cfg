@@ -22,30 +22,28 @@ end
 
 --- Wraps output, centering it, and hiding it when it doesn't fit on the screen
 ---@return table elements
-local function wrapped_elements()
-  return {
-    {
-      type = 'text',
-      opts = { position = 'center' },
-      val = function()
-        local win_height = vim.fn.winheight(0)
-        if hide(raw, header.height + footer.height) then
-          return just_pad(win_height)
-        end
-        local top_padding = math.floor((win_height - height) / 2 - header.height)
-        local bottom_padding = math.floor(win_height - header.height - top_padding - height - footer.height - 4)
-        local output = u.repeat_string(' \n', top_padding) .. raw
-        if push_footer then
-          return output .. u.repeat_string(' \n', bottom_padding)
-        end
-        return output
-      end,
-    },
-  }
-end
+local elements = {
+  {
+    type = 'text',
+    opts = { position = 'center' },
+    val = function()
+      local win_height = vim.fn.winheight(0)
+      if hide(raw, header.height + footer.height) then
+        return just_pad(win_height)
+      end
+      local top_padding = math.floor((win_height - height) / 2 - header.height)
+      local bottom_padding = math.floor(win_height - header.height - top_padding - height - footer.height - 4)
+      local output = u.repeat_string(' \n', top_padding) .. raw
+      if push_footer then
+        return output .. u.repeat_string(' \n', bottom_padding)
+      end
+      return output
+    end,
+  },
+}
 
 return {
   output = raw,
   height = height,
-  wrapped_elements = wrapped_elements,
+  elements = elements,
 }

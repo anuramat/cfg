@@ -9,6 +9,7 @@ return {
   dependencies = {
     {
       'theHamsta/nvim-dap-virtual-text',
+      dependencies = 'nvim-treesitter/nvim-treesitter',
       opts = {},
     },
   },
@@ -19,7 +20,6 @@ return {
     { 'o', function() require('dap').step_out() end,          desc = 'Step Out' },
     { 'n', function() require('dap').step_over() end,         desc = 'Step Over' },
     { 'i', function() require('dap').step_into() end,         desc = 'Step Into' },
-    -- { 's', function() require('dap').set_breakpoint() end,    desc = 'Set Breakpoint' },
     { 'b', function() require('dap').toggle_breakpoint() end, desc = 'Toggle Breakpoint' },
     { 'l', log_point,                                         desc = 'Set Log Point' },
     { 'r', function() require('dap').repl.open() end,         desc = 'Open Debug REPL' },

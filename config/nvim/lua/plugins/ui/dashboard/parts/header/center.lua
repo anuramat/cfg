@@ -1,3 +1,9 @@
+local x_delim = '   '
+local y_delim = ' \n \n'
+local top_padding = 4 -- minimum 1
+local bottom_padding = 4
+assert(top_padding > 0, 'min padding is one because of the fake button')
+
 local u = require('utils')
 
 ---@class button
@@ -32,12 +38,6 @@ local function map_grid()
   end
 end
 
-local x_delim = '   '
-local y_delim = '\n'
-local top_padding = 2
-local bottom_padding = 2 -- minimum 1
-assert(bottom_padding > 0, 'min padding is one because of the fake button')
-
 local function render_text()
   map_grid()
 
@@ -55,12 +55,12 @@ local function render_text()
     table.insert(lines, line)
   end
   local output = vim.iter(lines):join(y_delim)
-  output = u.repeat_string('\n', top_padding) .. output .. u.repeat_string('\n', bottom_padding - 1)
+  output = u.repeat_string(' \n', top_padding - 1) .. output .. u.repeat_string(' \n', bottom_padding)
   return output
 end
 
 local output = render_text()
-local height = #vim.split(output, '\n')
+local height = #vim.split(output, '\n', { trim_empty = true })
 
 return {
   elements = {

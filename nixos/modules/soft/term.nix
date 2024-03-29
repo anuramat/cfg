@@ -22,6 +22,7 @@
     less
     tree
     lsof
+    util-linux # was already installed but whatever
     wget
     zip
     unzip

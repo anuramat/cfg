@@ -18,5 +18,6 @@
     rustc
     unstable.stack
     unstable.cabal-install
+    haskellPackages.hoogle
   ];
 }

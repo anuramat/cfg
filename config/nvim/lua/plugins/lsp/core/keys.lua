@@ -21,7 +21,6 @@ return function(buffer)
   set_prefixed('a', vim.lsp.buf.code_action, 'Code action')
   set_prefixed('l', vim.lsp.codelens.run, 'CodeLens')
 
-  set('K', vim.lsp.buf.hover, 'Hover Documentation')
   set('gd', vim.lsp.buf.definition, 'Goto Definition') -- prototype: goto local declaration
 
   set('gD', vim.lsp.buf.declaration, 'Goto Declaration') -- prototype: goto global declaration

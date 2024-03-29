@@ -1,5 +1,7 @@
 # bindgesture
 # align
+
+include ./config.d/*
 set {
     $bind bindsym --to-code
     $mod Mod4
@@ -7,9 +9,7 @@ set {
     $mod3 shift
     $mod4 alt
 }
-include ./outputs
-include ./per_app
-include ./inputs
+include ./bar
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ General settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 focus_wrapping no
 # mouse gets centered on container focus
@@ -19,11 +19,7 @@ set {
     $resize_value 50 px
     $move_value 50 ppt
 }
-include ./bar
-include ./autostart
 include ./software_binds
-include ./looks
-include ./colors_dracula
 include ./basic_bindings
 include ./obvious_bindings
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #

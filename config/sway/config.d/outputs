@@ -1,4 +1,5 @@
 # `swaymsg -t get_outputs` or `wlr-randr`
+
 set {
     $internal eDP-1
     $external DP-1 DP-2

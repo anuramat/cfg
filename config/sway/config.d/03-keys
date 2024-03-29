@@ -2,6 +2,7 @@ floating_modifier $mod normal
 set {
     $screenshot_key p
     $notification_key n
+
     $resize_key r
     $float_key m
     $scratchpad_key u

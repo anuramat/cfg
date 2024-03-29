@@ -1,4 +1,3 @@
-floating_modifier $mod normal
 set {
     $bind bindsym --to-code
     $mod Mod4
@@ -13,6 +12,7 @@ set {
     $float_key m
     $scratchpad_key u
 }
+floating_modifier $mod normal
 $bind {
     $mod+semicolon exec $term_start
     $mod+apostrophe exec neovide

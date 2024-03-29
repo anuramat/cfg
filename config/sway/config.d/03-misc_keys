@@ -1,6 +1,5 @@
 floating_modifier $mod normal
 set {
-    $sway_settings_key slash
     $screenshot_key p
     $notification_key n
     $resize_key r
@@ -27,14 +26,13 @@ $bind {
     $mod+c splith
     $mod+v splitv
     $mod+b splitt
-
+    # Gaps
     $mod+equal gaps inner all plus 10
     $mod+minus gaps inner all minus 10
     $mod+bracketright gaps outer all plus 10
     $mod+bracketleft gaps outer all minus 10
     # Sway settings
-    $mod+$sway_settings_key exec $term_run $VISUAL $XDG_CONFIG_HOME/sway/config
-    $mod+$mod2+$sway_settings_key reload
+    $mod+slash reload; exec notify-send "Sway reloaded" "Your config has just been reloaded"
     # Notifications
     $mod+$notification_key exec $click_notificiation
     $mod+$mod2+$notification_key exec $dismiss_notification

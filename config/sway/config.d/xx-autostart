@@ -1,5 +1,4 @@
 exec_always {
-    notify-send "Sway reloaded" "Your config has just been reloaded"
     # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py
     # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"

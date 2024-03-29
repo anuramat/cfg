@@ -1,10 +1,13 @@
 set {
     $term_run alacritty -e
     $term_start alacritty
+
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
+
+    $click_notificiation "makoctl invoke"
     $dismiss_notification "makoctl dismiss"
     $dismiss_all_notifications "makoctl dismiss --all"
-    $click_notificiation "makoctl invoke"
+
     $lock_screen swaylock --daemonize
 
     # click to select a window, drag to select a region
@@ -17,12 +20,15 @@ set {
     $screenshot_all_outputs grim - | swappy -f -
     $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
 
+
     $brightness_up lightctl up
     $brightness_down lightctl down
+
     $sound_up exec volumectl -u up
     $sound_down exec volumectl -u down
     $mute_sound exec volumectl toggle-mute
     $mute_mic exec volumectl -m toggle-mute
+
     $audio_prev playerctl -p spotify previous
     $audio_next playerctl -p spotify next
     $audio_play playerctl -p spotify play

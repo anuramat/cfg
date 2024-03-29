@@ -2,26 +2,8 @@
 # align
 
 include ./config.d/*
-set {
-    $bind bindsym --to-code
-    $mod Mod4
-    $mod2 ctrl
-    $mod3 shift
-    $mod4 alt
-}
-include ./bar
+include ./config.d/*/*
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ General settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-focus_wrapping no
-# mouse gets centered on container focus
-focus_follows_mouse no
-mouse_warping container
-set {
-    $resize_value 50 px
-    $move_value 50 ppt
-}
-include ./software_binds
-include ./basic_bindings
-include ./obvious_bindings
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nixOS config boilerplate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 exec dbus-sway-environment
 

@@ -1,0 +1,7 @@
+bar {
+    swaybar_command waybar
+    hidden_state hide
+    mode hide
+    modifier $mod
+}
+# vim: ft=swayconfig

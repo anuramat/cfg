@@ -1,0 +1,11 @@
+exec_always {
+    notify-send "Sway reloaded" "Your config has just been reloaded"
+    # perf hogs!!!
+    # pkill inactive-windo; inactive-windows-transparency.py
+    # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
+    pkill swayidle; swayidle -w
+    pkill nm-applet; nm-applet
+    pkill avizo-service; avizo-service
+}
+
+# vim: ft=swayconfig

@@ -72,4 +72,9 @@ in {
   #   };
 
   # security.pam.services.swaylock = {}; # done automatically by programs.sway.enable
+  #
+  services.greetd = {
+    enable = true;
+  };
+  programs.regreet = {enable = true;};
 }

@@ -9,7 +9,7 @@ font=Hack Nerd Font
 
 # swaylock-effects
 effect-blur=10x3
-fade-in=0.2
+# fade-in=0.2
 screenshots
 
 # Dracula colorscheme

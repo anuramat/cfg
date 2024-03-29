@@ -1,0 +1,16 @@
+input * {
+    repeat_delay 250
+    repeat_rate 50
+    xkb_layout us,ru
+    xkb_options "grp:alt_space_toggle"
+}
+input 1:1:AT_Translated_Set_2_keyboard {
+    xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
+}
+input 2:10:TPPS/2_IBM_TrackPoint {
+    pointer_accel 0.5
+}
+input 1739:0:Synaptics_TM3276-022 {
+    events disabled
+}
+# vim: ft=swayconfig

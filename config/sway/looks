@@ -1,0 +1,24 @@
+set $font Hack Nerd Font 13
+font "pango:$font"
+gaps inner 0
+gaps outer 0
+default_border pixel 3
+default_floating_border pixel 3
+set $cursor_theme Adwaita
+set $cursor_size 25
+seat * {
+    hide_cursor when-typing enable
+    xcursor_theme $cursor_theme $cursor_size
+}
+set $gnome-schema org.gnome.desktop.interface
+exec_always gsettings set $gnome-schema {
+  # TODO set proper themes, check scaling
+  gtk-theme 'Adwaita'
+  icon-theme 'Dracula'
+  text-scaling-factor 1
+  cursor-theme $cursor_theme
+  cursor-size $cursor_size
+  color-scheme 'prefer-dark'
+}
+# output * bg ~/wp.png fill
+# vim: ft=swayconfig

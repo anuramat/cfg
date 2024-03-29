@@ -1,5 +1,11 @@
 floating_modifier $mod normal
 set {
+    $bind bindsym --to-code
+    $mod Mod4
+    $mod2 ctrl
+    $mod3 shift
+    $mod4 alt
+
     $screenshot_key p
     $notification_key n
 

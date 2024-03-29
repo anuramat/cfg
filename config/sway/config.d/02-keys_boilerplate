@@ -3,6 +3,9 @@ set {
     $right l
     $down j
     $up k
+
+    $resize_value 50 px
+    $move_value 50 ppt
 }
 mode "resize" $bind {
     $left resize shrink width $resize_value

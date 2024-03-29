@@ -1,0 +1,5 @@
+focus_wrapping no
+focus_follows_mouse no
+# mouse gets centered on container focus
+mouse_warping container
+# vim: ft=swayconfig

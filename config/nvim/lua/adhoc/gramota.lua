@@ -301,5 +301,5 @@ end, {})
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 
-vim.cmd('map <leader>e <cmd>GramotaExecAll<cr>')
-vim.cmd('map <leader>E <cmd>GramotaExecOne<cr>')
+vim.cmd('map <leader>E <cmd>GramotaExecAll<cr>')
+vim.cmd('map <leader>e <cmd>GramotaExecOne<cr>')

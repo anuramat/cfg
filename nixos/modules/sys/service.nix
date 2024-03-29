@@ -6,9 +6,6 @@
   virtualisation.docker.enable = true;
   services = {
     gnome.gnome-keyring.enable = true; # security credential storage, exposed over dbus
-    hoogle = {
-    enable = true;
-    };
     syncthing = {
       enable = true;
       user = user.username;

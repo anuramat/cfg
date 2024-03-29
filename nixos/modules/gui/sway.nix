@@ -19,9 +19,9 @@ in {
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      dbus # make sure dbus-update-activation-environment is available
       sway-contrib.inactive-windows-transparency
       dbus-sway-environment
-      unstable.sov # workspace overview for sway # TODO use this
     ];
   };
 
@@ -30,8 +30,6 @@ in {
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
-
-  services.dbus.enable = true;
 
   qt = {
     enable = true;

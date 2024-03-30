@@ -1,27 +1,13 @@
 {
   pkgs,
-  unstable,
   ...
-}: let
-  # TODO make sure we need this, refer to nixos wiki sway page
-  dbus-sway-environment = pkgs.writeTextFile {
-    name = "dbus-sway-environment";
-    destination = "/bin/dbus-sway-environment";
-    executable = true;
-    text = ''
-      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-    '';
-  };
-in {
+}: {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       dbus # make sure dbus-update-activation-environment is available
       sway-contrib.inactive-windows-transparency
-      dbus-sway-environment
     ];
   };
 

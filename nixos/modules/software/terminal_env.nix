@@ -36,12 +36,6 @@
     file
     unrar-wrapper
 
-    # Random system stuff
-    usbutils # just in case
-    libusb # user-mode USB access lib
-    efibootmgr # EFI boot manager editor
-    xdg-user-dirs # $HOME/* dir management
-
     # Code editors
     nvi
     neovim
@@ -51,6 +45,7 @@
 
     # Modern terminal
     ripgrep-all # grep over pdfs etc
+    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
     zoxide # better cd
     bat # better cat with syntax hl
     delta # better diffs
@@ -58,6 +53,8 @@
     fzf # fuzzy finder
     ripgrep # better grep
     unstable.eza # better ls
+    cod # completion generator (updates on `cmd --help`)
+    starship # terminal prompt
     difftastic # syntax aware diffs
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
@@ -65,19 +62,8 @@
     zellij # ~neo-tmux
     peco # interactive filtering
     aria # downloader
-    poppler_utils # pdf utils
-    ghostscript # ??? TODO
     entr # file watcher - runs command on change
-
-    # Rarely used terminal stuff
-    wally-cli # ZSA keyboards software
-    w3m # text based web browser
-    exercism # CLI for exercism.org
-    glow # markdown viewer
-    youtube-dl # download youtube videos
-    libqalculate # qalc - advanced calculator
-    bc # simple calculator
-    fastfetch
+    taskwarrior # CLI todo apps # TODO move?
 
     # Web
     grpcui # postman for grpc
@@ -102,29 +88,10 @@
     broot
     xplr
 
-    # Monitoring
-    # add more tops
-    btop
-    htop # better top
-    atop # even better top
-    ctop # container top
-    nvtop # top for GPUs
-    duf # disk usage (better "df")
-    du-dust # directory disk usage (better du)
-    ncdu # directory sidk usage (better du)
-    acpi # battery status etc
-
     # Git
     ghq # git repository manager
     git-filter-repo # rewrite/analyze repository history
     gh # GitHub CLI
-
-    # Networking
-    wirelesstools # iwconfig etc
-    dig # dns utils
-    inetutils # common network stuff
-    nmap
-    netcat
 
     # Random useless stuff
     fortune # random quotes
@@ -132,5 +99,22 @@
     figlet
     banner
     cowsay
+
+    # Rarely used terminal stuff
+    poppler_utils # pdf utils
+    ghostscript # ??? TODO
+    wally-cli # ZSA keyboards software
+    w3m # text based web browser
+    exercism # CLI for exercism.org
+    glow # markdown viewer
+    youtube-dl # download youtube videos
+    libqalculate # qalc - advanced calculator
+    bc # simple calculator
+    fastfetch # neo-neofetch
+    speedtest-cli
+    rclone # rsync for cloud
+    age # file encryption
+    nix-index
+    unstable.xdg-ninja # checks $HOME for bloat
   ];
 }

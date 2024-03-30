@@ -4,21 +4,20 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # Random TODO
-    transmission # torrent client
-    sageWithDoc # computer algebra
-    gnome-solanum # really simple one
+    gnome-solanum # simple pomodoro
     gnome.cheese # webcam
-    gnome.pomodoro # slightly bloated
+    gnome.pomodoro # slightly bloated pomodoro
+    hyprpicker # gigasimple terminal color picker
     mesa-demos # some 3d demos
     obs-studio # screencasting/streaming
     qalculate-gtk # gui for qalc
+    sageWithDoc # computer algebra system
     spotify
     steam
     tor-browser-bundle-bin
+    transmission # torrent client
     transmission-gtk # gui wrapper for transmission
     unstable.google-chrome
     unstable.obsidian # markdown personal knowledge database
-    hyprpicker # gigasimple terminal color picker
   ];
 }

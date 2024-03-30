@@ -5,6 +5,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+# XDG user dirs
+. "${HOME}/.config/user-dirs.dirs"
 
 export SCREENSHOT_DIR="$HOME/screenshots"
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"

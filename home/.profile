@@ -34,7 +34,7 @@ export MANPAGER='nvim +Man!'
 export TERMCMD="alacritty" # used by rifle
 
 # ls replacement
-export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always"
+export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all"
 
 # Vim
 for editor in nvim vim nvi vi; do

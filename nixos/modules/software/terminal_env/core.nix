@@ -1,33 +1,28 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
     }))
   ];
   environment.systemPackages = with pkgs; [
-    # Basics
-    gnumake
-    gcc
     bash
-    killall
+    bc # simple calculator
     coreutils-full
     coreutils-prefixed # good for mac compatibility
     curl
+    file
+    gcc
     git
+    gnumake
+    killall
     less
-    tree
     lsof
+    nvi # vi clone
+    tree
+    unrar-wrapper
+    unzip
     util-linux # was already installed but whatever
     wget
     zip
-    unzip
-    progress # progress status for cp etc
-    nvi # vi clone
-    file
-    unrar-wrapper
   ];
 }

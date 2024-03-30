@@ -4,6 +4,12 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # Terminals
+    foot # minimal terminal
+    unstable.alacritty # gpu terminal
+    unstable.alacritty-theme
+    cool-retro-term # cute terminal
+
     # GUI frontends
     networkmanagerapplet # networking
     unstable.avizo # brightness/volume control with overlay indicator

@@ -14,6 +14,6 @@ install() {
 	lndir "$PWD/config" "$XDG_CONFIG_HOME"
 
 	touch "$HOME/.hushlogin"
-	mkdir -p "$HOME/screenshots"
-	# TODO maybe ensure path for all xdg paths
+	mkdir -p "$SCREENSHOT_DIR"
+	# TODO maybe ensure path for all xdg paths (user paths too)
 }

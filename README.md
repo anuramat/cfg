@@ -48,4 +48,3 @@ TODO:
 - gtk3
 - gtk4
 - qt6
-- tmux

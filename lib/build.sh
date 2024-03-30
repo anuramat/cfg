@@ -21,3 +21,6 @@ sudo nixos-rebuild switch
 
 # clear tofi .desktop cache
 [ -f "${tofi_drun_cache}" ] && rm "${tofi_drun_cache}" || true
+
+# create XDG user directories
+xdg-user-dirs-update --force

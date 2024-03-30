@@ -26,7 +26,7 @@ in {
       // setMany textEditor (import ./text.nix)
       // setMany browser (import ./browser.nix)
       // setMany imageViewer (import ./images.nix)
-      // setMany videoPlayer (import ./av.nix)
+      // setMany videoPlayer (import ./multimedia.nix)
       // setMany documentViewer (import ./documents.nix);
   };
 }

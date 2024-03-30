@@ -1,8 +1,7 @@
 _: {
   imports = [
-    ./gui
     ./mime
-    ./soft
-    ./sys
+    ./software
+    ./system
   ];
 }

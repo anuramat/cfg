@@ -5,7 +5,6 @@
     discord
     telegram-desktop
     qtox # p2p IM
-
     onionshare-gui
   ];
 }

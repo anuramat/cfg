@@ -30,6 +30,28 @@ local tokyo = {
   end,
 }
 
+local dracula = {
+  'Mofiqul/dracula.nvim',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    local dracula = require('dracula')
+    local c = dracula.colors()
+    dracula.setup({
+      lualine_bg_color = c.bg,
+      overrides = {
+        -- Hide borders and titles
+        TelescopeBorder = { bg = c.bg, fg = c.bg },
+        -- Add an underline border to the context lines and set the background to normal
+        TreesitterContext = { bg = c.bg },
+        TreesitterContextBottom = { underline = true, sp = c.fg, bg = c.bg },
+        TreesitterContextLineNumberBottom = { underline = true, sp = c.fg, bg = c.bg },
+      },
+    })
+    set_colors('dracula', 'dracula-nvim')
+  end,
+}
+
 local cat = {
   'catppuccin/nvim',
   name = 'catppuccin',
@@ -37,12 +59,6 @@ local cat = {
   lazy = false,
   config = function()
     local flavour = 'mocha'
-
-    local sign = vim.fn.sign_define
-    -- TODO move
-    sign('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
-    sign('DapBreakpointCondition', { text = '●', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
-    sign('DapLogPoint', { text = '◆', texthl = 'DapLogPoint', linehl = '', numhl = '' })
 
     require('catppuccin').setup({
       dim_inactive = {
@@ -71,4 +87,4 @@ local cat = {
   end,
 }
 
-return tokyo
+return dracula

@@ -1,10 +1,11 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~ imports ~~~~~~~~~~~~~~~~~~~~~~~~~"
+" some sane defaults
 unlet! skip_defaults_vim
 so $VIMRUNTIME/defaults.vim
-autocmd! vimHints
+" autocmd! vimHints " hides help msg on `q:`/`:^f`
 so $XDG_CONFIG_HOME/nvim/base.vim
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~ ui ~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-se hls " search
+se hls " highlight all matches
 let &t_SI .= "\e[6 q" | let &t_SR .= "\e[4 q" | let &t_EI .= "\e[2 q" " cursor shape
 se laststatus=2 " statusline in every window
 "~~~~~~~~~~~~~~~~~ default nvim mappings ~~~~~~~~~~~~~~~~~~"

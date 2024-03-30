@@ -13,7 +13,15 @@ return {
       opts = {},
     },
   },
-  config = function() end,
+  config = function()
+    -- some of these are used in catppuccin
+    local sign = vim.fn.sign_define
+    sign('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+    sign('DapBreakpointCondition', { text = 'C', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
+    sign('DapLogPoint', { text = 'L', texthl = 'DapLogPoint', linehl = '', numhl = '' })
+    sign('DapStopped', { text = '→', texthl = 'DapStopped', linehl = '', numhl = '' })
+    -- sign('DapBreakpointRejected', { text = 'R', texthl = 'DapBreakpointRejected', linehl = '', numhl = '' })
+  end,
   -- stylua: ignore
   keys = u.lazy_prefix('<leader>d', {
     { 'c', function() require('dap').continue() end,          desc = 'Continue' },

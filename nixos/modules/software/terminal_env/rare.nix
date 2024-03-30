@@ -4,9 +4,19 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    entr # file watcher - runs command on change
+    lsix # ls for images (uses sixel)
+    parallel # run parallel jobs
+    tmux # just in case
+    peco # interactive filtering
+    aria # downloader
+    progress # progress status for cp etc
+    glow # markdown viewer
+    libqalculate # qalc - advanced calculator
+    age # file encryption
     croc # send/receive files through relay with encryption
-    exercism # CLI for exercism.org
     fastfetch # neo-neofetch
+    exercism # CLI for exercism.org
     ghostscript # ??? TODO
     mosh # ssh over unstable connections
     nix-index

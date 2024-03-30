@@ -10,39 +10,29 @@
   ];
   environment.systemPackages = with pkgs; [
     # Code editors
-    nvi
     neovim
-    unstable.vis
+    nvi
     unstable.helix
     unstable.vim-full
+    unstable.vis
 
     # Modern terminal
-    ripgrep-all # grep over pdfs etc
-    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
-    zoxide # better cd
+    bash-completion
     bat # better cat with syntax hl
+    cod # completion generator (updates on `cmd --help`)
     delta # better diffs
+    difftastic # syntax aware diffs
     fd # find alternative
     fzf # fuzzy finder
-    ripgrep # better grep
-    unstable.eza # better ls
-    cod # completion generator (updates on `cmd --help`)
-    starship # terminal prompt
-    difftastic # syntax aware diffs
-    zellij # neotmux
-    entr # file watcher - runs command on change
-    taskwarrior # CLI todo apps
-    bash-completion
     nix-bash-completions
-    lsix # ls for images (uses sixel)
-    parallel # run parallel jobs
-    tmux # just in case
-    peco # interactive filtering
-    aria # downloader
-    progress # progress status for cp etc
-    glow # markdown viewer
-    libqalculate # qalc - advanced calculator
-    age # file encryption
+    ripgrep # better grep
+    ripgrep-all # grep over pdfs etc
+    starship # terminal prompt
+    taskwarrior # CLI todo apps
+    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
+    unstable.eza # better ls
+    zellij # neotmux
+    zoxide # better cd
 
     # Git
     ghq # git repository manager
@@ -50,14 +40,14 @@
     gh # GitHub CLI
 
     # File managers
-    xdragon
+    xdragon # drag and drop from terminal
     # TODO choose one or don't
-    vifm
-    mc
-    ranger
-    lf
-    nnn
     broot
+    lf
+    mc
+    nnn
+    ranger
+    vifm
     xplr
   ];
 }

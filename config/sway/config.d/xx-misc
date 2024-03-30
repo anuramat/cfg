@@ -1,4 +1,5 @@
 focus_wrapping no
+title_align center
 focus_follows_mouse no
 # mouse gets centered on container focus
 mouse_warping container

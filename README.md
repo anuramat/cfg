@@ -19,7 +19,7 @@ non-compliant parts:
 - foot imports
 - ripgrep global ignore
 - nix
-  - syncthing paths
+  - service.nix - syncthing paths
 
 ## Themes
 

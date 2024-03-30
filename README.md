@@ -48,3 +48,8 @@ TODO:
 - gtk3
 - gtk4
 - qt6
+
+### TODO
+
+- themes: gtk,qt; cursors; icons
+- tidy up bash stuff

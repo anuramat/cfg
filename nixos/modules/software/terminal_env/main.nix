@@ -15,27 +15,6 @@
     unstable.alacritty-theme
     cool-retro-term # cute terminal
 
-    # Basics
-    gnumake
-    gcc
-    bash
-    killall
-    coreutils-full
-    coreutils-prefixed # good for mac compatibility
-    curl
-    git
-    less
-    tree
-    lsof
-    util-linux # was already installed but whatever
-    wget
-    zip
-    unzip
-    progress # progress status for cp etc
-    nvi # vi clone
-    file
-    unrar-wrapper
-
     # Code editors
     nvi
     neovim
@@ -116,5 +95,9 @@
     age # file encryption
     nix-index
     unstable.xdg-ninja # checks $HOME for bloat
+    croc # send/receive files through relay with encryption
+    mosh # ssh over unstable connections
+    qrcp # send files to mobile over Wi-Fi using QR
+    onionshare # tor-based file-sharing etc
   ];
 }

@@ -18,6 +18,4 @@ __osc7_cwd() {
 	printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 
-# Capture last return code
-# Make new terminal instances use CWD
 PROMPT_COMMAND+='__osc7_cwd'

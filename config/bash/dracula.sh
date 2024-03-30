@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # official dracula for exa
 # ls/eza/fd
 export LS_COLORS="\

@@ -17,3 +17,5 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer # I don't use this but somehow ended up with this in my $HOME anyway
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export W3M_DIR="$XDG_DATA_HOME/w3m" # terminal web browser
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'

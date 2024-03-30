@@ -2,7 +2,7 @@
 /* margin can't be controlled here, ues mragin setting in the config */
 /* TODO refactor? */
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
-@import url("./colors.css");
+@import url("./dracula.css");
 * {
   border: none;
   border-radius: 6px;

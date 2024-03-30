@@ -4,15 +4,12 @@ shopt -s globstar autocd
 # globstar - Enables ** for recursing into subdirectories
 # autocd   - `cd path` -> `path`
 
-# ~~~~~~~~~~~~ import the bulk of the config ~~~~~~~~~~~~~ #
+# number of commands stored in memory
+export HISTSIZE=-1
+# number of commands stored in file
+export HISTFILESIZE=-1
 
 . "$HOME/.profile"
-. "$XDG_CONFIG_HOME/sh/config.d/00-ls_colors.sh"
-. "$XDG_CONFIG_HOME/sh/config.d/00-prompt.sh"
-. "$XDG_CONFIG_HOME/sh/config.d/01-fzf_config.sh"
-. "$XDG_CONFIG_HOME/sh/config.d/01-misc_params.sh"
-. "$XDG_CONFIG_HOME/sh/config.d/01-xdg_compliance.sh"
-. "$XDG_CONFIG_HOME/sh/config.d/02-zoxide_config.sh"
 
 # ~~~~~~~~~~~~~~~ software initialization ~~~~~~~~~~~~~~~~ #
 

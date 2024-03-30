@@ -71,11 +71,11 @@ function M.press(rawkey)
   vim.api.nvim_feedkeys(key, 'n', false)
 end
 
---- Merges tables
+--- Merges two tables
 --- @param a table
 --- @param b table
 --- @return table c
-function M.merge(a, b)
+function M.merge_two(a, b)
   local c = {}
   for k, v in pairs(a) do
     c[k] = v
@@ -86,7 +86,18 @@ function M.merge(a, b)
   return c
 end
 
---- Joins two tables
+--- Merges tables
+--- @param tables table
+--- @return table c
+function M.merge(tables)
+  local c = {}
+  for _, v in ipairs(tables) do
+    c = M.merge_two(c, v)
+  end
+  return c
+end
+
+--- Joins two lists
 --- @param a table
 --- @param b table
 --- @return table c
@@ -101,12 +112,23 @@ function M.join_two(a, b)
   return c
 end
 
+--- Joins tables in a list
+--- @param tables table[]
+--- @return table c
+function M.join_list(tables)
+  local c = {}
+  for _, v in ipairs(tables) do
+    c = M.join_two(c, v)
+  end
+  return c
+end
+
 --- Joins tables
 --- @param tables table[]
 --- @return table c
-function M.join_tables(tables)
+function M.join_map(tables)
   local c = {}
-  for _, v in ipairs(tables) do
+  for _, v in pairs(tables) do
     c = M.join_two(c, v)
   end
   return c

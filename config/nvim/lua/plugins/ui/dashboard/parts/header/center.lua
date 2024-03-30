@@ -39,8 +39,6 @@ local function map_grid()
 end
 
 local function render_text()
-  map_grid()
-
   local lines = {}
   for i = 1, #grid do
     local row = grid[i]
@@ -62,15 +60,17 @@ end
 local output = render_text()
 local height = #vim.split(output, '\n', { trim_empty = true })
 
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = { 'alpha' },
+  callback = map_grid,
+})
+
 return {
   elements = {
     { type = 'button', val = '█' }, -- HAHAHAHA HOLY FUCK
     {
       type = 'text',
-      val = function()
-        map_grid()
-        return output
-      end,
+      val = output,
       opts = { position = 'center' },
     },
   },

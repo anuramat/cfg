@@ -43,7 +43,7 @@ return {
           horizontal = {
             preview_width = 120,
             height = 999,
-            preview_cutoff = 140,
+            preview_cutoff = 180,
             width = 999,
           },
         },

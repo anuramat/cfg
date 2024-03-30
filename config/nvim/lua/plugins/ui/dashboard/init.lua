@@ -12,7 +12,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = function()
     return {
-      layout = u.join_tables({
+      layout = u.join_list({
         header.elements,
         body.elements,
         footer.elements,

@@ -3,7 +3,7 @@
 --no-ignore-vcs
 
 # Except these
---ignore-file="$XDG_CONFIG_HOME/ripgrep/ignore"
+--ignore-file=/home/anuramat/.config/ripgrep/ignore
 
 # Follow symbolic links.
 --follow

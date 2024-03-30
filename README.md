@@ -33,6 +33,7 @@ non-compliant parts:
 - qt5ct
 - sway
 - swaylock
+- waybar
 
 TODO:
 

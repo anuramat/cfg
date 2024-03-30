@@ -1,13 +1,12 @@
 default-timeout=0
-
-# customized dracula
+# custom dracula (official one is borked)
 
 background-color=#282a36
-text-color=#ffffff
-border-color=#aaaaaa
+text-color=#f8f8f2
+border-color=#282a36
 
 [urgency=low]
-border-color=#aaaaaa
+border-color=#282a36
 
 [urgency=normal]
 border-color=#f1fa8c
@@ -15,5 +14,7 @@ border-color=#f1fa8c
 [urgency=high]
 border-color=#ff5555
 
+
 [app-name=Spotify]
 invisible=1
+

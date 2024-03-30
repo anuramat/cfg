@@ -2,9 +2,10 @@ ignore-empty-password
 daemonize
 
 indicator-caps-lock
-# hide-keyboard-layout
+hide-keyboard-layout
 
-indicator-radius=100
+indicator-radius=200
+indicator-thickness=20
 font=Hack Nerd Font
 
 # swaylock-effects
@@ -12,34 +13,25 @@ effect-blur=10x3
 # fade-in=0.2
 screenshots
 
-# Dracula colorscheme
-# color=282a36
-# black is cooler
-color=000000
-inside-color=1F202A
-line-color=1F202A
-ring-color=bd93f9
-text-color=f8f8f2
-
-layout-bg-color=282a36
-layout-text-color=f8f8f2
-
-inside-clear-color=6272a4
-line-clear-color=1F202A
-ring-clear-color=6272a4
-text-clear-color=1F202A
-
-inside-ver-color=bd93f9
-line-ver-color=1F202A
-ring-ver-color=bd93f9
-text-ver-color=1F202A
-
-inside-wrong-color=ff5555
-line-wrong-color=1F202A
-ring-wrong-color=ff5555
-text-wrong-color=1F202A
-
-bs-hl-color=ff5555
-key-hl-color=50fa7b
-
-text-caps-lock-color=f8f8f2
+# official dracula colorscheme for swaylock
+color=6272A4
+line-color=282A36
+ring-color=BD93F9
+inside-color=282A36
+key-hl-color=50FA7B
+separator-color=00000000
+text-color=F8F8F2
+text-caps-lock-color=""
+line-ver-color=BD93F9
+ring-ver-color=BD93F9
+inside-ver-color=282A36
+text-ver-color=8BE9FD
+ring-wrong-color=FF5555
+text-wrong-color=FF5555
+inside-wrong-color=282A36
+inside-clear-color=282A36
+text-clear-color=8BE9FD
+ring-clear-color=8BE9FD
+line-clear-color=8BE9FD
+line-wrong-color=282A36
+bs-hl-color=8BE9FD

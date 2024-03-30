@@ -1,3 +1,4 @@
+# official dracula for exa
 # ls/eza
 export LS_COLORS="\
 uu=36:\

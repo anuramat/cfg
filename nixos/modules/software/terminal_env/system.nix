@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # Random system stuff
     usbutils # just in case
@@ -12,15 +8,20 @@
 
     # Monitoring
     # add more tops
-    btop
-    vtop
-    htop # better top
-    atop # even better top
+    glances #24k, bloated, with web
+    btop # 16k
+    gtop # 9.6k
+    htop # 5.8
+    vtop # 4.1k
+    atop # 0.757
+    nmon
+    # better du
+    du-dust # directory disk usage (better du)
+    ncdu # directory disk usage (better du)
+    # misc
     ctop # container top
     nvtop # top for GPUs
     duf # disk usage (better "df")
-    du-dust # directory disk usage (better du)
-    ncdu # directory sidk usage (better du)
     acpi # battery status etc
 
     # Networking

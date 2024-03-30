@@ -23,4 +23,19 @@ non-compliant parts:
 
 ## Themes
 
-TODO list all the places that define a theme
+- alacritty
+- bat
+- delta
+- foot
+- git
+- ls/eza
+- mako
+- qt5ct
+- sway
+- swaylock
+
+TODO:
+
+- gtk3
+- gtk4
+- qt6

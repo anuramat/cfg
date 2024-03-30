@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # used in terminal options such as "new tabs inherit current working directory"
 # shellcheck disable=all

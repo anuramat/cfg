@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 __zo_fzf_preview='ls --color=always -Cp'
 if command -v "eza" >/dev/null 2>&1; then
 	__zo_fzf_preview="$EZACMD --group-directories-first --icons --grid"

@@ -1,8 +1,4 @@
-#!/usr/bin/env bash
-
-alias info="info --vi-keys"
-
-export TERMCMD="alacritty" # used by rifle (ranger file opener)
+#!/usr/bin/env sh
 
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all"
@@ -22,12 +18,13 @@ else
 	alias la="ls -alth --color=auto"
 fi
 
-alias fd="fd -H" # H for show hidden, I for show ignored
-
 # colorize some basic stuff
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -c=auto'
 
-# Don't let python venvs change the PS1
-export VIRTUAL_ENV_DISABLE_PROMPT="1"
+alias fd="fd -H" # H for show hidden, I for show ignored
+alias info="info --vi-keys"
+export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
+export TERMCMD="alacritty"            # used by rifle (ranger file opener)
+export VIRTUAL_ENV_DISABLE_PROMPT="1" # Don't let python venvs change the PS1

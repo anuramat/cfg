@@ -9,14 +9,13 @@ export XDG_STATE_HOME="$HOME/.local/state"
 # XDG user dirs
 . "${HOME}/.config/user-dirs.dirs"
 
-export SCREENSHOT_DIR="$HOME/screenshots" # 
-export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
+export SCREENSHOT_DIR="$HOME/screenshots" #
 
 export LC_ALL="en_US.UTF-8" # just in case, this is already defined in nix
 export PAGER=less           # just in case, this is already defined somewhere in system level rc
 export MANPAGER=less        # todo colorized manpager
 
-# Vim
+# Editor
 for editor in nvim vim nvi vi; do
 	if command -v "$editor" >/dev/null 2>&1; then
 		export VISUAL="$editor"

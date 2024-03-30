@@ -1,16 +1,18 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    ### Viewers
+    # Images
+    # TODO find the best??
     imv # terminal image viewer
     swayimg # terminal image viewer
     nomacs # GUI image viewer
 
+    # Video
     mpv # minimalistic video player
     vlc # GUI video player
 
-    ### Document viewers
-    okular # stable gui * reader
-    zathura # minimalistic ergo * reader
+    # Documents
+    okular
+    zathura # keyboard-centric
     djview # djvu reader
   ];
 }

@@ -35,7 +35,6 @@ cheat() {
 alias c="clear"
 alias t="tldr"
 alias f="nvim"
-alias v="neovide && exit"
 alias d="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."

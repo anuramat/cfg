@@ -13,6 +13,7 @@
     # Monitoring
     # add more tops
     btop
+    vtop
     htop # better top
     atop # even better top
     ctop # container top

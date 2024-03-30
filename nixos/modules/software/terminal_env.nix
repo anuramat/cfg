@@ -3,6 +3,11 @@
   unstable,
   ...
 }: {
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+    }))
+  ];
   environment.systemPackages = with pkgs; [
     # Terminals
     foot # minimal terminal
@@ -31,7 +36,20 @@
     file
     unrar-wrapper
 
-    ### Bread and Butter
+    # Random system stuff
+    usbutils # just in case
+    libusb # user-mode USB access lib
+    efibootmgr # EFI boot manager editor
+    xdg-user-dirs # $HOME/* dir management
+
+    # Code editors
+    nvi
+    neovim
+    unstable.vis
+    unstable.helix
+    unstable.vim-full
+
+    # Modern terminal
     ripgrep-all # grep over pdfs etc
     zoxide # better cd
     bat # better cat with syntax hl
@@ -48,30 +66,17 @@
     peco # interactive filtering
     aria # downloader
     poppler_utils # pdf utils
-    ghostscript # ???
+    ghostscript # ??? TODO
     entr # file watcher - runs command on change
 
-    # Random TODO
-    taskwarrior # CLI todo apps # TODO move?
-    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
-    unstable.xdg-ninja # checks $HOME for bloat
-    rclone # rsync for cloud
-    starship # terminal prompt
-    cod # completion generator (updates on `cmd --help`)
-    age # file encryption
-    speedtest-cli
-    nix-index
-
-    ### Rarely used terminal stuff
+    # Rarely used terminal stuff
     wally-cli # ZSA keyboards software
     w3m # text based web browser
     exercism # CLI for exercism.org
     glow # markdown viewer
     youtube-dl # download youtube videos
-    wtf # TUI dashboard
     libqalculate # qalc - advanced calculator
     bc # simple calculator
-    neofetch
     fastfetch
 
     # Web
@@ -98,6 +103,8 @@
     xplr
 
     # Monitoring
+    # add more tops
+    btop
     htop # better top
     atop # even better top
     ctop # container top
@@ -119,15 +126,11 @@
     nmap
     netcat
 
-    # Random linux shit TODO
-    usbutils # just in case
-    libusb # user-mode USB access lib
-    efibootmgr # EFI boot manager editor
-    fortune
-    # ascii art
+    # Random useless stuff
+    fortune # random quotes
+    # ASCII art
     figlet
     banner
     cowsay
-    xdg-user-dirs
   ];
 }

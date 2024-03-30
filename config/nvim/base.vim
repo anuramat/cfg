@@ -12,6 +12,12 @@ function! ToggleQuickFix()
     endif
 endfunction
 nn <silent> <leader>q :call ToggleQuickFix()<cr>
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 "~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr
@@ -70,15 +76,16 @@ se ph=20 " popup max height
 let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
-"~~~~~~~~~~~~~~~~~~~~~~~~~ typos ~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~"
+""" Typos
 com! -bang Q q<bang>
 com! -bang W w<bang>
 com! -bang WQ wq<bang>
 com! -bang Wq wq<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
-"~~~~~~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~~~~~"
-""" determine highlight group of the item under cursor
+ 
+""" Determine highlight group of the item under cursor
 function! GetSynstack()
   " Ensure any folded code is opened; optional, remove if not needed
   normal! zv
@@ -92,7 +99,8 @@ function! GetSynstack()
   endfor
 endfunction
 command SynStack call GetSynstack()
-""" hide qf buffers
+
+""" Hide qf buffers
 augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted

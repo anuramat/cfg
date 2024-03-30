@@ -23,12 +23,18 @@ non-compliant parts:
 
 ## Themes
 
+### Terminal
+
+- foot
 - alacritty
+
 - bat
 - delta
-- foot
 - git
-- ls/eza
+- ls/eza/fd
+
+### GUI
+
 - mako
 - qt5ct
 - sway

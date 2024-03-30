@@ -1,7 +1,6 @@
-{
-  pkgs,
-  ...
-}: {
+# https://nixos.wiki/wiki/Sway
+# kanshi, cursor in home manager... read
+{pkgs, ...}: {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -33,15 +32,6 @@
       value = 1;
     }
   ];
-
-  # # kanshi systemd service
-  # systemd.user.services.kanshi = {
-  #   description = "kanshi daemon";
-  #   serviceConfig = {
-  #     Type = "simple";
-  #     ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
-  #   };
-  # };
 
   #   home-manager.users.myUser = {
   #     home.pointerCursor = {

@@ -32,7 +32,6 @@
   ff = only
 
 [alias]
-  uncommit = reset --soft HEAD^
   st = status
   ch = checkout
   br = branch

@@ -6,9 +6,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# keep this posix compatible
-export XDG_PICTURES_DIR="$HOME/Pictures" # TODO are you sure about that
-
 export SCREENSHOT_DIR="$HOME/screenshots"
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
 

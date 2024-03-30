@@ -125,8 +125,9 @@
     efibootmgr # EFI boot manager editor
     fortune
     # ascii art
-    figlet 
+    figlet
     banner
     cowsay
+    xdg-user-dirs
   ];
 }

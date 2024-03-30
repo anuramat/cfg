@@ -2,6 +2,8 @@
 
 alias info="info --vi-keys"
 
+export TERMCMD="alacritty" # used by rifle (ranger file opener)
+
 # ls replacement
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all"
 # ls

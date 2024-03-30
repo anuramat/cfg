@@ -39,10 +39,4 @@ export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS
 --select-1
 --preview='$__zo_fzf_preview {2..}'
 "
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Misc ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# zoxide
 export _ZO_RESOLVE_SYMLINKS="1"
-# ripgrep
-export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgreprc"
-# node.js
-export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"

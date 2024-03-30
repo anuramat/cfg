@@ -1,0 +1,17 @@
+# Search all files
+--hidden
+--no-ignore-vcs
+
+# Except these
+--ignore-file="$XDG_CONFIG_HOME/ripgrep/ignore"
+
+# Follow symbolic links.
+--follow
+
+# Truncate long lines
+--max-columns=200
+--max-columns-preview
+
+# Misc
+--smart-case
+--sort=path

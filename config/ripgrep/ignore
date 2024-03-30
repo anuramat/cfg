@@ -1,0 +1,26 @@
+# VCS
+.git/
+.svn/
+# Tags
+/tags
+# Go
+go.sum
+coverage.html
+.testCoverage.txt
+*.pb.go
+# Node
+node_modules/
+# Python
+__pycache__/
+venv/
+# Obsidian
+.obsidian
+# Lock files
+*.lock
+*.lock.json
+# Clangd, etc
+.cache/
+# Haskell
+.stack-work/
+
+" vim: ft=gitignore

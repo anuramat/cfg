@@ -52,4 +52,5 @@ TODO:
 ### TODO
 
 - themes: gtk,qt; cursors; icons
+- check if all neovim stuff is used 
 - tidy up bash stuff

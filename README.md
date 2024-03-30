@@ -16,6 +16,7 @@
 non-compliant parts:
 
 - alacritty imports
+- ripgrep global ignore
 - nix
   - syncthing paths
 

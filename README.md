@@ -32,6 +32,7 @@ non-compliant parts:
 - delta
 - git
 - ls/eza/fd
+- zellij
 
 ### GUI
 
@@ -40,9 +41,11 @@ non-compliant parts:
 - sway
 - swaylock
 - waybar
+- zathura
 
 TODO:
 
 - gtk3
 - gtk4
 - qt6
+- tmux

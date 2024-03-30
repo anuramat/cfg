@@ -52,5 +52,8 @@ TODO:
 ### TODO
 
 - themes: gtk,qt; cursors; icons
-- check if all neovim stuff is used 
-- tidy up bash stuff
+- check if all neovim stuff is used
+- move nix packages around
+- clear sway.nix
+- import as much as possible from profile.sh? stop sourcing profile.sh from
+  bashrc

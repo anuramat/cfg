@@ -18,6 +18,7 @@
 
     # Opening stuff
     cinnamon.nemo # wayland native
+    xdragon # drag and drop from terminal
     tofi # app launcher
     xdg-utils # xdg-open etc
     desktop-file-utils # update-desktop-database etc

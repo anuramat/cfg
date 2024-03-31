@@ -1,6 +1,10 @@
 # https://nixos.wiki/wiki/Sway
 # kanshi, cursor in home manager... read
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;

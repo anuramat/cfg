@@ -39,7 +39,6 @@
     gh # GitHub CLI
 
     # File managers
-    xdragon # drag and drop from terminal
     # TODO choose one or don't
     broot
     lf

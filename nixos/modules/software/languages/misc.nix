@@ -6,7 +6,6 @@
     universal-ctags # maintained ctags
     bear # Compilation database generator for clangd
     luajitPackages.luarocks
-    # micromamba # conda rewrite in C++ # doesn't fucking work
-    # conda
+    haskellPackages.hoogle
   ];
 }

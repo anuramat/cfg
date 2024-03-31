@@ -18,6 +18,7 @@
     rustc
     unstable.stack
     unstable.cabal-install
-    haskellPackages.hoogle
+    # micromamba # conda rewrite in C++ # doesn't fucking work
+    # conda
   ];
 }

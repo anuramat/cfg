@@ -13,7 +13,6 @@
     unstable.neovim
     nvi
     unstable.helix
-    unstable.vim-full
     unstable.vis
 
     # Modern terminal

@@ -7,6 +7,7 @@
     extraPackages = with pkgs; [
       dbus # make sure dbus-update-activation-environment is available
       sway-contrib.inactive-windows-transparency
+      swaycons
     ];
   };
 

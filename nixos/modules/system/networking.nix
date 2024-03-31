@@ -11,6 +11,16 @@ _: {
       wifi.backend = "iwd";
       # wifi ignores resolved or does it... FIXME
     };
+    wireless.iwd.settings = {
+      Network = {
+        EnableIPv6 = true;
+        RoutePriorityOffset = 300;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+
     nameservers = ["1.1.1.1" "1.0.0.1"];
   };
   # uses DNSSEC and DNSoverTLS, might break on a different ns

@@ -48,9 +48,10 @@
     glpaper # shader
 
     # Display settings
-    kanshi # plaintext defined display configs
-    wlr-randr # interactive cli display configs
+    kanshi # daemon, reads a plaintext config
+    wlr-randr # imperative cli display settings
     wlay # gui display configs (can output kanshi/sway/wlr-randr files)
+    way-displays # auto manager (NO CONFIGURATION!!!)
 
     # Screenshots and screen capture
     slurp # select screen region

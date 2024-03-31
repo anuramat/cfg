@@ -58,3 +58,4 @@ TODO:
 - clear sway.nix
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
+- clipboard persistence

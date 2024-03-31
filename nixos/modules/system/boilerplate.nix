@@ -6,11 +6,6 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
-  system = {
-    # backup the configuration.nix to /run/current-system/configuration.nix
-    # kinda useless if it's split into multiple files
-    copySystemConfiguration = true;
-  };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
   system.stateVersion = user.stateVersion;

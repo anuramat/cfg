@@ -1,19 +1,13 @@
 # > man 5 configuration.nix
 # > nixos help
-{config, ...}: let
-  unstable = import <nixos-unstable> {inherit (config.nixpkgs) config;};
-  user = import ./user.nix;
-in {
+{overlays, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./modules
-    <home-manager/nixos>
   ];
-  _module.args = {
-    inherit unstable user;
-  };
   nixpkgs.config.permittedInsecurePackages = ["electron-25.9.0"];
-  home-manager.users.${user.username} = {
-    home.stateVersion = user.stateVersion;
-  };
+  nixpkgs.overlays = overlays;
+  # home-manager.users.${user.username} = {
+  #   home.stateVersion = user.stateVersion;
+  # };
 }

@@ -8,17 +8,7 @@ _: {
     };
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
-      # wifi ignores resolved or does it... FIXME
-    };
-    wireless.iwd.settings = {
-      Network = {
-        EnableIPv6 = true;
-        RoutePriorityOffset = 300;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
+      # wifi ignores resolved or does it... FIXME figure out if dns is ok
     };
 
     nameservers = ["1.1.1.1" "1.0.0.1"];
@@ -29,7 +19,7 @@ _: {
     dnssec = "true";
     dnsovertls = "true";
     domains = ["~."]; # TODO what does this do?
-    fallbackDns = ["1.1.1.1" "1.0.0.1"]; # TODO when is this used?
+    fallbackDns = ["1.1.1.1" "1.0.0.1"];
   };
 
   hardware.bluetooth = {

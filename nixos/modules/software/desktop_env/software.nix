@@ -4,17 +4,22 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # Browsers
+    unstable.google-chrome
+    tor-browser-bundle-bin
+
     # Terminals
     foot # minimal terminal
     unstable.alacritty # gpu terminal
     unstable.alacritty-theme
     cool-retro-term # cute terminal
 
-    # GUI frontends
+    # Settings
     networkmanagerapplet # networking
     unstable.avizo # brightness/volume control with overlay indicator
     pavucontrol # gui audio configuration
     system-config-printer # printer gui
+    helvum # pipewire patchbay
 
     # Opening stuff
     cinnamon.nemo # wayland native
@@ -54,5 +59,18 @@
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
     kooha # screen capture with basic gui
+
+    # Misc
+    gnome-solanum # simple pomodoro
+    gnome.cheese # webcam
+    gnome.pomodoro # slightly bloated pomodoro
+    hyprpicker # gigasimple terminal color picker
+    mesa-demos # some 3d demos
+    obs-studio # screencasting/streaming
+    qalculate-gtk # qalc calculator gui
+    spotify
+    steam # games
+    transmission-gtk # transmission torrent client gui
+    unstable.obsidian # markdown personal knowledge database
   ];
 }

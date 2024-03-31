@@ -7,5 +7,6 @@
     bear # Compilation database generator for clangd
     luajitPackages.luarocks
     haskellPackages.hoogle
+    sageWithDoc # computer algebra system
   ];
 }

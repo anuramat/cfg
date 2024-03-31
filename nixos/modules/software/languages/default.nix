@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./compilers.nix
+    ./build.nix
     ./debuggers.nix
     ./formatters.nix
     ./lang_servers.nix

@@ -8,6 +8,7 @@ _: {
     };
     networkmanager = {
       enable = true;
+      wifi.backend = "iwd";
       # wifi ignores resolved or does it... FIXME
     };
     nameservers = ["1.1.1.1" "1.0.0.1"];

@@ -1,4 +1,4 @@
-_: {
+{...}: {
   boot = {
     # silent boot
     consoleLogLevel = 0;
@@ -7,7 +7,7 @@ _: {
     # boot splashscreen
     plymouth = {
       enable = true;
-      theme = "breeze"; # nixos logo
+      theme = "breeze"; # package is overridden to use a nixos logo
     };
     loader = {
       systemd-boot.enable = true;

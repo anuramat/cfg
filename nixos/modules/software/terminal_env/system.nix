@@ -8,12 +8,12 @@
 
     # Monitoring
     # add more tops
-    glances #24k, bloated, with web
+    glances # 24k, bloated, with a web interface
     btop # 16k
     gtop # 9.6k
-    htop # 5.8
-    vtop # 4.1k
-    atop # 0.757
+    htop # 5.8k
+    gotop # 2.6k
+    atop # 0.757k
     nmon
     # better du
     du-dust # directory disk usage (better du)

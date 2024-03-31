@@ -20,4 +20,14 @@
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
+
+  security.pam.services.swaylock = {}; # already done by sway.enable
+  # security.pam.loginLimits = [
+  #   {
+  #     domain = "@users";
+  #     item = "rtprio";
+  #     type = "-";
+  #     value = 1;
+  #   }
+  # ];
 }

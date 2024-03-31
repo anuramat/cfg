@@ -59,3 +59,7 @@ TODO:
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
 - clipboard persistence
+
+### Problems
+
+- regreet takes time to load the theme https://github.com/rharish101/ReGreet/issues/45

@@ -8,6 +8,7 @@ exec_always {
     # avizo: brightness/volume overlay notifications
     pkill avizo-service; avizo-service
     pkill swaycons; swaycons
+    pkill kanshi; kanshi
 }
 
 # vim: ft=swayconfig

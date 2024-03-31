@@ -6,13 +6,12 @@
     adwaita-qt
     dracula-theme
     dracula-icon-theme
-    hackneyed
+    hackneyed # windows style cursor
     gnome3.adwaita-icon-theme
   ];
   qt = {
     enable = true;
     platformTheme = "qt5ct";
-    style = "adwaita-dark";
   };
   # home-manager.users.myUser = {
   #   home.pointerCursor = {

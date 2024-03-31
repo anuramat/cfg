@@ -10,6 +10,7 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 
 . "$HOME/.profile"
+for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do . "$f"; done
 
 # ~~~~~~~~~~~~~~~ software initialization ~~~~~~~~~~~~~~~~ #
 

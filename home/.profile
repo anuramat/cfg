@@ -7,9 +7,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # XDG user dirs
-. "${HOME}/.config/user-dirs.dirs"
-
-export SCREENSHOT_DIR="$HOME/screenshots" #
+[ -f "${HOME}/.config/user-dirs.dirs" ] && . "${HOME}/.config/user-dirs.dirs"
 
 export LC_ALL="en_US.UTF-8" # just in case, this is already defined in nix
 export PAGER=less           # just in case, this is already defined somewhere in system level rc
@@ -23,5 +21,3 @@ for editor in nvim vim nvi vi; do
 	fi
 done
 export EDITOR="$VISUAL"
-
-for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do . "$f"; done

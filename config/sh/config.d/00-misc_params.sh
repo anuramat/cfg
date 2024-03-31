@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
-# ls replacement
-export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all"
+export SCREENSHOT_DIR="$HOME/screenshots"
+mkdir -p "$SCREENSHOT_DIR"
+
 # ls
+export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all"
 if command -v "eza" >/dev/null 2>&1; then
 	# config file implementation is in progress:
 	# https://github.com/eza-community/eza/issues/897
@@ -23,6 +25,7 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -c=auto'
 
+# etc
 alias fd="fd -H" # H for show hidden, I for show ignored
 alias info="info --vi-keys"
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"

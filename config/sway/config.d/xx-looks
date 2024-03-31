@@ -12,7 +12,6 @@ seat * {
 }
 set $gnome-schema org.gnome.desktop.interface
 exec_always gsettings set $gnome-schema {
-  # TODO set proper themes, check scaling
   gtk-theme 'Adwaita'
   icon-theme 'Dracula'
   text-scaling-factor 1

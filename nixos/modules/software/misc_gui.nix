@@ -15,6 +15,7 @@
     spotify
     steam
     tor-browser-bundle-bin
+    helvum # pipewire patchbay
     transmission # torrent client
     transmission-gtk # gui wrapper for transmission
     unstable.google-chrome

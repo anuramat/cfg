@@ -13,7 +13,7 @@ return {
         'null-ls-info',
         'NvimTree',
         'neo-tree',
-        'alpha'
+        'alpha',
       },
     })
   end,

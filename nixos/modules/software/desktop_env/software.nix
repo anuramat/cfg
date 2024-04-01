@@ -51,7 +51,7 @@
     kanshi # daemon, reads a plaintext config
     wlr-randr # imperative cli display settings
     wlay # gui display configs (can output kanshi/sway/wlr-randr files)
-    way-displays # auto manager (NO CONFIGURATION!!!)
+    way-displays # auto manager
 
     # Screenshots and screen capture
     slurp # select screen region

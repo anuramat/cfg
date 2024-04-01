@@ -1,5 +1,5 @@
 return {
   'NvChad/nvim-colorizer.lua',
-  event ='VeryLazy',
+  event = 'VeryLazy',
   opts = {},
 }

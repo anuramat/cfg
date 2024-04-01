@@ -3,7 +3,7 @@ return function()
   local cmp = require('cmp')
   local wrap_snippet_jump = require('plugins.completion.luasnip.jump')
   local window = cmp.config.window.bordered()
-  window = nil -- noice, lsp_signature
+  window = nil -- turn off because of noice and lsp_signature
   -- ~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~ --
   --- @diagnostic disable-next-line: redundant-parameter
   cmp.setup({

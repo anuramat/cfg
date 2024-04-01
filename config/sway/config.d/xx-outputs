@@ -17,4 +17,5 @@ workspace {
     9 output $external $internal
     10 output $external $internal
 }
+
 # vim: ft=swayconfig

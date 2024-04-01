@@ -1,0 +1,8 @@
+ARRANGE: COLUMN
+ALIGN: MIDDLE
+ORDER:
+  - "!^DP-"
+  - "!^eDP-1"
+SCALE:
+  - NAME_DESC: "eDP-1"
+    SCALE: 1

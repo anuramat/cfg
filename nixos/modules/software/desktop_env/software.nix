@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     # Browsers
     unstable.google-chrome
+    unstable.firefox
     tor-browser-bundle-bin
 
     # Terminals

@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # TODO
   environment.systemPackages = with pkgs; [
     glib # gsettings (gtk etc)
     qt5ct # qt5 gui settings

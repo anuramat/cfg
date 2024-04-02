@@ -9,6 +9,7 @@ exec_always {
     pkill avizo-service; avizo-service
     pkill swaycons; swaycons
     pkill way-displays; way-displays
+    pkill persway; persway daemon
 }
 
 # vim: ft=swayconfig

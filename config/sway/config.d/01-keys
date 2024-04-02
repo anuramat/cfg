@@ -26,6 +26,8 @@ $bind {
     $mod+i focus child
     $mod+y sticky toggle
 
+    $mod+w exec persway change-layout spiral
+    $mod+e exec persway change-layout stack-main
     $mod+a layout tabbed
     $mod+s layout stacking
     $mod+d layout toggle split

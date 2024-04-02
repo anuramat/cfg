@@ -5,7 +5,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    persway.url = "github:nix-community/neovim-nightly-overlay";
+    persway.url = "github:johnae/persway";
   };
   outputs = {nixpkgs, ...} @ inputs: let
     user = import ./user.nix;
@@ -21,9 +21,17 @@
     nixosConfigurations.${user.hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
-        inherit unstable user overlays;
+        inherit unstable user;
       };
-      modules = [./configuration.nix];
+      modules = [
+        ./configuration.nix
+        ({...}: {
+          environment.systemPackages = [
+            inputs.persway.packages.x86_64-linux.default
+          ];
+          nixpkgs.overlays = overlays;
+        })
+      ];
     };
   };
 }

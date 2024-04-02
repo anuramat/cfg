@@ -3,5 +3,6 @@ _: {
     ./mime
     ./software
     ./system
+    ./hardware
   ];
 }

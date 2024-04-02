@@ -4,13 +4,15 @@ set {
     $internal eDP-1
     $external DP-1 DP-2
 }
-
+# turn off internal output on lid close (doesn't work) FIXME
+bindswitch --reload --locked lid:on output $internal disable
+bindswitch --reload --locked lid:off output $internal enable
 workspace {
-    1 output $internal
-    2 output $internal
-    3 output $internal
-    4 output $internal
-    5 output $internal
+    1 output $internal $external
+    2 output $internal $external
+    3 output $internal $external
+    4 output $internal $external
+    5 output $internal $external
     6 output $external $internal
     7 output $external $internal
     8 output $external $internal

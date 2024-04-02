@@ -26,8 +26,6 @@ $bind {
     $mod+i focus child
     $mod+y sticky toggle
 
-    $mod+w exec persway change-layout spiral
-    $mod+e exec persway change-layout stack-main
     $mod+a layout tabbed
     $mod+s layout stacking
     $mod+d layout toggle split
@@ -50,5 +48,13 @@ $bind {
     $mod+$mod2+$screenshot_key exec $screenshot_focused_window
     $mod+$mod3+$screenshot_key exec $screenshot_focused_output
     $mod+$mod4+$screenshot_key exec $screenshot_all_outputs
+
+    # $mod+e exec $persway_spiral
+    # $mod+w exec $persway_stack
+    # $mod+z exec $persway_manual
+    # $mod+$mod4+h exec $persway_stack_rotate
+    # $mod+$mod4+l exec $persway_stack_swap
+    # $mod+$mod4+j exec $persway_stack_next
+    # $mod+$mod4+k exec $persway_stack_prev
 }
 # vim: ft=swayconfig

@@ -1,5 +1,5 @@
 exec_always {
-    # perf hogs!!!
+    # # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py
     # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
     pkill swayidle; swayidle -w
@@ -9,7 +9,8 @@ exec_always {
     pkill avizo-service; avizo-service
     pkill swaycons; swaycons
     pkill way-displays; way-displays
-    pkill persway; persway daemon
+    # # too unstable yet
+    # pkill persway; persway daemon
 }
 
 # vim: ft=swayconfig

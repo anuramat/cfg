@@ -19,6 +19,9 @@ sudo rsync -r --chown=root:root "${local_nixos}/" "${sys_nixos}"
 # rebuild
 sudo nixos-rebuild switch
 
+# copy lockfile to repo
+cp "${sys_nixos}/flake.lock" "${local_nixos}/flake.lock"
+
 # clear tofi .desktop cache
 [ -f "${tofi_drun_cache}" ] && rm "${tofi_drun_cache}" || true
 

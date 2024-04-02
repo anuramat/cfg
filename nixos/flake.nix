@@ -6,6 +6,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     persway.url = "github:johnae/persway";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
   outputs = {nixpkgs, ...} @ inputs: let
     user = import ./user.nix;
@@ -25,7 +26,8 @@
       };
       modules = [
         ./configuration.nix
-        ({...}: {
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+        (_: {
           environment.systemPackages = [
             inputs.persway.packages.x86_64-linux.default
           ];

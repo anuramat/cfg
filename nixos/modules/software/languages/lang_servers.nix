@@ -1,19 +1,16 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [
+{unstable, ...}: {
+  environment.systemPackages = with unstable; [
     nodePackages_latest.bash-language-server
     nodePackages_latest.yaml-language-server
     lua-language-server
-    unstable.texlab
-    unstable.haskell-language-server
-    unstable.nixd
-    unstable.nil
-    unstable.pyright
-    unstable.gopls
-    unstable.marksman
-    unstable.clang-tools
+    texlab
+    haskell-language-server
+    nixd
+    ccls
+    nil
+    pyright
+    gopls
+    marksman
+    clang-tools
   ];
 }

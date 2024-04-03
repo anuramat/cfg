@@ -49,9 +49,9 @@ return {
       -- separator = '―', -- Separator between context and content. nil or a single character
       zindex = 20, -- The Z-index of the context window
     })
-    --- @diagnostic disable-next-line: missing-fields
     require('ts_context_commentstring').setup({
       enable_autocmd = false, -- to integrate with numToStr/Comment.nvim
     })
+    vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
   end,
 }

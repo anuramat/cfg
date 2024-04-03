@@ -1,6 +1,6 @@
 "~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
-let maplocalleader = mapleader. ";"
+let maplocalleader = mapleader . ";"
 tno <esc> <c-\><c-n>
 nn <c-c> <silent><c-c>
 nn <c-cr> o<esc>
@@ -20,7 +20,7 @@ inoremap <A-k> <Esc>:silent m .-2<CR>:silent normal ==<cr>gi
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr
 "~~~~~~~~~~~~~~~~~~~~~~~~ general ~~~~~~~~~~~~~~~~~~~~~~~~~"
-se complete=t,i,d,.,w,b,u,U
+se complete=t,i,d,.,w,b,u,U " completion source priority
 se clipboard=unnamedplus " unnamedplus for clipboard, unnamed for selection
 se notimeout " no timeout on key sequences
 se keymap=russian-jcukenwin imi=0 " cyrillic on i_^6
@@ -41,11 +41,11 @@ let g:matchparen_insert_timeout=50
 " se spl=en,ru " spelling languages (russian will trigger download)
 " se path+=** " recurse in path
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
-se cole=0
+se cole=0 " conceallevel
 se nowrap
-se dy=lastline,uhex " XXX idk
-se fcs=fold:\ ,foldopen:,foldsep:\ ,foldclose:
-se ls=3 " show only one statusline
+se fcs=fold:\─,foldopen:,foldsep:\ ,foldclose:
+se foldtext=
+se laststatus=3 " show only one statusline
 se sbr=↪ list lcs=tab:│\ ,extends:❯,precedes:❮,trail:·,lead:·
 au TextYankPost * silent! lua vim.highlight.on_yank()
 se number relativenumber

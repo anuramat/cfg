@@ -12,6 +12,7 @@
     peco # interactive filtering
     aria # downloader
     progress # progress status for cp etc
+    pv # pipe viewer
     glow # markdown viewer
     libqalculate # qalc - advanced calculator
     age # file encryption

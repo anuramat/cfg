@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-export SCREENSHOT_DIR="$HOME/screenshots"
+export SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
 
 # ls

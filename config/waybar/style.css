@@ -8,23 +8,17 @@
   border-radius: 6px;
   font-size: 13pt;
   font-family: "Hack Nerd Font";
-  background: @background-darker;
   color: @foreground;
-  padding: 0;
-  margin: 0;
+  background: transparent;
 }
 window#waybar {
-  border: 3px solid @pink;
 }
 /* the bar contents */
 #waybar > box {
-  margin: 5px;
-}
-@keyframes blink {
-  to {
-    color: @white;
-    background-color: @red;
-  }
+  background: @background;
+  box-shadow: 0 0 5px 3px @purple;
+  margin: 10px;
+  padding: 5px;
 }
 /*~~~~~~~~~~~~~~~~~~~~~~ workspaces ~~~~~~~~~~~~~~~~~~~~~~*/
 #workspaces {
@@ -39,9 +33,7 @@ window#waybar {
   background-color: @background;
 }
 #workspaces button.focused {
-  box-shadow: inset 0 -3px #ffffff; /* border would raise the text */
-  background-image: linear-gradient(0deg, @selection, @background-darker);
-  /* background: @selection; */
+  background: @selection;
 }
 #workspaces button.urgent {
   background: @purple;

@@ -1,5 +1,5 @@
 /* official dracula colorsceme for waybar */
-@define-color background-darker rgba(30, 31, 41, 230);
+/* background-darker removed because I don't like it */
 @define-color background #282a36;
 @define-color selection #44475a;
 @define-color foreground #f8f8f2;
@@ -11,3 +11,9 @@
 @define-color purple #bd93f9;
 @define-color red #ff5555;
 @define-color yellow #f1fa8c;
+@keyframes blink {
+  to {
+    color: @white;
+    background-color: @red;
+  }
+}

@@ -2,18 +2,22 @@ ignore-empty-password
 daemonize
 
 indicator-caps-lock
-hide-keyboard-layout
+# hide-keyboard-layout
 
 indicator-radius=200
 indicator-thickness=20
 font=Hack Nerd Font
 
-# swaylock-effects
+### swaylock-effects
 effect-blur=10x3
-# fade-in=0.2
+# fade-in=0.1
+effect-scale=0.5
+effect-vignette=0.5:0.5
 screenshots
+clock
+indicator
 
-# official dracula colorscheme for swaylock
+### official dracula colorscheme for swaylock
 color=6272A4
 line-color=282A36
 ring-color=BD93F9

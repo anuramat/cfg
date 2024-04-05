@@ -28,6 +28,7 @@
     unstable.eza # better ls
     zellij # neotmux
     zoxide # better cd
+    rmtrash # rm but to trash
 
     # Git
     ghq # git repository manager

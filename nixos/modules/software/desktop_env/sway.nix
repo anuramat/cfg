@@ -20,6 +20,8 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
+  services.clipcat.enable = true;
+
   security.pam.services.swaylock = {}; # already done by sway.enable
   # security.pam.loginLimits = [
   #   {

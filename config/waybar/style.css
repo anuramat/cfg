@@ -17,8 +17,8 @@ window#waybar {
 #waybar > box {
   /* the bar contents */
   background: @background;
-  box-shadow: 0 0 8px -4px @purple;
-  margin: 10px;
+  box-shadow: 0 0 10px -10px black;
+  margin: 20px;
   padding: 5px;
 }
 tooltip * {

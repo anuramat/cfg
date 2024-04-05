@@ -1,6 +1,5 @@
 /* https://github.com/Alexays/Waybar/wiki/Styling */
-/* margin can't be controlled here, ues mragin setting in the config */
-/* TODO refactor? */
+/* margin can't be controlled here, use margin setting in the config */
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./dracula.css");
 * {
@@ -12,13 +11,28 @@
   background: transparent;
 }
 window#waybar {
+  /* root */
+  background: transparent;
 }
-/* the bar contents */
 #waybar > box {
+  /* the bar contents */
   background: @background;
   box-shadow: 0 0 5px 3px @purple;
   margin: 10px;
   padding: 5px;
+}
+tooltip * {
+  /* stuff that appears on mouse hover */
+  background: @background;
+}
+tooltip {
+  /* ??? this is behind the tooltip */
+  background: @background;
+}
+box > * > * {
+  /* basically most elements (box->left/mid/center->element) */
+  background: @background;
+  padding: 0 7px; /* padding inside the element */
 }
 /*~~~~~~~~~~~~~~~~~~~~~~ workspaces ~~~~~~~~~~~~~~~~~~~~~~*/
 #workspaces {
@@ -39,28 +53,12 @@ window#waybar {
   background: @purple;
   color: @background;
 }
-/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*~~~~~~~~~~~~~~~~~~~~~ misc modules ~~~~~~~~~~~~~~~~~~~~~*/
 #mode {
   padding: 0 10px;
   background: @red;
   color: @background;
 }
-/* basically most elements (box->left/mid/center->element) */
-box > * > * {
-  background: @background;
-  padding: 0 7px; /* padding inside the element */
-}
-box.horizontal.modules-center {
-  padding: 0 5px;
-}
-tooltip * {
-  background: @background;
-}
-tooltip {
-  /* ??? this is behind the tooltip */
-  background: @background;
-}
-/*~~~~~~~~~~~~~~~~~~~ specific modules ~~~~~~~~~~~~~~~~~~~*/
 #battery {
   color: @green;
 }

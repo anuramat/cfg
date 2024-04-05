@@ -17,7 +17,7 @@ window#waybar {
 #waybar > box {
   /* the bar contents */
   background: @background;
-  box-shadow: 0 0 5px 3px @purple;
+  box-shadow: 0 0 8px -4px @green;
   margin: 10px;
   padding: 5px;
 }

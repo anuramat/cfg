@@ -46,7 +46,4 @@
   cp = !git add . && git commit -am auto && git push
   ignored = status --ignored
 
-[gpg]
-  format = ssh
-
 ; vim:ft=gitconfig

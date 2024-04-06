@@ -5,9 +5,9 @@ set {
     $external DP-1 DP-2
 }
 # turn off internal output on lid close (doesn't work) FIXME
-# FIXME also breaks swaylock
-# bindswitch --reload --locked lid:on output $internal disable
-# bindswitch --reload --locked lid:off output $internal enable
+# FIXME also breaks swaylock?
+bindswitch --reload --locked lid:on output $internal disable
+bindswitch --reload --locked lid:off output $internal enable
 workspace {
     1 output $internal $external
     2 output $internal $external

@@ -46,4 +46,7 @@
   cp = !git add . && git commit -am auto && git push
   ignored = status --ignored
 
+[init]
+  defaultBranch = main
+
 ; vim:ft=gitconfig

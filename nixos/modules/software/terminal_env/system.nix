@@ -30,5 +30,6 @@
     inetutils # common network stuff
     nmap
     netcat
+    socat # socket cat
   ];
 }

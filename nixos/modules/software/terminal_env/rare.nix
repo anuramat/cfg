@@ -16,6 +16,7 @@
     pv # pipe viewer
     glow # markdown viewer
     libqalculate # qalc - advanced calculator
+    nb # notes etc
     age # file encryption
     croc # send/receive files through relay with encryption
     fastfetch # neo-neofetch

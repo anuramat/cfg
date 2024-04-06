@@ -5,6 +5,7 @@
     dracula-theme
     dracula-icon-theme
     hackneyed # windows style cursor
+    apple-cursor
     gnome3.adwaita-icon-theme
 
     adwaita-qt # qt5

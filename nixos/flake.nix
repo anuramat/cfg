@@ -8,7 +8,7 @@
     # overlays
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # packages
-    inputs.nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
   outputs = {nixpkgs, ...} @ inputs: let
     user = import ./user.nix;
@@ -30,7 +30,7 @@
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
         (_: {
           environment.systemPackages = [
-            inputs.nix-alien.${user.system}.nix-alien
+            inputs.nix-alien.packages.${user.system}.nix-alien
           ];
           nixpkgs.overlays = overlays;
         })

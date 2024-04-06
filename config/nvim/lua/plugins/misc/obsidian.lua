@@ -21,8 +21,8 @@ return {
   opts = {
     workspaces = {
       {
-        name = 'obsvlt',
-        path = '~/obsvlt',
+        name = 'vault',
+        path = '~/vault',
       },
     },
     completion = {

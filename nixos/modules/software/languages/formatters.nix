@@ -5,7 +5,7 @@
 }: {
   environment.systemPackages = with unstable; [
     alejandra # nix
-    nixfmt # nix (OFFICIAL)
+    nixfmt-rfc-style # nix (OFFICIAL)
     shfmt # posix/bash/mksh
     stylua # Lua
     yamlfmt # YAML

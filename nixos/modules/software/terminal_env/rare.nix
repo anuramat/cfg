@@ -19,6 +19,7 @@
     nb # notes etc
     age # file encryption
     croc # send/receive files through relay with encryption
+    readability-cli # extracts main content from pages
     fastfetch # neo-neofetch
     exercism # CLI for exercism.org
     ghostscript # ??? TODO

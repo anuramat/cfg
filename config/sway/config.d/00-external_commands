@@ -33,14 +33,6 @@ set {
     $audio_next playerctl -p spotify next
     $audio_play playerctl -p spotify play
     $audio_stop playerctl -p spotify stop
-
-    $persway_spiral persway change-layout spiral
-    $persway_stack persway change-layout stack-main
-    $persway_manual persway change-layout stack-main
-    $persway_stack_rotate persway stack-main-rotate-next
-    $persway_stack_swap persway stack-swap-main
-    $persway_stack_next persway stack-focus-next
-    $persway_stack_prev persway stack-focus-prev
 }
 
 # vim: ft=swayconfig

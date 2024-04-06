@@ -8,6 +8,7 @@
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
     tmux # just in case
+    scc # count lines of code
     slides # markdown presentation in terminal
     peco # interactive filtering
     aria # downloader

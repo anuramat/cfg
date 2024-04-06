@@ -31,6 +31,7 @@
     rclone # rsync for cloud
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for bloat
+    python311Packages.pyicloud
     w3m # text based web browser
     wally-cli # ZSA keyboards software
     youtube-dl # download youtube videos

@@ -6,4 +6,5 @@
   timezone = "Etc/GMT-5"; # inverted offset (posix momento)
   stateVersion = "23.05"; # WARNING DO NOT EDIT
   defaultLocale = "en_US.UTF-8";
+  system = "x86_64-linux";
 }

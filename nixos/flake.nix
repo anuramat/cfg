@@ -1,26 +1,27 @@
 {
   inputs = {
+    # nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    persway.url = "github:johnae/persway";
+    # modules
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # overlays
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # packages
+    inputs.nix-alien.url = "github:thiagokokada/nix-alien";
   };
   outputs = {nixpkgs, ...} @ inputs: let
     user = import ./user.nix;
-    system = "x86_64-linux";
     unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
-      inherit system;
+      inherit (user) system;
     };
     overlays = with inputs; [
       neovim-nightly-overlay.overlay
     ];
   in {
     nixosConfigurations.${user.hostname} = nixpkgs.lib.nixosSystem {
-      inherit system;
+      inherit (user) system;
       specialArgs = {
         inherit unstable user;
       };
@@ -29,7 +30,7 @@
         inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
         (_: {
           environment.systemPackages = [
-            inputs.persway.packages.x86_64-linux.default
+            inputs.nix-alien.${user.system}.nix-alien
           ];
           nixpkgs.overlays = overlays;
         })

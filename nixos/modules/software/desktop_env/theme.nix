@@ -16,15 +16,4 @@
     enable = true;
     platformTheme = "qt5ct"; # actually uses both qt5ct and qt6ct
   };
-  # home-manager.users.myUser = {
-  #   home.pointerCursor = {
-  #     name = "Adwaita";
-  #     package = pkgs.gnome.adwaita-icon-theme;
-  #     size = 24;
-  #     x11 = {
-  #       enable = true;
-  #       defaultCursor = "Adwaita";
-  #     };
-  #   };
-  # };
 }

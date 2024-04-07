@@ -24,6 +24,5 @@ export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 # NOTE .pyhistory is still hardcoded: https://github.com/python/cpython/pull/13208
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
-# export NB_DIR="$XDG_DATA_HOME/nb"
-export NB_DIR="$HOME/vault"
+export NB_DIR="$XDG_DATA_HOME/nb"
 export NBRC_PATH="$XDG_CONFIG_HOME/nbrc"

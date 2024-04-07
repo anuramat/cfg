@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = false,
@@ -44,7 +45,6 @@ return {
         opts = { buffer = true },
       },
     },
-    disable_frontmatter = true,
-    -- see below for full list of options 👇
+    -- disable_frontmatter = true,
   },
 }

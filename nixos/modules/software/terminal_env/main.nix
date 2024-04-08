@@ -6,6 +6,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     # Code editors
+    unstable.emacs-gtk
     neovim
     nvi
     unstable.helix

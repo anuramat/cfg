@@ -2,7 +2,7 @@ local u = require('utils')
 
 local error_color = 'ErrorMsg'
 
-local custom_plugins = { 'alpha' }
+local custom_plugins = { 'alpha', 'TelescopePrompt' }
 
 local function custom_cond()
   return not u.contains(custom_plugins, vim.o.filetype)
@@ -88,7 +88,6 @@ local location = {
   'location',
   padding = { left = 1, right = 1 },
   fmt = u.trim,
-  separator = '',
   cond = custom_cond,
 }
 

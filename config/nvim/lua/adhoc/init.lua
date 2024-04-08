@@ -3,6 +3,7 @@ local all_events = require('adhoc.events')
 local u = require('utils')
 
 require('adhoc.gramota')
+require('adhoc.templates')
 
 local function set(l, r, d)
   vim.keymap.set('n', l, r, { silent = true, desc = d })

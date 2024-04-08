@@ -50,7 +50,7 @@ return function()
         'always',
       },
     }),
-    -- cbfmt,
+    cbfmt,
     -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,
     nld.statix,

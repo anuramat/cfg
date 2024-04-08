@@ -56,12 +56,4 @@ return {
     end,
     config = setup_commands(),
   },
-  -- {
-  --   'bytesnake/vim-graphical-preview',
-  --   lazy = false,
-  --   build = 'cargo build --release',
-  --   dependencies = {
-  --     { 'mattn/libcallex-vim', lazy = false, build = 'make -C autoload' }, -- nix-shell -p libffi
-  --   },
-  -- },
 }

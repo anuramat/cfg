@@ -58,6 +58,7 @@ TODO:
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
 - clipboard persistence
+- ripgreprc check globs
 - maybe move latex templates to ~/Templates
 
 ### Problems

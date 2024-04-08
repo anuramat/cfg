@@ -32,3 +32,4 @@ alias swayimg='swayimg -e '\''rm -- "%"'\'
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
 export TERMCMD="alacritty"            # used by rifle (ranger file opener)
 export VIRTUAL_ENV_DISABLE_PROMPT="1" # Don't let python venvs change the PS1
+export VIMTEX_OUTPUT_DIRECTORY="/tmp/"

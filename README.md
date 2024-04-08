@@ -17,7 +17,6 @@ non-compliant parts:
 
 - alacritty imports
 - foot imports
-- ripgrep global ignore
 - regreet config and wallpaper location
 - nix
   - service.nix - syncthing paths

@@ -13,6 +13,7 @@ local function latexindent()
   })
 end
 
+-- sources are set in $XDG_CONFIG_HOME/cbfmt.toml
 local function cbfmt()
   local null_ls = require('null-ls')
   local helpers = require('null-ls.helpers')
@@ -49,7 +50,7 @@ return function()
         'always',
       },
     }),
-    cbfmt,
+    -- cbfmt,
     -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,
     nld.statix,

@@ -13,11 +13,10 @@ return {
       disable = { 'latex', 'tex' }, -- conflicts with vimtex
     },
     indent = { enable = true }, -- noexpandtab is broken with python
-    -- ensure_installed = require('plugins.treesitter.core.langs'),
     ensure_installed = 'all',
     sync_install = false, -- only applied to `ensure_installed`
     auto_install = false, -- install parser on buffer enter
-    ignore_install = { 'norg' },
+    ignore_install = { 'norg', 'org' },
     incremental_selection = {
       enable = true,
       keymaps = {

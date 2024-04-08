@@ -1,9 +1,6 @@
 # Search all files
 --hidden
---no-ignore-vcs
-
-# Except these
---ignore-file=/home/anuramat/.config/ripgrep/ignore
+# --no-ignore-vcs
 
 # Follow symbolic links.
 --follow

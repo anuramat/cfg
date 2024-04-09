@@ -14,6 +14,7 @@
     aria # downloader
     progress # progress status for cp etc
     pv # pipe viewer
+    mprocs # job runner
     glow # markdown viewer
     libqalculate # qalc - advanced calculator
     nb # notes etc

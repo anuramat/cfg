@@ -12,6 +12,9 @@
     unstable.helix
     unstable.vis
 
+    # some random goodies
+    unstable.ncspot # spotify
+
     # Modern terminal
     bash-completion
     bat # better cat with syntax hl

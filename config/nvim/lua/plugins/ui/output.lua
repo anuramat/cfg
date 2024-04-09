@@ -27,13 +27,13 @@ return {
       cmdline = {
         view = 'cmdline',
         format = {
-          cmdline = { conceal = false, icon = '' },
-          search_down = { conceal = false, icon = '' },
-          search_up = { conceal = false, icon = '' },
-          filter = { conceal = false, icon = '' },
-          lua = { conceal = false, icon = '' },
-          help = { conceal = false, icon = '' },
-          input = { conceal = false, icon = '' },
+          cmdline = false,
+          search_down = false,
+          search_up = false,
+          filter = false,
+          lua = false,
+          help = false,
+          input = false,
         },
       },
       messages = { enabled = true }, -- forces cmdline

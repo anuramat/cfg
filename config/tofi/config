@@ -1,7 +1,5 @@
 terminal=alacritty -e
 
-history = false
-
 fuzzy-match=true
 hide-cursor=true
 prompt-text=" "

@@ -9,6 +9,7 @@
     unstable.firefox
     unstable.qutebrowser
     unstable.vivaldi
+    unstable.vivaldi-ffmpeg-codecs # proprietary codecs
     tor-browser-bundle-bin
 
     # Terminals

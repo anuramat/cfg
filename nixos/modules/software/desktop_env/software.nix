@@ -7,6 +7,8 @@
     # Browsers
     unstable.google-chrome
     unstable.firefox
+    unstable.qutebrowser
+    unstable.vivaldi
     tor-browser-bundle-bin
 
     # Terminals

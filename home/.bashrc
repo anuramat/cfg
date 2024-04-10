@@ -38,3 +38,6 @@ alias d="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+getmd() {
+	readable "$1" | pandoc -f html -t markdown
+}

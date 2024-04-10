@@ -4,7 +4,7 @@
     nodePackages_latest.yaml-language-server
     lua-language-server
     texlab
-    haskell-language-server
+    (haskell-language-server.override {supportedGhcVersions = ["948" "927"];})
     nixd
     ccls
     nil

@@ -1,4 +1,4 @@
-return {
+local all_events = {
   'BufAdd',
   'BufDelete',
   'BufEnter',
@@ -123,3 +123,26 @@ return {
   'WinResized',
   'WinScrolled',
 }
+
+--- Prints triggered events for debug purposes
+--- Usage:
+--- ```lua
+--- M.debug_events({ 'BufReadPre', 'BufNewFile' })
+--- ```
+--- @param events? table List of events to subscribe to
+return function(events)
+  local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
+  local counter = 0
+  if events == nil then
+    events = all_events
+  end
+  for _, e in pairs(events) do
+    vim.api.nvim_create_autocmd(e, {
+      group = g,
+      callback = function(opts)
+        vim.notify('Event ' .. tostring(counter) .. ' triggered: ' .. opts.event)
+        counter = counter + 1
+      end,
+    })
+  end
+end

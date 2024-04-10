@@ -41,3 +41,7 @@ alias ....="cd ../../.."
 getmd() {
 	readable "$1" | pandoc -f html -t markdown
 }
+alias pandoc-s='pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex"'
+mdtex() {
+	pandoc-s -f markdown -t pdf "$1" -o "$2"
+}

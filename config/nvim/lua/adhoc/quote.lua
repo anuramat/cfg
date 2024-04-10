@@ -1,7 +1,3 @@
-require('adhoc.gramota')
-require('adhoc.templates')
-require('adhoc.comment_header')
-
 --- Copies the name of the file and the line number to the buffer
 local function quote()
   local filename = vim.fn.expand('%')
@@ -10,4 +6,5 @@ local function quote()
   vim.print(result)
   vim.fn.setreg('+', result)
 end
+
 vim.api.nvim_create_user_command('Quote', quote, {})

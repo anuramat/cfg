@@ -13,3 +13,4 @@ tags
 cover.cov
 
 # TODO latex stuff
+*.pdf

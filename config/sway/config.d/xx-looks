@@ -13,6 +13,7 @@ seat * {
 set $gnome-schema org.gnome.desktop.interface
 exec_always gsettings set $gnome-schema {
   gtk-theme 'Adwaita'
+  gtk-key-theme 'Emacs'
   icon-theme 'Dracula'
   text-scaling-factor 1
   cursor-theme $cursor_theme

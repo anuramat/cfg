@@ -2,29 +2,14 @@
 --hidden
 # --no-ignore-vcs
 
-# TODO check this, keep only what's not ignored
 # Except these
 # VCS
 --glob=!{.git,.svn}
-# Tags
---glob=!tags
-# Go
---glob=!go.sum
---glob=!coverage.html
---glob=!.testCoverage.txt
+# Codegen
 --glob=!*.pb.go
-# Node
---glob=!node_modules
-# Python
---glob=!{__pycache__,venv}
-# Obsidian
---glob=!obsidian
 # Lock files
+--glob=!go.sum
 --glob=!*.{lock,lock.json}
-# Clangd, etc
---glob=!.cache
-# Haskell
---glob=!.stack-work
 
 # Follow symbolic links.
 --follow

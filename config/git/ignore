@@ -3,7 +3,7 @@
 # Python
 __pycache__/
 venv/
-# clangd etc
+# clangd, maybe etc
 .cache/
 # ctags
 tags
@@ -11,6 +11,9 @@ tags
 .stack-work/
 # go
 cover.cov
-
-# TODO latex stuff
+coverage.html
+.testCoverage.txt
+# Node
+node_modules/
+# LaTeX/pandoc
 *.pdf

@@ -104,3 +104,6 @@ augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
 augroup END
+
+se grepprg=rg\ --vimgrep
+se grepformat=%f:%l:%c:%m

@@ -130,7 +130,7 @@ local all_events = {
 --- M.debug_events({ 'BufReadPre', 'BufNewFile' })
 --- ```
 --- @param events? table List of events to subscribe to
-return function(events)
+local function follow_events(events)
   local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
   local counter = 0
   if events == nil then
@@ -146,3 +146,5 @@ return function(events)
     })
   end
 end
+
+follow_events({})

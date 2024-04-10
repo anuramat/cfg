@@ -301,5 +301,10 @@ end, {})
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mappings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 
-vim.cmd('map <leader>E <cmd>GramotaExecAll<cr>')
-vim.cmd('map <leader>e <cmd>GramotaExecOne<cr>')
+vim.api.nvim_create_autocmd('Filetype', {
+  pattern = { 'markdown' },
+  callback = function()
+    vim.cmd('map <leader>E <cmd>GramotaExecAll<cr>')
+    vim.cmd('map <leader>e <cmd>GramotaExecOne<cr>')
+  end,
+})

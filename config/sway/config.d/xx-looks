@@ -10,8 +10,7 @@ seat * {
     hide_cursor when-typing enable
     xcursor_theme $cursor_theme $cursor_size
 }
-set $gnome-schema org.gnome.desktop.interface
-exec_always gsettings set $gnome-schema {
+exec_always gsettings set org.gnome.desktop.interface {
   gtk-theme 'Adwaita'
   gtk-key-theme 'Emacs'
   icon-theme 'Dracula'
@@ -20,5 +19,11 @@ exec_always gsettings set $gnome-schema {
   cursor-size $cursor_size
   color-scheme 'prefer-dark'
 }
+exec_always gsettings set org.gnome.desktop.wm.preferences {
+  # https://unix.stackexchange.com/questions/408454/how-to-change-gtk-button-layout-in-kde
+  # removes all buttons in the header bar
+  button-layout :close
+}
+
 # output * bg ~/wp.png fill
 # vim: ft=swayconfig

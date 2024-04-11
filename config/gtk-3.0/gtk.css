@@ -31,4 +31,27 @@ GtkLabel.title {
   opacity: 0;
 }
 
+/*
+* from sway wiki 
+* https://github.com/swaywm/sway/wiki/GTK-3-settings-on-Wayland
+*/
+
+/** Some apps use titlebar class and some window */
+.titlebar,
+window {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/** also remove shaddows */
+decoration {
+  box-shadow: none;
+}
+
+decoration:backdrop {
+  box-shadow: none;
+}
+
+/* colorscheme */
+
 @import "colors.css";

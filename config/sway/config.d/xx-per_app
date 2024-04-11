@@ -5,5 +5,4 @@ for_window {
     [app_id="xdg-desktop-portal-gtk"] floating enable
     [app_id="nm-connection-editor"] floating enable
 }
-
 # vim: ft=swayconfig

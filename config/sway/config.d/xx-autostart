@@ -7,7 +7,6 @@ exec_always {
     pkill nm-applet; nm-applet
     # avizo: brightness/volume overlay notifications
     pkill avizo-service; avizo-service
-    pkill swaycons; swaycons
     pkill way-displays; way-displays
 }
 

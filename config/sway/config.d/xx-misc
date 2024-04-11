@@ -1,3 +1,4 @@
+for_window [shell="xwayland"] title_format "%title [XWayland]"
 focus_wrapping no
 title_align center
 focus_follows_mouse no

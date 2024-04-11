@@ -38,6 +38,7 @@ non-compliant parts:
 
 - mako
 - qt5ct
+- qt6ct
 - sway
 - swaylock
 - waybar
@@ -45,9 +46,9 @@ non-compliant parts:
 
 TODO:
 
+- gtk2
 - gtk3
 - gtk4
-- qt6
 
 ### TODO
 
@@ -63,4 +64,5 @@ TODO:
 
 ### Problems
 
-- regreet takes time to load the theme https://github.com/rharish101/ReGreet/issues/45
+- regreet takes time to load the theme
+  https://github.com/rharish101/ReGreet/issues/45

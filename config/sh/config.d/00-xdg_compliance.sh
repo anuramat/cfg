@@ -5,11 +5,12 @@ export GOPATH="$XDG_DATA_HOME/go"
 export STACK_ROOT="$XDG_DATA_HOME"/stack # Haskell stack (old)
 export STACK_XDG=1                       # Haskel stack (new variable, any non empty value will do)
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export DOT_SAGE="$XDG_CONFIG_HOME"/sage # sage math
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg # ??? I didn't install this...
-export HISTFILE="${XDG_STATE_HOME}"/bash/history
-# mkdir -p "$(dirname "$HISTFILE")" || true # TODO manually create some of these
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg          # ??? I didn't install this... Just removed old one from ~, target exists, check if ~/. gets created
+export HISTFILE="${XDG_STATE_HOME}"/bash/history # doesn't get created automatically, need to ensure the path exists
+mkdir -p "$(dirname "$HISTFILE")" || true
 export XCOMPOSECACHE="${XDG_CACHE_HOME}"/X11/xcompose # not using this either AFAIK
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc

@@ -29,7 +29,7 @@ upload() {
 	curl --upload-file "$1" "https://transfer.sh/$1"
 }
 cheat() {
-	curl -m 10 "http://cheat.sh/${1}" 2>/dev/null || printf '%s\n' "[ERROR] Something broke"
+	echo "$@" | tr " " "+" | xargs -I{} curl -m 10 "http://cheat.sh/{}" 2>/dev/null
 }
 alias c="clear"
 alias t="tldr"
@@ -39,9 +39,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 getmd() {
-	readable "$1" | pandoc -f html -t markdown
+	readable "$1" | pandoc -f html -t markdown_mmd
 }
 alias pandoc-s='pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex"'
-mdtex() {
-	pandoc-s -f markdown -t pdf "$1" -o "$2"
-}

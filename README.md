@@ -17,7 +17,6 @@ non-compliant parts:
 
 - alacritty imports
 - foot imports
-- regreet config and wallpaper location
 - nix
   - service.nix - syncthing paths
 
@@ -63,6 +62,3 @@ TODO:
 - maybe move latex templates to ~/Templates
 
 ### Problems
-
-- regreet takes time to load the theme
-  https://github.com/rharish101/ReGreet/issues/45

@@ -1,10 +1,10 @@
 _: {
   # scanning - `scanimage`
-  # printing - http://localhost:631/
+  # printing - CUPS @ http://localhost:631/ or a desktop entry cups.desktop (Manage Printing)
+  # printer settings and job list - `system-config-printer`
   # list printers - `lpstat -p`
   # list printer jobs - `lpstat`
   # cancel job - `cancel 1`
-  # printing - `system-config-printer`
 
   # https://nixos.wiki/wiki/Printing
   # https://nixos.wiki/wiki/Scanners
@@ -12,17 +12,17 @@ _: {
     # Enable CUPS to print documents, available @ http://localhost:631/
     printing = {
       enable = true;
-      drivers = [];
+      drivers = []; # some printers need additional drivers
     };
     # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
-    # network printers autodiscovery
+    # which is responsible for network printers autodiscovery
     avahi = {
       enable = true;
       nssmdns = true;
       openFirewall = true; # Open udp 5353 for network devices discovery
     };
   };
-  hardware.printers = {};
+  hardware.printers = {}; # some printers need additional configuration
   hardware.sane = {
     enable = true;
     extraBackends = [];

@@ -29,6 +29,8 @@ return {
     { 'm', '<cmd>Telescope marks<cr>', desc = 'Marks' },
     { 'o', '<cmd>Telescope find_files<cr>', desc = 'Files' },
     { 'p', '<cmd>Telescope builtin<cr>', desc = 'Pickers' },
+    { 'q', '<cmd>Telescope quickfix<cr>', desc = 'Quickfix' },
+    { 'Q', '<cmd>Telescope quickfixhistory<cr>', desc = 'Quickfix history' },
     { 'r', '<cmd>Telescope lsp_references<cr>', desc = 'References' },
     { 's', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document Symbols' },
   }, 'Tele'),

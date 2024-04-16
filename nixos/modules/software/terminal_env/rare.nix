@@ -23,7 +23,7 @@
     readability-cli # extracts main content from pages
     fastfetch # neo-neofetch
     exercism # CLI for exercism.org
-    ghostscript # ??? TODO
+    ghostscript # postscript/pdf utils
     mosh # ssh over unstable connections
     nix-index
     onionshare # tor-based file-sharing etc

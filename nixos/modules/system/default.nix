@@ -2,6 +2,7 @@ _: {
   imports = [
     ./boilerplate.nix
     ./boot.nix
+    ./dns.nix
     ./laptop.nix
     ./multimedia.nix
     ./networking.nix

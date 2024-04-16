@@ -20,7 +20,6 @@ $bind {
     $mod+q kill
     $mod+$mod2+q exec $lock_screen
     $mod+space exec $menu
-    $mod+f fullscreen
 
     $mod+o focus parent
     $mod+i focus child
@@ -29,9 +28,10 @@ $bind {
     $mod+a layout tabbed
     $mod+s layout stacking
     $mod+d layout toggle split
-    $mod+c splith
+    $mod+f fullscreen
+    $mod+x splith
     $mod+v splitv
-    $mod+b splitt
+    $mod+c splitt
     # Gaps
     $mod+equal gaps inner all plus 10
     $mod+minus gaps inner all minus 10

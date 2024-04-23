@@ -26,7 +26,7 @@ se notimeout " no timeout on key sequences
 se keymap=russian-jcukenwin imi=0 " cyrillic on i_^6
 se completeopt=menu,menuone,noselect,preview " ins completion
 se wildoptions=fuzzy,pum " cmd completion
-se fen fdm=indent foldlevelstart=99
+se fen fdm=indent foldlevelstart=99 " overriden by fdl in modelines
 " se foldclose=all " close fold when the cursor leaves it
 se incsearch ignorecase smartcase " search settings
 se updatetime=100 " period in ms for swap writes and CursorHold autocmd

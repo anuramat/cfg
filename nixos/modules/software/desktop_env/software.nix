@@ -35,6 +35,7 @@
     # Big chunks
     waybar # status bar
     mako # notifications
+    # swaylock
     swaylock-effects # lockscreen, swaylock fork
     swayidle # idle events
 

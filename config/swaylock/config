@@ -1,14 +1,18 @@
+# vim: fdm=marker fdl=0
+
+### Main settings {{{1
 ignore-empty-password
-daemonize
 
-indicator-caps-lock
-# hide-keyboard-layout
-
+### Indicator {{{1
 indicator-radius=200
 indicator-thickness=20
 font=Hack Nerd Font
 
-### swaylock-effects
+### Misc hints {{{1
+indicator-caps-lock
+# hide-keyboard-layout
+
+### swaylock-effects {{{1
 effect-blur=10x3
 # fade-in=0.1
 effect-scale=0.5
@@ -17,7 +21,7 @@ screenshots
 clock
 indicator
 
-### official dracula colorscheme for swaylock
+### Official Dracula colorscheme for swaylock {{{1
 color=6272A4
 line-color=282A36
 ring-color=BD93F9

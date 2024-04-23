@@ -12,14 +12,14 @@ font=Hack Nerd Font
 indicator-caps-lock
 # hide-keyboard-layout
 
-### swaylock-effects {{{1
-effect-blur=10x3
-# fade-in=0.1
-effect-scale=0.5
-effect-vignette=0.5:0.5
-screenshots
-clock
-indicator
+# ### swaylock-effects {{{1
+# effect-blur=10x3
+# # fade-in=0.1
+# effect-scale=0.5
+# effect-vignette=0.5:0.5
+# screenshots
+# clock
+# indicator
 
 ### Official Dracula colorscheme for swaylock {{{1
 color=6272A4

@@ -24,8 +24,10 @@ source <(cod init $$ bash)
 eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
 
 # ~~~~~~~~~~~~~~~~~~~~~ some aliases ~~~~~~~~~~~~~~~~~~~~~ #
-
 upload() {
+	curl -F"file=@$1" https://0x0.st
+}
+upload2() {
 	curl --upload-file "$1" "https://transfer.sh/$1"
 }
 cheat() {

@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 if command -v "fd" >/dev/null 2>&1; then
-	export FZF_DEFAULT_COMMAND="fd ."
-	export FZF_ALT_C_COMMAND="fd . -t d --strip-cwd-prefix"
-	export FZF_CTRL_T_COMMAND="fd . -t f --strip-cwd-prefix"
+	# global fd ignore still works
+	export FZF_DEFAULT_COMMAND="fd . --strip-cwd-prefix -HL --no-ignore-vcs"
+	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 export FZF_DEFAULT_OPTS="
 --preview='$XDG_CONFIG_HOME/sh/fzf_previewer.sh {}'

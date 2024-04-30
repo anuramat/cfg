@@ -44,6 +44,9 @@ getmd() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
 alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex"'
+sync-md() {
+	echo "$1" | entr pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex" "$1" -t pdf -o o.pdf
+}
 z() {
 	zathura "$1" &
 	disown && exit

@@ -3,6 +3,7 @@
 # Python
 __pycache__/
 venv/
+.ipynb_checkpoints/
 # clangd, maybe etc
 .cache/
 # ctags

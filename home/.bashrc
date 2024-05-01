@@ -56,7 +56,7 @@ hotmd-unwrapped() {
 	echo "$pdf_minimal" | base64 -d >"$path"
 
 	# open zathura
-	(zathura "$path") &
+	(zathura "$path" >/dev/null 2>&1) &
 	local -r zathura_pid="$!"
 
 	# start entr

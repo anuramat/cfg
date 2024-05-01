@@ -60,5 +60,6 @@ TODO:
 - clipboard persistence
 - ripgreprc check globs
 - maybe move latex templates to ~/Templates
+- move minimal pdf
 
 ### Problems

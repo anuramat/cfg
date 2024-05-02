@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'luckasRanarison/nvim-devdocs',
   event = 'VeryLazy',
   dependencies = {
@@ -6,5 +7,7 @@ return {
     'nvim-telescope/telescope.nvim',
     'nvim-treesitter/nvim-treesitter',
   },
-  opts = {},
+  opts = {
+    ensure_installed = { 'bash', 'go', 'markdown', 'latex' },
+  },
 }

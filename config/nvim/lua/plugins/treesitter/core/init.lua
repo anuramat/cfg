@@ -52,5 +52,6 @@ return {
       enable_autocmd = false, -- to integrate with numToStr/Comment.nvim
     })
     vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    vim.opt.fdm = 'expr'
   end,
 }

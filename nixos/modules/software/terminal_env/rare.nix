@@ -4,7 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    entr # file watcher - runs command on change
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
     tmux # just in case
@@ -17,7 +16,6 @@
     mprocs # job runner
     glow # markdown viewer
     libqalculate # qalc - advanced calculator
-    nb # notes etc
     age # file encryption
     croc # send/receive files through relay with encryption
     readability-cli # extracts main content from pages

@@ -33,6 +33,7 @@
     zellij # neotmux
     zoxide # better cd
     rmtrash # rm but to trash
+    entr # file watcher - runs command on change
 
     # Git
     ghq # git repository manager

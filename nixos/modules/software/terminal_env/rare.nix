@@ -39,7 +39,5 @@
     figlet # fancy banners
     banner
     cowsay
-    unstable.devenv
-    distrobox
   ];
 }

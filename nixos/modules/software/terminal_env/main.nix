@@ -1,7 +1,6 @@
 {
   pkgs,
   unstable,
-  lib,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -39,6 +38,10 @@
     ghq # git repository manager
     git-filter-repo # rewrite/analyze repository history
     gh # GitHub CLI
+
+    # Building and shit
+    unstable.devenv
+    distrobox
 
     # File managers
     # TODO choose one or don't

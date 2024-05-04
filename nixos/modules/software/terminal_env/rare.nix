@@ -39,5 +39,8 @@
     figlet # fancy banners
     banner
     cowsay
+    docker-compose
+    dive # look into docker image layers
+    # podman-compose # docker-compose is compatible with podman
   ];
 }

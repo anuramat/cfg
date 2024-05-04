@@ -20,6 +20,7 @@
     ncdu # directory disk usage (better du)
     # misc
     ctop # container top
+    podman-tui # podman container status
     nvtop # top for GPUs
     duf # disk usage (better "df")
     acpi # battery status etc

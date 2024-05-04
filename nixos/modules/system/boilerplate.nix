@@ -2,7 +2,10 @@
 # - user-specific stuff from user.nix
 {user, ...}: {
   documentation.man.generateCaches = true; # apropos
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    trusted-users = [ "root" user.username ];
+  };
   nixpkgs.config = {
     allowUnfree = true;
   };

@@ -3,7 +3,7 @@ _: {
 
   virtualisation = {
     # common container config files in /etc/containers
-    virtualisation.containers.enable = true;
+    containers.enable = true;
     podman = {
       enable = true;
       # Create a `docker` alias for podman, to use it as a drop-in replacement

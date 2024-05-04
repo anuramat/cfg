@@ -40,7 +40,7 @@
     banner
     cowsay
     docker-compose
+    podman-compose
     dive # look into docker image layers
-    # podman-compose # docker-compose is compatible with podman
   ];
 }

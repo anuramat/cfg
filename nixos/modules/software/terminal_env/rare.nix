@@ -41,5 +41,7 @@
     figlet # fancy banners
     banner
     cowsay
+    devenv
+    distrobox
   ];
 }

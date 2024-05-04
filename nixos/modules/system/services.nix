@@ -1,7 +1,8 @@
-{user, ...}: {
+_: {
   programs.seahorse.enable = true; # gnome keyring frontend
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
   services = {
     gnome.gnome-keyring.enable = true; # security credential storage, exposed over dbus
     # syncthing = {

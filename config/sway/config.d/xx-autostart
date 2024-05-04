@@ -2,12 +2,14 @@ exec_always {
     # # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py
     # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
-    pkill swayidle; swayidle -w
+    "pkill swayidle; swayidle -w"
     # network manager tray thingie
-    pkill nm-applet; nm-applet
+    "pkill nm-applet; nm-applet"
+    # blueman tray thing
+    "pkill blueman-tray; blueman-tray"
     # avizo: brightness/volume overlay notifications
-    pkill avizo-service; avizo-service
-    pkill way-displays; way-displays
+    "pkill avizo-service; avizo-service"
+    "pkill way-displays; way-displays"
 }
 
 # vim: ft=swayconfig

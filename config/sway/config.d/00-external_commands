@@ -33,6 +33,9 @@ set {
     $audio_next playerctl -p spotify next
     $audio_play playerctl -p spotify play
     $audio_stop playerctl -p spotify stop
+
+    $wlan_toggle [ "$(nmcli radio wifi)" = enabled ] && nmcli radio wifi off || nmcli radio wifi on
+    $bluetooth_toggle bluetooth toggle
 }
 
 # vim: ft=swayconfig

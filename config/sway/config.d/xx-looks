@@ -2,6 +2,7 @@ set $font Hack Nerd Font 13
 font "pango:$font"
 gaps inner 0
 gaps outer 0
+smart_borders on
 default_border pixel 3
 default_floating_border pixel 3
 set $cursor_theme Adwaita

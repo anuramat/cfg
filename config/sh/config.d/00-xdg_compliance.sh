@@ -18,6 +18,7 @@ export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss    # VLC dependency
 export MPLAYER_HOME="$XDG_CONFIG_HOME"/mplayer # I don't use this but somehow ended up with this in my $HOME anyway
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export MAMBA_ROOT_PREFIX="$XDG_DATA_HOME"/mamba
+export MAMBARC="$XDG_CONFIG_HOME/conda/condarc"
 export W3M_DIR="$XDG_DATA_HOME/w3m" # terminal web browser
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 # __pycache__ folder

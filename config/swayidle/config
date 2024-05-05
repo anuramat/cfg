@@ -1,5 +1,5 @@
 idlehint 300
 timeout 300 "swaylock -f"
 before-sleep "swaylock -f"
-resume "swaylock -f"
+after-resume "swaylock -f"
 lock "swaylock -f"

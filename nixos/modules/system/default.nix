@@ -9,5 +9,6 @@ _: {
     ./peripherals.nix
     ./printers.nix
     ./services.nix
+    ./swap.nix
   ];
 }

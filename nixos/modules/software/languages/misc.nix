@@ -8,6 +8,6 @@
     luajitPackages.luarocks
     haskellPackages.hoogle
     sageWithDoc # computer algebra system
-    mathematica
+    # mathematica # doesn't build
   ];
 }

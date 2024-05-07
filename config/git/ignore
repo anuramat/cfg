@@ -18,3 +18,5 @@ coverage.html
 node_modules/
 # LaTeX/pandoc
 *.pdf
+# jupyter-lab etc
+*.db

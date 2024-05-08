@@ -29,9 +29,10 @@ $bind {
     $mod+s layout stacking
     $mod+d layout toggle split
     $mod+f fullscreen
-    $mod+x splith
-    $mod+v splitv
-    $mod+c splitt
+    $mod+z split none
+    $mod+x split horizontal
+    $mod+v split vertical
+    $mod+c split toggle
     # Gaps
     $mod+equal gaps inner all plus 10
     $mod+minus gaps inner all minus 10

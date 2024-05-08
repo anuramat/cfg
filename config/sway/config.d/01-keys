@@ -28,7 +28,8 @@ $bind {
     $mod+a layout tabbed
     $mod+s layout stacking
     $mod+d layout toggle split
-    $mod+f fullscreen
+    $mod+f fullscreen toggle
+    $mod+$mod2+f fullscreen toggle global
     $mod+z split none
     $mod+x split horizontal
     $mod+v split vertical

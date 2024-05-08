@@ -4,4 +4,5 @@ title_align center
 focus_follows_mouse no
 # mouse gets centered on container focus
 mouse_warping container
+default_orientation auto
 # vim: ft=swayconfig

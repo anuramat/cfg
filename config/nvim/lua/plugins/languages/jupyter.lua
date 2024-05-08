@@ -1,7 +1,14 @@
 return {
-  'GCBallesteros/jupytext.nvim',
-  config = true,
-  lazy=false,
-  -- Depending on your nvim distro or config you may need to make the loading not lazy
-  -- lazy=false,
+  {
+    'GCBallesteros/jupytext.nvim',
+    opts = {},
+    lazy = false,
+  },
+  -- {
+  --   'goerz/jupytext.vim',
+  --   lazy = false,
+  --   init = function()
+  --     vim.g.jupytext_fmt = 'py'
+  --   end,
+  -- },
 }

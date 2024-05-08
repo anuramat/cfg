@@ -41,7 +41,7 @@ let g:matchparen_timeout=50
 let g:matchparen_insert_timeout=50
 " se spl=en,ru " spelling languages (russian will trigger download)
 " se path+=** " recurse in path
-se shcf=-ic " use an interactive shell for "!"
+" se shcf=-ic " use an interactive shell for "!" so that background jobs work
 "~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
 se cole=0 " conceallevel
 se nowrap

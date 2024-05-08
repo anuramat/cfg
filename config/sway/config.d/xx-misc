@@ -7,5 +7,4 @@ mouse_warping container
 default_orientation auto
 floating_maximum_size 1420 x 980
 force_display_urgency_hint 300
-popup_during_fullscreen leave_fullscreen
 # vim: ft=swayconfig

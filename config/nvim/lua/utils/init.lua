@@ -32,6 +32,20 @@ function M.contains(table, elem)
   return false
 end
 
+--- Insert an element, if it isn't already in
+--- @param tbl table
+--- @param elem any
+--- @return boolean
+function M.insert_unique(tbl, elem)
+  for _, v in pairs(tbl) do
+    if v == elem then
+      return true
+    end
+  end
+  table.insert(tbl, elem)
+  return false
+end
+
 --- Get indentation of the line under cursor.
 --- @return integer indent_level Indentation level in spaces.
 function M.get_indent()
@@ -201,6 +215,24 @@ function M.buf_get_var(buffer, key, default)
     return default
   end
   return value
+end
+
+--- Generate a random [a-zA-Z0-9] string
+function M.random_string(length)
+  local res = ''
+  for _ = 1, length do
+    local gen = math.random(10 + 2 * 26)
+    local num = 47
+    if gen > 36 then
+      num = num + 6
+    end
+    if gen > 10 then
+      num = num + 7
+    end
+    num = num + gen
+    res = res .. string.char(num)
+  end
+  return res
 end
 
 return M

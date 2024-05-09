@@ -42,14 +42,14 @@ return function()
     nlf.stylua,
     nlf.black,
     nlf.alejandra,
-    -- nlf.prettier.with({
-    --   extra_args = {
-    --     '--print-width',
-    --     tostring(vim.o.textwidth),
-    --     '--prose-wrap',
-    --     'always',
-    --   },
-    -- }),
+    nlf.prettier.with({
+      extra_args = {
+        '--print-width',
+        tostring(vim.o.textwidth),
+        '--prose-wrap',
+        'always',
+      },
+    }),
     cbfmt,
     -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
     nld.deadnix,

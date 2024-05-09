@@ -39,7 +39,7 @@ return {
       local out = {}
 
       -- id
-      if note.id == '_' then
+      if #note.id == 1 then
         out.id = note_id_func()
       else
         out.id = note.id

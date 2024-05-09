@@ -44,6 +44,7 @@ getmd() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
 alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex"'
+__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
 hotmd-unwrapped() {
 	# $1 - markdown file path
 
@@ -60,7 +61,7 @@ hotmd-unwrapped() {
 	local -r zathura_pid="$!"
 
 	# start entr
-	echo "$1" | entr -n pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex" "$1" -f markdown -t pdf -o "$path" &
+	echo "$1" | entr -n pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex" "$1" -f "$__markdown" -t pdf -o "$path" &
 	local -r entr_pid="$!"
 
 	# kill entr if zathura is closed

@@ -28,11 +28,9 @@ return {
       local path = spec.dir / tostring(title)
       return path:with_suffix('.md')
     end,
-
     image_name_func = function()
       return u.random_string(16)
     end,
-
     note_frontmatter_func = function(note)
       -- metadata = fields not in [id, tags, aliases]
 
@@ -78,7 +76,6 @@ return {
       end
       return out
     end,
-
     attachments = {
       img_folder = './img',
     },
@@ -107,5 +104,7 @@ return {
         opts = { buffer = true },
       },
     },
+    markdown_link_func = 'prepend_note_id',
+    preferred_link_style = 'wiki',
   },
 }

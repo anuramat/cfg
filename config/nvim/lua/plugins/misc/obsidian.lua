@@ -12,7 +12,6 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   opts = {
-
     note_id_func = function()
       return u.random_string(16)
     end,

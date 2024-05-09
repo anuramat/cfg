@@ -1,5 +1,5 @@
 return {
-  enabled = false,
+  -- enabled = false,
   'luckasRanarison/nvim-devdocs',
   event = 'VeryLazy',
   dependencies = {

@@ -30,7 +30,7 @@ return {
     end,
 
     image_name_func = function()
-      return string.format('%s-%s', u.random_string(16))
+      return u.random_string(16)
     end,
 
     note_frontmatter_func = function(note)

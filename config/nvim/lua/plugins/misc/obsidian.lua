@@ -1,6 +1,6 @@
 local u = require('utils')
 
-note_id_func = function()
+local note_id_func = function()
   return u.random_string(16)
 end
 
@@ -52,12 +52,6 @@ return {
 
       -- aliases
       local aliases = {}
-      if note.path and note.path.filename then
-        -- filename without the .md suffix
-        local filename = note.path.filename:match('([^/]+)$')
-        local name_no_ext, _ = string.gsub(filename, '.md$', '')
-        u.insert_unique(aliases, name_no_ext)
-      end
       if note.metadata and note.metadata.title then
         -- `title` prop in the frontmatter (for manual control)
         u.insert_unique(aliases, note.metadata.title)
@@ -65,6 +59,13 @@ return {
         if note.title then
           -- first "# Heading"
           u.insert_unique(aliases, note.title)
+        else
+          if note.path and note.path.filename then
+            -- filename without the .md suffix
+            local filename = note.path.filename:match('([^/]+)$')
+            local name_no_ext, _ = string.gsub(filename, '.md$', '')
+            u.insert_unique(aliases, name_no_ext)
+          end
         end
       end
       out.aliases = aliases

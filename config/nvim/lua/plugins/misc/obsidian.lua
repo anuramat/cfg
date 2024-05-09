@@ -1,5 +1,9 @@
 local u = require('utils')
 
+note_id_func = function()
+  return u.random_string(16)
+end
+
 return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
@@ -12,10 +16,7 @@ return {
     'nvim-treesitter/nvim-treesitter',
   },
   opts = {
-    note_id_func = function()
-      return u.random_string(16)
-    end,
-
+    note_id_func = note_id_func,
     note_path_func = function(spec)
       local title = ''
       if spec.title ~= nil then
@@ -34,14 +35,22 @@ return {
 
     note_frontmatter_func = function(note)
       -- metadata = fields not in [id, tags, aliases]
-      local out = {
-        id = note.id,
-      }
 
+      local out = {}
+
+      -- id
+      if note.id == '_' then
+        out.id = note_id_func()
+      else
+        out.id = note.id
+      end
+
+      -- tags
       if not vim.tbl_isempty(note.tags) then
         out.tags = note.tags
       end
 
+      -- aliases
       local aliases = {}
       if note.path and note.path.filename then
         -- filename without the .md suffix

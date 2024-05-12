@@ -54,12 +54,10 @@ TODO:
 - themes: gtk,qt; cursors; icons
 - check if all neovim stuff is used
 - move nix packages around
-- clear sway.nix
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
 - clipboard persistence
 - ripgreprc check globs
 - maybe move latex templates to ~/Templates
-- move minimal pdf
 
 ### Problems

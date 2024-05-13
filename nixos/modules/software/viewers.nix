@@ -14,5 +14,6 @@
     okular
     zathura # keyboard-centric
     djview # djvu reader
+    xournalpp # pdf markup, handwritten notes
   ];
 }

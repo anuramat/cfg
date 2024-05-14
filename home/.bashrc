@@ -77,6 +77,6 @@ hotmd() {
 	disown
 }
 z() {
-	zathura "$1" &
+	zathura "$1" &>/dev/null &
 	disown && exit
 }

@@ -27,7 +27,7 @@
       };
       modules = [
         ./configuration.nix
-        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+        # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
         (_: {
           environment.systemPackages = [
             inputs.nix-alien.packages.${user.system}.nix-alien

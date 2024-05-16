@@ -3,14 +3,10 @@ input * {
     repeat_rate 50
     xkb_layout us,ru
     xkb_options "grp:alt_space_toggle"
+    natural_scroll enabled
 }
-input 1:1:AT_Translated_Set_2_keyboard {
+# ll7
+input 1165:51607:ITE_Tech._Inc._ITE_Device(8258)_Keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
-}
-input 2:10:TPPS/2_IBM_TrackPoint {
-    pointer_accel 1
-}
-input 1739:0:Synaptics_TM3276-022 {
-    events disabled
 }
 # vim: ft=swayconfig

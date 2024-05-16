@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # Random system stuff
-    usbutils # just in case
+    usbutils
+    pciutils
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
     xdg-user-dirs # $HOME/* dir management

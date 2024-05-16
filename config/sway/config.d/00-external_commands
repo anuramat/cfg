@@ -34,7 +34,7 @@ set {
     $audio_play playerctl -p spotify play
     $audio_stop playerctl -p spotify stop
 
-    $wlan_toggle [ "$(nmcli radio wifi)" = enabled ] && nmcli radio wifi off || nmcli radio wifi on
+    $wlan_toggle wifi toggle
     $bluetooth_toggle bluetooth toggle
 }
 

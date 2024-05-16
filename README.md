@@ -4,23 +4,36 @@
 >
 > this will overwrite your stuff
 
+## Fresh install
+
+```bash
+nix-shell -p gnumake git
+git clone git@github.com:anuramat/cfg
+cd cfg
+make install
+make # will complain because of the wrong hostname
+cd /etc/nixos
+sudo nixos-rebuild switch --flake .#hostname
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+```
+
 ## Structure
 
 - `./config/*` - symlinked to `$XDG_CONFIG_HOME`
 - `./home/*` - symlinked to `$HOME`
-- `./nixos` - rsynced to `/etc/nixos`
+- `./nixos` - rsynced to `/etc/nixos` on `make`
 - `./lib` - `make` scripts
 
 ## XDG base dir spec
 
 non-compliant parts:
 
-- alacritty imports
-- foot imports
+- alacritty imports (https://github.com/alacritty/alacritty/pull/7690)
+- foot imports (https://codeberg.org/dnkl/foot/issues/1713)
 - nix
   - service.nix - syncthing paths
 
-## Themes
+## Colorschemes
 
 ### Terminal
 
@@ -43,21 +56,20 @@ non-compliant parts:
 - waybar
 - zathura
 
-TODO:
+### TODO
 
 - gtk2
 - gtk3
 - gtk4
+- qt (verify colors, uniform theme)
 
-### TODO
+## TODO
 
-- themes: gtk,qt; cursors; icons
-- check if all neovim stuff is used
+- icons
+- cursors
 - move nix packages around
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
 - clipboard persistence
 - ripgreprc check globs
 - maybe move latex templates to ~/Templates
-
-### Problems

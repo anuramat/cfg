@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   services.logind.extraConfig = ''
     HandlePowerKey=hybrid-sleep
     HandlePowerKeyLongPress=ignore
@@ -13,4 +13,7 @@ _: {
     tlp.enable = true; # voltage, wifi/bluetooth cli switches
     upower.enable = true; # suspend on low battery
   };
+  environment.systemPackages = with pkgs; [
+    lenovo-legion
+  ];
 }

@@ -10,7 +10,7 @@ font=Hack Nerd Font
 
 ### Misc hints {{{1
 indicator-caps-lock
-# hide-keyboard-layout
+hide-keyboard-layout
 
 # ### swaylock-effects {{{1
 # effect-blur=10x3

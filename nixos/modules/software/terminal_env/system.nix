@@ -3,6 +3,7 @@
     # Random system stuff
     usbutils
     pciutils
+    hwinfo
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
     xdg-user-dirs # $HOME/* dir management

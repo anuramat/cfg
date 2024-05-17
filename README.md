@@ -10,10 +10,10 @@
 nix-shell -p gnumake git
 git clone git@github.com:anuramat/cfg
 cd cfg
-make install
 make # will complain because of the wrong hostname
 cd /etc/nixos
 sudo nixos-rebuild switch --flake .#hostname
+make install
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 ```
 

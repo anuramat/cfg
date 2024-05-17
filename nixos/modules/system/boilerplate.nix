@@ -4,7 +4,7 @@
   documentation.man.generateCaches = true; # apropos
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    trusted-users = [ "root" user.username ];
+    trusted-users = ["root" user.username];
   };
   nixpkgs.config = {
     allowUnfree = true;
@@ -25,7 +25,7 @@
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
       "input" # le unsecure, used by waybar-keyboard-state for caps/scroll/num lock state
-      # also way-displays uses input group
+      # also way-displays uses input group to get lid state
       "dialout" # serial ports
       "networkmanager"
       "scanner"

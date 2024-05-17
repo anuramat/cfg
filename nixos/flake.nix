@@ -27,13 +27,15 @@
       };
       modules = [
         ./configuration.nix
-        # inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+
+        # hardware tweaks
         inputs.nixos-hardware.nixosModules.common-cpu-intel
         inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-        # inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
         inputs.nixos-hardware.nixosModules.common-pc-laptop
         inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
         inputs.nixos-hardware.nixosModules.common-hidpi
+
+        # TODO is this even useful
         (_: {
           environment.systemPackages = [
             inputs.nix-alien.packages.${user.system}.nix-alien

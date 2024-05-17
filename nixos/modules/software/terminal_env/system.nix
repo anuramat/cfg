@@ -24,6 +24,7 @@
     ctop # container top
     podman-tui # podman container status
     nvtop # top for GPUs
+    nvitop # nvidia top
     duf # disk usage (better "df")
     acpi # battery status etc
 

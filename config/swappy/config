@@ -1,5 +1,5 @@
 [Default]
-save_dir=$HOME/screenshots
+save_dir=$SCREENSHOT_DIR
 save_filename_format=swappy-%Y-%m-%d_%Hh%Mm%Ss.png
 show_panel=true
 line_size=5

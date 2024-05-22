@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-shopt -s globstar autocd
+shopt -s globstar
 # globstar - Enables ** for recursing into subdirectories
-# autocd   - `cd path` -> `path`
 
 # number of commands stored in memory
 export HISTSIZE=-1

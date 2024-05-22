@@ -29,4 +29,7 @@
     };
     nvidiaSettings = true;
   };
+
+  # doesn't support ll7g9, keep just in case
+  services.hardware.openrgb.enable = true;
 }

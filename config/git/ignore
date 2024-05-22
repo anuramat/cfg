@@ -20,3 +20,5 @@ node_modules/
 *.pdf
 # jupyter-lab etc
 *.db
+# devenv
+.devenv*

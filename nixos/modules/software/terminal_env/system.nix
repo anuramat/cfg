@@ -4,6 +4,7 @@
     usbutils
     pciutils
     hwinfo
+    v4l-utils
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
     xdg-user-dirs # $HOME/* dir management

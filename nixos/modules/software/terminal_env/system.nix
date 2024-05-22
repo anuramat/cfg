@@ -17,6 +17,7 @@
     htop # 5.8k
     gotop # 2.6k
     atop # 0.757k
+    iotop
     nmon
     # better du
     du-dust # directory disk usage (better du)

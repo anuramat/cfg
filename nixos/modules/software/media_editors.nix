@@ -20,5 +20,7 @@
     easyocr # neural OCR
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools
+    xournalpp # pdf markup, handwritten notes
+    xfig # vector graphics, old as FUCK
   ];
 }

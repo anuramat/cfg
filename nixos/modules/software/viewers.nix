@@ -11,9 +11,8 @@
     vlc # GUI video player
 
     # Documents
-    okular
+    okular # regular gui app
     zathura # keyboard-centric
     djview # djvu reader
-    xournalpp # pdf markup, handwritten notes
   ];
 }

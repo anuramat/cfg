@@ -75,7 +75,7 @@ $bind {
     --locked XF86AudioPrev         exec $audio_prev
     --locked XF86AudioNext         exec $audio_next
     --locked XF86AudioStop         exec $audio_stop
-    --locked XF86AudioPlay         exec $audio_play
+    --locked XF86AudioPlay         exec $audio_play_pause
     --locked XF86Wlan              exec $wlan_toggle
     --locked XF86Bluetooth         exec $bluetooth_toggle
 }

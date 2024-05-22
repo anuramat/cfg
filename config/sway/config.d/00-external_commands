@@ -31,7 +31,7 @@ set {
 
     $audio_prev playerctl -p spotify previous
     $audio_next playerctl -p spotify next
-    $audio_play playerctl -p spotify play
+    $audio_play_pause playerctl -p spotify play-pause
     $audio_stop playerctl -p spotify stop
 
     $wlan_toggle wifi toggle

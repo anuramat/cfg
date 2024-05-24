@@ -10,7 +10,7 @@ return {
   opts = {
     highlight = {
       enable = true,
-      disable = { 'latex', 'tex' }, -- conflicts with vimtex
+      disable = {}, -- conflicts with vimtex
     },
     indent = { enable = true }, -- noexpandtab is broken with python
     ensure_installed = 'all',

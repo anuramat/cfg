@@ -16,6 +16,7 @@
     mprocs # job runner
     glow # markdown viewer
     libqalculate # qalc - advanced calculator
+    treesitter # needed to generate some grammars
     age # file encryption
     croc # send/receive files through relay with encryption
     readability-cli # extracts main content from pages

@@ -35,7 +35,7 @@ se backupdir-=. " don't write backups to CWD
 se virtualedit=block " move beyond line end in v-block mode
 pa cfilter
 se nrformats=bin,hex,unsigned " ^a/^x number formats
-let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh', 'json5=json']
+let g:markdown_fenced_languages = ['python', 'lua', 'vim', 'haskell', 'bash', 'sh', 'json5=json', 'tex']
 se synmaxcol=300
 let g:matchparen_timeout=50
 let g:matchparen_insert_timeout=50

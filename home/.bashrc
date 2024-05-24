@@ -60,7 +60,7 @@ hotmd-unwrapped() {
 	local -r zathura_pid="$!"
 
 	# start entr
-	echo "$1" | entr -n pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex" "$1" -f "$__markdown" -t pdf -o "$path" &
+	echo "$1" | entr -n pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" -f "$__markdown" -t pdf -o "$path" &
 	local -r entr_pid="$!"
 
 	# kill entr if zathura is closed

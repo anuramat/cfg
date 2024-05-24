@@ -17,10 +17,6 @@ grid = {
     { icon = '󰈔 ', name = 'File', command = 'enew' },
     { icon = '󰅚 ', name = 'Quit', command = 'q' },
   },
-  {
-    { icon = '󰷉 ', name = 'Note', command = 'ObsidianNew' },
-    { icon = '󰃶 ', name = 'Tday', command = 'ObsidianToday' },
-  },
 }
 
 local function map_grid()

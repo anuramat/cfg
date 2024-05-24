@@ -42,7 +42,7 @@ alias ....="cd ../../.."
 getmd() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
-alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/packages.tex"'
+alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex"'
 __markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
 hotmd-unwrapped() {
 	# $1 - markdown file path

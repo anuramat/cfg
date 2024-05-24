@@ -127,8 +127,13 @@ local all_events = {
 --- Prints triggered events for debug purposes
 --- Usage:
 --- ```lua
---- M.debug_events({ 'BufReadPre', 'BufNewFile' })
+--- M.follow_events({ 'BufReadPre', 'BufNewFile' })
 --- ```
+--- for specific events or
+--- ```lua
+--- M.follow_events()
+--- ```
+--- for all events
 --- @param events? table List of events to subscribe to
 local function follow_events(events)
   local g = vim.api.nvim_create_augroup('event_debugger', { clear = true })
@@ -147,4 +152,4 @@ local function follow_events(events)
   end
 end
 
-follow_events({})
+-- follow_events({ 'BufNewFile' })

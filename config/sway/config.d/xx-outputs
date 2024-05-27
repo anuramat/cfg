@@ -4,11 +4,13 @@ set {
     $internal eDP-1
     $external DP-1 DP-2
 }
+
 # # XXX Sometimes the screen doesn't turn on
 # # Should be fixed already in the newer versions
 # # https://github.com/swaywm/sway/issues/7228
 # bindswitch --reload --locked lid:on output $internal disable
 # bindswitch --reload --locked lid:off output $internal enable
+
 workspace {
     1 output $internal $external
     2 output $internal $external

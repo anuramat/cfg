@@ -15,19 +15,22 @@
     ];
   };
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = true;
-    prime = {
-      intelBusId = "PCI:00:02:0";
-      nvidiaBusId = "PCI:01:00:0";
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
+  hardware = {
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
+      prime = {
+        intelBusId = "PCI:00:02:0";
+        nvidiaBusId = "PCI:01:00:0";
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
       };
+      nvidiaSettings = true;
     };
-    nvidiaSettings = true;
+    opengl.enable = true; # https://nixos.wiki/wiki/CUDA says so
   };
 
   # doesn't support ll7g9, keep just in case

@@ -3,7 +3,16 @@ input * {
     repeat_rate 50
     xkb_layout us,ru
     xkb_options "grp:alt_space_toggle"
+}
+input 1267:12928:ELAN06FA:00_04F3:3280_Touchpad {
+    dwt enabled
+    click_method clickfinger
     natural_scroll enabled
+    # pointer_accel -0.05
+    
+    tap disabled
+    drag enabled # tap-drag
+    drag_lock enabled # grace period for tap-drag
 }
 # ll7
 input 1165:51607:ITE_Tech._Inc._ITE_Device(8258)_Keyboard {

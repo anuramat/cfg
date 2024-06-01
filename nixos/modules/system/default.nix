@@ -7,6 +7,7 @@ _: {
     ./laptop.nix
     ./multimedia.nix
     ./networking.nix
+    ./passthrough.nix
     ./peripherals.nix
     ./printers.nix
     ./services.nix

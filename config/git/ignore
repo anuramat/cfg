@@ -16,8 +16,6 @@ coverage.html
 .testCoverage.txt
 # Node
 node_modules/
-# LaTeX/pandoc
-*.pdf
 # jupyter-lab etc
 *.db
 # devenv

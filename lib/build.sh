@@ -11,7 +11,7 @@ tofi_drun_cache="$XDG_CACHE_HOME/tofi-drun"
 [ -f "${hardware_config}" ]
 
 # delete everything but the hardware configuration
-sudo find "${sys_nixos}" ! -wholename "${sys_nixos}" ! -wholename "${sys_nixos}/hardware-configuration.nix" -wholename "${sys_nixos}/flake.lock" -delete
+sudo find "${sys_nixos}" ! -wholename "${sys_nixos}" ! -wholename "${sys_nixos}/hardware-configuration.nix" ! -wholename "${sys_nixos}/flake.lock" -delete
 
 # copy the config (merges directories, overwrites files)
 sudo rsync -r --chown=root:root "${local_nixos}/" "${sys_nixos}"

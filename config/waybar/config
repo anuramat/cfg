@@ -1,6 +1,6 @@
 [
   {
-    "margin": 10,
+    "margin": 0,
     "ipc": true,
     "position": "bottom",
     "spacing": 5,

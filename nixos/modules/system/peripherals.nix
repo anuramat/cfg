@@ -14,5 +14,4 @@ _: {
     enable = true;
     mountOnMedia = true;
   };
-  programs.gnome-disks.enable = true;
 }

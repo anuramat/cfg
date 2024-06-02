@@ -10,6 +10,7 @@ exec_always {
     # avizo: brightness/volume overlay notifications
     "pkill avizo-service; avizo-service"
     "pkill way-displays; way-displays"
+    "pkill udiskie; udiskie -ta"
 }
 
 # vim: ft=swayconfig

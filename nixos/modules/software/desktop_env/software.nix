@@ -77,6 +77,6 @@
     spotify
     steam # games
     transmission-gtk # transmission torrent client gui
-    unstable.obsidian # markdown personal knowledge database
+    udiskie # userspace frontend for udisk2
   ];
 }

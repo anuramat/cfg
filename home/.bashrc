@@ -19,7 +19,7 @@ if command -v fzf-share >/dev/null; then
 fi
 # next two lines append commands to $PROMPT_COMMAND
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
-source <(cod init $$ bash)
+# source <(cod init $$ bash) # really annoying
 eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
 
 # ~~~~~~~~~~~~~~~~~~~~~ some aliases ~~~~~~~~~~~~~~~~~~~~~ #

@@ -43,6 +43,6 @@
     docker-compose
     podman-compose
     dive # look into docker image layers
-    dbeaver # databases
+    dbeaver-bin # databases
   ];
 }

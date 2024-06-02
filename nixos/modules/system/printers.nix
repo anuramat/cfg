@@ -18,7 +18,7 @@ _: {
     # which is responsible for network printers autodiscovery
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       openFirewall = true; # Open udp 5353 for network devices discovery
     };
   };

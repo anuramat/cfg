@@ -5,5 +5,5 @@ ORDER:
   - "!^eDP-1"
 SCALE:
   - NAME_DESC: "eDP-1"
-    SCALE: 2
+    SCALE: 1.75
 LAPTOP_DISPLAY_PREFIX: "eDP-1"

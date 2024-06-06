@@ -75,7 +75,9 @@ hotmd() {
 	hotmd-unwrapped "$1" &
 	disown
 }
-z() {
+Z() {
 	zathura "$1" &>/dev/null &
-	disown && exit
+	disown
+}
+z() { Z "$1" && exit
 }

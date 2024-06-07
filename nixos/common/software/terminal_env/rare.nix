@@ -4,6 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    nix-alien
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
     tmux # just in case

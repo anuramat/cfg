@@ -18,30 +18,31 @@
     };
     overlays = with inputs; [
       neovim-nightly-overlay.overlay
+      nix-alien.overlays.default
     ];
   in {
-    nixosConfigurations.${user.hostname} = nixpkgs.lib.nixosSystem {
-      inherit (user) system;
-      specialArgs = {
-        inherit unstable user;
-      };
-      modules = [
-        ./configuration.nix
-        inputs.nixos-hardware.nixosModules.common-cpu-intel
-        inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-        inputs.nixos-hardware.nixosModules.common-pc-laptop
-        inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-        inputs.nixos-hardware.nixosModules.common-hidpi
+    nixosConfigurations = {
+      anuramat-ll7 = nixpkgs.lib.nixosSystem {
+        inherit (user) system;
+        specialArgs = {
+          inherit unstable user;
+        };
+        modules = [
+          ./configuration.nix
+          ./machines/anuramat-ll7.nix
 
-        # TODO is this even useful
-        (_: {
-          boot.initrd.luks.devices."luks-a5b4aba2-047f-4828-bce3-fd9907ad99c0".device = "/dev/disk/by-uuid/a5b4aba2-047f-4828-bce3-fd9907ad99c0";
-          environment.systemPackages = [
-            inputs.nix-alien.packages.${user.system}.nix-alien
-          ];
-          nixpkgs.overlays = overlays;
-        })
-      ];
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          # inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
+          inputs.nixos-hardware.nixosModules.common-pc-laptop
+          inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+          inputs.nixos-hardware.nixosModules.common-hidpi
+
+          (_: {
+            nixpkgs.overlays = overlays;
+          })
+        ];
+      };
     };
   };
 }

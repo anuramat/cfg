@@ -11,10 +11,17 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
   outputs = {nixpkgs, ...} @ inputs: let
-    user = import ./user.nix;
-    unstable = import inputs.nixpkgs-unstable {
+    user = {
+      username = "anuramat";
+      fullname = "Arsen Nuramatov";
+      hostname = "anuramat-ll7";
+      timezone = "Etc/GMT-2"; # inverted offset (posix momento)
+      stateVersion = "24.05"; # WARNING DO NOT EDIT
+      defaultLocale = "en_US.UTF-8";
+    };
+    unstable_x86_64 = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
-      inherit (user) system;
+      system = "x86_64-linux";
     };
     overlays = with inputs; [
       neovim-nightly-overlay.overlay
@@ -23,9 +30,9 @@
   in {
     nixosConfigurations = {
       anuramat-ll7 = nixpkgs.lib.nixosSystem {
-        inherit (user) system;
         specialArgs = {
-          inherit unstable user;
+          inherit user;
+          unstable = unstable_x86_64;
         };
         modules = [
           ./configuration.nix
@@ -42,6 +49,7 @@
             nixpkgs.overlays = overlays;
           })
         ];
+        boot.initrd.luks.devices."luks-a5b4aba2-047f-4828-bce3-fd9907ad99c0".device = "/dev/disk/by-uuid/a5b4aba2-047f-4828-bce3-fd9907ad99c0";
       };
     };
   };

@@ -30,7 +30,7 @@
       };
       nvidiaSettings = true;
     };
-    opengl.enable = true; # https://nixos.wiki/wiki/CUDA says so
+    opengl.enable = true; # just in case, should be enabled by sway module
   };
 
   # doesn't support ll7g9, keep just in case

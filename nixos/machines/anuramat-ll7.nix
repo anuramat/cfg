@@ -3,8 +3,6 @@
   config,
   ...
 }: {
-  system = "x86_64-linux";
-
   environment.systemPackages = with pkgs; [
     lenovo-legion
   ];

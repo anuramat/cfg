@@ -19,9 +19,8 @@
       stateVersion = "24.05"; # WARNING DO NOT EDIT
       defaultLocale = "en_US.UTF-8";
     };
-    unstable_x86_64 = import inputs.nixpkgs-unstable {
+    unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
-      system = "x86_64-linux";
     };
     overlays = with inputs; [
       neovim-nightly-overlay.overlay
@@ -31,8 +30,7 @@
     nixosConfigurations = {
       anuramat-ll7 = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit user;
-          unstable = unstable_x86_64;
+          inherit user unstable;
         };
         modules = [
           ./configuration.nix
@@ -48,9 +46,9 @@
 
           (_: {
             nixpkgs.overlays = overlays;
+            boot.initrd.luks.devices."luks-a5b4aba2-047f-4828-bce3-fd9907ad99c0".device = "/dev/disk/by-uuid/a5b4aba2-047f-4828-bce3-fd9907ad99c0";
           })
         ];
-        boot.initrd.luks.devices."luks-a5b4aba2-047f-4828-bce3-fd9907ad99c0".device = "/dev/disk/by-uuid/a5b4aba2-047f-4828-bce3-fd9907ad99c0";
       };
     };
   };

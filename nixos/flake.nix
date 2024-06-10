@@ -21,6 +21,7 @@
     };
     unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
+      system = "x86_64-linux";
     };
     overlays = with inputs; [
       neovim-nightly-overlay.overlay

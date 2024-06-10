@@ -2,15 +2,15 @@
 c = c  # type: ignore
 config = config  # type: ignore
 
-# import dracula.draw
+import dracula.draw
 
-# dracula.draw.blood(c, {"spacing": {"vertical": 6, "horizontal": 8}})
+dracula.draw.blood(c, {"spacing": {"vertical": 6, "horizontal": 8}})
 
 config.load_autoconfig(False)
 
 # editor for config-edit
-c.editor.command = ["foot", "nvim", "{}"]
-# c.editor.command = ["alacritty", "-e", "nvim", "{}"]
+# c.editor.command = ["foot", "nvim", "{}"]
+c.editor.command = ["alacritty", "-e", "nvim", "{}"]
 
 c.search.ignore_case = "smart"
 c.search.incremental = True

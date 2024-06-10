@@ -10,5 +10,5 @@ MODE:
   - NAME_DESC: "eDP-1"
     WIDTH: 3200
     HEIGHT: 2000
-    # HZ: 60
+    HZ: 60
 LAPTOP_DISPLAY_PREFIX: "eDP-1"

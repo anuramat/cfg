@@ -46,3 +46,5 @@ c.colors.webpage.preferred_color_scheme = "dark"  # css darkmode
 c.colors.webpage.darkmode.enabled = False  # forced darkmode
 
 c.tabs.position = "left"
+
+c.qt.highdpi = True

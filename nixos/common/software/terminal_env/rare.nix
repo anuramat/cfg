@@ -5,6 +5,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     nix-alien
+    libva-utils # vainfo - info on va-api
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
     tmux # just in case

@@ -8,7 +8,7 @@ dracula.draw.blood(c, {"spacing": {"vertical": 6, "horizontal": 8}})
 
 config.load_autoconfig(False)
 
-# editor for config-edit
+# editor for config-edit and c-e
 # c.editor.command = ["foot", "nvim", "{}"]
 c.editor.command = ["alacritty", "-e", "nvim", "{}"]
 
@@ -42,5 +42,7 @@ c.content.blocking.adblock.lists = [
 c.url.start_pages = ["qute://help/index.html"]
 c.url.default_page = "qute://help/index.html"
 
-c.colors.webpage.darkmode.enabled = False
-c.colors.webpage.preferred_color_scheme = "dark"
+c.colors.webpage.preferred_color_scheme = "dark"  # css darkmode
+c.colors.webpage.darkmode.enabled = False  # forced darkmode
+
+c.tabs.position = "left"

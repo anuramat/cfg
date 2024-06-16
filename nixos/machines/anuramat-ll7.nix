@@ -32,11 +32,11 @@
 
   hardware = {
     nvidia = {
-      modesetting.enable = true; # I *think* this is required for wayland
+      modesetting.enable = true; # wiki says this is required
       # these two are experimental
       powerManagement = {
-        enable = true;
-        finegrained = true;
+        enable = true; # saves entire vram to /tmp/ instead of the bare minimum
+        finegrained = true; # turns off gpu when not in use
       };
       prime = {
         intelBusId = "PCI:00:02:0";

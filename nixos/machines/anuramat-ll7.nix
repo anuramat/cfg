@@ -8,15 +8,10 @@
   ];
 
   boot = {
-    # initrd.kernelModules = ["nvidia"];
     extraModulePackages = [
       config.boot.kernelPackages.lenovo-legion-module
-      # config.boot.kernelPackages.nvidia_x11
     ];
   };
-
-  # from hidpi nixos-hardware module
-  # console.earlySetup = true;
 
   services = {
     # ssd

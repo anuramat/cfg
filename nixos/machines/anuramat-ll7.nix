@@ -49,10 +49,11 @@
       };
       nvidiaSettings = true;
     };
-    opengl.extraPackages = with pkgs; [
-      vaapiVdpau # no fucking idea what this does
-    ];
+    opengl = {
+      extraPackages = with pkgs; [
+        vaapiVdpau # no fucking idea what this does
+      ];
+      enable = true; # just in case, should be enabled by sway module, TODO move
+    };
   };
-
-  opengl.enable = true; # just in case, should be enabled by sway module, TODO move
 }

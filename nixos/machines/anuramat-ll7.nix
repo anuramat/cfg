@@ -25,6 +25,13 @@
     };
   };
 
+  services.tlp.settings = {
+    # turn on battery charge threshold
+    # `tlp fullcharge` to charge to 100% once
+    START_CHARGE_THRESH_BAT0 = 0; # dummy value
+    STOP_CHARGE_THRESH_BAT0 = 1;
+  };
+
   hardware = {
     nvidia = {
       modesetting.enable = true; # wiki says this is required

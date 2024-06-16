@@ -4,12 +4,6 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelParams = ["quiet" "udev.log_level=3"];
-    # # boot splashscreen
-    # # doesn't work with full disk encryption :(
-    # plymouth = {
-    #   enable = true;
-    #   theme = "breeze"; # package is overridden to use a nixos logo
-    # };
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

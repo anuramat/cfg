@@ -1,5 +1,3 @@
-# - sane defaults
-# - user-specific stuff from user.nix
 {user, ...}: {
   documentation.man.generateCaches = true; # apropos
   hardware.enableAllFirmware = true; # regardless of license
@@ -34,8 +32,7 @@
       "audio" # just in case (?)
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
-      "input" # le unsecure, used by waybar-keyboard-state for caps/scroll/num lock state
-      # also way-displays uses input group to get lid state
+      "input" # le unsecure (?), used by way-displays to get lid state
       "dialout" # serial ports
       "networkmanager"
       "scanner"

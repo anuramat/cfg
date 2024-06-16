@@ -4,6 +4,9 @@ input * {
     xkb_layout us,ru
     xkb_options "grp:alt_space_toggle"
 }
+input 5426:98:Razer_Razer_Atheris_-_Mobile_Gaming_Mouse_Keyboard {
+    accel_profile flat
+}
 input 1267:12928:ELAN06FA:00_04F3:3280_Touchpad {
     dwt enabled
     click_method clickfinger

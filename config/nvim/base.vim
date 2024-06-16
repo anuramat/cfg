@@ -82,6 +82,9 @@ com! -bang Q q<bang>
 com! -bang W w<bang>
 com! -bang WQ wq<bang>
 com! -bang Wq wq<bang>
+com! -bang Wqa wqa<bang>
+com! -bang WQa wqa<bang>
+com! -bang WQA wqa<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
  

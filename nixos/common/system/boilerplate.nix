@@ -2,6 +2,7 @@
 # - user-specific stuff from user.nix
 {user, ...}: {
   documentation.man.generateCaches = true; # apropos
+  hardware.enableAllFirmware = true; # regardless of license
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     substituters = [

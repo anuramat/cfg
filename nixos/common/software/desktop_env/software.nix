@@ -78,7 +78,6 @@
         obs-backgroundremoval
       ];
     })
-    obs-cmd # cli controls (sway hotkeys) for obs-studio
     qalculate-gtk # qalc calculator gui
     spotify
     steam # games

@@ -6,9 +6,9 @@ let
     types));
 
   # browser = "google-chrome.desktop";
-  browser = "org.qutebrowser.qutebrowser.desktop";
+  # browser = "org.qutebrowser.qutebrowser.desktop";
   # browser = "firefox.desktop";
-  # browser = "vivaldi-stable.desktop";
+  browser = "vivaldi-stable.desktop";
   fileManager = "nnn.desktop";
   documentViewer = "org.pwmt.zathura.desktop";
   textEditor = "nvim.desktop";

@@ -9,7 +9,8 @@ exec_always {
     "pkill blueman-tray; blueman-tray"
     # avizo: brightness/volume overlay notifications
     "pkill avizo-service; avizo-service"
-    "pkill way-displays; way-displays"
+    way-displays
+    # way-displays doesn't need to be killed, breaks shit otherwise
     "pkill udiskie; udiskie -ta"
 }
 

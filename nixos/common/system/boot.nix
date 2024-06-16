@@ -16,6 +16,7 @@
     };
     kernelModules = ["v4l2loopback"]; # virtual webcam
     # TODO ?? no fucking idea what this one does, probably doesn't work without it
+    # TODO the obs guide has something slightly different?? https://nixos.wiki/wiki/OBS_Studio
     extraModulePackages = with config.boot.kernelPackages; [v4l2loopback.out];
     extraModprobeConfig = ''
       # exclusive_caps: compatibility thing

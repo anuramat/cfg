@@ -14,6 +14,9 @@ set {
 }
 floating_modifier $mod normal
 $bind {
+    KP_End exec obs-cmd scene pause main
+    KP_Insert exec obs-cmd scene pause pause
+
     $mod+semicolon exec $term_start
     $mod+apostrophe exec $term_run nvim
 

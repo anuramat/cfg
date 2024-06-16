@@ -54,6 +54,8 @@
         vaapiVdpau # no fucking idea what this does
       ];
       enable = true; # just in case, should be enabled by sway module, TODO move
+      driSupport = true; # on by default but whatever
+      driSupport32Bit = true; # might be required for wine? might break on nouveau
     };
   };
 }

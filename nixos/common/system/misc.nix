@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   # removable media stuff
   services.udisks2 = {
     enable = true;
@@ -26,4 +26,15 @@ _: {
   services.gnome.gnome-keyring.enable = true;
   # gnome keyring frontend
   programs.seahorse.enable = true;
+
+  # virtual webcam
+  kernelModules = ["v4l2loopback"];
+  # TODO ?? no fucking idea what this one does, probably doesn't work without it
+  # TODO the obs guide has something slightly different?? https://nixos.wiki/wiki/OBS_Studio
+  extraModulePackages = with config.boot.kernelPackages; [v4l2loopback.out];
+  extraModprobeConfig = ''
+    # exclusive_caps: compatibility thing
+    # https://github.com/umlaeute/v4l2loopback
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+  '';
 }

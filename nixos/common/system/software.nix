@@ -35,9 +35,8 @@
     # Big chunks
     waybar # status bar
     mako # notifications
-    swaylock
-    # swaylock-effects # lockscreen, swaylock fork
-    swayidle # idle events
+    swaylock # lockscreen
+    swayidle # lock/sleep on idle
 
     # Debug stuff
     wev # wayland event viewer, useful for debugging

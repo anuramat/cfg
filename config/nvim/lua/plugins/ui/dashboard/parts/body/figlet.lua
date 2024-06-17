@@ -13,7 +13,7 @@ local function figlet(text, font)
     font = u.trim(font_res.stdout)
   end
   vim.g.figlet_font = font
-  local figlet_res = vim.system({ 'figlet', '-f', font, text }, { text = true }):wait()
+  local figlet_res = vim.system({ 'figlet', '-w', '999', '-f', font, text }, { text = true }):wait()
   return figlet_res.stdout
 end
 

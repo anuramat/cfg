@@ -23,13 +23,22 @@
     libwebp # tools for WebP image format
     exiftool # read/write EXIF metadata
     mypaint # not-ms-paint
+    nomacs # image viewer
+    # TODO find the best??
+    imv # terminal image viewer
+    swayimg # terminal image viewer
     # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    vlc # video player
+    mpv # minimalistic video player
     # davinci-resolve # video editor etc
     handbrake # ghb - GUI for video converting
     ffmpeg # CLI multimedia processing
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
-    # ~~~~~~~~~~~~~~~~~~~~~~ text {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    okular # reader
+    djview # djvu reader
+    zathura # keyboard-centric aio reader
     easyocr # neural OCR
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools

@@ -7,11 +7,17 @@ end
 --- Creates a comment header
 --- @param chr string Character that fills the header
 --- @param width_factor number|nil If present, width = textwidth * width_factor
-local function create_comment_header(chr, width_factor, base_width)
+--- @param base_width number Force specific width
+--- @param add_fdm boolean If true and the input is not empty, add a fold marker {{{1 to the header
+local function create_comment_header(chr, width_factor, base_width, add_fdm)
   vim.ui.input({ prompt = 'Header text: ' }, function(input)
     -- In case user cancels with escape
     if input == nil then
       return
+    end
+
+    if add_fdm and not u.is_blank(input) then
+      input = input .. ' ' .. '{{{1'
     end
 
     -- Get the header format string
@@ -59,8 +65,9 @@ local function create_comment_header(chr, width_factor, base_width)
   end)
 end
 
--- stylua: ignore
-set('<leader>#', function() create_comment_header('~', nil, 120) end, 'Header')
+set('<leader>#', function()
+  create_comment_header('~', nil, 120, true)
+end, 'Header')
 set('<leader>$', function()
-  create_comment_header('~', nil, 60)
+  create_comment_header('~', nil, 60, true)
 end, 'Subheader')

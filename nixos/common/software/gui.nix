@@ -56,7 +56,6 @@
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
     gnome.pomodoro # slightly bloated pomodoro
-    hyprpicker # simple terminal color picker
     mesa-demos # some 3d demos
     # screencasting/streaming
     (pkgs.wrapOBS {

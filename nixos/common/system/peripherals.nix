@@ -9,12 +9,6 @@
   '';
   # Flipper Zero
   hardware.flipperzero.enable = true;
-  # Removable media
-  services.udisks2 = {
-    enable = true;
-    mountOnMedia = true;
-  };
-  programs.gnome-disks.enable = true;
   # Virtual webcam
   kernelModules = ["v4l2loopback"];
   # TODO ?? no fucking idea what this one does, probably doesn't work without it

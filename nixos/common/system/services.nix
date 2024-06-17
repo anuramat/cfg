@@ -1,5 +1,14 @@
 _: {
-  programs.seahorse.enable = true; # gnome keyring frontend
+  # removable media stuff
+  services.udisks2 = {
+    enable = true;
+    mountOnMedia = true;
+  };
+  # udisks2 frontend
+  programs.gnome-disks.enable = true;
+
+  # realtime kit, hands out realtime priority to user processes
+  security.rtkit.enable = true;
 
   virtualisation = {
     # common container config files in /etc/containers
@@ -12,7 +21,9 @@ _: {
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  services = {
-    gnome.gnome-keyring.enable = true; # security credential storage, exposed over dbus
-  };
+
+  # security credential storage, exposed over dbus
+  services.gnome.gnome-keyring.enable = true;
+  # gnome keyring frontend
+  programs.seahorse.enable = true;
 }

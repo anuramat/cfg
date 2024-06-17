@@ -1,6 +1,4 @@
 _: {
-  # realtime kit, hands out realtime priority to user processes
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

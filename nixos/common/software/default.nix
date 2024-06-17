@@ -1,10 +1,9 @@
 _: {
   imports = [
-    ./comms.nix
     ./compat.nix
-    ./languages.nix
-    ./main.nix
-    ./terminal_env
-    ./viewers.nix
+    ./core.nix
+    ./lang.nix
+    ./sys.nix
+    ./user.nix
   ];
 }

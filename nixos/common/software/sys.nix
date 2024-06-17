@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # Random system stuff
+    # ~~~~~~~~~~~~~~~~~~ system utils {{{1 ~~~~~~~~~~~~~~~~~~~ #
+    libva-utils # vainfo - info on va-api
     usbutils
     pciutils
     hwinfo
@@ -8,8 +9,7 @@
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
     xdg-user-dirs # $HOME/* dir management
-
-    # Monitoring
+    # ~~~~~~~~~~~~~~~~~~~ monitoring {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     # add more tops
     glances # 24k, bloated, with a web interface
     btop # 16k
@@ -29,13 +29,14 @@
     nvitop # nvidia top
     duf # disk usage (better "df")
     acpi # battery status etc
-
-    # Networking
+    # ~~~~~~~~~~~~~~~~~~~ networking {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     wirelesstools # iwconfig etc
     dig # dns utils
     inetutils # common network stuff
     nmap
     netcat
     socat # socket cat
+    # }}}
   ];
 }
+# vim: fdm=marker fdl=0

@@ -4,19 +4,8 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # Browsers
-    unstable.google-chrome
-    unstable.firefox
-    unstable.qutebrowser
-    unstable.vivaldi
-    unstable.vivaldi-ffmpeg-codecs # proprietary codecs
-    tor-browser-bundle-bin
-
-    # Terminals
-    foot # minimal terminal
-    unstable.alacritty # gpu terminal
-    unstable.alacritty-theme
-    cool-retro-term # cute terminal
+    unstable.alacritty # terminal
+    unstable.firefox # web browser
 
     # Settings
     networkmanagerapplet # networking
@@ -24,6 +13,7 @@
     pavucontrol # gui audio configuration
     system-config-printer # printer gui
     helvum # pipewire patchbay
+    udiskie # userspace frontend for udisk2
 
     # Opening stuff
     cinnamon.nemo # wayland native
@@ -64,23 +54,5 @@
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
     kooha # screen capture with basic gui
-
-    # Misc
-    gnome-solanum # simple pomodoro
-    gnome.cheese # webcam
-    gnome.pomodoro # slightly bloated pomodoro
-    hyprpicker # gigasimple terminal color picker
-    mesa-demos # some 3d demos
-    # screencasting/streaming
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-backgroundremoval
-      ];
-    })
-    qalculate-gtk # qalc calculator gui
-    spotify
-    steam # games
-    transmission-gtk # transmission torrent client gui
-    udiskie # userspace frontend for udisk2
   ];
 }

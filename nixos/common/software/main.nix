@@ -4,6 +4,14 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    element-desktop # matrix client
+    slack
+    discord
+    telegram-desktop
+    whatsapp-for-linux
+    qtox # p2p IM
+    onionshare-gui # p2p file sharing, chat, website hosting
     # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     unstable.google-chrome
     unstable.firefox

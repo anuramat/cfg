@@ -4,20 +4,38 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # Browsers
+    # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     unstable.google-chrome
     unstable.firefox
     unstable.qutebrowser
     unstable.vivaldi
-    unstable.vivaldi-ffmpeg-codecs # proprietary codecs TODO properly install
+    # unstable.vivaldi-ffmpeg-codecs # proprietary codecs TODO properly install
     tor-browser-bundle-bin
-
-    # Terminals
+    # ~~~~~~~~~~~~~~~~~~~~ terminals {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     foot # minimal terminal
     unstable.alacritty # gpu terminal
     cool-retro-term # cute terminal
-
-    # Misc
+    # ~~~~~~~~~~~~~~~~~~~~ graphics {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # krita # raster graphics, digital art
+    inkscape-with-extensions # vector graphics
+    gimp-with-plugins # raster graphics
+    imagemagickBig # CLI image manipulation
+    libwebp # tools for WebP image format
+    exiftool # read/write EXIF metadata
+    mypaint # not-ms-paint
+    # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    # davinci-resolve # video editor etc
+    handbrake # ghb - GUI for video converting
+    ffmpeg # CLI multimedia processing
+    # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    sox # CLI audio processing
+    # ~~~~~~~~~~~~~~~~~~~~~~ text {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    easyocr # neural OCR
+    pandoc # markup converter (latex, markdown, etc)
+    djvulibre # djvu tools
+    xournalpp # pdf markup, handwritten notes
+    xfig # vector graphics, old as FUCK
+    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
     gnome.pomodoro # slightly bloated pomodoro
@@ -33,5 +51,7 @@
     spotify
     steam # games
     transmission-gtk # transmission torrent client gui
+    # }}}
   ];
 }
+# vim: fdm=marker fdl=0

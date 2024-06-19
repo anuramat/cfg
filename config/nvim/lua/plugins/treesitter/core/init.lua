@@ -12,7 +12,12 @@ return {
       enable = true,
       disable = {}, -- conflicts with vimtex
     },
-    indent = { enable = true }, -- noexpandtab is broken with python
+    indent = {
+      enable = true,
+      disable = {
+        'markdown', -- breaks bullet point indentation
+      },
+    }, -- noexpandtab is broken with python
     ensure_installed = 'all',
     sync_install = false, -- only applies to `ensure_installed`
     auto_install = false, -- install corresponding parser on buffer enter

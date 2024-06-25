@@ -75,9 +75,20 @@ hotmd() {
 	hotmd-unwrapped "$1" &
 	disown
 }
+# open doc in a new window
 Z() {
 	zathura "$1" &>/dev/null &
 	disown
 }
-z() { Z "$1" && exit
+# open a document "in this window"
+z() {
+	Z "$1" && exit
+}
+# run sway on a specified card
+sway() {
+	[ -n "$1" ] && command sway --unsupported-gpu && return
+	WLR_DRM_DEVICES=/dev/dri/card$1 command sway --unsupported-gpu
+}
+intelsway() {
+	sway 1
 }

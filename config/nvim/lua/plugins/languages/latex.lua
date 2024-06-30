@@ -59,10 +59,6 @@ return {
   },
   {
     'jbyuki/nabla.nvim',
-    lazy = false,
-    config = function()
-      require('nabla').enable_virt()
-      vim.keymap.set('n', '<localleader>p', require('nabla').popup, { desc = 'Math preview' })
-    end,
+    ft = 'markdown',
   },
 }

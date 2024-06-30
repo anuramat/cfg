@@ -44,7 +44,7 @@ getmd() {
 }
 alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex"'
 __markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
-hotmd-unwrapped() {
+hotmd() {
 	# $1 - markdown file path
 
 	local -r dir='/tmp/hotmd'
@@ -69,11 +69,6 @@ hotmd-unwrapped() {
 
 	# clean up
 	rm "$path"
-}
-hotmd() {
-	# $1 - markdown file path
-	hotmd-unwrapped "$1" &
-	disown
 }
 # open doc in a new window
 Z() {

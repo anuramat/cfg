@@ -10,7 +10,7 @@ return {
   opts = {
     highlight = {
       enable = true,
-      disable = {}, -- conflicts with vimtex
+      disable = {}, -- tex conflicts with vimtex
     },
     indent = {
       enable = true,

@@ -20,10 +20,11 @@ end
 
 -- auxiliary files go to VIMTEX_OUTPUT_DIRECTORY env var
 return {
-  'lervag/vimtex',
-  lazy = false, -- author swears it's lazy inside
-  init = function()
-    vim.cmd([[
+  {
+    'lervag/vimtex',
+    lazy = false, -- author swears it's lazy inside
+    init = function()
+      vim.cmd([[
       let g:vimtex_view_method = 'zathura'
       let g:vimtex_mappings_prefix = '<localleader>'
       let g:tex_flavor='latex'
@@ -53,6 +54,15 @@ return {
       """ g = Greek
       """ s = superscripts/subscripts
     ]])
-  end,
-  config = setup_commands(),
+    end,
+    config = setup_commands(),
+  },
+  {
+    'jbyuki/nabla.nvim',
+    lazy = false,
+    config = function()
+      require('nabla').enable_virt()
+      vim.keymap.set('n', '<localleader>p', require('nabla').popup, { desc = 'Math preview' })
+    end,
+  },
 }

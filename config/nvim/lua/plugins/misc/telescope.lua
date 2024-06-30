@@ -43,9 +43,9 @@ return {
         wrap_results = true,
         layout_config = {
           horizontal = {
-            preview_width = 120,
+            preview_width = 120, -- right window size
             height = 999,
-            preview_cutoff = 180,
+            preview_cutoff = 80, -- min left window size
             width = 999,
           },
         },

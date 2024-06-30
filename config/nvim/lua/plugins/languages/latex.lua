@@ -59,6 +59,6 @@ return {
   },
   {
     'jbyuki/nabla.nvim',
-    ft = 'markdown',
+    ft = { 'markdown', 'tex' },
   },
 }

@@ -20,7 +20,6 @@
     hardware.openrgb.enable = true;
     # proprietary drivers
     xserver = {
-      videoDrivers = ["nvidia"];
       dpi = 236;
     };
   };
@@ -32,32 +31,37 @@
     STOP_CHARGE_THRESH_BAT0 = 1;
   };
 
-  hardware = {
-    nvidia = {
-      modesetting.enable = true; # wiki says this is required
-      # these two are experimental
-      powerManagement = {
-        enable = true; # saves entire vram to /tmp/ instead of the bare minimum
-        finegrained = true; # turns off gpu when not in use
-      };
-      prime = {
-        intelBusId = "PCI:00:02:0";
-        nvidiaBusId = "PCI:01:00:0";
-        # prime offloading
-        offload = {
-          enable = true;
-          enableOffloadCmd = true; # `nvidia-offload`
-        };
-      };
-      nvidiaSettings = true;
-    };
-    opengl = {
-      extraPackages = with pkgs; [
-        vaapiVdpau # no fucking idea what this does
-      ];
-      enable = true; # just in case, should be enabled by sway module
-      driSupport = true; # on by default but whatever
-      driSupport32Bit = true; # might be required for wine? might break on nouveau
-    };
-  };
+  # # nvidia (off because sway)
+  # # {{{1
+  # services.xserver.videoDrivers = ["nvidia"];
+  # hardware = {
+  #   nvidia = {
+  #     modesetting.enable = true; # wiki says this is required
+  #     # these two are experimental
+  #     powerManagement = {
+  #       enable = true; # saves entire vram to /tmp/ instead of the bare minimum
+  #       finegrained = true; # turns off gpu when not in use
+  #     };
+  #     prime = {
+  #       intelBusId = "PCI:00:02:0";
+  #       nvidiaBusId = "PCI:01:00:0";
+  #       # prime offloading
+  #       offload = {
+  #         enable = true;
+  #         enableOffloadCmd = true; # `nvidia-offload`
+  #       };
+  #     };
+  #     nvidiaSettings = true;
+  #   };
+  #   opengl = {
+  #     extraPackages = with pkgs; [
+  #       vaapiVdpau # no fucking idea what this does
+  #     ];
+  #     enable = true; # just in case, should be enabled by sway module
+  #     driSupport = true; # on by default but whatever
+  #     driSupport32Bit = true; # might be required for wine? might break on nouveau
+  #   };
+  # };
+  # # }}}
 }
+# vim: fdm=marker fdl=0

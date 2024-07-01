@@ -79,11 +79,3 @@ Z() {
 z() {
 	Z "$1" && exit
 }
-# run sway on a specified card
-sway() {
-	[ -n "$1" ] && command sway --unsupported-gpu && return
-	WLR_DRM_DEVICES=/dev/dri/card$1 command sway --unsupported-gpu
-}
-intelsway() {
-	sway 1
-}

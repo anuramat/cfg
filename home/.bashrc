@@ -39,6 +39,7 @@ alias d="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias sus="systemctl suspend"
 getmd() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }

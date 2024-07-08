@@ -61,7 +61,10 @@
     luajitPackages.luarocks
     haskellPackages.hoogle
     sageWithDoc # computer algebra system
-    # mathematica # doesn't build hehe
+    # mathematica requires the .sh installer to be in the nix store
+    # will probably need to get commented out on the first install
+    # maybe make optional later somehow? through a separate flake probably
+    mathematica
     # }}}
   ];
 }

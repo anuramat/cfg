@@ -14,9 +14,7 @@
     user = {
       username = "anuramat";
       fullname = "Arsen Nuramatov";
-      hostname = "anuramat-ll7";
-      timezone = "Etc/GMT-2"; # inverted offset (posix momento)
-      stateVersion = "24.05"; # WARNING DO NOT EDIT
+      timezone = "Etc/GMT-2"; # WARN inverted offset
       defaultLocale = "en_US.UTF-8";
     };
     unstable = import inputs.nixpkgs-unstable {
@@ -30,18 +28,17 @@
   in {
     nixosConfigurations = {
       anuramat-ll7 = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit user unstable;
-        };
+        specialArgs = {inherit user unstable;};
         modules = [
           ./configuration.nix
-          ./machines/anuramat-ll7.nix
 
+          ./machines/anuramat-ll7.nix
           inputs.nixos-hardware.nixosModules.common-cpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
-
           (_: {
+            system.stateVersion = "24.05";
+            networking.hostName = "anuramat-ll7";
             nixpkgs.overlays = overlays;
             boot.initrd.luks.devices."luks-a5b4aba2-047f-4828-bce3-fd9907ad99c0".device = "/dev/disk/by-uuid/a5b4aba2-047f-4828-bce3-fd9907ad99c0";
           })

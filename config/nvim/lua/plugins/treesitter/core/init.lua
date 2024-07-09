@@ -10,14 +10,17 @@ return {
   opts = {
     highlight = {
       enable = true,
-      disable = {}, -- tex conflicts with vimtex
+      disable = {
+        -- tex conflicts with vimtex
+      },
     },
     indent = {
       enable = true,
       disable = {
         'markdown', -- breaks bullet point indentation
+        -- noexpandtab is broken with python
       },
-    }, -- noexpandtab is broken with python
+    },
     ensure_installed = 'all',
     sync_install = false, -- only applies to `ensure_installed`
     auto_install = false, -- install corresponding parser on buffer enter

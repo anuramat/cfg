@@ -22,7 +22,7 @@
       system = "x86_64-linux";
     };
     overlays = with inputs; [
-      neovim-nightly-overlay.overlay
+      neovim-nightly-overlay.overlays.default
       nix-alien.overlays.default
     ];
   in {

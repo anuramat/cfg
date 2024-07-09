@@ -28,7 +28,7 @@ local tokyo = {
     })
     set_colors('tokyonight-night', 'tokyonight')
   end,
-}
+} -- too cold
 
 local dracula = {
   'Mofiqul/dracula.nvim',
@@ -52,7 +52,7 @@ local dracula = {
     })
     set_colors('dracula', 'dracula-nvim')
   end,
-}
+} -- too colorful/bright, TODO color code markdown section levels
 
 local cat = {
   'catppuccin/nvim',
@@ -87,6 +87,6 @@ local cat = {
     local c = require('catppuccin.palettes').get_palette(flavour)
     vim.api.nvim_set_hl(0, 'TelescopeBorder', { fg = c.base, bg = c.base })
   end,
-}
+} -- perfect
 
-return dracula
+return cat

@@ -12,9 +12,9 @@ lock="$sys_nixos/flake.lock"
 mkdir -p "$backup" && sudo rsync -r "$sys_nixos/" "$backup/$(date -u +'%F_%H-%M-%S')"
 
 # clean {{{1
-# rm * except hw config & lockfile - to make sure our build can't reference old
-# files from previous builds, that were removed from the repo
-sudo find "$sys_nixos" ! -wholename "$sys_nixos" ! -wholename "$hwcfg" ! -wholename "$lock" -delete
+# rm * except hw config - to make sure our build can't reference old files from
+# previous builds, that were removed from the repo
+sudo find "$sys_nixos" ! -wholename "$sys_nixos" ! -wholename "$hwcfg" -delete
 
 # write {{{1
 # merge / overwrite

@@ -46,6 +46,8 @@ local dracula = {
         TreesitterContext = { bg = c.bg },
         TreesitterContextBottom = { underline = true, sp = c.fg, bg = c.bg },
         TreesitterContextLineNumberBottom = { underline = true, sp = c.fg, bg = c.bg },
+        ['@markup.strong'] = { fg = c.cyan, bold = true },
+        ['@markup.italic'] = { fg = c.orange, italic = true },
       },
     })
     set_colors('dracula', 'dracula-nvim')

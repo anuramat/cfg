@@ -26,7 +26,7 @@
     zip
     # ~~~~~~~~~~~~~~~~~~ code editors {{{1 ~~~~~~~~~~~~~~~~~~~ #
     unstable.emacs-gtk
-    neovim
+    unstable.neovim
     nvi
     unstable.helix
     unstable.vis

@@ -89,26 +89,12 @@ com! -bang WQA wqa<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
  
-""" Determine highlight group of the item under cursor
-function! GetSynstack()
-  " Ensure any folded code is opened; optional, remove if not needed
-  normal! zv
-  " Get current line and column numbers
-  let lnum = line(".")
-  let colnum = col(".")
-  " Iterate over syntax items at the cursor's position
-  for id in synstack(lnum, colnum)
-    " Echo the name of each syntax item's ID
-    echo synIDattr(id, "name")
-  endfor
-endfunction
-command SynStack call GetSynstack()
-
 """ Hide qf buffers
 augroup qf
     autocmd!
     autocmd FileType qf set nobuflisted
 augroup END
 
+""" Use ripgrep by default
 se grepprg=rg\ --vimgrep
 se grepformat=%f:%l:%c:%m

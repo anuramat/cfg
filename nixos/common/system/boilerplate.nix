@@ -19,8 +19,6 @@
   };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
-  system.stateVersion = user.stateVersion;
-  networking.hostName = user.hostname;
   users.users.${user.username} = {
     description = user.fullname;
     isNormalUser = true;

@@ -17,7 +17,7 @@ return {
     indent = {
       enable = true,
       disable = {
-        'markdown', -- breaks bullet point indentation
+        'markdown', -- TS bullet point indentation is "lazy" (subsequent lines are flush with bullet), which is ugly
         -- noexpandtab is broken with python
       },
     },

@@ -104,7 +104,7 @@
     python311Packages.jupytext
     w3m # text based web browser
     wally-cli # ZSA keyboards software
-    youtube-dl # download youtube videos
+    yt-dlp # download youtube videos
     fortune # random quotes
     figlet # fancy banners
     banner

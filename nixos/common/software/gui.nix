@@ -47,6 +47,7 @@
     okular # reader
     djview # djvu reader
     zathura # keyboard-centric aio reader
+    zotero
     easyocr # neural OCR
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools

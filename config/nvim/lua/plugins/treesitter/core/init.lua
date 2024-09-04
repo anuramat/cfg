@@ -3,7 +3,6 @@ return {
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-context',
-    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   build = ':TSUpdate',
   event = { 'BufReadPre', 'BufNewFile' },
@@ -55,9 +54,6 @@ return {
       mode = 'topline', -- Line used to calculate context. Choices: 'cursor', 'topline'
       -- separator = '―', -- Separator between context and content. nil or a single character
       zindex = 20, -- The Z-index of the context window
-    })
-    require('ts_context_commentstring').setup({
-      enable_autocmd = false, -- to integrate with numToStr/Comment.nvim
     })
     vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     vim.opt.fdm = 'expr'

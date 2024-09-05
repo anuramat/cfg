@@ -7,6 +7,10 @@ input * {
 input 5426:98:Razer_Razer_Atheris_-_Mobile_Gaming_Mouse_Keyboard {
     accel_profile flat
 }
+input 5426:138:Razer_Razer_Viper_Mini {
+    accel_profile flat
+    pointer_accel 0.2
+}
 input 1267:12928:ELAN06FA:00_04F3:3280_Touchpad {
     dwt enabled
     click_method clickfinger

@@ -14,6 +14,7 @@ seat * {
 exec_always gsettings set org.gnome.desktop.interface {
   gtk-theme 'Adwaita'
   # gtk-key-theme 'Emacs'
+  # sadly this breaks half the websites on firefox
   gtk-key-theme 'Default'
   icon-theme 'Dracula'
   text-scaling-factor 1

@@ -21,9 +21,10 @@ fi
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
 # source <(cod init $$ bash) # off, popup on every help is really annoying
 eval "$(direnv hook bash)"
-# eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
+eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
 
 # ~~~~~~~~~~~~~~~~~~~~~ some aliases ~~~~~~~~~~~~~~~~~~~~~ #
+# TODO check them
 upload() {
 	curl -F"file=@$1" https://0x0.st
 }

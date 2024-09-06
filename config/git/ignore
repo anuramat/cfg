@@ -20,3 +20,5 @@ node_modules/
 *.db
 # devenv
 .devenv*
+# direnv
+.direnv/

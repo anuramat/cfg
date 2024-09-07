@@ -22,6 +22,7 @@
     # ~~~~~~~~~~~~~~~~~~~~ debuggers {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     delve # Go debugger
     gdb # C
+    python311Packages.debugpy
     # ~~~~~~~~~~~~~~~~~~~ formatters {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     alejandra # nix
     nixfmt-rfc-style # nix (OFFICIAL)

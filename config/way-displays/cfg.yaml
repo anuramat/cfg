@@ -1,13 +1,15 @@
-ARRANGE: COLUMN
+ARRANGE: ROW
 ALIGN: MIDDLE
 ORDER:
-  - "!^DP-"
   - "!^eDP-1"
+  - "!^DP-.*"
 SCALE:
-  - NAME_DESC: "eDP-1"
+  - NAME_DESC: "California Institute of Technology 0x1626 0x00006002" # ll7 internal
+    SCALE: 2.25
+  - NAME_DESC: "Dell Inc. DELL S2722QC 192SH24"
     SCALE: 1.75
 MODE:
-  - NAME_DESC: "eDP-1"
+  - NAME_DESC: "California Institute of Technology 0x1626 0x00006002"
     WIDTH: 3200
     HEIGHT: 2000
     # HZ: 60

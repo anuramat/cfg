@@ -35,7 +35,6 @@
           ./machines/anuramat-ll7.nix
           inputs.nixos-hardware.nixosModules.common-cpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-intel
-          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
           (_: {
             system.stateVersion = "24.05";
             networking.hostName = "anuramat-ll7";

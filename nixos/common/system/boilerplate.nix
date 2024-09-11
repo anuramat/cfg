@@ -18,6 +18,8 @@
   }; # kinda imperative
   nixpkgs.config = {
     allowUnfree = true;
+    cudaSupport = true;
+    cudnnSupoprt = true;
   };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;

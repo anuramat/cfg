@@ -68,6 +68,7 @@
     spotify
     steam # games
     transmission-gtk # transmission torrent client gui
+    rpi-imager
     # }}}
   ];
 }

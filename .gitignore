@@ -2,7 +2,3 @@ private*
 !private.example*
 # ncspot :(
 userstate.cbor
-# qutebrowser: keep bookmarks outside
-**/qutebrowser/*
-!**/qutebrowser/config.py
-!**/qutebrowser/dracula

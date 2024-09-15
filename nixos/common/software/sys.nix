@@ -9,6 +9,8 @@
     libusb # user-mode USB access lib
     efibootmgr # EFI boot manager editor
     xdg-user-dirs # $HOME/* dir management
+    dmidecode # read hw info from bios using smbios/dmi
+    lshw # hw info
     # ~~~~~~~~~~~~~~~~~~~ monitoring {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     # add more tops
     glances # 24k, bloated, with a web interface

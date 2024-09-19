@@ -1,7 +1,7 @@
 set $font Hack Nerd Font 13
 font "pango:$font"
-gaps inner 0
-gaps outer 0
+gaps inner 15
+gaps outer 15
 default_border pixel 3
 set $cursor_theme Hackneyed
 # or Adwaita

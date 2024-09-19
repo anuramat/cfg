@@ -1,7 +1,7 @@
 exec_always {
     # # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py
-    "pkill mpvpaper; mpvpaper '*' ~/Videos/wp/waves.mp4 -fo loop-file=inf"
+    "pkill mpvpaper; mpvpaper '*' ~/Videos/wp/waves.mp4 -o 'loop-file=inf panscan=1.0 hwdec=auto'"
 
     # lock/suspend on idle
     "pkill swayidle; swayidle -w"

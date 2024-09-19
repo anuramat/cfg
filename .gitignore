@@ -1,5 +1,4 @@
 private*
 !private.example*
-# ncspot :(
 /config/ncspot/userstate.cbor
 /config/btop/btop.log

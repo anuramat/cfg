@@ -25,6 +25,7 @@
     du-dust # directory disk usage (better du)
     ncdu # directory disk usage (better du)
     # misc
+    smem # ram usage
     ctop # container top
     podman-tui # podman container status
     unstable.nvtopPackages.full # top for GPUs

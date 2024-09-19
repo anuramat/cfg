@@ -1,16 +1,20 @@
 exec_always {
     # # perf hogs!!!
     # pkill inactive-windo; inactive-windows-transparency.py
-    # pkill mpvpaper; mpvpaper '*' ~/Videos/waves.mp4 -fo "loop-file=inf"
+    "pkill mpvpaper; mpvpaper '*' ~/Videos/wp/waves.mp4 -fo loop-file=inf"
+
+    # lock/suspend on idle
     "pkill swayidle; swayidle -w"
     # network manager tray thingie
     "pkill nm-applet; nm-applet"
-    # blueman tray thing
+    # blueman tray thingie
     "pkill blueman-tray; blueman-tray"
-    # avizo: brightness/volume overlay notifications
+    # brightness/volume popup
     "pkill avizo-service; avizo-service"
-    way-displays
-    # way-displays doesn't need to be killed, breaks shit otherwise
+    # display config daemon
+    # doesn't need to be killed, breaks shit otherwise
+    "way-displays"
+    # media automounter
     "pkill udiskie; udiskie -ta"
 }
 

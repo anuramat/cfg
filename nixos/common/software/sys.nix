@@ -27,7 +27,7 @@
     # misc
     ctop # container top
     podman-tui # podman container status
-    nvtopPackages.full # top for GPUs
+    unstable.nvtopPackages.full # top for GPUs
     nvitop # nvidia top
     duf # disk usage (better "df")
     acpi # battery status etc

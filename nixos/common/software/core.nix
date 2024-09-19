@@ -50,6 +50,7 @@
     zoxide # better cd
     rmtrash # rm but to trash
     entr # file watcher - runs command on change
+    moreutils # random unixy goodies
     # ~~~~~~~~~~~~~~~~~~ file managers {{{1 ~~~~~~~~~~~~~~~~~~ #
     # TODO choose one (or don't)
     broot

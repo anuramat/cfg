@@ -35,12 +35,12 @@ $bind {
     $mod+v split vertical
     $mod+c split toggle
     # Gaps
-    $mod+equal gaps inner all plus 10
-    $mod+minus gaps inner all minus 10
-    $mod+bracketright gaps outer all plus 10
-    $mod+bracketleft gaps outer all minus 10
+    $mod+braceright gaps outer all plus 10
+    $mod+braceleft gaps outer all minus 10
+    $mod+bracketright gaps inner all plus 10
+    $mod+bracketleft gaps inner all minus 10
     # Sway settings
-    $mod+slash reload; exec notify-send "Sway reloaded" "Your config has just been reloaded"
+    $mod+slash reload; exec notify-send "Sway reloaded" "Bottom text"
     # Notifications
     $mod+$notification_key exec $click_notificiation
     $mod+$mod2+$notification_key exec $dismiss_notification

@@ -14,7 +14,10 @@ style = 'bold red'
 format = '[$status: $common_meaning$signal_name]($style) '
 disabled = false
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Nerdfonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
+[time]
+disabled = false
+
+# Nerdfont symbols {{{1
 
 [aws]
 symbol = "  "
@@ -106,6 +109,7 @@ symbol = " "
 [os.symbols]
 Alpaquita = " "
 Alpine = " "
+AlmaLinux = " "
 Amazon = " "
 Android = " "
 Arch = " "
@@ -121,6 +125,7 @@ Garuda = "󰛓 "
 Gentoo = " "
 HardenedBSD = "󰞌 "
 Illumos = "󰈸 "
+Kali = " "
 Linux = " "
 Mabox = " "
 Macos = " "
@@ -137,11 +142,13 @@ Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
+RockyLinux = " "
 Redox = "󰀘 "
 Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
+Void = " "
 Windows = "󰍲 "
 
 [package]
@@ -166,7 +173,7 @@ symbol = "󰟔 "
 symbol = " "
 
 [rust]
-symbol = " "
+symbol = "󱘗 "
 
 [scala]
 symbol = " "
@@ -176,3 +183,7 @@ symbol = " "
 
 [zig]
 symbol = " "
+
+# }}}
+
+# vim: fdm=marker fdl=0

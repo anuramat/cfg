@@ -4,7 +4,7 @@ ORDER:
   - "!^eDP-1"
   - "!^DP-.*"
 SCALE:
-  - NAME_DESC: "California Institute of Technology 0x1626 0x00006002" # anuramat-ll7 internal
+  - NAME_DESC: "California Institute of Technology 0x1626 0x00006002" # anuramat-ll7
     SCALE: 2.25
   - NAME_DESC: "Dell Inc. DELL S2722QC 192SH24"
     SCALE: 1.75
@@ -17,4 +17,6 @@ MODE:
     WIDTH: 3840
     HEIGHT: 2160
     HZ: 60
+VRR_OFF:
+  - "Dell Inc. DELL S2722QC 192SH24"
 LAPTOP_DISPLAY_PREFIX: "eDP-1"

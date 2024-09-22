@@ -82,5 +82,8 @@ Z() {
 z() {
 	Z "$1" && exit
 }
-
+# set brightness for an external monitor
+brexit() {
+	ddcutil setvcp 10 "$1" --display 1
+}
 # vim: fdl=0

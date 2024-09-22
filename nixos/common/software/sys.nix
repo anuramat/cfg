@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, unstable, ...}: {
   environment.systemPackages = with pkgs; [
     # ~~~~~~~~~~~~~~~~~~ system utils {{{1 ~~~~~~~~~~~~~~~~~~~ #
     libva-utils # vainfo - info on va-api

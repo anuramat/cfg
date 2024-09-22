@@ -40,6 +40,7 @@
     mpv # minimalistic video player
     # davinci-resolve # video editor etc
     handbrake # ghb - GUI for video converting
+    unstable.footage # simple video editor
     ffmpeg # CLI multimedia processing
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing

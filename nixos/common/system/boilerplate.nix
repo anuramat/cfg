@@ -18,7 +18,7 @@
   }; # kinda imperative
   nixpkgs.config = {
     allowUnfree = true;
-    cudaSupport = true;
+    # cudaSupport = true; # breaks nomacs, mathematica takes a lot of time to compile
     cudnnSupoprt = true;
   };
   time.timeZone = user.timezone;

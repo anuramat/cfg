@@ -12,14 +12,15 @@ function! ToggleQuickFix()
     endif
 endfunction
 nn <silent> <leader>q :call ToggleQuickFix()<cr>
-nnoremap <A-j> :silent m .+1<CR>:silent normal ==<cr>
-nnoremap <A-k> :silent m .-2<CR>:silent normal ==<cr>
-inoremap <A-j> <Esc>:silent m .+1<CR>:silent normal ==<cr>gi
-inoremap <A-k> <Esc>:silent m .-2<CR>:silent normal ==<cr>gi
-"~~~~~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~~~~~"
+" moving current line:
+"nnoremap <A-j> :silent m .+1<CR>:silent normal ==<cr>
+"nnoremap <A-k> :silent m .-2<CR>:silent normal ==<cr>
+"inoremap <A-j> <Esc>:silent m .+1<CR>:silent normal ==<cr>gi
+"inoremap <A-k> <Esc>:silent m .-2<CR>:silent normal ==<cr>gi
+"~~~~~~~~~~~~~~~~~~~~ formatting {{{1 ~~~~~~~~~~~~~~~~~~~~~"
 se shiftround shiftwidth=0 expandtab tabstop=2
 se textwidth=80 formatoptions=qwjr
-"~~~~~~~~~~~~~~~~~~~~~~~~ general ~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~ general {{{1 ~~~~~~~~~~~~~~~~~~~~~~"
 se complete=t,i,d,.,w,b,u,U " completion source priority
 se clipboard=unnamedplus " unnamedplus for clipboard, unnamed for selection
 se notimeout " no timeout on key sequences
@@ -43,7 +44,7 @@ let g:matchparen_insert_timeout=50
 " se path+=** " recurse in path
 " se shcf=-ic " use an interactive shell for "!" so that background jobs work
 se mouse= " disable mouse
-"~~~~~~~~~~~~~~~~~~~~~~~~ visuals ~~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~~ visuals {{{1 ~~~~~~~~~~~~~~~~~~~~~~"
 se cole=0 " conceallevel
 se nowrap
 se fcs=fold:\─,foldopen:,foldsep:\ ,foldclose:
@@ -58,8 +59,7 @@ se cursorline cursorlineopt=line
 se matchtime=1 showmatch " highlight matching bracket (deciseconds)
 se signcolumn=yes " gutter
 se tgc " 24-bit color
-hi WinSeparator guibg=bg guifg=fg
-let g:border="solid" " custom, see :he nvim_open_win
+let g:border="solid" " read this from plugin configs; `:he nvim_open_win`
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
     colo sorbet
@@ -77,7 +77,7 @@ se ph=20 " popup max height
 let g:netrw_banner=0
 " let g:netrw_liststyle=3 " tree style, symlinks are broken tho
 let g:netrw_winsize=25
-"~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~"
+"~~~~~~~~~~~~~~~~~~~~~ commands {{{1 ~~~~~~~~~~~~~~~~~~~~~~"
 """ Typos
 com! -bang Q q<bang>
 com! -bang W w<bang>
@@ -88,13 +88,15 @@ com! -bang WQa wqa<bang>
 com! -bang WQA wqa<bang>
 com! -bang QA qa<bang>
 com! -bang Qa qa<bang>
- 
+
 """ Hide qf buffers
 augroup qf
-    autocmd!
-    autocmd FileType qf set nobuflisted
+  autocmd!
+  autocmd FileType qf set nobuflisted
 augroup END
 
 """ Use ripgrep by default
 se grepprg=rg\ --vimgrep
 se grepformat=%f:%l:%c:%m
+
+" vim: fdm=marker fdl=0

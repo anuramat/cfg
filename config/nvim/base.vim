@@ -12,7 +12,7 @@ function! ToggleQuickFix()
     endif
 endfunction
 nn <silent> <leader>q :call ToggleQuickFix()<cr>
-" moving current line:
+"" moving current line (conflicts with eg zellij)
 "nnoremap <A-j> :silent m .+1<CR>:silent normal ==<cr>
 "nnoremap <A-k> :silent m .-2<CR>:silent normal ==<cr>
 "inoremap <A-j> <Esc>:silent m .+1<CR>:silent normal ==<cr>gi

@@ -92,7 +92,6 @@
     figlet # fancy banners
     banner
     cowsay
-    # ~~~~~~~~~~~~~~~~~~~~~ passive {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     # }}}
   ];
 }

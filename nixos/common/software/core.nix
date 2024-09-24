@@ -127,6 +127,7 @@
     ffmpeg # CLI multimedia processing
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
+    mimic # TTS
     # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     slides # markdown presentation in terminal
     glow # markdown viewer

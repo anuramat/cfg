@@ -33,8 +33,9 @@
     mypaint # not-ms-paint
     nomacs # image viewer
     # TODO find the best??
-    imv # terminal image viewer
-    swayimg # terminal image viewer
+    imv # image viewer
+    swayimg # image viewer
+    lsix # ls for images (uses sixel)
     # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     vlc # video player
     mpv # minimalistic video player
@@ -45,6 +46,11 @@
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
     # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    slides # markdown presentation in terminal
+    glow # markdown viewer
+    poppler_utils # pdf utils
+    ghostscript # postscript/pdf utils
+    readability-cli # extracts main content from pages
     okular # reader
     djview # djvu reader
     zathura # keyboard-centric aio reader
@@ -55,6 +61,7 @@
     xournalpp # pdf markup, handwritten notes
     xfig # vector graphics, old as FUCK
     # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    onionshare # tor-based file-sharing etc
     unstable.keymapp # ZSA keyboard thing
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam

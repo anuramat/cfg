@@ -30,9 +30,6 @@
     unstable.eza # ls++
     zellij # tmux++
     zoxide # cd++
-    # ~~~~~~~~~~~~~~~~~~~ often used {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-    taskwarrior # CLI todo app
-    tealdeer # tldr reimplementation: rust + xdg
     # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     btop # best
     ctop # containers
@@ -58,52 +55,48 @@
     # ~~~~~~~~~~~~~~~~~~~~~~ kube {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     kubectx
     kubectl
-    # ~~~~~~~~~~~~~~~~~~~~~~ rare {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~~ MOVE ME {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    taskwarrior # CLI todo app
+    tealdeer # tldr reimplementation: rust + xdg
     unstable.devenv
     distrobox
     hyprpicker # simple terminal color picker
     gh # GitHub CLI
     git-filter-repo # rewrite/analyze repository history
     nix-alien
-    lsix # ls for images (uses sixel)
     httpie # curl++
     prettyping # ping++
     parallel # run parallel jobs
     scc # count lines of code
-    slides # markdown presentation in terminal
     peco # interactive filtering
     aria # downloader
     progress # progress status for cp etc
     pv # pipe viewer
     mprocs # job runner
-    glow # markdown viewer
     tree-sitter # needed to generate some grammars
     age # file encryption
     croc # send/receive files through relay with encryption
-    readability-cli # extracts main content from pages
     fastfetch # neo-neofetch
     exercism # CLI for exercism.org
-    ghostscript # postscript/pdf utils
     mosh # ssh over unstable connections
     nix-index
-    onionshare # tor-based file-sharing etc
-    poppler_utils # pdf utils
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
     python311Packages.pyicloud
     python311Packages.jupytext
-    w3m # text based web browser
     yt-dlp # download youtube videos
-    fortune # random quotes
-    figlet # fancy banners
-    banner
-    cowsay
     docker-compose
     podman-compose
     dive # look into docker image layers
     dbeaver-bin # databases
+    # ~~~~~~~~~~~~~~~~~~ just in case {{{1 ~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~~ junk {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    fortune # random quotes
+    figlet # fancy banners
+    banner
+    cowsay
     # ~~~~~~~~~~~~~~~~~~~~~ passive {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     # }}}
   ];

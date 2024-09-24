@@ -24,6 +24,7 @@
     util-linux # was already installed but whatever
     wget
     zip
+    w3m # terminal web browser, just in case
     # ~~~~~~~~~~~~~~~~~~ system utils {{{1 ~~~~~~~~~~~~~~~~~~~ #
     acpi # battery status etc
     dmidecode # read hw info from bios using smbios/dmi

@@ -10,7 +10,7 @@
     nvi
     unstable.helix
     unstable.vis
-    # ~~~~~~~~~~~~~ modern terminal goodies {{{1 ~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     ghq # git repository manager
     bat # better cat with syntax hl
     cod # completion generator (updates on `cmd --help`)
@@ -21,10 +21,10 @@
     ripgrep # better grep
     prettyping # better "ping"
     httpie # better curl
-    ripgrep-all # grep over pdfs etc
-    starship # terminal prompt
-    taskwarrior # CLI todo apps
-    tealdeer # tldr implementation in rust, adheres to XDG basedir spec
+    ripgrep-all # ripgrep over pdf etc
+    starship # PS1 rice
+    taskwarrior # CLI todo app
+    tealdeer # tldr, but rust + xdg
     unstable.eza # better ls
     zellij # neotmux
     zoxide # better cd
@@ -90,7 +90,7 @@
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
     speedtest-cli
-    unstable.xdg-ninja # checks $HOME for bloat
+    unstable.xdg-ninja # checks $HOME for junk
     python311Packages.pyicloud
     python311Packages.jupytext
     w3m # text based web browser

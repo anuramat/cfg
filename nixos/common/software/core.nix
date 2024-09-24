@@ -53,7 +53,34 @@
     scc # count lines of code
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
-    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    ## ~~~~~~~~~~~~~~~~~~~~~~ tops {{{2 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    btop # best
+    ctop # containers
+    gtop
+    gotop
+    htop # basic
+    iotop
+    nvitop # nvidia gpu
+    podman-tui # podman container status
+    unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
+    ## ~~~~~~~~~~~~~~~~~~ file managers {{{2 ~~~~~~~~~~~~~~~~~~ #
+    # TODO choose one (or don't)
+    broot
+    lf
+    mc
+    nnn
+    ranger
+    vifm
+    xplr
+    ## ~~~~~~~~~~~~~~~~~~~~~ backend {{{2 ~~~~~~~~~~~~~~~~~~~~~ #
+    dbeaver-bin # databases
+    dive # look into docker image layers
+    grpcui
+    grpcurl
+    kubectl
+    kubectx
+    podman-compose
+    ## ~~~~~~~~~~~~~~~~~~~~~~ misc {{{2 ~~~~~~~~~~~~~~~~~~~~~~~ #
     git-filter-repo # rewrite/analyze repository history
     mesa-demos # some 3d demos
     mosh # ssh over unstable connections
@@ -65,33 +92,6 @@
     fortune # random quotes
     rpi-imager
     tree-sitter
-    # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    btop # best
-    ctop # containers
-    gtop
-    gotop
-    htop # basic
-    iotop
-    nvitop # nvidia gpu
-    podman-tui # podman container status
-    unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
-    # ~~~~~~~~~~~~~~~~~~ file managers {{{1 ~~~~~~~~~~~~~~~~~~ #
-    # TODO choose one (or don't)
-    broot
-    lf
-    mc
-    nnn
-    ranger
-    vifm
-    xplr
-    # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
-    dbeaver-bin # databases
-    dive # look into docker image layers
-    grpcui
-    grpcurl
-    kubectl
-    kubectx
-    podman-compose
     # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     discord
     element-desktop # matrix client

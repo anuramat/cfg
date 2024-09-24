@@ -19,6 +19,7 @@
     duf # df++
     entr # file watcher - runs command on change
     fd # find++
+    taskwarrior # CLI todo app
     fzf # fuzzy finder
     ghq # git repository manager
     libqalculate # `qalc` - advanced calculator
@@ -59,10 +60,10 @@
     croc # send/receive files through relay with encryption
     distrobox
     exercism # CLI for exercism.org
+    httpie # curl++
     fastfetch
     gh # GitHub CLI
     git-filter-repo # rewrite/analyze repository history
-    httpie # curl++
     hyprpicker # simple terminal color picker
     mosh # ssh over unstable connections
     prettyping # ping++
@@ -72,7 +73,6 @@
     rclone # rsync for cloud
     scc # count lines of code
     speedtest-cli
-    taskwarrior # CLI todo app
     tealdeer # tldr reimplementation: rust + xdg
     tree-sitter
     unstable.devenv

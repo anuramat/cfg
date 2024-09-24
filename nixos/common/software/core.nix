@@ -18,8 +18,9 @@
     difftastic # syntax aware diffs
     fd # find alternative
     fzf # fuzzy finder
-    nix-bash-completions
     ripgrep # better grep
+    prettyping # better "ping"
+    httpie # better curl
     ripgrep-all # grep over pdfs etc
     starship # terminal prompt
     taskwarrior # CLI todo apps
@@ -30,6 +31,7 @@
     rmtrash # rm but to trash
     entr # file watcher - runs command on change
     du-dust # pretty `du`
+    libqalculate # qalc - advanced calculator
     ncdu # interactive `du`
     duf # disk usage (better "df")
     # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -51,11 +53,10 @@
     ranger
     vifm
     xplr
-    # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~~ grpc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     grpcui # postman for grpc
     grpcurl # curl for grpc
-    httpie # better curl
-    prettyping # better "ping"
+    # ~~~~~~~~~~~~~~~~~~~~~~ kube {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     kubectx
     kubectl
     # ~~~~~~~~~~~~~~~~~~~~~~ rare {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
@@ -67,7 +68,6 @@
     nix-alien
     lsix # ls for images (uses sixel)
     parallel # run parallel jobs
-    tmux # just in case
     scc # count lines of code
     slides # markdown presentation in terminal
     peco # interactive filtering
@@ -76,7 +76,6 @@
     pv # pipe viewer
     mprocs # job runner
     glow # markdown viewer
-    libqalculate # qalc - advanced calculator
     tree-sitter # needed to generate some grammars
     age # file encryption
     croc # send/receive files through relay with encryption

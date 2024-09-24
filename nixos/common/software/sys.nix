@@ -15,7 +15,9 @@
     less
     lsof
     moreutils # random unixy goodies
+    nix-bash-completions
     nvi # vi clone
+    tmux # just in case
     tree
     unrar-wrapper
     unzip

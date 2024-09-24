@@ -57,7 +57,6 @@
     hyprpicker # simple terminal color picker
     gh # GitHub CLI
     git-filter-repo # rewrite/analyze repository history
-    nix-alien
     httpie # curl++
     prettyping # ping++
     parallel # run parallel jobs

@@ -1,7 +1,10 @@
 {pkgs, ...}: {
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
+    libraries = [
     ];
   };
+  environment.systemPackages = with pkgs; [
+    nix-alien
+  ];
 }

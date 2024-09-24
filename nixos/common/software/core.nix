@@ -50,7 +50,7 @@
     ranger
     vifm
     xplr
-    # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~ moveme {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     age # file encryption
     aria # downloader
     croc # send/receive files through relay with encryption
@@ -78,7 +78,7 @@
     unstable.devenv
     unstable.xdg-ninja # checks $HOME for junk
     yt-dlp # download youtube videos
-    # %s
+    # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
     dive # look into docker image layers
     grpcui

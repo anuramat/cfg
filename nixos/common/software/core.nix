@@ -4,27 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    bash
-    bc # simple calculator
-    coreutils-full
-    coreutils-prefixed # good for mac compatibility
-    curl
-    file
-    gcc
-    git
-    gnumake
-    killall
-    less
-    lsof
-    nvi # vi clone
-    tree
-    unrar-wrapper
-    unzip
-    util-linux # was already installed but whatever
-    moreutils # random unixy goodies
-    wget
-    zip
     # ~~~~~~~~~~~~~~~~~~ code editors {{{1 ~~~~~~~~~~~~~~~~~~~ #
     unstable.emacs-gtk
     unstable.neovim
@@ -32,7 +11,6 @@
     unstable.helix
     unstable.vis
     # ~~~~~~~~~~~~~ modern terminal goodies {{{1 ~~~~~~~~~~~~~ #
-    bash-completion
     ghq # git repository manager
     bat # better cat with syntax hl
     cod # completion generator (updates on `cmd --help`)
@@ -51,6 +29,19 @@
     zoxide # better cd
     rmtrash # rm but to trash
     entr # file watcher - runs command on change
+    du-dust # pretty `du`
+    ncdu # interactive `du`
+    duf # disk usage (better "df")
+    # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    btop # best
+    ctop # containers
+    gtop
+    gotop
+    htop # basic
+    iotop
+    nvitop # nvidia gpu
+    podman-tui # podman container status
+    unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
     # ~~~~~~~~~~~~~~~~~~ file managers {{{1 ~~~~~~~~~~~~~~~~~~ #
     # TODO choose one (or don't)
     broot

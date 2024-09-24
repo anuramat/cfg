@@ -1,45 +1,48 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    bash
+    bash-completion
+    bc # simple calculator
+    coreutils-full
+    coreutils-prefixed # good for mac compatibility
+    curl
+    file
+    gcc
+    git
+    gnumake
+    killall
+    less
+    lsof
+    moreutils # random unixy goodies
+    nvi # vi clone
+    tree
+    unrar-wrapper
+    unzip
+    util-linux # was already installed but whatever
+    wget
+    zip
     # ~~~~~~~~~~~~~~~~~~ system utils {{{1 ~~~~~~~~~~~~~~~~~~~ #
-    libva-utils # vainfo - info on va-api
-    usbutils
-    pciutils
-    hwinfo
-    v4l-utils
-    libusb # user-mode USB access lib
-    efibootmgr # EFI boot manager editor
-    xdg-user-dirs # $HOME/* dir management
-    dmidecode # read hw info from bios using smbios/dmi
-    lshw # hw info
-    # ~~~~~~~~~~~~~~~~~~~ monitoring {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-    btop
-    gtop
-    gotop
-    htop
-    # better du
-    du-dust # pretty `du`
-    ncdu # interactive `du`
-    # misc
-    iotop
-    smem # ram usage
-    ctop # container top
-    podman-tui # podman container status
-    unstable.nvtopPackages.full # top for GPUs
-    nvitop # nvidia top
-    duf # disk usage (better "df")
     acpi # battery status etc
+    dmidecode # read hw info from bios using smbios/dmi
+    efibootmgr # EFI boot manager editor
+    hwinfo
+    libusb # user-mode USB access lib
+    libva-utils # vainfo - info on va-api
+    lshw # hw info
+    pciutils
+    smem # ram usage
+    usbutils
+    v4l-utils
+    xdg-user-dirs # $HOME/* dir management
     # ~~~~~~~~~~~~~~~~~~~ networking {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-    wirelesstools # iwconfig etc
     dig # dns utils
-    inetutils # common network stuff
-    nmap
-    netcat
-    socat # socket cat
     gsocket # get shit through nat
+    inetutils # common network stuff
+    netcat
+    nmap
+    socat # socket cat
+    wirelesstools # iwconfig etc
     # }}}
   ];
 }

@@ -50,7 +50,7 @@
     ranger
     vifm
     xplr
-    # ~~~~~~~~~~~~~~~~~~~~~~ MOVE ME {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     age # file encryption
     aria # downloader
     croc # send/receive files through relay with encryption
@@ -78,7 +78,7 @@
     unstable.devenv
     unstable.xdg-ninja # checks $HOME for junk
     yt-dlp # download youtube videos
-    # ~~~~~~~~~~~~~~~~~~~ god forbid {{{1 ~~~~~~~~~~~~~~~~~~~~ #
+    # %s
     dbeaver-bin # databases
     dive # look into docker image layers
     grpcui
@@ -86,11 +86,6 @@
     kubectl
     kubectx
     podman-compose
-    # ~~~~~~~~~~~~~~~~~~~~~~ junk {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    fortune # random quotes
-    figlet # fancy banners
-    banner
-    cowsay
     # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     discord
     element-desktop # matrix client
@@ -163,6 +158,10 @@
     steam
     transmission-gtk # transmission torrent client gui
     rpi-imager
+    fortune # random quotes
+    figlet # fancy banners
+    banner
+    cowsay
     # }}}
   ];
 }

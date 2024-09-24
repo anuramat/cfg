@@ -73,7 +73,6 @@
     fastfetch
     exercism # CLI for exercism.org
     mosh # ssh over unstable connections
-    nix-index
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
     speedtest-cli

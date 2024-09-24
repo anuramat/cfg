@@ -55,6 +55,7 @@
     xournalpp # pdf markup, handwritten notes
     xfig # vector graphics, old as FUCK
     # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    unstable.keymapp # ZSA keyboard thing
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
     gnome.pomodoro # slightly bloated pomodoro

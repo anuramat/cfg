@@ -11,29 +11,28 @@
     unstable.helix
     unstable.vis
     # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    ghq # git repository manager
-    bat # better cat with syntax hl
+    bat # cat++: syntax hl
     cod # completion generator (updates on `cmd --help`)
-    delta # better diffs
-    difftastic # syntax aware diffs
-    fd # find alternative
-    fzf # fuzzy finder
-    ripgrep # better grep
-    prettyping # better "ping"
-    httpie # better curl
-    ripgrep-all # ripgrep over pdf etc
-    starship # PS1 rice
-    taskwarrior # CLI todo app
-    tealdeer # tldr, but rust + xdg
-    unstable.eza # better ls
-    zellij # neotmux
-    zoxide # better cd
-    rmtrash # rm but to trash
+    delta # diff++
+    difftastic # diff++: syntax aware using TS
+    du-dust # du++
+    duf # df++
     entr # file watcher - runs command on change
-    du-dust # pretty `du`
-    libqalculate # qalc - advanced calculator
-    ncdu # interactive `du`
-    duf # disk usage (better "df")
+    fd # find++
+    fzf # fuzzy finder
+    ghq # git repository manager
+    libqalculate # `qalc` - advanced calculator
+    ncdu # du++: interactive
+    ripgrep # grep++
+    ripgrep-all # ripgrep over pdf etc
+    rmtrash # rm but to trash
+    starship # PS1 rice
+    unstable.eza # ls++
+    zellij # tmux++
+    zoxide # cd++
+    # ~~~~~~~~~~~~~~~~~~~ often used {{{1 ~~~~~~~~~~~~~~~~~~~~ #
+    taskwarrior # CLI todo app
+    tealdeer # tldr reimplementation: rust + xdg
     # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     btop # best
     ctop # containers
@@ -67,6 +66,8 @@
     git-filter-repo # rewrite/analyze repository history
     nix-alien
     lsix # ls for images (uses sixel)
+    httpie # curl++
+    prettyping # ping++
     parallel # run parallel jobs
     scc # count lines of code
     slides # markdown presentation in terminal
@@ -94,7 +95,6 @@
     python311Packages.pyicloud
     python311Packages.jupytext
     w3m # text based web browser
-    wally-cli # ZSA keyboards software
     yt-dlp # download youtube videos
     fortune # random quotes
     figlet # fancy banners
@@ -104,7 +104,7 @@
     podman-compose
     dive # look into docker image layers
     dbeaver-bin # databases
-    unstable.ncspot # spotify
+    # ~~~~~~~~~~~~~~~~~~~~~ passive {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     # }}}
   ];
 }

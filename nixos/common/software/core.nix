@@ -22,6 +22,7 @@
     fzf # fuzzy finder
     ghq # git repository manager
     libqalculate # `qalc` - advanced calculator
+    mprocs # job runner
     ncdu # du++: interactive
     ripgrep # grep++
     ripgrep-all # ripgrep over pdf etc
@@ -50,34 +51,32 @@
     vifm
     xplr
     # ~~~~~~~~~~~~~~~~~~~~~~ MOVE ME {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    taskwarrior # CLI todo app
-    tealdeer # tldr reimplementation: rust + xdg
-    unstable.devenv
+    age # file encryption
+    aria # downloader
+    croc # send/receive files through relay with encryption
     distrobox
-    hyprpicker # simple terminal color picker
+    exercism # CLI for exercism.org
+    fastfetch
     gh # GitHub CLI
     git-filter-repo # rewrite/analyze repository history
     httpie # curl++
-    prettyping # ping++
+    hyprpicker # simple terminal color picker
+    mosh # ssh over unstable connections
     parallel # run parallel jobs
-    scc # count lines of code
-    peco # interactive filtering
-    aria # downloader
+    prettyping # ping++
     progress # progress status for cp etc
     pv # pipe viewer
-    mprocs # job runner
-    tree-sitter # needed to generate some grammars
-    age # file encryption
-    croc # send/receive files through relay with encryption
-    fastfetch
-    exercism # CLI for exercism.org
-    mosh # ssh over unstable connections
+    python311Packages.jupytext
+    python311Packages.pyicloud
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
+    scc # count lines of code
     speedtest-cli
+    taskwarrior # CLI todo app
+    tealdeer # tldr reimplementation: rust + xdg
+    tree-sitter
+    unstable.devenv
     unstable.xdg-ninja # checks $HOME for junk
-    python311Packages.pyicloud
-    python311Packages.jupytext
     yt-dlp # download youtube videos
     # ~~~~~~~~~~~~~~~~~~~ god forbid {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases

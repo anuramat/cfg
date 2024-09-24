@@ -19,24 +19,40 @@
     duf # df++
     entr # file watcher - runs command on change
     fd # find++
-    taskwarrior # CLI todo app
     fzf # fuzzy finder
     ghq # git repository manager
     libqalculate # `qalc` - advanced calculator
-    mprocs # job runner
     ncdu # du++: interactive
-    tealdeer # tldr reimplementation: rust + xdg
     parallel # run parallel jobs
-    progress # progress status for cp etc
-    pv # pipe viewer
-    unstable.devenv
     ripgrep # grep++
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
     starship # PS1 rice
+    taskwarrior # CLI todo app
+    tealdeer # tldr reimplementation: rust + xdg
+    unstable.devenv
     unstable.eza # ls++
     zellij # tmux++
     zoxide # cd++
+
+    age # file encryption
+    aria # downloader
+    banner
+    croc # send/receive files through relay with encryption
+    distrobox
+    exercism # CLI for exercism.org
+    fastfetch
+    figlet # fancy banners
+    gh # GitHub CLI
+    httpie # curl++
+    mprocs # job runner
+    prettyping # ping++
+    progress # progress status for cp etc
+    pv # pipe viewer
+    python311Packages.jupytext
+    scc # count lines of code
+    speedtest-cli
+    unstable.xdg-ninja # checks $HOME for junk
     # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     btop # best
     ctop # containers
@@ -56,16 +72,6 @@
     ranger
     vifm
     xplr
-    # ~~~~~~~~~~~~~~~~~~~~~ moveme {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
-    age # file encryption
-    aria # downloader
-    croc # send/receive files through relay with encryption
-    distrobox
-    exercism # CLI for exercism.org
-    httpie # curl++
-    fastfetch
-    speedtest-cli
-    scc # count lines of code
     # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
     dive # look into docker image layers
@@ -144,25 +150,19 @@
     transmission-gtk # transmission torrent client gui
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
-    # ~~~~~~~~~~~~~~~~~~~ rarely used {{{1 ~~~~~~~~~~~~~~~~~~~ #
-    banner
-    cowsay
-    figlet # fancy banners
-    fortune # random quotes
-    gh # GitHub CLI
-    git-filter-repo # rewrite/analyze repository history
     hyprpicker # simple terminal color picker
+    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    git-filter-repo # rewrite/analyze repository history
     mesa-demos # some 3d demos
     mosh # ssh over unstable connections
-    prettyping # ping++
-    python311Packages.jupytext
     python311Packages.pyicloud
     qalculate-gtk # qalc calculator gui
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
+    cowsay
+    fortune # random quotes
     rpi-imager
     tree-sitter
-    unstable.xdg-ninja # checks $HOME for junk
     # }}}
   ];
 }

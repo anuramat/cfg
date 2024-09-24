@@ -49,12 +49,6 @@
     ranger
     vifm
     xplr
-    # ~~~~~~~~~~~~~~~~~~~~~~ grpc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    grpcui # postman for grpc
-    grpcurl # curl for grpc
-    # ~~~~~~~~~~~~~~~~~~~~~~ kube {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    kubectx
-    kubectl
     # ~~~~~~~~~~~~~~~~~~~~~~ MOVE ME {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     taskwarrior # CLI todo app
     tealdeer # tldr reimplementation: rust + xdg
@@ -76,7 +70,7 @@
     tree-sitter # needed to generate some grammars
     age # file encryption
     croc # send/receive files through relay with encryption
-    fastfetch # neo-neofetch
+    fastfetch
     exercism # CLI for exercism.org
     mosh # ssh over unstable connections
     nix-index
@@ -87,11 +81,14 @@
     python311Packages.pyicloud
     python311Packages.jupytext
     yt-dlp # download youtube videos
-    docker-compose
-    podman-compose
-    dive # look into docker image layers
+    # ~~~~~~~~~~~~~~~~~~~ god forbid {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
-    # ~~~~~~~~~~~~~~~~~~ just in case {{{1 ~~~~~~~~~~~~~~~~~~~ #
+    dive # look into docker image layers
+    grpcui
+    grpcurl
+    kubectl
+    kubectx
+    podman-compose
     # ~~~~~~~~~~~~~~~~~~~~~~ junk {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     fortune # random quotes
     figlet # fancy banners

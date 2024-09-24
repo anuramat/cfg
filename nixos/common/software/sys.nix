@@ -16,19 +16,15 @@
     dmidecode # read hw info from bios using smbios/dmi
     lshw # hw info
     # ~~~~~~~~~~~~~~~~~~~ monitoring {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-    # add more tops
-    glances # 24k, bloated, with a web interface
-    btop # 16k
-    gtop # 9.6k
-    htop # 5.8k
-    gotop # 2.6k
-    atop # 0.757k
-    iotop
-    nmon
+    btop
+    gtop
+    gotop
+    htop
     # better du
-    du-dust # directory disk usage (better du)
-    ncdu # directory disk usage (better du)
+    du-dust # pretty `du`
+    ncdu # interactive `du`
     # misc
+    iotop
     smem # ram usage
     ctop # container top
     podman-tui # podman container status

@@ -65,7 +65,6 @@
     unstable.keymapp # ZSA keyboard thing
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
-    gnome.pomodoro # slightly bloated pomodoro
     mesa-demos # some 3d demos
     # screencasting/streaming
     (pkgs.wrapOBS {
@@ -75,7 +74,7 @@
     })
     qalculate-gtk # qalc calculator gui
     spotify
-    steam # games
+    steam
     transmission-gtk # transmission torrent client gui
     rpi-imager
     # }}}

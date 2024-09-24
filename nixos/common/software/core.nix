@@ -24,6 +24,9 @@
     libqalculate # `qalc` - advanced calculator
     mprocs # job runner
     ncdu # du++: interactive
+    parallel # run parallel jobs
+    progress # progress status for cp etc
+    pv # pipe viewer
     ripgrep # grep++
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
@@ -62,10 +65,7 @@
     httpie # curl++
     hyprpicker # simple terminal color picker
     mosh # ssh over unstable connections
-    parallel # run parallel jobs
     prettyping # ping++
-    progress # progress status for cp etc
-    pv # pipe viewer
     python311Packages.jupytext
     python311Packages.pyicloud
     qrcp # send files to mobile over Wi-Fi using QR
@@ -77,7 +77,6 @@
     tree-sitter
     unstable.devenv
     unstable.xdg-ninja # checks $HOME for junk
-    yt-dlp # download youtube videos
     # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
     dive # look into docker image layers
@@ -119,12 +118,13 @@
     swayimg # image viewer
     lsix # ls for images (uses sixel)
     # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
-    vlc # video player
-    mpv # minimalistic video player
-    davinci-resolve # video editor etc
-    handbrake # ghb - GUI for video converting
-    unstable.footage # simple video editor
-    ffmpeg # CLI multimedia processing
+    vlc
+    mpv
+    davinci-resolve
+    handbrake
+    unstable.footage
+    ffmpeg
+    yt-dlp # download youtube videos
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
     mimic # TTS

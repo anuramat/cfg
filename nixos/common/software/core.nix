@@ -28,6 +28,7 @@
     parallel # run parallel jobs
     progress # progress status for cp etc
     pv # pipe viewer
+    unstable.devenv
     ripgrep # grep++
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
@@ -62,21 +63,6 @@
     exercism # CLI for exercism.org
     httpie # curl++
     fastfetch
-    gh # GitHub CLI
-    git-filter-repo # rewrite/analyze repository history
-    hyprpicker # simple terminal color picker
-    mosh # ssh over unstable connections
-    prettyping # ping++
-    python311Packages.jupytext
-    python311Packages.pyicloud
-    qrcp # send files to mobile over Wi-Fi using QR
-    rclone # rsync for cloud
-    scc # count lines of code
-    speedtest-cli
-    tealdeer # tldr reimplementation: rust + xdg
-    tree-sitter
-    unstable.devenv
-    unstable.xdg-ninja # checks $HOME for junk
     # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
     dive # look into docker image layers
@@ -112,6 +98,7 @@
     exiftool # read/write EXIF metadata
     mypaint # not-ms-paint
     nomacs # image viewer
+    xfig # vector graphics, old as FUCK
     # TODO find the best??
     # they all kinda suck:
     imv # image viewer
@@ -142,13 +129,15 @@
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools
     xournalpp # pdf markup, handwritten notes
-    xfig # vector graphics, old as FUCK
     # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
       ];
     })
+    spotify
+    steam
+    # ~~~~~~~~~~~~~~~~~~~ rarely used {{{1 ~~~~~~~~~~~~~~~~~~~ #
     banner
     cowsay
     figlet # fancy banners
@@ -158,10 +147,22 @@
     mesa-demos # some 3d demos
     qalculate-gtk # qalc calculator gui
     rpi-imager
-    spotify
-    steam
     transmission-gtk # transmission torrent client gui
     unstable.keymapp # ZSA keyboard thing
+    hyprpicker # simple terminal color picker
+    gh # GitHub CLI
+    git-filter-repo # rewrite/analyze repository history
+    mosh # ssh over unstable connections
+    prettyping # ping++
+    python311Packages.jupytext
+    python311Packages.pyicloud
+    qrcp # send files to mobile over Wi-Fi using QR
+    rclone # rsync for cloud
+    scc # count lines of code
+    speedtest-cli
+    tealdeer # tldr reimplementation: rust + xdg
+    tree-sitter
+    unstable.xdg-ninja # checks $HOME for junk
     # }}}
   ];
 }

@@ -143,25 +143,24 @@
     xournalpp # pdf markup, handwritten notes
     xfig # vector graphics, old as FUCK
     # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    unstable.keymapp # ZSA keyboard thing
-    gnome-solanum # simple pomodoro
-    gnome.cheese # webcam
-    mesa-demos # some 3d demos
-    # screencasting/streaming
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
       ];
     })
+    banner
+    cowsay
+    figlet # fancy banners
+    fortune # random quotes
+    gnome-solanum # simple pomodoro
+    gnome.cheese # webcam
+    mesa-demos # some 3d demos
     qalculate-gtk # qalc calculator gui
+    rpi-imager
     spotify
     steam
     transmission-gtk # transmission torrent client gui
-    rpi-imager
-    fortune # random quotes
-    figlet # fancy banners
-    banner
-    cowsay
+    unstable.keymapp # ZSA keyboard thing
     # }}}
   ];
 }

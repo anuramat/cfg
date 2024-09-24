@@ -25,6 +25,7 @@
     libqalculate # `qalc` - advanced calculator
     mprocs # job runner
     ncdu # du++: interactive
+    tealdeer # tldr reimplementation: rust + xdg
     parallel # run parallel jobs
     progress # progress status for cp etc
     pv # pipe viewer
@@ -63,6 +64,8 @@
     exercism # CLI for exercism.org
     httpie # curl++
     fastfetch
+    speedtest-cli
+    scc # count lines of code
     # ~~~~~~~~~~~~~~~~~~~~~ backend {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     dbeaver-bin # databases
     dive # look into docker image layers
@@ -129,7 +132,7 @@
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools
     xournalpp # pdf markup, handwritten notes
-    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # ~~~~~~~~~~~~~~~~~~~~~ generic {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
@@ -137,30 +140,27 @@
     })
     spotify
     steam
+    unstable.keymapp # ZSA keyboard thing
+    transmission-gtk # transmission torrent client gui
+    gnome-solanum # simple pomodoro
+    gnome.cheese # webcam
     # ~~~~~~~~~~~~~~~~~~~ rarely used {{{1 ~~~~~~~~~~~~~~~~~~~ #
     banner
     cowsay
     figlet # fancy banners
     fortune # random quotes
-    gnome-solanum # simple pomodoro
-    gnome.cheese # webcam
-    mesa-demos # some 3d demos
-    qalculate-gtk # qalc calculator gui
-    rpi-imager
-    transmission-gtk # transmission torrent client gui
-    unstable.keymapp # ZSA keyboard thing
-    hyprpicker # simple terminal color picker
     gh # GitHub CLI
     git-filter-repo # rewrite/analyze repository history
+    hyprpicker # simple terminal color picker
+    mesa-demos # some 3d demos
     mosh # ssh over unstable connections
     prettyping # ping++
     python311Packages.jupytext
     python311Packages.pyicloud
+    qalculate-gtk # qalc calculator gui
     qrcp # send files to mobile over Wi-Fi using QR
     rclone # rsync for cloud
-    scc # count lines of code
-    speedtest-cli
-    tealdeer # tldr reimplementation: rust + xdg
+    rpi-imager
     tree-sitter
     unstable.xdg-ninja # checks $HOME for junk
     # }}}

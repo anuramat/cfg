@@ -5,13 +5,14 @@
 }: {
   environment.systemPackages = with pkgs; [
     # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
-    element-desktop # matrix client
-    slack
     discord
+    element-desktop # matrix client
+    onionshare # tor-based file-sharing etc
+    onionshare-gui # p2p file sharing, chat, website hosting
+    qtox # p2p IM
+    slack
     telegram-desktop
     whatsapp-for-linux
-    qtox # p2p IM
-    onionshare-gui # p2p file sharing, chat, website hosting
     # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     unstable.google-chrome
     unstable.firefox
@@ -61,7 +62,6 @@
     xournalpp # pdf markup, handwritten notes
     xfig # vector graphics, old as FUCK
     # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    onionshare # tor-based file-sharing etc
     unstable.keymapp # ZSA keyboard thing
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam

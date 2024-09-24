@@ -23,7 +23,7 @@
     unstable.alacritty # gpu terminal
     cool-retro-term # cute terminal
     # ~~~~~~~~~~~~~~~~~~~~ graphics {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
-    # krita # raster graphics, digital art
+    krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics
     gimp-with-plugins # raster graphics
     imagemagickBig # CLI image manipulation
@@ -32,13 +32,14 @@
     mypaint # not-ms-paint
     nomacs # image viewer
     # TODO find the best??
+    # they all kinda suck:
     imv # image viewer
     swayimg # image viewer
     lsix # ls for images (uses sixel)
     # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     vlc # video player
     mpv # minimalistic video player
-    # davinci-resolve # video editor etc
+    davinci-resolve # video editor etc
     handbrake # ghb - GUI for video converting
     unstable.footage # simple video editor
     ffmpeg # CLI multimedia processing

@@ -16,9 +16,7 @@
     # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     unstable.google-chrome
     unstable.firefox
-    unstable.qutebrowser
     unstable.vivaldi
-    # unstable.vivaldi-ffmpeg-codecs # proprietary codecs TODO properly install
     tor-browser-bundle-bin
     # ~~~~~~~~~~~~~~~~~~~~ terminals {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     foot # minimal terminal

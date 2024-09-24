@@ -34,7 +34,7 @@
     unstable.eza # ls++
     zellij # tmux++
     zoxide # cd++
-
+    # ~~~~~~~~~~~~~~~~~~~~~~ utils {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     age # file encryption
     aria # downloader
     banner
@@ -53,6 +53,18 @@
     scc # count lines of code
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
+    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    git-filter-repo # rewrite/analyze repository history
+    mesa-demos # some 3d demos
+    mosh # ssh over unstable connections
+    python311Packages.pyicloud
+    qalculate-gtk # qalc calculator gui
+    qrcp # send files to mobile over Wi-Fi using QR
+    rclone # rsync for cloud
+    cowsay
+    fortune # random quotes
+    rpi-imager
+    tree-sitter
     # ~~~~~~~~~~~~~~~~~~~~~~ tops {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     btop # best
     ctop # containers
@@ -151,18 +163,6 @@
     gnome-solanum # simple pomodoro
     gnome.cheese # webcam
     hyprpicker # simple terminal color picker
-    # ~~~~~~~~~~~~~~~~~~~~~~ misc {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
-    git-filter-repo # rewrite/analyze repository history
-    mesa-demos # some 3d demos
-    mosh # ssh over unstable connections
-    python311Packages.pyicloud
-    qalculate-gtk # qalc calculator gui
-    qrcp # send files to mobile over Wi-Fi using QR
-    rclone # rsync for cloud
-    cowsay
-    fortune # random quotes
-    rpi-imager
-    tree-sitter
     # }}}
   ];
 }

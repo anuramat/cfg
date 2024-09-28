@@ -28,4 +28,6 @@ _: {
   programs.seahorse.enable = true;
   # auto setup environment when opening a project folder
   programs.direnv.enable = true;
+  # adb
+  programs.adb.enable = true;
 }

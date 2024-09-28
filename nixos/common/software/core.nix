@@ -104,7 +104,6 @@
     # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     unstable.google-chrome
     unstable.firefox
-    unstable.vivaldi
     tor-browser-bundle-bin
     # ~~~~~~~~~~~~~~~~~~~~ terminals {{{1 ~~~~~~~~~~~~~~~~~~~~ #
     foot # minimal terminal

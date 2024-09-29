@@ -89,25 +89,47 @@ brexit() {
 }
 # tts
 say() {
-	# https://github.com/rhasspy/piper/blob/master/VOICES.md
 	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1
-
-	local model_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx?download=true'
-	local config_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx.json?download=true.json'
-
 	local cache_dir="$XDG_CACHE_HOME/piper/"
 	mkdir -p "$cache_dir"
-	local model_file="$cache_dir/model.onnx"
-	local config_file="$cache_dir/config.json"
 
-	[ -f "$model_file" ] || {
+	# https://github.com/rhasspy/piper/blob/master/VOICES.md
+	# prefer m, h are too noisy
+	#	robots:
+	#	- amy ml - typical sci-fi assistant vibes
+	#	- en_GB cori hm - amy but bri'ish
+	#	- kristin m - glados but more human
+	#	- bryce m - jarvis, male amy
+	#	- lessac hml - generic phone voice assistant vibes, low quality
+	#	humans:
+	#	- libritts_r m - multiple speakers, speaker number in [-904,903]
+	#	- ljspeech hm - generic, high quality, mommy vibes - single speaker
+	local name="amy"
+	local quality="medium" # in low, medium, high
+
+	local locale="en_US"
+	local model_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx?download=true"
+	local config_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx.json?download=true.json"
+
+	local model_file="$cache_dir/$locale-$name-$quality.onnx"
+	local config_file="$cache_dir/$locale-$name-$quality.json"
+
+	[ -s "$model_file" ] || {
 		printf '\n\tdownloading the model\n\n' && wget -q --show-progress -O "$model_file" "$model_url"
+	} || {
+		\printf '\terror, check the model name\n'
+		rm "$model_file" && return 1
 	}
 
-	[ -f "$config_file" ] || {
+	[ -s "$config_file" ] || {
 		printf '\n\tdownloading the config\n\n' && wget -q --show-progress -O "$config_file" "$config_url"
+	} || {
+		\printf '\terror, check the model name\n'
+		rm "$config_file" && return 1
 	}
 
-	echo "$@" | piper -q -m "$model_file" -c "$config_file" -f - | play -t wav -q -
+	echo "$@" \
+		| piper --speaker 0 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f - \
+		| play -t wav -q -
 }
 # vim: fdl=0

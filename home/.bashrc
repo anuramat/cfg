@@ -82,4 +82,23 @@ z() {
 brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
+say() {
+	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' return 1
+
+	local model_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx?download=true'
+	local config_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx.json?download=true.json'
+
+	local cache_dir="$XDG_CACHE_HOME/piper/"
+	mkdir -p "$cache_dir"
+	local model_file="$cache_dir/model.onnx"
+	local config_file="$cache_dir/config.json"
+
+	[ -f "$model_file" ] && [ -f "$config_file" ] && return 0
+
+	echo "~~~~~~~~~~~~~~~~~~~~ downloading the model ~~~~~~~~~~~~~~~~~~~~"
+	wget -O "$model_file" "$model_url"
+	wget -O "$config_file" "$config_url"
+
+	echo "$1" | piper -m "$model_file" -c "$config_file" -f - | play -t wav -
+}
 # vim: fdl=0

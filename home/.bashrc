@@ -24,20 +24,16 @@ eval "$(direnv hook bash)"
 eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
 
 # ~~~~~~~~~~~~~~~~~~~~~ some aliases ~~~~~~~~~~~~~~~~~~~~~ #
-# TODO check them
 upload() {
-	curl -F"file=@$1" https://0x0.st
-}
-upload2() {
-	curl --upload-file "$1" "https://transfer.sh/$1"
+	curl -F "file=@$1" https://0x0.st | tee >(wl-copy)
 }
 cheat() {
-	echo "$@" | tr " " "+" | xargs -I{} curl -m 10 "http://cheat.sh/{}" 2>/dev/null
+	echo "$@" | tr " " "+" | xargs -I{} curl -m 10 "http://cheat.sh/{}" 2>/dev/null | less
 }
-alias c="clear"
-alias t="tldr"
+alias t="tgpt"
 alias f="nvim"
 alias d="xdg-open"
+alias open="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

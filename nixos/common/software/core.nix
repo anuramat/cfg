@@ -30,6 +30,7 @@
     starship # PS1 rice
     taskwarrior # CLI todo app
     tealdeer # tldr reimplementation: rust + xdg
+    tgpt # tui for llm apis
     unstable.devenv
     unstable.eza # ls++
     zellij # tmux++

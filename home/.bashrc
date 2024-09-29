@@ -104,10 +104,10 @@ say_unwrapped() {
 	#	humans:
 	#	- libritts_r m - multiple speakers, speaker number in [-904,903]
 	#	- ljspeech hm - generic, high quality, mommy vibes - single speaker
-	local name="cori"
+	local name="amy"
 	local quality="medium" # in low, medium, high
 
-	local locale="en_GB"
+	local locale="en_US"
 	local model_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx?download=true"
 	local config_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx.json?download=true.json"
 

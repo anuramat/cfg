@@ -135,6 +135,7 @@
     yt-dlp # download youtube videos
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
+    lame # mp3
     alsa-utils
     mimic # foolproof TTS
     piper-tts # good neural TTS

@@ -24,9 +24,12 @@ eval "$(direnv hook bash)"
 eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
 
 # ~~~~~~~~~~~~~~~~~~~~~ some aliases ~~~~~~~~~~~~~~~~~~~~~ #
+
+# uploads a file, sends link to stdout AND pastebin
 upload() {
 	curl -F "file=@$1" https://0x0.st | tee >(wl-copy)
 }
+# searches on cheat.sh
 cheat() {
 	echo "$@" | tr " " "+" | xargs -I{} curl -m 10 "http://cheat.sh/{}" 2>/dev/null | less
 }
@@ -38,12 +41,14 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
+alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex"'
+# outputs URL as a readable markdown
 getmd() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
-alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex"'
-__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
+# renders a markdown file to pdf, opens in zathura, rerenders on save
 hotmd() {
+	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
 	# $1 - markdown file path
 
 	local -r dir='/tmp/hotmd'
@@ -69,12 +74,12 @@ hotmd() {
 	# clean up
 	rm "$path"
 }
-# open doc in a new window
+# opens with zathura in a new window
 Z() {
 	zathura "$1" &>/dev/null &
 	disown
 }
-# open a document "in this window"
+# open with zathura "in this window"
 z() {
 	Z "$1" && exit
 }
@@ -82,6 +87,7 @@ z() {
 brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
+# tts
 say() {
 	# https://github.com/rhasspy/piper/blob/master/VOICES.md
 	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1

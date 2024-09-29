@@ -108,6 +108,6 @@ say() {
 		printf '\n\tdownloading the config\n\n' && wget -q --show-progress -O "$config_file" "$config_url"
 	}
 
-	echo "$1" | piper -q -m "$model_file" -c "$config_file" -f - | play -t wav -q -
+	echo "$@" | piper -q -m "$model_file" -c "$config_file" -f - | play -t wav -q -
 }
 # vim: fdl=0

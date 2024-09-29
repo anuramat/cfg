@@ -83,6 +83,7 @@ brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
 say() {
+	# https://github.com/rhasspy/piper/blob/master/VOICES.md
 	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' return 1
 
 	local model_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx?download=true'

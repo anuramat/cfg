@@ -136,7 +136,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
     mimic # foolproof TTS
-    piper # good neural TTS
+    piper-tts # good neural TTS
     # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     slides # markdown presentation in terminal
     glow # markdown viewer

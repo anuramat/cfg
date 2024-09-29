@@ -135,7 +135,8 @@
     yt-dlp # download youtube videos
     # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     sox # CLI audio processing
-    mimic # TTS
+    mimic # foolproof TTS
+    piper # good neural TTS
     # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     slides # markdown presentation in terminal
     glow # markdown viewer

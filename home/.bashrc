@@ -88,7 +88,7 @@ brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
 # tts
-say() {
+say_unwrapped() {
 	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1
 	local cache_dir="$XDG_CACHE_HOME/piper/"
 	mkdir -p "$cache_dir"
@@ -129,7 +129,9 @@ say() {
 	}
 
 	echo "$@" \
-		| piper --speaker 0 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f - \
-		| play -t wav -q -
+		| piper --speaker 0 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
+}
+say() {
+	say_unwrapped "$@" | play -t wav -q -
 }
 # vim: fdl=0

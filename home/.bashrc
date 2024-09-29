@@ -84,7 +84,7 @@ brexit() {
 }
 say() {
 	# https://github.com/rhasspy/piper/blob/master/VOICES.md
-	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' return 1
+	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1
 
 	local model_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx?download=true'
 	local config_url='https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_GB/cori/high/en_GB-cori-high.onnx.json?download=true.json'
@@ -94,12 +94,14 @@ say() {
 	local model_file="$cache_dir/model.onnx"
 	local config_file="$cache_dir/config.json"
 
-	[ -f "$model_file" ] && [ -f "$config_file" ] && return 0
+	[ -f "$model_file" ] || {
+		printf '\n\tdownloading the model\n\n' && wget -q --show-progress -O "$model_file" "$model_url"
+	}
 
-	echo "~~~~~~~~~~~~~~~~~~~~ downloading the model ~~~~~~~~~~~~~~~~~~~~"
-	wget -O "$model_file" "$model_url"
-	wget -O "$config_file" "$config_url"
+	[ -f "$config_file" ] || {
+		printf '\n\tdownloading the config\n\n' && wget -q --show-progress -O "$config_file" "$config_url"
+	}
 
-	echo "$1" | piper -m "$model_file" -c "$config_file" -f - | play -t wav -
+	echo "$1" | piper -q -m "$model_file" -c "$config_file" -f - | play -t wav -q -
 }
 # vim: fdl=0

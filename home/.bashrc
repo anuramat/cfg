@@ -41,10 +41,18 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
-alias pandoc-tex='pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex"'
-# outputs URL as a readable markdown
-getmd() {
+# link to markdown
+pandoc-web() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
+}
+#
+pandoc-tex() {
+	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" -o "$2"
+}
+# md to pdf
+pandoc-md() {
+	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
+	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -o "$2"
 }
 # renders a markdown file to pdf, opens in zathura, rerenders on save
 hotmd() {
@@ -54,6 +62,7 @@ hotmd() {
 	local -r dir='/tmp/hotmd'
 	mkdir -p "$dir"
 	# generate random filename
+	# TODO maybe use mktemp
 	local -r path="$dir/$(shuf -er -n16 {a..z} {0..9} | tr -d '\n')".pdf
 	# put in the basic pdf so that zathura doesn't shit itself
 	local -r pdf_minimal='JVBERi0xLgoxIDAgb2JqPDwvUGFnZXMgMiAwIFI+PmVuZG9iagoyIDAgb2JqPDwvS2lkc1szIDAgUl0vQ291bnQgMT4+ZW5kb2JqCjMgMCBvYmo8PC9QYXJlbnQgMiAwIFI+PmVuZG9iagp0cmFpbGVyIDw8L1Jvb3QgMSAwIFI+Pg=='

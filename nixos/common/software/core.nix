@@ -28,6 +28,7 @@
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
     starship # PS1 rice
+    tasksh
     taskwarrior # CLI todo app
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis

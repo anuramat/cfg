@@ -48,7 +48,7 @@ getmd() {
 }
 # renders a markdown file to pdf, opens in zathura, rerenders on save
 hotmd() {
-	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe
+	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 	# $1 - markdown file path
 
 	local -r dir='/tmp/hotmd'
@@ -96,18 +96,15 @@ say_unwrapped() {
 	# https://github.com/rhasspy/piper/blob/master/VOICES.md
 	# prefer m, h are too noisy
 	#	robots:
-	#	- amy ml - typical sci-fi assistant vibes
-	#	- en_GB cori hm - amy but bri'ish
-	#	- kristin m - glados but more human
-	#	- bryce m - jarvis, male amy
-	#	- lessac hml - generic phone voice assistant vibes, low quality
-	#	humans:
-	#	- libritts_r m - multiple speakers, speaker number in [-904,903]
-	#	- ljspeech hm - generic, high quality, mommy vibes - single speaker
-	local name="amy"
+	#	- ljspeech hm - 5/5, sc2 adjutant/mommy vibes, high pitch
+	#	- libritts_r m - 5/5, the only natural sounding one
+	#	- kristin m - 4/5, great, glados vibes, low pitch
+	#	- bryce m - 4/5, jarvis vibes, male amy
+	#	- amy ml - 3/5, monotone, sci-fi assistant vibes, high pitch
+	local name="$1"
 	local quality="medium" # in low, medium, high
-
 	local locale="en_US"
+
 	local model_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx?download=true"
 	local config_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx.json?download=true.json"
 
@@ -128,10 +125,10 @@ say_unwrapped() {
 		rm "$config_file" && return 1
 	}
 
-	echo "$@" \
-		| piper --speaker 0 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
+	echo "$2" \
+		| piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
 }
 say() {
-	say_unwrapped "$@" | play -t wav -q -
+	say_unwrapped "ljspeech" "$*" | play -t wav -q -
 }
 # vim: fdl=0

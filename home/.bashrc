@@ -70,7 +70,7 @@ hot-doc() {
 	local -r zathura_pid="$!"
 
 	# start entr
-	echo "$1" | entr -n pandoc-md "$1" "$path" &
+	echo "$1" | entr -cn pandoc-md "$1" "$path" &
 	local -r entr_pid="$!"
 
 	# kill entr if zathura is closed

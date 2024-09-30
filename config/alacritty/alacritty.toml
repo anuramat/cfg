@@ -1,37 +1,13 @@
 # vim: fdm=marker fdl=0
 
-# `man 5 alacritty-bindings`
-[keyboard]
-bindings = [
-  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" }
-]
-
 [window]
-# option_as_alt = "Both" # mac thing
-startup_mode = "Maximized"
-# blur = true
-# opacity = 0.7
-
-# font {{{1
+opacity = 0.8
 
 [font]
 size = 13.0
 
-[font.bold]
-family = "Hack Nerd Font"
-style = "Bold"
-
-[font.bold_italic]
-family = "Hack Nerd Font"
-style = "Bold Italic"
-
-[font.italic]
-family = "Hack Nerd Font"
-style = "Italic"
-
 [font.normal]
 family = "Hack Nerd Font"
-style = "Regular"
 
 # official dracula for alacritty {{{1
 

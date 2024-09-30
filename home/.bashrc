@@ -41,21 +41,18 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
-# link to markdown
 pandoc-web() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
-#
 pandoc-tex() {
 	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" -o "$2"
 }
-# md to pdf
 pandoc-md() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -o "$2"
 }
 # renders a markdown file to pdf, opens in zathura, rerenders on save
-hotmd() {
+hot-doc() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 	# $1 - markdown file path
 
@@ -73,7 +70,7 @@ hotmd() {
 	local -r zathura_pid="$!"
 
 	# start entr
-	echo "$1" | entr -n pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -t pdf -o "$path" &
+	echo "$1" | entr -n pandoc-md "$1" "$path" &
 	local -r entr_pid="$!"
 
 	# kill entr if zathura is closed

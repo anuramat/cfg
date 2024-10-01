@@ -138,6 +138,7 @@ z() {
 brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
+# beep every $1 minutes
 beep() {
 	local -r period=$1
 	[[ $period -le 60 ]] && [[ $((60 % $1)) == 0 ]] \
@@ -145,12 +146,15 @@ beep() {
 			echo 'Illegal period'
 			return 1
 		}
-	local -r mins=$((period - $(date +%M) % period))
-	echo "Waiting for $mins minutes"
+
+	local -r offset_minutes=$((period - $(date +%M) % period))
+	echo "Waiting for $offset_minutes minutes"
 	sleep $((mins * 60))
+
 	while true; do
-		current_time=$(date +%H:%M)
-		say "Current time: $current_time"
+		local hours=$(date +%H)
+		local minutes=$(date +%M)
+		say "Current time: $hours $minutes"
 		sleep $((period * 60))
 	done
 }

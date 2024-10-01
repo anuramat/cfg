@@ -109,9 +109,10 @@
     unstable.firefox
     tor-browser-bundle-bin
     # ~~~~~~~~~~~~~~~~~~~~ terminals {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-    foot # minimal terminal
-    unstable.alacritty # gpu terminal
-    cool-retro-term # cute terminal
+    foot # minimal
+    unstable.alacritty # gpu
+    unstable.kitty # gpu, python, inline images
+    cool-retro-term # cute
     # ~~~~~~~~~~~~~~~~~~~~ graphics {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
     krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics

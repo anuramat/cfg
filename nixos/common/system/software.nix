@@ -55,5 +55,8 @@
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
     kooha # screen capture with basic gui
+
+    # Misc
+    unstable.pywal
   ];
 }

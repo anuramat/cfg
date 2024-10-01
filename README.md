@@ -27,10 +27,6 @@ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 
 ## XDG base dir spec
 
-non-compliant parts:
-
-- alacritty imports (https://github.com/alacritty/alacritty/pull/7690)
-- foot imports (https://codeberg.org/dnkl/foot/issues/1713)
 - nix
   - service.nix - syncthing paths
 
@@ -68,7 +64,6 @@ non-compliant parts:
 
 - icons
 - cursors
-- move nix packages around
 - import as much as possible from profile.sh? stop sourcing profile.sh from
   bashrc
 - clipboard persistence

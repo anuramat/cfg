@@ -3,7 +3,7 @@
 export SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
 
-# ls
+# eza
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all --sort=time"
 if command -v "eza" >/dev/null 2>&1; then
 	# config file implementation is in progress:
@@ -25,7 +25,7 @@ alias grep='grep --color=auto'
 alias ip='ip -c=auto'
 
 # etc
-alias fd="fd -H" # H for show hidden, I for show ignored
+alias fd="fd -HI" # show Hidden and Ignored
 alias info="info --vi-keys"
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
 export TERMCMD="alacritty"            # used by rifle (ranger file opener)

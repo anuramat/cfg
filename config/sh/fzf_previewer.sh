@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2086
 # $1 is unquoted on purpose
+# TODO why...
 
 if [ -d $1 ]; then
 	# preview the directory tree

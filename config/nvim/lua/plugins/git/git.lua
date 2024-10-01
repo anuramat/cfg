@@ -1,17 +1,27 @@
--- tanvirtin/vgit.nvim
+-- vim: fdm=marker fdl=0
 return {
-  'lewis6991/gitsigns.nvim',
-  event = 'VeryLazy',
-  opts = {
-    sign_priority = 0,
-    signs = {
-      add = { text = '▎' },
-      change = { text = '▎' },
-      delete = { text = '' },
-      topdelete = { text = '' },
-      changedelete = { text = '▎' },
-      untracked = { text = '▎' },
-    },
+  -- ~~~~~~~~~~~~~~~ main interface {{{1 ~~~~~~~~~~~~~~~~ --
+  {
+    -- -- neogit is unstable as of 03-2024
+    -- return { 'NeogitOrg/neogit', lazy = false, opts = {} }
+    'tpope/vim-fugitive',
+    lazy = false, -- so that merge tool works
+  },
+  -- ~~~~~~~~~~~~~~~~ gutter, binds {{{1 ~~~~~~~~~~~~~~~~ --
+  {
+    -- tanvirtin/vgit.nvim
+    'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
+    opts = {
+      sign_priority = 0,
+      signs = {
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+        untracked = { text = '▎' },
+      },
     -- stylua: ignore
     on_attach = function()
       local buffer = 0
@@ -40,5 +50,28 @@ return {
       prefixed('n', 'd', gs.diffthis, 'Diff')
       prefixed('n', 'D', function() gs.diffthis('~') end, 'Diff @')
     end,
+    },
   },
+  -- ~~~~~~~~~~~~~~~~~~~~ diffs {{{1 ~~~~~~~~~~~~~~~~~~~~ --
+  {
+    'sindrets/diffview.nvim',
+    event = 'VeryLazy',
+  },
+  -- ~~~~~~~~~~~~~~~~~~ conflicts {{{1 ~~~~~~~~~~~~~~~~~~ --
+  {
+    'rhysd/conflict-marker.vim',
+    init = function()
+      vim.g.conflict_marker_enable_highlight = 1
+      vim.g.conflict_marker_highlight_group = 'Error'
+      vim.g.conflict_marker_enable_matchit = 1
+      vim.g.conflict_marker_enable_mappings = 0
+      -- ct - theirs
+      -- co - ours
+      -- cn - none
+      -- cb - both
+      -- cB - reversed both
+      -- :ConflictMarker*
+    end,
+  },
+  -- ~~~~~~~~~~~~~~~~~~~~~ }}} ~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 }

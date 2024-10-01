@@ -138,5 +138,20 @@ z() {
 brexit() {
 	ddcutil setvcp 10 "$1" --display 1
 }
-
+beep() {
+	local -r period=$1
+	[[ $period -le 60 ]] && [[ $((60 % $1)) == 0 ]] \
+		|| {
+			echo 'Illegal period'
+			return 1
+		}
+	local -r mins=$((period - $(date +%M) % period))
+	echo "Waiting for $mins minutes"
+	sleep $((mins * 60))
+	while true; do
+		current_time=$(date +%H:%M)
+		say "Current time: $current_time"
+		sleep $((period * 60))
+	done
+}
 # vim: fdl=0

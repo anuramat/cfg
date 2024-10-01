@@ -1,4 +1,3 @@
--- in opts set: `indent = { highlight = rainbow_lines() }`
 local function rainbow_lines()
   local highlight = {
     'RainbowRed',

@@ -4,7 +4,7 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-context',
   },
-  build = ':TSUpdate',
+  build = ':TSUpdateSync',
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     highlight = {

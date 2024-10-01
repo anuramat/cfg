@@ -10,7 +10,7 @@ return {
       vim.keymap.set('n', '<leader>h' .. lhs, rhs, { silent = true, desc = 'Harpoon: ' .. desc })
     end
    -- stylua: ignore start
-    set('a', function() harpoon:list():append() end, 'Add')
+    set('a', function() harpoon:list():add() end, 'Add')
     set('l', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, 'List')
     set('n', function() harpoon:list():next() end, 'Next')
     set('p', function() harpoon:list():prev() end, 'Previous')

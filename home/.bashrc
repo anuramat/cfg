@@ -14,18 +14,16 @@ if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"
 	source "$(fzf-share)/completion.bash"
 fi
-# zoxide, cod, direnv append hooks to $PROMPT_COMMAND
-command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)"
-# source <(cod init $$ bash) # off, popup on every help is really annoying
-eval "$(direnv hook bash)"
-eval "$(starship init bash)" # "eats" $PROMPT_COMMAND
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
+eval "$(direnv hook bash)"                                                         # appends
+eval "$(starship init bash)"                                                       # replaces
 
 # ~~~~~~~~~~~~~~~~~~~~~ aliases {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
 
+alias h="tgpt"
 alias t="tgpt"
 alias f="nvim"
 alias d="xdg-open"
-alias open="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

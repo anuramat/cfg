@@ -11,6 +11,7 @@
     unstable.helix
     unstable.vis
     # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    unstable.blesh # bash line editor
     bat # cat++: syntax hl
     cod # completion generator (updates on `cmd --help`)
     delta # diff++

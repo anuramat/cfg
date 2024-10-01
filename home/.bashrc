@@ -158,4 +158,14 @@ beep() {
 		sleep $((period * 60))
 	done
 }
+# basic pomodoro
+pomo() {
+	echo "Starting pomo: ${1}m on, ${2}m off"
+	while true; do
+		say "Let's dance"
+		sleep $(($1 * 60)) && say "Round finished" && notify-send 'pomo: off'
+		sleep $(($2 * 60)) \
+			&& notify-send 'pomo: on'
+	done
+}
 # vim: fdl=0

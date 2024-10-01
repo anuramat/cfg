@@ -154,7 +154,7 @@ beep() {
 	while true; do
 		local hours=$(date +%H)
 		local minutes=$(date +%M)
-		say "Current time: $hours $minutes"
+		say "Current time: $hours $minutes" &
 		sleep $((period * 60))
 	done
 }
@@ -162,10 +162,14 @@ beep() {
 pomo() {
 	echo "Starting pomo: ${1}m on, ${2}m off"
 	while true; do
-		say "Let's dance"
-		sleep $(($1 * 60)) && say "Round finished" && notify-send 'pomo: off'
-		sleep $(($2 * 60)) \
-			&& notify-send 'pomo: on'
+		say "Let's dance" &
+
+		sleep $(($1 * 60)) | pv -t
+		say "Round finished" &
+		notify-send 'pomo: off'
+
+		sleep $(($2 * 60)) | pv -t
+		notify-send 'pomo: on'
 	done
 }
 # vim: fdl=0

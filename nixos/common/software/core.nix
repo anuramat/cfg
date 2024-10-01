@@ -164,7 +164,6 @@
     steam
     unstable.keymapp # ZSA keyboard thing
     transmission-gtk # transmission torrent client gui
-    gnome-solanum # simple pomodoro
     gnome.cheese # webcam
     hyprpicker # simple terminal color picker
     # }}}

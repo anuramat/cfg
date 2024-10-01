@@ -1,8 +1,6 @@
--- vim: fdm=marker fdl=0
+-- vim: fdl=1
 return {
-  -- ~~~~~~~~~~~~~~~~~~ oil.nvim {{{1 ~~~~~~~~~~~~~~~~~~~ --
-  -- intuitive netrw replacement
-  -- directories are editable buffers
+  -- oil.nvim - file manager
   {
     'stevearc/oil.nvim',
     lazy = false, -- so that it overrides `nvim <path>`
@@ -45,7 +43,7 @@ return {
       { '<leader>O', '<cmd>Oil .<cr>', desc = 'Open Parent Directory' },
     },
   },
-  -- ~~~~~~~~~~~~~~~~~~~ eunuch {{{1 ~~~~~~~~~~~~~~~~~~~~ --
+  -- eunuch - rm, mv, etc
   {
     -- basic file commads for the current file (remove, rename, etc.)
     -- see also:
@@ -53,5 +51,4 @@ return {
     'tpope/vim-eunuch',
     event = 'VeryLazy',
   },
-  -- ~~~~~~~~~~~~~~~~~~~~~ }}} ~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 }

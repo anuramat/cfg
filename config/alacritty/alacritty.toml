@@ -10,7 +10,7 @@ size = 13.0
 [font.normal]
 family = "Hack Nerd Font"
 
-# official dracula for alacritty {{{1
+# official dracula theme {{{1
 
 [colors.primary]
 

@@ -1,6 +1,6 @@
 set {
-    $term_run alacritty -e
-    $term_start alacritty
+    $term_run foot
+    $term_start foot
 
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
 

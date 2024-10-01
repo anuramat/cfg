@@ -1,4 +1,4 @@
-terminal=alacritty -e
+terminal=foot
 
 fuzzy-match=true
 hide-cursor=true

@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    unstable.alacritty # terminal
+    unstable.foot # terminal
     unstable.firefox # web browser
 
     # Settings

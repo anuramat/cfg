@@ -125,7 +125,7 @@
     # they all kinda suck:
     imv # image viewer
     swayimg # image viewer
-    lsix # ls for images (uses sixel)
+    unstable.lsix # ls for images (uses sixel)
     # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
     vlc
     mpv

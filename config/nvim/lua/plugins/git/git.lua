@@ -1,13 +1,13 @@
--- vim: fdm=marker fdl=0
+-- vim: fdl=1
 return {
-  -- ~~~~~~~~~~~~~~~ main interface {{{1 ~~~~~~~~~~~~~~~~ --
+  -- fugitive - main interface
   {
     -- -- neogit is unstable as of 03-2024
     -- return { 'NeogitOrg/neogit', lazy = false, opts = {} }
     'tpope/vim-fugitive',
     lazy = false, -- so that merge tool works
   },
-  -- ~~~~~~~~~~~~~~~~ gutter, binds {{{1 ~~~~~~~~~~~~~~~~ --
+  -- gitsigns - gutter, binds
   {
     -- tanvirtin/vgit.nvim
     'lewis6991/gitsigns.nvim',
@@ -52,12 +52,12 @@ return {
     end,
     },
   },
-  -- ~~~~~~~~~~~~~~~~~~~~ diffs {{{1 ~~~~~~~~~~~~~~~~~~~~ --
+  -- diffview
   {
     'sindrets/diffview.nvim',
     event = 'VeryLazy',
   },
-  -- ~~~~~~~~~~~~~~~~~~ conflicts {{{1 ~~~~~~~~~~~~~~~~~~ --
+  -- conflict markers
   {
     'rhysd/conflict-marker.vim',
     init = function()
@@ -73,5 +73,4 @@ return {
       -- :ConflictMarker*
     end,
   },
-  -- ~~~~~~~~~~~~~~~~~~~~~ }}} ~~~~~~~~~~~~~~~~~~~~~~~~~~ --
 }

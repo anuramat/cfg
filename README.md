@@ -68,4 +68,3 @@ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
   bashrc
 - clipboard persistence
 - ripgreprc check globs
-- maybe move latex templates to ~/Templates

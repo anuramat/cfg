@@ -1,4 +1,4 @@
--- vim: fdl=0
+-- vim: fdl=1
 
 return {
   -- sleuth - autodetects indentation settings

@@ -5,7 +5,7 @@
 -- messages: passes to nvim-notify, renders natively as a fallback
 -- lsp progress: native rendering
 return {
-  enabled = false,
+  -- enabled = false,
   'folke/noice.nvim',
   dependencies = {
     'MunifTanjim/nui.nvim',
@@ -14,7 +14,9 @@ return {
   },
   event = 'VeryLazy',
   opts = function()
+    local colors = require('pywal16.core').get_colors()
     require('notify').setup({
+      background_colour = colors.background,
       render = 'wrapped-compact',
       on_open = function(win)
         -- set border

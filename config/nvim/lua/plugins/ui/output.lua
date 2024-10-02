@@ -15,16 +15,19 @@ return {
   event = 'VeryLazy',
   opts = function()
     local colors = require('pywal16.core').get_colors()
+
     require('notify').setup({
+      -- defines fade-in color
       background_colour = colors.background,
-      render = 'wrapped-compact',
+      render = 'wrapped-compact', -- style
+      -- set border
       on_open = function(win)
-        -- set border
         if vim.api.nvim_win_is_valid(win) then
           vim.api.nvim_win_set_config(win, { border = vim.g.border })
         end
       end,
     })
+
     return {
       popupenu = { backend = 'cmp', enabled = false }, -- TODO what is this
       cmdline = {
@@ -39,7 +42,7 @@ return {
           input = false,
         },
       },
-      messages = { enabled = true }, -- forces cmdline
+      messages = { enabled = true }, -- {enabled=false} forces cmdline to show
       presets = {
         bottom_search = true, -- use a classic bottom cmdline for search
         long_message_to_split = true, -- long messages will be sent to a split

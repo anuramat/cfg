@@ -27,7 +27,6 @@
     w3m # terminal web browser, just in case
     # ~~~~~~~~~~~~~~~~~~ system utils {{{1 ~~~~~~~~~~~~~~~~~~~ #
     acpi # battery status etc
-    smartmontools # storage
     dmidecode # read hw info from bios using smbios/dmi
     efibootmgr # EFI boot manager editor
     hwinfo
@@ -35,6 +34,8 @@
     libva-utils # vainfo - info on va-api
     lshw # hw info
     pciutils
+    procps # info from /proc
+    smartmontools # storage
     smem # ram usage
     usbutils
     v4l-utils

@@ -6,6 +6,11 @@ return {
     -- return { 'NeogitOrg/neogit', lazy = false, opts = {} }
     'tpope/vim-fugitive',
     lazy = false, -- so that merge tool works
+    keys = { {
+      '<leader>G',
+      '<cmd>Git<cr>',
+      desc = 'Fugitive',
+    } },
   },
   -- gitsigns - gutter, binds
   {

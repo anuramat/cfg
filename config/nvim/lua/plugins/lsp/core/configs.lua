@@ -1,3 +1,5 @@
+-- vim: fdl=2
+
 local on_attach = require('plugins.lsp.core.on_attach')
 
 --- Root directory function with a fallback
@@ -16,8 +18,10 @@ end
 --- @return table configs
 return function()
   return {
-    nixd = {}, -- kinda worse than nil_ls, but being rewritten rn
-    nil_ls = {},
+    nixd = {
+      cmd = { 'nixd', '--inlay-hints=false' },
+    }, -- generally better than nil_ls
+    -- nil_ls = {},
     yamlls = {},
     texlab = {},
     bashls = {},

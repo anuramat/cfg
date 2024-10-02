@@ -162,6 +162,10 @@ beep() {
 }
 # basic pomodoro
 pomo() {
+	[[ $1 -gt 0 ]] && [[ $2 -gt 0 ]] || {
+		echo -e 'Invalid arguments\nUsage:\n\tpomo 45 15'
+		return 1
+	}
 	echo "Starting pomo: ${1}m on, ${2}m off"
 	while true; do
 		(say "Round started" &)

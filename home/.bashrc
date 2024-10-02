@@ -18,7 +18,7 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd
 eval "$(direnv hook bash)"                                                         # appends
 eval "$(starship init bash)"                                                       # replaces
 # source "$(blesh-share)/ble.sh" # buggy, ugly, but cool
-# (cat ~/.cache/wal/sequences &)
+[[ $TERM != foot ]] && (cat ~/.cache/wal/sequences &)
 
 # ~~~~~~~~~~~~~~~~~~~~~ aliases {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
 

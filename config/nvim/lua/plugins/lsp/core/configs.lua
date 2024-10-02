@@ -20,8 +20,8 @@ return function()
   return {
     nixd = {
       cmd = { 'nixd', '--inlay-hints=false' },
-    }, -- generally better than nil_ls
-    -- nil_ls = {},
+    }, -- knows nixos and nixpkgs: hover, completions
+    nil_ls = {}, -- nice code actions
     yamlls = {},
     texlab = {},
     bashls = {},

@@ -1,6 +1,0 @@
-include "~/.cache/wal/colors-sway"
-output * background $wallpaper fill
-
-client.focused $color0 $background $foreground $color7 $background
-
-# vim: ft=swayconfig

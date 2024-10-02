@@ -58,5 +58,6 @@
 
     # Misc
     unstable.pywal
+    colorz # alternative backend
   ];
 }

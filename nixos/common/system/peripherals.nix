@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   # ZSA Voyager
   services.udev.extraRules = ''
     # Rules for Oryx web flashing and live training
@@ -7,11 +11,11 @@
     # Keymapp Flashing rules for the Voyager
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';
+  services.hardware.openrgb.enable = true;
   hardware = {
     # Flipper Zero
     flipperzero.enable = true;
     # Generic RGB software
-    hardware.openrgb.enable = true;
     # Razer
     openrazer = {
       users = [user.username];

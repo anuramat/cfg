@@ -1,14 +1,15 @@
 {
   inputs = {
-    # nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # modules
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    # overlays
+
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    # packages
     nix-alien.url = "github:thiagokokada/nix-alien";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {nixpkgs, ...} @ inputs: let
     user = {
@@ -29,10 +30,9 @@
   in {
     nixosConfigurations = {
       anuramat-ll7 = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit user unstable;};
+        specialArgs = {inherit user unstable inputs;};
         modules = [
           ./configuration.nix
-
           ./machines/anuramat-ll7.nix
           inputs.nixos-hardware.nixosModules.common-cpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-intel

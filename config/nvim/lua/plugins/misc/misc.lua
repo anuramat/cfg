@@ -1,6 +1,55 @@
 -- vim: fdl=1
 
 return {
+  -- vim-illuminate - highlights the word under cursor using LSP/TS/regex
+  {
+    'RRethy/vim-illuminate',
+    event = 'VeryLazy',
+    config = function()
+      require('illuminate').configure({
+        filetypes_denylist = { -- TODO make a vim.g.nonfiles
+          'NeogitStatus',
+          'NeogitPopup',
+          'oil',
+          'lazy',
+          'lspinfo',
+          'null-ls-info',
+          'NvimTree',
+          'neo-tree',
+          'alpha',
+          'help',
+        },
+      })
+    end,
+  },
+  -- undotree
+  {
+    'mbbill/undotree',
+    cmd = {
+      'UndotreeHide',
+      'UndotreeShow',
+      'UndotreeFocus',
+      'UndotreeToggle',
+    },
+    keys = {
+      {
+        '<leader>u',
+        '<cmd>UndotreeToggle<cr>',
+        desc = 'Undotree',
+      },
+    },
+  },
+  -- mini.trailspace - highlight and delete trailing whitespace
+  {
+    'echasnovski/mini.trailspace',
+    event = 'VeryLazy',
+    config = function()
+      vim.api.nvim_create_user_command('Trim', require('mini.trailspace').trim, {})
+      vim.cmd(
+        [[autocmd FileType lazy lua vim.b.minitrailspace_disable = true; require('mini.trailspace').unhighlight()]]
+      )
+    end,
+  },
   -- vim-table-mode -  tables for markdown etc
   {
     'dhruvasagar/vim-table-mode',

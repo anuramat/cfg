@@ -16,8 +16,6 @@
   services = {
     # ssd
     fstrim.enable = true;
-    # doesn't support ll7g9, keep just in case
-    hardware.openrgb.enable = true;
     # proprietary drivers
     xserver = {
       dpi = 236;

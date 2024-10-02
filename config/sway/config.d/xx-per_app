@@ -5,5 +5,6 @@ for_window {
     [app_id="xdg-desktop-portal-gtk"] floating enable
     [app_id="nm-connection-editor"] floating enable
     [app_id="keymapp"] floating enable
+    [app_id="openrgb"] floating enable
 }
 # vim: ft=swayconfig

@@ -1,6 +1,35 @@
 -- vim: fdl=1
 
 return {
+  -- indent-blankline.nvim
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = 'VeryLazy',
+    main = 'ibl',
+    init = function()
+      vim.cmd([[se lcs+=lead:\ ]])
+    end,
+    opts = function()
+      return {
+        exclude = {
+          filetypes = {
+            'lazy',
+          },
+        },
+        indent = {
+          -- highlight = rainbow_lines(),
+          char = '│',
+          -- char = '┃',
+        },
+        scope = {
+          enabled = true,
+          show_start = false,
+          show_end = false,
+        },
+      }
+    end,
+  },
   -- neotest
   {
     'nvim-neotest/neotest',

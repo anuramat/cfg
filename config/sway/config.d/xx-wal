@@ -2,13 +2,11 @@ include "$XDG_CACHE_HOME/wal/colors-sway"
 
 output * background $wallpaper fill $background
 
-#class                   border   bground     text
-client.focused           #00FF00 $background $foreground
-client.focused_inactive  $color0  $background $foreground
-client.focused_tab_title $color1  $background $foreground
-client.unfocused         $color0  $background $foreground
-client.urgent            #FF0000  $background $foreground
-
-client.background       $foreground
+#class                   bar_border bar_bg  bar_text    tiling_indicator view_border
+client.focused           $color2    $color2 $foreground $color3          $color2
+client.focused_inactive  $color0    $color0 $foreground $color3          $color0
+client.focused_tab_title $color1    $color1 $foreground $color3          $color1
+client.unfocused         $color0    $color0 $foreground $color3          $color0
+client.urgent            #FFFF00    #FFFF00 #000000     #FFFF00          #FFFF00
 
 # vim: ft=swayconfig

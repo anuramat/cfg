@@ -164,12 +164,14 @@ beep() {
 pomo() {
 	echo "Starting pomo: ${1}m on, ${2}m off"
 	while true; do
-		(say "Let's dance" &)
+		(say "Round started" &)
 
+		echo On:
 		sleep $(($1 * 60)) | pv -t
 		(say "Round finished" &)
 		notify-send 'pomo: off'
 
+		echo Off:
 		sleep $(($2 * 60)) | pv -t
 		notify-send 'pomo: on'
 	done

@@ -1,6 +1,121 @@
 -- vim: fdl=1
 
+-- -- splitjoin.vim - splits/joins code using special per-language rules
+-- {
+--   'AndrewRadev/splitjoin.vim',
+--   lazy = false,
+--   config = function()
+--     vim.g.splitjoin_split_mapping = '<leader>J'
+--     vim.g.splitjoin_join_mapping = '<leader>j'
+--   end,
+-- },
+
 return {
+  -- mini.ai - new textobjects
+  {
+    'echasnovski/mini.ai',
+    keys = {
+      { 'a', mode = { 'x', 'o' } },
+      { 'i', mode = { 'x', 'o' } },
+    },
+    dependencies = { 'nvim-treesitter-textobjects' },
+    opts = function()
+      local ts = require('mini.ai').gen_spec.treesitter
+      return {
+        n_lines = 500,
+        custom_textobjects = {
+          b = false, -- = ([{
+          q = false, -- = `'"
+          -- ~~~~~~~~~~~~~~~~~~~ functions ~~~~~~~~~~~~~~~~~~~ --
+          F = ts({
+            a = { '@function.outer' },
+            i = { '@function.inner' },
+          }, {}),
+          f = ts({
+            a = { '@call.outer' },
+            i = { '@call.inner' },
+          }),
+          a = ts({
+            a = { '@parameter.outer' },
+            i = { '@parameter.inner' },
+          }),
+          -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+          e = ts({
+            a = { '@assignment.outer' },
+            i = { '@assignment.rhs' },
+          }),
+          r = ts({
+            a = { '@return.outer' },
+            i = { '@return.inner' },
+          }),
+          -- ~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~ --
+          s = ts({ -- structs/classes; instance/definition
+            a = { '@class.outer' },
+            i = { '@class.inner' },
+          }, {}),
+          c = ts({ -- inner doesn't work with most languages, use outer
+            a = { '@comment.outer' },
+            i = { '@comment.inner' },
+          }),
+          o = ts({ -- any other blocks
+            a = { '@block.outer', '@conditional.outer', '@loop.outer', '@frame.outer' },
+            i = { '@block.inner', '@conditional.inner', '@loop.inner', '@frame.inner' },
+          }, {}),
+        },
+        silent = true,
+      }
+    end,
+  },
+  -- treesj - splits/joins code using TS
+  {
+    'Wansmer/treesj',
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 500,
+    },
+    keys = {
+      {
+        '<leader>j',
+        function()
+          require('treesj').toggle()
+        end,
+        desc = 'Split/Join TS node',
+      },
+    },
+  },
+  -- rainbow-delimiters.nvim - TS rainbow parentheses
+  {
+    -- alterntaives:
+    -- * https://github.com/luochen1990/rainbow -- 1.7k stars
+    -- * https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
+    'HiPhish/rainbow-delimiters.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = 'BufEnter',
+  },
+  -- aerial.nvim - symbol outline
+  {
+    -- simrat39/symbols-outline.nvim
+    'stevearc/aerial.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-tree/nvim-web-devicons',
+    },
+    event = 'BufEnter',
+    opts = {
+      filter_kind = {
+        nix = false,
+      },
+    },
+    keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
+  },
+  -- neogen - annotation generation
+  {
+    'danymat/neogen',
+    config = true,
+    event = 'BufEnter',
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
   -- indent-blankline.nvim
   {
     'lukas-reineke/indent-blankline.nvim',

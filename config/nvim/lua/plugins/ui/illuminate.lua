@@ -1,6 +1,7 @@
--- echasnovski/mini.cursorword
 return {
+  -- highlights the word under cursor
   'RRethy/vim-illuminate',
+  -- alternatively, echasnovski/mini.cursorword
   event = 'VeryLazy',
   config = function()
     require('illuminate').configure({
@@ -14,6 +15,7 @@ return {
         'NvimTree',
         'neo-tree',
         'alpha',
+        'help',
       },
     })
   end,

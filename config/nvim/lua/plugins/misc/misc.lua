@@ -1,6 +1,33 @@
 -- vim: fdl=1
 
 return {
+  -- todo-comments.nvim - highlights TODO, HACK, etc
+  {
+    'folke/todo-comments.nvim',
+    event = 'VeryLazy',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    opts = {
+      sign_priority = -1000,
+      highlight = {
+        keyword = 'bg', -- only highlight the word
+        pattern = [[<(KEYWORDS)>]], -- vim regex
+        multiline = false, -- enable multine todo comments
+      },
+      search = {
+        pattern = [[\b(KEYWORDS)\b]], -- ripgrep regex
+      },
+    },
+  },
+  -- pywal16.nvim
+  {
+    lazy = false,
+    'uZer/pywal16.nvim',
+    as = 'pywal16',
+    config = function()
+      local pywal16 = require('pywal16')
+      pywal16.setup()
+    end,
+  },
   -- oil.nvim - file manager
   {
     'stevearc/oil.nvim',

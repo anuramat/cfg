@@ -1,3 +1,7 @@
+-- vim: fdm=marker fdl=0
+
+-- ~~~~~~~~~~~~~~~~~~~~~ vars {{{1 ~~~~~~~~~~~~~~~~~~~~~~ --
+
 local u = require('utils')
 
 local error_color = 'ErrorMsg'
@@ -107,6 +111,8 @@ local fileformat = {
   color = error_color,
 }
 
+-- ~~~~~~~~~~~~~~~~~~~~~~ }}} ~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+
 return {
   'nvim-lualine/lualine.nvim',
   event = 'VeryLazy',
@@ -120,7 +126,7 @@ return {
     vim.o.showmode = false
     return {
       options = {
-        theme = vim.g.lualine_colorscheme,
+        theme = 'pywal16-nvim',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 100, tabline = 100 },

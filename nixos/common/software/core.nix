@@ -165,6 +165,7 @@
       ];
     })
     spotify
+    ncspot
     steam
     unstable.keymapp # ZSA keyboard thing
     transmission-gtk # transmission torrent client gui

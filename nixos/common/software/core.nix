@@ -47,6 +47,7 @@
     fastfetch
     figlet # fancy banners
     gh # GitHub CLI
+    gnuplot
     httpie # curl++
     mprocs # job runner
     prettyping # ping++

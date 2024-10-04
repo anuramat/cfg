@@ -1,5 +1,4 @@
 require('adhoc.gramota')
 require('adhoc.templates')
-require('adhoc.comment_header')
 require('adhoc.quote')
 require('adhoc.event_debugger')

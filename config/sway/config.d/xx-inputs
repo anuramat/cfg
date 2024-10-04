@@ -11,19 +11,18 @@ input 5426:138:Razer_Razer_Viper_Mini {
     accel_profile flat
     pointer_accel 0.2
 }
+# ll7 {{{
 input 1267:12928:ELAN06FA:00_04F3:3280_Touchpad {
     dwt enabled
     click_method clickfinger
     natural_scroll enabled
     # pointer_accel -0.05
     scroll_method two_finger
-    
     tap disabled
     drag enabled # tap-drag
     drag_lock enabled # grace period for tap-drag
 }
-# ll7
 input 1165:51607:ITE_Tech._Inc._ITE_Device(8258)_Keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
 }
-# vim: ft=swayconfig
+# vim: ft=swayconfig fdm=marker fdl=0

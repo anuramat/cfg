@@ -28,6 +28,10 @@ $bind {
     $mod+a layout tabbed
     $mod+s layout stacking
     $mod+d layout toggle split
+    # TODO figure those out
+    $mod+w layout splith
+    $mod+e layout splitv
+
     $mod+f fullscreen toggle
     $mod+$mod2+f fullscreen toggle global
     $mod+z split none

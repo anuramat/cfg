@@ -20,8 +20,19 @@ return function()
   return {
     nixd = {
       cmd = { 'nixd', '--inlay-hints=false' },
+      settings = {
+        nixd = {
+          diagnostic = {
+            suppress = {
+              'sema-escaping-with',
+              'escaping-this-with',
+              'sema-extra-with',
+            },
+          },
+        },
+      },
     }, -- knows nixos and nixpkgs: hover, completions
-    nil_ls = {}, -- nice code actions
+    -- nil_ls = {}, -- nice code actions
     yamlls = {},
     texlab = {},
     bashls = {},

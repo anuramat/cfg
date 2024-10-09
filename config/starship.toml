@@ -14,12 +14,12 @@ vimcmd_symbol = ''
 
 [status]
 style = 'bold red'
-format = '[$status:$common_meaning$signal_name]($style)'
+format = '[$status:$common_meaning$signal_name]($style) '
 disabled = false
 
 [time]
 disabled = false
-format = "[$time]($style)"
+format = "[$time]($style) "
 
 # pure git {{{1
 

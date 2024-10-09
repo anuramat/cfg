@@ -39,7 +39,7 @@
     lua-language-server
     texlab
     (haskell-language-server.override {supportedGhcVersions = ["948" "927"];})
-    nixd
+    unstable.nixd
     ccls
     nil
     pyright

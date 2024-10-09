@@ -30,7 +30,7 @@
     rmtrash # rm but to trash
     starship # PS1 rice
     tasksh
-    taskwarrior # CLI todo app
+    unstable.taskwarrior3 # CLI todo app
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis
     unstable.devenv
@@ -167,8 +167,8 @@
     ncspot
     steam
     unstable.keymapp # ZSA keyboard thing
-    transmission-gtk # transmission torrent client gui
-    gnome.cheese # webcam
+    unstable.transmission_4-gtk # transmission torrent client gui
+    unstable.cheese # webcam
     hyprpicker # simple terminal color picker
     # }}}
   ];

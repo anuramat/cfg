@@ -1,41 +1,41 @@
 set {
     $term_run foot
     $term_start foot
-
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
-
-    $click_notificiation "makoctl invoke"
-    $dismiss_notification "makoctl dismiss"
-    $dismiss_all_notifications "makoctl dismiss --all"
-
     $lock_screen swaylock --daemonize
+    
+    # notifications {{{1
+        $click_notificiation "makoctl invoke"
+        $dismiss_notification "makoctl dismiss"
+        $dismiss_all_notifications "makoctl dismiss --all"
 
-    # click to select a window, drag to select a region
-    $screenshot_mouse swaymsg -t get_tree \
-    | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
-    | slurp | xargs -I {} grim -g "{}" - | swappy -f -
-    $screenshot_focused_window swaymsg -t get_tree \
-    | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
-    | xargs -I {} grim -g "{}" - | swappy -f -
-    $screenshot_all_outputs grim - | swappy -f -
-    $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
+    # screenshots {{{1
+        # click to select a window, drag to select a region
+        $screenshot_mouse swaymsg -t get_tree \
+        | jq -r '.. | (.nodes? // empty)[] | select(.pid and .visible) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+        | slurp | xargs -I {} grim -g "{}" - | swappy -f -
+        $screenshot_focused_window swaymsg -t get_tree \
+        | jq -r '.. | (.nodes? // empty)[] | select(.focused) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' \
+        | xargs -I {} grim -g "{}" - | swappy -f -
+        $screenshot_all_outputs grim - | swappy -f -
+        $screenshot_focused_output grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | swappy -f -
 
+    # special keys {{{1
+        $brightness_up lightctl up
+        $brightness_down lightctl down
 
-    $brightness_up lightctl up
-    $brightness_down lightctl down
+        $sound_up volumectl -u up
+        $sound_down volumectl -u down
+        $mute_sound volumectl toggle-mute
+        $mute_mic volumectl -m toggle-mute
 
-    $sound_up volumectl -u up
-    $sound_down volumectl -u down
-    $mute_sound volumectl toggle-mute
-    $mute_mic volumectl -m toggle-mute
+        $audio_prev playerctl -p spotify previous
+        $audio_next playerctl -p spotify next
+        $audio_play_pause playerctl -p spotify play-pause
+        $audio_stop playerctl -p spotify stop
 
-    $audio_prev playerctl -p spotify previous
-    $audio_next playerctl -p spotify next
-    $audio_play_pause playerctl -p spotify play-pause
-    $audio_stop playerctl -p spotify stop
-
-    $wlan_toggle wifi toggle
-    $bluetooth_toggle bluetooth toggle
+        $wlan_toggle wifi toggle
+        $bluetooth_toggle bluetooth toggle
 }
 
-# vim: ft=swayconfig
+# vim: ft=swayconfig fdm=marker

@@ -22,10 +22,8 @@ eval "$(starship init bash)"                                                    
 
 # ~~~~~~~~~~~~~~~~~~~~~ aliases {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
 
-alias h="tgpt"
-alias t="tgpt"
+alias t="tldr"
 alias f="nvim"
-alias d="xdg-open"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -179,5 +177,11 @@ pomo() {
 		sleep $(($2 * 60)) | pv -t
 		notify-send 'pomo: on'
 	done
+}
+g() {
+	local -r root="$(ghq root)"
+	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
+	local -r chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf)
+	cd "$root/$chosen_path" || return
 }
 # vim: fdl=0

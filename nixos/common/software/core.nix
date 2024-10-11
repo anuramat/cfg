@@ -161,7 +161,7 @@
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
-        # obs-vaapi # might make shit faster
+        # obs-vaapi # might make shit faster idk
       ];
     })
     spotify

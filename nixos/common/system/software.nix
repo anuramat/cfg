@@ -25,7 +25,7 @@
 
     # Big chunks
     waybar # status bar
-    mako # notifications
+    mako # notifications - smaller than fnott and dunst
     swaylock # lockscreen
     swayidle # lock/sleep on idle
 

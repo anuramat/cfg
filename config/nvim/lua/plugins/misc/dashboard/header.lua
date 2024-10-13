@@ -19,22 +19,24 @@ grid = {
   },
 }
 
-local function map_grid()
-  local used_keys = {}
-  for _, row in ipairs(grid) do
-    for _, button in ipairs(row) do
-      local key = string.lower(string.sub(button.name, 1, 1))
-      -- make sure we don't map to the same key twice
-      if u.contains(used_keys, key) then
-        error('dashboard keymap collision')
+local function grid_mapper(grid)
+  return function()
+    local used_keys = {}
+    for _, row in ipairs(grid) do
+      for _, button in ipairs(row) do
+        local key = string.lower(string.sub(button.name, 1, 1))
+        -- make sure we don't map to the same key twice
+        if u.contains(used_keys, key) then
+          error('dashboard keymap collision')
+        end
+        table.insert(used_keys, key)
+        vim.api.nvim_buf_set_keymap(0, 'n', key, '<cmd>' .. button.command .. '<cr>', {})
       end
-      table.insert(used_keys, key)
-      vim.api.nvim_buf_set_keymap(0, 'n', key, '<cmd>' .. button.command .. '<cr>', {})
     end
   end
 end
 
-local function render_text()
+local function render_text(grid)
   local lines = {}
   for i = 1, #grid do
     local row = grid[i]
@@ -53,12 +55,12 @@ local function render_text()
   return output
 end
 
-local output = render_text()
+local output = render_text(grid)
 local height = #vim.split(output, '\n', { trim_empty = true })
 
 vim.api.nvim_create_autocmd('Filetype', {
   pattern = { 'alpha' },
-  callback = map_grid,
+  callback = grid_mapper(grid),
 })
 
 return {

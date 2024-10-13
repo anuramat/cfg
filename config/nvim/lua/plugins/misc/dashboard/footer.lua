@@ -1,7 +1,7 @@
 local bottom_padding = 2
 local min_top_padding = 2
 
-local header = require('plugins.ui.dashboard.parts.header')
+local header = require('plugins.misc.dashboard.header')
 local u = require('utils')
 
 local info_string = function()

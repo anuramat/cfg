@@ -178,10 +178,15 @@ pomo() {
 		notify-send 'pomo: on'
 	done
 }
+# jump to a ghq repo
 g() {
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local -r chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf)
 	cd "$root/$chosen_path" || return
+}
+# send full path of a file to clipboard
+c() {
+	realpath $1 | wl-copy -n
 }
 # vim: fdl=0

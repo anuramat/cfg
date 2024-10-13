@@ -1,3 +1,5 @@
+-- vim: fdl=0
+
 local M = {}
 
 --- Concatenates `n` copies of `s`

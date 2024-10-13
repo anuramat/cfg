@@ -1,3 +1,5 @@
+-- vim: fdl=0
+
 local function latexindent()
   -- already used in texlab
   local null_ls = require('null-ls')
@@ -12,9 +14,8 @@ local function latexindent()
     }),
   })
 end
-
--- sources are set in $XDG_CONFIG_HOME/cbfmt.toml
 local function cbfmt()
+  -- sources are set in $XDG_CONFIG_HOME/cbfmt.toml
   local null_ls = require('null-ls')
   local helpers = require('null-ls.helpers')
   null_ls.register({
@@ -29,8 +30,7 @@ local function cbfmt()
   })
 end
 
--- TODO docstring
-return function()
+local null_sources = function()
   local null_ls = require('null-ls')
   local nlf = null_ls.builtins.formatting
   local nld = null_ls.builtins.diagnostics
@@ -59,3 +59,23 @@ return function()
     nla.statix,
   }
 end
+
+local on_attach = require('plugins.lsp.core.on_attach')
+
+-- alternatives:
+-- https://github.com/mfussenegger/nvim-lint -- linting
+-- https://github.com/stevearc/conform.nvim -- formatting
+-- no code actions tho
+return {
+  'nvimtools/none-ls.nvim', -- maintained 'jose-elias-alvarez/null-ls.nvim' fork
+  event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = 'nvim-lua/plenary.nvim',
+  config = function()
+    local null_ls = require('null-ls')
+    null_ls.setup({
+      sources = null_sources(),
+      on_attach = on_attach,
+      border = vim.g.border,
+    })
+  end,
+}

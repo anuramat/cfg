@@ -97,7 +97,6 @@
     rpi-imager
     tree-sitter
     # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
-    discord
     element-desktop # matrix client
     onionshare # tor-based file-sharing etc
     onionshare-gui # p2p file sharing, chat, website hosting

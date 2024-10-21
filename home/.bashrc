@@ -180,6 +180,7 @@ pomo() {
 }
 # jump to a ghq repo
 g() {
+	# g for git
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local -r chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf)
@@ -187,16 +188,20 @@ g() {
 }
 # send full path of a file to clipboard
 c() {
+	# c for copy
 	realpath $1 | wl-copy -n
 }
 p() {
+	# p for packages
 	echo "$@" | tr " " "+" | xargs -I{} xdg-open "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}"
 }
 o() {
+	# o for options
 	echo "$@" | tr " " "+" | xargs -I{} xdg-open "https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=packages&query={}"
 }
-wal() {
-	"$XDG_CONFIG_HOME/mako/wal.sh"
+r() {
+	# r for rice
 	wal "$@"
+	"$XDG_CONFIG_HOME/mako/wal.sh"
 }
 # vim: fdl=0

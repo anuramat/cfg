@@ -1,4 +1,4 @@
-include dracula
+include wal
 
 set adjust-open width
 set window-title-basename "true"

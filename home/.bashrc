@@ -203,5 +203,6 @@ r() {
 	# r for rice
 	wal "$@"
 	"$XDG_CONFIG_HOME/mako/wal.sh"
+	cp "$XDG_CACHE_HOME/wal/colors-zathura" "$XDG_CONFIG_HOME/zathura/wal"
 }
 # vim: fdl=0

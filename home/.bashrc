@@ -195,4 +195,8 @@ p() {
 o() {
 	echo "$@" | tr " " "+" | xargs -I{} xdg-open "https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=packages&query={}"
 }
+wal() {
+	"$XDG_CONFIG_HOME/mako/wal.sh"
+	wal "$@"
+}
 # vim: fdl=0

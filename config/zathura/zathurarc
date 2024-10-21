@@ -1,6 +1,6 @@
 include wal
 
 set adjust-open width
-set window-title-basename "true"
-set selection-clipboard "clipboard"
-set recolor true
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard

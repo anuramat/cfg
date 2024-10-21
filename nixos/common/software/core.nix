@@ -60,13 +60,13 @@
     ## ~~~~~~~~~~~~~~~~~~~~~~ tops {{{2 ~~~~~~~~~~~~~~~~~~~~~~~ #
     btop # best
     ctop # containers
-    gtop
-    gotop
+    gotop # cute
     htop # basic
     iotop
     nvitop # nvidia gpu
     podman-tui # podman container status
     unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
+    zenith-nvidia # top WITH nvidia GPUs
     ## ~~~~~~~~~~~~~~~~~~ file managers {{{2 ~~~~~~~~~~~~~~~~~~ #
     # TODO choose one (or don't)
     broot

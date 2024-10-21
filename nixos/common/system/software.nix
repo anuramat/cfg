@@ -57,6 +57,6 @@
     kooha # screen capture with basic gui
 
     # Misc
-    wallust # better pywal
+    unstable.wallust # better pywal
   ];
 }

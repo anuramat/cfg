@@ -150,7 +150,7 @@
     readability-cli # extracts main content from pages
     okular # reader
     djview # djvu reader
-    zathura # keyboard-centric aio reader
+    unstable.zathura # keyboard-centric aio reader
     zotero
     easyocr # neural OCR
     pandoc # markup converter (latex, markdown, etc)

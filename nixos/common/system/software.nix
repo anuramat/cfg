@@ -57,7 +57,6 @@
     kooha # screen capture with basic gui
 
     # Misc
-    unstable.pywal
-    colorz # alternative backend
+    wallust # better pywal
   ];
 }

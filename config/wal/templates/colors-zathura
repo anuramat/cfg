@@ -29,3 +29,10 @@ set index-active-bg "{foreground}"
 set index-active-fg "{background}"
 set render-loading-bg "{background}"
 set render-loading-fg "{foreground}"
+
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
+
+# {foreground.alpha_hex}
+# {foreground.hex_argb}

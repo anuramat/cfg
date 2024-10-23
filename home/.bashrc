@@ -204,5 +204,6 @@ r() {
 	wallust run "$1"
 	# TODO set wallpaper
 	"$XDG_CONFIG_HOME/mako/wal.sh"
+	swaymsg reload
 }
 # vim: fdl=0

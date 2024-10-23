@@ -4,3 +4,4 @@ alpha = 80
 zathura = { src = 'zathura', target = "~/.config/zathura/generated-colors"}
 foot = { src = 'foot', target = "~/.config/foot/generated-colors"}
 mako = { src = 'mako', target = "~/.config/mako/generated-colors"}
+sway = { src = 'sway', target = "~/.config/sway/config.d/xx-generated-colors"}

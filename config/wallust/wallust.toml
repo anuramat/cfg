@@ -1,3 +1,5 @@
+alpha = 80
+
 [templates]
 zathura = { src = 'zathura', target = "~/.config/zathura/generated-colors"}
 foot = { src = 'foot', target = "~/.config/foot/generated-colors"}

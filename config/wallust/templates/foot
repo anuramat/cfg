@@ -4,7 +4,7 @@
 color={{cursor | strip}} {{foreground | strip}}
 
 [colors]
-alpha={{alpha_dec}}
+# alpha={{alpha_dec}} # doesn't work for some reason yet, output is empty
 foreground={{foreground | strip}}
 background={{background | strip}}
 regular0={{color0 | strip}}

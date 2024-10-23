@@ -4,7 +4,8 @@
 color={{cursor | strip}} {{foreground | strip}}
 
 [colors]
-# alpha={{alpha_dec}} # doesn't work for some reason yet, output is empty
+# for some reason doesn't work with the templating, test: {{alpha_dec}}
+alpha=0.8
 foreground={{foreground | strip}}
 background={{background | strip}}
 regular0={{color0 | strip}}

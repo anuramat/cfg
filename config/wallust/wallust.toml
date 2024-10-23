@@ -1,25 +1,4 @@
-backend = "full"
-color_space = "lab"
-threshold = "20"
-palette = "softdark"
-check_contrast = true
-
-# [templates]
-# # dunst templates
-# dunst.template = "dunstrc.monitor"
-# dunst.target = "~/.config/dunst/dunstrc"
-
-# # one liner for zathura
-# zathura = { template = 'zath', target = '~/.config/zathura/zathurarc' }
-
-# # even a shorter way
-# glava = { src = 'glava.glsl', target = '~/.config/glava/rc.glsl' }
-
-# # or splited, like dunst
-# res.src = "xres"
-# res.dst = "~/.config/Xresources"
-
-# # old times, good times (here I put old pywal templates)
-# # Also, note that the name doesn't matters (as long as it isn't already defined)
-# # NOTE that both src and dst are directories
-# pywal = { src = "templates/", dst = '~/.cache/wal/', pywal = true }
+[templates]
+zathura = { src = 'zathura', target = "~/.config/zathura/generated-colors"}
+foot = { src = 'foot', target = "~/.config/foot/generated-colors"}
+mako = { src = 'mako', target = "~/.config/mako/generated-colors"}

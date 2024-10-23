@@ -1,4 +1,4 @@
-include wal
+include generated-colors
 
 set adjust-open width
 set window-title-home-tilde true

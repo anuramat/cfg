@@ -2,3 +2,4 @@ private*
 !private.example*
 /config/ncspot/userstate.cbor
 /config/btop/btop.log
+generated-colors

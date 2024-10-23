@@ -63,9 +63,10 @@
     haskellPackages.hoogle
     sageWithDoc # computer algebra system
     # mathematica requires the .sh installer to be in the nix store
+    # `nix-store --add-fixed sha256 Mathematica_14.0.0_BNDL_LINUX.sh`
     # will probably need to get commented out on the first install
-    # maybe make optional later somehow? through a separate flake probably
-    mathematica
+    # TODO maybe make optional later somehow? through a separate flake probably
+    # mathematica
     # }}}
   ];
 }

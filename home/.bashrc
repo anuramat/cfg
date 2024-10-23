@@ -201,7 +201,8 @@ o() {
 }
 r() {
 	# r for rice
-	wallust "$@"
+	wallust run "$1"
+	# TODO set wallpaper
 	"$XDG_CONFIG_HOME/mako/wal.sh"
 }
 # vim: fdl=0

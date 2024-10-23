@@ -204,6 +204,14 @@ return {
       pywal16.setup()
     end,
   },
+  -- neopywal.nvim
+  -- {
+  --     "RedsXDD/neopywal.nvim",
+  --     name = "neopywal",
+  --     lazy = false,
+  --     priority = 1000,
+  --     opts = {},
+  -- },
   -- oil.nvim - file manager
   {
     'stevearc/oil.nvim',

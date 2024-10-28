@@ -28,6 +28,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
+alias hotdoc="__hotdoc & disown"
 
 # ~~~~~~~~~~~~~~~~~~~~ functions {{{1 ~~~~~~~~~~~~~~~~~~~~ #
 
@@ -101,7 +102,7 @@ say() {
 	say_unwrapped "ljspeech" "$*" | play -t wav -q -
 }
 # renders $1.md to pdf, opens in zathura, rerenders on save
-hot-doc() {
+__hotdoc() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 
 	# create file

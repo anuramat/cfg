@@ -28,7 +28,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
-alias hotdoc="__hotdoc & disown"
 
 # ~~~~~~~~~~~~~~~~~~~~ functions {{{1 ~~~~~~~~~~~~~~~~~~~~ #
 
@@ -125,6 +124,10 @@ __hotdoc() {
 
 	# clean up
 	rm "$path"
+}
+hotdoc() {
+	__hotdoc "$1" &
+	disown
 }
 # open with zathura
 Z() {

@@ -101,7 +101,7 @@ say() {
 	say_unwrapped "ljspeech" "$*" | play -t wav -q -
 }
 # renders $1.md to pdf, opens in zathura, rerenders on save
-__hotdoc() {
+hotdoc() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 
 	# create file
@@ -124,10 +124,6 @@ __hotdoc() {
 
 	# clean up
 	rm "$path"
-}
-hotdoc() {
-	__hotdoc "$1" &
-	disown
 }
 # open with zathura
 Z() {

@@ -46,6 +46,7 @@ return {
       return {
         popupenu = { backend = 'cmp', enabled = false }, -- TODO what is this
         cmdline = {
+          enabled = false,
           view = 'cmdline',
           format = {
             cmdline = false,
@@ -57,7 +58,7 @@ return {
             input = false,
           },
         },
-        messages = { enabled = true }, -- {enabled=false} forces cmdline to show
+        messages = { enabled = false }, -- {enabled=false} forces cmdline to show
         presets = {
           bottom_search = true, -- use a classic bottom cmdline for search
           long_message_to_split = true, -- long messages will be sent to a split

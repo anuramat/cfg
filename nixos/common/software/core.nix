@@ -4,13 +4,13 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # ~~~~~~~~~~~~~~~~~~ code editors {{{1 ~~~~~~~~~~~~~~~~~~~ #
+    # code editors {{{1
     unstable.emacs-gtk
     unstable.neovim
     nvi
     unstable.helix
     unstable.vis
-    # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # core {{{1
     unstable.blesh # bash line editor
     bat # cat++: syntax hl
     cod # completion generator (updates on `cmd --help`)
@@ -37,7 +37,7 @@
     unstable.eza # ls++
     zellij # tmux++
     zoxide # cd++
-    # ~~~~~~~~~~~~~~~~~~~~~~ utils {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    # utils {{{1
     age # file encryption
     aria # downloader
     banner
@@ -57,7 +57,7 @@
     scc # count lines of code
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
-    ## ~~~~~~~~~~~~~~~~~~~~~~ tops {{{2 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    ## tops {{{2
     btop # best
     ctop # containers
     gotop # cute
@@ -67,7 +67,7 @@
     podman-tui # podman container status
     unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
     zenith-nvidia # top WITH nvidia GPUs
-    ## ~~~~~~~~~~~~~~~~~~ file managers {{{2 ~~~~~~~~~~~~~~~~~~ #
+    ## file managers {{{2
     # TODO choose one (or don't)
     broot
     lf
@@ -76,7 +76,7 @@
     ranger
     vifm
     xplr
-    ## ~~~~~~~~~~~~~~~~~~~~~ backend {{{2 ~~~~~~~~~~~~~~~~~~~~~ #
+    ## backend {{{2
     dbeaver-bin # databases
     dive # look into docker image layers
     grpcui
@@ -84,7 +84,7 @@
     kubectl
     kubectx
     podman-compose
-    ## ~~~~~~~~~~~~~~~~~~~~~~ misc {{{2 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    ## misc {{{2
     git-filter-repo # rewrite/analyze repository history
     mesa-demos # some 3d demos
     mosh # ssh over unstable connections
@@ -96,7 +96,7 @@
     fortune # random quotes
     rpi-imager
     tree-sitter
-    # ~~~~~~~~~~~~~~~~~~~~~~ comms {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    # comms {{{1
     element-desktop # matrix client
     onionshare # tor-based file-sharing etc
     onionshare-gui # p2p file sharing, chat, website hosting
@@ -104,16 +104,16 @@
     slack
     telegram-desktop
     whatsapp-for-linux
-    # ~~~~~~~~~~~~~~~~~~~~ browsers {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # browsers {{{1
     unstable.google-chrome
     unstable.firefox
     tor-browser-bundle-bin
-    # ~~~~~~~~~~~~~~~~~~~~ terminals {{{1 ~~~~~~~~~~~~~~~~~~~~ #
+    # terminals {{{1
     foot # minimal
     unstable.alacritty # gpu
     unstable.kitty # gpu, python, inline images
     cool-retro-term # cute
-    # ~~~~~~~~~~~~~~~~~~~~ graphics {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # graphics {{{1
     krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics
     gimp-with-plugins # raster graphics
@@ -128,7 +128,7 @@
     imv # image viewer
     swayimg # image viewer
     unstable.lsix # ls for images (uses sixel)
-    # ~~~~~~~~~~~~~~~~~~~~~~ video {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    # video {{{1
     vlc
     mpv
     davinci-resolve
@@ -136,13 +136,13 @@
     unstable.footage
     ffmpeg
     yt-dlp # download youtube videos
-    # ~~~~~~~~~~~~~~~~~~~~~~ audio {{{1 ~~~~~~~~~~~~~~~~~~~~~~ #
+    # audio {{{1
     sox # CLI audio processing
     lame # mp3
     alsa-utils
     mimic # foolproof TTS
     piper-tts # good neural TTS
-    # ~~~~~~~~~~~~~~~~~~~~~~ docs {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
+    # docs {{{1
     slides # markdown presentation in terminal
     glow # markdown viewer
     poppler_utils # pdf utils
@@ -156,7 +156,7 @@
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools
     xournalpp # pdf markup, handwritten notes
-    # ~~~~~~~~~~~~~~~~~~~~~ generic {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
+    # misc {{{1
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval

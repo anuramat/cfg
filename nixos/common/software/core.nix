@@ -57,6 +57,7 @@
     scc # count lines of code
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
+    tailscale
     ## tops {{{2
     btop # best
     ctop # containers

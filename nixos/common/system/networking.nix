@@ -18,6 +18,7 @@
 
   services = {
     fail2ban.enable = true; # intrusion prevention
+    tailscale.enable = true;
     openssh = {
       enable = true;
       ports = [22];

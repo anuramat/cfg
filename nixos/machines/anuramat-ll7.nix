@@ -29,8 +29,8 @@
     STOP_CHARGE_THRESH_BAT0 = 1;
   };
 
-  # intel
-  hardware.cpu.intel.updateMicrocode = true;
+  # # intel
+  # hardware.cpu.intel.updateMicrocode = true;
 
   # nvidia
   # {{{1

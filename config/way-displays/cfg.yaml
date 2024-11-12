@@ -4,6 +4,8 @@ ORDER:
   - "!^eDP-1"
   - "!^DP-.*"
 SCALE:
+  - NAME_DESC: "LG Display 0x0521 (eDP-1)" # anuramat-t480
+    SCALE: 1
   - NAME_DESC: "California Institute of Technology 0x1626 0x00006002" # anuramat-ll7
     SCALE: 2.25
   - NAME_DESC: "Dell Inc. DELL S2722QC 192SH24"

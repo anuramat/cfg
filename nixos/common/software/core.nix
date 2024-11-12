@@ -131,7 +131,7 @@
     # video {{{1
     vlc
     mpv
-    davinci-resolve
+    # davinci-resolve
     handbrake
     unstable.footage
     ffmpeg

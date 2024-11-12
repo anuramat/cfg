@@ -25,4 +25,9 @@ input 1267:12928:ELAN06FA:00_04F3:3280_Touchpad {
 input 1165:51607:ITE_Tech._Inc._ITE_Device(8258)_Keyboard {
     xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
 }
+
+input 1:1:AT_Translated_Set_2_keyboard {
+    xkb_options "ctrl:nocaps,altwin:swap_lalt_lwin,grp:alt_space_toggle"
+}
+
 # vim: ft=swayconfig fdm=marker fdl=0

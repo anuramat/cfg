@@ -194,24 +194,17 @@ return {
       },
     },
   },
-  -- pywal16.nvim
-  {
-    lazy = false,
-    'uZer/pywal16.nvim',
-    as = 'pywal16',
-    config = function()
-      local pywal16 = require('pywal16')
-      pywal16.setup()
-    end,
-  },
   -- neopywal.nvim
-  -- {
-  --     "RedsXDD/neopywal.nvim",
-  --     name = "neopywal",
-  --     lazy = false,
-  --     priority = 1000,
-  --     opts = {},
-  -- },
+  {
+    'RedsXDD/neopywal.nvim',
+    name = 'neopywal',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      use_wallust = true,
+      notify = true,
+    },
+  },
   -- oil.nvim - file manager
   {
     'stevearc/oil.nvim',

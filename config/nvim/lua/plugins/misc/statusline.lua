@@ -1,6 +1,6 @@
 -- vim: fdm=marker fdl=0
 
--- ~~~~~~~~~~~~~~~~~~~~~ vars {{{1 ~~~~~~~~~~~~~~~~~~~~~~ --
+-- vars {{{1
 
 local u = require('utils')
 
@@ -111,7 +111,7 @@ local fileformat = {
   color = error_color,
 }
 
--- ~~~~~~~~~~~~~~~~~~~~~~ }}} ~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
+-- }}}
 
 return {
   'nvim-lualine/lualine.nvim',
@@ -124,12 +124,23 @@ return {
   },
   opts = function()
     vim.o.showmode = false
+
+    local has_lualine, lualine = pcall(require, 'lualine')
+    if not has_lualine then
+      return
+    end
+
+    local has_neopywal, neopywal_lualine = pcall(require, 'neopywal.theme.plugins.lualine')
+    if not has_neopywal then
+      return
+    end
+
     return {
       options = {
-        theme = 'pywal16-nvim',
+        theme = 'neopywal',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
-        refresh = { statusline = 100, tabline = 100 },
+        refresh = { statusline = 300, tabline = 300 },
       },
       extensions = { 'aerial', 'fugitive', 'lazy', 'man', 'neo-tree', 'nvim-dap-ui', 'oil', 'quickfix' },
       tabline = {
@@ -141,10 +152,22 @@ return {
         lualine_z = { layout },
       },
       sections = {
-        lualine_a = { filename },
+        lualine_a = {
+          filename,
+        },
         lualine_b = { filetype },
-        lualine_c = { encoding, fileformat, diagnostics },
-        lualine_x = { dap_status },
+        lualine_c = {
+          {
+            require('noice').api.statusline.mode.get,
+            cond = require('noice').api.statusline.mode.has,
+          },
+          encoding,
+          fileformat,
+          diagnostics,
+        },
+        lualine_x = {
+          dap_status,
+        },
         lualine_y = { location },
         lualine_z = { progress },
       },

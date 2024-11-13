@@ -30,36 +30,20 @@ should show most of the problematic parts.
 
 ## Colors
 
-
-### Terminal
-
-`foot` is themed through a config, other terminals use sequences
-
-- bat
-- delta
-- git
-- ls/eza/fd
-- zellij
-
-### GUI
-
-- mako
-- qt5ct
-- qt6ct
-- sway
-- swaylock
-- waybar
-- zathura
-
-### TODO
-
-- gtk2
-- gtk3
-- gtk4
-- qt (verify colors, uniform theme)
+Use `wallust run img.png` to set a wallpaper and generate a theme:
+- `foot` is themed through a template config (for no particular reason), other 
+  terminals use sequences.
+- `/etc/bashrc` applies `dircolors`, so `LS_COLORS` is set there
+- everything else is in the `wallust.toml`
 
 ## TODO
 
+- put term name into a parameter to reference it in parts of the config maybe?
+- waybar (maybe switch)
+- swaylock
+- something is writing LS_COLORS
+- zellij
+- gtk3 gtk4 qt5 qt6
 - icons
 - cursors
 - import as much as possible from profile.sh? stop sourcing profile.sh from

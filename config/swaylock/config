@@ -13,6 +13,7 @@ indicator-caps-lock
 hide-keyboard-layout
 
 ### Official Dracula colorscheme for swaylock {{{1
+# TODO wallust
 color=6272A4
 line-color=282A36
 ring-color=BD93F9

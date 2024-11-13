@@ -203,6 +203,7 @@ return {
     opts = {
       use_wallust = true,
       notify = true,
+      transparent_background = true,
     },
   },
   -- oil.nvim - file manager

@@ -30,9 +30,10 @@ return {
   },
   {
     -- custom
-    --  * messages
-    --  * cmdline
-    --  * popupmenu TODO wtf is this
+    --  * messages (using notify) - nonblocking messages; sends big messages to a buffer, keeps history
+    --  * cmdline - we're forced to use it because of messages
+    --  * markdown renders (eg docs in hovers)
+    --  and other stuff
     -- messages: passes to nvim-notify, renders natively as a fallback
     -- lsp progress: native rendering
     'folke/noice.nvim',
@@ -43,7 +44,7 @@ return {
     },
     event = 'VeryLazy',
     opts = {
-      popupenu = { backend = 'cmp' }, -- TODO what is this
+      popupenu = { backend = 'cmp', enabled = false }, -- TODO what is this
       cmdline = {
         enabled = true,
         view = 'cmdline',

@@ -19,7 +19,7 @@ eval "$(direnv hook bash)"                                                      
 eval "$(starship init bash)"                                                       # replaces
 # source "$(blesh-share)/ble.sh" # buggy, ugly, slow, but cool
 # color rice:
-[ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wal/sequences &)
+[ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 # TODO test if foot and other terms are in sync
 
 # ~~~~~~~~~~~~~~~~~~~~~ aliases {{{1 ~~~~~~~~~~~~~~~~~~~~~ #

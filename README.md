@@ -1,8 +1,6 @@
 # anuramat/cfg
 
-> [!WARNING] backup your config before proceeding
->
-> this will overwrite your stuff
+Backup your config before proceeding, this will overwrite your stuff.
 
 ## Fresh install
 
@@ -25,17 +23,17 @@ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 - `./nixos` - rsynced to `/etc/nixos` on `make`
 - `./lib` - `make` scripts
 
-## XDG base dir spec
+## XDG Base Directory Specification
 
-- nix
-  - service.nix - syncthing paths
+While I *tried* to keep it XDG compliant, it isn't always feasible. `rg XDGBDSV`
+should show most of the problematic parts.
 
-## Colorschemes
+## Colors
+
 
 ### Terminal
 
-- foot
-- alacritty
+`foot` is themed through a config, other terminals use sequences
 
 - bat
 - delta

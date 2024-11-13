@@ -2,7 +2,6 @@
 [include]
   path=private
   path=delta.gitconfig
-  path=dracula.gitconfig
 
 ; difftastic
 [diff]

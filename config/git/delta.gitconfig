@@ -5,7 +5,6 @@
     dg = "#003500"
 
     dark = true
-    syntax-theme = Dracula
     hunk-header-style = bold syntax
     line-numbers = true
     blame-code-style = syntax

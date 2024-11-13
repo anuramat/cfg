@@ -19,8 +19,7 @@ return {
         'markdown', -- TS bullet point indentation is "lazy" (subsequent lines are flush with bullet), which is ugly
       },
     },
-    ensure_installed = 'all',
-    sync_install = false, -- only applies to `ensure_installed`
+    ensure_installed = false, -- install missing parsers on launch
     auto_install = false, -- install corresponding parser on buffer enter
     ignore_install = { 'norg', 'org' },
     incremental_selection = {

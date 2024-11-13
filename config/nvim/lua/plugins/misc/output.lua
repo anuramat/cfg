@@ -37,6 +37,7 @@ return {
     -- messages: passes to nvim-notify, renders natively as a fallback
     -- lsp progress: native rendering
     'folke/noice.nvim',
+    -- enabled = false,
     dependencies = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',

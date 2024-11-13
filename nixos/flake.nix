@@ -20,7 +20,6 @@
       system = "x86_64-linux";
     };
     overlays = with inputs; [
-      # neovim-nightly-overlay.overlays.default # broken atm
       nix-alien.overlays.default
     ];
   in {

@@ -1,12 +1,12 @@
 {
   pkgs,
   unstable,
+  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
     # code editors {{{1
-    unstable.emacs-gtk
-    unstable.neovim
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     nvi
     unstable.helix
     unstable.vis

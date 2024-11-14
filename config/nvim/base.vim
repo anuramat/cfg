@@ -60,6 +60,7 @@ se matchtime=1 showmatch " highlight matching bracket (deciseconds)
 se signcolumn=yes " gutter
 se tgc " 24-bit color
 let g:border="solid" " read this from plugin configs; `:he nvim_open_win`
+let g:nonfiles=['NeogitStatus', 'NeogitPopup', 'oil', 'lazy', 'lspinfo', 'null-ls-info', 'NvimTree', 'neo-tree', 'alpha', 'help']
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
     colo sorbet

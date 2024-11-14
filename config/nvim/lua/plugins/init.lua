@@ -20,6 +20,7 @@ require('lazy').setup(u.make_imports('plugins'), {
   defaults = {
     lazy = true,
     cond = not vim.g.vscode,
+    version = '*', -- nil for latest, * for latest stable semver
   },
   ui = {
     border = vim.g.border,

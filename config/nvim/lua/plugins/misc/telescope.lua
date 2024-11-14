@@ -15,7 +15,6 @@ return {
     },
     {
       'nvim-telescope/telescope-live-grep-args.nvim',
-      version = '^1.0.0',
     },
   },
   keys = u.lazy_prefix('<leader>f', {

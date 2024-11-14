@@ -12,7 +12,6 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope.nvim',
   },
-  version = '^3',
   ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()

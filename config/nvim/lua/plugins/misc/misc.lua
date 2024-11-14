@@ -134,16 +134,6 @@ return {
             'lazy',
           },
         },
-        indent = {
-          -- highlight = rainbow_lines(),
-          char = '│',
-          -- char = '┃',
-        },
-        scope = {
-          enabled = true,
-          show_start = false,
-          show_end = false,
-        },
       }
     end,
   },
@@ -262,20 +252,7 @@ return {
     'RRethy/vim-illuminate',
     event = 'VeryLazy',
     config = function()
-      require('illuminate').configure({
-        filetypes_denylist = { -- TODO make a vim.g.nonfiles
-          'NeogitStatus',
-          'NeogitPopup',
-          'oil',
-          'lazy',
-          'lspinfo',
-          'null-ls-info',
-          'NvimTree',
-          'neo-tree',
-          'alpha',
-          'help',
-        },
-      })
+      require('illuminate').configure({ filetypes_denylist = vim.g.nonfiles })
     end,
   },
   -- undotree
@@ -441,7 +418,6 @@ return {
   {
     event = 'VeryLazy',
     'michaelb/sniprun',
-    branch = 'master',
     build = 'sh install.sh',
     opts = {},
   },

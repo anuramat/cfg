@@ -167,7 +167,7 @@ return {
       })
     end,
   },
-  -- todo-comments.nvim - highlights TODO, HACK, etc
+  -- todo-comments.nvim - highlights "todo", "hack", etc
   {
     'folke/todo-comments.nvim',
     event = 'VeryLazy',

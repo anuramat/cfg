@@ -13,32 +13,31 @@ indicator-caps-lock
 hide-keyboard-layout
 
 ### Official Dracula colorscheme for swaylock {{{1
-# TODO wallust
-color=6272A4
-line-color=282A36
-ring-color=BD93F9
-inside-color=282A36
-key-hl-color=50FA7B
-separator-color=00000000
-text-color=F8F8F2
-text-caps-lock-color=""
-line-ver-color=BD93F9
-ring-ver-color=BD93F9
-inside-ver-color=282A36
-text-ver-color=8BE9FD
-ring-wrong-color=FF5555
-text-wrong-color=FF5555
-inside-wrong-color=282A36
-inside-clear-color=282A36
-text-clear-color=8BE9FD
-ring-clear-color=8BE9FD
-line-clear-color=8BE9FD
-line-wrong-color=282A36
-bs-hl-color=8BE9FD
+color=#FF0000
+
+inside-color=#FF0000
+line-color=#000000
+ring-color=#FF0000
+
+inside-clear-color=#FF0000
+line-clear-color=#FF0000
+ring-clear-color=#FF0000
+
+inside-wrong-color=#FFFF00
+line-wrong-color=#FFFF00
+ring-wrong-color=#FFFF00
+
+inside-ver-color=#000000
+line-ver-color=#000000
+ring-ver-color=#000000
+
+key-hl-color=#000000
+
+# separator-color=#00000000
 
 ### Remove the text {{{1
-text-caps-lock-color=00000000
-text-clear-color=00000000
-text-color=00000000
-text-ver-color=00000000
-text-wrong-color=00000000
+text-caps-lock-color=#00000000
+text-clear-color=#00000000
+text-color=#00000000
+text-ver-color=#00000000
+text-wrong-color=#00000000

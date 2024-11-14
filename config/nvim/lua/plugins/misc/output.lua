@@ -45,7 +45,7 @@ return {
     },
     event = 'VeryLazy',
     opts = {
-      popupenu = { backend = 'cmp', enabled = false }, -- TODO what is this
+      popupenu = { enabled = false },
       cmdline = {
         enabled = true,
         view = 'cmdline',

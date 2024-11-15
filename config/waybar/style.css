@@ -1,7 +1,6 @@
 /* https://github.com/Alexays/Waybar/wiki/Styling */
 /* margin can't be controlled here, use margin setting in the config */
-/*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
-@import url("./dracula.css"); 
+/* common {{{1 */
 @keyframes blink {
   to {
     color: #ffffff;
@@ -43,7 +42,7 @@ box > * > * {
   background: @background;
   padding: 0 7px; /* padding inside the element */
 }
-/*~~~~~~~~~~~~~~~~~~~~~~ workspaces ~~~~~~~~~~~~~~~~~~~~~~*/
+/* workspaces {{{1 */
 #workspaces {
   padding: 0;
 }
@@ -62,7 +61,7 @@ box > * > * {
   background: #ffff00;
   color: @background;
 }
-/*~~~~~~~~~~~~~~~~~~~~~ misc modules ~~~~~~~~~~~~~~~~~~~~~*/
+/* misc modules {{{1 */
 #mode {
   padding: 0 10px;
   background: #ff0000;
@@ -126,3 +125,5 @@ box > * > * {
 #idle_inhibitor.activated {
   color: #ff0000;
 }
+/* vim: fdl=0 fdm=marker 
+*/

@@ -11,7 +11,7 @@
     user = {
       username = "anuramat";
       fullname = "Arsen Nuramatov";
-      timezone = "Etc/GMT-2"; # NOTE inverted offset
+      timezone = "Europe/Berlin";
       defaultLocale = "en_US.UTF-8";
       key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZzoDnDLMHYS+5UJ1ujjMNrXdiJnOKKv0TUdWCWl+RB"; # TODO might wanna separate machine
     };

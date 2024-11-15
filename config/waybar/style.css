@@ -126,7 +126,3 @@ box > * > * {
 #idle_inhibitor.activated {
   color: #ff0000;
 }
-#language {
-  /* https://github.com/Alexays/Waybar/issues/952 */
-  min-width: 20px; /* HACK */
-}

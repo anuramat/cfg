@@ -11,9 +11,3 @@
 @define-color purple #bd93f9;
 @define-color red #ff5555;
 @define-color yellow #f1fa8c;
-@keyframes blink {
-  to {
-    color: @white;
-    background-color: @red;
-  }
-}

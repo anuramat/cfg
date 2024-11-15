@@ -2,6 +2,12 @@
 /* margin can't be controlled here, use margin setting in the config */
 /*~~~~~~~~~~~~~~~~~~~~~~~~ Common ~~~~~~~~~~~~~~~~~~~~~~~~*/
 @import url("./dracula.css"); 
+@keyframes blink {
+  to {
+    color: #ffffff;
+    background-color: #ff0000;
+  }
+}
 /*TODO wallust*/
 @define-color background #000000;
 @define-color selection #222222;
@@ -10,7 +16,7 @@
   border-radius: 6px;
   font-size: 13pt;
   font-family: "Hack Nerd Font";
-  color: @foreground;
+  color: #ffffff;
   background: transparent;
 }
 window#waybar {
@@ -50,33 +56,33 @@ box > * > * {
   background-color: @background;
 }
 #workspaces button.focused {
-  background: @selection;
+  background: #222222;
 }
 #workspaces button.urgent {
-  background: @purple;
+  background: #ffff00;
   color: @background;
 }
 /*~~~~~~~~~~~~~~~~~~~~~ misc modules ~~~~~~~~~~~~~~~~~~~~~*/
 #mode {
   padding: 0 10px;
-  background: @red;
+  background: #ff0000;
   color: @background;
 }
 #battery {
-  color: @green;
+  color: #00ff00;
 }
 #battery.charging,
 #battery.plugged {
   color: @background;
-  background-color: @green;
+  background-color: #00ff00;
 }
 #battery.warning:not(.charging) {
-  color: @yellow;
+  color: #ff0000;
 }
 #battery.critical:not(.charging),
 #temperature.critical {
   background-color: @background;
-  color: @white;
+  color: #ffffff;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: linear;
@@ -86,13 +92,13 @@ box > * > * {
 #temperature {
 }
 #network.disconnected {
-  color: @yellow;
+  color: #ff0000;
 }
 #network.disabled {
-  color: @red;
+  color: #ff0000;
 }
 #custom-wlan-disabled {
-  color: @red;
+  color: #ff0000;
   padding-right: 13px;
 }
 #cpu,
@@ -109,7 +115,7 @@ box > * > * {
 }
 #pulseaudio.muted,
 #wireplumber.muted {
-  color: @red;
+  color: #ff0000;
 }
 #tray {
   padding: 4px 6px;
@@ -118,7 +124,7 @@ box > * > * {
   background-color: @background;
 }
 #idle_inhibitor.activated {
-  color: @purple;
+  color: #ff0000;
 }
 #language {
   /* https://github.com/Alexays/Waybar/issues/952 */

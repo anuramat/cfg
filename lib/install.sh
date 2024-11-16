@@ -14,5 +14,5 @@ install() {
 	lndir "$PWD/config" "$XDG_CONFIG_HOME"
 
 	touch "$HOME/.hushlogin"
-	# TODO maybe ensure path for all xdg paths (user paths too)
+	# TODO maybe ensure path for all xdg paths (user paths too), might already be done
 }

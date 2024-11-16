@@ -1,20 +1,34 @@
 # anuramat/cfg
 
-Backup your config before proceeding, this will overwrite your stuff.
-
 ## Fresh install
 
+Better to do it from the tty, since GUI stuff starts to fall apart:
 ```bash
 nix-shell -p gnumake git
-git clone git@github.com:anuramat/cfg
+git clone git@github.com:anuramat/cfg ~/cfg
 cd ~/cfg
-make # will complain because of the hostname mismatch
-cd /etc/nixos
-sudo nixos-rebuild switch --flake .#hostname
-cd ~/cfg
+# will complain because of the hostname mismatch
+make
+sudo nixos-rebuild switch --flake /etc/nixos#$(hostname)
 make install
+# without this some stuff might be broken
+wallust theme base16-nord
+```
+
+## Finishing touches
+
+```bash
+# generate a key
+ssh-keygen
+# *add the key to gh*
+# switch to ssh for the cfg repo
+git remote set-url origin git@github.com:anuramat/cfg
+# makes eg "nix-shell -p" use unstable
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 ```
+
+- change git creds
+- set up your machine in flake.nix
 
 ## Structure
 
@@ -30,19 +44,12 @@ should show most of the problematic parts.
 
 ## Colors
 
-Use `wallust run img.png` to set a wallpaper and generate a theme:
-- `foot` is themed through a template config (for no particular reason), other 
-  terminals use sequences.
+Use `r`, which is a `wallust` wrapper with some additional logic:
+- `foot` is themed through the config, other terminals use sequences.
 - `/etc/bashrc` applies `dircolors`, so `LS_COLORS` is set there
-- everything else is in the `wallust.toml`
 
 ## TODO
 
-- put term name into a parameter to reference it in parts of the config maybe?
-- waybar (maybe switch)
-- swaylock
-- something is writing LS_COLORS
-- zellij
 - gtk3 gtk4 qt5 qt6
 - icons
 - cursors

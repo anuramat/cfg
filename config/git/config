@@ -1,6 +1,6 @@
 ; imports
 [include]
-  path=private
+  path=user
   path=delta.gitconfig
 
 ; difftastic

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-. lib/run.sh
+. lib/shrun.sh
 
 shell() {
-	run 'text/x-shellscript' 'shfmt -w -l -s -ci -bn -kp'
+	shrun 'shfmt -w -l -s -ci -bn -kp'
 }

@@ -19,8 +19,6 @@ lua: lua_fmt
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 .PHONY: shell posix sh_fmt
 sh_fmt:
-	@ # write, list, simplify, case-indent, binary-newline, keep-padding
-	@ # keep padding,
 	@ printf ${heading} "Formatting shell scripts"
 	@ . lib/format.sh; shell
 shell: sh_fmt

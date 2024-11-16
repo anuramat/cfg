@@ -13,6 +13,13 @@
     ];
   };
 
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 128 * 1024;
+    }
+  ];
+
   services = {
     # ssd
     fstrim.enable = true;

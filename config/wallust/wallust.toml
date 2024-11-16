@@ -2,8 +2,9 @@ alpha = 80
 
 [templates]
 # WARN: XDGBDSV
-zathura = { src = 'zathura', target = "~/.config/zathura/generated-colors"}
-foot = { src = 'foot', target = "~/.config/foot/generated-colors"}
-mako = { src = 'mako', target = "~/.config/mako/generated-colors"}
-sway = { src = 'sway', target = "~/.config/sway/config.d/xx-generated-colors"}
-neopywal = {src = 'neopywal', target = "~/.cache/wallust/colors_neopywal.vim"}
+zathura = { src = 'zathura', target = "~/.config/zathura/generated-colors" }
+foot = { src = 'foot', target = "~/.config/foot/generated-colors" }
+mako = { src = 'mako', target = "~/.config/mako/generated-colors" }
+sway = { src = 'sway', target = "~/.config/sway/config.d/xx-generated-colors" }
+neopywal = { src = 'neopywal', target = "~/.cache/wallust/colors_neopywal.vim" }
+swaybg = { src = 'swaybg', target = "~/.cache/wallust/swaybg" }

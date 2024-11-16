@@ -16,6 +16,8 @@ exec_always {
     "way-displays"
     # media automounter
     "pkill udiskie; udiskie -ta"
+    # wallpaper and background color
+    "pkill swaybg; xargs swaybg <"$XDG_CACHE_HOME/wallust/swaybg""
 }
 
 # vim: ft=swayconfig

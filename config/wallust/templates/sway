@@ -1,4 +1,8 @@
-output * background {{wallpaper}} fill {{background}}
+# this can set the wallpaper without swaybg but it breaks on themes
+# output * background {{wallpaper}} fill {{background}}
+# this doesn't work as a fallback, swaybg can't override solid color
+# output * background {{background}} solid_color
+# set both using swaybg
 
 #class                   bar_border bar_bg     bar_text       tiling_indicator view_border
 client.focused           {{color2}} {{color2}} {{foreground}} {{color3}}       {{color2}}

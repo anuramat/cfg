@@ -191,7 +191,7 @@ g() {
 # send full path of a file to clipboard
 c() {
 	# c for copy
-	realpath $1 | wl-copy -n
+	realpath "$@" | tr '\n' ' ' | wl-copy -n
 }
 p() {
 	# p for packages
@@ -203,8 +203,7 @@ o() {
 }
 r() {
 	# r for rice
-	wallust run "$1"
-	# TODO set wallpaper
+	wallust "$@" || return
 	"$XDG_CONFIG_HOME/mako/wal.sh"
 	swaymsg reload
 }

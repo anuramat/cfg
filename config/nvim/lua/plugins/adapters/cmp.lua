@@ -1,10 +1,27 @@
----@diagnostic disable: undefined-field
-return function()
+-- vim: fdl=1
+
+local setup_cmdline = function()
   local cmp = require('cmp')
-  local wrap_snippet_jump = require('plugins.core.luasnip.jump')
+  cmp.setup.cmdline(':', {
+    completion = { autocomplete = false },
+    mapping = cmp.mapping.preset.cmdline(),
+    view = {
+      entries = 'custom',
+    },
+    sources = cmp.config.sources(
+      { { name = 'path', option = { trailing_slash = true } } },
+      { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
+    ),
+  })
+end
+
+---@diagnostic disable: undefined-field
+local setup_insert = function()
+  local cmp = require('cmp')
+  local wrap_snippet_jump = require('plugins.adapters.luasnip.jump')
   local window = cmp.config.window.bordered()
   window = nil -- turn off because of noice and lsp_signature
-  -- ~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~ --
+
   --- @diagnostic disable-next-line: redundant-parameter
   cmp.setup({
     mapping = cmp.mapping.preset.insert({
@@ -69,3 +86,24 @@ return function()
     preselect = cmp.PreselectMode.None,
   })
 end
+
+return {
+  'hrsh7th/nvim-cmp',
+  dependencies = {
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+
+    'onsails/lspkind.nvim', -- icons
+
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-emoji',
+  },
+  config = function()
+    setup_insert()
+    setup_cmdline()
+  end,
+}

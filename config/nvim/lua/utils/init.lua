@@ -237,4 +237,11 @@ function M.random_string(length)
   return res
 end
 
+--- default on_attach
+function M.on_attach(client, buffer)
+  require('utils.keys')(buffer)
+  require('lsp-format').on_attach(client, buffer)
+  vim.lsp.inlay_hint.enable()
+end
+
 return M

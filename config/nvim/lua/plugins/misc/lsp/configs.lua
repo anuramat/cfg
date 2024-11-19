@@ -1,6 +1,6 @@
 -- vim: fdl=2
 
-local on_attach = require('utils.lsp.on_attach')
+local on_attach = require('utils').on_attach
 
 --- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }
@@ -13,7 +13,7 @@ local root_dir_with_fallback = function(opts)
   end
 end
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- <https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md>
 --- Returns configs for specific lsps
 --- @return table configs
 return function()
@@ -37,13 +37,13 @@ return function()
     texlab = {},
     bashls = {},
     pyright = {},
-    -- marksman = {}, -- I use obsidian.nvim btw
+    marksman = {},
     clangd = {
       on_attach = function(client, buffer)
         vim.api.nvim_buf_set_keymap(
           buffer,
           'n',
-          '<leader>sh',
+          '<localleader>6',
           '<cmd>ClangdSwitchSourceHeader<cr>',
           { silent = true, desc = 'clangd: Switch between .c/.h' }
         )

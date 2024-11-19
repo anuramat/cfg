@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-field
 return function()
   local cmp = require('cmp')
-  local wrap_snippet_jump = require('plugins.completion.luasnip.jump')
+  local wrap_snippet_jump = require('plugins.core.completion.luasnip.jump')
   local window = cmp.config.window.bordered()
   window = nil -- turn off because of noice and lsp_signature
   -- ~~~~~~~~~~~~~~~~~~ insert mode ~~~~~~~~~~~~~~~~~~~ --

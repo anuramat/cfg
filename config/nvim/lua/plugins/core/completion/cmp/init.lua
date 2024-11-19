@@ -14,7 +14,7 @@ return {
     'hrsh7th/cmp-emoji',
   },
   config = function()
-    require('plugins.completion.cmp.insert')()
-    require('plugins.completion.cmp.cmdline')()
+    require('plugins.core.completion.cmp.insert')()
+    require('plugins.core.completion.cmp.cmdline')()
   end,
 }

@@ -27,7 +27,7 @@ git remote set-url origin git@github.com:anuramat/cfg
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 ```
 
-- change git creds
+- change git creds etc (`rg 'anuramat|arsen`)
 - set up your machine in flake.nix
 
 ## Structure

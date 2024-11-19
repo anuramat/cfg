@@ -15,10 +15,24 @@ local setup_cmdline = function()
   })
 end
 
+--- Jump to a snippet field
+--- Fallback is called if jump isn't possible
+--- @param jump_size integer Relative position of the target field
+--- @return function mapping
+local wrap_snippet_jump = function(jump_size)
+  local luasnip = require('luasnip')
+  return function(fallback)
+    if luasnip.locally_jumpable(jump_size) then
+      luasnip.jump(jump_size)
+    else
+      fallback()
+    end
+  end
+end
+
 ---@diagnostic disable: undefined-field
 local setup_insert = function()
   local cmp = require('cmp')
-  local wrap_snippet_jump = require('plugins.adapters.luasnip.jump')
   local window = cmp.config.window.bordered()
   window = nil -- turn off because of noice and lsp_signature
 

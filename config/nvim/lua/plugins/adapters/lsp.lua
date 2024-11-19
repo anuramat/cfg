@@ -125,8 +125,6 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    local configs = require('plugins.adapters.lsp.configs')
-    local on_attach = require('utils').on_attach
     -- ~~~~~~~~~~~~~~~~ Borders styling ~~~~~~~~~~~~~~~~~ --
     -- add border to `:LspInfo` menu
     require('lspconfig.ui.windows').default_options.border = vim.g.border

@@ -1,7 +1,7 @@
 --stylua: ignore
-local header = require('plugins.misc.dashboard.header')
-local footer = require('plugins.misc.dashboard.footer')
-local body = require('plugins.misc.dashboard.body')
+local header = require('plugins.ui.dashboard.header')
+local footer = require('plugins.ui.dashboard.footer')
+local body = require('plugins.ui.dashboard.body')
 
 local u = require('utils')
 

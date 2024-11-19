@@ -19,8 +19,8 @@ local function figlet(text, font)
   return figlet_res.stdout
 end
 
-local footer = require('plugins.misc.dashboard.footer')
-local header = require('plugins.misc.dashboard.header')
+local footer = require('plugins.ui.dashboard.footer')
+local header = require('plugins.ui.dashboard.header')
 
 local raw = figlet(input)
 local lines = vim.split(raw, '\n', { trimempty = true })

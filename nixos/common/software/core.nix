@@ -19,6 +19,7 @@
     du-dust # du++
     duf # df++
     entr # file watcher - runs command on change
+    watchman # another file watcher
     fd # find++
     fzf # fuzzy finder
     ghq # git repository manager
@@ -69,6 +70,7 @@
     zenith-nvidia # top WITH nvidia GPUs
     ## file managers {{{2
     # TODO choose one (or don't)
+    yazi
     broot
     lf
     mc

@@ -18,7 +18,7 @@ return {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
     opts = {
-      sign_priority = 0,
+      sign_priority = 1000,
       signs = {
         add = { text = '▎' },
         change = { text = '▎' },

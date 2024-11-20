@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 if command -v "fd" >/dev/null 2>&1; then
-	# global fd ignore still works
 	export FZF_DEFAULT_COMMAND="fd . --strip-cwd-prefix -HL --no-ignore-vcs"
 	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND -t d"
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

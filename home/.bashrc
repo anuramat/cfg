@@ -30,6 +30,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias sus="systemctl suspend"
+alias peco="fzf --height=100 --preview=''"
 
 # ~~~~~~~~~~~~~~~~~~~~ functions {{{1 ~~~~~~~~~~~~~~~~~~~~ #
 

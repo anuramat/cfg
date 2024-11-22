@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     # code editors {{{1
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.specific
     nvi
     unstable.helix
     unstable.vis

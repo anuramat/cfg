@@ -6,7 +6,8 @@ let
     types));
 
   # browser = "google-chrome.desktop";
-  browser = "firefox.desktop";
+  # browser = "firefox.desktop";
+  browser = "zen.desktop";
   fileManager = "nnn.desktop";
   documentViewer = "org.pwmt.zathura.desktop";
   textEditor = "nvim.desktop";

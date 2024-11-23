@@ -137,24 +137,7 @@ function M.figlet(text, font)
   return figlet_res.stdout
 end
 
----@param raw string Original text, with lines separated by \n
----@return table result Table of strings
-function M.calc_pad(raw)
-  local lines = vim.split(raw, '\n', { trimempty = true })
-
-  local wx = vim.fn.winwidth(0)
-  local wy = vim.fn.winheight(0)
-
-  local tx = #lines[1] -- assuming all lines have equal width
-  local ty = #lines
-
-  local xpad = math.floor((wx - tx) / 2)
-  local ypad = math.floor((wy - ty) / 2)
-
-  return { lines = lines, xpad = xpad, ypad = ypad }
-end
-
-function M.get_version_string()
+function M.version_string()
   local version = vim.version()
   local nvim_version_info = ' ' .. version.major .. '.' .. version.minor .. '.' .. version.patch
   return nvim_version_info

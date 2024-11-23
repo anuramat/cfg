@@ -143,4 +143,9 @@ function M.version_string()
   return nvim_version_info
 end
 
+function M.press(rawkey)
+  local key = vim.api.nvim_replace_termcodes(rawkey, true, true, true)
+  vim.api.nvim_feedkeys(key, 'n', false)
+end
+
 return M

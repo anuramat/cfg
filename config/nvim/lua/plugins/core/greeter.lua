@@ -40,6 +40,14 @@ return {
   -- enabled = false,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = function()
+    vim.api.nvim_create_autocmd('Filetype', {
+      pattern = 'alpha',
+      callback = function()
+        vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<cmd>quit<cr>', {})
+        vim.api.nvim_buf_set_keymap(0, 'n', 'i', '<cmd>enew<cr>i', {})
+        vim.api.nvim_buf_set_keymap(0, 'n', 'a', '<cmd>enew<cr>a', {})
+      end,
+    })
     return {
       layout = {
         { type = 'button', val = '█' }, -- hides cursor

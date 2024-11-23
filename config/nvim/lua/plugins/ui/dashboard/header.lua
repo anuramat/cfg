@@ -51,7 +51,7 @@ local function render_text(grid)
     table.insert(lines, line)
   end
   local output = vim.iter(lines):join(y_delim)
-  output = u.repeat_string(' \n', top_padding - 1) .. output .. u.repeat_string(' \n', bottom_padding)
+  output = string.rep(' \n', top_padding - 1) .. output .. string.rep(' \n', bottom_padding)
   return output
 end
 

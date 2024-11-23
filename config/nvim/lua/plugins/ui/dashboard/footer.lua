@@ -2,7 +2,6 @@ local bottom_padding = 2
 local min_top_padding = 2
 
 local header = require('plugins.ui.dashboard.header')
-local u = require('utils')
 
 local info_string = function()
   local version = vim.version()
@@ -10,7 +9,7 @@ local info_string = function()
   return nvim_version_info
 end
 
-local output = u.repeat_string(' \n', min_top_padding) .. info_string() .. u.repeat_string(' \n', bottom_padding)
+local output = string.rep(' \n', min_top_padding) .. info_string() .. string.rep(' \n', bottom_padding)
 local lines = vim.split(output, '\n', { trimempty = true })
 local height = #lines
 local width = 0

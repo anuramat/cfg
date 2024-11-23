@@ -13,61 +13,6 @@
 local u = require('utils')
 
 return {
-  -- mini.ai - new textobjects
-  {
-    'echasnovski/mini.ai',
-    keys = {
-      { 'a', mode = { 'x', 'o' } },
-      { 'i', mode = { 'x', 'o' } },
-    },
-    dependencies = { 'nvim-treesitter-textobjects' },
-    opts = function()
-      local ts = require('mini.ai').gen_spec.treesitter
-      return {
-        n_lines = 500,
-        custom_textobjects = {
-          b = false, -- = ([{
-          q = false, -- = `'"
-          -- ~~~~~~~~~~~~~~~~~~~ functions ~~~~~~~~~~~~~~~~~~~ --
-          F = ts({
-            a = { '@function.outer' },
-            i = { '@function.inner' },
-          }, {}),
-          f = ts({
-            a = { '@call.outer' },
-            i = { '@call.inner' },
-          }),
-          a = ts({
-            a = { '@parameter.outer' },
-            i = { '@parameter.inner' },
-          }),
-          -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
-          e = ts({
-            a = { '@assignment.outer' },
-            i = { '@assignment.rhs' },
-          }),
-          r = ts({
-            a = { '@return.outer' },
-            i = { '@return.inner' },
-          }),
-          -- ~~~~~~~~~~~~~~~~~~~~~ misc ~~~~~~~~~~~~~~~~~~~~~~ --
-          s = ts({ -- structs/classes; instance/definition
-            a = { '@class.outer' },
-            i = { '@class.inner' },
-          }, {}),
-          c = ts({ -- inner doesn't work with most languages, use outer
-            a = { '@comment.outer' },
-            i = { '@comment.inner' },
-          }),
-          o = ts({ -- any other blocks
-            a = { '@block.outer', '@conditional.outer', '@loop.outer', '@frame.outer' },
-            i = { '@block.inner', '@conditional.inner', '@loop.inner', '@frame.inner' },
-          }, {}),
-        },
-        silent = true,
-      }
-    end,
-  },
   -- treesj - splits/joins code using TS
   {
     'Wansmer/treesj',
@@ -85,55 +30,11 @@ return {
       },
     },
   },
-  -- rainbow-delimiters.nvim - TS rainbow parentheses
-  {
-    -- alterntaives:
-    -- * https://github.com/luochen1990/rainbow -- 1.7k stars
-    -- * https://github.com/junegunn/rainbow_parentheses.vim -- junegunn, seems "complete", 374 stars
-    'HiPhish/rainbow-delimiters.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'BufEnter',
-  },
-  -- aerial.nvim - symbol outline
-  {
-    -- simrat39/symbols-outline.nvim
-    'stevearc/aerial.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-tree/nvim-web-devicons',
-    },
-    event = 'BufEnter',
-    opts = {
-      filter_kind = {
-        nix = false,
-      },
-    },
-    keys = { { 'gO', '<cmd>AerialToggle!<cr>', desc = 'Show Aerial Outline' } },
-  },
   -- neogen - annotation generation
   {
     'danymat/neogen',
     config = true,
     event = 'BufEnter',
-  },
-  -- indent-blankline.nvim
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
-    main = 'ibl',
-    init = function()
-      vim.cmd([[se lcs+=lead:\ ]])
-    end,
-    opts = function()
-      return {
-        exclude = {
-          filetypes = {
-            'lazy',
-          },
-        },
-      }
-    end,
   },
   -- neotest
   {
@@ -270,17 +171,6 @@ return {
       },
     },
   },
-  -- mini.trailspace - highlight and delete trailing whitespace
-  {
-    'echasnovski/mini.trailspace',
-    event = 'VeryLazy',
-    config = function()
-      vim.api.nvim_create_user_command('Trim', require('mini.trailspace').trim, {})
-      vim.cmd(
-        [[autocmd FileType lazy lua vim.b.minitrailspace_disable = true; require('mini.trailspace').unhighlight()]]
-      )
-    end,
-  },
   -- vim-table-mode -  tables for markdown etc
   {
     'dhruvasagar/vim-table-mode',
@@ -296,27 +186,6 @@ return {
       )
     end,
     ft = 'markdown',
-  },
-  -- nvim-surround - standard surround plugin
-  {
-    -- The most popular surround plugin (right after tpope/vim-surround)
-    'kylechui/nvim-surround',
-    opts = {
-      keymaps = {
-        insert = false,
-        insert_line = false,
-        -- normal = '<leader>s',
-        -- normal_cur = '<leader>ss',
-        -- normal_line = '<leader>S',
-        -- normal_cur_line = '<leader>SS',
-        -- visual = '<leader>s',
-        -- visual_line = '<leader>S',
-        delete = 'ds',
-        change = 'cs',
-        change_line = 'cS',
-      },
-    },
-    event = 'BufEnter',
   },
   -- mini.align - align text interactively
   {
@@ -336,38 +205,6 @@ return {
       { mode = { 'x', 'n' }, '<leader>a', desc = 'Align' },
       { mode = { 'x', 'n' }, '<leader>A', desc = 'Interactive align' },
     },
-  },
-  -- vim-dadbod - never used, might be broken
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod' },
-      {
-        'kristijanhusak/vim-dadbod-completion',
-        ft = { 'sql', 'mysql', 'plsql' },
-        dependencies = { 'hrsh7th/nvim-cmp' },
-        init = function()
-          -- untested
-          vim.cmd(
-            [[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]]
-          )
-        end,
-      },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  },
-  -- vim-fetch - allows for ':e file.txt:1337'
-  {
-    lazy = false,
-    'wsdjeg/vim-fetch',
   },
   -- harpoon - project-local file marks
   {
@@ -395,21 +232,10 @@ return {
       end
     end,
   },
-  -- vim-sleuth - autodetects indentation settings
-  {
-    'tpope/vim-sleuth',
-    lazy = false,
-  },
   -- nvim-colorizer.lua - highlights eg #012345
   {
     'NvChad/nvim-colorizer.lua',
     event = 'VeryLazy',
-    opts = {},
-  },
-  -- mini.bracketed - new ]/[ targets
-  {
-    'echasnovski/mini.bracketed',
-    lazy = false,
     opts = {},
   },
   -- sniprun - run selected code
@@ -418,11 +244,6 @@ return {
     'michaelb/sniprun',
     build = 'sh install.sh',
     opts = {},
-  },
-  -- info.vim - gnu info browser
-  {
-    'HiPhish/info.vim',
-    event = 'VeryLazy',
   },
   -- flash.nvim - jump around
   {
@@ -452,29 +273,9 @@ return {
       },
     },
   },
-  -- lsp-format.nvim
-  {
-    'lukas-reineke/lsp-format.nvim',
-    opts = function()
-      local config = {
-        lua = {
-          exclude = {
-            'lua_ls',
-          },
-        },
-        nix = {
-          exclude = {
-            'nixd',
-            'nil_ls',
-          },
-        },
-      }
-      return config
-    end,
-  },
   -- symbol-usage.nvim
   {
-    enabled = false,
+    -- enabled = false,
     'Wansmer/symbol-usage.nvim',
     event = 'LspAttach',
     opts = {

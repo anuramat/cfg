@@ -157,10 +157,6 @@ return {
         },
         lualine_b = { filetype },
         lualine_c = {
-          {
-            require('noice').api.statusline.mode.get,
-            cond = require('noice').api.statusline.mode.has,
-          },
           encoding,
           fileformat,
           diagnostics,

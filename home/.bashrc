@@ -144,15 +144,10 @@ brexit() {
 # beep every $1 minutes
 beep() {
 	local -r period=$1
-	[[ $period -le 60 ]] && [[ $((60 % $1)) == 0 ]] \
-		|| {
-			echo 'Illegal period'
-			return 1
-		}
-
-	local -r offset_minutes=$((period - $(date +%M) % period))
-	echo "Waiting for $offset_minutes minutes"
-	sleep $((mins * 60))
+	[ -n "$period" ] || {
+		echo -e 'Invalid arguments\nUsage:\n\tbeep 45'
+		return 1
+	}
 
 	while true; do
 		local hours=$(date +%H)
@@ -163,7 +158,7 @@ beep() {
 }
 # basic pomodoro
 pomo() {
-	[[ $1 -gt 0 ]] && [[ $2 -gt 0 ]] || {
+	[ -n "$1" ] && [ -n "$2" ] || {
 		echo -e 'Invalid arguments\nUsage:\n\tpomo 45 15'
 		return 1
 	}
@@ -183,24 +178,24 @@ pomo() {
 }
 # jump to a ghq repo
 g() {
-	# g for git
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local -r chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf)
 	cd "$root/$chosen_path" || return
 }
+# ghq rm with a fzf wrapper
+grm() {
+	ghq list | fzf | xargs -I{} bash -c 'yes | ghq rm {}'
+}
+# ghq get over github repos with fzf wrapper
+get() {
+	local -r repo="$(gh repo list | cut -f 1 | fzf)"
+	ghq get "$repo"
+}
 # send full path of a file to clipboard
 c() {
 	# c for copy
 	realpath "$@" | tr '\n' ' ' | wl-copy -n
-}
-p() {
-	# p for packages
-	echo "$@" | tr " " "+" | xargs -I{} xdg-open "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={}"
-}
-o() {
-	# o for options
-	echo "$@" | tr " " "+" | xargs -I{} xdg-open "https://search.nixos.org/options?channel=unstable&size=50&sort=relevance&type=packages&query={}"
 }
 r() {
 	# r for rice

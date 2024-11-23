@@ -10,7 +10,7 @@ local ver_string = u.version_string()
 ver_string = string.rep(' ', math.floor((tx - #ver_string) / 2)) .. ver_string
 local spacing = 3
 raw = raw .. string.rep(' \n', spacing) .. ver_string
-ty = ty + spacing + 1
+ty = ty + spacing -- +1 from ver string, -1 from button
 
 --- Wraps output, centering it, and hiding it when it doesn't fit on the screen
 ---@return table elements

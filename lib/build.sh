@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -e
+# vim: fdm=marker fdl=0
 
 # paths {{{1
 backups="$XDG_CACHE_HOME/cfg/backups"
@@ -21,6 +22,8 @@ sudo find "$sys_nixos" ! -wholename "$sys_nixos" ! -wholename "$hwcfg" -delete
 sudo rsync -r --chown=root:root "$local_nixos/" "$sys_nixos"
 # rebuild
 sudo nixos-rebuild switch
+# save new lock
+cp "$lock" "$local_nixos/flake.lock"
 
 # misc post-build {{{1
 # clear tofi .desktop cache
@@ -28,5 +31,3 @@ tofi_drun_cache="$XDG_CACHE_HOME/tofi-drun"
 [ -f "$tofi_drun_cache" ] && rm "$tofi_drun_cache" || true
 # create default XDG user directories
 xdg-user-dirs-update --force
-
-# vim: fdm=marker fdl=0

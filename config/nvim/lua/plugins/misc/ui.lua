@@ -18,4 +18,21 @@ return {
       vim.api.nvim_create_user_command('Trim', require('mini.trailspace').trim, {})
     end,
   },
+  {
+    {
+      'stevearc/dressing.nvim',
+      opts = {
+        input = {
+          insert_only = true,
+          border = vim.g.border,
+        },
+        select = {
+          backend = { 'builtin', 'nui' },
+          nui = { border = { style = vim.g.border } },
+          builtin = { border = vim.g.border },
+        },
+      },
+      event = 'VeryLazy',
+    },
+  },
 }

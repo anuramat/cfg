@@ -1,6 +1,6 @@
-local body = require('plugins.ui.dashboard.body')
-local footer = require('plugins.ui.dashboard.footer')
-local header = require('plugins.ui.dashboard.header')
+local body = require('plugins.misc.dashboard.body')
+local footer = require('plugins.misc.dashboard.footer')
+local header = require('plugins.misc.dashboard.header')
 
 local u = require('utils')
 

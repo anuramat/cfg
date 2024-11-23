@@ -2,8 +2,8 @@ local input = 'neovim'
 local push_footer = true
 local u = require('utils')
 
-local footer = require('plugins.ui.dashboard.footer')
-local header = require('plugins.ui.dashboard.header')
+local footer = require('plugins.misc.dashboard.footer')
+local header = require('plugins.misc.dashboard.header')
 
 local raw = u.figlet(input)
 local lines = vim.split(raw, '\n', { trimempty = true })

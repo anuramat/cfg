@@ -6,10 +6,6 @@ local u = require('utils.helpers')
 
 local error_color = 'ErrorMsg'
 
-local function proper_file()
-  return vim.bo.ft ~= 'alpha'
-end
-
 local dap_status = {
   function()
     return '  ' .. require('dap').status()
@@ -61,7 +57,6 @@ local progress = {
   'progress',
   padding = { left = 1, right = 1 },
   separator = '',
-  cond = proper_file,
 }
 
 local filename = {
@@ -70,13 +65,11 @@ local filename = {
   newfile_status = true,
   symbols = { modified = '[modified]', readonly = '[read-only]', unnamed = '[no name]', newfile = '[new]' },
   separator = '',
-  cond = proper_file,
   padding = { left = 1, right = 1 },
 }
 
 local filetype = {
   'filetype',
-  cond = proper_file,
 }
 
 local tabs = {
@@ -90,7 +83,6 @@ local location = {
   'location',
   padding = { left = 1, right = 1 },
   fmt = u.trim,
-  cond = proper_file,
 }
 
 local encoding = {
@@ -129,6 +121,10 @@ return {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         refresh = { statusline = 300, tabline = 300 },
+        disabled_filetypes = {
+          statusline = { 'alpha' },
+          winbar = { 'alpha' },
+        },
       },
       extensions = { 'aerial', 'fugitive', 'lazy', 'man', 'neo-tree', 'nvim-dap-ui', 'oil', 'quickfix' },
       tabline = {

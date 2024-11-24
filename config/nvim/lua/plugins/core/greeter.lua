@@ -53,13 +53,6 @@ local function pook()
   end
 end
 
----@return table elements
-local body = {
-  type = 'text',
-  opts = { position = 'center' },
-  val = pook(),
-}
-
 return {
   lazy = false,
   'goolord/alpha-nvim',
@@ -73,6 +66,7 @@ return {
         vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<cmd>quit<cr>', {})
         vim.api.nvim_buf_set_keymap(0, 'n', 'i', '<cmd>enew<cr>i', {})
         vim.api.nvim_buf_set_keymap(0, 'n', 'a', '<cmd>enew<cr>a', {})
+        vim.cmd('setlocal fcs=eob:\\ ')
       end,
     })
     return {

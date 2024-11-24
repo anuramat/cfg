@@ -123,7 +123,6 @@ return {
         refresh = { statusline = 300, tabline = 300 },
         disabled_filetypes = {
           statusline = { 'alpha' },
-          winbar = { 'alpha' },
         },
       },
       extensions = { 'aerial', 'fugitive', 'lazy', 'man', 'neo-tree', 'nvim-dap-ui', 'oil', 'quickfix' },

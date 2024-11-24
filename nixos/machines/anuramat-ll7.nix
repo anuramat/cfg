@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  user,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -28,6 +29,11 @@
       dpi = 236;
     };
   };
+
+  users.users.${user.username}.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZzoDnDLMHYS+5UJ1ujjMNrXdiJnOKKv0TUdWCWl+RB" # termius
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEeYBmrTDM6WB3KCqfdOUvnPVPDXa3EDquqPOJWFDF1a anuramat@anuramat-t480"
+  ];
 
   services.tlp.settings = {
     # turn on battery charge threshold

@@ -14,7 +14,6 @@
       fullname = "Arsen Nuramatov";
       timezone = "Europe/Berlin";
       defaultLocale = "en_US.UTF-8";
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIZzoDnDLMHYS+5UJ1ujjMNrXdiJnOKKv0TUdWCWl+RB"; # TODO might wanna separate machine
     };
     unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;

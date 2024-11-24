@@ -26,9 +26,8 @@
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
-        AllowUsers = ["anuramat"];
+        AllowUsers = [user.username];
       };
     };
   };
-  users.users.${user.username}.openssh.authorizedKeys.keys = [user.key];
 }

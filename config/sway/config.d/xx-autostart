@@ -3,6 +3,8 @@ exec_always {
     # pkill inactive-windo; inactive-windows-transparency.py
     # "pkill mpvpaper; mpvpaper '*' ~/Videos/wp/waves.mp4 -o 'loop-file=inf panscan=1.0 hwdec=auto'"
 
+    # clipboard persistence
+    "pkill wl-clip-persist; wl-clip-persist --clipboard regular"
     # lock/suspend on idle
     "pkill swayidle; swayidle -w"
     # network manager tray thingie
@@ -12,7 +14,7 @@ exec_always {
     # brightness/volume popup
     "pkill avizo-service; avizo-service"
     # display config daemon
-    # doesn't need to be killed, breaks shit otherwise
+    # doesn't need to be killed
     "way-displays"
     # media automounter
     "pkill udiskie; udiskie -ta"

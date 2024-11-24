@@ -6,7 +6,7 @@
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
       dbus # make sure dbus-update-activation-environment is available
-      sway-contrib.inactive-windows-transparency
+      # isnt dbus already in there anyway?
     ];
   };
 
@@ -19,15 +19,4 @@
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
-
-  security.pam.services.swaylock = {}; # already done by sway.enable
-  # TODO where did I even find this, sway article?
-  # security.pam.loginLimits = [
-  #   {
-  #     domain = "@users";
-  #     item = "rtprio";
-  #     type = "-";
-  #     value = 1;
-  #   }
-  # ];
 }

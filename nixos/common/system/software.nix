@@ -57,6 +57,7 @@
     kooha # screen capture with basic gui
 
     # Misc
+    wl-clip-persist
     unstable.wallust # better pywal
   ];
 }

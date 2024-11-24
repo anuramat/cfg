@@ -2,17 +2,11 @@
 
 ### Main settings {{{1
 ignore-empty-password
-
-### Indicator {{{1
-indicator-radius=200
-indicator-thickness=20
 font=Hack Nerd Font
-
-### Misc hints {{{1
 indicator-caps-lock
 hide-keyboard-layout
 
-### Official Dracula colorscheme for swaylock {{{1
+### Colors {{{1
 color=#FF0000
 
 inside-color=#FF0000
@@ -23,17 +17,15 @@ inside-clear-color=#FF0000
 line-clear-color=#FF0000
 ring-clear-color=#FF0000
 
-inside-wrong-color=#FFFF00
-line-wrong-color=#FFFF00
-ring-wrong-color=#FFFF00
+inside-wrong-color=#FF0000
+line-wrong-color=#000000
+ring-wrong-color=#FF0000
 
-inside-ver-color=#000000
-line-ver-color=#000000
-ring-ver-color=#000000
+inside-ver-color=#FF0000
+line-ver-color=#FF0000
+ring-ver-color=#FF0000
 
 key-hl-color=#000000
-
-# separator-color=#00000000
 
 ### Remove the text {{{1
 text-caps-lock-color=#00000000

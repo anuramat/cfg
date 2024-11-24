@@ -1,4 +1,6 @@
-return function(buffer)
+local M = {}
+
+local function set_lsp_keys(buffer)
   local function set(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = buffer, desc = 'LSP: ' .. desc })
   end
@@ -39,3 +41,11 @@ return function(buffer)
   set_prefixed('wr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')
   set_prefixed('wl', list_workspace_folders, 'List Workspace Folders')
 end
+
+M.on_attach = function(client, buffer)
+  set_lsp_keys(buffer)
+  require('lsp-format').on_attach(client, buffer)
+  vim.lsp.inlay_hint.enable()
+end
+
+return M

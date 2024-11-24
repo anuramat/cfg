@@ -1,6 +1,6 @@
 -- vim: fdl=2
 
-local on_attach = require('utils').on_attach
+local on_attach = require('utils.lsp').on_attach
 
 --- Root directory function with a fallback
 --- @param opts { primary: string[], fallback: string[] }

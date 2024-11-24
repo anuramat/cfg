@@ -1,6 +1,6 @@
 -- vim: fdl=1
 
-local u = require('utils')
+local u = require('utils.helpers')
 
 local function log_point()
   require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))

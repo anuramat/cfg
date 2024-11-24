@@ -1,23 +1,44 @@
-local u = require('utils')
-
+local u = require('utils.helpers')
 local input = 'neovim'
 
-local raw = u.figlet(input)
-local lines = vim.split(raw, '\n', { trimempty = true })
-local tx = #lines[1] -- assuming all lines have equal width
-local ty = #lines
-local ver_string = u.version_string()
-ver_string = string.rep(' ', math.floor((tx - #ver_string) / 2)) .. ver_string
-local spacing = 3
-raw = raw .. string.rep(' \n', spacing) .. ver_string
-ty = ty + spacing -- +1 from ver string, -1 from button
+--- Generates a banner with a random font
+---@param text string
+---@param font? string
+---@return string
+local function figlet(text, font)
+  if not font then
+    -- hehe
+    local font_cmd =
+      [[figlist | sed -n '/Figlet fonts in this directory:/,/Figlet control files in this directory:/{//!p}' | shuf | head -n 1]]
+    local font_res = vim.system({ 'bash', '-c', font_cmd }, { text = true }):wait()
+    font = u.trim(font_res.stdout)
+  end
+  vim.g.figlet_font = font
+  local figlet_res = vim.system({ 'figlet', '-w', '999', '-f', font, text }, { text = true }):wait()
+  return figlet_res.stdout
+end
 
---- Wraps output, centering it, and hiding it when it doesn't fit on the screen
----@return table elements
-local body = {
-  type = 'text',
-  opts = { position = 'center' },
-  val = function()
+local function version_string()
+  local version = vim.version()
+  local nvim_version_info = ' ' .. version.major .. '.' .. version.minor .. '.' .. version.patch
+  return nvim_version_info
+end
+
+-- calc padding, add version string
+local function pook()
+  local raw = figlet(input)
+  local ver_string = version_string()
+  local lines = vim.split(raw, '\n', { trimempty = true })
+  local tx = #lines[1] -- assuming all lines have equal width
+  local ty = #lines
+  -- center align the version string with the main block
+  ver_string = string.rep(' ', math.floor((tx - #ver_string) / 2)) .. ver_string
+  -- add some space between the two
+  local spacing = 3
+  raw = raw .. string.rep(' \n', spacing) .. ver_string
+  ty = ty + spacing -- +1 from ver string but -1 from button = 0
+
+  return function()
     local wx = vim.fn.winwidth(0)
     local wy = vim.fn.winheight(0)
 
@@ -28,9 +49,15 @@ local body = {
       return ''
     end
 
-    vim.print(ypad)
     return string.rep(' \n', ypad) .. raw
-  end,
+  end
+end
+
+---@return table elements
+local body = {
+  type = 'text',
+  opts = { position = 'center' },
+  val = pook(),
 }
 
 return {
@@ -51,7 +78,7 @@ return {
     return {
       layout = {
         { type = 'button', val = '█' }, -- hides cursor
-        body,
+        { type = 'text', opts = { position = 'center' }, val = pook() },
       },
       opts = {
         keymap = {

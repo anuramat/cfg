@@ -1,4 +1,4 @@
-local u = require('utils')
+local u = require('utils.helpers')
 
 -- uses fd for find_files
 -- rg for everything else

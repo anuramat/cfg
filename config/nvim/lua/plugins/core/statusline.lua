@@ -2,14 +2,12 @@
 
 -- vars {{{1
 
-local u = require('utils')
+local u = require('utils.helpers')
 
 local error_color = 'ErrorMsg'
 
-local custom_plugins = { 'alpha', 'TelescopePrompt' }
-
-local function custom_cond()
-  return not u.contains(custom_plugins, vim.o.filetype)
+local function proper_file()
+  return vim.bo.ft ~= 'alpha'
 end
 
 local dap_status = {
@@ -63,7 +61,7 @@ local progress = {
   'progress',
   padding = { left = 1, right = 1 },
   separator = '',
-  cond = custom_cond,
+  cond = proper_file,
 }
 
 local filename = {
@@ -72,13 +70,13 @@ local filename = {
   newfile_status = true,
   symbols = { modified = '[modified]', readonly = '[read-only]', unnamed = '[no name]', newfile = '[new]' },
   separator = '',
-  cond = custom_cond,
+  cond = proper_file,
   padding = { left = 1, right = 1 },
 }
 
 local filetype = {
   'filetype',
-  cond = custom_cond,
+  cond = proper_file,
 }
 
 local tabs = {
@@ -92,7 +90,7 @@ local location = {
   'location',
   padding = { left = 1, right = 1 },
   fmt = u.trim,
-  cond = custom_cond,
+  cond = proper_file,
 }
 
 local encoding = {
@@ -124,16 +122,6 @@ return {
   },
   opts = function()
     vim.o.showmode = false
-
-    local has_lualine, lualine = pcall(require, 'lualine')
-    if not has_lualine then
-      return
-    end
-
-    local has_neopywal, neopywal_lualine = pcall(require, 'neopywal.theme.plugins.lualine')
-    if not has_neopywal then
-      return
-    end
 
     return {
       options = {

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # ~~~~~~~~~~~~~~~~~~~~~~ core {{{1 ~~~~~~~~~~~~~~~~~~~~~~~ #
     bash
@@ -48,6 +52,7 @@
     nmap
     socat # socket cat
     wirelesstools # iwconfig etc
+    openconnect_openssl
     # }}}
   ];
 }

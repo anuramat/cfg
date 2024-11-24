@@ -173,6 +173,7 @@
     unstable.transmission_4-gtk # transmission torrent client gui
     unstable.cheese # webcam
     hyprpicker # simple terminal color picker
+    unstable.proton-pass
     # }}}
   ];
 }

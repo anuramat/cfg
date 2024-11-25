@@ -1,3 +1,4 @@
+-- vim: fdl=3
 return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'master',
@@ -17,12 +18,12 @@ return {
     indent = {
       enable = true,
       disable = {
-        'markdown', -- TS bullet point indentation is "lazy" (subsequent lines are flush with bullet), which is ugly
+        'markdown', -- ts indentation is ugly in md bullets
       },
     },
     ensure_installed = false, -- install missing parsers on launch
-    auto_install = false, -- install corresponding parser on buffer enter
-    ignore_install = { 'norg', 'org' },
+    auto_install = true, -- install corresponding parser on buffer enter
+    ignore_install = {},
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -45,11 +46,11 @@ return {
     require('nvim-treesitter.configs').setup(opts)
     require('treesitter-context').setup({
       enable = true,
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-      min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+      max_lines = 1, -- How many lines the window should span. Values <= 0 mean no limit.
+      min_window_height = 20, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
       line_numbers = true,
-      multiline_threshold = 20, -- Maximum number of lines to show for a single context
-      trim_scope = 'inner', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+      multiline_threshold = 1, -- Maximum number of lines to show for a single context
+      trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
       mode = 'topline', -- Line used to calculate context. Choices: 'cursor', 'topline'
       -- separator = '―', -- Separator between context and content. nil or a single character
       zindex = 20, -- The Z-index of the context window

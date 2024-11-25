@@ -10,8 +10,6 @@
 --   end,
 -- },
 
-local u = require('utils.helpers')
-
 return {
   -- treesj - splits/joins code using TS
   {
@@ -66,35 +64,6 @@ return {
       })
     end,
   },
-  -- todo-comments.nvim - highlights "todo", "hack", etc
-  {
-    'folke/todo-comments.nvim',
-    event = 'VeryLazy',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-    opts = {
-      sign_priority = -1000,
-      highlight = {
-        keyword = 'bg', -- only highlight the word
-        pattern = [[<(KEYWORDS)>]], -- vim regex
-        multiline = false, -- enable multine todo comments
-      },
-      search = {
-        pattern = [[\b(KEYWORDS)\b]], -- ripgrep regex
-      },
-    },
-  },
-  -- neopywal.nvim
-  {
-    'RedsXDD/neopywal.nvim',
-    name = 'neopywal',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      use_wallust = true,
-      notify = true,
-      transparent_background = true,
-    },
-  },
   -- oil.nvim - file manager
   {
     'stevearc/oil.nvim',
@@ -145,14 +114,6 @@ return {
     -- chrisgrieser/nvim-genghis - drop in lua replacement with some bloat/improvements
     'tpope/vim-eunuch',
     event = 'VeryLazy',
-  },
-  -- vim-illuminate - highlights the word under cursor using LSP/TS/regex
-  {
-    'RRethy/vim-illuminate',
-    event = 'VeryLazy',
-    config = function()
-      require('illuminate').configure({ filetypes_denylist = vim.g.nonfiles })
-    end,
   },
   -- undotree
   {
@@ -231,12 +192,6 @@ return {
         end, 'Go to #' .. si)
       end
     end,
-  },
-  -- nvim-colorizer.lua - highlights eg #012345
-  {
-    'NvChad/nvim-colorizer.lua',
-    event = 'VeryLazy',
-    opts = {},
   },
   -- sniprun - run selected code
   {

@@ -1,3 +1,4 @@
+-- vim: fdl=1
 return {
   -- aerial.nvim - symbol outline
   {
@@ -126,25 +127,5 @@ return {
       },
     },
     event = 'BufEnter',
-  },
-  -- indent-blankline.nvim
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    event = 'VeryLazy',
-    main = 'ibl',
-    init = function()
-      vim.cmd([[se lcs+=lead:\ ]])
-    end,
-    opts = function()
-      return {
-        scope = { show_start = false },
-        exclude = {
-          filetypes = {
-            'lazy',
-          },
-        },
-      }
-    end,
   },
 }

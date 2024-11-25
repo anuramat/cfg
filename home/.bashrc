@@ -180,7 +180,8 @@ pomo() {
 g() {
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
-	local -r chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf)
+	local chosen_path
+	chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
 	cd "$root/$chosen_path" || return
 }
 # ghq rm with a fzf wrapper

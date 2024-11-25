@@ -21,8 +21,9 @@
   diffFilter = delta --color-only
 
 ; ghq
+; WARN: XDGBDSV
 [ghq]
-root = "~/.ghq"
+root = .local/share/ghq
 
 [advice]
   detachedHead = false

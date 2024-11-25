@@ -15,7 +15,7 @@ _: {
       drivers = []; # some printers need additional drivers
     };
     # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
-    # which is responsible for network printers autodiscovery
+    # which is responsible for network printers autodiscovery (not only that)
     avahi = {
       enable = true;
       nssmdns4 = true;

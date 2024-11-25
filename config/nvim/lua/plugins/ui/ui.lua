@@ -9,14 +9,6 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     event = 'BufEnter',
   },
-  -- mini.trailspace - highlight/delete trailing whitespace
-  {
-    'echasnovski/mini.trailspace',
-    event = 'VeryLazy',
-    config = function()
-      vim.api.nvim_create_user_command('Trim', require('mini.trailspace').trim, {})
-    end,
-  },
   -- dressing.nvim - input/select ui elements
   {
     {

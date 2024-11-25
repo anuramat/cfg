@@ -23,7 +23,7 @@
 ; ghq
 ; WARN: XDGBDSV
 [ghq]
-root = .local/share/ghq
+root = "~/.local/share/ghq"
 
 [advice]
   detachedHead = false

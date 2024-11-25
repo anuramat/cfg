@@ -18,6 +18,8 @@ wallust theme base16-nord
 ## Finishing touches
 
 ```bash
+# fetch nvim plugins, install required treesitter parsers
+nvim
 # generate a key
 ssh-keygen
 # *add the key to gh*
@@ -25,6 +27,10 @@ ssh-keygen
 git remote set-url origin git@github.com:anuramat/cfg
 # makes eg "nix-shell -p" use unstable
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+# set up tailscale
+sudo tailscale login
+sudo tailscale up
+# etc: spotify, web browser
 ```
 
 - change git creds etc (`rg 'anuramat|arsen`)

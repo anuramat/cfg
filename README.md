@@ -30,7 +30,9 @@ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 # set up tailscale
 sudo tailscale login
 sudo tailscale up
-# etc: spotify, web browser
+# set up github cli
+gh auth login
+# etc: spotify, web browser, telegram, proton pass
 ```
 
 - change git creds etc (`rg 'anuramat|arsen`)

@@ -136,7 +136,7 @@ return {
     -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --
     -- Register capabilities for CMP
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- TODO uncomment when cmp works capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
     -- ~~~~~~~~~~~~~~~~ Set up servers ~~~~~~~~~~~~~~~~~ --
     for name, cfg in pairs(configs()) do
       cfg.capabilities = capabilities

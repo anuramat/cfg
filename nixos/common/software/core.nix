@@ -40,6 +40,7 @@
     zellij # tmux++
     zoxide # cd++
     # utils {{{1
+    rsbkb # rust blackbag - encode/decode tools: crc
     age # file encryption
     aria # downloader
     banner

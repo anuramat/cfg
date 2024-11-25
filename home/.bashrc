@@ -188,7 +188,7 @@ grm() {
 	ghq list | fzf | xargs -I{} bash -c 'yes | ghq rm {}'
 }
 # ghq get over github repos with fzf wrapper
-get() {
+gg() {
 	local -r repo="$(gh repo list | cut -f 1 | fzf)"
 	ghq get "$repo"
 }

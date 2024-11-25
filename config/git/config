@@ -20,6 +20,10 @@
 [interactive]
   diffFilter = delta --color-only
 
+; ghq
+[ghq]
+root = "~/.ghq"
+
 [advice]
   detachedHead = false
   addEmptyPathspec = false

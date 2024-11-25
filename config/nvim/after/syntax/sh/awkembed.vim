@@ -1,3 +1,4 @@
+" :help sh-awk
 " AWK Embedding:
 " ==============
 " Shamelessly ripped from aspperl.vim by Aaron Hope.

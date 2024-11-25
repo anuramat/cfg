@@ -2,8 +2,6 @@
 
 -- vars {{{1
 
-local u = require('utils.helpers')
-
 local error_color = 'ErrorMsg'
 
 local dap_status = {
@@ -82,7 +80,7 @@ local tabs = {
 local location = {
   'location',
   padding = { left = 1, right = 1 },
-  fmt = u.trim,
+  fmt = vim.trim,
 }
 
 local encoding = {

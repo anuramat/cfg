@@ -2,13 +2,6 @@
 
 local M = {}
 
---- Removes whitespaces from both sides of the string.
---- @param s string
---- @return string
-function M.trim(s)
-  return ((s:gsub('^%s+', '')):gsub('%s+$', ''))
-end
-
 --- Adds prefix to lazy.nvim keymap spec
 --- @param lhs_prefix string Prefix to add to mappings
 --- @param keys table Lazy.nvim keysmap spec without prefixes
@@ -40,6 +33,7 @@ function M.random_string(length)
   return res
 end
 
+--- Simulates keypresses
 function M.press(rawkey)
   local key = vim.api.nvim_replace_termcodes(rawkey, true, true, true)
   vim.api.nvim_feedkeys(key, 'n', false)

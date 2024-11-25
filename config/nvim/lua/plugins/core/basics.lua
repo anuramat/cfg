@@ -138,6 +138,7 @@ return {
     end,
     opts = function()
       return {
+        scope = { show_start = false },
         exclude = {
           filetypes = {
             'lazy',

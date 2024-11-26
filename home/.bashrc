@@ -8,8 +8,6 @@ export HISTFILESIZE=-1
 . "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do . "$f"; done
 
-# ~~~~~~~~~~~~~~~ software initialization ~~~~~~~~~~~~~~~~ #
-
 if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"
 	source "$(fzf-share)/completion.bash"
@@ -22,8 +20,6 @@ eval "$(starship init bash)"                                                    
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 # TODO test if foot and other terms are in sync
 
-# ~~~~~~~~~~~~~~~~~~~~~ aliases {{{1 ~~~~~~~~~~~~~~~~~~~~~ #
-
 alias t="tldr"
 alias f="nvim"
 alias ..="cd .."
@@ -32,32 +28,24 @@ alias ....="cd ../../.."
 alias sus="systemctl suspend"
 alias peco="fzf --height=100 --preview=''"
 
-# ~~~~~~~~~~~~~~~~~~~~ functions {{{1 ~~~~~~~~~~~~~~~~~~~~ #
-
-# uploads a file, sends link to stdout AND pastebin
+# -- uploads a file, sends link to stdout AND pastebin
 upload() {
-	curl -F "file=@$1" https://0x0.st | tee >(wl-copy)
+	local filename="$1"
+	[ -z "$1" ] && filename="-"
+	curl -F "file=@$filename" https://0x0.st | tee >(wl-copy)
 }
-# searches on cheat.sh
-cheat() {
-	echo "$@" | tr " " "+" | xargs -I{} curl -m 10 "http://cheat.sh/{}" 2>/dev/null | less
-}
-# random 16 > o.txt
+# random $n # -- random alnum string
 random() {
 	shuf -er -n "$1" {a..z} {0..9} | tr -d '\n'
 }
-# pandoc-web https://example.com > o.md
+# pandoc-web $link > output.md # -- saves a website to a markdown document
 pandoc-web() {
 	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
 }
-# pandoc-tex i.tex o.pdf
-pandoc-tex() {
-	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" -o "$2"
-}
-# pandoc-tex i.md o.pdf
+# c i.md o.pdf
 pandoc-md() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
-	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -o "$2"
+	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -t pdf -o "$2"
 }
 # say_unwrapped "model" "text"
 say_unwrapped() {
@@ -114,11 +102,11 @@ hotdoc() {
 		| base64 -d >"$path"
 
 	# open zathura
-	(zathura "$path" >/dev/null 2>&1) &
+	zathura "$path" &>/dev/null &
 	local -r zathura_pid="$!"
 
 	# start watching for changes
-	export -f pandoc-md && echo "$1" | entr -cns "pandoc-md \"$1\" \"$path\"" &
+	(export -f pandoc-md && echo "$1" | entr -cns "pandoc-md \"$1\" \"$path\"") &
 	local -r entr_pid="$!"
 
 	# kill entr if zathura is closed
@@ -129,13 +117,9 @@ hotdoc() {
 	rm "$path"
 }
 # open with zathura
-Z() {
+z() {
 	zathura "$1" &>/dev/null &
 	disown
-}
-# open with zathura "in this window"
-z() {
-	Z "$1" && exit
 }
 # set brightness for an external monitor
 brexit() {
@@ -154,26 +138,6 @@ beep() {
 		local minutes=$(date +%M)
 		(say "Current time: $hours $minutes" &)
 		sleep $((period * 60))
-	done
-}
-# basic pomodoro
-pomo() {
-	[ -n "$1" ] && [ -n "$2" ] || {
-		echo -e 'Invalid arguments\nUsage:\n\tpomo 45 15'
-		return 1
-	}
-	echo "Starting pomo: ${1}m on, ${2}m off"
-	while true; do
-		(say "Round started" &)
-
-		echo On:
-		sleep $(($1 * 60)) | pv -t
-		(say "Round finished" &)
-		notify-send 'pomo: off'
-
-		echo Off:
-		sleep $(($2 * 60)) | pv -t
-		notify-send 'pomo: on'
 	done
 }
 # jump to a ghq repo

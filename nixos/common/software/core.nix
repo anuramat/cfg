@@ -65,7 +65,7 @@
     ctop # containers
     gotop # cute
     htop # basic
-    iotop
+    iotop # detailed io info, requires sudo
     nvitop # nvidia gpu
     podman-tui # podman container status
     unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)

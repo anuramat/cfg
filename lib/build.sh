@@ -31,3 +31,4 @@ tofi_drun_cache="$XDG_CACHE_HOME/tofi-drun"
 [ -f "$tofi_drun_cache" ] && rm "$tofi_drun_cache" || true
 # create default XDG user directories
 xdg-user-dirs-update --force
+# TODO maybe ensure path for xdg basedir spec too

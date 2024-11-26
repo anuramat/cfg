@@ -9,10 +9,9 @@ lndir() {
 	shopt -u dotglob
 }
 
-install() {
-	lndir "$PWD/home" "$HOME"
-	lndir "$PWD/config" "$XDG_CONFIG_HOME"
+lndir "$PWD/home" "$HOME"
+lndir "$PWD/config" "$XDG_CONFIG_HOME"
 
-	touch "$HOME/.hushlogin"
-	# TODO maybe ensure path for all xdg paths (user paths too), might already be done
-}
+touch "$HOME/.hushlogin"
+xdg-user-dirs-update --force
+# TODO maybe ensure path for xdg basedir spec too

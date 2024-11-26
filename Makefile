@@ -1,12 +1,12 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
-
+# TODO fix this mess
 .PHONY: system install code
 system:
 	@ printf ${heading} "Building NixOS"
 	@ ./lib/build.sh
 install:
 	@ printf ${heading} "Installing configs"
-	@ . lib/install.sh; install
+	@ ./lib/install.sh
 code: lua shell
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lua ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 .PHONY: lua lua_fmt

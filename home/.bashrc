@@ -140,7 +140,7 @@ beep() {
 		sleep $((period * 60))
 	done
 }
-# jump to a ghq repo
+# cd <- fzf <- ghq list
 g() {
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
@@ -148,20 +148,32 @@ g() {
 	chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
 	cd "$root/$chosen_path" || return
 }
-# ghq rm with a fzf wrapper
-# grm() {
-# 	local repos
-# 	repos="$(ghq list | fzf)" || return
-# 	echo 'chosen repos:' "$repos"
-# 	echo 'continue?'
-# 	read -p 'delete? (y/*) ': choice
-# 	[ "$choice" = 'y' ]
-# 	xargs -I{} bash -c 'yes | ghq rm {}'
-# }
-# ghq get over github repos with fzf wrapper
+__ghq_fzf_base() {
+	# stdin - \n separated list of repos
+	# $1 - prompt question
+	# stdout - \n separated list of repos
+	local repos
+	repos="$(fzf)" || return 1
+	echo "$repos"
+
+	echo 'selected repositories:' >&2
+	printf "\t$repos" | sed -z 's/\n/\n\t/g' >&2
+	printf '\n' >&2
+
+	read -rs -n 1 -p $"$1 (y/*):"$'\n' choice <&2
+	[ "$choice" = 'y' ]
+}
+# ghq rm <- fzf <- ghq list
+grm() {
+	local repos
+	repos=$(ghq list | __ghq_fzf_base "delete?") || return
+	echo "$repos" | xargs -I{} bash -c 'yes | ghq rm {} 2>/dev/null'
+}
+# ghq get <- fzf <- gh repo list
 gg() {
-	local -r repo="$(gh repo list | cut -f 1 | fzf)"
-	ghq get "$repo"
+	local repos
+	repos=$(gh repo list | cut -f 1 | __ghq_fzf_base "download?") || return
+	ghq get $repos
 }
 # send full path of a file to clipboard
 c() {

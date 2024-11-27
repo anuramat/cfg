@@ -101,6 +101,6 @@ se grepprg=rg\ --vimgrep
 se grepformat=%f:%l:%c:%m
 
 """ Source everything
-let &shell='/usr/bin/env bash'
+let &shell='/usr/bin/env bash --login'
 
 " vim: fdm=marker fdl=0

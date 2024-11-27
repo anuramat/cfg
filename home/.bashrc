@@ -140,6 +140,7 @@ beep() {
 		sleep $((period * 60))
 	done
 }
+
 # cd <- fzf <- ghq list
 g() {
 	local -r root="$(ghq root)"
@@ -175,6 +176,7 @@ gg() {
 	repos=$(gh repo list | cut -f 1 | __ghq_fzf_base "download?") || return
 	ghq get $repos
 }
+
 # send full path of a file to clipboard
 c() {
 	# c for copy

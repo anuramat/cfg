@@ -100,4 +100,7 @@ augroup END
 se grepprg=rg\ --vimgrep
 se grepformat=%f:%l:%c:%m
 
+""" Source everything
+let &shell='/usr/bin/env bash'
+
 " vim: fdm=marker fdl=0

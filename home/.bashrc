@@ -149,9 +149,15 @@ g() {
 	cd "$root/$chosen_path" || return
 }
 # ghq rm with a fzf wrapper
-grm() {
-	ghq list | fzf | xargs -I{} bash -c 'yes | ghq rm {}'
-}
+# grm() {
+# 	local repos
+# 	repos="$(ghq list | fzf)" || return
+# 	echo 'chosen repos:' "$repos"
+# 	echo 'continue?'
+# 	read -p 'delete? (y/*) ': choice
+# 	[ "$choice" = 'y' ]
+# 	xargs -I{} bash -c 'yes | ghq rm {}'
+# }
 # ghq get over github repos with fzf wrapper
 gg() {
 	local -r repo="$(gh repo list | cut -f 1 | fzf)"

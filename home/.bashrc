@@ -146,7 +146,10 @@ g() {
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local chosen_path
-	chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
+	# cd $root so that fzf preview works properly
+	[ -n "$1" ] && {
+		chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf -f "$1" | head -n 1) || return
+	} || chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
 	cd "$root/$chosen_path" || return
 }
 __ghq_fzf_base() {
@@ -172,9 +175,13 @@ grm() {
 }
 # ghq get <- fzf <- gh repo list
 gg() {
+	local -r before_dirs="$(ghq list -p | sort)"
 	local repos
-	repos=$(gh repo list | cut -f 1 | __ghq_fzf_base "download?") || return
-	ghq get $repos
+	repos="$(gh repo list | cut -f 1 | __ghq_fzf_base "download?")" || return
+	ghq get -p $repos
+	local -r after_dirs="$(ghq list -p | sort)"
+	local -r new_dirs="$(comm -13 <(echo "$before_dirs") <(echo "$after_dirs") | tr '\n' ' ')"
+	zoxide add $new_dirs
 }
 
 # send full path of a file to clipboard

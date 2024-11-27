@@ -143,6 +143,7 @@ beep() {
 
 # cd <- fzf <- ghq list
 g() {
+	# optional: $1 - query; then you cd to the best match
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local chosen_path
@@ -162,7 +163,7 @@ __ghq_fzf_base() {
 
 	echo 'selected repositories:' >&2
 	printf "\t$repos" | sed -z 's/\n/\n\t/g' >&2
-	printf '\n' >&2
+	echo >&2
 
 	read -rs -n 1 -p $"$1 (y/*):"$'\n' choice <&2
 	[ "$choice" = 'y' ]
@@ -175,13 +176,15 @@ grm() {
 }
 # ghq get <- fzf <- gh repo list
 gg() {
+	# optional $1 - owner
 	local -r before_dirs="$(ghq list -p | sort)"
 	local repos
-	repos="$(gh repo list | cut -f 1 | __ghq_fzf_base "download?")" || return
-	ghq get -p $repos
+	repos="$(gh repo list "$1" | cut -f 1 | __ghq_fzf_base "download?")" || return
+	ghq get -P -p $repos
 	local -r after_dirs="$(ghq list -p | sort)"
-	local -r new_dirs="$(comm -13 <(echo "$before_dirs") <(echo "$after_dirs") | tr '\n' ' ')"
+	local -r new_dirs="$(comm -13 <(echo "$before_dirs") <(echo "$after_dirs"))"
 	zoxide add $new_dirs
+	echo "$new_dirs" | xargs -I{} bash -c 'cd {}; gh repo set-default $(git config --get remote.origin.url | rev | cut -d "/" -f 1,2 | rev)'
 }
 
 # send full path of a file to clipboard

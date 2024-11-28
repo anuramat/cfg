@@ -4,8 +4,16 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    unstable.foot # terminal
-    unstable.firefox # web browser
+    # Browsers
+    tor-browser-bundle-bin
+    unstable.firefox
+    unstable.google-chrome
+
+    # terminals {{{1
+    cool-retro-term
+    unstable.foot # cpu
+    unstable.alacritty # gpu, crossplatform
+    unstable.kitty
 
     # Settings
     networkmanagerapplet # networking
@@ -59,5 +67,22 @@
     # Misc
     wl-clip-persist
     unstable.wallust # better pywal
+    spotify
+    unstable.keymapp # ZSA keyboard thing
+    unstable.proton-pass
+    unstable.transmission_4-gtk # transmission torrent client gui
+    unstable.cheese # webcam
+    obs-studio
+    steam
+    hyprpicker # simple terminal color picker
+
+    # Comms {{{1
+    element-desktop # matrix client
+    onionshare # tor-based file-sharing etc
+    onionshare-gui # p2p file sharing, chat, website hosting
+    qtox # p2p IM
+    slack
+    telegram-desktop
+    whatsapp-for-linux # isn't this worthless TODO
   ];
 }

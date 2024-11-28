@@ -31,7 +31,6 @@
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
     starship # PS1 rice
-    tasksh
     unstable.taskwarrior3 # CLI todo app
     unstable.nb # edgy obsidian?
     unstable.todo # stupid simple but very raw
@@ -103,23 +102,6 @@
     fortune # random quotes
     rpi-imager
     tree-sitter
-    # comms {{{1
-    element-desktop # matrix client
-    onionshare # tor-based file-sharing etc
-    onionshare-gui # p2p file sharing, chat, website hosting
-    qtox # p2p IM
-    slack
-    telegram-desktop
-    whatsapp-for-linux
-    # browsers {{{1
-    unstable.google-chrome
-    unstable.firefox
-    tor-browser-bundle-bin
-    # terminals {{{1
-    foot # minimal
-    unstable.alacritty # gpu
-    unstable.kitty # gpu, python, inline images
-    cool-retro-term # cute
     # graphics {{{1
     krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics
@@ -158,26 +140,11 @@
     okular # reader
     djview # djvu reader
     unstable.zathura # keyboard-centric aio reader
-    zotero
+    zotero # TODO do I need this?
     easyocr # neural OCR
     pandoc # markup converter (latex, markdown, etc)
     djvulibre # djvu tools
     xournalpp # pdf markup, handwritten notes
-    # misc {{{1
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-backgroundremoval
-        # obs-vaapi # might make shit faster idk
-      ];
-    })
-    spotify
-    ncspot
-    steam
-    unstable.keymapp # ZSA keyboard thing
-    unstable.transmission_4-gtk # transmission torrent client gui
-    unstable.cheese # webcam
-    hyprpicker # simple terminal color picker
-    unstable.proton-pass
     # }}}
   ];
 }

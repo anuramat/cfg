@@ -4,5 +4,6 @@ _: {
     ./core.nix
     ./lang.nix
     ./sys.nix
+    ./desktop.nix
   ];
 }

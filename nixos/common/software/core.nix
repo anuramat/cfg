@@ -5,12 +5,65 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # core {{{1
+    bash
+    bash-completion
+    bc # simple calculator
+    coreutils-full
+    coreutils-prefixed # for compatibility
+    curl
+    file
+    gcc
+    git
+    gnumake
+    killall
+    less
+    lsof
+    moreutils # random unixy goodies
+    nix-bash-completions
+    nvi # vi clone
+    tmux # just in case
+    tree
+    unrar-wrapper
+    unzip
+    util-linux # was already installed but whatever
+    wget
+    zip
+    w3m # terminal web browser, just in case
+
+    # system {{{1
+    acpi # battery status etc
+    dmidecode # read hw info from bios using smbios/dmi
+    efibootmgr # EFI boot manager editor
+    hwinfo
+    libusb # user-mode USB access lib
+    libva-utils # vainfo - info on va-api
+    lshw # hw info
+    pciutils
+    procps # info from /proc
+    smartmontools # storage
+    smem # ram usage
+    usbutils
+    v4l-utils
+    xdg-user-dirs # $HOME/* dir management
+
+    # network {{{1
+    dig # dns utils
+    gsocket # get shit through nat
+    inetutils # common network stuff
+    netcat
+    nmap
+    socat # socket cat
+    wirelesstools # iwconfig etc
+    openconnect_openssl
+
     # code editors {{{1
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
     inputs.zen-browser.packages.${pkgs.system}.specific
     nvi
     unstable.helix
     unstable.vis
+
     # core {{{1
     unstable.blesh # bash line editor
     bat # cat++: syntax hl
@@ -41,6 +94,7 @@
     zoxide # cd++
     wev # wayland event viewer, useful for debugging
     wayidle # waits for n seconds of idle, then runs
+
     # utils {{{1
     rsbkb # rust blackbag - encode/decode tools: crc
     age # file encryption
@@ -102,6 +156,7 @@
     fortune # random quotes
     rpi-imager
     tree-sitter
+
     # graphics {{{1
     krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics
@@ -117,6 +172,7 @@
     imv # image viewer
     swayimg # image viewer
     unstable.lsix # ls for images (uses sixel)
+
     # video {{{1
     vlc
     mpv
@@ -125,12 +181,14 @@
     unstable.footage
     ffmpeg
     yt-dlp # download youtube videos
+
     # audio {{{1
     sox # CLI audio processing
     lame # mp3
     alsa-utils
     mimic # foolproof TTS
     piper-tts # good neural TTS
+
     # docs {{{1
     slides # markdown presentation in terminal
     glow # markdown viewer

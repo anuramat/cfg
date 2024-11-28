@@ -1,6 +1,7 @@
 {
   user,
   pkgs,
+  unstable,
   ...
 }: {
   # ZSA Voyager
@@ -22,7 +23,8 @@
       enable = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    polychromatic # openrazer frontend
+  environment.systemPackages = [
+    unstable.keymapp # ZSA keyboard thing
+    pkgs.polychromatic # openrazer frontend
   ];
 }

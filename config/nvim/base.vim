@@ -29,7 +29,7 @@ se keymap=russian-jcukenwin imi=0 " cyrillic on i_^6
 se completeopt=menu,menuone,noselect,preview " ins completion
 se wildoptions=fuzzy,pum " cmd completion
 se fen fdm=indent foldlevelstart=99 " overriden by fdl in modelines
-" se foldclose=all " close fold when the cursor leaves it
+se foldopen=insert,mark,quickfix,search,tag " maybe undo too?
 se incsearch ignorecase smartcase " search settings
 se updatetime=100 " period in ms for swap writes and CursorHold autocmd
 se undofile " persistent undo

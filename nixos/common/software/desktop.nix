@@ -10,6 +10,7 @@
     swayidle # lock/sleep on idle
     swaylock # lockscreen
     waybar # status bar
+    wl-clip-persist # otherwise clipboard contents disappear on exit
 
     # Browsers {{{1
     tor-browser-bundle-bin
@@ -57,18 +58,6 @@
     swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
 
-    # Misc {{{1
-    hyprpicker # simple terminal color picker
-    obs-studio
-    spotify
-    steam
-    unstable.cheese # webcam
-    unstable.keymapp # ZSA keyboard thing
-    unstable.proton-pass
-    unstable.transmission_4-gtk # transmission torrent client gui
-    unstable.wallust # better pywal
-    wl-clip-persist # otherwise clipboard contents disappear on exit
-
     # Comms {{{1
     element-desktop # matrix client
     onionshare # tor-based file-sharing etc
@@ -78,6 +67,15 @@
     telegram-desktop
     whatsapp-for-linux # isn't this worthless TODO
 
+    # Misc {{{1
+    hyprpicker # simple terminal color picker
+    obs-studio
+    spotify
+    steam
+    unstable.cheese # webcam
+    unstable.proton-pass
+    unstable.transmission_4-gtk # transmission torrent client gui
+    unstable.wallust # better pywal
     # }}}
   ];
 }

@@ -31,10 +31,8 @@
     ripgrep-all # ripgrep over pdf etc
     rmtrash # rm but to trash
     starship # PS1 rice
-    unstable.taskwarrior3 # CLI todo app
     unstable.nb # edgy obsidian?
-    unstable.todo # stupid simple but very raw
-    unstable.todo-txt-cli # the thing
+    unstable.todo-txt-cli # todo.sh
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis
     unstable.devenv

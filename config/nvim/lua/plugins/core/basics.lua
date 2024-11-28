@@ -19,22 +19,19 @@ return {
   -- lsp-format.nvim
   {
     'lukas-reineke/lsp-format.nvim',
-    opts = function()
-      local config = {
-        lua = {
-          exclude = {
-            'lua_ls',
-          },
+    opts = {
+      lua = {
+        exclude = {
+          'lua_ls',
         },
-        nix = {
-          exclude = {
-            'nixd',
-            'nil_ls',
-          },
+      },
+      nix = {
+        exclude = {
+          'nixd',
+          'nil_ls',
         },
-      }
-      return config
-    end,
+      },
+    },
   },
   -- vim-sleuth - autodetects indentation settings
   {

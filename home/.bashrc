@@ -20,7 +20,7 @@ eval "$(starship init bash)"                                                    
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 # TODO test if foot and other terms are in sync
 
-alias t="tldr"
+alias t='todo.sh -d "$XDG_CONFIG_HOME/todo.sh/config"'
 alias f="nvim"
 alias ..="cd .."
 alias ...="cd ../.."

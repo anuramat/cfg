@@ -47,11 +47,14 @@ return {
     name = 'neopywal',
     lazy = false,
     priority = 1000,
-    opts = {
-      use_wallust = true,
-      notify = true,
-      transparent_background = true,
-    },
+    config = function()
+      local neopywal = require('neopywal')
+      neopywal.setup({
+        use_wallust = true,
+        transparent_background = true,
+      })
+      vim.cmd.colorscheme('neopywal')
+    end,
   },
   -- todo-comments.nvim - highlights "todo", "hack", etc
   {

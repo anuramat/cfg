@@ -102,7 +102,8 @@ se grepprg=rg\ --vimgrep
 se grepformat=%f:%l:%c:%m
 
 """ Source everything
-let &shell='/usr/bin/env bash --login'
+" breaks plenary
+" let &shell='/usr/bin/env bash --login'
 
 """
 com! Messages call MessageBuffer()

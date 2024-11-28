@@ -186,6 +186,9 @@ gg() {
 	zoxide add $new_dirs
 	echo "$new_dirs" | xargs -I{} bash -c 'cd {}; gh repo set-default $(git config --get remote.origin.url | rev | cut -d "/" -f 1,2 | rev)'
 }
+# open repo on github
+# ggo() {
+# }
 
 # send full path of a file to clipboard
 c() {

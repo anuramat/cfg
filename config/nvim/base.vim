@@ -1,3 +1,4 @@
+" TODO: maybe remove bangs where not necessary?
 "~~~~~~~~~~~~~~~~~~~~~ basic mappings ~~~~~~~~~~~~~~~~~~~~~"
 let mapleader = " "
 let maplocalleader = mapleader . ";"
@@ -102,5 +103,18 @@ se grepformat=%f:%l:%c:%m
 
 """ Source everything
 let &shell='/usr/bin/env bash --login'
+
+"""
+com! Messages call MessageBuffer()
+function! MessageBuffer()
+  let messages = execute('messages')
+  execute 'enew'
+  call setline(1, split(messages, "\n"))
+  setlocal bufhidden=hide
+  setlocal buftype=nofile
+  setlocal noswapfile
+  setlocal nobuflisted
+  setlocal nomodifiable
+endfunction
 
 " vim: fdm=marker fdl=0

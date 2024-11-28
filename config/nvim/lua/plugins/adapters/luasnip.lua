@@ -1,5 +1,6 @@
 return {
   'L3MON4D3/LuaSnip',
+  branch = 'master',
   dependencies = {
     'anuramat/friendly-snippets',
     config = function()

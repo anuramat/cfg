@@ -33,6 +33,9 @@
     starship # PS1 rice
     tasksh
     unstable.taskwarrior3 # CLI todo app
+    nb # edgy obsidian?
+    todo # stupid simple but very raw
+    todo-txt-cli # the thing
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis
     unstable.devenv

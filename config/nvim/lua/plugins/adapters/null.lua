@@ -14,6 +14,8 @@ local function latexindent()
     }),
   })
 end
+
+-- codeblock formatter for markdown
 local function cbfmt()
   -- sources are set in $XDG_CONFIG_HOME/cbfmt.toml
   local null_ls = require('null-ls')
@@ -51,21 +53,20 @@ local null_sources = function()
     --   },
     -- }),
     cbfmt,
-    -- ~~~~~~~~~~~~~~~~~~ diagnostics ~~~~~~~~~~~~~~~~~~~ --
+    -- diagnostics
     nld.deadnix,
     nld.statix,
     nld.protolint,
-    -- ~~~~~~~~~~~~~~~~~~ code actions ~~~~~~~~~~~~~~~~~~ --
+    -- actions
     nla.statix,
   }
 end
 
 local on_attach = require('utils.lsp').on_attach
 
--- alternatives:
--- https://github.com/mfussenegger/nvim-lint -- linting
--- https://github.com/stevearc/conform.nvim -- formatting
--- no code actions tho
+-- simpler alternative:
+-- - mfussenegger/nvim-lint -- linting
+-- - stevearc/conform.nvim -- formatting
 return {
   'nvimtools/none-ls.nvim', -- maintained 'jose-elias-alvarez/null-ls.nvim' fork
   event = { 'BufReadPre', 'BufNewFile' },

@@ -64,9 +64,12 @@ end
 
 local on_attach = require('utils.lsp').on_attach
 
--- simpler alternative:
+-- alternatives:
 -- - mfussenegger/nvim-lint -- linting
 -- - stevearc/conform.nvim -- formatting
+-- - mhartington/formatter.nvim
+-- - mattn/efm-langserver -- actual LSP server, works with error messages
+-- - lewis6991/hover.nvim -- hover provider
 return {
   'nvimtools/none-ls.nvim', -- maintained 'jose-elias-alvarez/null-ls.nvim' fork
   event = { 'BufReadPre', 'BufNewFile' },

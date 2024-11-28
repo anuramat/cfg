@@ -1,4 +1,9 @@
 idlehint 300
+
 timeout 300 "swaylock -f"
+timeout 600 "swaymsg 'output eDP-1 dpms off'" resume "swaymsg 'output eDP-1 dpms on'"
+timeout 1800 "systemctl suspend"
 before-sleep "swaylock -f"
+
 lock "swaylock -f"
+unlock "pkill -USR1 swaylock"

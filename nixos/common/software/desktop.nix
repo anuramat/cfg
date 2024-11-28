@@ -67,7 +67,6 @@
     unstable.proton-pass
     unstable.transmission_4-gtk # transmission torrent client gui
     unstable.wallust # better pywal
-    wev # wayland event viewer, useful for debugging
     wl-clip-persist # otherwise clipboard contents disappear on exit
 
     # Comms {{{1

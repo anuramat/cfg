@@ -41,6 +41,8 @@
     unstable.eza # ls++
     zellij # tmux++
     zoxide # cd++
+    wev # wayland event viewer, useful for debugging
+    wayidle # waits for n seconds of idle, then runs
     # utils {{{1
     rsbkb # rust blackbag - encode/decode tools: crc
     age # file encryption

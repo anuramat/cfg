@@ -2,6 +2,8 @@ set {
     $term_run foot
     $term_start foot
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
+    # (SIGUSR1 -> swayidle) was supposed to enable the hint, in reality it triggers all idle events
+    # TODO find some other way, a debug script is in the cookbook
     $lock_screen swaylock --daemonize
     
     # notifications {{{1

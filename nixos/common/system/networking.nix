@@ -8,7 +8,13 @@
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [
+        22 # SSH
+        8080
+        8888
+        9000
+        9001
+      ];
       allowedUDPPorts = [];
     };
     networkmanager = {

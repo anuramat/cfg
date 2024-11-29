@@ -29,11 +29,10 @@ return {
       },
     -- stylua: ignore
     on_attach = function()
-      local buffer = 0
       local gs = package.loaded.gitsigns
       local prefix = '<leader>g'
-      local function prefixed(mode, l, r, desc) vim.keymap.set(mode, prefix..l, r, { buffer = buffer, desc = desc }) end
-      local function set(mode, l, r, desc) vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc }) end
+      local function prefixed(mode, l, r, desc) vim.keymap.set(mode, prefix..l, r, { buffer = 0, desc = desc }) end
+      local function set(mode, l, r, desc) vim.keymap.set(mode, l, r, { buffer = 0, desc = desc }) end
       local function stage_selection() gs.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end
       local function reset_selection() gs.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') }) end
       -- stage

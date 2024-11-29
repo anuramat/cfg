@@ -22,14 +22,12 @@ wallust theme base16-nord
 nvim
 # generate a key
 ssh-keygen
-# *add the key to gh*
+# set up github
+gh auth login
 # switch to ssh for the cfg repo
 git remote set-url origin git@github.com:anuramat/cfg
 # set up tailscale
-sudo tailscale login
 sudo tailscale up
-# set up github cli
-gh auth login
 # etc: spotify, web browser, telegram, proton pass
 ```
 

@@ -45,15 +45,14 @@ return {
       prefixed('n', 'r', gs.reset_hunk,     'Reset hunk')
       prefixed('v', 'r', reset_selection, 'Reset selection')
       -- misc hunk fns
-      prefixed('n', 'u', gs.undo_stage_hunk, 'Undo stage (hunk/selection)')
+      prefixed('n', 'u', gs.undo_stage_hunk, 'Unstage this hunk/selection')
       set('n',      ']h', gs.next_hunk,    'Next hunk')
       set('n',      '[h', gs.prev_hunk,    'Previous hunk')
       prefixed('n', 'p',  gs.preview_hunk, 'Preview hunk')
       set({ 'o', 'x' }, 'ih', ':<c-u>Gitsigns select_hunk<cr>', 'Select hunk')
       -- misc
-      prefixed('n', 'b', function() gs.blame_line({ full = true }) end, 'Blame current line')
-      prefixed('n', 'd', gs.diffthis, 'Diff')
-      prefixed('n', 'D', function() gs.diffthis('~') end, 'Diff @')
+      prefixed('n', 'b', function() gs.blame_line({ full = true }) end, 'show blame current line')
+      prefixed('n', 'd', gs.diffthis, 'Show diff for current file')
     end,
     },
   },

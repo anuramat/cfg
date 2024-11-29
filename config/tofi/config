@@ -3,6 +3,7 @@ terminal=foot
 fuzzy-match=true
 hide-cursor=true
 prompt-text=" "
+require-match=false
 
 font="Hack Nerd Font"
 font-size=30

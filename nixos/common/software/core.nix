@@ -95,7 +95,7 @@
     age # file encryption
     aria # downloader
     banner
-    croc # send/receive files through relay with encryption
+    unstable.croc # send/receive files through relay with encryption
     distrobox
     exercism # CLI for exercism.org
     fastfetch

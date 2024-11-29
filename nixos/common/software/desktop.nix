@@ -39,6 +39,8 @@
     cinnamon.nemo # wayland native
     desktop-file-utils # update-desktop-database etc
     tofi # app launcher
+    wmenu
+    j4-dmenu-desktop
     xdg-utils # xdg-open etc
     xdragon # drag and drop from terminal
 

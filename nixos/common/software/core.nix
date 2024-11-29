@@ -90,6 +90,7 @@
     wayidle # runs a command on idle
     zellij # tmux++
     zoxide # cd++
+    expect # automating tuis
 
     # misc {{{1
     age # file encryption

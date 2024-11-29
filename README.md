@@ -25,8 +25,6 @@ ssh-keygen
 # *add the key to gh*
 # switch to ssh for the cfg repo
 git remote set-url origin git@github.com:anuramat/cfg
-# makes eg "nix-shell -p" use unstable
-sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 # set up tailscale
 sudo tailscale login
 sudo tailscale up

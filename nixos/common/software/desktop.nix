@@ -2,6 +2,7 @@
 {
   pkgs,
   unstable,
+  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -13,6 +14,7 @@
     wl-clip-persist # otherwise clipboard contents disappear on exit
 
     # Browsers {{{1
+    inputs.zen-browser.packages.${pkgs.system}.specific
     tor-browser-bundle-bin
     unstable.firefox
     unstable.google-chrome
@@ -70,12 +72,14 @@
     # Misc {{{1
     hyprpicker # simple terminal color picker
     obs-studio
+    qalculate-gtk # qalc calculator gui
     spotify
     steam
     unstable.cheese # webcam
     unstable.proton-pass
     unstable.transmission_4-gtk # transmission torrent client gui
     unstable.wallust # better pywal
+    wev # wayland event viewer, useful for debugging
     # }}}
   ];
 }

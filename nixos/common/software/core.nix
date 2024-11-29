@@ -5,7 +5,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # core {{{1
+    # posix {{{1
     bash
     bash-completion
     bc # simple calculator
@@ -26,12 +26,11 @@
     tree
     unrar-wrapper
     unzip
-    util-linux # was already installed but whatever
+    util-linux # I think it's already installed but whatever
     wget
     zip
-    w3m # terminal web browser, just in case
 
-    # system {{{1
+    # hardware {{{1
     acpi # battery status etc
     dmidecode # read hw info from bios using smbios/dmi
     efibootmgr # EFI boot manager editor
@@ -57,46 +56,42 @@
     wirelesstools # iwconfig etc
     openconnect_openssl
 
-    # code editors {{{1
+    # editors {{{1
     inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-    inputs.zen-browser.packages.${pkgs.system}.specific
-    nvi
     unstable.helix
     unstable.vis
 
     # core {{{1
-    unstable.blesh # bash line editor
     bat # cat++: syntax hl
-    cod # completion generator (updates on `cmd --help`)
-    delta # diff++
+    delta # pretty diff
     difftastic # diff++: syntax aware using TS
     du-dust # du++
     duf # df++
     entr # file watcher - runs command on change
-    watchman # another file watcher
     fd # find++
     fzf # fuzzy finder
+    gh # GitHub CLI
     ghq # git repository manager
     libqalculate # `qalc` - advanced calculator
     ncdu # du++: interactive
     parallel # run parallel jobs
     ripgrep # grep++
-    ripgrep-all # ripgrep over pdf etc
+    ripgrep-all # ripgrep over docs, archives, etc
     rmtrash # rm but to trash
-    starship # PS1 rice
-    unstable.nb # edgy obsidian?
-    unstable.todo-txt-cli # todo.sh
+    starship # shell rice
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis
+    unstable.blesh # bash line editor
     unstable.devenv
     unstable.eza # ls++
+    unstable.nb # edgy obsidian TODO try
+    unstable.todo-txt-cli # todo.sh
+    watchman # another file watcher TODO try and compare to entr
+    wayidle # runs a command on idle
     zellij # tmux++
     zoxide # cd++
-    wev # wayland event viewer, useful for debugging
-    wayidle # waits for n seconds of idle, then runs
 
-    # utils {{{1
-    rsbkb # rust blackbag - encode/decode tools: crc
+    # misc {{{1
     age # file encryption
     aria # downloader
     banner
@@ -105,18 +100,46 @@
     exercism # CLI for exercism.org
     fastfetch
     figlet # fancy banners
-    gh # GitHub CLI
     gnuplot
     httpie # curl++
     mprocs # job runner
     prettyping # ping++
     progress # progress status for cp etc
     pv # pipe viewer
-    python311Packages.jupytext
-    scc # count lines of code
+    rsbkb # rust blackbag - encode/decode tools: crc
+    scc # sloc cloc and code: dick measuring tool
     speedtest-cli
     unstable.xdg-ninja # checks $HOME for junk
-    ## tops {{{2
+    git-filter-repo # rewrite/analyze repository history
+    mosh # ssh over unstable connections
+    python311Packages.pyicloud
+    qrcp # send files to mobile over Wi-Fi using QR
+    rclone # rsync for cloud
+    tree-sitter
+    mesa-demos # some 3d demos, useful for graphics debugging
+    rpi-imager # raspbery pi XXX not really useful without one
+    cowsay
+    fortune # random quotes
+    # file managers TODO choose one (or don't)
+    yazi
+    broot
+    lf
+    mc
+    nnn
+    ranger
+    vifm
+    xplr
+
+    # backend {{{1
+    dbeaver-bin # databases
+    dive # look into docker image layers
+    grpcui
+    grpcurl
+    kubectl
+    kubectx
+    podman-compose
+
+    # tops {{{1
     btop # best
     ctop # containers
     gotop # cute
@@ -126,38 +149,8 @@
     podman-tui # podman container status
     unstable.nvtopPackages.full # top for GPUs (doesn't support intel yet)
     zenith-nvidia # top WITH nvidia GPUs
-    ## file managers {{{2
-    # TODO choose one (or don't)
-    yazi
-    broot
-    lf
-    mc
-    nnn
-    ranger
-    vifm
-    xplr
-    ## backend {{{2
-    dbeaver-bin # databases
-    dive # look into docker image layers
-    grpcui
-    grpcurl
-    kubectl
-    kubectx
-    podman-compose
-    ## misc {{{2
-    git-filter-repo # rewrite/analyze repository history
-    mesa-demos # some 3d demos
-    mosh # ssh over unstable connections
-    python311Packages.pyicloud
-    qalculate-gtk # qalc calculator gui
-    qrcp # send files to mobile over Wi-Fi using QR
-    rclone # rsync for cloud
-    cowsay
-    fortune # random quotes
-    rpi-imager
-    tree-sitter
 
-    # graphics {{{1
+    # img {{{1
     krita # raster graphics, digital art
     inkscape-with-extensions # vector graphics
     gimp-with-plugins # raster graphics
@@ -165,10 +158,9 @@
     libwebp # tools for WebP image format
     exiftool # read/write EXIF metadata
     mypaint # not-ms-paint
-    nomacs # image viewer
+    nomacs # image viewer # TODO remove?
     xfig # vector graphics, old as FUCK
     # TODO find the best??
-    # they all kinda suck:
     imv # image viewer
     swayimg # image viewer
     unstable.lsix # ls for images (uses sixel)
@@ -186,7 +178,6 @@
     sox # CLI audio processing
     lame # mp3
     alsa-utils
-    mimic # foolproof TTS
     piper-tts # good neural TTS
 
     # docs {{{1
@@ -195,8 +186,8 @@
     poppler_utils # pdf utils
     ghostscript # postscript/pdf utils
     readability-cli # extracts main content from pages
-    okular # reader
-    djview # djvu reader
+    okular # reader # TODO remove?
+    djview # djvu reader # TODO remove?
     unstable.zathura # keyboard-centric aio reader
     zotero # TODO do I need this?
     easyocr # neural OCR

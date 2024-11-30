@@ -1,10 +1,16 @@
 {
   pkgs,
   config,
+  inputs,
   ...
 }: {
   system.stateVersion = "24.05";
   networking.hostName = "anuramat-ll7";
+
+  imports = [
+    inputs.nixos-hardware.nixosModules.common-cpu-intel
+    inputs.nixos-hardware.nixosModules.common-gpu-intel
+  ];
 
   environment.systemPackages = with pkgs; [
     lenovo-legion

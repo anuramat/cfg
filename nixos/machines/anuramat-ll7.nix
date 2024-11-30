@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  user,
   ...
 }: {
   system.stateVersion = "24.05";

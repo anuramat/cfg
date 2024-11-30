@@ -14,14 +14,15 @@
       fullname = "Arsen Nuramatov";
       timezone = "Europe/Berlin";
       defaultLocale = "en_US.UTF-8";
+      keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPgKxqnXU0UAshEUDLcVZW6LkfMM0JE2yuhkyjXSxUI anuramat@anuramat-t480"
+      ];
     };
     unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
       system = "x86_64-linux";
     };
-    overlays = with inputs; [
-      nix-alien.overlays.default
-    ];
+    # TODO write a wrapper function
   in {
     nixosConfigurations = {
       anuramat-ll7 = nixpkgs.lib.nixosSystem {
@@ -32,9 +33,6 @@
           inputs.nixos-hardware.nixosModules.common-cpu-intel
           inputs.nixos-hardware.nixosModules.common-gpu-intel
           (_: {
-            system.stateVersion = "24.05";
-            networking.hostName = "anuramat-ll7";
-            nixpkgs.overlays = overlays;
           })
         ];
       };
@@ -44,11 +42,6 @@
           ./configuration.nix
           ./machines/anuramat-t480.nix
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
-          (_: {
-            system.stateVersion = "24.05";
-            networking.hostName = "anuramat-t480";
-            nixpkgs.overlays = overlays;
-          })
         ];
       };
     };

@@ -1,4 +1,8 @@
 _: {
+            system.stateVersion = "24.05";
+
+            networking.hostName = "anuramat-t480";
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

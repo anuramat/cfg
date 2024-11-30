@@ -20,6 +20,8 @@
     };
   };
 
+  users.users.${user.username}.openssh.authorizedKeys.keys = user.keys;
+
   services = {
     fail2ban.enable = true; # intrusion prevention
     tailscale.enable = true;

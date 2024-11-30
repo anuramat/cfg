@@ -1,4 +1,4 @@
--- vim: fdl=1
+-- vim: fdl=2
 
 -- -- splitjoin.vim - splits/joins code using special per-language rules
 -- {
@@ -228,6 +228,7 @@ return {
       },
     },
   },
+  -- compiler.nvim
   {
     'Zeioth/compiler.nvim',
     cmd = { 'CompilerOpen', 'CompilerToggleResults', 'CompilerRedo' },

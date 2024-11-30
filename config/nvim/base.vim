@@ -105,7 +105,7 @@ se grepformat=%f:%l:%c:%m
 " breaks plenary
 " let &shell='/usr/bin/env bash --login'
 
-"""
+""" Open messages in a buffer
 com! Messages call MessageBuffer()
 function! MessageBuffer()
   let messages = execute('messages')
@@ -117,5 +117,8 @@ function! MessageBuffer()
   setlocal nobuflisted
   setlocal nomodifiable
 endfunction
+
+""" Trim spaces
+com! Trim %s/\ \+$//g
 
 " vim: fdm=marker fdl=0

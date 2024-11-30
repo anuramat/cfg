@@ -53,6 +53,7 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
+      open = true; # recommended on turing+
       modesetting.enable = true; # wiki says this is required
       # these two are experimental
       powerManagement = {
@@ -70,13 +71,13 @@
       };
       nvidiaSettings = true;
     };
-    opengl = {
+    graphics = {
       extraPackages = with pkgs; [
         vaapiVdpau # no fucking idea what this does
       ];
-      enable = true; # just in case, should be enabled by sway module
-      driSupport = true; # on by default but whatever
-      driSupport32Bit = true; # might be required for wine? might break on nouveau
+      # no idea what these do anymore
+      enable = true;
+      enable32Bit = true;
     };
   };
   # }}}

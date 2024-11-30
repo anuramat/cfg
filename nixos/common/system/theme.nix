@@ -5,12 +5,12 @@
     dracula-theme # TODO where exactly is this used?
     dracula-icon-theme
     hackneyed # windows style cursor
-    gnome3.adwaita-icon-theme
+    adwaita-icon-theme
 
     # at least qt makes sense
     adwaita-qt # qt5
     adwaita-qt6
-    qt5ct # qt5 gui settings
+    libsForQt5.qt5ct # qt5 gui settings
     qt6ct # qt6 gui settings
   ];
   qt = {

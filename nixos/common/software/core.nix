@@ -35,7 +35,7 @@
     dmidecode # read hw info from bios using smbios/dmi
     efibootmgr # EFI boot manager editor
     hwinfo
-    libusb # user-mode USB access lib
+    libusb1 # user-mode USB access lib
     libva-utils # vainfo - info on va-api
     lshw # hw info
     pciutils

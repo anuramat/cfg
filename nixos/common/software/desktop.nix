@@ -36,7 +36,7 @@
     way-displays # auto manager, wdisplays might be useful when they get support for ipc
 
     # Opening stuff {{{1
-    cinnamon.nemo # wayland native
+    nemo # wayland native
     desktop-file-utils # update-desktop-database etc
     tofi # app launcher
     wmenu

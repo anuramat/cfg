@@ -158,7 +158,7 @@
     imagemagickBig # CLI image manipulation
     libwebp # tools for WebP image format
     exiftool # read/write EXIF metadata
-    mypaint # not-ms-paint
+    # mypaint # not-ms-paint # XXX broken
     nomacs # image viewer # TODO remove?
     xfig # vector graphics, old as FUCK
     # TODO find the best??

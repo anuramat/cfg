@@ -10,6 +10,9 @@
   tool = difftastic
   external = difft
 
+[diff "nodiff"]
+  command="__nodiff() { echo skipping \"$1\"; }; __nodiff"
+
 [difftool]
   ; show file 1/n?
   prompt = false

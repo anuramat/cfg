@@ -5,8 +5,8 @@ shopt -s globstar # enables **
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 
-. "$HOME/.profile"
-for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do . "$f"; done
+source "$HOME/.profile"
+for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do source "$f"; done
 
 if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"

@@ -84,8 +84,8 @@ say_unwrapped() {
 		rm "$config_file" && return 1
 	}
 
-	echo "$2" \
-		| piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
+	echo "$2" |
+		piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
 }
 # say some stuff
 say() {
@@ -98,8 +98,8 @@ hotdoc() {
 	# create file
 	local -r path="$(mktemp -p /tmp XXXXXX.pdf)"
 	# initialize it with a basic pdf so that zathura doesn't shit itself
-	echo 'JVBERi0xLgoxIDAgb2JqPDwvUGFnZXMgMiAwIFI+PmVuZG9iagoyIDAgb2JqPDwvS2lkc1szIDAgUl0vQ291bnQgMT4+ZW5kb2JqCjMgMCBvYmo8PC9QYXJlbnQgMiAwIFI+PmVuZG9iagp0cmFpbGVyIDw8L1Jvb3QgMSAwIFI+Pg==' \
-		| base64 -d >"$path"
+	echo 'JVBERi0xLgoxIDAgb2JqPDwvUGFnZXMgMiAwIFI+PmVuZG9iagoyIDAgb2JqPDwvS2lkc1szIDAgUl0vQ291bnQgMT4+ZW5kb2JqCjMgMCBvYmo8PC9QYXJlbnQgMiAwIFI+PmVuZG9iagp0cmFpbGVyIDw8L1Jvb3QgMSAwIFI+Pg==' |
+		base64 -d >"$path"
 
 	# open zathura
 	zathura "$path" &>/dev/null &
@@ -185,6 +185,9 @@ gg() {
 	local -r new_dirs="$(comm -13 <(echo "$before_dirs") <(echo "$after_dirs"))"
 	zoxide add $new_dirs
 	echo "$new_dirs" | xargs -I{} bash -c 'cd {}; gh repo set-default $(git config --get remote.origin.url | rev | cut -d "/" -f 1,2 | rev)'
+}
+ghsync() {
+	gh repo sync "$(gh repo set-default --view)"
 }
 
 # send full path of a file to clipboard

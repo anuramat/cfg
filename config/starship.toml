@@ -1,10 +1,8 @@
 # vim: fdm=marker fdl=0
-
-# Get editor completions based on the config schema
+# editor completions
 "$schema" = 'https://starship.rs/config-schema.json'
 # blank line between prompts
-add_newline = true
-# rearrange modules
+# rearrange modules (sic: alignment on the left)
 format = ''' $all$status$line_break$character'''
 
 [character]
@@ -13,49 +11,30 @@ error_symbol = ''
 vimcmd_symbol = ''
 
 [status]
-style = 'bold red'
-format = '[$status:$common_meaning$signal_name]($style) '
 disabled = false
+style = 'bold red'
+format = '[$status:$common_meaning$signal_name]($style)'
 
 [time]
 disabled = false
 format = "[$time]($style) "
 
-# pure git {{{1
+# plain-text preset {{{1
 
-# [git_commit]
-# tag_symbol = " tag "
-#
-# [git_status]
-# ahead = ">"
-# behind = "<"
-# diverged = "<>"
-# renamed = "r"
-# deleted = "x"
-#
-# [git_branch]
-# symbol = "git "
+# [character]
+# success_symbol = "[>](bold green)"
+# error_symbol = "[x](bold red)"
+# vimcmd_symbol = "[<](bold green)"
 
-
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
+[git_commit]
+tag_symbol = " tag "
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡ "
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
-
-# plain text minus git, status {{{1
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
 
 [aws]
 symbol = "aws "
@@ -113,6 +92,9 @@ symbol = "fossil "
 
 [gcloud]
 symbol = "gcp "
+
+[git_branch]
+symbol = "git "
 
 [gleam]
 symbol = "gleam "
@@ -255,6 +237,9 @@ symbol = "spack "
 
 [solidity]
 symbol = "solidity "
+
+# [status]
+# symbol = "[x](bold red) "
 
 [sudo]
 symbol = "sudo "

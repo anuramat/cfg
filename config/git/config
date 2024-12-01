@@ -17,6 +17,9 @@
 [pager]
   difftool = true
 
+[core]
+  pager = less -F
+
 ; ghq
 ; WARN: XDGBDSV
 [ghq]

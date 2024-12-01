@@ -1,24 +1,21 @@
 ; imports
 [include]
   path=user
-  path=delta.gitconfig
 
-; difftastic
-[diff]
-  ; external = difft ; use difft by default
-  tool = difftastic ; set default difftool
-[difftool]
-  prompt = false ; idk wtf this is, but without it difftool breaks
 [difftool "difftastic"]
-  cmd = difft "$LOCAL" "$REMOTE"
-[pager]
-  difftool = true ; use pager on difftool
+  ; TODO how does this work?
+  cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
 
-; delta
-[core]
-  pager = "DELTA_PAGER='less -F' delta"
-[interactive]
-  diffFilter = delta --color-only
+[diff]
+  tool = difftastic
+  external = difft
+
+[difftool]
+  ; show file 1/n?
+  prompt = false
+
+[pager]
+  difftool = true
 
 ; ghq
 ; WARN: XDGBDSV
@@ -37,6 +34,8 @@ root = "~/.local/share/ghq"
 
 [alias]
   st = status
+  ; TODO is this the only way
+  sh = show --ext-diff
   ch = checkout
   br = branch
   sw = switch
@@ -45,9 +44,10 @@ root = "~/.local/share/ghq"
   lg = log --oneline --graph --all --decorate
   df = diff
   ds = diff --staged
-  ; shows unpushed commits
+  ; TODO check if this even works
   unpushed = log --branches --not --remotes --decorate --oneline
   cp = !git add . && git commit -am auto && git push
+  ; TODO maybe remove this
   ignored = status --ignored
 
 [init]

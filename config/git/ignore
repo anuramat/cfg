@@ -24,3 +24,4 @@ node_modules/
 .direnv/
 # pytorch lightning
 *.ckpt
+lightning_logs

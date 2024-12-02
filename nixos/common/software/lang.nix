@@ -19,6 +19,7 @@
     rustc
     unstable.stack
     unstable.cabal-install
+    unstable.ghc
 
     # Debuggers {{{1
     delve # Go debugger
@@ -41,7 +42,7 @@
     nodePackages_latest.yaml-language-server
     lua-language-server
     texlab
-    (haskell-language-server.override {supportedGhcVersions = ["948" "927"];})
+    unstable.haskell-language-server
     unstable.nixd
     ccls
     nil

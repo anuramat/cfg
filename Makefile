@@ -1,5 +1,5 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
-# TODO fix this mess
+# TODO fix this mess, validate perms on ./lib/*.sh
 .PHONY: system install code
 system:
 	@ printf ${heading} "Building NixOS"

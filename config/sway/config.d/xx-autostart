@@ -13,9 +13,6 @@ exec_always {
     "pkill blueman-tray; blueman-tray"
     # brightness/volume popup
     "pkill avizo-service; avizo-service"
-    # display config daemon
-    # doesn't need to be killed
-    "way-displays"
     # media automounter
     "pkill udiskie; udiskie -ta"
     # wallpaper and background color

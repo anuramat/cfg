@@ -33,7 +33,7 @@
     system-config-printer # printer gui
     udiskie # userspace frontend for udisk2
     unstable.avizo # brightness/volume control with overlay indicator
-    way-displays # auto manager, wdisplays might be useful when they get support for ipc
+    kanshi # display config daemon
 
     # Opening stuff {{{1
     nemo # wayland native

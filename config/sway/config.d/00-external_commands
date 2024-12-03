@@ -1,8 +1,8 @@
 set {
-    $term_run foot
-    $term_start foot
+    $term foot
+    $term_exec foot
     $menu pkill tofi || swaymsg exec "$(tofi-drun)"
-    $lock_screen swaylock --daemonize
+    $lock loginctl lock-session
 
     # notifications {{{1
     $invoke_notificiation "makoctl invoke"

@@ -23,11 +23,11 @@ set {
 
 floating_modifier $mod normal
 $bind {
-    $mod+semicolon exec $term_start
-    $mod+apostrophe exec $term_run nvim
+    $mod+semicolon exec $term
+    $mod+apostrophe exec $term_exec nvim
     $mod+slash reload; exec notify-send "Sway reloaded" "Bottom text"
     $mod+q kill
-    $mod+$mod2+q exec $lock_screen
+    $mod+$mod2+q exec $lock
     $mod+space exec $menu
     $mod+y sticky toggle
 

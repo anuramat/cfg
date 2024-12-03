@@ -34,7 +34,7 @@
       "audio" # just in case (?)
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
-      # "input" # le unsecure (?), used by way-displays to get lid state
+      # "input" # le unsecure (?), supposed to be used to get lid state, apparently not required
       "dialout" # serial ports
       "networkmanager"
       "scanner"

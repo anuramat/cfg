@@ -6,10 +6,9 @@ set {
 }
 
 # XXX Sometimes the screen doesn't turn on
-# for some reason doesn't work
 # https://github.com/swaywm/sway/issues/7228
-bindswitch --reload --locked lid:on output $internal disable
-bindswitch --reload --locked lid:off output $internal enable
+bindswitch --locked lid:on output $internal disable
+bindswitch --locked lid:off output $internal enable
 
 workspace {
     1 output $internal $external

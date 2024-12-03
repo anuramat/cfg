@@ -6,5 +6,3 @@ vim.diagnostic.config({
 })
 require('plugins')
 require('adhoc')
-local line = ''
-string.gsub(line, string.gsub(vim.o.foldmarker, ',.*', '') .. '%d*', '')

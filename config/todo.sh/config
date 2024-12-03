@@ -1,7 +1,7 @@
 # vim: fdm=marker fdl=0 ft=bash
 # === EDIT FILE LOCATIONS BELOW === {{{1
 
-export TODO_DIR="$XDG_DATA_HOME/todo.sh"
+export TODO_DIR="$HOME/notes/todo"
 
 export TODO_FILE="$TODO_DIR/todo.txt"
 export DONE_FILE="$TODO_DIR/done.txt"

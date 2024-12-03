@@ -20,7 +20,6 @@ eval "$(starship init bash)"                                                    
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 # TODO test if foot and other terms are in sync
 
-alias t='todo.sh -d "$XDG_CONFIG_HOME/todo.sh/config"'
 alias f="nvim"
 alias ..="cd .."
 alias ...="cd ../.."
@@ -29,6 +28,9 @@ alias sus="systemctl suspend"
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
 
+t() {
+	todo.sh -d "$XDG_CONFIG_HOME/todo.sh/config" "$@"
+}
 # -- uploads a file, sends link to stdout AND pastebin
 upload() {
 	local filename="$1"

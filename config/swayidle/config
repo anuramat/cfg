@@ -1,7 +1,7 @@
 idlehint 300
 
 timeout 300 "swaylock -f"
-timeout 600 "swaymsg 'output eDP-1 dpms off'" resume "swaymsg 'output eDP-1 dpms on'"
+timeout 600 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'"
 timeout 999999 "systemctl suspend"
 before-sleep "swaylock -f"
 

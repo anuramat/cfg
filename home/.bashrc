@@ -27,6 +27,7 @@ alias ....="cd ../../.."
 alias sus="systemctl suspend"
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
+alias t="todo.sh"
 
 # -- uploads a file, sends link to stdout AND pastebin
 upload() {

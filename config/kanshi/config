@@ -8,7 +8,7 @@ profile {
 }
 
 profile {
-  output $ll7
+  output $ll7 scale 1.5
 }
 
 profile {

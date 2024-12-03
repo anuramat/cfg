@@ -57,7 +57,7 @@ $bind {
     $mod+bracketright gaps inner all plus 10
     $mod+bracketleft gaps inner all minus 10
     # Notifications {{{1
-    $mod+$notification_key exec $click_notificiation
+    $mod+$notification_key exec $invoke_notificiation
     $mod+$mod2+$notification_key exec $dismiss_notification
     $mod+$mod3+$notification_key exec $dismiss_all_notifications
     # Screenshots {{{1

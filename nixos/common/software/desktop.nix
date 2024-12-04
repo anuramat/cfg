@@ -32,6 +32,7 @@
     udiskie # userspace frontend for udisk2
     unstable.avizo # brightness/volume control with overlay indicator
     kanshi # display config daemon
+    wl-mirror # screen mirroring
 
     # Opening stuff {{{1
     nemo # wayland native

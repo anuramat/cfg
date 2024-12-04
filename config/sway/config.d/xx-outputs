@@ -16,11 +16,12 @@ workspace {
     3 output $internal $external
     4 output $internal $external
     5 output $internal $external
+
     6 output $external $internal
     7 output $external $internal
     8 output $external $internal
     9 output $external $internal
-    10 output $external $internal
+   10 output $external $internal
 }
 
 # vim: ft=swayconfig

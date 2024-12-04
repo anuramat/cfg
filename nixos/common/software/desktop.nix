@@ -21,9 +21,7 @@
 
     # Terminals {{{1
     cool-retro-term
-    unstable.alacritty # gpu, crossplatform
-    unstable.foot # cpu
-    unstable.kitty
+    foot # cpu
 
     # Settings {{{1
     ddcutil # configure external monitors (eg brightness)

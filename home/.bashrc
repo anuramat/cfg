@@ -18,7 +18,6 @@ eval "$(starship init bash)"                                                    
 # source "$(blesh-share)/ble.sh" # buggy, ugly, slow, but cool
 # color rice:
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
-# TODO test if foot and other terms are in sync
 
 alias f="nvim"
 alias ..="cd .."
@@ -28,14 +27,12 @@ alias sus="systemctl suspend"
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
 alias t="todo.sh"
-menu() {
-	wmenu 
+
+# send $file $device: -- taildrop
+send() {
+	tailscale file cp "$@"
 }
-# -- wmenu -> todo
-todo-menu(){
-	input=$(echo '' | menu -p "new task")
-	todo.sh add "$input"
-}
+alias recv='tailscale file get'
 # -- uploads a file, sends link to stdout AND pastebin
 upload() {
 	local filename="$1"

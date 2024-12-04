@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 __undistract_preexec() {
     __last_command_start_time=$(date +%s)
-    __last_command="$1"
 }
 preexec_functions+=(__undistract_preexec)
 __undistract() {

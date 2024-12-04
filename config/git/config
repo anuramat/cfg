@@ -8,7 +8,7 @@
 
 [diff]
   tool = difftastic
-  external = difft
+  external = difft --display inline
 
 [diff "nodiff"]
   command="__nodiff() { echo skipping \"$1\"; }; __nodiff"

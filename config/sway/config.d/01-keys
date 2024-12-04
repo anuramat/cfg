@@ -25,7 +25,7 @@ floating_modifier $mod normal
 $bind {
     $mod+semicolon exec $term
     $mod+apostrophe exec $term_exec nvim
-    $mod+slash reload; exec notify-send "Sway reloaded" "Bottom text"
+    $mod+slash reload; exec notify-send "Sway configuration reloaded" -e -t 2000 -a "Sway" -u critical
     $mod+q kill
     $mod+$mod2+q exec $lock
     $mod+space exec $drun

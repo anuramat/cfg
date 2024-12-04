@@ -200,10 +200,13 @@ c() {
 	# c for copy
 	realpath "$@" | tr '\n' ' ' | wl-copy -n
 }
-r() {
+__wallust_wrapped() {
 	# r for rice
 	wallust "$@" || return
 	"$XDG_CONFIG_HOME/mako/wal.sh"
 	swaymsg reload
 }
+
+alias wallust=__wallust_wrapped
+
 # vim: fdl=0

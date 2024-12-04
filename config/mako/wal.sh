@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-cat "$XDG_CONFIG_HOME/mako/input.conf" "$XDG_CONFIG_HOME/mako/generated-colors" >"$XDG_CONFIG_HOME/mako/config"
+cd "$XDG_CONFIG_HOME/mako" || exit
+cat main.conf generated-colors.conf apps.conf >"$path/config"
 makoctl reload

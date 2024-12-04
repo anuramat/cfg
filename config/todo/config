@@ -86,3 +86,5 @@ export TODOTXT_SORT_COMMAND='cat'
 # just before the list output is displayed.
 #
 # export TODOTXT_FINAL_FILTER='cat'
+
+# export TODOTXT_VERBOSE=0

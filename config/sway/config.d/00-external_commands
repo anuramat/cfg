@@ -1,7 +1,11 @@
 set {
     $term foot
+    # usage: $term_exec tui_app
     $term_exec foot
-    $menu pkill tofi || swaymsg exec "$(tofi-drun)"
+    $menu wmenu -i -f 'Hack Nerd Font 16'
+    $drun pkill wmenu || swaymsg exec "$(j4-dmenu-desktop -d '$menu -p run -l 5' -t $term -x --no-generic)"
+    $todo_add pkill wmenu || swaymsg exec "$(echo '' | $menu -p task | xargs -I{} todo.sh add "{}")"
+    $todo_done pkill wmenu || swaymsg exec "$(todo.sh ls | $menu -p done -l 5 | cut -d ' ' -f 1 | xargs todo.sh done
     $lock loginctl lock-session
 
     # notifications {{{1

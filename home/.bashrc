@@ -28,7 +28,14 @@ alias sus="systemctl suspend"
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
 alias t="todo.sh"
-
+menu() {
+	wmenu 
+}
+# -- wmenu -> todo
+todo-menu(){
+	input=$(echo '' | menu -p "new task")
+	todo.sh add "$input"
+}
 # -- uploads a file, sends link to stdout AND pastebin
 upload() {
 	local filename="$1"

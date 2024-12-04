@@ -28,7 +28,9 @@ $bind {
     $mod+slash reload; exec notify-send "Sway reloaded" "Bottom text"
     $mod+q kill
     $mod+$mod2+q exec $lock
-    $mod+space exec $menu
+    $mod+space exec $drun
+    $mod+t exec $task
+    $mod+$mod2+t exec $done
     $mod+y sticky toggle
 
     # Layout {{{1

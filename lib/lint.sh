@@ -4,7 +4,3 @@
 shell() {
 	shrun 'shellcheck --color=always -o all'
 }
-
-posix() {
-	shrun 'shellcheck --color=always -s sh -o all'
-}

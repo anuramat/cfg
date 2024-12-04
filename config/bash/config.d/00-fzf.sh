@@ -5,7 +5,7 @@ if command -v "fd" >/dev/null 2>&1; then
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 export FZF_DEFAULT_OPTS="
---preview='$XDG_CONFIG_HOME/sh/fzf_previewer.sh {}'
+--preview='$XDG_CONFIG_HOME/bash/fzf_previewer.sh {}'
 --layout=reverse
 --keep-right
 --info=inline

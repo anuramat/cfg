@@ -24,6 +24,3 @@ sh_fmt:
 shell: sh_fmt
 	@ printf ${heading} "Checking shell scripts"
 	@ . lib/lint.sh; shell
-posix: sh_fmt
-	@ printf ${heading} "Checking shell scripts for POSIX compatibility"
-	@ . lib/lint.sh; posix

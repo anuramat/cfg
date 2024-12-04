@@ -6,7 +6,7 @@ export HISTSIZE=-1
 export HISTFILESIZE=-1
 
 source "$HOME/.profile"
-for f in "$XDG_CONFIG_HOME"/sh/config.d/*; do source "$f"; done
+for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
 if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"

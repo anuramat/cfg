@@ -1,6 +1,6 @@
 set {
     $bind bindsym --to-code
-    $mod super
+    $mod Mod4
     $mod2 ctrl
     $mod3 shift
     $mod4 alt

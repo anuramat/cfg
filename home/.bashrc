@@ -12,9 +12,11 @@ if command -v fzf-share >/dev/null; then
 	source "$(fzf-share)/key-bindings.bash"
 	source "$(fzf-share)/completion.bash"
 fi
+
+# prompt command hooks
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
 eval "$(direnv hook bash)"                                                         # appends
-eval "$(starship init bash)"                                                       # replaces
+eval "$(starship init bash)"                                                       # wraps
 # source "$(blesh-share)/ble.sh" # buggy, ugly, slow, but cool
 # color rice:
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)

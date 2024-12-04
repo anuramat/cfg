@@ -29,8 +29,8 @@ $bind {
     $mod+q kill
     $mod+$mod2+q exec $lock
     $mod+space exec $drun
-    $mod+t exec $task
-    $mod+$mod2+t exec $done
+    $mod+t exec $todo_add
+    $mod+$mod2+t exec $todo_done
     $mod+y sticky toggle
 
     # Layout {{{1

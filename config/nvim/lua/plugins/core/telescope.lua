@@ -1,7 +1,5 @@
 local u = require('utils.helpers')
 
--- uses fd for find_files
--- rg for everything else
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
@@ -33,16 +31,21 @@ return {
     { 'r', '<cmd>Telescope lsp_references<cr>', desc = 'References' },
     { 's', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document Symbols' },
   }, 'Tele'),
-  config = function()
-    require('telescope').load_extension('zoxide')
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('live_grep_args')
+  opts = function()
+    local t = require('telescope')
+    t.load_extension('zoxide')
+    t.load_extension('fzf')
+    t.load_extension('live_grep_args')
     local opts = {
       defaults = {
+        mappings = {
+          i = { ["<c-j>"] = 'select_default' },
+          n = { ["<c-j>"] = 'select_default' }
+        },
         wrap_results = true,
         layout_config = {
           horizontal = {
-            preview_width = 0.65,
+            preview_width = 0.8,
             height = 999,
             preview_cutoff = 120,
             width = 999,
@@ -51,9 +54,8 @@ return {
         prompt_prefix = ' ',
         selection_caret = ' ',
         multi_icon = ' ',
-        path_display = { 'truncate' },
+        path_display = { 'smart' },
         dynamic_preview_title = true,
-        -- border = false,
         vimgrep_arguments = {
           'rg',
           '--color=never',
@@ -76,6 +78,6 @@ return {
         preview = { '' },
       }
     end
-    require('telescope').setup(opts)
+    return opts
   end,
 }

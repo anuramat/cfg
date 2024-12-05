@@ -10,18 +10,24 @@ set {
 bindswitch --locked lid:on output $internal disable
 bindswitch --locked lid:off output $internal enable
 
+# WARN priority is broken
+# eg:
+# 1-5 internal external
+# 6-10 external internal
+# would work right EXCEPT when first connecting the monitor:
+# the external one will take the first empty workspace.
 workspace {
-    1 output $internal $external
-    2 output $internal $external
-    3 output $internal $external
-    4 output $internal $external
-    5 output $internal $external
+    1 output $internal
+    2 output $internal
+    3 output $internal
+    4 output $internal
+    5 output $internal
 
-    6 output $external $internal
-    7 output $external $internal
-    8 output $external $internal
-    9 output $external $internal
-   10 output $external $internal
+    6 output $external
+    7 output $external
+    8 output $external
+    9 output $external
+   10 output $external
 }
 
 # vim: ft=swayconfig

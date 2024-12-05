@@ -12,9 +12,9 @@ shrun() {
 		# print the filename
 		printf "$filename"
 		# run the command, outputting status to the right of the filename
-		result="$($command "$filename")" \
-			&& printf "$ok_color%$(($(tput cols) - 2 - ${#filename}))s\r$normal_color" "OK" \
-			|| printf "$fail_color%$(($(tput cols) - 1 - ${#filename}))s\r$normal_color" "FAIL"
+		result="$($command "$filename")" &&
+			printf "$ok_color%$(($(tput cols) - 2 - ${#filename}))s\r$normal_color" "OK" ||
+			printf "$fail_color%$(($(tput cols) - 1 - ${#filename}))s\r$normal_color" "FAIL"
 		echo ''
 		# print the results of the command (if any)
 		[ -n "$result" ] && echo "$result"

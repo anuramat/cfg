@@ -198,8 +198,16 @@ ghsync() {
 }
 # check if everything is pushed
 gc() {
-	[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && return
-	echo dirty
+	while IFS= read -r -d '' path; do
+		(
+			cd "$path" || exit
+			[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && exit
+			basename "$path"
+		)
+	done < <(
+		printf '%s\0' "$HOME/notes"
+		printf '%s\0' "$HOME/cfg"
+	)
 }
 
 # send full path of a file to clipboard

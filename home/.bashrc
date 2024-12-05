@@ -147,7 +147,7 @@ beep() {
 	done
 }
 
-# cd <- fzf <- ghq list
+# cd to repo: cd <- fzf <- ghq list
 g() {
 	# optional: $1 - query; then you cd to the best match
 	local -r root="$(ghq root)"
@@ -174,13 +174,13 @@ __ghq_fzf_base() {
 	read -rs -n 1 -p $"$1 (y/*):"$'\n' choice <&2
 	[ "$choice" = 'y' ]
 }
-# ghq rm <- fzf <- ghq list
+# rm a repo: ghq rm <- fzf <- ghq list
 grm() {
 	local repos
 	repos=$(ghq list | __ghq_fzf_base "delete?") || return
 	echo "$repos" | xargs -I{} bash -c 'yes | ghq rm {} 2>/dev/null'
 }
-# ghq get <- fzf <- gh repo list
+# clone github repo: ghq get <- fzf <- gh repo list
 gg() {
 	# optional $1 - owner
 	local -r before_dirs="$(ghq list -p | sort)"
@@ -192,8 +192,14 @@ gg() {
 	zoxide add $new_dirs
 	echo "$new_dirs" | xargs -I{} bash -c 'cd {}; gh repo set-default $(git config --get remote.origin.url | rev | cut -d "/" -f 1,2 | rev)'
 }
+# sync a fork with the upstream
 ghsync() {
 	gh repo sync "$(gh repo set-default --view)"
+}
+# check if everything is pushed
+gc() {
+	[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && return
+	echo dirty
 }
 
 # send full path of a file to clipboard

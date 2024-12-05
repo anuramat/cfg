@@ -150,6 +150,7 @@ beep() {
 # cd to repo: cd <- fzf <- ghq list
 g() {
 	# optional: $1 - query; then you cd to the best match
+	# TODO rewrite with less assumptions, use ghq queries
 	local -r root="$(ghq root)"
 	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
 	local chosen_path
@@ -198,16 +199,28 @@ ghsync() {
 }
 # check if everything is pushed
 gc() {
-	while IFS= read -r -d '' path; do
-		(
-			cd "$path" || exit
-			[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && exit
-			basename "$path"
+	local dirty="$(
+		while IFS= read -r -d '' path; do
+			(
+				cd "$path" || exit
+				[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && exit
+				# repos in home
+				[ "$(dirname $path)" = "$HOME" ] && printf '\t%s\n' "$(basename $path)" && return
+				# ghq repos
+				# TODO maybe remove expr length, figure out how to work with command output length without variables
+				printf '\t%s\n' "${path:$(expr length "$(ghq root)" + 1)}"
+			)
+		done < <(
+			# TODO move this to an array maybe
+			printf '%s\0' "$HOME/notes"
+			printf '%s\0' "$HOME/cfg"
+			# WARN unsafe: newlines
+			ghq list -p | tr '\n' '\0'
 		)
-	done < <(
-		printf '%s\0' "$HOME/notes"
-		printf '%s\0' "$HOME/cfg"
-	)
+	)"
+	[ -z "$dirty" ] && return
+	echo "dirty repos:"
+	printf "%s" "$dirty"
 }
 
 # send full path of a file to clipboard

@@ -54,7 +54,7 @@ return {
         prompt_prefix = ' ',
         selection_caret = ' ',
         multi_icon = ' ',
-        path_display = { 'truncate' }, -- 'smart' breaks 'truncate'
+        path_display = { 'truncate' }, -- TODO report 'smart' breaks 'truncate'
         dynamic_preview_title = true,
         vimgrep_arguments = {
           'rg',

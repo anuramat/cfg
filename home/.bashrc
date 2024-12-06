@@ -8,11 +8,6 @@ export HISTFILESIZE=-1
 source "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
-if command -v fzf-share >/dev/null; then
-	source "$(fzf-share)/key-bindings.bash"
-	source "$(fzf-share)/completion.bash"
-fi
-
 # prompt command hooks
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
 # source "$(blesh-share)/ble.sh" # buggy, ugly, slow, but cool

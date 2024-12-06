@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 shopt -s globstar # enables **
+set +H
 
 export UNDISTRACT_TOLERANCE=1
 

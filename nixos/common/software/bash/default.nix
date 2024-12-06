@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   environment = {
     localBinInPath = true;
-    shellAliases = {};
+    shellAliases = lib.mkForce {};
   };
 
   programs = {
@@ -42,7 +42,7 @@
     };
 
     bash = {
-      shellAliases = {};
+      shellAliases = lib.mkForce {};
       promptInit = "";
       enableLsColors = false;
       interactiveShellInit = ''

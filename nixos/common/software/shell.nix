@@ -20,4 +20,12 @@ _: {
       };
     };
   };
+
+
+  # auto setup environment when opening a project folder
+  programs.direnv = {
+    enable = true;
+    silent = true;
+    # direnvrcExtra
+  };
 }

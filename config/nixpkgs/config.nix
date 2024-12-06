@@ -1,4 +1,4 @@
 {
   allowUnfree = true;
-  permittedInsecurePackages = [ ];
+  permittedInsecurePackages = [];
 }

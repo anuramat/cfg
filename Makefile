@@ -20,7 +20,7 @@ lua: lua_fmt
 .PHONY: shell sh_fmt
 sh_fmt:
 	@ printf ${heading} "Formatting shell scripts"
-	@ ./shrun 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
+	@ shfmt --write --simplify --case-indent --binary-next-line --space-redirects .
 shell: sh_fmt
 	@ printf ${heading} "Checking shell scripts"
 	@ ./shrun 'shellcheck --color=always -o all'

@@ -2,17 +2,13 @@
 
 shopt -s globstar # enables **
 
-export HISTSIZE=-1
-export HISTFILESIZE=-1
-
 export UNDISTRACT_TOLERANCE=1
 
 source "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
-# prompt command hooks
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
-# source "$(blesh-share)/ble.sh" # buggy, ugly, slow, but cool
+
 # color rice:
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 

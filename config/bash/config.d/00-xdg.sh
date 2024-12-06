@@ -9,8 +9,6 @@ export DOT_SAGE="$XDG_CONFIG_HOME"/sage # sage math
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg          # ??? I didn't install this... Just removed old one from ~, target exists, check if ~/. gets created
-export HISTFILE="${XDG_STATE_HOME}"/bash/history # doesn't get created automatically, need to ensure the path exists
-mkdir -p "$(dirname "$HISTFILE")" || true
 # TODO append old file to the new file or whatever
 export XCOMPOSECACHE="${XDG_CACHE_HOME}"/X11/xcompose # not using this either AFAIK
 export CARGO_HOME="$XDG_DATA_HOME"/cargo

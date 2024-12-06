@@ -1,9 +1,4 @@
 {pkgs, lib, ...}: {
-  environment = {
-    localBinInPath = true;
-    shellAliases = lib.mkForce {};
-  };
-
   programs = {
     starship = {
       enable = true;
@@ -41,13 +36,19 @@
       fuzzyCompletion = true;
     };
 
+    environment = {
+      localBinInPath = true;
+      shellAliases = lib.mkForce {};
+    };
+
     bash = {
       shellAliases = lib.mkForce {};
       promptInit = "";
       enableLsColors = false;
       interactiveShellInit = ''
-        source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
         source ${./osc.sh}
+        source ${./history.sh}
+        source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
       '';
     };
   };

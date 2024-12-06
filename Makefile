@@ -30,7 +30,7 @@ lua: luafmt
 .PHONY: shell shfmt
 shfmt:
 	@ printf ${heading} "Formatting shell scripts"
-	@ ./lib/shrun 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
+	@ ./lib/shrun.sh 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
 shell: shfmt
 	@ printf ${heading} "Checking shell scripts"
-	@ ./lib/shrun 'shellcheck --color=always -o all'
+	@ ./lib/shrun.sh 'shellcheck --color=always -o all'

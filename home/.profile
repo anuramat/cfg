@@ -19,7 +19,7 @@ export MANPAGER=less        # todo colorized manpager
 
 # Editor
 for editor in nvim vim nvi vi; do
-	if command -v "$editor" &>/dev/null; then
+	if command -v "$editor" &> /dev/null; then
 		export VISUAL="$editor"
 		break
 	fi

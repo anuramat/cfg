@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 __zo_fzf_preview='ls --color=always -Cp'
-if command -v "eza" &>/dev/null; then
+if command -v "eza" &> /dev/null; then
 	__zo_fzf_preview="$EZACMD --group-directories-first --icons --grid"
 fi
 export _ZO_FZF_OPTS="$FZF_DEFAULT_OPTS

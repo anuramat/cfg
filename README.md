@@ -21,7 +21,7 @@ ssh-keygen # generate a key
 gh auth login # set up github
 # switch to ssh
 git remote set-url origin git@github.com:anuramat/cfg
-sudo tailscale up # set up tailscale
+sudo tailscale up "--operator=$(whoami)" # set up tailscale
 # etc: spotify, web browser, telegram, proton pass
 ```
 

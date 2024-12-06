@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs = {
     starship = {
       enable = true;
@@ -36,11 +40,6 @@
       fuzzyCompletion = true;
     };
 
-    environment = {
-      localBinInPath = true;
-      shellAliases = lib.mkForce {};
-    };
-
     bash = {
       shellAliases = lib.mkForce {};
       promptInit = "";
@@ -51,5 +50,10 @@
         source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
       '';
     };
+  };
+
+  environment = {
+    localBinInPath = true;
+    shellAliases = lib.mkForce {};
   };
 }

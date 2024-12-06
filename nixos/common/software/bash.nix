@@ -26,12 +26,18 @@ _: {
     direnv = {
       enable = true;
       silent = true;
-      # direnvrcExtra
+      direnvrcExtra = ''
+        use flake
+      '';
     };
 
     fzf = {
       keybindings = true;
       fuzzyCompletion = true;
+    };
+
+    bash = {
+      promptInit = "";
     };
   };
 }

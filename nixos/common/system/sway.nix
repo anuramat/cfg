@@ -11,7 +11,7 @@
   };
 
   # autostart
-  bash.loginShellInit = ''
+  programs.bash.loginShellInit = ''
     if [ -z "''${WAYLAND_DISPLAY}" ] && [ "''${XDG_VTNR}" -eq 1 ]; then
         shopt -s execfail
         exec sway

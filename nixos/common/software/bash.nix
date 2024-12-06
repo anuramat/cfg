@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   programs = {
     starship = {
       enable = true;
@@ -38,6 +38,10 @@ _: {
 
     bash = {
       promptInit = "";
+      enableLsColors = false;
+      interactiveShellInit = ''
+        source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
+        '';
     };
   };
 }

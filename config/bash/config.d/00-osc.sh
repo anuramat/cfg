@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-osc7_cwd() {
+__osc133() {
+    printf '\e]133;A\e\\'
+}
+__osc7() {
     local strlen=${#PWD}
     local encoded=""
     local pos c o
@@ -14,4 +17,4 @@ osc7_cwd() {
     done
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
-PROMPT_COMMAND=${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }osc7_cwd
+PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }__osc7;__osc133"

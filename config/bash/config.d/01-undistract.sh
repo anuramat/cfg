@@ -8,4 +8,4 @@ __undistract() {
     local diff="$(($(date +%s) - __last_command_start_time))"
     ((diff > 5)) && tput bel
 }
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }__undistract
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND;}__undistract"

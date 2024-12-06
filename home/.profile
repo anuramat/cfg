@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # XDG paths
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -7,7 +7,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
 # Not part of the spec yet but we will use it
-XDG_BIN_HOME="$HOME/.local/bin"
+export XDG_BIN_HOME="$HOME/.local/bin"
 
 # TODO recheck
 # XDG user dirs
@@ -19,7 +19,7 @@ export MANPAGER=less        # todo colorized manpager
 
 # Editor
 for editor in nvim vim nvi vi; do
-	if command -v "$editor" >/dev/null 2>&1; then
+	if command -v "$editor" &>/dev/null; then
 		export VISUAL="$editor"
 		break
 	fi

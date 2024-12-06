@@ -1,11 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 export SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
 
 # eza
 export EZACMD="eza --group-directories-first --group --header --git --color=always --icons=always --color-scale=all --sort=time"
-if command -v "eza" > /dev/null 2>&1; then
+if command -v "eza" &>/dev/null; then
 	# config file implementation is in progress:
 	# https://github.com/eza-community/eza/issues/897
 	alias ls="$EZACMD"

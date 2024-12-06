@@ -6,7 +6,7 @@ heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 all: system configs
 system:
 	@ printf ${heading} "Building NixOS"
-	# @ ./lib/build.sh
+	@ ./lib/build.sh
 configs:
 	@ printf ${heading} "Installing configs"
 	@ ./lib/install.sh

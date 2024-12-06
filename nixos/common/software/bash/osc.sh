@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 __osc133() {
     printf '\e]133;A\e\\'
 }

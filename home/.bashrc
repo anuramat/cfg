@@ -5,6 +5,8 @@ shopt -s globstar # enables **
 export HISTSIZE=-1
 export HISTFILESIZE=-1
 
+export UNDISTRACT_TOLERANCE=1
+
 source "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 

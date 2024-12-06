@@ -1,13 +1,13 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 # TODO fix this mess, validate perms on ./lib/*.sh
-.PHONY: system install code
+.PHONY: all system configs
+all: system configs
 system:
 	@ printf ${heading} "Building NixOS"
-	@ ./lib/build.sh
-install:
+	# @ ./lib/build.sh
+configs:
 	@ printf ${heading} "Installing configs"
 	@ ./lib/install.sh
-code: lua shell
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lua ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 .PHONY: lua lua_fmt
 lua_fmt:
@@ -17,10 +17,10 @@ lua: lua_fmt
 	@ printf ${heading} "Checking Lua files"
 	@ luacheck . --globals=vim | ghead -n -2
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Shell ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-.PHONY: shell posix sh_fmt
+.PHONY: shell sh_fmt
 sh_fmt:
 	@ printf ${heading} "Formatting shell scripts"
-	@ . lib/format.sh; shell
+	@ ./shrun 'shfmt -w -l -s -ci -bn -kp'
 shell: sh_fmt
 	@ printf ${heading} "Checking shell scripts"
-	@ . lib/lint.sh; shell
+	@ ./shrun 'shellcheck --color=always -o all'

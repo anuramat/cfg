@@ -39,8 +39,8 @@ return {
     local opts = {
       defaults = {
         mappings = {
-          i = { ["<c-j>"] = 'select_default' },
-          n = { ["<c-j>"] = 'select_default' }
+          i = { ['<c-j>'] = 'select_default' },
+          n = { ['<c-j>'] = 'select_default' },
         },
         wrap_results = true,
         layout_config = {

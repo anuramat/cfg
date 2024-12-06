@@ -95,24 +95,6 @@
     "battery#external": {
       "bat": "BAT1"
     },
-    "network#wlan": {
-      "interface": "wl*",
-      "format-wifi": "{essid} {icon}",
-      "format-ethernet": "E/N 󰈀",
-      "tooltip-format": "{ifname} @ {ipaddr}/{cidr} via {gwaddr}",
-      "format-linked": "No IP 󰌚",
-      "format-disconnected": "D/C 󰌙",
-      // "format-disabled": "󰤭",
-      "on-click": "foot nmtui",
-      "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
-      "interval": 1
-    },
-    "custom/wlan-disabled": {
-      // use this with network#wlan because "network" never reaches disabled
-      // https://github.com/Alexays/Waybar/issues/2259
-      "exec": "ifconfig | grep 'wl.*' -q || echo '󰤭'",
-      "interval": 1
-    },
     "pulseaudio": {
       "format": "{volume}% {icon}  {format_source}",
       "format-bluetooth": "{volume}% {icon}   {format_source}",

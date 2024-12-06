@@ -121,15 +121,6 @@
     rpi-imager # raspbery pi XXX not really useful without one
     cowsay
     fortune # random quotes
-    # file managers TODO choose one (or don't)
-    yazi
-    broot
-    lf
-    mc
-    nnn
-    ranger
-    vifm
-    xplr
 
     # backend {{{1
     dbeaver-bin # databases

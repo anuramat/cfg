@@ -28,7 +28,6 @@ alias ip='ip -c=auto'
 alias fd="fd -HI" # show Hidden and Ignored
 alias info="info --init-file $XDG_CONFIG_HOME/infokey"
 export GRIM_DEFAULT_DIR="$SCREENSHOT_DIR"
-export TERMCMD="foot"                 # used by rifle (ranger file opener)
 export VIRTUAL_ENV_DISABLE_PROMPT="1" # Don't let python venvs change the PS1
 export VIMTEX_OUTPUT_DIRECTORY="/tmp/"
 export NO_AT_BRIDGE=1 # hides gnomeWARNING **: Couldn't connect to accessibility bus:

@@ -65,7 +65,7 @@
     onionshare # tor-based file-sharing etc
     onionshare-gui # p2p file sharing, chat, website hosting
     # qtox # p2p IM # XXX broken
-    slack
+    # slack # XXX broken
     telegram-desktop
     whatsapp-for-linux # isn't this worthless TODO
 

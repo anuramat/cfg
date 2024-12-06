@@ -1,7 +1,7 @@
 {unstable, ...}: {
   fonts = {
     packages = [
-      unstable.nerdfonts
+      unstable.nerd-fonts.hack
     ];
     fontconfig = {
       defaultFonts = {

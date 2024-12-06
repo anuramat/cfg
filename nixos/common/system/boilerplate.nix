@@ -1,6 +1,7 @@
 {user, ...}: {
   documentation.man.generateCaches = true; # apropos
-  hardware.enableAllFirmware = true; # regardless of license
+  # hardware.enableAllFirmware = true; # regardless of license # TODO figure out if I need this and how to fix it
+  hardware.enableRedistributableFirmware = true;
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     substituters = [

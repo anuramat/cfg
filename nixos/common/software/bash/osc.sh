@@ -7,10 +7,10 @@ __osc7() {
 	local encoded=""
 	local pos c o
 	for ((pos = 0; pos < strlen; pos++)); do
-		c=${PWD:$pos:1}
+		c=${PWD:pos:1}
 		case "$c" in
-		[-/:_.!\'\(\)~[:alnum:]]) o="${c}" ;;
-		*) printf -v o '%%%02X' "'${c}" ;;
+			[-/:_.!\'\(\)~[:alnum:]]) o="${c}" ;;
+			*) printf -v o '%%%02X' "'${c}" ;;
 		esac
 		encoded+="${o}"
 	done

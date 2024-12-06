@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  environment = {
+    localBinInPath = true;
+    shellAliases = {};
+  };
+
   programs = {
     starship = {
       enable = true;
@@ -37,12 +42,13 @@
     };
 
     bash = {
+      shellAliases = {};
       promptInit = "";
       enableLsColors = false;
       interactiveShellInit = ''
         source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
         source ${./osc.sh}
-        '';
+      '';
     };
   };
 }

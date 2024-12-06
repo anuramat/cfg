@@ -34,3 +34,4 @@ export MATHEMATICA_USERBASE="$XDG_CONFIG_HOME/mathematica"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
 # todo .icons - rsync with noclobber datahome/icons, update xcursor_path envvar
+export GOBIN="$XDG_BIN_HOME"

@@ -6,6 +6,10 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Not part of the spec yet but we will use it
+XDG_BIN_HOME="$HOME/.local/bin"
+
+# TODO recheck
 # XDG user dirs
 [ -f "${HOME}/.config/user-dirs.dirs" ] && . "${HOME}/.config/user-dirs.dirs"
 

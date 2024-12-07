@@ -5,22 +5,17 @@
   echo '      Opens the line in $EDITOR.'
   exit
 }
-
 num=$2
 
+# fallback to the last task
 [ -z "$num" ] && { 
   num=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
-};
+}
 
-num=$((10#$num)) # remove leading zeros
-
-# [ -z "$EDITOR" ] && { 
-#   echo '$EDITOR not set'
-#   exit 1 
-# };
+# remove leading zeros
+num=$((10#$num)) 
 
 old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
-
 printf 'old: %s\n' "$old"
 read -e -i "$old" -p 'new: ' -r new
 

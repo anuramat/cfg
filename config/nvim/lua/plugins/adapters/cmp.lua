@@ -35,6 +35,7 @@ local setup_insert = function()
   local cmp = require('cmp')
   local window = cmp.config.window.bordered()
   window = nil -- turn off because of noice and lsp_signature
+  -- TODO check if we need window again
 
   --- @diagnostic disable-next-line: redundant-parameter
   cmp.setup({

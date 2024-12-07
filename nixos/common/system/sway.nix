@@ -12,12 +12,12 @@
 
   # autostart
   programs.bash.loginShellInit = ''
-if [ -z "''${WAYLAND_DISPLAY}" ] && [ "''${XDG_VTNR}" -eq 1 ] && command -v sway &>/dev/null; then
-	if lspci | grep -iq nvidia; then
-		exec sway --unsupported-gpu
-	fi
-	exec sway
-fi
+    if [ -z "''${WAYLAND_DISPLAY}" ] && [ "''${XDG_VTNR}" -eq 1 ] && command -v sway &>/dev/null; then
+    	if lspci | grep -iq nvidia; then
+    		exec sway --unsupported-gpu
+    	fi
+    	exec sway
+    fi
   '';
 
   # force native wayland support in chrome/electron apps

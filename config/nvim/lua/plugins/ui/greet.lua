@@ -8,7 +8,12 @@ local function figlet(text, font)
   if not font then
     -- hehe
     local font_cmd =
-      [[figlist | sed -n '/Figlet fonts in this directory:/,/Figlet control files in this directory:/{//!p}' | shuf | head -n 1]]
+      [[
+      figlist |
+      sed -n '/Figlet fonts in this directory:/,/Figlet control files in this directory:/{//!p}' |
+      shuf |
+      head -n 1
+      ]]
     local font_res = vim.system({ 'bash', '-c', font_cmd }, { text = true }):wait()
     font = vim.trim(font_res.stdout)
   end

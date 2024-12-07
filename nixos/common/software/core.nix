@@ -71,7 +71,6 @@
     duf # df++
     entr # file watcher - runs command on change
     fd # find++
-    fzf # fuzzy finder
     gh # GitHub CLI
     ghq # git repository manager
     libqalculate # `qalc` - advanced calculator
@@ -80,13 +79,10 @@
     ripgrep # grep++
     ripgrep-all # ripgrep over docs, archives, etc
     rmtrash # rm but to trash
-    starship # shell rice
     tealdeer # tldr reimplementation: rust + xdg
     tgpt # tui for llm apis
-    unstable.blesh # bash line editor
     unstable.devenv
     unstable.eza # ls++
-    unstable.nb # edgy obsidian TODO try
     unstable.todo-txt-cli # todo.sh
     watchman # another file watcher TODO try and compare to entr
     wayidle # runs a command on idle

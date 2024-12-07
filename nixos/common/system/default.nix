@@ -9,7 +9,5 @@ _: {
     ./peripherals.nix
     ./power.nix
     ./printers.nix
-    ./sway.nix
-    ./theme.nix
   ];
 }

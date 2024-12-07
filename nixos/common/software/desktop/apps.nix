@@ -6,13 +6,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    # Desktop basics {{{1
-    mako # notifications - smaller than fnott and dunst
-    swayidle # lock/sleep on idle
-    swaylock # lockscreen
-    waybar # status bar
-    wl-clip-persist # otherwise clipboard contents disappear on exit
-
     # Browsers {{{1
     inputs.zen-browser.packages.${pkgs.system}.specific
     tor-browser-bundle-bin
@@ -21,18 +14,13 @@
 
     # Terminals {{{1
     cool-retro-term
-    foot # cpu
+    foot
 
     # Settings {{{1
     ddcutil # configure external monitors (eg brightness)
     helvum # pipewire patchbay
-    networkmanagerapplet # networking
     pavucontrol # gui audio configuration
     system-config-printer # printer gui
-    udiskie # userspace frontend for udisk2
-    unstable.avizo # brightness/volume control with overlay indicator
-    kanshi # display config daemon
-    wl-mirror # screen mirroring
 
     # Opening stuff {{{1
     nemo # wayland native
@@ -43,21 +31,15 @@
     xdragon # drag and drop from terminal
 
     # Terminal helpers {{{1
-    libnotify # notify-send etc
     playerctl # cli media player controls
-    wl-clipboard # wl-copy/wl-paste: copy from stdin/paste to stdout
 
     # Wallpaper helpers {{{1
     glpaper # shader
     mpvpaper # video
-    swaybg # plain
 
     # Screenshots and screen capture {{{1
-    grim # CLI screenshot
     kooha # screen capture with basic gui
     shotman # screenshot, with simple preview afterwards, no markup
-    slurp # select screen region
-    swappy # markup wrapper for grim+slurp/etc
     wf-recorder # CLI screen capture
 
     # Comms {{{1

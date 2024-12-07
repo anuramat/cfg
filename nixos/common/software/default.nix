@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./core.nix
-    ./desktop.nix
+    ./desktop
     ./lang.nix
     ./bash
   ];

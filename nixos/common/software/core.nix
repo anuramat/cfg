@@ -6,8 +6,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     # posix {{{1
-    bash
-    bash-completion
     bc # simple calculator
     coreutils-full
     coreutils-prefixed # for compatibility

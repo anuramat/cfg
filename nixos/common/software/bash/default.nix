@@ -26,7 +26,6 @@
       };
     };
 
-    # auto setup environment when opening a project folder
     direnv = {
       enable = true;
       silent = true;
@@ -57,3 +56,5 @@
     shellAliases = lib.mkForce {};
   };
 }
+# vim: fdl=3
+

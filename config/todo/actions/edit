@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+[ "$1" = usage ] && {
+  echo '    edit ITEM#'
+  echo '      Opens the line in $EDITOR.'
+  exit
+}
+
+num=$2
+
+[ -z "$num" ] && { 
+  num=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
+};
+
+num=$((10#$num)) # remove leading zeros
+
+# [ -z "$EDITOR" ] && { 
+#   echo '$EDITOR not set'
+#   exit 1 
+# };
+
+old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
+
+printf 'old: %s\n' "$old"
+read -e -i "$old" -p 'new: ' -r new
+
+[[ $new = $old ]] && echo "No changes" && exit 0
+
+awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE"

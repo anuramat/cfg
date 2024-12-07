@@ -6,9 +6,7 @@ export TODO_DIR="$HOME/notes/todo"
 export TODO_FILE="$TODO_DIR/todo.txt"
 export DONE_FILE="$TODO_DIR/done.txt"
 export REPORT_FILE="$TODO_DIR/report.txt"
-export TODO_ACTIONS_DIR="$TODO_DIR/actions"
-
-# == EDIT FILE LOCATIONS ABOVE ===
+export TODO_ACTIONS_DIR="$XDG_CONFIG_HOME/todo/actions"
 
 # === COLOR MAP === {{{1
 
@@ -60,15 +58,15 @@ export TODO_ACTIONS_DIR="$TODO_DIR/actions"
 
 # There is highlighting for projects, contexts, dates, and item numbers.
 #
-# export COLOR_PROJECT=$RED
-# export COLOR_CONTEXT=$RED
-# export COLOR_DATE=$BLUE
-# export COLOR_NUMBER=$LIGHT_GRAY
+export COLOR_PROJECT=$RED
+export COLOR_CONTEXT=$RED
+export COLOR_DATE=$BLUE
+export COLOR_NUMBER=$LIGHT_GRAY
 
 # There is highlighting for metadata key:value pairs e.g.
 # DUE:2006-08-01 or note:MYNOTE
 #
-# export COLOR_META=$CYAN
+export COLOR_META=$CYAN
 
 # === BEHAVIOR === {{{1
 

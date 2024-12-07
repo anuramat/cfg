@@ -13,6 +13,8 @@ export FZF_DEFAULT_OPTS="
 --multi
 --height=50%
 
+--tmux=center,90%,80%
+
 --bind='ctrl-/:change-preview-window(down|hidden|)'
 --bind='ctrl-j:accept'
 --bind='tab:toggle+down'

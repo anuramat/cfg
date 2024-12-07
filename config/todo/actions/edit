@@ -20,6 +20,6 @@ old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
 printf 'old: %s\n' "$old"
 read -e -i "$old" -p 'new: ' -r new
 
-[[ $new == $old ]] && echo "No changes" && exit 0
+[ "$new" = "$old" ] && echo "No changes" && exit 0
 
 awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE"

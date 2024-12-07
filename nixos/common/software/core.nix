@@ -5,6 +5,10 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
+    # docs {{{1
+    man-pages
+    man-pages-posix
+
     # posix {{{1
     bc # simple calculator
     coreutils-full

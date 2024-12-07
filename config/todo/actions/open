@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+[ "$1" = usage ] && {
+	echo '    open [ITEM#]'
+	echo '      Opens the $TODO_FILE on the specified line in $EDITOR.'
+	echo '      (Last line when not specified)'
+	exit
+}
+num=$2
+
+# fallback to the last task
+[ -z "$num" ] && {
+	num=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
+}
+
+# remove leading zeros
+num=$((10#$num))
+
+$EDITOR "+$num" "$TODO_FILE"

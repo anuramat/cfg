@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-	echo '    edit ITEM#'
-	echo '      Opens the line in $EDITOR.'
+	echo '    edit [ITEM#]'
+	echo '      Edits the task interactively.'
+	echo '      (Last task when not specified)'
 	exit
 }
 num=$2
@@ -21,4 +22,4 @@ read -e -i "$old" -p 'new: ' -r new
 
 [[ $new == $old ]] && echo "No changes" && exit 0
 
-awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE"
+awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$file" | sponge "$file"

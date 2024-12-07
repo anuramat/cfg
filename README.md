@@ -38,5 +38,5 @@ sudo tailscale up "--operator=$(whoami)" # set up tailscale
 
 ## Notable hardcode
 
-- Paths `~/notes/`, `~/cfg/`
+- Git repositories in `~/notes/` and `~/cfg/`
 - Personal (`nixos/user.nix`, `rg -i 'anuramat|arsen`)

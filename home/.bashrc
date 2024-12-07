@@ -191,6 +191,7 @@ ghsync() {
 }
 # check if everything is pushed
 gc() {
+	local nonghq=("$HOME/notes" "$HOME/cfg")
 	local dirty="$(
 		while IFS= read -r -d '' path; do
 			(
@@ -200,13 +201,11 @@ gc() {
 				[ "$(dirname $path)" = "$HOME" ] && printf '\t%s\n' "$(basename $path)" && return
 				# ghq repos
 				# TODO maybe remove expr length, figure out how to work with command output length without variables
-				printf '\t%s\n' "${path:$(expr length "$(ghq root)" + 1)}"
+				printf '\t%s\n' "${path:$(ghq root | wc -m)}"
 			)
 		done < <(
-			# TODO move this to an array maybe
-			printf '%s\0' "$HOME/notes"
-			printf '%s\0' "$HOME/cfg"
-			# WARN unsafe: newlines
+			printf '%s\0' "${nonghq[@]}"
+			# could potentially break if a path contains a newline
 			ghq list -p | tr '\n' '\0'
 		)
 	)"

@@ -223,7 +223,7 @@ __wallust_wrapped() {
 	# r for rice
 	wallust "$@" || return
 	"$XDG_CONFIG_HOME/mako/wal.sh"
-	swaymsg reload
+	swaymsg reload &>/dev/null || true # shits out a scary error - ignore it TODO figure out
 }
 
 alias wallust=__wallust_wrapped

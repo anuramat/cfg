@@ -120,5 +120,7 @@ endfunction
 
 """ Trim spaces
 com! Trim %s/\ \+$//g
+""" Sort todo.txt by projects
+com! SortProj sort /\v(^|\s)\zs\+\S+\ze/ r
 
 " vim: fdm=marker fdl=0

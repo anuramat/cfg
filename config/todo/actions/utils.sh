@@ -2,17 +2,17 @@
 
 linenr_handler() {
 	case "$?" in
-	1)
-		echo "Invalid task number"
-		exit 1
-		;;
-	2)
-		echo "Cancelled"
-		exit 2
-		;;
-	*)
-		echo "Unexpected error"
-		;;
+		1)
+			echo "Invalid task number"
+			exit 1
+			;;
+		2)
+			echo "Cancelled"
+			exit 2
+			;;
+		*)
+			echo "Unexpected error"
+			;;
 	esac
 }
 
@@ -22,7 +22,7 @@ linenr() {
 
 	len=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
 	[ -z "$num" ] && {
-		[ -n "$fzf" ] && command -v fzf &>/dev/null && {
+		[ -n "$fzf" ] && command -v fzf &> /dev/null && {
 			num=$($TODO_SH -p command ls | fzf --preview= | cut -d ' ' -f 1)
 			[ -z "$num" ] && return 2
 			num=$((10#$num))

@@ -8,7 +8,7 @@ export UNDISTRACT_TOLERANCE=1
 source "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
-command -v zoxide &> /dev/null && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
+command -v zoxide &>/dev/null && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
 
 # color rice:
 [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
@@ -82,8 +82,8 @@ say_unwrapped() {
 		rm "$config_file" && return 1
 	}
 
-	echo "$2" \
-		| piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
+	echo "$2" |
+		piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
 }
 # say some stuff
 say() {
@@ -96,11 +96,11 @@ hotdoc() {
 	# create file
 	local -r path="$(mktemp -p /tmp XXXXXX.pdf)"
 	# initialize it with a basic pdf so that zathura doesn't shit itself
-	echo 'JVBERi0xLgoxIDAgb2JqPDwvUGFnZXMgMiAwIFI+PmVuZG9iagoyIDAgb2JqPDwvS2lkc1szIDAgUl0vQ291bnQgMT4+ZW5kb2JqCjMgMCBvYmo8PC9QYXJlbnQgMiAwIFI+PmVuZG9iagp0cmFpbGVyIDw8L1Jvb3QgMSAwIFI+Pg==' \
-		| base64 -d > "$path"
+	echo 'JVBERi0xLgoxIDAgb2JqPDwvUGFnZXMgMiAwIFI+PmVuZG9iagoyIDAgb2JqPDwvS2lkc1szIDAgUl0vQ291bnQgMT4+ZW5kb2JqCjMgMCBvYmo8PC9QYXJlbnQgMiAwIFI+PmVuZG9iagp0cmFpbGVyIDw8L1Jvb3QgMSAwIFI+Pg==' |
+		base64 -d >"$path"
 
 	# open zathura
-	zathura "$path" &> /dev/null &
+	zathura "$path" &>/dev/null &
 	local -r zathura_pid="$!"
 
 	# start watching for changes
@@ -116,7 +116,7 @@ hotdoc() {
 }
 # open with zathura
 z() {
-	zathura "$1" &> /dev/null &
+	zathura "$1" &>/dev/null &
 	disown
 }
 # set brightness for an external monitor
@@ -223,7 +223,7 @@ __wallust_wrapped() {
 	# r for rice
 	wallust "$@" || return
 	"$XDG_CONFIG_HOME/mako/wal.sh"
-	swaymsg reload &> /dev/null || true # shits out a scary error - ignore it TODO figure out
+	swaymsg reload &>/dev/null || true # shits out a scary error - ignore it TODO figure out
 }
 
 alias wallust=__wallust_wrapped

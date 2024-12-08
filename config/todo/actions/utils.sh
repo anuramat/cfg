@@ -35,36 +35,58 @@ linenr() {
 }
 
 view_by_tag() {
-	symbol="$1"
-	subcmd="$2"
+	local -r symbol="$1" # + or @
+	local -r subcmd="$2" # lsprj or lsc
 
-	max_tasks="10"
-	min_desc_width="30"
+	# terminal_height - output_height
+	local offset=0
 
-	term_width=$(tput cols)
-	n_cols=$((term_width / min_desc_width))
+	# Parameters
+	local -r min_lines="10" # per tag -- tasks + header
+	local -r min_desc_chars="50"
+	local -r prompt_n_lines=3
+	local -r header='\n%s\n---\n' && ((offset -= 1))
 
-	# read tasks by tag
-	tasks=()
-	while read -r tag; do
-		tasks+=("$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac | cat <(printf '%s\n---\n' "$tag") - | head -n "$max_tasks")")
-	done < <(
+	local -r term_w=$(tput cols)
+	local -r term_h=$(tput lines)
+	local -r n_cols=$((term_w / min_desc_chars))
+	((offset += prompt_n_lines))
+
+	printf "\xE2\x80\x95%.0s" $(seq ${term_w}) && ((offset -= 1))
+
+	# read tags
+	local tags
+	mapfile -t tags < <(
 		$TODO_SH command "$subcmd"
 		echo -"$symbol" # unfiled tasks
 	)
+	local -r n_tags=${#tags[@]}
+	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols)) # ceil(tags/cols)
+	local n_lines=$(((term_h - offset) / n_rows))
 
-	n_pieces=${#tasks[@]}
-	n_rows=$(((n_pieces + n_cols - 1) / n_cols))
+	# ensure a minimum number of tasks per tag
+	local overflow= # bool: output didn't fit on a single screen
+	((min_lines > n_lines)) && n_lines="$min_lines" && overflow="1"
 
-	# this disables stretching on the last row by adding an empty cell
-	for i in $(seq $((n_cols * n_rows - n_pieces))); do
-		tasks+=("")
+	# read tasks by tag
+	local cells=()
+	for tag in "${tags[@]}"; do
+		local tasks=$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac)
+		local count=$(printf "%s" "$tasks" | wc -l)
+		cells+=("$(printf "$header%s" "$tag: $count" "$tasks" | head -n "$n_lines")")
+	done
+
+	# disable stretching on the last row by adding an empty cell
+	for i in $(seq $((n_cols * n_rows - n_tags))); do
+		cells+=("")
 	done
 
 	# use pr to columnate output
 	for i in $(seq 0 $((n_rows - 1))); do
-		printf '\n'
-		subs=$(printf '<(printf %%s %q) ' "${tasks[@]:$((i * n_cols)):n_cols}")
-		eval pr --omit-header --merge --width="$term_width" $subs
+		subs=$(printf '<(printf %%s %q) ' "${cells[@]:$((i * n_cols)):n_cols}")
+		eval pr --omit-pagination --merge --width="$term_w" $subs
 	done
+
+	# notify if output didn't fit on a single screen
+	[ -n "$overflow" ] && printf '\n%s\n' 'Overflow, scroll up' || true
 }

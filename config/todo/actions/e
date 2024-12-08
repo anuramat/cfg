@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-	echo -e '\tedit [ITEM#]'
+	echo -e "\t$(basename "$0") [ITEM#]"
 	echo -e '\t\tEdits the task interactively.'
 	echo -e '\t\t(Last task when not specified)'
 	exit

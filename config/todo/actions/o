@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-	echo -e '\topen [ITEM#]'
+	echo -e "\t$(basename "$0") [ITEM#]"
 	echo -e '\t\tOpens the $TODO_FILE on the specified line in $EDITOR.'
 	echo -e '\t\t(Last line when not specified)'
 	exit

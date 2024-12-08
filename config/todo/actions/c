@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-  echo -e "\t$(basename "$0")"
-  echo -e '\t\tLists tasks by context.'
-  exit
+	echo -e "\t$(basename "$0")"
+	echo -e '\t\tLists tasks by context.'
+	exit
 }
 
 source "$TODO_ACTIONS_DIR/utils.sh"

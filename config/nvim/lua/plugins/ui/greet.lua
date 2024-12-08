@@ -7,8 +7,7 @@ local input = 'neovim'
 local function figlet(text, font)
   if not font then
     -- hehe
-    local font_cmd =
-      [[
+    local font_cmd = [[
       figlist |
       sed -n '/Figlet fonts in this directory:/,/Figlet control files in this directory:/{//!p}' |
       shuf |

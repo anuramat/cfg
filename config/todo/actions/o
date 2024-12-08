@@ -8,9 +8,7 @@ num=$2
 }
 
 source "$TODO_ACTIONS_DIR/utils.sh"
-num=$(linenr "$num") || {
-	echo "Invalid task number"
-	exit 1
-}
+num=$(linenr "$num")
+linenr_handler
 
 $EDITOR "+$num" "$TODO_FILE"

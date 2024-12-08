@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+num=$2
 
 [ "$1" = usage ] && {
 	echo -e "\t$(basename "$0") [ITEM#]"
@@ -7,7 +8,10 @@
 	exit
 }
 
-num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$2")
+num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$num") || {
+	echo oops
+	exit 1
+}
 
 old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
 printf 'old: %s\n' "$old"

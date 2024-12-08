@@ -211,7 +211,7 @@ gc() {
 	)"
 	[ -z "$dirty" ] && return
 	echo "dirty repos:"
-	printf "%s" "$dirty"
+	printf "%s\n" "$dirty"
 }
 
 # send full path of a file to clipboard

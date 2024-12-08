@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-	echo '    open [ITEM#]'
-	echo '      Opens the $TODO_FILE on the specified line in $EDITOR.'
-	echo '      (Last line when not specified)'
+	echo -e '\topen [ITEM#]'
+	echo -e '\t\tOpens the $TODO_FILE on the specified line in $EDITOR.'
+	echo -e '\t\t(Last line when not specified)'
 	exit
 }
-num=$2
 
-# fallback to the last task
-[ -z "$num" ] && {
-	num=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
-}
-
-# remove leading zeros
-num=$((10#$num))
+num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$2")
 
 $EDITOR "+$num" "$TODO_FILE"

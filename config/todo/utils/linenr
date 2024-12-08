@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+num=$1
+# TODO check it's an integer, remove leading zeros
+# clip to (1, len)
+len=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
+[ -z "$1" ] && num="$len"
+num=$((num > len ? len : num))
+num=$((num < 1 ? 1 : num))
+echo "$num"

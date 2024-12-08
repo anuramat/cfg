@@ -1,20 +1,13 @@
 #!/usr/bin/env bash
 
 [ "$1" = usage ] && {
-	echo '    edit [ITEM#]'
-	echo '      Edits the task interactively.'
-	echo '      (Last task when not specified)'
+	echo -e '\tedit [ITEM#]'
+	echo -e '\t\tEdits the task interactively.'
+	echo -e '\t\t(Last task when not specified)'
 	exit
 }
-num=$2
 
-# fallback to the last task
-[ -z "$num" ] && {
-	num=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
-}
-
-# remove leading zeros
-num=$((10#$num))
+num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$2")
 
 old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
 printf 'old: %s\n' "$old"
@@ -22,4 +15,4 @@ read -e -i "$old" -p 'new: ' -r new
 
 [ "$new" = "$old" ] && echo "No changes" && exit 0
 
-awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE"
+awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE" && echo "Saved"

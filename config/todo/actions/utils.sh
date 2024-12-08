@@ -25,7 +25,10 @@ view_by_tag() {
   tasks=()
   while read -r tag; do
     tasks+=("$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac | cat <(printf '%s\n---\n' "$tag") - | head -n "$max_tasks")")
-  done < <($TODO_SH command "$subcmd")
+  done < <(
+    $TODO_SH command "$subcmd"
+    echo -"$symbol" # unfiled tasks
+  )
 
   n_pieces=${#tasks[@]}
   n_rows=$(((n_pieces + n_cols - 1) / n_cols))

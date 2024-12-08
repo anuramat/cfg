@@ -3,20 +3,24 @@ num=$2
 
 [ "$1" = usage ] && {
 	echo -e "\t$(basename "$0") [ITEM#]"
-	echo -e '\t\tEdits the task interactively.'
-	echo -e '\t\t(Last task when not specified)'
+	echo -e '\t\tOpens the specified/last task for editing using GNU Readline.'
 	exit
 }
 
-num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$num") || {
-	echo oops
+source "$TODO_ACTIONS_DIR/utils.sh"
+num=$(linenr "$num") || {
+	echo "Invalid task number"
 	exit 1
 }
 
 old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
 printf 'old: %s\n' "$old"
+# standard IFS trims whitespace, empty -- preserves
 read -e -i "$old" -p 'new: ' -r new
 
-[ "$new" = "$old" ] && echo "No changes" && exit 0
+[ "$new" = "$old" ] || [[ $new =~ ^\s*$ ]] && {
+	echo "No changes"
+	exit 0
+}
 
 awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | sponge "$TODO_FILE" && echo "Saved"

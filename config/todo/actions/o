@@ -3,13 +3,13 @@ num=$2
 
 [ "$1" = usage ] && {
 	echo -e "\t$(basename "$0") [ITEM#]"
-	echo -e '\t\tOpens the $TODO_FILE on the specified line in $EDITOR.'
-	echo -e '\t\t(Last line when not specified)'
+	echo -e '\t\tOpens the $TODO_FILE on the specified/last line using $EDITOR.'
 	exit
 }
 
-num=$("$XDG_CONFIG_HOME/todo/utils/linenr" "$num") || {
-	echo oops
+source "$TODO_ACTIONS_DIR/utils.sh"
+num=$(linenr "$num") || {
+	echo "Invalid task number"
 	exit 1
 }
 

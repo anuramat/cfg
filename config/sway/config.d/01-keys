@@ -31,7 +31,6 @@ $bind {
     $mod+$mod3+q exec systemctl suspend
     $mod+space exec $drun
     $mod+t exec $todo_add
-    $mod+$mod2+t exec $todo_done
     $mod+y sticky toggle
 
     # Layout {{{1

@@ -18,7 +18,7 @@ linenr_handler() {
 
 linenr() {
 	num=$1
-	fzf=1
+	fzf=$2
 
 	len=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
 	[ -z "$num" ] && {

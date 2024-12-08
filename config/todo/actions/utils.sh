@@ -2,9 +2,15 @@
 
 linenr() {
   num=$1
+  fzf=1
 
   len=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
-  [ -z "$num" ] && num="$len"
+  [ -z "$num" ] && {
+    [ -n "$fzf" ] && command -v fzf &>/dev/null &&
+      $TODO_SH -p command ls | fzf --preview= | cut -d ' ' -f 1 &&
+      return
+    num="$len"
+  }
   [[ $num =~ ^[1-9][0-9]*$ ]] || return 1
   ((num > len)) && return 1
 

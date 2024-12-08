@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+[ "$1" = usage ] && {
+  echo -e "\t$(basename "$0")"
+  echo -e '\t\tTODO'
+  exit
+}
+
+subcmd=lsprj
+symbol='+'
+min_desc_width=30
+max_tasks=10
+
+term_width=$(tput cols)
+n_cols=$((term_width / min_desc_width))
+
+pieces=()
+while read -r tag; do
+  pieces+=("$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p ls "$tag" | tac | cat <(printf '%s\n---\n' "$tag") - | head -n "$max_tasks")")
+done < <($TODO_SH "$subcmd")
+
+n_rows=$(((${#pieces} + n_cols - 1) / n_cols))
+
+# for i in $(seq $((n_cols * n_rows - ${#pieces}))); do
+#   pieces+=("")
+# done
+
+for i in $(seq 0 $((n_rows - 1))); do
+  subs=$(printf '<(printf %%s %q) ' "${pieces[@]:$((i * n_cols)):n_cols}")
+  eval pr --omit-header --merge --width="$term_width" $subs
+done

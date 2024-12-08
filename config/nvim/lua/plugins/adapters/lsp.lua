@@ -35,7 +35,18 @@ local configs = function()
     -- nil_ls = {}, -- nice code actions
     yamlls = {},
     texlab = {},
-    bashls = {},
+    bashls = {
+      settings = {
+        bashIde = {
+          shfmt = {
+            binaryNextLine = true,
+            caseIndent = true,
+            simplifyCode = true,
+            spaceRedirects = true,
+          },
+        },
+      },
+    },
     pyright = {},
     marksman = {},
     clangd = {
@@ -121,7 +132,6 @@ return {
   dependencies = {
     'hrsh7th/nvim-cmp',
     'ray-x/lsp_signature.nvim',
-    'lukas-reineke/lsp-format.nvim',
   },
   config = function()
     local lspconfig = require('lspconfig')

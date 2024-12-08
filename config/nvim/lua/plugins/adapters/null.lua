@@ -40,7 +40,6 @@ local null_sources = function()
 
   return {
     -- ~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~ --
-    nlf.shfmt.with({ extra_args = { '--simplify', '--case-indent', '--binary-next-line', '--space-redirects' } }),
     nlf.stylua,
     nlf.black,
     nlf.alejandra,

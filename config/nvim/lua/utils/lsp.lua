@@ -35,7 +35,7 @@ local function set_lsp_keys(buffer)
   set(']d', vim.diagnostic.goto_next, 'Next Diagnostic') -- shadows: goto next macro definition
 
   set_prefixed('q', vim.diagnostic.setloclist, 'Diagnostic Loc List')
-  set_prefixed('Q', vim.diagnostic.setqflist, 'Diagnostic Loc List')
+  set_prefixed('Q', vim.diagnostic.setqflist, 'Diagnostic QF List')
 
   set_prefixed('wa', vim.lsp.buf.add_workspace_folder, 'Add Workspace Folder')
   set_prefixed('wr', vim.lsp.buf.remove_workspace_folder, 'Remove Workspace Folder')

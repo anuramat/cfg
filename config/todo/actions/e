@@ -9,7 +9,7 @@ num=$2
 
 source "$TODO_ACTIONS_DIR/utils.sh"
 num=$(linenr "$num" '1')
-linenr_handler
+error_handler
 
 old=$(awk "NR == $num {print; exit}" "$TODO_FILE")
 printf 'old: %s\n' "$old"

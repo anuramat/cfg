@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
-linenr_handler() {
-	case "$?" in
+error_handler() {
+	local -r code="$?"
+	case "$code" in
 		1)
 			echo "Invalid task number"
-			exit 1
+			exit "$code"
 			;;
 		2)
 			echo "Cancelled"
-			exit 2
+			exit "$code"
+			;;
+		3)
+			echo "Invalid view name"
+			exit "$code"
 			;;
 		*)
 			echo "Unexpected error"
@@ -34,7 +39,7 @@ linenr() {
 	echo "$num"
 }
 
-__print_header() {
+print_header() {
 	local -r name=$1
 	local width=$2
 	[ -z "$2" ] && width=$(tput cols)
@@ -60,7 +65,7 @@ overview() {
 			subcmd="lsprj"
 			;;
 		*)
-			return 1
+			return 3
 			;;
 	esac
 
@@ -73,7 +78,7 @@ overview() {
 	local -r term_h=$(tput lines)
 	local -r n_cols=$((term_w / min_desc_chars))
 
-	__print_header "$name"
+	print_header "$name"
 
 	# read tags
 	local tags
@@ -95,7 +100,7 @@ overview() {
 		local tasks=$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac)
 		local count=$(printf "%s" "$tasks" | wc -l)
 		local heading="$tag: $count"
-		local underline=$(__print_header "" "${#heading}")
+		local underline=$(print_header "" "${#heading}")
 		cells+=("$(printf -- "\n$heading\n$underline\n%s" "$tasks" | head -n "$n_lines")")
 	done
 

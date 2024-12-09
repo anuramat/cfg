@@ -9,6 +9,6 @@ num=$2
 
 source "$TODO_ACTIONS_DIR/utils.sh"
 num=$(linenr "$num")
-linenr_handler
+error_handler
 
 $EDITOR "+$num" "$TODO_FILE"

@@ -75,7 +75,7 @@ overview() {
 			;;
 	esac
 
-	# Parameters
+	# parameters
 	local -r min_lines="10" # per tag -- tasks + heading
 	local -r min_desc_chars="30"
 	local -r prompt_n_lines=3
@@ -86,7 +86,9 @@ overview() {
 
 	print_header "$name"
 
-	# # bash: read tag:tasks
+	# read tag:tasks
+
+	# bash implementation
 	# declare -A tasks
 	# while read -r task; do
 	# 	while read -r tag; do
@@ -94,7 +96,7 @@ overview() {
 	# 	done < <(echo "$task" | grep "$symbol\S\+" -o || echo "-$symbol")
 	# done < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls)
 
-	# python
+	# python implementation
 	declare -A tasks
 	mapfile -t -d '' parr < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | $TODO_ACTIONS_DIR/tags.py "$symbol")
 	# total_len - 1, tag1, tasks1, ...
@@ -104,14 +106,15 @@ overview() {
 		tasks[$tag]=$task
 	done
 
+	# output size
 	local -r n_tags=${#tasks[@]}
 	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols))       # ceil(tags/cols)
 	local n_lines=$(((term_h - prompt_n_lines - 1) / n_rows)) # XXX -1 -- header
-
 	# ensure a minimum number of tasks per tag
 	local overflow= # bool: output didn't fit on a single screen
 	((min_lines > n_lines)) && n_lines="$min_lines" && overflow="1"
 
+	# format pieces
 	local cells=()
 	for tag in "${!tasks[@]}"; do
 		local count=$(printf -- "%s" "${task}" | wc -l)

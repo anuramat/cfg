@@ -71,7 +71,7 @@ overview() {
 
 	# Parameters
 	local -r min_lines="10" # per tag -- tasks + heading
-	local -r min_desc_chars="50"
+	local -r min_desc_chars="30"
 	local -r prompt_n_lines=3
 
 	local -r term_w=$(tput cols)

@@ -3,6 +3,9 @@
 error_handler() {
 	local -r code="$?"
 	case "$code" in
+		0)
+			return
+			;;
 		1)
 			echo "Invalid task number"
 			exit "$code"
@@ -16,7 +19,8 @@ error_handler() {
 			exit "$code"
 			;;
 		*)
-			echo "Unexpected error"
+			echo "Unexpected error $code"
+			exit "$code"
 			;;
 	esac
 }

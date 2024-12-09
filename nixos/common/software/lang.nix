@@ -33,6 +33,7 @@
     stylua # Lua
     yamlfmt # YAML
     nodePackages.prettier # formatting
+    html-tidy
     black # Python
     gofumpt # strict(er) go
     cbfmt # code block formatter (markdown)
@@ -62,6 +63,8 @@
     # Misc {{{1
     jq # json processor
     yq # basic yaml, json, xml, csv, toml processor
+    htmlq
+    tidy-viewer # csv viewer
     pup # html
     bats # Bash testing
     universal-ctags # maintained ctags

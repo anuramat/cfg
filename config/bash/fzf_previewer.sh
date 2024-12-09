@@ -16,7 +16,7 @@ if [ -d "$1" ]; then
 elif [ -f "$1" ]; then
 	# preview file contents: bat > cat
 	if command -v "bat" &> /dev/null; then
-		bat -n --color=always "$1"
+		bat --style=numbers --color=always "$1"
 		exit
 	fi
 	cat "$1"

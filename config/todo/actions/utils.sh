@@ -86,13 +86,25 @@ overview() {
 
 	print_header "$name"
 
-	# read tags
-	local tags
-	mapfile -t tags < <(
-		$TODO_SH command "$subcmd"
-		echo -"$symbol" # unfiled tasks
-	)
-	local -r n_tags=${#tags[@]}
+	# # bash: read tag:tasks
+	# declare -A tasks
+	# while read -r task; do
+	# 	while read -r tag; do
+	# 		tasks[$tag]+="$task"$'\n'
+	# 	done < <(echo "$task" | grep "$symbol\S\+" -o || echo "-$symbol")
+	# done < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls)
+
+	# python
+	declare -A tasks
+	mapfile -t -d '' parr < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | $TODO_ACTIONS_DIR/tags.py "$symbol")
+	# total_len - 1, tag1, tasks1, ...
+	for i in $(seq 1 2 $parr); do
+		tag=${parr[i]}
+		task=${parr[$((i + 1))]}
+		tasks[$tag]=$task
+	done
+
+	local -r n_tags=${#tasks[@]}
 	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols))       # ceil(tags/cols)
 	local n_lines=$(((term_h - prompt_n_lines - 1) / n_rows)) # XXX -1 -- header
 
@@ -100,27 +112,12 @@ overview() {
 	local overflow= # bool: output didn't fit on a single screen
 	((min_lines > n_lines)) && n_lines="$min_lines" && overflow="1"
 
-	# read tasks by tag
 	local cells=()
-
-	# # fucked but pure bash
-	# for tag in "${tags[@]}"; do
-	# 	local tasks=$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac)
-	# 	local count=$(printf "%s" "$tasks" | wc -l)
-	# 	local heading="$tag: $count"
-	# 	local underline=$(print_header "" "${#heading}")
-	# 	cells+=("$(printf -- "\n$heading\n$underline\n%s" "$tasks" | head -n "$n_lines")")
-	# done
-
-	mapfile -t -d '' parr < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | $TODO_ACTIONS_DIR/tags.py "$symbol")
-	# total_len - 1, tag1, tasks1, ...
-	for i in $(seq 1 2 $parr); do
-		tag=${parr[i]}
-		tasks=${parr[$((i + 1))]}
+	for tag in "${!tasks[@]}"; do
 		local count=$(printf -- "%s" "${task}" | wc -l)
 		local heading="$tag: $count"
 		local underline=$(print_header "" "${#heading}")
-		cells+=("$(printf -- "\n$heading\n$underline\n%s" "$tasks" | head -n "$n_lines")")
+		cells+=("$(printf -- "\n$heading\n$underline\n%s" "${tasks[$tag]}" | head -n "$n_lines")")
 	done
 
 	# disable stretching on the last row by adding an empty cell

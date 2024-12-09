@@ -34,25 +34,54 @@ linenr() {
 	echo "$num"
 }
 
-view_by_tag() {
-	local -r symbol="$1" # + or @
-	local -r subcmd="$2" # lsprj or lsc
+__print_header() {
+	local -r name=$1
+	local width=$2
 
-	# terminal_height - output_height
+	[ -z "$2" ] && width=$(tput cols)
+	echo $width
+	local -r padding=$((width - ${#name}))
+	local -r template="\xE2\x80\x95%.0s"
+	printf "$template" $(seq $((padding / 2)))
+	printf "%s" "$name"
+	printf "$template" $(seq $((padding / 2 + padding % 2)))
+	printf '\n'
+}
+
+overview() {
+	local -r name="$1"
+	local symbol
+	local subcmd
+
+	case "$1" in
+		"contexts")
+			symbol="@"
+			subcmd="lsc"
+			;;
+		"projects")
+			symbol="+"
+			subcmd="lsprj"
+			;;
+		*)
+			return 1
+			;;
+	esac
+
+	# TODO what
 	local offset=0
 
 	# Parameters
 	local -r min_lines="10" # per tag -- tasks + header
 	local -r min_desc_chars="50"
 	local -r prompt_n_lines=3
-	local -r header='\n%s\n---\n' && ((offset -= 1))
+	local -r header='\n%s\n---\n'
 
 	local -r term_w=$(tput cols)
 	local -r term_h=$(tput lines)
 	local -r n_cols=$((term_w / min_desc_chars))
-	((offset += prompt_n_lines))
+	((offset += prompt_n_lines + 1))
 
-	printf "\xE2\x80\x95%.0s" $(seq ${term_w}) && ((offset -= 1))
+	__print_header "$name"
 
 	# read tags
 	local tags

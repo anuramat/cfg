@@ -37,15 +37,12 @@ linenr() {
 __print_header() {
 	local -r name=$1
 	local width=$2
-
 	[ -z "$2" ] && width=$(tput cols)
-	echo $width
 	local -r padding=$((width - ${#name}))
-	local -r template="\xE2\x80\x95%.0s"
-	printf "$template" $(seq $((padding / 2)))
-	printf "%s" "$name"
-	printf "$template" $(seq $((padding / 2 + padding % 2)))
-	printf '\n'
+	local -r template="-%.0s"
+	printf -- "$template" $(seq $((padding / 2)))
+	printf -- "%s" "$name"
+	printf -- "$template" $(seq $((padding / 2 + padding % 2)))
 }
 
 overview() {
@@ -67,19 +64,14 @@ overview() {
 			;;
 	esac
 
-	# TODO what
-	local offset=0
-
 	# Parameters
-	local -r min_lines="10" # per tag -- tasks + header
+	local -r min_lines="10" # per tag -- tasks + heading
 	local -r min_desc_chars="50"
 	local -r prompt_n_lines=3
-	local -r header='\n%s\n---\n'
 
 	local -r term_w=$(tput cols)
 	local -r term_h=$(tput lines)
 	local -r n_cols=$((term_w / min_desc_chars))
-	((offset += prompt_n_lines + 1))
 
 	__print_header "$name"
 
@@ -90,8 +82,8 @@ overview() {
 		echo -"$symbol" # unfiled tasks
 	)
 	local -r n_tags=${#tags[@]}
-	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols)) # ceil(tags/cols)
-	local n_lines=$(((term_h - offset) / n_rows))
+	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols))       # ceil(tags/cols)
+	local n_lines=$(((term_h - prompt_n_lines + 1) / n_rows)) # +1 for header
 
 	# ensure a minimum number of tasks per tag
 	local overflow= # bool: output didn't fit on a single screen
@@ -102,7 +94,9 @@ overview() {
 	for tag in "${tags[@]}"; do
 		local tasks=$(TODOTXT_VERBOSE=0 $TODO_SH -"$symbol" -p command ls "$tag" | tac)
 		local count=$(printf "%s" "$tasks" | wc -l)
-		cells+=("$(printf "$header%s" "$tag: $count" "$tasks" | head -n "$n_lines")")
+		local heading="$tag: $count"
+		local underline=$(__print_header "" "${#heading}")
+		cells+=("$(printf -- "\n$heading\n$underline\n%s" "$tasks" | head -n "$n_lines")")
 	done
 
 	# disable stretching on the last row by adding an empty cell

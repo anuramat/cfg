@@ -83,7 +83,7 @@ overview() {
 	)
 	local -r n_tags=${#tags[@]}
 	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols))       # ceil(tags/cols)
-	local n_lines=$(((term_h - prompt_n_lines + 1) / n_rows)) # +1 for header
+	local n_lines=$(((term_h - prompt_n_lines - 1) / n_rows)) # -1 for header
 
 	# ensure a minimum number of tasks per tag
 	local overflow= # bool: output didn't fit on a single screen

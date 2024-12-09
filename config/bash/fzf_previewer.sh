@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 if [ -d "$1" ]; then
-	# preview the directory tree: eza > tree > ls
+	# preview the directory (tree): eza > tree > ls
 	if command -v "eza" &> /dev/null; then
-		$EZACMD --tree "$1"
+		# $EZACMD --tree "$1"
+		$EZACMD --grid "$1"
 		exit
 	fi
 	if command -v "tree" &> /dev/null; then

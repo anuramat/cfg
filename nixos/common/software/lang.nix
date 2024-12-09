@@ -62,6 +62,7 @@
     # Misc {{{1
     jq # json processor
     yq # basic yaml, json, xml, csv, toml processor
+    pup # html
     bats # Bash testing
     universal-ctags # maintained ctags
     bear # Compilation database generator for clangd

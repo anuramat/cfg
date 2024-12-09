@@ -42,9 +42,11 @@ linenr() {
 print_header() {
 	local -r name=$1
 	local width=$2
-	[ -z "$2" ] && width=$(tput cols)
+	local symbol=$3
+	[ -z "$width" ] && width=$(tput cols)
+	[ -z "$symbol" ] && symbol="-"
 	local -r padding=$((width - ${#name}))
-	local -r template="-%.0s"
+	local -r template="$symbol%.0s"
 	printf -- "$template" $(seq $((padding / 2)))
 	printf -- "%s" "$name"
 	printf -- "$template" $(seq $((padding / 2 + padding % 2)))
@@ -88,7 +90,7 @@ overview() {
 	)
 	local -r n_tags=${#tags[@]}
 	local -r n_rows=$(((n_tags + n_cols - 1) / n_cols))       # ceil(tags/cols)
-	local n_lines=$(((term_h - prompt_n_lines - 1) / n_rows)) # -1 for header
+	local n_lines=$(((term_h - prompt_n_lines - 1) / n_rows)) # XXX -1 -- header
 
 	# ensure a minimum number of tasks per tag
 	local overflow= # bool: output didn't fit on a single screen
@@ -111,6 +113,7 @@ overview() {
 
 	# use pr to columnate output
 	for i in $(seq 0 $((n_rows - 1))); do
+		# evil magic to pass an array of strings using process substitution
 		subs=$(printf '<(printf %%s %q) ' "${cells[@]:$((i * n_cols)):n_cols}")
 		eval pr --omit-pagination --merge --width="$term_w" $subs
 	done

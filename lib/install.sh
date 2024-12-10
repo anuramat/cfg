@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-. ./nix/common/software/bash/profile.sh
 set -e
+source /etc/profile
 
 lndir() {
 	source="$1"

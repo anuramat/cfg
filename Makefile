@@ -2,12 +2,10 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 
 # Setup {{{1
-.PHONY: all system configs
-all: system configs
+.PHONY: system
 system:
 	@ printf ${heading} "Building NixOS"
 	@ sudo nixos-rebuild switch
-configs:
 	@ printf ${heading} "Installing configs"
 	@ ./lib/install.sh
 

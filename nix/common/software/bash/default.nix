@@ -60,7 +60,7 @@
   # bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
 
   environment = {
-    environment.etc."profile.local".text = builtins.readFile ./profile.sh;
+    etc."profile.local".text = builtins.readFile ./profile.sh;
     localBinInPath = true; # TODO change
     shellAliases = lib.mkForce {};
     shellInit = "# placeholder: environment.shellInit";

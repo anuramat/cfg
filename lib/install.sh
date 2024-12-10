@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e
-source /etc/profile # TODO change
+source /etc/profile.local
 
 lndir() {
 	source="$1"

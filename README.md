@@ -5,6 +5,7 @@
 Better to do it from the tty, since GUI stuff starts to fall apart:
 ```bash
 nix-shell -p gnumake git
+cd /etc
 git clone git@github.com:anuramat/cfg ~/cfg
 cd ~/cfg
 make # will complain because of the hostname mismatch

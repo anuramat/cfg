@@ -52,7 +52,7 @@ return {
         line_numbers = true,
         multiline_threshold = 1, -- Maximum number of lines to show for a single context
         trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-        mode = 'topline', -- Line used to calculate context. Choices: 'cursor', 'topline'
+        mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
         -- separator = '―', -- Separator between context and content. nil or a single character
         zindex = 20, -- The Z-index of the context window
       })

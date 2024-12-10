@@ -38,7 +38,7 @@
   "neopywal": { "branch": "master", "commit": "2d65d138463bbbe9d824b9bc1048ef1888017da6" },
   "neotest": { "branch": "master", "commit": "6d3d22cdad49999ef774ebe1bc250a4994038964" },
   "neotest-go": { "branch": "main", "commit": "92950ad7be2ca02a41abca5c6600ff6ffaf5b5d6" },
-  "none-ls.nvim": { "branch": "main", "commit": "fc2af03aee220caba07684583be22fb5de81d6d3" },
+  "none-ls.nvim": { "branch": "main", "commit": "58866c670d68ef80397c317a3a1ee5f53ca646fd" },
   "nvim-FeMaco.lua": { "branch": "main", "commit": "96bbf843595dbe865838b3f2484b73557f34700c" },
   "nvim-cmp": { "branch": "main", "commit": "ca4d3330d386e76967e53b85953c170658255ecb" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "4acf88d31b3a7a1a7f31e9c30bf2b23c6313abdb" },

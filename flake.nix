@@ -8,7 +8,7 @@
     zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
   outputs = {nixpkgs, ...} @ inputs: let
-    user = import ./user.nix;
+    user = import ./nix/user.nix;
     unstable = import inputs.nixpkgs-unstable {
       config.allowUnfree = true;
       system = "x86_64-linux";
@@ -20,7 +20,7 @@
         inherit specialArgs;
         modules = [
           ./configuration.nix
-          ./machines/${name}.nix
+          ./nix/machines/${name}.nix
         ];
       };
     };

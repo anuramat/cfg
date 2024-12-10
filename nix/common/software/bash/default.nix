@@ -46,17 +46,24 @@
       shellInit = "# placeholder: bash.shellInit";
       loginShellInit = "# placeholder: bash.loginShellInit";
       interactiveShellInit = ''
+        # start: bash.interactiveShellInit
         source ${./osc.sh}
         source ${./history.sh}
         source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
+        # end
       '';
     };
   };
 
+  # apparently:
+  # profile: bash init, sh init, bash login, sh login, /etc/profile.local, /etc/bashrc
+  # bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
+
   environment = {
+    environment.etc."profile.local".text = builtins.readFile ./profile.sh;
     localBinInPath = true; # TODO change
     shellAliases = lib.mkForce {};
-    shellInit = builtins.readFile ./profile.sh;
+    shellInit = "# placeholder: environment.shellInit";
     loginShellInit = "# placeholder: environment.loginShellInit";
     interactiveShellInit = "# placeholder: environment.interactiveShellInit";
     extraInit = "# placeholder: environment.extraInit";

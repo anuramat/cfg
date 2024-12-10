@@ -23,10 +23,9 @@
     system-config-printer # printer gui
 
     # Opening stuff {{{1
-    nemo # wayland native
     desktop-file-utils # update-desktop-database etc
-    wmenu
-    j4-dmenu-desktop
+    wmenu # dmenu
+    j4-dmenu-desktop # .desktop wrapper for dmenus
     xdg-utils # xdg-open etc
     xdragon # drag and drop from terminal
 

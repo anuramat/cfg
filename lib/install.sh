@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-. ./home/.profile
+. ./nix/common/software/bash/profile.sh
 set -e
 
 lndir() {

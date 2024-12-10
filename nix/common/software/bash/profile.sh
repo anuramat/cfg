@@ -1,4 +1,5 @@
 #!/bin/sh
+# WARN check usage on move
 
 # XDG paths
 export XDG_CONFIG_HOME="$HOME/.config"

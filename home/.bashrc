@@ -5,7 +5,6 @@ set +H
 
 export UNDISTRACT_TOLERANCE=1
 
-source "$HOME/.profile"
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
 command -v zoxide &> /dev/null && eval "$(zoxide init bash --cmd j --hook pwd)" # appends

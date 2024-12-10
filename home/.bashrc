@@ -191,7 +191,7 @@ ghsync() {
 }
 # check if everything is pushed
 gc() {
-	local nonghq=("$HOME/notes" "$HOME/cfg")
+	local nonghq=("$HOME/notes" "/etc/nixos")
 	local dirty="$(
 		while IFS= read -r -d '' path; do
 			(

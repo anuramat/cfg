@@ -208,7 +208,7 @@ gc() {
 			ghq list -p | tr '\n' '\0'
 		)
 	)"
-	[ -z "$dirty" ] && return
+	[ -z "$dirty" ] && { echo "all clean!"; return; }
 	echo "dirty repos:"
 	printf "%s\n" "$dirty"
 }

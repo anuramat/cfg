@@ -6,6 +6,7 @@ Better to do it from the tty, since GUI stuff starts to fall apart:
 ```bash
 nix-shell -p gnumake git
 git clone --depth 1 -- git@github.com:anuramat/cfg
+sudo rm -rf /etc/nixos
 sudo mv -T cfg /etc/nixos
 nixos-generate-config
 sudo nixos-rebuild switch # hostname mismatch ? --flake /etc/nixos#$(hostname)

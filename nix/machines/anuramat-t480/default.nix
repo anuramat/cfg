@@ -1,7 +1,10 @@
 {inputs, ...}: {
   system.stateVersion = "24.05";
 
-  imports = [inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480];
+  imports = [
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+    ./hardware-configuration.nix
+  ];
 
   networking.hostName = "anuramat-t480";
 

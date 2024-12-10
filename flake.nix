@@ -19,8 +19,8 @@
       value = nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [
-          ./configuration.nix
-          ./nix/machines/${name}.nix
+          ./nix/machines/${name}
+          ./nix/common
         ];
       };
     };

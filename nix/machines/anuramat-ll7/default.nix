@@ -10,6 +10,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.common-cpu-intel
     inputs.nixos-hardware.nixosModules.common-gpu-intel
+    ./hardware-configuration.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -83,4 +84,3 @@
   # }}}
 }
 # vim: fdm=marker fdl=0
-

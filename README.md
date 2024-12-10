@@ -5,7 +5,7 @@
 Better to do it from the tty, since GUI stuff starts to fall apart:
 ```bash
 nix-shell -p gnumake git
-git clone git@github.com:anuramat/cfg
+git clone --depth 1 -- git@github.com:anuramat/cfg
 sudo mv -T cfg /etc/nixos
 nixos-generate-config
 sudo nixos-rebuild switch # hostname mismatch ? --flake /etc/nixos#$(hostname)

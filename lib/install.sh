@@ -3,9 +3,12 @@
 set -e
 
 lndir() {
+	source="$1"
+	directory="$2"
 	shopt -s dotglob
-	mkdir -p "$2"
-	ln -sft "$2" "$1"/*
+	mkdir -p "$directory"
+	find "$directory" -maxdepth 1 -xtype l -delete
+	ln -sft "$directory" "$source"/*
 	shopt -u dotglob
 }
 

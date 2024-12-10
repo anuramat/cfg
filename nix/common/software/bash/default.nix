@@ -54,7 +54,7 @@
   environment = {
     localBinInPath = true;
     shellAliases = lib.mkForce {};
+    shellInit = builtins.readFile ./profile.sh;
   };
 }
 # vim: fdl=3
-

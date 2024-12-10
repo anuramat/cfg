@@ -14,7 +14,4 @@ lndir() {
 
 lndir "$PWD/home" "$HOME"
 lndir "$PWD/config" "$XDG_CONFIG_HOME"
-
 touch "$HOME/.hushlogin"
-xdg-user-dirs-update --force
-# TODO maybe ensure path for xdg basedir spec too

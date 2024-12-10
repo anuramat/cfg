@@ -9,8 +9,6 @@ system:
 	@ sudo nixos-rebuild switch
 configs:
 	@ printf ${heading} "Installing configs"
-	@ xdg-user-dirs-update --force
-	# TODO maybe ensure path for xdg basedir spec too
 	@ ./lib/install.sh
 
 # Code {{{1

@@ -46,7 +46,6 @@
     smem # ram usage
     usbutils
     v4l-utils
-    xdg-user-dirs # $HOME/* dir management
 
     # network {{{1
     dig # dns utils
@@ -189,4 +188,3 @@
   ];
 }
 # vim: fdm=marker fdl=0
-

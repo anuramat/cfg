@@ -47,7 +47,11 @@ local configs = function()
         },
       },
     },
-    pyright = {},
+    pyright = {
+      settings = {
+        python = {},
+      },
+    },
     marksman = {},
     clangd = {
       on_attach = function(client, buffer)

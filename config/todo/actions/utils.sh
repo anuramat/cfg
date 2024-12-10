@@ -59,16 +59,13 @@ print_header() {
 overview() {
 	local -r name="$1"
 	local symbol
-	local subcmd
 
 	case "$1" in
 		"contexts")
 			symbol="@"
-			subcmd="lsc"
 			;;
 		"projects")
 			symbol="+"
-			subcmd="lsprj"
 			;;
 		*)
 			return 3

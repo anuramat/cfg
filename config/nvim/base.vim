@@ -1,5 +1,6 @@
 " vim: fdm=marker fdl=0
 " TODO: maybe remove bangs where not necessary?
+
 " mappings {{{1
 let mapleader = " "
 let maplocalleader = mapleader . ";"
@@ -47,6 +48,7 @@ se synmaxcol=300
 " se spl=en,ru " spelling languages (russian will trigger download)
 " se path+=** " recurse in path - bad idea
 se mouse= " disable mouse
+
 " shell {{{2
 " se shcf=-ic " use an interactive shell for "!" so that background jobs work
 " source everything; breaks plenary:
@@ -80,6 +82,7 @@ se signcolumn=yes " gutter
 let g:border="solid" " read this from plugin configs; `:he nvim_open_win`
 let g:nonfiles=['NeogitStatus', 'NeogitPopup', 'oil', 'lazy', 'lspinfo', 'null-ls-info', 'NvimTree', 'neo-tree', 'alpha', 'help']
 se ph=20 " popup max height
+
 " fallback colorscheme {{{2
 if !exists("g:colors_name") " so that we can re-source without changing colorscheme
   try
@@ -88,6 +91,7 @@ if !exists("g:colors_name") " so that we can re-source without changing colorsch
     colo elflord
   endtry
 endif
+
 " pseudo/transparency, sucks in terminal {{{2
 " se winbl=30 " floating window transparency
 " se pb=30 " popup transparency

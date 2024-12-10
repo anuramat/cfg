@@ -41,8 +41,10 @@
 
     bash = {
       shellAliases = lib.mkForce {};
-      promptInit = "";
+      promptInit = "# placeholder: bash.promptInit";
       enableLsColors = false;
+      shellInit = "# placeholder: bash.shellInit";
+      loginShellInit = "# placeholder: bash.loginShellInit";
       interactiveShellInit = ''
         source ${./osc.sh}
         source ${./history.sh}
@@ -52,9 +54,12 @@
   };
 
   environment = {
-    localBinInPath = true;
+    localBinInPath = true; # TODO change
     shellAliases = lib.mkForce {};
     shellInit = builtins.readFile ./profile.sh;
+    loginShellInit = "# placeholder: environment.loginShellInit";
+    interactiveShellInit = "# placeholder: environment.interactiveShellInit";
+    extraInit = "# placeholder: environment.extraInit";
   };
 }
 # vim: fdl=3

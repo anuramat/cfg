@@ -19,7 +19,7 @@ return {
   -- lsp-format.nvim
   {
     'lukas-reineke/lsp-format.nvim',
-    lazy = false, -- TODO skill issue, not sure if even helps
+    lazy = false,
     opts = {
       lua = {
         exclude = {

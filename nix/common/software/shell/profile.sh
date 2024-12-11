@@ -8,6 +8,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Not part of the spec yet
 export XDG_BIN_HOME="$HOME/.local/bin"
+export PATH="$XDG_BIN_HOME${PATH:+:$PATH}"
 
 export LC_ALL="en_US.UTF-8" # just in case, this is already defined in nix
 export PAGER=less           # just in case, this is already defined somewhere in system level rc

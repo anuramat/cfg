@@ -1,6 +1,7 @@
 // TODO remove unused shit
 [
   {
+    "mode": "overlay",
     "margin": 0,
     "ipc": true,
     "position": "bottom",
@@ -22,13 +23,6 @@
       "sway/language",
       "clock",
     ],
-    "sway/window": {
-      "rewrite": {
-        "(.*) - Google Chrome": "󰖟 $1",
-        "(.*) - qutebrowser": "󰖟 $1",
-        "": "Sway" // such a dirty trick
-      }
-    },
     "sway/workspaces": {
       "disable-scroll": true
     },

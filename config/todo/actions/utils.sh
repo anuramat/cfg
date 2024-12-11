@@ -95,13 +95,9 @@ overview() {
 
 	# python implementation
 	declare -A tasks
-	mapfile -t -d '' parr < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | $TODO_ACTIONS_DIR/tags.py "$symbol")
-	# total_len - 1, tag1, tasks1, ...
-	for i in $(seq 1 2 $parr); do
-		tag=${parr[i]}
-		task=${parr[$((i + 1))]}
+	while IFS= read -rd '' tag && read -rd '' task; do
 		tasks[$tag]=$task
-	done
+	done < <(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | $TODO_ACTIONS_DIR/tags.py "$symbol")
 
 	# output size
 	local -r n_tags=${#tasks[@]}

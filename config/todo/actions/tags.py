@@ -26,9 +26,9 @@ def main():
             tasks_by_tags[f"-{symbol[-1]}"].append(task)
 
     delim = "\0"
-    res = str(len(tasks_by_tags) * 2)
+    res = ""
     for tag, tasks in tasks_by_tags.items():
-        res += f"{delim}{tag}{delim}{'\n'.join(tasks[::-1])}"
+        res += f"{tag}{delim}{'\n'.join(tasks[::-1])}{delim}"
 
     print(res, end="")
 

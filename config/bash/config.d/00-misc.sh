@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
+export SCREENSHOT_DIR="$HOME/img/screen"
 mkdir -p "$SCREENSHOT_DIR"
 
 # eza

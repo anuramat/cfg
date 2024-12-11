@@ -61,7 +61,6 @@
   # /etc/bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
 
   environment = {
-    localBinInPath = true; # TODO change
     shellAliases = lib.mkForce {};
     shellInit = "# placeholder: environment.shellInit";
     loginShellInit = ''
@@ -75,4 +74,3 @@
   };
 }
 # vim: fdl=3
-

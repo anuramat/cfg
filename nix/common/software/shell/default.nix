@@ -46,27 +46,33 @@
       shellInit = "# placeholder: bash.shellInit";
       loginShellInit = "# placeholder: bash.loginShellInit";
       interactiveShellInit = ''
-        # start: bash.interactiveShellInit
+        # bash.interactiveShellInit {{{1
+        source ${./profile.sh}
         source ${./osc.sh}
         source ${./history.sh}
         source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
-        # end
+        # end }}}
       '';
     };
   };
 
-  # apparently:
-  # profile: bash init, sh init, bash login, sh login, /etc/profile.local, /etc/bashrc
-  # bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
+  # exec order:
+  # /etc/profile: bash init, sh init, bash login, sh login, /etc/profile.local, /etc/bashrc
+  # /etc/bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
 
   environment = {
-    etc."profile.local".text = builtins.readFile ./profile.sh;
     localBinInPath = true; # TODO change
     shellAliases = lib.mkForce {};
     shellInit = "# placeholder: environment.shellInit";
-    loginShellInit = "# placeholder: environment.loginShellInit";
+    loginShellInit = ''
+      # placeholder: environment.loginShellInit {{{1
+      source ${./profile.sh}
+      source ${./sway_autostart.sh}
+      # end }}}
+    '';
     interactiveShellInit = "# placeholder: environment.interactiveShellInit";
     extraInit = "# placeholder: environment.extraInit";
   };
 }
 # vim: fdl=3
+

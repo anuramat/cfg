@@ -5,21 +5,22 @@
 }: {
   environment.systemPackages = with pkgs; [
     # Compilers {{{1
-    go
-    nodejs_20
-    yarn
-    ruby
-    perl
-    llvm
-    clang
-    python3
-    lua
-    texliveFull
     cargo
+    clang
+    go
+    julia
+    llvm
+    lua
+    nodejs_20
+    perl
+    python3
+    ruby
     rustc
-    unstable.stack
+    texliveFull
     unstable.cabal-install
     unstable.ghc
+    unstable.stack
+    yarn
 
     # Debuggers {{{1
     delve # Go debugger

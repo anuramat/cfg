@@ -2,12 +2,14 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 
 # Setup {{{1
-.PHONY: system
-system:
+.PHONY: all flake config
+all: flake config
+flake:
 	@ printf ${heading} "Building NixOS"
 	@ sudo nixos-rebuild switch
-	@ printf ${heading} "Installing configs"
-	@ ./lib/install.sh
+config: 
+	@ printf ${heading} "Linking configs"
+	@ BASH_ENV=/etc/profile ./lib/install.sh
 
 # Code {{{1
 .PHONY: code 

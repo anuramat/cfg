@@ -190,25 +190,26 @@ ghsync() {
 }
 # check if everything is pushed
 gc() {
-	local nonghq=("$HOME/notes" "/etc/nixos")
-	local dirty="$(
+	local repos=("$HOME/notes" "/etc/nixos")
+	local root=$(ghq root)
+	local dirty
+	get_dirty() {
+		local prefix_length="$1"
 		while IFS= read -r -d '' path; do
 			(
 				cd "$path" || exit
 				[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && exit
-				# repos in home
-				[ "$(dirname $path)" = "$HOME" ] && printf '\t%s\n' "$(basename $path)" && return
-				# ghq repos
-				# TODO maybe remove expr length, figure out how to work with command output length without variables
-				printf '\t%s\n' "${path:$(ghq root | wc -m)}"
+				[ -n "$prefix_length" ] && printf '\t%s\n' "${path:prefix_length}" && exit
+				printf '\t%s\n' "$(basename $path)"
 			)
-		done < <(
-			printf '%s\0' "${nonghq[@]}"
-			# could potentially break if a path contains a newline
-			ghq list -p | tr '\n' '\0'
-		)
-	)"
-	[ -z "$dirty" ] && { echo "all clean!"; return; }
+		done
+	}
+	dirty=$(printf '%s\0' "${repos[@]}" | get_dirty)
+	dirty+=$(ghq list -p | tr '\n' '\0' | get_dirty ${#root})
+	[ -z "$dirty" ] && {
+		echo "all clean!"
+		return
+	}
 	echo "dirty repos:"
 	printf "%s\n" "$dirty"
 }

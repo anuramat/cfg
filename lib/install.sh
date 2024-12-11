@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -e
-source /etc/profile.local
+
+# get $XDG_CONFIG_HOME
+[ -z "$XDG_CONFIG_HOME" ] && {
+	echo '$XDG_CONFIG_HOME unset'
+	exit 1
+}
 
 lndir() {
 	source="$1"

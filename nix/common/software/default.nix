@@ -3,6 +3,6 @@ _: {
     ./core.nix
     ./desktop
     ./lang.nix
-    ./bash
+    ./shell
   ];
 }

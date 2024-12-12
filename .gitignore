@@ -1,2 +1,7 @@
-/config/btop/btop.log
 *generated-colors*
+
+/config/btop/btop.log
+/config/qalculate/qalc.history
+/config/ipython/profile_default/history.sqlite
+/config/jupyter/lab/workspaces
+/config/ghc/ghci_history

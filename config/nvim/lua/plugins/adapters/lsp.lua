@@ -33,7 +33,22 @@ local configs = function()
       },
     }, -- knows nixos and nixpkgs: hover, completions
     -- nil_ls = {}, -- nice code actions
-    yamlls = {},
+    yamlls = {
+      -- config stolen from schemaStore.nvim readme
+      schemaStore = {
+        -- > You must disable built-in schemaStore support if you want to use
+        -- > this plugin and its advanced options like `ignore`.
+        enable = false,
+        -- > Avoid TypeError: Cannot read properties of undefined (reading 'length')
+        url = '',
+      },
+      schemas = require('schemastore').yaml.schemas(),
+    },
+    jsonls = {
+      cmd = { 'vscode-json-languageserver', '--stdio' },
+      schemas = require('schemastore').json.schemas(),
+      validate = { enable = true },
+    },
     texlab = {},
     bashls = {
       settings = {
@@ -136,6 +151,7 @@ return {
   dependencies = {
     'hrsh7th/nvim-cmp',
     'ray-x/lsp_signature.nvim',
+    'b0o/schemastore.nvim',
   },
   config = function()
     local lspconfig = require('lspconfig')

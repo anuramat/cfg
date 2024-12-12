@@ -42,6 +42,7 @@
     # Servers {{{1
     nodePackages_latest.bash-language-server
     nodePackages_latest.yaml-language-server
+    nodePackages_latest.vscode-json-languageserver
     lua-language-server
     texlab
     unstable.haskell-language-server
@@ -82,4 +83,3 @@
   ];
 }
 # vim: fdm=marker fdl=0
-

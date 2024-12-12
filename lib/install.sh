@@ -19,4 +19,4 @@ lndir() {
 
 lndir "$PWD/home" "$HOME"
 lndir "$PWD/config" "$XDG_CONFIG_HOME"
-touch "$HOME/.hushlogin"
+# touch "$HOME/.hushlogin" # try ln to null if needed

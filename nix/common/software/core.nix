@@ -153,6 +153,8 @@
     # TODO find the best??
     imv # image viewer
     swayimg # image viewer
+    ueberzugpp
+    timg # terminal img viewer
     unstable.lsix # ls for images (uses sixel)
 
     # video {{{1
@@ -188,4 +190,3 @@
   ];
 }
 # vim: fdm=marker fdl=0
-

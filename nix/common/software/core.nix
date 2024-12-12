@@ -154,7 +154,8 @@
     imv # image viewer
     swayimg # image viewer
     ueberzugpp
-    timg # terminal img viewer
+    timg
+    chafa
     unstable.lsix # ls for images (uses sixel)
 
     # video {{{1

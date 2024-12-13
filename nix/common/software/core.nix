@@ -153,10 +153,10 @@
     # TODO find the best??
     imv # image viewer
     swayimg # image viewer
-    ueberzugpp
-    timg
-    chafa
-    unstable.lsix # ls for images (uses sixel)
+    ueberzugpp # sixel++
+    timg # sixel+
+    chafa # sixel+, doesn't work with fzf half the time
+    unstable.lsix # sixel ls
 
     # video {{{1
     vlc

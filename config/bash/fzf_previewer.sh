@@ -15,11 +15,10 @@ if [ -d "$1" ]; then
 	exit
 
 elif [ -f "$1" ]; then
+	timg -p s "-g${FZF_PREVIEW_COLUMNS}x$FZF_PREVIEW_LINES" $1 && exit
 	# preview file contents: bat > cat
 	if command -v "bat" &> /dev/null; then
-		bat --style=numbers --color=always "$1"
-		exit
+		bat --style=numbers --color=always "$1" && exit
 	fi
-	cat "$1"
-	exit
+	cat "$1" && exit
 fi

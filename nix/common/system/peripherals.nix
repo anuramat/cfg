@@ -27,4 +27,6 @@
     unstable.keymapp # ZSA keyboard thing
     pkgs.polychromatic # openrazer frontend
   ];
+  # kmonad is apparently big and slow
+  # services.keyd.keyboards.<name>.settins =
 }

@@ -39,16 +39,6 @@
           ];
           settings = {
             main = {
-              # a = "overloadt2(control, a, 128)";
-              # s = "overloadt2(shift, s, 128)";
-              # d = "overloadt2(alt, d, 128)";
-              # f = "overloadt2(meta, f, 128)";
-              #
-              # semicolon = "overloadt2(control, semicolon, 128)";
-              # l = "overloadt2(shift, l, 128)";
-              # k = "overloadt2(alt, k, 128)";
-              # j = "overloadt2(meta, j, 128)";
-
               a = "lettermod(control, a, 128, 256)";
               s = "lettermod(shift, s, 128, 256)";
               d = "lettermod(alt, d, 128, 256)";

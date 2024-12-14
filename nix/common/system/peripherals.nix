@@ -48,10 +48,12 @@
               k = "overloadt2(alt, k, 128)";
               j = "overloadt2(meta, j, 128)";
 
-              # <https://github.com/rvaiya/keyd/issues/618>
+              # <https://github.com/rvaiya/keyd/issues/114>
               # sad.
               rightcontrol = "rightcontrol";
               rightshift = "rightshift";
+              rightalt = "rightalt";
+              rightmeta = "rightmeta";
             };
           };
         };

@@ -39,15 +39,25 @@
           ];
           settings = {
             main = {
-              a = "overloadt2(control, a, 128)";
-              s = "overloadt2(shift, s, 128)";
-              d = "overloadt2(alt, d, 128)";
-              f = "overloadt2(meta, f, 128)";
+              # a = "overloadt2(control, a, 128)";
+              # s = "overloadt2(shift, s, 128)";
+              # d = "overloadt2(alt, d, 128)";
+              # f = "overloadt2(meta, f, 128)";
+              #
+              # semicolon = "overloadt2(control, semicolon, 128)";
+              # l = "overloadt2(shift, l, 128)";
+              # k = "overloadt2(alt, k, 128)";
+              # j = "overloadt2(meta, j, 128)";
 
-              semicolon = "overloadt2(control, semicolon, 128)";
-              l = "overloadt2(shift, l, 128)";
-              k = "overloadt2(alt, k, 128)";
-              j = "overloadt2(meta, j, 128)";
+              a = "lettermod(control, a, 128, 256)";
+              s = "lettermod(shift, s, 128, 256)";
+              d = "lettermod(alt, d, 128, 256)";
+              f = "lettermod(meta, f, 128, 256)";
+
+              semicolon = "lettermod(control, semicolon, 128, 256)";
+              l = "lettermod(shift, l, 128, 256)";
+              k = "lettermod(alt, k, 128, 256)";
+              j = "lettermod(meta, j, 128, 256)";
 
               # <https://github.com/rvaiya/keyd/issues/114>
               # sad.

@@ -71,20 +71,6 @@ $bind {
     # }}}
 }
 
-$bind $mod+$resize_key mode "resize"
-mode "resize" $bind {
-    # Directions {{{1
-    $left resize shrink width $resize_value
-    $down resize shrink height $resize_value
-    $up resize grow height $resize_value
-    $right resize grow width $resize_value
-    # Exiting resize mode {{{1
-    $mod+$resize_key mode "default"
-    escape mode "default"
-    ctrl+c mode "default"
-    ctrl+bracketleft mode "default"
-    # }}}
-}
 $bind {
     # Moving focus {{{1
     $mod+$left focus left
@@ -104,6 +90,11 @@ $bind {
     $mod+$mod3+$down move workspace to output down
     $mod+$mod3+$up move workspace to output up
     $mod+$mod3+$right move workspace to output right
+    # Resizing {{{1
+    $mod+$mod4+$left resize shrink width $resize_value
+    $mod+$mod4+$down resize shrink height $resize_value
+    $mod+$mod4+$up resize grow height $resize_value
+    $mod+$mod4+$right resize grow width $resize_value
     # Switching between workspaces {{{1
     $mod+Tab workspace back_and_forth 
     $mod+1 workspace number 1

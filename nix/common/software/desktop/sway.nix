@@ -12,8 +12,9 @@
 
   environment.systemPackages = with pkgs; [
     avizo # brightness/volume control with overlay indicator
-    grim # CLI screenshot
+    grim # barebones screenshot tool
     kanshi # display config daemon
+    wdisplays # GUI kanshi config generator
     libnotify # notify-send etc
     mako # notifications - smaller than fnott and dunst
     networkmanagerapplet # networking

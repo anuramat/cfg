@@ -2,8 +2,7 @@
 
 shopt -s globstar # enables **
 set +H
-
-export UNDISTRACT_TOLERANCE=1
+UNDISTRACT_TOLERANCE=5
 
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 

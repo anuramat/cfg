@@ -35,6 +35,7 @@
         laptop = {
           ids = [
             "048d:c997:193096a7" # ll7
+            "0001:0001:a38e6885" # t480
           ];
           settings = {
             main = {

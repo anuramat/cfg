@@ -16,4 +16,5 @@ __osc7() {
 	done
 	printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
-PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND%;}; }__osc7;__osc133"
+
+PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND};}__osc7;__osc133"

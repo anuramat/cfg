@@ -4,7 +4,7 @@ output "Dell Inc. DELL S2722QC 192SH24" alias $ext position 9999,0 scale 1.5 mod
 
 profile ll7-home {
   output $ll7 scale 2 position 0,0
-  output $ext
+  output $ext position 1600,0
 }
 
 profile ll7 {

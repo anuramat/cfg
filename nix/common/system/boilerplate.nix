@@ -35,6 +35,7 @@
       "audio" # just in case (?)
       "syncthing" # just in case default syncthing settings are used
       "plugdev" # pluggable devices : required by zsa voyager
+      "vboxusers" # virtualbox
       # "input" # le unsecure (?), supposed to be used to get lid state, apparently not required
       "dialout" # serial ports
       "networkmanager"

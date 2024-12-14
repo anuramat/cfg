@@ -92,6 +92,8 @@
 
     # misc {{{1
     age # file encryption
+    virtualbox
+    wine
     aria # downloader
     banner
     unstable.croc # send/receive files through relay with encryption

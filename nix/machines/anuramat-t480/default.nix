@@ -21,6 +21,5 @@
       enable = true;
       theme = "breeze"; # package is overridden to use a nixos logo
     };
-    kernelModules = ["v4l2loopback"]; # virtual webcam
   };
 }

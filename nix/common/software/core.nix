@@ -102,7 +102,6 @@
     fastfetch
     figlet # fancy banners
     gnuplot
-    httpie # curl++
     mprocs # job runner
     prettyping # ping++
     progress # progress status for cp etc
@@ -118,7 +117,7 @@
     rclone # rsync for cloud
     tree-sitter
     mesa-demos # some 3d demos, useful for graphics debugging
-    rpi-imager # raspbery pi XXX not really useful without one
+    rpi-imager # raspbery pi
     cowsay
     fortune # random quotes
 
@@ -127,6 +126,7 @@
     dive # look into docker image layers
     grpcui
     grpcurl
+    httpie # curl++
     kubectl
     kubectx
     podman-compose

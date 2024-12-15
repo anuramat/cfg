@@ -40,3 +40,9 @@ sudo tailscale up "--operator=$(whoami)" # set up tailscale
 - Personal (`nixos/user.nix`, `rg -i 'anuramat|arsen'`)
 - Git repository and `todo.txt` in `~/notes/`
 - `/etc/nixos`
+
+## Hardware (besides the machines)
+
+- raspberry pi
+- flipper zero
+- kb/mice

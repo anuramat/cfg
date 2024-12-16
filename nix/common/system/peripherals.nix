@@ -49,6 +49,8 @@
               k = "lettermod(alt, k, 128, 256)";
               j = "lettermod(meta, j, 128, 256)";
 
+              capslock = "noop";
+
               # <https://github.com/rvaiya/keyd/issues/114>
               # sad.
               rightcontrol = "rightcontrol";

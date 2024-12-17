@@ -39,11 +39,17 @@
           ];
           settings = {
             main = {
+              # def lettermod(letter, mod, x, y):
+              #     if last symbol was triggered at t: (now - x < t): return letter
+              #     if key is held for longer than y OR there was a full tap inside the key hold: return mod
+              #     return letter
               a = "lettermod(control, a, 128, 256)";
               s = "lettermod(shift, s, 128, 256)";
               d = "lettermod(alt, d, 128, 256)";
               f = "lettermod(meta, f, 128, 256)";
 
+              # mapped to left mods too but it sholdn't be a problem, since
+              # most of the time apps don't care
               semicolon = "lettermod(control, semicolon, 128, 256)";
               l = "lettermod(shift, l, 128, 256)";
               k = "lettermod(alt, k, 128, 256)";

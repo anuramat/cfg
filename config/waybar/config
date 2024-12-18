@@ -19,6 +19,8 @@
     ],
     "modules-right": [
       "tray",
+      // "battery#internal",
+      // "battery#external",
       "battery",
       "sway/language",
       "clock",

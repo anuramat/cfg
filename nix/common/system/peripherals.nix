@@ -56,13 +56,11 @@
               j = "lettermod(meta, j, 128, 256)";
 
               capslock = "noop";
+              leftalt = "escape";
+              rightalt = "backspace";
 
               # <https://github.com/rvaiya/keyd/issues/114>
-              # sad.
-              rightcontrol = "rightcontrol";
-              rightshift = "rightshift";
-              rightalt = "rightalt";
-              rightmeta = "rightmeta";
+              # right mods are remapped to left ones. sad.
             };
           };
         };

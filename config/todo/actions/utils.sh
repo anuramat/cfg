@@ -32,7 +32,7 @@ linenr() {
 	len=$(wc -l "$TODO_FILE" | cut -d ' ' -f 1)
 	[ -z "$num" ] && {
 		[ -n "$fzf" ] && command -v fzf &> /dev/null && {
-			num=$($TODO_SH -p command ls | fzf --preview= | cut -d ' ' -f 1)
+			num=$(TODOTXT_VERBOSE=0 $TODO_SH -p command ls | fzf --no-sort --tac --preview= | cut -d ' ' -f 1)
 			[ -z "$num" ] && return 2
 			num=$((10#$num))
 		} || num="$len"

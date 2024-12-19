@@ -37,23 +37,26 @@
             "048d:c997:193096a7" # ll7
             "0001:0001:a38e6885" # t480
           ];
-          settings = {
+          settings = let
+            interval = 64;
+            duration = 256;
+          in {
             main = {
               # def lettermod(letter, mod, x, y):
               #     if last symbol was triggered at t: (now - x < t): return letter
               #     if key is held for longer than y OR there was a full tap inside the key hold: return mod
               #     return letter
-              a = "lettermod(control, a, 128, 256)";
-              s = "lettermod(shift, s, 128, 256)";
-              d = "lettermod(alt, d, 128, 256)";
-              f = "lettermod(meta, f, 128, 256)";
+              a = "lettermod(control, a, ${interval}, ${duration})";
+              s = "lettermod(shift, s, ${interval}, ${duration})";
+              d = "lettermod(alt, d, ${interval}, ${duration})";
+              f = "lettermod(meta, f, ${interval}, ${duration})";
 
               # mapped to left mods too but it sholdn't be a problem, since
               # most of the time apps don't care
-              semicolon = "lettermod(control, semicolon, 128, 256)";
-              l = "lettermod(shift, l, 128, 256)";
-              k = "lettermod(alt, k, 128, 256)";
-              j = "lettermod(meta, j, 128, 256)";
+              semicolon = "lettermod(control, semicolon, ${interval}, ${duration})";
+              l = "lettermod(shift, l, ${interval}, ${duration})";
+              k = "lettermod(alt, k, ${interval}, ${duration})";
+              j = "lettermod(meta, j, ${interval}, ${duration})";
 
               capslock = "noop";
               leftalt = "escape";

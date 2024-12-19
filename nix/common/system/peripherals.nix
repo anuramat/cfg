@@ -38,8 +38,8 @@
             "0001:0001:a38e6885" # t480
           ];
           settings = let
-            interval = 64;
-            duration = 256;
+            interval = toString 64;
+            duration = toString 256;
           in {
             main = {
               # def lettermod(letter, mod, x, y):

@@ -16,8 +16,8 @@
 
 # Truncate long lines
 # fucks up scripts, use --no-config
---max-columns=200
---max-columns-preview
+# --max-columns=200
+# --max-columns-preview
 
 # Misc
 --smart-case

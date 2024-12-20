@@ -44,6 +44,7 @@
     # `tlp fullcharge` to charge to 100% once
     START_CHARGE_THRESH_BAT0 = 0; # dummy value
     STOP_CHARGE_THRESH_BAT0 = 1;
+    CPU_MAX_PERF_ON_BAT = 20;
   };
 
   # # intel
@@ -84,4 +85,3 @@
   # }}}
 }
 # vim: fdm=marker fdl=0
-

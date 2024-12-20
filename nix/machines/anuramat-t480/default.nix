@@ -15,6 +15,12 @@
     }
   ];
 
+  # services = {
+  #   tlp.settings = {
+  #     CPU_MAX_PERF_ON_BAT = 30;
+  #   };
+  # };
+
   boot = {
     # boot splashscreen
     plymouth = {

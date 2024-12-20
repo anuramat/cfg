@@ -4,11 +4,14 @@
 # output * background {{background}} solid_color
 # set both using swaybg
 
-#class                   bar_border bar_bg     bar_text       tiling_indicator view_border
-client.focused           {{color2}} {{color2}} {{foreground}} {{color3}}       {{color2}}
-client.focused_inactive  {{color0}} {{color0}} {{foreground}} {{color3}}       {{color0}}
-client.focused_tab_title {{color1}} {{color1}} {{foreground}} {{color3}}       {{color1}}
-client.unfocused         {{color0}} {{color0}} {{foreground}} {{color3}}       {{color0}}
-client.urgent            #FFFF00    #FFFF00    #000000        #FFFF00          #FFFF00
+#class                   bar_border     bar_bg         bar_text       tiling_indicator view_border
+client.focused           {{foreground}} {{foreground}} {{background}} {{color1}}       {{foreground}}
+client.focused_inactive  {{background}} {{background}} {{foreground}} {{background}}   {{background}}
+client.focused_tab_title {{foreground}} {{foreground}} {{background}} {{foreground}}   {{foreground}}
+client.unfocused         {{background}} {{background}} {{foreground}} {{background}}   {{background}}
+client.urgent            #FFFF00        #FFFF00        #000000        #FFFF00          #FFFF00
+
+# focused_inactive - most recently focused view within a container
+# focused_tab_title - a view that has focused descendant container; defaults to focused_inactive
 
 # vim: ft=swayconfig

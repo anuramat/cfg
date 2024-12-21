@@ -213,6 +213,26 @@ gc() {
 	printf "%s\n" "$dirty"
 }
 
+# simplified push for personal repos
+push() {
+	local allowed=(cfg notes)
+	allowed=$(printf " $(whoami)/%s " "${allowed[@]}")
+	local url=$(git remote get-url origin)
+	echo "$url" | grep -q http && {
+		echo "http in origin url, exiting"
+		return 1
+	}
+	url=$(git remote get-url origin | sed 's/.*://' | sed 's/\.git$//')
+	[[ "$allowed" =~ " $url " ]] || {
+		echo "illegal repo, exiting"
+		return 1
+	}
+  git add .
+	git commit -am "auto: $(hostname)"
+	git pull --ff --no-edit
+	git push
+}
+
 # send full path of a file to clipboard
 c() {
 	# c for copy

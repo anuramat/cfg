@@ -56,7 +56,6 @@ root = "~/.local/share/ghq"
   ds = diff --staged
   ; TODO check if this even works
   unpushed = log --branches --not --remotes --decorate --oneline
-  cp = !git add . && git commit -am auto && git push
   ; TODO maybe remove this
   ignored = status --ignored
 

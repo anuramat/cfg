@@ -1,6 +1,6 @@
 {
-  "name": "elflord",
-  "author": "vim",
+  "name": "blue",
+  "author": "Original author Steven Vertigan <steven@vertigan.wattle.id.au>",
   "color": [
     "#000000",
     "#cd0000",
@@ -19,23 +19,6 @@
     "#00ffff",
     "#ffffff"
   ],
-  "foreground": "#00ffff",
-  "background": "#000000"
+  "foreground": "#ffd700",
+  "background": "#000087"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

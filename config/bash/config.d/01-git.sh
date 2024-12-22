@@ -101,10 +101,11 @@ __push() {
 	git pull --ff --no-edit
 	git push
 }
-
+# push all personal repos
 push() {
 	for i in "${__free_repos[@]}"; do
 		(
+			echo "*** pushing $i ***"
 			cd "$i" || exit
 			__push
 		)

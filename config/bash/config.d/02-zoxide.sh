@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+command -v zoxide &> /dev/null && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
 export _ZO_FZF_OPTS="
 --no-sort
 --exit-0

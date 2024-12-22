@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export UNDISTRACT_TOLERANCE=5
+
 __undistract_preexec() {
 	__last_command_start_time=$(date +%s)
 	__last_command="$1"

@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
 shopt -s globstar # enables **
-set +H
-UNDISTRACT_TOLERANCE=5
+set +H            # turn off ! history bullshit
 
 for f in "$XDG_CONFIG_HOME"/bash/config.d/*; do source "$f"; done
 
-command -v zoxide &> /dev/null && eval "$(zoxide init bash --cmd j --hook pwd)" # appends
-
-# color rice:
-[ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
+# TODO do I need it? foot is styled already via templates
+# # color rice:
+# [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [[ $TERM != foot ]] && (cat ~/.cache/wallust/sequences &)
 
 alias f="nvim"
 alias ..="cd .."
@@ -42,51 +40,10 @@ pandoc-md() {
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -t pdf -o "$2"
 }
-__say() {
-	# usage: say_unwrapped "model" "text"
-	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1
-	local cache_dir="$XDG_CACHE_HOME/piper/"
-	mkdir -p "$cache_dir"
-
-	# https://github.com/rhasspy/piper/blob/master/VOICES.md
-	# prefer medium quality, as high is too noisy
-	#	robots:
-	#	- ljspeech hm - 5/5, sc2 adjutant/mommy vibes, high pitch
-	#	- libritts_r m - 5/5, the only natural sounding one
-	#	- kristin m - 4/5, great, glados vibes, low pitch
-	#	- bryce m - 4/5, jarvis vibes, male amy
-	#	- amy ml - 3/5, monotone, sci-fi assistant vibes, high pitch
-	local name="$1"
-	local quality="medium" # low/medium/high
-	local locale="en_US"
-
-	local model_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx?download=true"
-	local config_url="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/${locale:0:2}/$locale/$name/$quality/$locale-$name-$quality.onnx.json?download=true.json"
-	local model_file="$cache_dir/$locale-$name-$quality.onnx"
-	local config_file="$cache_dir/$locale-$name-$quality.json"
-
-	[ -s "$model_file" ] || {
-		printf '\n\tdownloading the model\n\n' && wget -q --show-progress -O "$model_file" "$model_url"
-	} || {
-		\printf '\terror, check the model name\n'
-		rm "$model_file" && return 1
-	}
-
-	[ -s "$config_file" ] || {
-		printf '\n\tdownloading the config\n\n' && wget -q --show-progress -O "$config_file" "$config_url"
-	} || {
-		\printf '\terror, check the model name\n'
-		rm "$config_file" && return 1
-	}
-
-	echo "$2" \
-		| piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
-}
-say() {
-	__say "libritts_r" "$*" | play -t wav -q -
-}
-# renders $1.md to pdf, opens in zathura, rerenders on save
 hotdoc() {
+	# renders $1.md to pdf, opens in zathura, rerenders on save
+	# usage: hotdoc target.md
+
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 
 	# create file
@@ -110,17 +67,22 @@ hotdoc() {
 	# clean up
 	rm "$path"
 }
-# open with zathura
 z() {
+	# uhhh TODO unugly
 	zathura "$1" &> /dev/null &
 	disown
 }
-# set brightness for an external monitor
+take() {
+	# send full path of a file/files to clipboard
+	realpath "$@" | tr '\n' ' ' | wl-copy -n
+}
 brexit() {
+	# set brightness for an external monitor (0-100)
+	# usage: brexit 69
 	ddcutil setvcp 10 "$1" --display 1
 }
-# beep every $1 minutes
 beep() {
+	# announce every $1 minutes
 	local -r period=$1
 	[ -n "$period" ] || {
 		echo -e 'Invalid arguments\nUsage:\n\tbeep 45'
@@ -133,107 +95,6 @@ beep() {
 		(say "Current time: $hours $minutes" &)
 		sleep $((period * 60))
 	done
-}
-
-# cd to ghq repo
-g() {
-	# optional: $1 - query; then you cd to the best match
-	# TODO rewrite with less assumptions, use ghq queries
-	local -r root="$(ghq root)"
-	local -r repo_relative_paths="$(fd . "$root" --exact-depth 3 | sed "s#${root}/##")"
-	local chosen_path
-	# cd $root so that fzf preview works properly
-	[ -n "$1" ] && {
-		chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf -f "$1" | head -n 1) || return
-	} || chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
-	cd "$root/$chosen_path" || return
-}
-# pick a ghq repo
-__ghq_fzf_base() {
-	# stdin - \n separated list of repos
-	# $1 - prompt question
-	# stdout - \n separated list of repos
-	local repos
-	repos="$(fzf)" || return 1
-	echo "$repos"
-
-	echo 'selected repositories:' >&2
-	printf "\t$repos" | sed -z 's/\n/\n\t/g' >&2
-	echo >&2
-
-	read -rs -n 1 -p $"$1 (y/*):"$'\n' choice <&2
-	[ "$choice" = 'y' ]
-}
-# rm ghq repo(s)
-grm() {
-	local repos
-	repos=$(ghq list | __ghq_fzf_base "delete?") || return
-	echo "$repos" | xargs -I{} bash -c 'yes | ghq rm {} 2>/dev/null'
-}
-# clone gh repo(s) with ghq
-gg() {
-	# optional $1 - owner
-	local -r before_dirs="$(ghq list -p | sort)"
-	local repos
-	repos="$(gh repo list "$1" | cut -f 1 | __ghq_fzf_base "download?")" || return
-	ghq get -P -p $repos
-	local -r after_dirs="$(ghq list -p | sort)"
-	local -r new_dirs="$(comm -13 <(echo "$before_dirs") <(echo "$after_dirs"))"
-	zoxide add $new_dirs
-	echo "$new_dirs" | xargs -I{} bash -c 'cd {}; gh repo set-default $(git config --get remote.origin.url | rev | cut -d "/" -f 1,2 | rev)'
-}
-# sync a fork with the upstream
-ghsync() {
-	gh repo sync "$(gh repo set-default --view)"
-}
-# check if ghq/predefined repos are pushed
-gc() {
-	local repos=("$HOME/notes" "/etc/nixos")
-	local root=$(ghq root)
-	local dirty
-	get_dirty() {
-		local prefix_length="$1"
-		while IFS= read -r -d '' path; do
-			(
-				cd "$path" || exit
-				[ -z "$(git status --porcelain)" ] && [ -z "$(git cherry)" ] && exit
-				[ -n "$prefix_length" ] && printf '\t%s\n' "${path:prefix_length}" && exit
-				printf '\t%s\n' "$(basename $path)"
-			)
-		done
-	}
-	dirty=$(printf '%s\0' "${repos[@]}" | get_dirty)
-	dirty+=$(ghq list -p | tr '\n' '\0' | get_dirty ${#root})
-	[ -z "$dirty" ] && {
-		echo "all clean!"
-		return
-	}
-	echo "dirty repos:"
-	printf "%s\n" "$dirty"
-}
-# simplified push for personal repos
-push() {
-	local allowed=(cfg notes)
-	allowed_string=$(printf " $(whoami)/%s " "${allowed[@]}")
-	local url=$(git remote get-url origin)
-	echo "$url" | grep -q http && {
-		echo "http in origin url, exiting"
-		return 1
-	}
-	url=$(git remote get-url origin | sed 's/.*://' | sed 's/\.git$//')
-	[[ $allowed_string == *" $url "* ]] || {
-		echo "illegal repo, exiting"
-		return 1
-	}
-	git add .
-	git commit -am "auto: $(hostname)"
-	git pull --ff --no-edit
-	git push
-}
-
-# send full path of a file to clipboard
-c() {
-	realpath "$@" | tr '\n' ' ' | wl-copy -n
 }
 
 # vim: fdl=0

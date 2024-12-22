@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-colorscheme_path="$XDG_CONFIG_HOME/wallust/colorschemes"
+__wallust_cs_dir="$XDG_CONFIG_HOME/wallust/colorschemes"
 
 # set wallust theme, and apply post hooks
 __wallust_wrapped() {
 	if [ "$1" = "sex" ]; then
-		wallust cs -f terminal-sexy "$colorscheme_path/$2.json" || return
+		wallust cs -f terminal-sexy "$__wallust_cs_dir/$2.json" || return
 	else
 		wallust "$@" || return
 	fi
@@ -23,8 +23,8 @@ __load_completion wallust
 __wallust_comp_custom() {
 	[ "${COMP_WORDS[1]}" = "sex" ] && {
 		[ "$COMP_CWORD" = 2 ] && {
-			colorscheme_path="$XDG_CONFIG_HOME/wallust/colorschemes"
-			mapfile -t sexthemes < <(compgen -W "$(find "$colorscheme_path" -mindepth 1 -exec basename "{}" ';' | sed 's/\.json$//')" ${COMP_WORDS[2]})
+			__wallust_cs_dir="$XDG_CONFIG_HOME/wallust/colorschemes"
+			mapfile -t sexthemes < <(compgen -W "$(find "$__wallust_cs_dir" -mindepth 1 -exec basename "{}" ';' | sed 's/\.json$//')" ${COMP_WORDS[2]})
 			COMPREPLY+=("${sexthemes[@]}") && return
 		}
 		return

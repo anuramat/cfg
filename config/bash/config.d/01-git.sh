@@ -106,7 +106,7 @@ push() {
 	__heading="$(tput setaf 5 bold)%s$(tput sgr0)\n"
 	for i in "${__free_repos[@]}"; do
 		(
-			printf "$__heading" "*** pushing $i ***"
+			printf "$__heading" "*** pushing $(basename $i) ***"
 			cd "$i" || exit
 			__push
 		)

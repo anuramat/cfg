@@ -18,33 +18,32 @@ alias ....="cd ../../.."
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
 alias t="todo.sh"
+alias recv='tailscale file get'
 
-# send $file $device: -- taildrop
 send() {
+	# send a file over taildrop:
+	# send $file $device:
 	tailscale file cp "$@"
 }
-alias recv='tailscale file get'
-# -- uploads a file, sends link to stdout AND pastebin
 upload() {
+	# uploads a file, sends link to stdout AND pastebin
 	local filename="$1"
 	[ -z "$1" ] && filename="-"
 	curl -F "file=@$filename" https://0x0.st | tee >(wl-copy)
 }
-# random $n # -- random alnum string
 random() {
+	# random alnum string
+	# usage: random $n
 	shuf -er -n "$1" {a..z} {0..9} | tr -d '\n'
 }
-# pandoc-web $link > output.md # -- saves a website to a markdown document
-pandoc-web() {
-	readable "$1" | pandoc -f html -s -t markdown_mmd -M source-url="$1"
-}
-# c i.md o.pdf
 pandoc-md() {
+	# md to pdf
+	# usage: c i.md o.pdf
 	__markdown=markdown+lists_without_preceding_blankline+mark+wikilinks_title_after_pipe+citations
 	pandoc -H "$XDG_CONFIG_HOME/latex/preamble.tex" "$1" --citeproc -f "$__markdown" -t pdf -o "$2"
 }
-# say_unwrapped "model" "text"
-say_unwrapped() {
+__say() {
+	# usage: say_unwrapped "model" "text"
 	[ -z "$XDG_CACHE_HOME" ] && echo 'empty $XDG_CACHE_HOME' && return 1
 	local cache_dir="$XDG_CACHE_HOME/piper/"
 	mkdir -p "$cache_dir"
@@ -83,9 +82,8 @@ say_unwrapped() {
 	echo "$2" \
 		| piper --speaker 0 --length_scale 1 --noise_w 0 --noise_scale 0 --sentence_silence 0.3 -m "$model_file" -c "$config_file" -q -f -
 }
-# say some stuff
 say() {
-	say_unwrapped "ljspeech" "$*" | play -t wav -q -
+	__say "libritts_r" "$*" | play -t wav -q -
 }
 # renders $1.md to pdf, opens in zathura, rerenders on save
 hotdoc() {
@@ -216,14 +214,14 @@ gc() {
 # simplified push for personal repos
 push() {
 	local allowed=(cfg notes)
-	allowed=$(printf " $(whoami)/%s " "${allowed[@]}")
+	allowed_string=$(printf " $(whoami)/%s " "${allowed[@]}")
 	local url=$(git remote get-url origin)
 	echo "$url" | grep -q http && {
 		echo "http in origin url, exiting"
 		return 1
 	}
 	url=$(git remote get-url origin | sed 's/.*://' | sed 's/\.git$//')
-	[[ $allowed =~ " $url " ]] || {
+	[[ $allowed_string == *" $url "* ]] || {
 		echo "illegal repo, exiting"
 		return 1
 	}
@@ -237,15 +235,5 @@ push() {
 c() {
 	realpath "$@" | tr '\n' ' ' | wl-copy -n
 }
-
-# set wallust theme, and apply post hooks
-__wallust_wrapped() {
-	# r for rice
-	wallust "$@" || return
-	"$XDG_CONFIG_HOME/mako/wal.sh"
-	swaymsg reload &> /dev/null || true # shits out a scary error - ignore it TODO figure out
-}
-
-alias wallust=__wallust_wrapped
 
 # vim: fdl=0

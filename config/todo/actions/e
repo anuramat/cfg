@@ -31,4 +31,3 @@ awk -v "new=$new" -- "NR == $num {sub(/.*/, new)}; {print}" "$TODO_FILE" | spong
 
 echo "Save error"
 exit 1
-

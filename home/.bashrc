@@ -137,7 +137,7 @@ beep() {
 	done
 }
 
-# cd to repo: cd <- fzf <- ghq list
+# cd to ghq repo
 g() {
 	# optional: $1 - query; then you cd to the best match
 	# TODO rewrite with less assumptions, use ghq queries
@@ -150,6 +150,7 @@ g() {
 	} || chosen_path=$(cd "$root" && echo "$repo_relative_paths" | fzf) || return
 	cd "$root/$chosen_path" || return
 }
+# pick a ghq repo
 __ghq_fzf_base() {
 	# stdin - \n separated list of repos
 	# $1 - prompt question
@@ -165,13 +166,13 @@ __ghq_fzf_base() {
 	read -rs -n 1 -p $"$1 (y/*):"$'\n' choice <&2
 	[ "$choice" = 'y' ]
 }
-# rm a repo: ghq rm <- fzf <- ghq list
+# rm ghq repo(s)
 grm() {
 	local repos
 	repos=$(ghq list | __ghq_fzf_base "delete?") || return
 	echo "$repos" | xargs -I{} bash -c 'yes | ghq rm {} 2>/dev/null'
 }
-# clone github repo: ghq get <- fzf <- gh repo list
+# clone gh repo(s) with ghq
 gg() {
 	# optional $1 - owner
 	local -r before_dirs="$(ghq list -p | sort)"
@@ -187,7 +188,7 @@ gg() {
 ghsync() {
 	gh repo sync "$(gh repo set-default --view)"
 }
-# check if everything is pushed
+# check if ghq/predefined repos are pushed
 gc() {
 	local repos=("$HOME/notes" "/etc/nixos")
 	local root=$(ghq root)
@@ -212,7 +213,6 @@ gc() {
 	echo "dirty repos:"
 	printf "%s\n" "$dirty"
 }
-
 # simplified push for personal repos
 push() {
 	local allowed=(cfg notes)
@@ -223,11 +223,11 @@ push() {
 		return 1
 	}
 	url=$(git remote get-url origin | sed 's/.*://' | sed 's/\.git$//')
-	[[ "$allowed" =~ " $url " ]] || {
+	[[ $allowed =~ " $url " ]] || {
 		echo "illegal repo, exiting"
 		return 1
 	}
-  git add .
+	git add .
 	git commit -am "auto: $(hostname)"
 	git pull --ff --no-edit
 	git push
@@ -235,9 +235,10 @@ push() {
 
 # send full path of a file to clipboard
 c() {
-	# c for copy
 	realpath "$@" | tr '\n' ' ' | wl-copy -n
 }
+
+# set wallust theme, and apply post hooks
 __wallust_wrapped() {
 	# r for rice
 	wallust "$@" || return

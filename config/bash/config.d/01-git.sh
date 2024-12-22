@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+__free_repos=("$HOME/notes" "/etc/nixos")
+
 # cd to ghq repo
 g() {
 	# optional: $1 - query; then you cd to the best match
@@ -58,7 +60,6 @@ ghsync() {
 
 # check if ghq/predefined repos are pushed
 gc() {
-	local repos=("$HOME/notes" "/etc/nixos")
 	local root=$(ghq root)
 	local dirty
 	get_dirty() {
@@ -83,21 +84,29 @@ gc() {
 }
 
 # simplified push for personal repos
-push() {
-	local allowed=(cfg notes)
-	allowed_string=$(printf " $(whoami)/%s " "${allowed[@]}")
-	local url=$(git remote get-url origin)
-	echo "$url" | grep -q http && {
-		echo "http in origin url, exiting"
-		return 1
-	}
-	url=$(git remote get-url origin | sed 's/.*://' | sed 's/\.git$//')
-	[[ $allowed_string == *" $url "* ]] || {
-		echo "illegal repo, exiting"
+__push() {
+	local ok
+	for i in "${__free_repos[@]}"; do
+		[[ "$(realpath .)" == "$i"* ]] && {
+			ok=1
+			break
+		}
+	done
+	[ -z "$ok" ] && {
+		echo "illegal directory"
 		return 1
 	}
 	git add .
 	git commit -am "auto: $(hostname)"
 	git pull --ff --no-edit
 	git push
+}
+
+push() {
+	for i in "${__free_repos[@]}"; do
+		(
+			cd "$i" || exit
+			__push
+		)
+	done
 }

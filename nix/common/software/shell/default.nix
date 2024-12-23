@@ -47,7 +47,6 @@
       loginShellInit = "# placeholder: bash.loginShellInit";
       interactiveShellInit = ''
         # bash.interactiveShellInit {{{1
-        source ${./profile.sh}
         source ${./osc.sh}
         source ${./history.sh}
         source ${pkgs.bash-preexec}/share/bash/bash-preexec.sh
@@ -57,8 +56,8 @@
   };
 
   # exec order:
-  # /etc/profile: bash init, sh init, bash login, sh login, /etc/profile.local, /etc/bashrc
-  # /etc/bashrc: /etc/profile, bash inter, bash prompt, software, sh inter, /etc/bashrc.local
+  # /etc/profile: bash.shellInit, shellInit, bash.loginShellInit, loginShellInit, /etc/profile.local, /etc/bashrc
+  # /etc/bashrc: /etc/profile, bash.interactiveShellInit, bash.promptInit, (?hooks from software options?), interactiveShellInit, /etc/bashrc.local
 
   environment = {
     shellAliases = lib.mkForce {};
@@ -74,4 +73,3 @@
   };
 }
 # vim: fdl=3
-

@@ -168,12 +168,9 @@
     # mypaint # not-ms-paint # XXX broken
     nomacs # image viewer # TODO remove?
     xfig # vector graphics, old as FUCK
-    # TODO find the best??
-    imv # image viewer
     swayimg # image viewer
-    ueberzugpp # sixel++
-    timg # sixel+
-    chafa # sixel+, doesn't work with fzf half the time
+    timg # sixel, kitty, iterm2, unicode half blocks
+    ueberzugpp # + native windows on wayland
     unstable.lsix # sixel ls
 
     # video {{{1

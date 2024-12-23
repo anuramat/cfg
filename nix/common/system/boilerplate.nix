@@ -16,7 +16,7 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-  }; # kinda imperative
+  };
   nixpkgs.config = {
     allowUnfree = true;
     # cudaSupport = true; # breaks nomacs, mathematica takes a lot of time to compile

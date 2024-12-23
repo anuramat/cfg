@@ -7,19 +7,22 @@ all: flake config
 flake:
 	@ printf ${heading} "Building NixOS"
 	@ sudo nixos-rebuild switch
-config: 
+config:
 	@ printf ${heading} "Linking configs"
 	@ BASH_ENV=/etc/profile ./lib/install.sh
 
 # Code {{{1
-.PHONY: code 
-code: nix lua shell
+.PHONY: code
+code: nix lua sh
+
 # Nix {{{2
+.PHONY: nix nixfmt
 nixfmt:
 	@ printf ${heading} "Formatting Nix files"
 	@ alejandra .
 nix: nixfmt
 	# TODO add a linter
+
 # Lua {{{2
 .PHONY: lua luafmt
 luafmt:
@@ -28,11 +31,16 @@ luafmt:
 lua: luafmt
 	@ printf ${heading} "Checking Lua files"
 	@ luacheck . --globals=vim | ghead -n -2
+
 # Shell {{{2
-.PHONY: shell shfmt
+.PHONY: sh shfmt
 shfmt:
 	@ printf ${heading} "Formatting shell scripts"
 	@ ./lib/shrun.sh 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
-shell: shfmt
+sh: shfmt
 	@ printf ${heading} "Checking shell scripts"
 	@ ./lib/shrun.sh 'shellcheck --color=always -o all'
+
+# makefile2graph
+.PHONY: root
+root: all code

@@ -85,6 +85,7 @@
     unstable.eza # ls++
     (unstable.todo-txt-cli.overrideAttrs
       {
+        # fixes <https://github.com/NixOS/nixpkgs/issues/367635>
         installPhase = ''
           install -vd $out/bin
           install -vm 755 todo.sh $out/bin
@@ -94,8 +95,6 @@
           install -vm 644 todo.cfg $out/etc/todo/config
         '';
       })
-    # todo.sh
-
     watchman # another file watcher TODO try and compare to entr
     wayidle # runs a command on idle
     zellij # tmux++
@@ -109,6 +108,11 @@
     aria # downloader
     banner
     unstable.croc # send/receive files through relay with encryption
+    makefile2graph
+    mermaid-cli
+    mermaid-filter
+    graphviz
+    graph-easy
     distrobox
     exercism # CLI for exercism.org
     fastfetch

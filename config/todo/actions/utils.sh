@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+[ "$1" = usage ] && {
+	exit
+}
+
 error_handler() {
 	local -r code="$?"
 	case "$code" in

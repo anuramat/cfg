@@ -7,6 +7,8 @@ import re
 
 def main():
     symbol = sys.argv[1]
+    if symbol == "usage":
+        return
     if symbol == "+":
         symbol = "\\" + symbol
     exp = f"(?<!\\S){symbol}\\S+\\s*"

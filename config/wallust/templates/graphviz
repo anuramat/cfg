@@ -1,1 +1,10 @@
--Gbgcolor="{{background}}" -Nfontcolor="{{foreground}}" -Nstyle=filled -Nfillcolor="{{background}}" -Ecolor="{{color1}}" -Efontcolor="{{foreground}}"
+-Gbgcolor="{{background}}"
+-Nshape=box
+-Nstyle=rounded,filled
+-Nfillcolor={{color1 | darken(0.8)}}
+
+-Nfontcolor="{{foreground}}"
+-Efontcolor="{{foreground}}"
+
+-Ecolor="{{color1}}"
+-Ncolor="{{color1}}"

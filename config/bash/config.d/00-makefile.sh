@@ -1,7 +1,11 @@
 #!/usr/bin/env sh
 
+__clean_style() {
+	sed 's/,\?\s*color="[a-z]*",\?/,/'
+}
+
 __dot() {
-	xargs -a "$XDG_CACHE_HOME/wallust/graphviz" dot -Tpng -Gdpi=300
+	__clean_style | xargs -a "$XDG_CACHE_HOME/wallust/graphviz" dot -Tpng -Gdpi=300
 }
 
 deps() {

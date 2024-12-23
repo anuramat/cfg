@@ -8,3 +8,4 @@ mako = { src = 'mako', target = "~/.config/mako/generated-colors.conf" }
 sway = { src = 'sway', target = "~/.config/sway/config.d/xx-generated-colors" }
 neopywal = { src = 'neopywal', target = "~/.cache/wallust/colors_neopywal.vim" }
 swaybg = { src = 'swaybg', target = "~/.cache/wallust/swaybg" }
+graphviz = { src = 'graphviz', target = "~/.cache/wallust/graphviz" }

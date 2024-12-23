@@ -24,6 +24,7 @@
   };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
+  environment.extraOutputsToInstall = ["info"];
   users.users.${user.username} = {
     description = user.fullname;
     isNormalUser = true;

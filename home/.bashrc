@@ -15,8 +15,11 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias peco="fzf --height=100 --preview=''"
 alias lab="jupyter-lab --ServerApp.iopub_msg_rate_limit 9999999999999"
-alias t="todo.sh"
 alias recv='tailscale file get'
+
+alias t="todo.sh"
+__load_completion todo.sh
+complete -F _todo t
 
 send() {
 	# send a file over taildrop:

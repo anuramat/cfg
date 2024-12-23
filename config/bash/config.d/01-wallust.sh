@@ -19,6 +19,7 @@ __wallust_wrapped() {
 # completions, since it only works with defaults, thus we load everything
 # manually. note that for some commands, fzf comp is explicitly defined.
 
+__wallust_alias=wal
 __load_completion wallust
 __wallust_comp_custom() {
 	[ "${COMP_WORDS[1]}" = "sex" ] && {
@@ -35,6 +36,6 @@ __wallust_comp_custom() {
 		[ -n "$pot" ] && COMPREPLY+=("$pot")
 	}
 }
-complete -o bashdefault -o default -o nosort -F __wallust_comp_custom wallust
-_fzf_setup_completion path wallust
-alias wallust=__wallust_wrapped
+complete -o bashdefault -o default -o nosort -F __wallust_comp_custom "$__wallust_alias"
+_fzf_setup_completion path "$__wallust_alias"
+alias "$__wallust_alias=__wallust_wrapped"

@@ -84,7 +84,7 @@ gc() {
 }
 
 # simplified push for personal repos
-__push() {
+push1() {
 	local ok
 	for i in "${__free_repos[@]}"; do
 		[[ "$(realpath .)" == "$i"* ]] && {
@@ -108,7 +108,7 @@ push() {
 		(
 			printf "$__heading" "*** pushing $(basename $i) ***"
 			cd "$i" || exit
-			__push
+			push1
 		)
 	done
 }

@@ -29,9 +29,8 @@
     direnv = {
       enable = true;
       silent = true;
-      direnvrcExtra = ''
-        use flake
-      '';
+      # direnvrcExtra = ''
+      # '';
     };
 
     fzf = {

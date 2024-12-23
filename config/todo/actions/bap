@@ -9,6 +9,7 @@
 text="$2"
 shift 2
 
+echo appended "\"$text\":"
 for tasknum in "$@"; do
-	TODOTXT_VERBOSE=0 $TODO_SH command append "$tasknum" "$text"
+	$TODO_SH command append "$tasknum" "$text"
 done

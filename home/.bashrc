@@ -99,5 +99,12 @@ beep() {
 		sleep $((period * 60))
 	done
 }
+naidite() {
+	path=$(realpath "$(command -v $1)")
+	for i in $(seq "${2:-1}"); do
+		path=$(realpath -m $path/..)
+	done
+	cd $path
+}
 
 # vim: fdl=0

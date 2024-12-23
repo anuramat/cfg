@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-set -e
 
 main() {
 	# reads .vim themes, writes terminal-sexy jsons to specified directory
-	# skips dual (light+dark) themes for now TODO
 	target_dir="$1"
 	mkdir -p "$target_dir"
 
@@ -12,10 +10,17 @@ main() {
 
 	while IFS= read -r -d '' filepath; do
 		name=$(basename "$filepath" | sed 's/\.vim//')
+
+		echo "writing $name"
+		[ "$name" = default ] && continue
+
 		ansi=$(rg 'let\s+g:terminal_ansi_colors\s*=\s*(\[.*\])' "$filepath" -or '$1' \
 			| tr "'" '"')
-		(($(echo "$ansi" | wc -l) > 1)) && continue
+		# if more than one set of term colors (ie light/dark) - skip TODO read those too
+		(($(echo "$ansi" | wc -l) > 1)) && echo "skipping $name: more than one set of colors found" && continue
+
 		# original_name=$(rg '" Name:\s+(\S.*\S)\s*' "$filename" -or '$1')
+
 		author=$(rg '" Author:\s+(\S.*\S)\s*' "$filepath" -or '$1')
 
 		normal_line=$(rg 'hi\S*\s+Normal\s+' "$filepath")
@@ -30,7 +35,7 @@ main() {
 			--arg name "$name" \
 			--arg author "$author" \
 			--argjson ansi "$ansi" \
-			"$template" > "$target_dir/$name.json"
+			"$template" 2> /dev/null > "$target_dir/$name.json" || echo "couldn't construct json for $name"
 	done < <(find "$colordir" -mindepth 1 -name '*.vim' -print0)
 }
 

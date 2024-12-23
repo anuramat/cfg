@@ -170,7 +170,7 @@
     xfig # vector graphics, old as FUCK
     swayimg # image viewer
     timg # sixel, kitty, iterm2, unicode half blocks
-    ueberzugpp # + native windows on wayland
+    ueberzugpp # terminal images + native overlay
     unstable.lsix # sixel ls
 
     # video {{{1

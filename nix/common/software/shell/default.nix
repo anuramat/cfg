@@ -23,6 +23,9 @@
           disabled = false;
           format = "[$time]($style) ";
         };
+        username = {
+          disabled = true;
+        };
       };
     };
 

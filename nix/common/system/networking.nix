@@ -32,6 +32,7 @@
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
+        PrintLastLog = false;
         AllowUsers = [user.username];
       };
     };

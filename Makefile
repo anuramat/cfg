@@ -2,14 +2,14 @@
 heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 
 # Setup {{{1
-.PHONY: all flake config
-all: flake config
+.PHONY: all flake links
+all: flake links
 flake:
 	@ printf ${heading} "Building NixOS"
 	@ sudo nixos-rebuild switch
-config:
-	@ printf ${heading} "Linking configs"
-	@ BASH_ENV=/etc/profile ./lib/install.sh
+links:
+	@ printf ${heading} "Setting up links"
+	@ BASH_ENV=/etc/profile ./scripts/install.sh
 
 # Code {{{1
 .PHONY: code
@@ -36,10 +36,10 @@ lua: luafmt
 .PHONY: sh shfmt
 shfmt:
 	@ printf ${heading} "Formatting shell scripts"
-	@ ./lib/shrun.sh 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
+	@ ./scripts/shrun.sh 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
 sh: shfmt
 	@ printf ${heading} "Checking shell scripts"
-	@ ./lib/shrun.sh 'shellcheck --color=always -o all'
+	@ ./scripts/shrun.sh 'shellcheck --color=always -o all'
 
 # makefile2graph
 .PHONY: root

@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-shrun() {
-	fail_color="$(tput setaf 1 bold)"
-	ok_color="$(tput setaf 2 bold)"
-	normal_color="$(tput sgr0)"
 
+fail_color="$(tput setaf 1 bold)"
+ok_color="$(tput setaf 2 bold)"
+normal_color="$(tput sgr0)"
+
+shrun() {
 	# pretty-runs a file linter/formatter on all sh files
-	local command="$1"
+	local -r command="$1"
 
 	# find all shell scripts
 	fd -t f -H0 . | while IFS= read -r -d '' filename; do
@@ -23,5 +24,20 @@ shrun() {
 	done
 }
 
-shrun "$@"
+type=$1
+shift
+
+case "$type" in
+	silent)
+		shrun "$@" > /dev/null
+		;;
+	verbose)
+		shrun "$@"
+		;;
+	*)
+		echo "$0: illegal arguments"
+		exit 1
+		;;
+esac
+
 exit 0

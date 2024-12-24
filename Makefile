@@ -19,7 +19,8 @@ code: nix lua sh
 .PHONY: nix nixfmt
 nixfmt:
 	@ printf ${heading} "Formatting Nix files"
-	@ treefmt -f nixfmt
+	@ nixfmt $(shell fd -e nix)
+
 nix: nixfmt
 	@ printf ${heading} "Checking Nix files"
 	@ statix check .
@@ -38,10 +39,10 @@ lua: luafmt
 .PHONY: sh shfmt
 shfmt:
 	@ printf ${heading} "Formatting shell scripts"
-	@ ./scripts/shrun.sh 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
+	@ ./scripts/shrun.sh 'silent' 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
 sh: shfmt
 	@ printf ${heading} "Checking shell scripts"
-	@ ./scripts/shrun.sh 'shellcheck --color=always -o all'
+	@ ./scripts/shrun.sh 'verbose' 'shellcheck --color=always -o all'
 
 # makefile2graph
 .PHONY: root

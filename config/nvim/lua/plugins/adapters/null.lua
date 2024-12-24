@@ -37,6 +37,7 @@ local null_sources = function()
   local nlf = null_ls.builtins.formatting
   local nld = null_ls.builtins.diagnostics
   local nla = null_ls.builtins.code_actions
+  local nlh = null_ls.builtins.hover
 
   return {
     -- ~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~ --
@@ -51,6 +52,8 @@ local null_sources = function()
     nld.protolint,
     -- actions
     nla.statix,
+    -- hovers
+    nlh.printenv,
   }
 end
 

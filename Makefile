@@ -1,20 +1,16 @@
-# vim: fdm=marker fdl=1
+# vim: fdm=marker fdl=0
 
-# Setup {{{1
-.PHONY: all flake links
-all: flake links
+.PHONY: all flake links code
+all: flake links code
 flake:
 	@ ./scripts/heading.sh "Building NixOS"
 	@ sudo nixos-rebuild switch
 links:
 	@ ./scripts/heading.sh "Setting up links"
 	@ BASH_ENV=/etc/profile ./scripts/install.sh
-
-# Code {{{1
-.PHONY: code
 code: nix lua sh
 
-# Nix {{{2
+# nix {{{1
 .PHONY: nix nixfmt
 nixfmt:
 	@ ./scripts/heading.sh "Formatting Nix files"
@@ -25,7 +21,7 @@ nix: nixfmt
 	@ statix check . || true
 	@ deadnix || true
 
-# Lua {{{2
+# lua {{{1
 .PHONY: lua luafmt
 luafmt:
 	@ ./scripts/heading.sh "Formatting Lua files"
@@ -34,7 +30,7 @@ lua: luafmt
 	@ ./scripts/heading.sh "Checking Lua files"
 	@ luacheck . --globals=vim | ghead -n -2
 
-# Shell {{{2
+# shell {{{1
 .PHONY: sh shfmt
 shfmt:
 	@ ./scripts/heading.sh "Formatting shell scripts"
@@ -42,7 +38,3 @@ shfmt:
 sh: shfmt
 	@ ./scripts/heading.sh "Checking shell scripts"
 	@ ./scripts/shrun.sh 'verbose' 'shellcheck --color=always -o all'
-
-# makefile2graph
-.PHONY: root
-root: all code

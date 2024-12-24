@@ -30,18 +30,19 @@
 
     # Formatters {{{1
     alejandra # nix
+    black # Python
+    cbfmt # code block formatter for markdown
+    formatjson5
+    gofumpt # strict(er) go
+    html-tidy
+    markdownlint-cli
+    mdformat
     nixfmt-rfc-style # nix (OFFICIAL)
+    nodePackages.prettier # formatting
     shfmt # posix/bash/mksh
     stylua # Lua
-    yamlfmt # YAML
-    nodePackages.prettier # formatting
-    html-tidy
-    black # Python
-    gofumpt # strict(er) go
-    cbfmt # code block formatter for markdown
     treefmt
-    mdformat
-    markdownlint-cli
+    yamlfmt # YAML
 
     # Servers {{{1
     nodePackages_latest.bash-language-server

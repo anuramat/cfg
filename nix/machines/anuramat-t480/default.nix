@@ -20,12 +20,4 @@
   #     CPU_MAX_PERF_ON_BAT = 30;
   #   };
   # };
-
-  boot = {
-    # boot splashscreen
-    plymouth = {
-      enable = true;
-      theme = "breeze"; # package is overridden to use a nixos logo
-    };
-  };
 }

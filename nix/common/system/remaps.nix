@@ -1,5 +1,5 @@
 _: {
-  keyd = {
+  services.keyd = {
     enable = true;
     keyboards = {
       main = {

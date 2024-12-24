@@ -1,18 +1,29 @@
-_: {
+{user, ...}: {
   boot = {
     loader = {
       systemd-boot = {
         enable = true;
         configurationLimit = 10;
         memtest86.enable = true;
-        edk2-uefi-shell.enable = true; # wait for 24.11 to release
+        edk2-uefi-shell.enable = true;
         netbootxyz.enable = true;
       };
       efi.canTouchEfiVariables = true;
     };
-    # silent boot
+    # silent boot, suggested by boot.initrd.verbose description:
     consoleLogLevel = 0;
-    initrd.verbose = false;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
     kernelParams = ["quiet" "udev.log_level=3"];
+    plymouth = {
+      theme = "breeze"; # package is overridden to use a nixos logo
+      enable = true;
+    };
+  };
+  services.getty = {
+    autologinUser = user.username;
+    autologinOnce = true;
   };
 }

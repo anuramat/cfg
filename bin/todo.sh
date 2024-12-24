@@ -831,7 +831,7 @@ case $action in
 		;;
 
 	"list" | "ls")
-		shift ## Was ls; new $1 is first search term
+		shift
 		_list "$TODO_FILE" "$@"
 		;;
 
@@ -846,10 +846,16 @@ case $action in
 		;;
 
 	"listpri" | "lsp")
-		shift ## was "listpri", new $1 is priority to list or first TERM
+		shift
 
 		pri=$(printf "%s\n" "$1" | tr '[:lower:]' '[:upper:]' | grep -e '^[A-Z]$' -e '^[A-Z]-[A-Z]$') && shift || pri="A-Z"
 		post_filter_command="${post_filter_command:-}${post_filter_command:+ | }grep '^ *[0-9]\+ ([${pri}]) '"
+		_list "$TODO_FILE" "$@"
+		;;
+
+	unfiled | u)
+		shift
+		post_filter_command="${post_filter_command:-}${post_filter_command:+ | }grep -vP -- '(?<!\S)\+\S*'"
 		_list "$TODO_FILE" "$@"
 		;;
 

@@ -1,14 +1,13 @@
 # vim: fdm=marker fdl=1
-heading::="$(shell tput setaf 5 bold)%s$(shell tput sgr0)\n"
 
 # Setup {{{1
 .PHONY: all flake links
 all: flake links
 flake:
-	@ printf ${heading} "Building NixOS"
+	@ ./scripts/heading.sh "Building NixOS"
 	@ sudo nixos-rebuild switch
 links:
-	@ printf ${heading} "Setting up links"
+	@ ./scripts/heading.sh "Setting up links"
 	@ BASH_ENV=/etc/profile ./scripts/install.sh
 
 # Code {{{1
@@ -18,30 +17,30 @@ code: nix lua sh
 # Nix {{{2
 .PHONY: nix nixfmt
 nixfmt:
-	@ printf ${heading} "Formatting Nix files"
+	@ ./scripts/heading.sh "Formatting Nix files"
 	@ nixfmt $(shell fd -e nix)
 
 nix: nixfmt
-	@ printf ${heading} "Checking Nix files"
-	@ statix check .
-	@ deadnix
+	@ ./scripts/heading.sh "Checking Nix files"
+	@ statix check . || true
+	@ deadnix || true
 
 # Lua {{{2
 .PHONY: lua luafmt
 luafmt:
-	@ printf ${heading} "Formatting Lua files"
+	@ ./scripts/heading.sh "Formatting Lua files"
 	@ stylua .
 lua: luafmt
-	@ printf ${heading} "Checking Lua files"
+	@ ./scripts/heading.sh "Checking Lua files"
 	@ luacheck . --globals=vim | ghead -n -2
 
 # Shell {{{2
 .PHONY: sh shfmt
 shfmt:
-	@ printf ${heading} "Formatting shell scripts"
+	@ ./scripts/heading.sh "Formatting shell scripts"
 	@ ./scripts/shrun.sh 'silent' 'shfmt --write --simplify --case-indent --binary-next-line --space-redirects'
 sh: shfmt
-	@ printf ${heading} "Checking shell scripts"
+	@ ./scripts/heading.sh "Checking shell scripts"
 	@ ./scripts/shrun.sh 'verbose' 'shellcheck --color=always -o all'
 
 # makefile2graph

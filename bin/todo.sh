@@ -674,6 +674,12 @@ listWordsWithSigil() {
 		| sort -u
 }
 
+listTasksWithoutSigil() {
+	post_filter_command="${post_filter_command:-}${post_filter_command:+ | }grep -vP -- '(?<!\S)\\$1\S*'"
+	shift
+	_list "$TODO_FILE" "$@"
+}
+
 export -f cleaninput getPrefix getTodo getNewtodo shellquote filtercommand _list listWordsWithSigil getPadding _format die
 
 # HANDLE ACTION {{{1
@@ -853,10 +859,14 @@ case $action in
 		_list "$TODO_FILE" "$@"
 		;;
 
-	unfiled | u)
+	uc)
 		shift
-		post_filter_command="${post_filter_command:-}${post_filter_command:+ | }grep -vP -- '(?<!\S)\+\S*'"
-		_list "$TODO_FILE" "$@"
+		listTasksWithoutSigil "@" "$@"
+		;;
+
+	up)
+		shift
+		listTasksWithoutSigil "+" "$@"
 		;;
 
 	"prepend" | "prep")

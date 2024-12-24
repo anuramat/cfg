@@ -9,5 +9,6 @@ _: {
     ./peripherals.nix
     ./power.nix
     ./printers.nix
+    ./remaps.nix
   ];
 }

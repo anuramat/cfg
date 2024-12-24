@@ -133,7 +133,6 @@
     rclone # rsync for cloud
     tree-sitter
     mesa-demos # some 3d demos, useful for graphics debugging
-    rpi-imager # raspbery pi
     cowsay
     fortune # random quotes
 

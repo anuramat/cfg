@@ -21,7 +21,9 @@ nixfmt:
 	@ printf ${heading} "Formatting Nix files"
 	@ alejandra .
 nix: nixfmt
-	# TODO add a linter
+	@ printf ${heading} "Checking Nix files"
+	@ statix check .
+	@ deadnix
 
 # Lua {{{2
 .PHONY: lua luafmt

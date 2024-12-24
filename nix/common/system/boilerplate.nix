@@ -3,7 +3,10 @@
   # hardware.enableAllFirmware = true; # regardless of license # TODO figure out if I need this and how to fix it
   hardware.enableRedistributableFirmware = true;
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     substituters = [
       "https://cache.nixos.org"
       "https://cuda-maintainers.cachix.org"

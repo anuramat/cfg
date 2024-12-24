@@ -37,7 +37,10 @@
     html-tidy
     black # Python
     gofumpt # strict(er) go
-    cbfmt # code block formatter (markdown)
+    cbfmt # code block formatter for markdown
+    treefmt
+    mdformat
+    markdownlint-cli
 
     # Servers {{{1
     nodePackages_latest.bash-language-server

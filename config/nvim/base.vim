@@ -24,7 +24,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " formatting {{{1
 se shiftround shiftwidth=0 expandtab tabstop=2
-se textwidth=80 formatoptions=qwjr
+se textwidth=80 formatoptions=qjr
 se nowrap
 
 " general {{{1

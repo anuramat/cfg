@@ -14,6 +14,8 @@ main() {
 		echo "writing $name"
 		[ "$name" = default ] && continue
 
+		# TODO use sed instead of ripgrep
+
 		ansi=$(rg 'let\s+g:terminal_ansi_colors\s*=\s*(\[.*\])' "$filepath" -or '$1' \
 			| tr "'" '"')
 		# if more than one set of term colors (ie light/dark) - skip TODO read those too

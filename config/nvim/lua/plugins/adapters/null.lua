@@ -51,6 +51,7 @@ local null_sources = function()
     --     'always',
     --   },
     -- }),
+    nlf.markdownlint,
     cbfmt,
     -- diagnostics
     nld.deadnix,

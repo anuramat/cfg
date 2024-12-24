@@ -1,9 +1,11 @@
 let
-  setMany = app: types: (builtins.listToAttrs (map (x: {
+  setMany = app: types: (builtins.listToAttrs (
+    map (x: {
       name = x;
       value = app;
     })
-    types));
+    types
+  ));
 
   # browser = "google-chrome.desktop";
   # browser = "firefox.desktop";

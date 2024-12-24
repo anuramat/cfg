@@ -1,5 +1,6 @@
 # https://nixos.wiki/wiki/Sway
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.sway = {
     enable = true;
     # TODO doc this
@@ -37,6 +38,6 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

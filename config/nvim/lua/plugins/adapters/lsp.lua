@@ -18,6 +18,7 @@ end
 --- @return table configs
 local configs = function()
   return {
+    -- supports options, packages
     nixd = {
       cmd = { 'nixd', '--inlay-hints=false' },
       settings = {
@@ -31,7 +32,7 @@ local configs = function()
           },
         },
       },
-    }, -- knows nixos and nixpkgs: hover, completions
+    },
     -- nil_ls = {}, -- nice code actions
     yamlls = {
       -- config stolen from schemaStore.nvim readme

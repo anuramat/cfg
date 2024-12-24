@@ -2,7 +2,8 @@
   pkgs,
   unstable,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # Compilers {{{1
     cargo
@@ -86,4 +87,3 @@
   ];
 }
 # vim: fdm=marker fdl=0
-

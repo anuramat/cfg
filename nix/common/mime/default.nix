@@ -1,11 +1,12 @@
 let
-  setMany = app: types: (builtins.listToAttrs (
-    map (x: {
-      name = x;
-      value = app;
-    })
-    types
-  ));
+  setMany =
+    app: types:
+    (builtins.listToAttrs (
+      map (x: {
+        name = x;
+        value = app;
+      }) types
+    ));
 
   # browser = "google-chrome.desktop";
   # browser = "firefox.desktop";
@@ -16,7 +17,8 @@ let
   imageViewer = "org.nomacs.ImageLounge.desktop";
   torrentClient = "transmission-gtk.desktop";
   videoPlayer = "mpv.desktop";
-in {
+in
+{
   xdg.mime = {
     enable = true;
     defaultApplications =

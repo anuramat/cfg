@@ -3,14 +3,15 @@
   pkgs,
   unstable,
   ...
-}: {
+}:
+{
   hardware = {
     # Flipper Zero
     flipperzero.enable = true;
     # Generic RGB software
     # Razer
     openrazer = {
-      users = [user.username];
+      users = [ user.username ];
       enable = true;
     };
   };

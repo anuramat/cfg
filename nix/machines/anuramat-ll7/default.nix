@@ -3,7 +3,8 @@
   config,
   inputs,
   ...
-}: {
+}:
+{
   system.stateVersion = "24.05";
   networking.hostName = "anuramat-ll7";
 
@@ -52,7 +53,7 @@
 
   # nvidia
   # {{{1
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     nvidia = {
       open = true; # recommended on turing+
@@ -85,4 +86,3 @@
   # }}}
 }
 # vim: fdm=marker fdl=0
-

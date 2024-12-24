@@ -2,11 +2,12 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   programs = {
     starship = {
       enable = true;
-      presets = ["plain-text-symbols"];
+      presets = [ "plain-text-symbols" ];
       settings = {
         format = " $all$status$line_break$character";
         character = {
@@ -42,7 +43,7 @@
     };
 
     bash = {
-      shellAliases = lib.mkForce {};
+      shellAliases = lib.mkForce { };
       promptInit = "# placeholder: bash.promptInit";
       enableLsColors = false;
       shellInit = "# placeholder: bash.shellInit";
@@ -62,7 +63,7 @@
   # /etc/bashrc: /etc/profile, bash.interactiveShellInit, bash.promptInit, (?hooks from software options?), interactiveShellInit, /etc/bashrc.local
 
   environment = {
-    shellAliases = lib.mkForce {};
+    shellAliases = lib.mkForce { };
     shellInit = "# placeholder: environment.shellInit";
     loginShellInit = ''
       # placeholder: environment.loginShellInit {{{1
@@ -75,4 +76,3 @@
   };
 }
 # vim: fdl=3
-

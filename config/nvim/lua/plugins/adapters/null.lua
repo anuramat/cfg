@@ -42,7 +42,8 @@ local null_sources = function()
     -- ~~~~~~~~~~~~~~~~~~~ formatting ~~~~~~~~~~~~~~~~~~~ --
     nlf.stylua,
     nlf.black,
-    nlf.alejandra,
+    nlf.nixfmt,
+    -- nlf.alejandra,
     -- nlf.prettier.with({
     --   extra_args = {
     --     '--print-width',

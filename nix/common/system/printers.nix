@@ -12,7 +12,7 @@ _: {
     # Enable CUPS to print documents, available @ http://localhost:631/
     printing = {
       enable = true;
-      drivers = []; # some printers need additional drivers
+      drivers = [ ]; # some printers need additional drivers
     };
     # Implementation for Multicast DNS aka Zeroconf aka Apple Rendezvous aka Apple Bonjour
     # which is responsible for network printers autodiscovery (not only that)
@@ -22,9 +22,9 @@ _: {
       openFirewall = true; # Open udp 5353 for network devices discovery
     };
   };
-  hardware.printers = {}; # some printers need additional configuration
+  hardware.printers = { }; # some printers need additional configuration
   hardware.sane = {
     enable = true;
-    extraBackends = [];
+    extraBackends = [ ];
   };
 }

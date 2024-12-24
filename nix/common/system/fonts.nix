@@ -1,11 +1,12 @@
-{unstable, ...}: {
+{ unstable, ... }:
+{
   fonts = {
     packages = [
       unstable.nerd-fonts.hack
     ];
     fontconfig = {
       defaultFonts = {
-        monospace = ["Hack Nerd Font"];
+        monospace = [ "Hack Nerd Font" ];
       };
     };
   };

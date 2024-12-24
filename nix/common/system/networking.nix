@@ -1,4 +1,5 @@
-{user, ...}: {
+{ user, ... }:
+{
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -13,7 +14,7 @@
         8080
         8888
       ];
-      allowedUDPPorts = [];
+      allowedUDPPorts = [ ];
     };
     networkmanager = {
       enable = true;
@@ -27,13 +28,13 @@
     tailscale.enable = true;
     openssh = {
       enable = true;
-      ports = [22];
+      ports = [ 22 ];
       settings = {
         PasswordAuthentication = false;
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
         PrintLastLog = false;
-        AllowUsers = [user.username];
+        AllowUsers = [ user.username ];
       };
     };
   };

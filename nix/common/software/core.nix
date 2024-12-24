@@ -2,7 +2,8 @@
   pkgs,
   unstable,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # docs {{{1
     man-pages
@@ -204,4 +205,3 @@
   ];
 }
 # vim: fdm=marker fdl=0
-

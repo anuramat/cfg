@@ -1,4 +1,5 @@
-{user, ...}: {
+{ user, ... }:
+{
   documentation.man.generateCaches = true; # apropos
   # hardware.enableAllFirmware = true; # regardless of license # TODO figure out if I need this and how to fix it
   hardware.enableRedistributableFirmware = true;
@@ -27,7 +28,7 @@
   };
   time.timeZone = user.timezone;
   i18n.defaultLocale = user.defaultLocale;
-  environment.extraOutputsToInstall = ["info"];
+  environment.extraOutputsToInstall = [ "info" ];
   users.users.${user.username} = {
     description = user.fullname;
     isNormalUser = true;

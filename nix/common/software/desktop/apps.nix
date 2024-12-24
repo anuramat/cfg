@@ -4,7 +4,8 @@
   unstable,
   inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     # Browsers {{{1
     inputs.zen-browser.packages.${pkgs.system}.specific

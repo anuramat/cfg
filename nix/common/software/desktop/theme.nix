@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # TODO fuck my life man
   environment.systemPackages = with pkgs; [
     glib # gsettings (gtk etc)

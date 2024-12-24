@@ -1,7 +1,6 @@
 {
   pkgs,
   unstable,
-  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -105,6 +104,7 @@
     age # file encryption
     virtualbox
     wine
+    # yazi broot lf nnn ranger vifm TODO
     aria # downloader
     banner
     unstable.croc # send/receive files through relay with encryption

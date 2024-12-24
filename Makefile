@@ -19,7 +19,7 @@ code: nix lua sh
 .PHONY: nix nixfmt
 nixfmt:
 	@ printf ${heading} "Formatting Nix files"
-	@ alejandra .
+	@ treefmt -f nixfmt
 nix: nixfmt
 	@ printf ${heading} "Checking Nix files"
 	@ statix check .

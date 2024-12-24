@@ -43,15 +43,6 @@ local null_sources = function()
     nlf.stylua,
     nlf.black,
     nlf.nixfmt,
-    -- nlf.alejandra,
-    -- nlf.prettier.with({
-    --   extra_args = {
-    --     '--print-width',
-    --     tostring(vim.o.textwidth),
-    --     '--prose-wrap',
-    --     'always',
-    --   },
-    -- }),
     nlf.markdownlint,
     cbfmt,
     -- diagnostics
